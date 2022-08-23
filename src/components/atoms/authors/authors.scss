@@ -1,3 +1,5 @@
+@use '../../../sass/typography';
+
 .authors-list {
   display: inline;
   list-style: none;
@@ -15,4 +17,9 @@
   &:last-child:after {
     content: "";
   }
+}
+
+.authors-list__expansion {
+  @include typography.summary-count-text();
+  cursor: pointer;
 }
