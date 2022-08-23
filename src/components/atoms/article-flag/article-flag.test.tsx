@@ -1,5 +1,5 @@
-import { ArticleFlag } from './article-flag';
 import { render, screen } from '@testing-library/react';
+import { ArticleFlag } from './article-flag';
 
 describe('ArticleFlag', () => {
   it('should render correctly with all the provided props', () => {
