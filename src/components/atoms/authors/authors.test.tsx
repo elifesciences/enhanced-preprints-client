@@ -32,14 +32,14 @@ describe('authors', () => {
     expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
   });
 
-  it('shows an clickable expansion element when over the author limit', () => {
+  it('shows a clickable expansion element when over the author limit', () => {
     render(<Authors authors={authorList}/>);
     const expansionElement = screen.getByText('...show', { exact: false });
 
     expect(expansionElement).toBeInTheDocument();
   });
 
-  it('does not show an clickable expansion element when under the author limit', () => {
+  it('does not show a clickable expansion element when under the author limit', () => {
     render(<Authors authors={[authorList[0]]}/>);
     const expansionElement = screen.queryByText('...show', { exact: false });
 
