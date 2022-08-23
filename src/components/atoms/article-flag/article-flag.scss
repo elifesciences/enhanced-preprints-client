@@ -1,5 +1,5 @@
-@use '../../../sass/settings';
-@use '../../../sass/typography';
+@use "../../../sass/settings";
+@use "../../../sass/typography";
 
 .article-flags__list_item {
   display: inline;
@@ -8,6 +8,7 @@
 
 .article-flags__link {
   @include typography.badge-text();
+
   background-color: settings.$color-less-light-grey;
   border-radius: 3px;
   cursor: pointer;
