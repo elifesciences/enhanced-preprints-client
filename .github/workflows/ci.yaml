@@ -21,5 +21,7 @@ jobs:
         run: yarn
       - name: Lint
         run: yarn lint
+      - name: Lint SASS
+        run: yarn lint-sass
       - name: Unit Test
         run: yarn test
