@@ -4,7 +4,7 @@ import { useState } from 'react';
 type Author = {
   givenNames: string[],
   familyNames: string[],
-}
+};
 
 const authorLimit = 10;
 
