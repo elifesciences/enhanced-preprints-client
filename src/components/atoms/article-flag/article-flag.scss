@@ -7,7 +7,7 @@
 }
 
 .article-flags__link {
-  @include typography.summary-badge();
+  @include typography.badge-text();
   background-color: settings.$color-less-light-grey;
   border-radius: 3px;
   cursor: pointer;
