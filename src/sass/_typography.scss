@@ -1,4 +1,4 @@
-@use 'settings';
+@use "settings";
 
 @mixin badge-text() {
   color: settings.$color-text;
