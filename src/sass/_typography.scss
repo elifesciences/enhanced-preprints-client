@@ -1,0 +1,8 @@
+@use 'settings';
+
+@mixin badge-text() {
+  color: settings.$color-text;
+  font-family: settings.$font-family-primary;
+  font-size: 12px;
+  line-height: 18px;
+}
