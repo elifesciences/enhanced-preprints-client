@@ -16,7 +16,7 @@
     content: ", ";
   }
 
-  &:last-child:after {
+  &::last-child:after {
     content: "";
   }
 }
