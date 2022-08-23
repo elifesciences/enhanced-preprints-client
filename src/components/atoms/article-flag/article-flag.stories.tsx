@@ -14,10 +14,12 @@ export const MSA = Template.bind({});
 MSA.args = {
   isMSA: true,
   flagText: 'MSA',
+  url: 'https://bbc.co.uk',
 };
 
 export const CurationLabel = Template.bind({});
 CurationLabel.args = {
   isMSA: false,
-  flagText: 'Curation'
+  flagText: 'Curation',
+  url: 'https://bbc.co.uk',
 };
