@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleFlag } from './article-flag';
 
 export default {
-  title: 'Atoms | ArticleFlag',
+  title: 'Atoms/ArticleFlag',
   component: ArticleFlag,
 } as ComponentMeta<typeof ArticleFlag>;
 
