@@ -1,0 +1,54 @@
+@use "../../../sass/layout";
+@use "../../../sass/typography";
+
+.descriptors {
+  display: flex;
+}
+
+.descriptors__identifiers {
+  @include typography.identifiers-list-text();
+  list-style: none;
+  padding: 0;
+}
+
+.descriptors__identifier {
+  display: none;
+}
+.descriptors__identifier:first-child {
+  display: list-item;
+}
+
+.descriptors__identifier a {
+  @include typography.identifiers-list-text();
+  text-decoration: none;
+}
+
+.descriptors__icons {
+  margin: 14px 5px;
+  padding: 0px;
+}
+.descriptors__icons li {
+  @include typography.identifiers-list-text();
+  display: inline-block;
+}
+.descriptors__icon--oa {
+  background-image: url(../../../images/oa.svg),linear-gradient(transparent, transparent);
+  height: 26px;
+  width: 16px;
+}
+.descriptors__icon {
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+.descriptors__icon--cc {
+  background-image: url(../../../images/cc.svg),linear-gradient(transparent,transparent);
+  height: 24px;
+  width: 18px;
+}
+
+.identifier__name {
+  display: none;
+}
