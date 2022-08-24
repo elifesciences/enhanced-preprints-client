@@ -18,7 +18,7 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
       <ol className="institutions-list">
         { institutions.slice(0, expanded ? institutions.length : institutionLimit).map(({ name, address }, index) => (
           <li className="institutions-list__item" key={index}>
-            {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address>: ''}
+            {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
           </li>
         ))}
       </ol>

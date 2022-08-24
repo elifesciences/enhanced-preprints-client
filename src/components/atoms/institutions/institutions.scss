@@ -9,13 +9,14 @@
 
 .institutions-list__item {
   @include typography.affiliations-list-text();
+
   display: inline;
 
-  &:after {
+  &::after {
     content: " • ";
   }
 
-  &:last-child:after {
+  &:last-child::after {
     content: "";
   }
 }
@@ -24,21 +25,22 @@
   display: inline;
   font-style: normal;
 
-  &:before{
+  &::before {
     content: ", ";
   }
 
-  &:after {
+  &::after {
     content: ", ";
   }
 
-  &:last-child:after {
+  &:last-child::after {
     content: "";
   }
 }
 
 .institutions-list__expansion {
   @include typography.summary-count-text();
+
   cursor: pointer;
   font-size: 14px;
   line-height: 24px;
