@@ -18,12 +18,16 @@
 @mixin summary-count-text() {
   color: settings.$color-primary;
   font-family: settings.$font-family-primary;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
 
   &::before {
     color: settings.$color-text;
     content: ", ";
   }
+}
+
+@mixin affiliations-list-text() {
+  color: settings.$color-text;
+  font-family: settings.$font-family-primary;
+  font-size: 14px;
+  line-height: 24px;
 }
