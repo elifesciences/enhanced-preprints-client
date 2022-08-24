@@ -1,0 +1,39 @@
+@use "../../../sass/typography";
+
+.institutions-list {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.institutions-list__item {
+  @include typography.affiliations-list-text();
+
+  display: inline;
+
+  &::after {
+    content: " • ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
+}
+
+.institution__address {
+  display: inline;
+  font-style: normal;
+
+  &::before {
+    content: ", ";
+  }
+}
+
+.institutions-list__expansion {
+  @include typography.expansion-text();
+
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+}
