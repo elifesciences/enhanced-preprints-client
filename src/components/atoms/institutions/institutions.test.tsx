@@ -12,9 +12,9 @@ const institutionList = [
 describe('Institutions', () => {
   it('should render correctly a list of institutions', () => {
     render(<Institutions institutions={[institutionList[0]]}/>);
-    const charlesXavier = screen.getByText('Charles Xavier\'s School for Gifted Youngsters');
+    const xMansion = screen.getByText('Charles Xavier\'s School for Gifted Youngsters');
 
-    expect(charlesXavier).toBeInTheDocument();
+    expect(xMansion).toBeInTheDocument();
   });
 
   it('should hide institutions after the institution limit', () => {

@@ -49,25 +49,27 @@ describe('authors', () => {
   describe('expansion behaviour', () => {
     it('shows on click', () => {
       render(<Authors authors={authorList}/>);
+      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+
       const expansionElement = screen.getByText('...show', { exact: false });
       fireEvent.click(expansionElement);
-      const greenArrow = screen.queryByText('Oliver Queen');
 
-      expect(greenArrow).toBeInTheDocument();
+      expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();
     });
 
     it('hides on click', () => {
       render(<Authors authors={authorList}/>);
+      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+
       const expansionElement = screen.getByText('...show', { exact: false });
       fireEvent.click(expansionElement);
-      const greenArrow = screen.queryByText('Oliver Queen');
 
-      expect(greenArrow).toBeInTheDocument();
+      expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();
 
       const contractionElement = screen.getByText('show less');
       fireEvent.click(contractionElement);
 
-      expect(greenArrow).not.toBeInTheDocument();
+      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
     });
   });
 });
