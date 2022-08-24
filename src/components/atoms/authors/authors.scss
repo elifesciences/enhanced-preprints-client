@@ -22,7 +22,7 @@
 }
 
 .authors-list__expansion {
-  @include typography.summary-count-text();
+  @include typography.expansion-text();
 
   cursor: pointer;
   font-size: 16px;

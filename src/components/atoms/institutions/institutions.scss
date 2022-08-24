@@ -28,18 +28,10 @@
   &::before {
     content: ", ";
   }
-
-  &::after {
-    content: ", ";
-  }
-
-  &:last-child::after {
-    content: "";
-  }
 }
 
 .institutions-list__expansion {
-  @include typography.summary-count-text();
+  @include typography.expansion-text();
 
   cursor: pointer;
   font-size: 14px;

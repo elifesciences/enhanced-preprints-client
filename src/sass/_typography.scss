@@ -15,7 +15,7 @@
   line-height: 24px;
 }
 
-@mixin summary-count-text() {
+@mixin expansion-text() {
   color: settings.$color-primary;
   font-family: settings.$font-family-primary;
 
