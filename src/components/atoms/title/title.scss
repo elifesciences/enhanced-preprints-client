@@ -1,7 +1,7 @@
 @use "../../../sass/typography";
 
 .title {
-  @include typography.heading-1();
+  @include typography.h1();
 
   margin-bottom: 36px;
   margin-top: 0;
