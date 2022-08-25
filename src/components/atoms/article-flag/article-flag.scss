@@ -1,12 +1,7 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.article-flags__list_item {
-  display: inline;
-  padding-right: 6px;
-}
-
-.article-flags__link {
+.article-flag__link {
   @include typography.badge-text();
 
   background-color: settings.$color-less-light-grey;
@@ -17,7 +12,7 @@
   padding: 6px 10px;
   text-decoration: none;
 
-  &.article-flags__link-msa {
+  &.article-flag__link-msa {
     color: settings.$color-primary;
   }
 }
