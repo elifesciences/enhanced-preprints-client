@@ -35,6 +35,11 @@
   @include typography.identifiers-list-text();
 
   display: inline-block;
+  margin-right: 4px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .descriptors__icon--oa {
