@@ -9,37 +9,37 @@ export default {
 
 const Template: ComponentStory<typeof Title> = (args) => <Title {...args} />;
 
-export const ArticleTitle = Template.bind({});
-ArticleTitle.args = {
-  title: 'I am an article string title!',
+export const StringTitle = Template.bind({});
+StringTitle.args = {
+  title: 'This is a title',
 };
 
-export const ArticleTitle2 = Template.bind({});
-ArticleTitle2.args = {
-  title: ['I am an article ', 'title', ' array!'],
+export const StringArrayTitle = Template.bind({});
+StringArrayTitle.args = {
+  title: ['This', 'is', 'a', 'title'],
 };
 
-export const ArticleTitle3 = Template.bind({});
-ArticleTitle3.args = {
-  title: { type: 'Emphasis', content: 'I am an emphasised title' },
+export const ContentPartTitle = Template.bind({});
+ContentPartTitle.args = {
+  title: { type: 'Strong', content: 'This is a title' },
 };
 
-export const ArticleTitle4 = Template.bind({});
-ArticleTitle4.args = {
-  title: ['I am a ', { type: 'Emphasis', content: 'partially' }, ' emphasised title'],
+export const ContentPartArrayTitle = Template.bind({});
+ContentPartArrayTitle.args = {
+  title: [{ type: 'Strong', content: 'This is a' }, { type: 'Emphasis', content: 'title' }],
 };
 
-export const ArticleTitle5 = Template.bind({});
-ArticleTitle5.args = {
-  title: ['I am a ', { type: 'Emphasis', content: [{ type: 'Superscript', content: 'partially emphasised superscript' }] }, 'title'],
+export const MixedArrayTitle = Template.bind({});
+MixedArrayTitle.args = {
+  title: [{ type: 'Strong', content: 'This is a' }, 'title'],
 };
 
-export const ArticleTitle6 = Template.bind({});
-ArticleTitle6.args = {
-  title: ['I am a ', { type: 'Emphasis', content: ['partially emphasised ', { type: 'Superscript', content: 'superscript' }] }, ' title'],
+export const StringArrayInContentPartTitle = Template.bind({});
+StringArrayInContentPartTitle.args = {
+  title: [{ type: 'Strong', content: ['This', 'is', 'a', 'title'] }],
 };
 
-export const ArticleTitle7 = Template.bind({});
-ArticleTitle7.args = {
-  title: ['I am a ', { type: 'Emphasis', content: ['partially emphasised ', { type: 'Superscript', content: [{ type: 'Superscript', content: 'superscript' }, { type: 'Subscript', content: 'text' }] }] }, ' title'],
+export const NestedContentPartTitle = Template.bind({});
+NestedContentPartTitle.args = {
+  title: [{ type: 'Strong', content: { type: 'Emphasis', content: 'This is a title' } }],
 };
