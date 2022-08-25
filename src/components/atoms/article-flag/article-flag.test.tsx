@@ -7,7 +7,7 @@ describe('ArticleFlag', () => {
     const flag = screen.getByText('flag');
 
     expect(flag).toBeInTheDocument();
-    expect(flag.classList).toContain('article-flags__link-msa');
+    expect(flag.classList).toContain('article-flag__link-msa');
     expect(flag.getAttribute('href')).toStrictEqual('www.google.com');
   });
 
@@ -15,6 +15,6 @@ describe('ArticleFlag', () => {
     render(<ArticleFlag flagText='flag' isMSA={false} url='www.google.com'/>);
     const flag = screen.getByText('flag');
 
-    expect(flag.classList).not.toContain('article-flags__link-msa');
+    expect(flag.classList).not.toContain('article-flag__link-msa');
   });
 });
