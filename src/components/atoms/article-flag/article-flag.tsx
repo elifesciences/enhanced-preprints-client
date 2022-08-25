@@ -5,7 +5,5 @@ type Props = {
 };
 
 export const ArticleFlag = ({ flagText, isMSA, url }: Props): JSX.Element => (
-  <li className="article-flags__list_item">
-      <a className={`article-flags__link${isMSA ? ' article-flags__link-msa' : ''}`} href={url}>{flagText}</a>
-  </li>
+  <a className={`article-flag__link${isMSA ? ' article-flag__link-msa' : ''}`} href={url}>{flagText}</a>
 );
