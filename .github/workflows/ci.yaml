@@ -32,7 +32,7 @@ jobs:
   build-and-push:
     needs: [test]
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v3
       - name: Set up QEMU
@@ -45,7 +45,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
-        run: GITBRANCH=test DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-storybook-and-push
-      - name: Build and push
-        run: GITBRANCH=test DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-prod-and-push
+      - name: Build and push storybook image
+        run: DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-storybook-and-push
+      - name: Build and push client image
+        run: DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-prod-and-push
