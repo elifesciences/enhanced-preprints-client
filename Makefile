@@ -12,8 +12,13 @@ start:
 build-client:
 	docker buildx build -t $(DOCKER_REPO_PREFIX)client:dev    --load --target base .
 
-build-storybook:
-	docker buildx build -t $(DOCKER_REPO_PREFIX)storybook:dev --load --target storybook .
+build-storybook-and-push:
+	docker buildx build \
+		-t $(DOCKER_REPO_PREFIX)storybook:latest \
+		-t $(DOCKER_REPO_PREFIX)storybook:$(GITHASH) \
+		-t $(DOCKER_REPO_PREFIX)storybook:$(GITBRANCH)-$(GITSHORTHASH)-$(DATETIME) \
+		 --platform linux/amd64,linux/arm64 --target storybook --push .
+
 
 build-prod-and-push:
 	docker buildx build \

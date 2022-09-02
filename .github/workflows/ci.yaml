@@ -46,4 +46,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
+        run: DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-storybook-and-push
+      - name: Build and push
         run: DOCKER_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-prod-and-push
