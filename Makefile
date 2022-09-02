@@ -9,9 +9,6 @@ GITBRANCH:=$(shell git branch --show-current)
 start:
 	docker-compose up
 
-build-client:
-	docker buildx build -t $(DOCKER_REPO_PREFIX)client:dev    --load --target base .
-
 build-storybook-and-push:
 	docker buildx build \
 		-t $(DOCKER_REPO_PREFIX)storybook:latest \
