@@ -1,10 +1,8 @@
-# Getting Started with Create React App
+# Getting Started with Enhanced Preprints Client
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `yarn start`
 
@@ -39,8 +37,17 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Building
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The build system depends on docker, buildx and make. You can build the production ready docker image using the `build-prod-and-push` make target, making sure to pass a IMAGE_REPO_PREFIX var pointing to your own container repository (which will be suffixed with `client`):
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+make IMAGE_REPO_PREFIX=yourdockerhubuser/enhanced-preprints- make build-prod-and-push
+```
+
+You can also build an image that runs storybook in dev mode for hosting as a pattern library (which will be suffixed with `storybook`):
+```
+make IMAGE_REPO_PREFIX=yourdockerhubuser/enhanced-preprints- make build-storybook-and-push
+```
+
+These are tagged and pushed automatically with `:latest`, `:{githash}` and `:{branchname}-{githas}-{timestamp}`. The images are built for linux/amd64 and linux/arm64 platforms.
