@@ -16,16 +16,16 @@
 
 .descriptors__identifier {
   display: none;
-}
 
-.descriptors__identifier:first-child {
-  display: list-item;
-}
+  &:first-child {
+    display: list-item;
+  }
 
-.descriptors__identifier a {
-  @include typography.identifiers-list-text();
+  a {
+    @include typography.identifiers-list-text();
 
-  text-decoration: none;
+    text-decoration: none;
+  }
 }
 
 .descriptors__icons {
