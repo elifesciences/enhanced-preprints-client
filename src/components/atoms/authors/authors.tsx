@@ -1,7 +1,7 @@
 import './authors.scss';
 import { useState } from 'react';
 
-type Author = {
+export type Author = {
   givenNames: string[],
   familyNames: string[],
 };

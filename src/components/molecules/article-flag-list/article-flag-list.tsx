@@ -1,7 +1,7 @@
 import './article-flag-list.scss';
 import { ArticleFlag } from '../../atoms/article-flag/article-flag';
 
-type Props = {
+export type Props = {
   msas: string[],
   importance: string;
   strengthOfEvidence: string,
