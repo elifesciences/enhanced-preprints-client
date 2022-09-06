@@ -1,0 +1,6 @@
+node_modules/**
+.yarn/cache/**
+.yarn/install-state.gz
+docker-compose.yaml
+Dockefile
+Makefile

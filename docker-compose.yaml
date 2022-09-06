@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+      target: base
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./:/opt/epp-client/
+    - node_modules:/opt/epp-client/node_modules
+
+  storybook:
+    build:
+      context: .
+      target: storybook
+    ports:
+    - "6006:6006"
+    volumes:
+    - ./:/opt/epp-client/
+    - node_modules:/opt/epp-client/node_modules
+
+volumes:
+  node_modules:
