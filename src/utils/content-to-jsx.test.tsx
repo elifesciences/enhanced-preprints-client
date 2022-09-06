@@ -13,7 +13,7 @@ describe('Content to JSX', () => {
     const result = contentToJsx(['one', 'two', { type: 'Strong', content: 'three' }]);
 
     // eslint-disable-next-line react/jsx-key
-    expect(result).toStrictEqual(expect.arrayContaining(['one', 'two', <strong>three</strong>]));
+    expect(result).toStrictEqual(expect.arrayContaining(['one', 'two', <strong key={2}>three</strong>]));
   });
 
   it('generates the expected html when passed a Heading', () => {
