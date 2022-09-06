@@ -1,3 +1,4 @@
+import './content-header.scss';
 import { Content } from '../../../types/content';
 import { Author, Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
