@@ -1,0 +1,50 @@
+@use "../../../sass/buttons";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.article-status {
+  border-bottom: settings.$border;
+  padding-bottom: 24px;
+}
+
+.article-status__heading {
+  color: settings.$color-primary;
+  font-family: settings.$font-family-primary;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-top: 0;
+}
+
+.article-status__text {
+  @include typography.body-small;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.article-actions {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  padding-top: 24px;
+}
+
+.article-actions__list-item {
+  display: inline-block;
+}
+
+.article-actions__button {
+  @include buttons.action-button();
+  display: inline-block;
+  margin-bottom: 12px;
+  margin-right: 6px;
+
+  &:nth-child(even) {
+    margin-right: 0;
+  }
+}
+
+.article-actions__button_icon{
+  @include buttons.button-icon();
+}
