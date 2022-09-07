@@ -1,4 +1,3 @@
-@use "../../../sass/buttons";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
@@ -18,6 +17,7 @@
 
 .article-status__text {
   @include typography.body-small;
+
   font-size: 12px;
   font-weight: 600;
   line-height: 22px;
@@ -32,19 +32,6 @@
 
 .article-actions__list-item {
   display: inline-block;
-}
-
-.article-actions__button {
-  @include buttons.action-button();
-  display: inline-block;
   margin-bottom: 12px;
   margin-right: 6px;
-
-  &:nth-child(even) {
-    margin-right: 0;
-  }
-}
-
-.article-actions__button_icon{
-  @include buttons.button-icon();
 }
