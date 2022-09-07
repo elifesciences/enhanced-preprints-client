@@ -19,3 +19,9 @@ $border: 1px solid $color-divider-grey;
 // Fonts
 $font-family-primary: noto sans,arial,helvetica,sans-serif;
 $font-family-secondary: noto serif,serif;
+
+// Breakpoints
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1000px;
+$breakpoint-extra-large: 1296px;

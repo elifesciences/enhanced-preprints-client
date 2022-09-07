@@ -1,0 +1,21 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.button {
+  @include typography.body-small();
+
+  background-color: settings.$color-less-light-grey;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  max-height: 40px;
+  padding: 8px 20px 8px 12px;
+  text-decoration: none;
+}
+
+.button-icon {
+  color: settings.$color-near-black;
+  margin-right: 6px;
+  vertical-align: middle;
+}
