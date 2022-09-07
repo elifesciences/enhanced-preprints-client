@@ -12,13 +12,13 @@ const defaultEvents = [
   { name: 'Author response', date: new Date('2022-03-06') },
   { name: 'Peer review', date: new Date('2022-03-03') },
   { name: 'Preprint posted', date: new Date('2021-11-08') },
-]
+];
 
 export const Timeline = ({ events = defaultEvents }: TimelineProps): JSX.Element => (
   <div className="review-timeline">
     <dl className="review-timeline__list">
       {
-        events.map((entry,index) => (
+        events.map((entry, index) => (
           <Fragment key={index}>
             <dt className="review-timeline__event">{entry.name}</dt>
             <dd className="review-timeline__date">{entry.date.toLocaleDateString()}</dd>
