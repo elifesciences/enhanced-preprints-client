@@ -109,3 +109,16 @@
   color: settings.$color-text;
   font-weight: 600;
 }
+
+@mixin link-text() {
+  color: settings.$color-primary;
+  font-family: settings.$font-family-primary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  text-decoration: none;
+
+  :visited {
+    color: settings.$color-primary;
+  }
+}
