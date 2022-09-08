@@ -15,3 +15,17 @@ ContextualList.args = {
   citations: 1,
   tweets: 13,
 };
+
+export const ZeroContextualList = Template.bind({});
+ZeroContextualList.args = {
+  views: 0,
+  citations: 0,
+  tweets: 0,
+};
+
+export const SingleContextualList = Template.bind({});
+SingleContextualList.args = {
+  views: 1,
+  citations: 1,
+  tweets: 1,
+};
