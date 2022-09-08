@@ -3,16 +3,16 @@
 
 .contextual-data {
   list-style: none;
-  padding-left: 0;
-  margin-top: 24px;
   margin-bottom: 24px;
+  margin-top: 24px;
+  padding-left: 0;
 }
 
 .contextual-data__item {
   @include typography.body-small();
+
   color: settings.$color-text-inactive;
   display: inline;
-
 
   &::after {
     content: ", ";
