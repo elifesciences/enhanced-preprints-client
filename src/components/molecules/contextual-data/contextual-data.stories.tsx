@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof ContextualData> = (args) => <ContextualDat
 export const ContextualList = Template.bind({});
 ContextualList.args = {
   views: 1467,
-  citation: 1,
+  citations: 1,
   tweets: 13,
 };
