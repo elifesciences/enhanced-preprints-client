@@ -75,7 +75,6 @@
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "storybook-dark-mode": "^1.1.0",
     "stylelint": "^14.11.0",
