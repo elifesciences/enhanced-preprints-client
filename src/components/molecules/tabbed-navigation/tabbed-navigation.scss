@@ -1,0 +1,27 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.tabbed-navigation__tabs {
+  border-bottom: settings.$border;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+.tabbed-navigation__tab-label {
+  @include typography.body();
+
+  color: settings.$color-text-inactive;
+  display: inline;
+  font-family: settings.$font-family-primary;
+  padding: 24px 18px;
+  cursor: pointer;
+
+  &.tabbed-navigation__tab-label--active {
+    border-bottom: 4px solid settings.$color-primary;
+    color: settings.$color-text;
+    font-weight: 600;
+    padding-bottom: 0;
+  }
+}

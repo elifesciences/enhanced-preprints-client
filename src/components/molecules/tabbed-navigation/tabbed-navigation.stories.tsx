@@ -7,13 +7,13 @@ export default {
 } as ComponentMeta<typeof TabbedNavigation>;
 
 const Template: ComponentStory<typeof TabbedNavigation> = (args) => (
-<TabbedNavigation {...args}>
-  <Tab label="tabs">Test</Tab>
-  <Tab label="tabs2">
-    <div><strong>foo</strong></div>
-    <img src="https://placekitten.com/300/400" />
-  </Tab>
-</TabbedNavigation>
+  <TabbedNavigation {...args}>
+    <Tab label="tabs">Test</Tab>
+    <Tab label="tabs2">
+      <div><strong>foo</strong></div>
+      <img src="https://placekitten.com/300/400" alt="cat picture"/>
+    </Tab>
+  </TabbedNavigation>
 );
 
 export const MultipleTabbedNavigation = Template.bind({});

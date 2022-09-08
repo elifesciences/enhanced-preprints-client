@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
 export type TabProps = {
   label: string,
-  children: React.ReactNode,
+  children: ReactNode,
 };
 
-export const Tab: FC<TabProps> = ({ children }: TabProps): JSX.Element => (
+export const Tab = ({ children }: TabProps): JSX.Element => (
   <div>{children}</div>
 );
