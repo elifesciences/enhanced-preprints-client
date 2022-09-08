@@ -13,10 +13,10 @@
   @include typography.body();
 
   color: settings.$color-text-inactive;
+  cursor: pointer;
   display: inline;
   font-family: settings.$font-family-primary;
   padding: 24px 18px;
-  cursor: pointer;
 
   &.tabbed-navigation__tab-label--active {
     border-bottom: 4px solid settings.$color-primary;

@@ -26,7 +26,7 @@ describe('TabbedNavigation', () => {
     expect(screen.getByText('tab content 2')).toBeInTheDocument();
   });
 
-  it('changes the tab on clicking the header',  () => {
+  it('changes the tab on clicking the header', () => {
     render(
       <TabbedNavigation>
         <Tab label="tab label 1">tab content 1</Tab>
