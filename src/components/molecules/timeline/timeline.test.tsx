@@ -3,6 +3,10 @@ import { Timeline } from './timeline';
 
 describe('Timeline', () => {
   it('renders the default timeline when no props are passed in', () => {
+    jest.spyOn(Date.prototype, 'toLocaleDateString')
+      .mockReturnValueOnce('06/03/2022')
+      .mockReturnValueOnce('03/03/2022')
+      .mockReturnValueOnce('08/11/2021');
     render(<Timeline/>);
 
     expect(screen.getByText('Author response')).toBeInTheDocument();
@@ -14,6 +18,9 @@ describe('Timeline', () => {
   });
 
   it('renders the events passed in as a param', () => {
+    jest.spyOn(Date.prototype, 'toLocaleDateString')
+      .mockReturnValueOnce('13/01/2001')
+      .mockReturnValueOnce('14/02/2002');
     render(<Timeline events={[
       { name: 'event1', date: new Date('2001/01/13') },
       { name: 'event2', date: new Date('2002/02/14') },
