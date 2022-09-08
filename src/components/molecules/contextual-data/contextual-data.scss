@@ -1,0 +1,28 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.contextual-data {
+  list-style: none;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  padding-left: 0;
+}
+
+.contextual-data__item {
+  @include typography.body-small();
+
+  color: settings.$color-text-inactive;
+  display: inline;
+
+  &::after {
+    content: ", ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
+}
+
+.contextual-data__item--highlight {
+  font-weight: bold;
+}
