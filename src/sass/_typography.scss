@@ -122,10 +122,3 @@
     color: settings.$color-primary;
   }
 }
-
-@mixin right-bar-text() {
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
-  font-size: 14px;
-  line-height: 32px;
-}

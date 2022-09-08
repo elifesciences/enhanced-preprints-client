@@ -18,11 +18,12 @@
 }
 
 .review-timeline__event {
-  @include typography.right-bar-text();
+  @include typography.body-small();
 
   flex-basis: 100%;
   font-weight: 600;
   margin: 0;
+  margin-bottom: 8px;
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     flex-basis: 50%;
@@ -30,11 +31,12 @@
 }
 
 .review-timeline__date {
-  @include typography.right-bar-text();
+  @include typography.body-small();
 
   color: settings.$color-text-inactive;
   flex-basis: 100%;
   margin: 0;
+  margin-bottom: 8px;
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     flex-basis: 35%;
