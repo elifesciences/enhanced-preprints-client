@@ -20,9 +20,7 @@ export const TabbedNavigation = ({ children, initiallySelected = 0 }: TabbedNavi
           return (<li className={`tabbed-navigation__tab-label ${activeTab === index ? 'tabbed-navigation__tab-label--active' : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
         })}
       </ul>
-      <div className="tabbed-navigation__content">
-        {children[activeTab]}
-      </div>
+      {children[activeTab]}
     </div>
   );
 };

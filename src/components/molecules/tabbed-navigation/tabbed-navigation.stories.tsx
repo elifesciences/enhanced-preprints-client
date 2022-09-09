@@ -8,11 +8,11 @@ export default {
 
 const Template: ComponentStory<typeof TabbedNavigation> = (args) => (
   <TabbedNavigation {...args}>
-    <Tab label="tabs">
-      <h2>Tab 2</h2>
+    <Tab label="Tab 1">
+      <h2>Tab 1</h2>
       <p>Test</p>
     </Tab>
-    <Tab label="tabs2">
+    <Tab label="Tab 2">
       <h2>Tab 2</h2>
       <img src="https://placekitten.com/300/400" alt="cat picture"/>
     </Tab>
