@@ -5,13 +5,13 @@ import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { Title } from '../../atoms/title/title';
 import { ArticleFlagList, Props as FlagProps } from '../article-flag-list/article-flag-list';
 
-type Props = FlagProps & {
+export type ContentHeaderProps = FlagProps & {
   authors: Author[];
   doi: string;
   title: Content;
 };
 
-export const ContentHeader = (props: Props): JSX.Element => (
+export const ContentHeader = (props: ContentHeaderProps): JSX.Element => (
   <header>
     <ArticleFlagList msas={props.msas} strengthOfEvidence={props.strengthOfEvidence} importance={props.importance} />
     <Title title={props.title} />
