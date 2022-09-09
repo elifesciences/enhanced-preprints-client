@@ -6,5 +6,5 @@ export type TabProps = {
 };
 
 export const Tab = ({ children }: TabProps): JSX.Element => (
-  <div>{children}</div>
+  <div className="tabbed-navigation__tab-content">{children}</div>
 );
