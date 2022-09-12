@@ -1,16 +1,16 @@
 .site-header {
-  border-bottom: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid #e0e0e0;
   grid-column: 1/13;
   height: 94px;
   margin-bottom: 48px;
 }
 
 .site-header::before {
-  background-image: url(https://elifesciences.org/assets/patterns/img/patterns/organisms/elife-logo-xs.fd623d00.svg);
+  background-image: url("https://elifesciences.org/assets/patterns/img/patterns/organisms/elife-logo-xs.fd623d00.svg");
   background-size: 79px 30px;
   content: "";
   display: inline-block;
   height: 30px;
-  width: 79px;
   margin-top: 30px;
+  width: 79px;
 }
