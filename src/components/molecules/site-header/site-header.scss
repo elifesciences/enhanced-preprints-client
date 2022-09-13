@@ -1,0 +1,18 @@
+@use "../../../sass/settings";
+
+.site-header {
+  border-bottom: 1px solid settings.$color-divider-grey;
+  grid-column: 1/13;
+  height: 94px;
+  margin-bottom: 48px;
+}
+
+.site-header::before {
+  background-image: url("https://elifesciences.org/assets/patterns/img/patterns/organisms/elife-logo-xs.fd623d00.svg");
+  background-size: 79px 30px;
+  content: "";
+  display: inline-block;
+  height: 30px;
+  margin-top: 30px;
+  width: 79px;
+}
