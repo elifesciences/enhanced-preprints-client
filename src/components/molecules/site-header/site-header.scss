@@ -1,0 +1,11 @@
+@use "../../../sass/settings";
+
+.site-header {
+  border-bottom: 1px solid settings.$color-divider-grey;
+  margin-bottom: 48px;
+}
+
+.site-header__logo {
+  margin-bottom: 28px;
+  margin-top: 28px;
+}
