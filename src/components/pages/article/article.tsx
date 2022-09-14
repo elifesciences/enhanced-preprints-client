@@ -13,6 +13,8 @@ import './article.scss';
 type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   content: Content,
   additionalClasses?: string[],
+  additionalSiteHeaderClasses?: string[],
+  additionalContentHeaderClasses?: string[],
 };
 
 export const ArticlePage = ({
@@ -27,10 +29,13 @@ export const ArticlePage = ({
   tweets,
   views,
   additionalClasses = [],
+  additionalSiteHeaderClasses = [],
+  additionalContentHeaderClasses = [],
 }: ArticlePageProps): JSX.Element => (
   <div className={additionalClasses.concat(['article-page']).join(' ')}>
-    <SiteHeader />
+    <SiteHeader additionalClasses={additionalSiteHeaderClasses} />
     <ContentHeader
+      additionalClasses={additionalContentHeaderClasses}
       doi={doi}
       msas={msas}
       strengthOfEvidence={strengthOfEvidence}

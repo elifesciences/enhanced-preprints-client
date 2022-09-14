@@ -20,18 +20,17 @@
     max-width: settings.$max-site-width;
   }
 
-  .site-header {
-    border-bottom: settings.$border;
+  .grid-header {
     grid-column: 1/13;
   }
 
-  .content-header {
+  .primary-column-header {
     grid-column: 1/10;
     grid-row: 2;
   }
 
   .secondary-column {
-    grid-column: 10 / 13;
+    grid-column: 10/13;
     grid-row: 2/4;
   }
 
