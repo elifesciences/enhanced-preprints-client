@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import { Content } from '../../../types/content';
 
 export const mockContent: Content = [
