@@ -12,7 +12,7 @@ export type ContentHeaderProps = FlagProps & {
 };
 
 export const ContentHeader = (props: ContentHeaderProps): JSX.Element => (
-  <header>
+  <header className="content-header">
     <ArticleFlagList msas={props.msas} strengthOfEvidence={props.strengthOfEvidence} importance={props.importance} />
     <Title title={props.title} />
     <Authors authors={props.authors} />

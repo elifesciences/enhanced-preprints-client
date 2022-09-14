@@ -15,7 +15,7 @@ type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => (
-  <div className="grid-container">
+  <div className="article-page">
     <SiteHeader />
     <ContentHeader
       doi={props.doi}

@@ -1,3 +1,5 @@
+@use 'settings';
+
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -8,4 +10,41 @@
   position: absolute;
   user-select: none;
   width: 1px;
+}
+
+@media only all and (min-width: settings.$breakpoint-medium) {
+  .content-header {
+    grid-column: 1/10;
+    grid-row: 2;
+  }
+
+  .secondary-column {
+    grid-column: 10 / 13;
+    grid-row: 2/4;
+  }
+
+  .primary-column {
+    grid-column: 1/10;
+    grid-row: 3;
+  }
+}
+
+@media only all and (min-width: settings.$breakpoint-large) {
+
+  .primary-column {
+    display: grid;
+  }
+
+  .table-contents {
+    grid-column: 1/3;
+  }
+
+  .main-content-area {
+    grid-column: 3/10;
+    padding: 0 48px;
+  }
+
+  main {
+    border-top: 0;
+  }
 }

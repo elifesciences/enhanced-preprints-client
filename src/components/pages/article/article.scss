@@ -1,0 +1,13 @@
+@use '../../../sass/settings';
+
+.article-page {
+  @include settings.padding();
+  margin: 0 auto;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: settings.$grid-gutter;
+    max-width: settings.$max-site-width;
+  }
+}
