@@ -17,6 +17,7 @@ type DateContent = DecoratedContent & {
 type LinkContent = DecoratedContent & {
   type: 'Link',
   target: string,
+  relation?: string,
 };
 
 type CiteContent = DecoratedContent & {
@@ -37,9 +38,10 @@ type FigureContent = DecoratedContent & {
   label: string,
 };
 
-type ImageObjectContent = DecoratedContent & {
+type ImageObjectContent = {
   type: 'ImageObject',
-  contentUrl: string,
+  contentUrl?: string,
+  content?: Content
   meta: {
     inline: boolean,
   },
@@ -71,4 +73,4 @@ type ContentPart =
   FigureContent |
   ImageObjectContent;
 
-export type Content = string | ContentPart | Array<ContentPart>;
+export type Content = ContentPart | Array<ContentPart>;

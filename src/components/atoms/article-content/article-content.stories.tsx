@@ -12,6 +12,5 @@ const Template: ComponentStory<typeof ArticleContent> = (args) => <ArticleConten
 
 export const Article = Template.bind({});
 Article.args = {
-// @ts-ignore
   content: mockContent,
 };
