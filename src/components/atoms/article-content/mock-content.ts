@@ -1,6 +1,7 @@
 /* eslint-disable */
+import { Content } from '../../../types/content';
 
-export const mockContent = [
+export const mockContent: Content = [
   {
     type: 'Heading',
     id: 's1',
