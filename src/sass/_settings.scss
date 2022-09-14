@@ -34,7 +34,6 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 1000px;
 $breakpoint-extra-large: 1296px;
 
-
 @mixin padding($padding: true) {
   @if $padding {
     padding-left: $site-spacing;
@@ -44,6 +43,5 @@ $breakpoint-extra-large: 1296px;
       padding-left: $site-spacing * 2;
       padding-right: $site-spacing * 2;
     }
-
   }
 }

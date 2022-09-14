@@ -1,4 +1,4 @@
-@use 'settings';
+@use "settings";
 
 .visuallyhidden {
   border: 0;
@@ -13,6 +13,13 @@
 }
 
 @media only all and (min-width: settings.$breakpoint-medium) {
+  .article-page {
+    display: grid;
+    grid-column-gap: settings.$grid-gutter;
+    grid-template-columns: repeat(12, 1fr);
+    max-width: settings.$max-site-width;
+  }
+
   .content-header {
     grid-column: 1/10;
     grid-row: 2;
@@ -30,7 +37,6 @@
 }
 
 @media only all and (min-width: settings.$breakpoint-large) {
-
   .primary-column {
     display: grid;
   }
