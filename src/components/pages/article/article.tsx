@@ -11,25 +11,38 @@ import { Timeline } from '../../molecules/timeline/timeline';
 import './article.scss';
 
 type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
-  content: Content
+  content: Content,
+  additionalClasses?: string[],
 };
 
-export const ArticlePage = (props: ArticlePageProps): JSX.Element => (
-  <div className="article-page">
+export const ArticlePage = ({
+  doi,
+  msas,
+  strengthOfEvidence,
+  importance,
+  authors,
+  title,
+  content,
+  citations,
+  tweets,
+  views,
+  additionalClasses = [],
+}: ArticlePageProps): JSX.Element => (
+  <div className={additionalClasses.concat(['article-page']).join(' ')}>
     <SiteHeader />
     <ContentHeader
-      doi={props.doi}
-      msas={props.msas}
-      strengthOfEvidence={props.strengthOfEvidence}
-      importance={props.importance}
-      authors={props.authors}
-      title={props.title}
+      doi={doi}
+      msas={msas}
+      strengthOfEvidence={strengthOfEvidence}
+      importance={importance}
+      authors={authors}
+      title={title}
     />
     <main className="primary-column">
       <TabbedNavigation>
         <Tab label="Full text">
           <JumpToMenu active={1} headings={[{ id: 'abstract', text: 'Abstract' }]} />
-          <ArticleContent content={props.content} />
+          <ArticleContent content={content} />
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
@@ -42,7 +55,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => (
     <div className="secondary-column">
       <ArticleStatus />
       <Timeline />
-      <ContextualData citations={props.citations} tweets={props.tweets} views={props.views} />
+      <ContextualData citations={citations} tweets={tweets} views={views} />
     </div>
   </div>
 );

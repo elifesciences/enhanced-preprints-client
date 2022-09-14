@@ -4,6 +4,7 @@ import { ArticlePage } from './components/pages/article/article';
 export const App = (): JSX.Element => (
   <div className="App">
     <ArticlePage
+      additionalClasses={['grid-container']}
       msas={['Mad Science', 'Alchemy']}
       importance={'Landmark'}
       strengthOfEvidence={'Tour-de-force'}
