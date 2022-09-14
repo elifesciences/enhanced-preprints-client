@@ -1,7 +1,7 @@
 @use "../../../sass/settings";
 
 .site-header {
-  border-bottom: 1px solid settings.$color-divider-grey;
+  border-bottom: settings.$border;
   margin-bottom: 48px;
 }
 
