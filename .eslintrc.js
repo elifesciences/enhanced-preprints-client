@@ -15,7 +15,8 @@ module.exports = {
       {
         "devDependencies": [
           "**/*.stories.*",
-          "**/.storybook/**/*.*"
+          "**/.storybook/**/*.*",
+          "**/*.test.tsx"
         ],
         "peerDependencies": true
       }

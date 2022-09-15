@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import fetchMock from 'fetch-mock';
 import { ArticleContent } from './article-content';
 import { mockContent } from './mock-content';
 
@@ -8,9 +9,12 @@ export default {
   component: ArticleContent,
 } as ComponentMeta<typeof ArticleContent>;
 
-const Template: ComponentStory<typeof ArticleContent> = (args) => <ArticleContent {...args} />;
+const Template: ComponentStory<typeof ArticleContent> = (args) => {
+  fetchMock.restore().mock('http://localhost:3000/content/12345', mockContent);
+  return <ArticleContent {...args} />;
+};
 
 export const Article = Template.bind({});
 Article.args = {
-  content: mockContent,
+  doi: '12345',
 };
