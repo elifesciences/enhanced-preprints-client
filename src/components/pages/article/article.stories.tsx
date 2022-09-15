@@ -11,7 +11,6 @@ const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...
 
 export const DefaultArticlePage = Template.bind({});
 DefaultArticlePage.args = {
-  additionalClasses: ['grid-container'],
   msas: ['Mad Science', 'Alchemy'],
   importance: 'Landmark',
   strengthOfEvidence: 'Tour-de-force',

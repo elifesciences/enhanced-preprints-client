@@ -4,9 +4,6 @@ import { ArticlePage } from './components/pages/article/article';
 export const App = (): JSX.Element => (
   <div className="App">
     <ArticlePage
-      additionalClasses={['grid-container']}
-      additionalSiteHeaderClasses={['grid-header']}
-      additionalContentHeaderClasses={['primary-column-header']}
       msas={['Mad Science', 'Alchemy']}
       importance={'Landmark'}
       strengthOfEvidence={'Tour-de-force'}

@@ -12,9 +12,6 @@ import './article.scss';
 
 type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   content: Content,
-  additionalClasses?: string[],
-  additionalSiteHeaderClasses?: string[],
-  additionalContentHeaderClasses?: string[],
 };
 
 export const ArticlePage = ({
@@ -28,14 +25,11 @@ export const ArticlePage = ({
   citations,
   tweets,
   views,
-  additionalClasses = [],
-  additionalSiteHeaderClasses = [],
-  additionalContentHeaderClasses = [],
 }: ArticlePageProps): JSX.Element => (
-  <div className={additionalClasses.concat(['article-page']).join(' ')}>
-    <SiteHeader additionalClasses={additionalSiteHeaderClasses} />
+  <div className="grid-container article-page">
+    <SiteHeader additionalClasses={['grid-header']} />
     <ContentHeader
-      additionalClasses={additionalContentHeaderClasses}
+      additionalClasses={['primary-column-header']}
       doi={doi}
       msas={msas}
       strengthOfEvidence={strengthOfEvidence}
