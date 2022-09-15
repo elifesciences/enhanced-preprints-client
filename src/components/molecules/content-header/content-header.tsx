@@ -9,7 +9,6 @@ export type ContentHeaderProps = FlagProps & {
   authors: Author[];
   doi: string;
   title: Content;
-  additionalClasses?: string[];
 };
 
 export const ContentHeader = ({
@@ -19,9 +18,8 @@ export const ContentHeader = ({
   title,
   authors,
   doi,
-  additionalClasses = [],
 }: ContentHeaderProps): JSX.Element => (
-  <header className={additionalClasses.concat(['content-header']).join(' ')}>
+  <header className="content-header">
     <ArticleFlagList msas={msas} strengthOfEvidence={strengthOfEvidence} importance={importance} />
     <Title title={title} />
     <Authors authors={authors} />

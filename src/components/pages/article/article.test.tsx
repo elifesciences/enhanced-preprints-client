@@ -20,6 +20,6 @@ describe('SiteHeader', () => {
       views={3}
     />);
 
-    expect(screen.getByAltText('eLife logo', { exact: false }).parentElement?.parentElement?.classList).toContain('article-page');
+    expect(screen.getByAltText('eLife logo', { exact: false }).parentElement?.parentElement?.parentElement?.classList).toContain('article-page');
   });
 });

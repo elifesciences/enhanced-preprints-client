@@ -29,16 +29,19 @@ export const ArticlePage = ({
   views,
 }: ArticlePageProps): JSX.Element => (
   <div className="grid-container article-page">
-    <SiteHeader additionalClasses={['grid-header']} />
-    <ContentHeader
-      additionalClasses={['primary-column-header']}
-      doi={doi}
-      msas={msas}
-      strengthOfEvidence={strengthOfEvidence}
-      importance={importance}
-      authors={authors}
-      title={title}
-    />
+    <div className="grid-header">
+      <SiteHeader />
+    </div>
+    <div className="primary-column-header">
+      <ContentHeader
+        doi={doi}
+        msas={msas}
+        strengthOfEvidence={strengthOfEvidence}
+        importance={importance}
+        authors={authors}
+        title={title}
+      />
+    </div>
     <main className="primary-column">
       <TabbedNavigation>
         <Tab label="Full text">
