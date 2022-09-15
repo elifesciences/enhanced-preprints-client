@@ -7,20 +7,19 @@
 }
 
 .article-status__heading {
+  @include typography.font-size-and-vertical-height(18, 22);
+
   color: settings.$color-primary;
   font-family: settings.$font-family-primary;
-  font-size: 18px;
   font-weight: 600;
-  line-height: 22px;
   margin-top: 0;
 }
 
 .article-status__text {
   @include typography.body-small;
+  @include typography.font-size-and-vertical-height(12, 22);
 
-  font-size: 12px;
   font-weight: 600;
-  line-height: 22px;
 }
 
 .article-actions {

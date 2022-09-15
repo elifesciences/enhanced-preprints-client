@@ -22,10 +22,9 @@
 }
 
 .authors-list__expansion {
+  @include typography.font-size-and-vertical-height(16, 24);
   @include typography.expansion-text();
 
   cursor: pointer;
-  font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
 }
