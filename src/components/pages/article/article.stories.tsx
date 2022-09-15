@@ -31,4 +31,5 @@ DefaultArticlePage.args = {
     { givenNames: ['Oliver'], familyNames: ['Queen'] },
   ],
   content: mockContent,
+  headings: [{ id: 'test', text: 'Heading test' }],
 };
