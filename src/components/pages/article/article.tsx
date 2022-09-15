@@ -1,7 +1,7 @@
 import { Content } from '../../../types/content';
 import { ArticleContent } from '../../atoms/article-content/article-content';
 import { Heading } from '../../atoms/heading/heading';
-import { JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
+import { Heading as JumpMenuHeading, JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader, ContentHeaderProps } from '../../molecules/content-header/content-header';
 import { ContextualData, ContextualDataProps } from '../../molecules/contextual-data/contextual-data';
@@ -12,6 +12,7 @@ import './article.scss';
 
 type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   content: Content,
+  headings: JumpMenuHeading[]
 };
 
 export const ArticlePage = ({
@@ -22,6 +23,7 @@ export const ArticlePage = ({
   authors,
   title,
   content,
+  headings,
   citations,
   tweets,
   views,
@@ -40,7 +42,7 @@ export const ArticlePage = ({
     <main className="primary-column">
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={[{ id: 'abstract', text: 'Abstract' }]} />
+          <JumpToMenu active={1} headings={headings} />
           <ArticleContent content={content} />
         </Tab>
         <Tab label="Figures and data">

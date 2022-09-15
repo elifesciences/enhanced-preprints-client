@@ -1,5 +1,16 @@
 import { mockContent } from './components/atoms/article-content/mock-content';
 import { ArticlePage } from './components/pages/article/article';
+import { Content } from './types/content';
+
+const abstract: Content = [
+  {
+    type: 'Heading',
+    depth: 1,
+    id: 'abstract',
+    content: 'Abstract',
+  },
+  'This is an abstract',
+];
 
 export const App = (): JSX.Element => (
   <div className="App">
@@ -23,7 +34,11 @@ export const App = (): JSX.Element => (
         { givenNames: ['Kal'], familyNames: ['El'] },
         { givenNames: ['Oliver'], familyNames: ['Queen'] },
       ]}
-      content={mockContent}
+      headings={[{ id: 'abstract', text: 'Abstract' }]}
+      content={[
+        abstract,
+        mockContent,
+      ]}
       tweets={0} citations={0} views={0}
     />
   </div>

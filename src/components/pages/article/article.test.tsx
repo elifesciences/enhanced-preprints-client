@@ -12,6 +12,7 @@ describe('SiteHeader', () => {
       authors={[
         { givenNames: ['Joe'], familyNames: ['Blogs'] },
       ]}
+      headings={[{ id: 'test', text: 'Heading!' }]}
       doi={'10.1101/123456'}
       title={'title'}
       citations={1}

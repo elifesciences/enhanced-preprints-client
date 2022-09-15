@@ -73,4 +73,4 @@ type ContentPart =
   FigureContent |
   ImageObjectContent;
 
-export type Content = ContentPart | Array<ContentPart>;
+export type Content = ContentPart | Array<Content>;
