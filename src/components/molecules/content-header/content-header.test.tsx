@@ -23,4 +23,27 @@ describe('ContentHeader', () => {
     expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
     expect(screen.getByText('title')).toBeInTheDocument();
   });
+
+  it('renders additional classes on the root Content Header element', () => {
+    render(
+      <ContentHeader
+        additionalClasses={['testClass']}
+        msas={['msa1', 'msa2']}
+        importance={'important'}
+        strengthOfEvidence={'strong'}
+        authors={[
+          { givenNames: ['Joe'], familyNames: ['Blogs'] },
+        ]}
+        doi={'10.1101/123456'}
+        title={'title'}/>,
+    );
+
+    expect(
+      screen.getByText('msa2')
+        .parentElement
+        ?.parentElement
+        ?.parentElement
+        ?.classList,
+    ).toContain('testClass');
+  });
 });
