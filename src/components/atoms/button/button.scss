@@ -1,7 +1,9 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .button {
+  @include mixins.padding(8 20 8 12);
   @include typography.body-small();
 
   background-color: settings.$color-less-light-grey;
@@ -10,7 +12,6 @@
   display: inline-block;
   font-weight: 600;
   max-height: 40px;
-  padding: 8px 20px 8px 12px;
   text-decoration: none;
 }
 

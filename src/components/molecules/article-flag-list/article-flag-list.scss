@@ -1,9 +1,14 @@
+@use "../../../sass/mixins";
+
 .article-flag-list {
+  @include mixins.padding(0);
+
   list-style: none;
   padding-left: 0;
 }
 
 .article-flag-list__item {
+  @include mixins.padding(6, "right");
+
   display: inline;
-  padding-right: 6px;
 }

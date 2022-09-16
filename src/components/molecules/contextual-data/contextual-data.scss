@@ -1,11 +1,13 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .contextual-data {
+  @include mixins.padding(0, "left");
+
   list-style: none;
   margin-bottom: 24px;
   margin-top: 24px;
-  padding-left: 0;
 }
 
 .contextual-data__item {

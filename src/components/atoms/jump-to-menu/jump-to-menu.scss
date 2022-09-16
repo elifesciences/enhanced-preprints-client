@@ -1,3 +1,4 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
@@ -8,17 +9,19 @@
 }
 
 .jump-menu-list {
+  @include mixins.padding(0);
+
   list-style: none;
   margin-left: -2px;
   margin-top: 21.5px;
-  padding-left: 0;
 }
 
 .jump-menu-list__item {
+  @include mixins.padding(20, "left");
+
   border-left: 2px solid settings.$color-less-light-grey;
   margin-bottom: 24px;
   min-width: 150px;
-  padding-left: 20px;
 
   &:hover {
     border-left: 2px solid settings.$color-primary;
@@ -30,10 +33,10 @@
 }
 
 .jump-menu-list__item--active {
+
   border-left: 2px solid settings.$color-primary;
   margin-bottom: 24px;
   min-width: 150px;
-  padding-left: 20px;
 }
 
 .jump-menu-list__link {

@@ -1,13 +1,17 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .review-timeline {
+  @include mixins.padding(24, "bottom");
+
   border-bottom: settings.$border;
   margin-top: 24px;
-  padding-bottom: 24px;
 }
 
 .review-timeline__list {
+  @include mixins.padding(0, "left");
+
   list-style: none;
   padding-left: 0;
 
