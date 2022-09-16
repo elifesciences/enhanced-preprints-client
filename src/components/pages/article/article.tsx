@@ -17,7 +17,7 @@ type MetaData = ContentHeaderProps & ContextualDataProps & {
 export const ArticlePage = ({ doi }: { doi: string }): JSX.Element => {
   const [metaData, setMetaData] = useState<MetaData>();
   useEffect(() => {
-    fetch(`http://localhost:3000/metadata/${doi}`)
+    fetch(`/api/article/${doi}/`)
       .then((res) => res.json())
       .then(setMetaData);
   }, [doi]);

@@ -6,7 +6,7 @@ import { Content } from '../../../types/content';
 export const ArticleContent = ({ doi }: { doi: string }): JSX.Element => {
   const [content, setContent] = useState<Content>('Loading article...');
   useEffect(() => {
-    fetch(`http://localhost:3000/content/${doi}`)
+    fetch(`/api/article/${doi}/content`)
       .then((res) => res.json())
       .then((json) => setContent(json))
       .catch(() => setContent('Unable to load article'));
