@@ -5,7 +5,7 @@ import { mockContent } from '../../atoms/article-content/mock-content';
 
 describe('SiteHeader', () => {
   it('renders the article page', async () => {
-    fetchMock.restore().mock('http://localhost:3000/metadata/12345', {
+    fetchMock.restore().mock('/api/article/10.1101/2022.04.13.488149/metadata', {
       msas: ['Mad Science', 'Alchemy'],
       importance: 'Landmark',
       strengthOfEvidence: 'Tour-de-force',
@@ -26,9 +26,9 @@ describe('SiteHeader', () => {
       ],
       headings: [{ id: 's1', text: 'Introduction' }],
     })
-      .mock('http://localhost:3000/content/12345', mockContent);
+      .mock('/api/article/10.1101/2022.04.13.488149/content', mockContent);
     render(<ArticlePage
-      doi={'12345'}
+      doi={'10.1101/2022.04.13.488149'}
     />);
     await waitForElementToBeRemoved(() => screen.queryByText('loading...'));
 

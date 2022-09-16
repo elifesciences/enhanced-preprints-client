@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof ArticleContent>;
 
 const Template: ComponentStory<typeof ArticleContent> = (args) => {
-  fetchMock.restore().mock('http://localhost:3000/content/12345', mockContent);
+  fetchMock.restore().mock('/api/article/12345/content', mockContent);
   return <ArticleContent {...args} />;
 };
 

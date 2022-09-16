@@ -4,7 +4,7 @@ import App from './App';
 import { mockContent } from './components/atoms/article-content/mock-content';
 
 test('renders epp', async () => {
-  fetchMock.restore().mock('http://localhost:3000/metadata/12345', {
+  fetchMock.restore().mock('/api/article/10.1101/2022.04.13.488149/metadata', {
     msas: ['Mad Science', 'Alchemy'],
     importance: 'Landmark',
     strengthOfEvidence: 'Tour-de-force',
@@ -25,7 +25,7 @@ test('renders epp', async () => {
     ],
     headings: [{ id: 's1', text: 'Introduction' }],
   })
-    .mock('http://localhost:3000/content/12345', mockContent);
+    .mock('/api/article/10.1101/2022.04.13.488149/content', mockContent);
   render(<App />);
   await waitForElementToBeRemoved(() => screen.queryByText('loading...'));
   const statusElement = screen.getByText(/Reviewed Preprint/i);

@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof ArticlePage>;
 
 const Template: ComponentStory<typeof ArticlePage> = () => {
-  fetchMock.restore().mock('http://localhost:3000/metadata/12345', {
+  fetchMock.restore().mock('/api/article/10.1101/2022.04.13.488149/metadata', {
     msas: ['Mad Science', 'Alchemy'],
     importance: 'Landmark',
     strengthOfEvidence: 'Tour-de-force',
@@ -30,9 +30,9 @@ const Template: ComponentStory<typeof ArticlePage> = () => {
     ],
     headings: [{ id: 's1', text: 'Introduction' }],
   })
-    .mock('http://localhost:3000/content/12345', mockContent);
+    .mock('/api/article/10.1101/2022.04.13.488149/content', mockContent);
 
-  return <ArticlePage doi="12345"/>;
+  return <ArticlePage doi="10.1101/2022.04.13.488149"/>;
 };
 
 export const DefaultArticlePage = Template.bind({});
