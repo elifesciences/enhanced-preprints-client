@@ -128,4 +128,15 @@ describe('Content to JSX', () => {
 
     expect(result).toStrictEqual(<img src="https://placekitten.com/500/300" alt="cat picture"></img>);
   });
+
+  it('allows an array of arrays to be generated', () => {
+    const result = contentToJsx([
+      [{
+        type: 'Heading', depth: 1, content: 'heading', id: 'h1',
+      }],
+    ]);
+
+    // eslint-disable-next-line react/jsx-key
+    expect(result).toStrictEqual([[<Heading headingLevel={1} id="h1" content="heading" />]]);
+  });
 });

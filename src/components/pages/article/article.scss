@@ -1,0 +1,7 @@
+@use "../../../sass/settings";
+
+.article-page {
+  @include settings.padding();
+
+  margin: 0 auto;
+}
