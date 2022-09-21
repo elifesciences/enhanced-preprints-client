@@ -34,7 +34,7 @@ export const ArticlePage = ({ metaData, content }: { metaData: MetaData, content
       <TabbedNavigation>
         <Tab label="Full text">
           <JumpToMenu active={1} headings={metaData.headings} />
-          <ArticleContent doi={metaData.doi} content={content} />
+          <ArticleContent content={content} />
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
@@ -60,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     props: {
       metaData,
       content,
-    }
+    },
   };
 };
 

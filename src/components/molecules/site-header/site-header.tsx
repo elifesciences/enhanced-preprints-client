@@ -8,7 +8,8 @@ export const SiteHeader = (): JSX.Element => (
       className={styles['site-header__logo']}
         src={logo}
         alt="eLife logo"
-        layout="fill"
+        width="80"
+        height="30"
       />
   </div>
 );
