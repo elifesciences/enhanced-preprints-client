@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "settings";
 @use "typography";
 
@@ -10,11 +11,11 @@
     $parts-rem: ();
 
     @each $size in $size_in_px {
-      $parts-px: append($parts-px, #{$size}px, "space");
+      $parts-px: list.append($parts-px, #{$size}px, "space");
     }
 
     @each $size in $size_in_px {
-      $parts-rem: append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
+      $parts-rem: list.append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
     }
 
     padding: $parts-px;
@@ -34,11 +35,11 @@
     $parts-rem: ();
 
     @each $size in $size_in_px {
-      $parts-px: append($parts-px, #{$size}px, "space");
+      $parts-px: list.append($parts-px, #{$size}px, "space");
     }
 
     @each $size in $size_in_px {
-      $parts-rem: append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
+      $parts-rem: list.append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
     }
 
     margin: $parts-px;
