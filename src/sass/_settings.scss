@@ -17,6 +17,8 @@ $color-badge-active: #252a36;
 $border: 1px solid $color-divider-grey;
 
 // Fonts
+// import Noto Sans font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Serif');
 $font-family-primary: noto sans,arial,helvetica,sans-serif;
 $font-family-secondary: noto serif,serif;
 
@@ -45,3 +47,6 @@ $breakpoint-extra-large: 1296px;
     }
   }
 }
+
+// import icon font
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
