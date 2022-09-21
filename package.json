@@ -25,15 +25,14 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:dev": "next dev",
     "test": "react-scripts test",
     "lint": "eslint --ext .tsx,.ts src/",
     "lint:fix": "eslint --fix --ext .tsx,.ts src/",
     "lint-sass": "stylelint **/*.scss",
     "lint-sass:fix": "stylelint --fix **/*.scss",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
