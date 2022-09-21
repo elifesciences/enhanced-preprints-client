@@ -1,5 +1,5 @@
-import './authors.scss';
 import { useState } from 'react';
+import styles from './authors.module.scss';
 
 export type Author = {
   givenNames: string[],
@@ -13,15 +13,15 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
 
   return (
     <div className="authors">
-      <ol className="authors-list">
+      <ol className={styles['authors-list']}>
         { authors.slice(0, expanded ? authors.length : authorLimit).map(({ givenNames, familyNames }, index) => (
-          <li className="authors-list__item" key={index}>
+          <li className={styles['authors-list__item']} key={index}>
             {givenNames.join(' ')} {familyNames.join(' ')}
           </li>
         ))}
       </ol>
       { authors.length > authorLimit
-        ? <span className="authors-list__expansion" onClick={() => setExpanded(!expanded)}>{expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}</span> : ''}
+        ? <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>{expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}</span> : ''}
     </div>
   );
 };

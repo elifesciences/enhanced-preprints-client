@@ -1,7 +1,7 @@
 import { ReactElement, useState } from 'react';
 import { TabProps } from './tab';
 
-import './tabbed-navigation.scss';
+import styles from './tabbed-navigation.module.scss';
 
 type TabbedNavigationProps = {
   initiallySelected?: number,
@@ -12,12 +12,12 @@ export const TabbedNavigation = ({ children, initiallySelected = 0 }: TabbedNavi
   const [activeTab, setActiveTab] = useState(initiallySelected);
 
   return (
-    <div className="tabbed-navigation">
-      <ul className="tabbed-navigation__tabs">
+    <div className={styles['tabbed-navigation']}>
+      <ul className={styles['tabbed-navigation__tabs']}>
         {children.map((child, index) => {
           const { label } = child.props;
 
-          return (<li className={`tabbed-navigation__tab-label ${activeTab === index ? 'tabbed-navigation__tab-label--active' : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
+          return (<li className={`${styles['tabbed-navigation__tab-label']}${activeTab === index ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
         })}
       </ul>
       {children[activeTab]}

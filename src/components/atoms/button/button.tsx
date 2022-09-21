@@ -1,4 +1,4 @@
-import './button.scss';
+import styles from './button.module.scss';
 
 type ButtonProps = {
   iconName: string,
@@ -6,8 +6,8 @@ type ButtonProps = {
 };
 
 export const Button = ({ text, iconName }: ButtonProps): JSX.Element => (
-  <div className="button">
-    <span className="material-icons button-icon">{iconName}</span>
+  <div className={styles.button}>
+    <span className={`material-icons ${styles['button-icon']}`}>{iconName}</span>
     {text}
   </div>
 );

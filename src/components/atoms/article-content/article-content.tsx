@@ -1,5 +1,5 @@
-import './article-content.scss';
 import { useEffect, useState } from 'react';
+import styles from './article-content.module.scss';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import { Content } from '../../../types/content';
 
@@ -13,6 +13,6 @@ export const ArticleContent = ({ doi }: { doi: string }): JSX.Element => {
   }, [doi]);
 
   return (
-    <article className="article-body">{contentToJsx(content)}</article>
+    <article className={styles['article-body']}>{contentToJsx(content)}</article>
   );
 };
