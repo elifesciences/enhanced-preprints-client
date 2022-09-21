@@ -1,14 +1,14 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticleContent } from '../../src/components/atoms/article-content/article-content';
-import { Heading } from '../../src/components/atoms/heading/heading';
-import { Heading as JumpMenuHeading, JumpToMenu } from '../../src/components/atoms/jump-to-menu/jump-to-menu';
-import { ArticleStatus } from '../../src/components/molecules/article-status/article-status';
-import { ContentHeader, ContentHeaderProps } from '../../src/components/molecules/content-header/content-header';
-import { ContextualData, ContextualDataProps } from '../../src/components/molecules/contextual-data/contextual-data';
-import { SiteHeader } from '../../src/components/molecules/site-header/site-header';
-import { Tab, TabbedNavigation } from '../../src/components/molecules/tabbed-navigation';
-import { Timeline } from '../../src/components/molecules/timeline/timeline';
-import { Content } from '../../src/types/content';
+import { ArticleContent } from '../../components/atoms/article-content/article-content';
+import { Heading } from '../../components/atoms/heading/heading';
+import { Heading as JumpMenuHeading, JumpToMenu } from '../../components/atoms/jump-to-menu/jump-to-menu';
+import { ArticleStatus } from '../../components/molecules/article-status/article-status';
+import { ContentHeader, ContentHeaderProps } from '../../components/molecules/content-header/content-header';
+import { ContextualData, ContextualDataProps } from '../../components/molecules/contextual-data/contextual-data';
+import { SiteHeader } from '../../components/molecules/site-header/site-header';
+import { Tab, TabbedNavigation } from '../../components/molecules/tabbed-navigation';
+import { Timeline } from '../../components/molecules/timeline/timeline';
+import { Content } from '../../types/content';
 import styles from './article-page.module.scss';
 
 type MetaData = ContentHeaderProps & ContextualDataProps & {
