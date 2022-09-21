@@ -4,16 +4,17 @@
 
 .article-status {
   @include mixins.padding(24, "bottom");
+
   border-bottom: settings.$border;
 }
 
 .article-status__heading {
+  @include mixins.margin(0, "top");
   @include typography.font-size-and-vertical-height(18, 22);
 
   color: settings.$color-primary;
   font-family: settings.$font-family-primary;
   font-weight: 600;
-  margin-top: 0;
 }
 
 .article-status__text {
@@ -24,15 +25,16 @@
 }
 
 .article-actions {
+  @include mixins.margin(0);
   @include mixins.padding(0, "left");
   @include mixins.padding(24, "top");
 
   list-style: none;
-  margin: 0;
 }
 
 .article-actions__list-item {
+  @include mixins.margin(12, "bottom");
+  @include mixins.margin(6, "right");
+
   display: inline-block;
-  margin-bottom: 12px;
-  margin-right: 6px;
 }

@@ -16,7 +16,8 @@
 }
 
 .button-icon {
+  @include mixins.margin(6, "right");
+
   color: settings.$color-near-black;
-  margin-right: 6px;
   vertical-align: middle;
 }

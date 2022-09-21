@@ -1,7 +1,7 @@
+@use "../../../sass/mixins";
 @use "../../../sass/typography";
 
 .title {
+  @include mixins.margin(0, "top");
   @include typography.h1();
-
-  margin-top: 0;
 }

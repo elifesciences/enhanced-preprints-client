@@ -2,11 +2,11 @@
 @use "../../../sass/typography";
 
 .institutions-list {
+  @include mixins.margin(0);
   @include mixins.padding(0);
 
   display: inline;
   list-style: none;
-  margin: 0;
 }
 
 .institutions-list__item {
