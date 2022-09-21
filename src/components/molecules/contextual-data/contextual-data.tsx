@@ -1,6 +1,6 @@
 import './contextual-data.scss';
 
-type ContextualDataProps = {
+export type ContextualDataProps = {
   views: number;
   citations: number,
   tweets: number,
