@@ -10,11 +10,11 @@ describe('Timeline', () => {
     render(<Timeline/>);
 
     expect(screen.getByText('Author response')).toBeInTheDocument();
-    expect(screen.getByText('06/03/2022')).toBeInTheDocument();
+    expect(screen.getByText('6 March 2022')).toBeInTheDocument();
     expect(screen.getByText('Peer review')).toBeInTheDocument();
-    expect(screen.getByText('03/03/2022')).toBeInTheDocument();
+    expect(screen.getByText('3 March 2022')).toBeInTheDocument();
     expect(screen.getByText('Preprint posted')).toBeInTheDocument();
-    expect(screen.getByText('08/11/2021')).toBeInTheDocument();
+    expect(screen.getByText('8 November 2021')).toBeInTheDocument();
   });
 
   it('renders the events passed in as a param', () => {
@@ -27,8 +27,8 @@ describe('Timeline', () => {
     ]}/>);
 
     expect(screen.getByText('event1')).toBeInTheDocument();
-    expect(screen.getByText('13/01/2001')).toBeInTheDocument();
+    expect(screen.getByText('13 January 2001')).toBeInTheDocument();
     expect(screen.getByText('event2')).toBeInTheDocument();
-    expect(screen.getByText('14/02/2002')).toBeInTheDocument();
+    expect(screen.getByText('14 February 2002')).toBeInTheDocument();
   });
 });

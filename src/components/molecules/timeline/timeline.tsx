@@ -21,7 +21,7 @@ export const Timeline = ({ events = defaultEvents }: TimelineProps): JSX.Element
         events.map((entry, index) => (
           <Fragment key={index}>
             <dt className={styles['review-timeline__event']}>{entry.name}</dt>
-            <dd className={styles['review-timeline__date']}>{entry.date.toLocaleDateString()}</dd>
+            <dd className={styles['review-timeline__date']}>{entry.date.toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
           </Fragment>
         ))
       }
