@@ -1,17 +1,19 @@
 @use "../../../sass/layout";
+@use "../../../sass/mixins";
 @use "../../../sass/typography";
 
 .descriptors {
+  @include mixins.margin(24, "bottom");
+
   display: flex;
-  margin-bottom: 24px;
 }
 
 .descriptors__identifiers {
   @include typography.identifiers-list-text();
+  @include mixins.margin(0);
+  @include mixins.padding(0);
 
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .descriptors__identifier {
@@ -29,17 +31,18 @@
 }
 
 .descriptors__icons {
+  @include mixins.padding(0);
+
   margin: 0;
-  padding: 0;
 
   li {
     @include typography.identifiers-list-text();
+    @include mixins.margin(0 4);
 
     display: inline-block;
-    margin: 0 4px;
 
     &:last-child {
-      margin-right: 0;
+      @include mixins.margin(0, "right");
     }
   }
 }

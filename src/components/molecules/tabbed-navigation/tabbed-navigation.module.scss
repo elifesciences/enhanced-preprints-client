@@ -1,27 +1,30 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .tabbed-navigation__tabs {
+  @include mixins.margin(36, "bottom");
+
   border-bottom: settings.$border;
   display: flex;
   justify-content: center;
   list-style: none;
-  margin-bottom: 36px;
 }
 
 .tabbed-navigation__tab-label {
   @include typography.body();
+  @include mixins.padding(24 18);
 
   color: settings.$color-text-inactive;
   cursor: pointer;
   display: inline;
   font-family: settings.$font-family-primary;
-  padding: 24px 18px;
 
   &.tabbed-navigation__tab-label--active {
+    @include mixins.padding(0, "bottom");
+
     border-bottom: 4px solid settings.$color-primary;
     color: settings.$color-text;
     font-weight: 600;
-    padding-bottom: 0;
   }
 }
