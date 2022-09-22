@@ -7,6 +7,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: ["airbnb/base", "airbnb-typescript/base", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:storybook/recommended"],
   rules: {
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
     "import/prefer-default-export": 0,
     "max-len": ["error", {
       "code": 240
