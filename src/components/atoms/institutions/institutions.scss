@@ -1,10 +1,12 @@
+@use "../../../sass/mixins";
 @use "../../../sass/typography";
 
 .institutions-list {
+  @include mixins.margin(0);
+  @include mixins.padding(0);
+
   display: inline;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .institutions-list__item {
@@ -32,8 +34,7 @@
 
 .institutions-list__expansion {
   @include typography.expansion-text();
+  @include typography.font-size-and-vertical-height(14, 24);
 
   cursor: pointer;
-  font-size: 14px;
-  line-height: 24px;
 }

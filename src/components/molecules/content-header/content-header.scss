@@ -1,11 +1,13 @@
+@use "../../../sass/mixins";
+
 .article-flag-list {
   margin-bottom: 24px;
 }
 
 .title {
-  margin-bottom: 24px;
+  @include mixins.margin(24, "bottom");
 }
 
 .authors {
-  margin-bottom: 24px;
+  @include mixins.margin(24, "bottom");
 }

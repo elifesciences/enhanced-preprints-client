@@ -1,18 +1,33 @@
 @use "settings";
 
+@function get-rem-from-px($size_in_px) {
+  @return $size_in_px / settings.$font-size-base-in-px;
+}
+
+@mixin font-size($size_in_px) {
+  font-size: #{$size_in_px}px;
+  font-size: get-rem-from-px($size_in_px) * 1rem;
+}
+
+@mixin font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: 24) {
+  @include font-size($font-size-in-px);
+
+  line-height: #{($vertical-height-in-px / $font-size-in-px)};
+}
+
 @mixin badge-text() {
+  @include font-size-and-vertical-height(12, 18);
+
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
-  font-size: 12px;
-  line-height: 18px;
 }
 
 @mixin author-list-text() {
+  @include font-size-and-vertical-height(16, 24);
+
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
-  font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
 }
 
 @mixin expansion-text() {
@@ -26,25 +41,25 @@
 }
 
 @mixin affiliations-list-text() {
+  @include font-size-and-vertical-height(14, 24);
+
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 @mixin h1() {
+  @include font-size-and-vertical-height(36, 48);
+
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
-  font-size: 36px;
   font-weight: 600;
-  line-height: 48px;
 }
 
 @mixin identifiers-list-text() {
+  @include font-size-and-vertical-height(14, 24);
+
   color: settings.$color-text-inactive;
   font-family: settings.$font-family-primary;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 @mixin heading-base() {
@@ -54,53 +69,47 @@
 }
 
 @mixin heading-1() {
+  @include font-size(36);
   @include heading-base();
 
-  font-size: 36px;
   line-height: 48px;
 }
 
 @mixin heading-2() {
+  @include font-size-and-vertical-height(26, 36);
   @include heading-base();
-
-  font-size: 26px;
-  line-height: 36px;
 }
 
 @mixin heading-3() {
+  @include font-size-and-vertical-height(20, 28);
   @include heading-base();
-
-  font-size: 20px;
-  line-height: 28px;
 }
 
 @mixin heading-4() {
+  @include font-size-and-vertical-height(14, 24);
   @include heading-base();
-
-  font-size: 14px;
-  line-height: 24px;
 }
 
 @mixin body() {
+  @include font-size-and-vertical-height(16, 24);
+
   color: settings.$color-text;
   font-family: settings.$font-family-secondary;
-  font-size: 16px;
-  line-height: 24px;
 }
 
 @mixin body-small() {
+  @include font-size-and-vertical-height(14, 24);
+
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
-  font-size: 14px;
-  line-height: 24px;
 }
 
 @mixin navigation-heading() {
+  @include font-size-and-vertical-height(14, 26);
+
   color: settings.$color-text-inactive;
   font-family: settings.$font-family-primary;
-  font-size: 14px;
   font-weight: 400;
-  line-height: 26px;
 }
 
 @mixin navigation-heading-selected() {
@@ -111,11 +120,11 @@
 }
 
 @mixin link-text() {
+  @include font-size-and-vertical-height(12, 24);
+
   color: settings.$color-primary;
   font-family: settings.$font-family-primary;
-  font-size: 12px;
   font-weight: 600;
-  line-height: 24px;
   text-decoration: none;
 
   :visited {
