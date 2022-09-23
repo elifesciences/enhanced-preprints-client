@@ -3,7 +3,7 @@
 @use "../../../sass/typography";
 
 .jump-menu-container {
-  border-left: 2px solid settings.$color-less-light-grey;
+  border-left: 2px solid settings.$color-background;
   margin: auto;
   max-width: 69.625rem;
 }
@@ -20,7 +20,7 @@
   @include mixins.margin(24, "bottom");
   @include mixins.padding(20, "left");
 
-  border-left: 2px solid settings.$color-less-light-grey;
+  border-left: 2px solid settings.$color-background;
   min-width: 150px;
 
   &:hover {
