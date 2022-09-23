@@ -55,8 +55,8 @@ export const ArticlePage = ({ metaData, content }: { metaData: MetaData, content
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const doi = Array.isArray(context.params?.doi) ? context.params?.doi?.join('/') ?? context.params?.doi : '';
-  const metaData = await fetch(`${config.API_SERVER}/api/article/${doi}/metadata`).then((res) => res.json());
-  const content = await fetch(`${config.API_SERVER}/api/article/${doi}/content`).then((res) => res.json());
+  const metaData = await fetch(`${config.API_SERVER}/api/reviewed-preprints/${doi}/metadata`).then((res) => res.json());
+  const content = await fetch(`${config.API_SERVER}/api/reviewed-preprints/${doi}/content`).then((res) => res.json());
   return {
     props: {
       metaData,
