@@ -1,11 +1,13 @@
+@use "../../../sass/mixins";
 @use "../../../sass/settings";
 
 .site-header {
+  @include mixins.margin(48, "bottom");
+
   border-bottom: settings.$border;
-  margin-bottom: 48px;
 }
 
 .site-header__logo {
-  margin-bottom: 28px;
-  margin-top: 28px;
+  @include mixins.margin(28, "bottom");
+  @include mixins.margin(28, "top");
 }
