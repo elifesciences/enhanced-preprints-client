@@ -21,8 +21,8 @@
   }
 
   a {
-    border-bottom: 1px dotted settings.$color-near-black;
-    color: settings.$color-near-black;
+    border-bottom: 1px dotted settings.$link-decoration;
+    color: settings.$link-decoration;
     text-decoration: none;
 
     &:hover {

@@ -5,16 +5,15 @@ $color-primary: #087acc; // "Brand blue"
 $color-text: #212121;
 $color-text-inactive: #767676;
 
-$color-light-grey: #f7f9fa;
 $color-less-light-grey: #edeff4;
-$color-divider-grey: #e0e0e0;
+$divider: #e0e0e0;
 
-$color-near-black: #212121;
+$link-decoration: #212121;
 
 $color-badge-active: #252a36;
 
 // Borders
-$border: 1px solid $color-divider-grey;
+$border: 1px solid $divider;
 
 // Fonts
 $font-family-primary: noto sans,arial,helvetica,sans-serif;
