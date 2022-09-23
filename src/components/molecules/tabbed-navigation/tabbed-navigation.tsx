@@ -4,12 +4,12 @@ import { TabProps } from './tab';
 import styles from './tabbed-navigation.module.scss';
 
 type TabbedNavigationProps = {
-  initiallySelected?: number | boolean,
+  initiallySelected?: number | false,
   children: ReactElement<TabProps>[],
 };
 
 export const TabbedNavigation = ({ children, initiallySelected = 0 }: TabbedNavigationProps): JSX.Element => {
-  const [activeTab, setActiveTab] = useState<number | boolean>(false);
+  const [activeTab, setActiveTab] = useState<number | false>(false);
   useEffect(() => {
     setActiveTab(initiallySelected);
   }, []);
