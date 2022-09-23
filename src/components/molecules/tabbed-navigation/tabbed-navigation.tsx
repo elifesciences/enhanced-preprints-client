@@ -4,7 +4,7 @@ import { TabProps } from './tab';
 import styles from './tabbed-navigation.module.scss';
 
 type TabbedNavigationProps = {
-  initiallySelected?: number | false,
+  initiallySelected?: number,
   children: ReactElement<TabProps>[],
 };
 
