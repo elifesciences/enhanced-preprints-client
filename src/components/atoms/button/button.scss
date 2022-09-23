@@ -17,7 +17,7 @@
 
 .button-icon {
   @include mixins.margin(6, "right");
-  
+
   color: settings.$link-decoration;
   vertical-align: middle;
 }
