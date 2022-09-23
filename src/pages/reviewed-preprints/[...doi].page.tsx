@@ -8,6 +8,7 @@ import { ContextualData, ContextualDataProps } from '../../components/molecules/
 import { SiteHeader } from '../../components/molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../components/molecules/tabbed-navigation';
 import { Timeline } from '../../components/molecules/timeline/timeline';
+import { config } from '../../config';
 import { Content } from '../../types/content';
 import styles from './article-page.module.scss';
 
@@ -54,8 +55,8 @@ export const ArticlePage = ({ metaData, content }: { metaData: MetaData, content
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const doi = Array.isArray(context.params?.doi) ? context.params?.doi?.join('/') ?? context.params?.doi : '';
-  const metaData = await fetch(`http://api:3000/api/article/${doi}/metadata`).then((res) => res.json());
-  const content = await fetch(`http://api:3000/api/article/${doi}/content`).then((res) => res.json());
+  const metaData = await fetch(`${config.API_SERVER}/api/article/${doi}/metadata`).then((res) => res.json());
+  const content = await fetch(`${config.API_SERVER}/api/article/${doi}/content`).then((res) => res.json());
   return {
     props: {
       metaData,

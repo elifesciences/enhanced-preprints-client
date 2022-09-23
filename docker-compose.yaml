@@ -26,6 +26,8 @@ services:
       timeout: 5s
       retries: 10
       start_period: 2s
+    environment:
+      API_SERVER: http://api:3000
     depends_on:
       api-import-data:
         condition: service_completed_successfully
