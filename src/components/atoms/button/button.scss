@@ -6,7 +6,7 @@
   @include mixins.padding(8 20 8 12);
   @include typography.body-small();
 
-  background-color: settings.$color-less-light-grey;
+  background-color: settings.$color-background;
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
