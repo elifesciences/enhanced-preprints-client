@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticlePage } from './[...doi].page';
-import { mockContent } from '../../components/atoms/article-content/mock-content';
+import { ArticlePage } from './index.page';
+import { mockContent } from '../../../components/atoms/article-content/mock-content';
 
 export default {
   title: 'Pages/Article',

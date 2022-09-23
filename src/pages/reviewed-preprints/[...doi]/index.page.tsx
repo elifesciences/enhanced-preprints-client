@@ -1,16 +1,16 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticleContent } from '../../components/atoms/article-content/article-content';
-import { Heading } from '../../components/atoms/heading/heading';
-import { Heading as JumpMenuHeading, JumpToMenu } from '../../components/atoms/jump-to-menu/jump-to-menu';
-import { ArticleStatus } from '../../components/molecules/article-status/article-status';
-import { ContentHeader, ContentHeaderProps } from '../../components/molecules/content-header/content-header';
-import { ContextualData, ContextualDataProps } from '../../components/molecules/contextual-data/contextual-data';
-import { SiteHeader } from '../../components/molecules/site-header/site-header';
-import { Tab, TabbedNavigation } from '../../components/molecules/tabbed-navigation';
-import { Timeline } from '../../components/molecules/timeline/timeline';
-import { config } from '../../config';
-import { Content } from '../../types/content';
-import styles from './article-page.module.scss';
+import { ArticleContent } from '../../../components/atoms/article-content/article-content';
+import { Heading } from '../../../components/atoms/heading/heading';
+import { Heading as JumpMenuHeading, JumpToMenu } from '../../../components/atoms/jump-to-menu/jump-to-menu';
+import { ArticleStatus } from '../../../components/molecules/article-status/article-status';
+import { ContentHeader, ContentHeaderProps } from '../../../components/molecules/content-header/content-header';
+import { ContextualData, ContextualDataProps } from '../../../components/molecules/contextual-data/contextual-data';
+import { SiteHeader } from '../../../components/molecules/site-header/site-header';
+import { Tab, TabbedNavigation } from '../../../components/molecules/tabbed-navigation';
+import { Timeline } from '../../../components/molecules/timeline/timeline';
+import { config } from '../../../config';
+import { Content } from '../../../types/content';
+import styles from './index.module.scss';
 
 type MetaData = ContentHeaderProps & ContextualDataProps & {
   headings: JumpMenuHeading[]
