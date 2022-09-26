@@ -1,4 +1,5 @@
 @use "../../../sass/settings";
+@use "../../../sass/layout";
 
 .article-page {
   @include settings.padding();

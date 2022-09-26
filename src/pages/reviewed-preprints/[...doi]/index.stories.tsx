@@ -1,10 +1,16 @@
-import fetchMock from 'fetch-mock';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
-import App from './App';
-import { mockContent } from './components/atoms/article-content/mock-content';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ArticlePage } from './index.page';
+import { mockContent } from '../../../components/atoms/article-content/mock-content';
 
-test('renders epp', async () => {
-  fetchMock.restore().mock('/api/article/10.1101/2022.04.13.488149/metadata', {
+export default {
+  title: 'Pages/Article',
+  component: ArticlePage,
+} as ComponentMeta<typeof ArticlePage>;
+
+const Template: ComponentStory<typeof ArticlePage> = () => {
+  const doi = '10.1101/2022.04.13.488149';
+  const metaData = {
+    doi,
     msas: ['Mad Science', 'Alchemy'],
     importance: 'Landmark',
     strengthOfEvidence: 'Tour-de-force',
@@ -24,11 +30,12 @@ test('renders epp', async () => {
       { givenNames: ['Oliver'], familyNames: ['Queen'] },
     ],
     headings: [{ id: 's1', text: 'Introduction' }],
-  })
-    .mock('/api/article/10.1101/2022.04.13.488149/content', mockContent);
-  render(<App />);
-  await waitForElementToBeRemoved(() => screen.queryByText('loading...'));
-  const statusElement = screen.getByText(/Reviewed Preprint/i);
+    views: 1,
+    citations: 2,
+    tweets: 3,
+  };
 
-  expect(statusElement).toBeInTheDocument();
-});
+  return <ArticlePage metaData={metaData} content={mockContent}/>;
+};
+
+export const DefaultArticlePage = Template.bind({});

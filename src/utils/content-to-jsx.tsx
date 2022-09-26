@@ -5,6 +5,9 @@ type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
 
 export const contentToJsx = (content: Content, index?: number): JSXContent => {
+  if (typeof content === 'undefined') {
+    return '';
+  }
   if (typeof content === 'string') {
     return content;
   }

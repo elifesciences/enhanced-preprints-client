@@ -1,7 +1,7 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { TabProps } from './tab';
 
-import './tabbed-navigation.scss';
+import styles from './tabbed-navigation.module.scss';
 
 type TabbedNavigationProps = {
   initiallySelected?: number,
@@ -9,18 +9,21 @@ type TabbedNavigationProps = {
 };
 
 export const TabbedNavigation = ({ children, initiallySelected = 0 }: TabbedNavigationProps): JSX.Element => {
-  const [activeTab, setActiveTab] = useState(initiallySelected);
+  const [activeTab, setActiveTab] = useState<number | false>(false);
+  useEffect(() => {
+    setActiveTab(initiallySelected);
+  }, []);
 
   return (
-    <div className="tabbed-navigation">
-      <ul className="tabbed-navigation__tabs">
+    <div className={styles['tabbed-navigation']}>
+      <ul className={styles['tabbed-navigation__tabs']}>
         {children.map((child, index) => {
           const { label } = child.props;
 
-          return (<li className={`tabbed-navigation__tab-label ${activeTab === index ? 'tabbed-navigation__tab-label--active' : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
+          return (<li className={`${styles['tabbed-navigation__tab-label']}${activeTab === index ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
         })}
       </ul>
-      {children[activeTab]}
+      {activeTab === false ? children : children[activeTab]}
     </div>
   );
 };

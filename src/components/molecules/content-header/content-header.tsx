@@ -1,4 +1,4 @@
-import './content-header.scss';
+import styles from './content-header.module.scss';
 import { Content } from '../../../types/content';
 import { Author, Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
@@ -19,7 +19,7 @@ export const ContentHeader = ({
   authors,
   doi,
 }: ContentHeaderProps): JSX.Element => (
-  <header className="content-header">
+  <header className={styles['content-header']}>
     <ArticleFlagList msas={msas} strengthOfEvidence={strengthOfEvidence} importance={importance} />
     <Title title={title} />
     <Authors authors={authors} />

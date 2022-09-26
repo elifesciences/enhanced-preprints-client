@@ -3,15 +3,17 @@ ARG node_version=16.17-alpine3.15
 FROM node:${node_version} as base
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
-COPY ./ ./
+COPY package.json package.json
+COPY yarn.lock yarn.lock
 RUN yarn
-CMD [ "yarn", "start" ]
+COPY ./ ./
+
+FROM base as dev
+CMD [ "yarn", "start:dev" ]
 
 FROM base as storybook
 CMD [ "yarn", "storybook" ]
 
-FROM base as build
+FROM base as prod
 RUN yarn build
-
-FROM nginx:1.21.1 as prod
-COPY --from=build /opt/epp-client/build/ /usr/share/nginx/html/
+CMD [ "yarn", "start" ]
