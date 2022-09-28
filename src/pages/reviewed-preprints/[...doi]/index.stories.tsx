@@ -3,14 +3,17 @@ import { ArticlePage } from './index.page';
 import { mockContent } from '../../../components/atoms/article-content/mock-content';
 
 export default {
-  title: 'Pages/Article',
+  title: 'Pages/Articles',
   component: ArticlePage,
 } as ComponentMeta<typeof ArticlePage>;
 
-const Template: ComponentStory<typeof ArticlePage> = () => {
-  const doi = '10.1101/2022.04.13.488149';
-  const metaData = {
-    doi,
+const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...args}/>;
+
+export const DefaultArticlePage = Template.bind({});
+DefaultArticlePage.args = {
+  content: mockContent,
+  metaData: {
+    doi: '10.1101/2022.04.13.488149',
     msas: ['Mad Science', 'Alchemy'],
     importance: 'Landmark',
     strengthOfEvidence: 'Tour-de-force',
@@ -33,9 +36,7 @@ const Template: ComponentStory<typeof ArticlePage> = () => {
     views: 1,
     citations: 2,
     tweets: 3,
-  };
-
-  return <ArticlePage metaData={metaData} content={mockContent}/>;
+  },
 };
 
-export const DefaultArticlePage = Template.bind({});
+console.log('test');
