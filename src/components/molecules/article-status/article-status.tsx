@@ -3,13 +3,12 @@ import styles from './article-status.module.scss';
 
 type ArticleStatusProps = {
   articleType?: string,
-  articleStatus?: string,
+  articleStatus: string,
 };
 
 const defaultArticleType = 'Reviewed Preprint';
-const defaultArticleStatus = 'This preprint has been reviewed by eLife. Authors have responded but not yet submitted a revised edition';
 
-export const ArticleStatus = ({ articleType = defaultArticleType, articleStatus = defaultArticleStatus }: ArticleStatusProps): JSX.Element => (
+export const ArticleStatus = ({ articleType = defaultArticleType, articleStatus }: ArticleStatusProps): JSX.Element => (
   <div className={styles['article-status']}>
     <h2 className={styles['article-status__heading']}>{articleType}</h2>
     <p className={styles['article-status__text']}>{articleStatus}</p>
