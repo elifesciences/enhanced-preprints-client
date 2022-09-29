@@ -1,16 +1,16 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticlePage } from './index.page';
-import { mockContent } from '../../../components/atoms/article-content/mock-content';
+import { ArticlePage } from './article-page.page';
+import { mockContent } from '../../atoms/article-content/mock-content';
 
 export default {
-  title: 'Pages/Articles',
+  title: 'Pages/Article Page',
   component: ArticlePage,
 } as ComponentMeta<typeof ArticlePage>;
 
-const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...args}/>;
+const Template: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage {...args} />;
 
-export const DefaultArticlePage = Template.bind({});
-DefaultArticlePage.args = {
+export const ArticlePageStory = Template.bind({});
+ArticlePageStory.args = {
   content: mockContent,
   metaData: {
     doi: '10.1101/2022.04.13.488149',
@@ -38,5 +38,3 @@ DefaultArticlePage.args = {
     tweets: 3,
   },
 };
-
-console.log('test');
