@@ -31,7 +31,7 @@ type HeadingContent = DecoratedContent & {
   depth: 1 | 2 | 3 | 4 | 5 | 6,
 };
 
-type FigureContent = DecoratedContent & {
+export type FigureContent = DecoratedContent & {
   type: 'Figure',
   id: string,
   caption: Content,

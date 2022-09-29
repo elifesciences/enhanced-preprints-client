@@ -1,5 +1,6 @@
 import { Content } from '../types/content';
 import { Heading } from '../components/atoms/heading/heading';
+import { generateImageUrl } from './generate-image-url';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -42,7 +43,10 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
         </figure>
       );
     case 'ImageObject':
-      return <img key={index} src={'https://placekitten.com/500/300'} alt={'cat picture'}></img>;
+      if (!content.contentUrl) {
+        return '';
+      }
+      return <img key={index} src={generateImageUrl(content.contentUrl)} alt={'sciency picture'}></img>;
     default:
       return '';
   }
