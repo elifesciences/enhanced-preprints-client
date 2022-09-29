@@ -15,14 +15,22 @@ Figure1.args = {
   content: {
     type: 'Figure',
     label: 'This is a figure Component',
-    caption: 'This is a figure caption that describes what the image is',
+    caption: [
+      {
+        type: 'Heading',
+        content: 'This is a figure',
+        depth: 3,
+        id: 'fig1',
+      },
+      'This is a figure caption that describes what the image is',
+    ],
     id: '1',
     content: {
       type: 'ImageObject',
       meta: {
         inline: false,
       },
-      contentUrl: 'https://placekitten.com/400/400',
+      contentUrl: 'https://placekitten.com/800/400',
     },
   },
 };
