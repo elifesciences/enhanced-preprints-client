@@ -14,6 +14,27 @@ export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   headings: JumpMenuHeading[]
 };
 
+const lookupStatus = (doi: string): string => {
+  switch (doi) {
+    default:
+      return 'This preprint has been reviewed by eLife. Authors have responded but not yet submitted a revised edition';
+  }
+};
+
+const lookupEvents = (doi: string): {
+  name: string,
+  date: Date,
+}[] => {
+  switch (doi) {
+    default:
+      return [
+        { name: 'Author response', date: new Date('2022-03-06') },
+        { name: 'Peer review', date: new Date('2022-03-03') },
+        { name: 'Preprint posted', date: new Date('2021-11-08') },
+      ];
+  }
+};
+
 export const ArticlePage = ({ metaData, content }: { metaData: ArticlePageProps, content: Content }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
@@ -44,8 +65,8 @@ export const ArticlePage = ({ metaData, content }: { metaData: ArticlePageProps,
       </TabbedNavigation>
     </main>
     <div className={styles['secondary-column']}>
-      <ArticleStatus />
-      <Timeline />
+      <ArticleStatus articleStatus={lookupStatus(metaData.doi)}/>
+      <Timeline events={lookupEvents(metaData.doi)}/>
       <ContextualData citations={metaData.citations} tweets={metaData.tweets} views={metaData.views} />
     </div>
   </div>
