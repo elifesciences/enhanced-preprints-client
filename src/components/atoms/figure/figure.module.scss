@@ -7,12 +7,12 @@
   @include mixins.margin(16, "bottom");
 
   display: block;
-
 }
 
 .figure img {
-  width: 100%;
   @include mixins.margin(24, "bottom");
+
+  width: 100%;
 }
 
 .figure__caption {
