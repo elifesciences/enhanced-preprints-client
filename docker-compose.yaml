@@ -78,7 +78,7 @@ services:
       start_period: 2s
     environment:
       API_SERVER: http://api:3000
-      IMAGE_SERVER: http://image-server:8182
+      NEXT_PUBLIC_IMAGE_SERVER: /iiif
     volumes:
     - ./:/opt/epp-client/
     - node_modules:/opt/epp-client/node_modules

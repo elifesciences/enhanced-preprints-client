@@ -4,6 +4,6 @@ if (!process.env.API_SERVER && process.env.NEXT_PHASE !== 'phase-production-buil
 }
 
 export const config = {
-  API_SERVER: process.env.API_SERVER,
-  IMAGE_SERVER: process.env.IMAGE_SERVER,
+  apiServer: process.env.API_SERVER,
+  imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
 };
