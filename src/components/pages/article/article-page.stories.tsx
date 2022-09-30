@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticlePage } from './article-page.page';
+import { ArticlePage } from './article-page';
 import { mockContent } from '../../atoms/article-content/mock-content';
 
 export default {

@@ -1,5 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticlePage, ArticlePageProps } from '../../../components/pages/article/article-page.page';
+import { ArticlePage, ArticlePageProps } from '../../../components/pages/article/article-page';
 import { config } from '../../../config';
 import { Content } from '../../../types/content';
 
