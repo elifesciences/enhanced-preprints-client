@@ -1,6 +1,7 @@
 import { Content } from '../types/content';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
+import { Figure } from '../components/atoms/figure/figure';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -36,11 +37,7 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       return <time key={index}>{contentToJsx(content.content)}</time>;
     case 'Figure':
       return (
-        <figure key={index}>
-          <label>{content.label}</label>
-          {contentToJsx(content.content)}
-          <figcaption>{contentToJsx(content.caption)}</figcaption>
-        </figure>
+        <Figure content={content} />
       );
     case 'ImageObject':
       if (!content.contentUrl) {
