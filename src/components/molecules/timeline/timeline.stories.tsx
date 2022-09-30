@@ -9,8 +9,6 @@ export default {
 
 const Template: ComponentStory<typeof Timeline> = (args) => <Timeline {...args} />;
 
-export const DefaultTimeline = Template.bind({});
-
 export const EventTimeline = Template.bind({});
 EventTimeline.args = {
   events: [
