@@ -1,5 +1,6 @@
 import { contentToJsx } from './content-to-jsx';
 import { Heading } from '../components/atoms/heading/heading';
+import { Figure } from '../components/atoms/figure/figure';
 
 describe('Content to JSX', () => {
   it('returns the string unchanged if passed a simple string', () => {
@@ -108,11 +109,13 @@ describe('Content to JSX', () => {
     });
 
     expect(result).toStrictEqual(
-      <figure>
-        <label>I am a label</label>
-        I am a figure
-        <figcaption>I am a caption</figcaption>
-      </figure>,
+      <Figure content={{
+        type: 'Figure',
+        content: 'I am a figure',
+        caption: 'I am a caption',
+        label: 'I am a label',
+        id: 'id',
+      }} />,
     );
   });
 
@@ -126,7 +129,7 @@ describe('Content to JSX', () => {
       },
     });
 
-    expect(result).toStrictEqual(<img src="https://placekitten.com/500/300" alt="cat picture"></img>);
+    expect(result).toStrictEqual(<img src="https://placekitten.com/500/300" alt="sciency picture"></img>);
   });
 
   it('allows an array of arrays to be generated', () => {
