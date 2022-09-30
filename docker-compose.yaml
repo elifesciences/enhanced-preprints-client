@@ -1,7 +1,7 @@
 services:
   # services for API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-07214ff1-20220922.0234
+    image: ghcr.io/elifesciences/enhanced-preprints:master-05a4bb01-20220929.2124
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
@@ -13,7 +13,7 @@ services:
       REPO_CONNECTION: mongodb:27017
       REPO_USERNAME: admin
       REPO_PASSWORD: testtest
-      IIIF_SERVER: http://localhost:8182
+      IIIF_SERVER: http://image-server:8182
 
   api-import-data:
     image: alpine:latest
@@ -45,11 +45,11 @@ services:
 
   # Image Server
   image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-4e289990-20220927.0408
+    image: ghcr.io/elifesciences/epp-image-server:master-05a4bb01-20220929.2121
     ports:
     - "8182:8182"
     volumes:
-    - ./image-server/cantaloupe.properties:/opt/cantaloupe/cantaloupe.properties
+    - ./.docker/cantaloupe.properties:/opt/cantaloupe/cantaloupe.properties
     - ./data:/opt/epp/data
 
   # Main app server
@@ -65,6 +65,7 @@ services:
       start_period: 2s
     environment:
       API_SERVER: http://api:3000
+      IMAGE_SERVER: http://image-server:8182
     depends_on:
       api-import-data:
         condition: service_completed_successfully
