@@ -5,10 +5,6 @@
 .review-content {
   p {
     @include typography.body();
-
-    &:first-child {
-      @include mixins.margin(0);
-    }
   }
 
   strong {
@@ -22,7 +18,8 @@
 
     border-left: 2px solid settings.$color-divider-grey;
 
-    p, li {
+    p,
+    li {
       @include typography.body-small();
     }
 
