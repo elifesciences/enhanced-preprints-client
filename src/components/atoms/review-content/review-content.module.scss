@@ -1,33 +1,33 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
+@use "../../../sass/mixins";
 
 .review-content {
-  @include typography.body();
+  p {
+    @include typography.body();
 
-  h1 {
-    @include typography.heading-1();
+    &:first-child {
+      @include mixins.margin(0);
+    }
   }
 
-  h2 {
+  strong {
     @include typography.heading-2();
   }
 
-  h3 {
-    @include typography.heading-3();
-  }
+  blockquote {
+    @include typography.blockquote();
+    @include mixins.margin(0);
+    @include mixins.padding(16, "left");
 
-  h4 {
-    @include typography.heading-4();
-  }
+    border-left: 2px solid settings.$color-divider-grey;
 
-  a {
-    border-bottom: 1px dotted settings.$link-decoration;
-    color: settings.$link-decoration;
-    text-decoration: none;
+    p, li {
+      @include typography.body-small();
+    }
 
-    &:hover {
-      border-bottom-color: settings.$color-primary;
-      color: settings.$color-primary;
+    strong {
+      @include typography.heading-4();
     }
   }
 }
