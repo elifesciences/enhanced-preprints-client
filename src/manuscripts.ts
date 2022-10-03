@@ -1,14 +1,12 @@
 import { ArticleStatusProps } from './components/pages/article/article-page';
 
 type ReviewedPreprintConfig = {
-  doi: string,
   preprintDoi: string,
   status: ArticleStatusProps
 };
 
 const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
   '10.1101/2022.03.04.482974': {
-    doi: '',
     preprintDoi: '10.1101/2022.03.04.482974',
     status: {
       articleType: 'Reviewed Preprint',
@@ -20,7 +18,6 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
     },
   },
   '10.1101/2022.06.24.497502': {
-    doi: '',
     preprintDoi: '10.1101/2022.06.24.497502',
     status: {
       articleType: 'Reviewed Preprint',
@@ -32,7 +29,6 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
     },
   },
   '10.1101/2022.07.26.501569': {
-    doi: '',
     preprintDoi: '10.1101/2022.07.26.501569',
     status: {
       articleType: 'Reviewed Preprint',
