@@ -16,7 +16,7 @@
     @include mixins.margin(0);
     @include mixins.padding(16, "left");
 
-    border-left: 2px solid settings.$color-divider-grey;
+    border-left: 1px solid settings.$divider;
 
     p,
     li {
