@@ -1,0 +1,18 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ReviewContent } from './review-content';
+
+export default {
+  title: 'Atoms/Review Content',
+  component: ReviewContent,
+} as ComponentMeta<typeof ReviewContent>;
+
+const Template: ComponentStory<typeof ReviewContent> = (args) => (
+  <ReviewContent {...args} />
+);
+
+export const Review = Template.bind({});
+Review.args = {
+  content: `# This is a review in markdown
+
+  With some body *emphasised*`,
+};
