@@ -1,5 +1,10 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticlePage, ArticlePageProps, ArticleStatusProps, PeerReviewProps } from '../../components/pages/article/article-page';
+import {
+  ArticlePage,
+  ArticlePageProps,
+  ArticleStatusProps,
+  PeerReviewProps,
+} from '../../components/pages/article/article-page';
 import { config } from '../../config';
 import { msids } from '../../manuscripts';
 import { Content } from '../../types/content';
