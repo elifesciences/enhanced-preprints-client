@@ -1,10 +1,10 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticlePage, ArticlePageProps, ArticleStatusProps } from '../../components/pages/article/article-page';
+import { ArticlePage, ArticlePageProps, ArticleStatusProps, PeerReviewProps } from '../../components/pages/article/article-page';
 import { config } from '../../config';
 import { msids } from '../../manuscripts';
 import { Content } from '../../types/content';
 
-export const Page = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps }): JSX.Element => (
+export const Page = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
 );
 
@@ -28,9 +28,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   // map msid to preprint doi
   const { preprintDoi } = msids[msid];
 
-  const [metaData, content, status] = await Promise.all([
+  const [metaData, content, peerReview, status] = await Promise.all([
     await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
     await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
+    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
     // replace with call for data
     msids[msid].status,
   ]);
@@ -40,6 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       metaData,
       content,
       status,
+      peerReview,
     },
   };
 };
