@@ -6,7 +6,7 @@ import { ContentHeader, ContentHeaderProps } from '../../molecules/content-heade
 import { ContextualData, ContextualDataProps } from '../../molecules/contextual-data/contextual-data';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
-import { Timeline } from '../../molecules/timeline/timeline';
+import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 
@@ -14,28 +14,13 @@ export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   headings: JumpMenuHeading[]
 };
 
-const lookupStatus = (doi: string): string => {
-  switch (doi) {
-    default:
-      return 'This preprint has been reviewed by eLife. Authors have responded but not yet submitted a revised edition';
-  }
+export type ArticleStatusProps = {
+  timeline: TimelineEvent[],
+  articleType: string,
+  status: string,
 };
 
-const lookupEvents = (doi: string): {
-  name: string,
-  date: Date,
-}[] => {
-  switch (doi) {
-    default:
-      return [
-        { name: 'Author response', date: new Date('2022-03-06') },
-        { name: 'Peer review', date: new Date('2022-03-03') },
-        { name: 'Preprint posted', date: new Date('2021-11-08') },
-      ];
-  }
-};
-
-export const ArticlePage = ({ metaData, content }: { metaData: ArticlePageProps, content: Content }): JSX.Element => (
+export const ArticlePage = ({ metaData, content, status }: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
       <SiteHeader />
@@ -65,8 +50,8 @@ export const ArticlePage = ({ metaData, content }: { metaData: ArticlePageProps,
       </TabbedNavigation>
     </main>
     <div className={styles['secondary-column']}>
-      <ArticleStatus articleStatus={lookupStatus(metaData.doi)}/>
-      <Timeline events={lookupEvents(metaData.doi)}/>
+      <ArticleStatus articleStatus={status.status} articleType={status.articleType}/>
+      <Timeline events={status.timeline}/>
       <ContextualData citations={metaData.citations} tweets={metaData.tweets} views={metaData.views} />
     </div>
   </div>
