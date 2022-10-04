@@ -1,11 +1,13 @@
 import { Fragment } from 'react';
 import styles from './timeline.module.scss';
 
+export type TimelineEvent = {
+  name: string,
+  date: string,
+};
+
 type TimelineProps = {
-  events: {
-    name: string,
-    date: Date,
-  }[],
+  events: TimelineEvent[],
 };
 
 export const Timeline = ({ events }: TimelineProps): JSX.Element => (
@@ -15,7 +17,7 @@ export const Timeline = ({ events }: TimelineProps): JSX.Element => (
         events.map((entry, index) => (
           <Fragment key={index}>
             <dt className={styles['review-timeline__event']}>{entry.name}</dt>
-            <dd className={styles['review-timeline__date']}>{entry.date.toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
+            <dd className={styles['review-timeline__date']}>{new Date(entry.date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
           </Fragment>
         ))
       }

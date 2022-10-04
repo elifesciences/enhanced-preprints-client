@@ -1,0 +1,39 @@
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+
+.editors-and-reviewers {
+  @include mixins.margin(36, "bottom");
+  @include mixins.padding(18, "top");
+}
+
+.editors-and-reviewers__header {
+  @include mixins.margin(0);
+  @include typography.heading-2();
+}
+
+.editors-and-reviewers__list {
+  @include typography.body-alternative();
+  @include mixins.margin(36, "bottom");
+  @include mixins.padding(0);
+
+  list-style: none;
+}
+
+.editors-and-reviewers__person {
+  @include mixins.margin(24, "bottom");
+}
+
+.editors-and-reviewers__person-role {
+  @include typography.body-small();
+  @include mixins.margin(6, "bottom");
+}
+
+.editors-and-reviewers__person-name {
+  @include typography.heading-3();
+  @include mixins.margin(6, "bottom");
+}
+
+.editors-and-reviewers__person-affiliation {
+  @include typography.body();
+  @include mixins.margin(6, "bottom");
+}
