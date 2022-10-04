@@ -2,13 +2,13 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.jump-menu__container {
+.jump-menu {
   @media only all and (min-width: settings.$breakpoint-large) {
     grid-column: 1/3;
   }
 }
 
-.jump-menu-container {
+.jump-menu-navigation {
   border-left: 2px solid settings.$color-background;
   margin: auto;
   max-width: 69.625rem;

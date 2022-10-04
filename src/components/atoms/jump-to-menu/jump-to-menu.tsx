@@ -8,8 +8,8 @@ export type Heading = {
 };
 
 export const JumpToMenu = ({ headings, active }: { headings: Heading[], active: number }): JSX.Element => (
-  <div className={styles['jump-menu__container']}>
-    <nav className={styles['jump-menu-container']}>
+  <div className={styles['jump-menu']}>
+    <nav className={styles['jump-menu-navigation']}>
       <ul className={styles['jump-menu-list']}>
         {
           headings.map((heading, index) => (
