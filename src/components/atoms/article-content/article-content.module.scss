@@ -30,4 +30,10 @@
       color: settings.$color-primary;
     }
   }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    grid-column: 3/10;
+  }
 }
+
+
