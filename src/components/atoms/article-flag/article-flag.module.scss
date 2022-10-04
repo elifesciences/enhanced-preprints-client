@@ -4,13 +4,13 @@
 
 .article-flag__link {
   @include typography.badge-text();
-  @include mixins.padding(6 10 6 10);
+  @include mixins.padding(6 10);
 
   background-color: settings.$color-background;
   border-radius: 3px;
   cursor: pointer;
+  display: block;
   font-weight: 600;
-  min-height: 28px;
   text-decoration: none;
 
   &.article-flag__link-msa {
