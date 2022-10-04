@@ -7,8 +7,8 @@ describe('Timeline', () => {
       .mockReturnValueOnce('13/01/2001')
       .mockReturnValueOnce('14/02/2002');
     render(<Timeline events={[
-      { name: 'event1', date: new Date('2001/01/13') },
-      { name: 'event2', date: new Date('2002/02/14') },
+      { name: 'event1', date: '2001-01-13' },
+      { name: 'event2', date: '2002-02-14' },
     ]}/>);
 
     expect(screen.getByText('event1')).toBeInTheDocument();
