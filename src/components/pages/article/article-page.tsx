@@ -6,68 +6,83 @@ import { ContentHeader, ContentHeaderProps } from '../../molecules/content-heade
 import { ContextualData, ContextualDataProps } from '../../molecules/contextual-data/contextual-data';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
-import { Timeline } from '../../molecules/timeline/timeline';
+import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
+import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
+import { ReviewContent } from '../../atoms/review-content/review-content';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   headings: JumpMenuHeading[]
 };
 
-const lookupStatus = (doi: string): string => {
-  switch (doi) {
-    default:
-      return 'This preprint has been reviewed by eLife. Authors have responded but not yet submitted a revised edition';
-  }
+export type ArticleStatusProps = {
+  timeline: TimelineEvent[],
+  articleType: string,
+  status: string,
 };
 
-const lookupEvents = (doi: string): {
+enum ReviewType {
+  EvaluationSummary = 'evaluation-summary',
+  Review = 'review-article',
+  AuthorResponse = 'reply',
+}
+
+type Participant = {
   name: string,
-  date: Date,
-}[] => {
-  switch (doi) {
-    default:
-      return [
-        { name: 'Author response', date: new Date('2022-03-06') },
-        { name: 'Peer review', date: new Date('2022-03-03') },
-        { name: 'Preprint posted', date: new Date('2021-11-08') },
-      ];
-  }
+  role: string,
+  institution: string,
 };
 
-export const ArticlePage = ({ metaData, content }: { metaData: ArticlePageProps, content: Content }): JSX.Element => (
+type Evaluation = {
+  date: Date,
+  reviewType: ReviewType,
+  text: string,
+  participants: Participant[],
+};
+
+export type PeerReviewProps = {
+  evaluationSummary: Evaluation,
+  reviews: Evaluation[],
+  authorResponse?: Evaluation,
+};
+
+export const ArticlePage = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
       <SiteHeader />
     </div>
-    <div className={styles['primary-column-header']}>
+    <div className={styles['primary-section-header']}>
       <ContentHeader
-        doi={metaData.doi}
-        msas={metaData.msas}
-        strengthOfEvidence={metaData.strengthOfEvidence}
-        importance={metaData.importance}
-        authors={metaData.authors}
-        title={metaData.title}
+        doi={props.metaData.doi}
+        msas={props.metaData.msas}
+        strengthOfEvidence={props.metaData.strengthOfEvidence}
+        importance={props.metaData.importance}
+        authors={props.metaData.authors}
+        title={props.metaData.title}
       />
     </div>
-    <main className={styles['primary-column']}>
+    <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={metaData.headings} />
-          <ArticleContent content={content} />
+          <JumpToMenu active={1} headings={props.metaData.headings} />
+          <ArticleContent content={props.content} />
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
         </Tab>
         <Tab label="Peer review">
-          <Heading id="peer-review" headingLevel={2} content="Peer review" />
+          <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
+          {props.peerReview.reviews.map((review, index) => (
+            <ReviewContent key={index} content={review.text} />
+          ))}
         </Tab>
       </TabbedNavigation>
     </main>
-    <div className={styles['secondary-column']}>
-      <ArticleStatus articleStatus={lookupStatus(metaData.doi)}/>
-      <Timeline events={lookupEvents(metaData.doi)}/>
-      <ContextualData citations={metaData.citations} tweets={metaData.tweets} views={metaData.views} />
-    </div>
+    <aside className={styles['side-section']}>
+      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
+      <Timeline events={props.status.timeline}/>
+      <ContextualData citations={props.metaData.citations} tweets={props.metaData.tweets} views={props.metaData.views} />
+    </aside>
   </div>
 );
