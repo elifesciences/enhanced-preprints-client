@@ -1,0 +1,30 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.review-content {
+  p {
+    @include typography.body();
+  }
+
+  strong {
+    @include typography.heading-2();
+  }
+
+  blockquote {
+    @include typography.blockquote();
+    @include mixins.margin(0);
+    @include mixins.padding(16, "left");
+
+    border-left: 1px solid settings.$divider;
+
+    p,
+    li {
+      @include typography.body-small();
+    }
+
+    strong {
+      @include typography.heading-4();
+    }
+  }
+}
