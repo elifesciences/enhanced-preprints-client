@@ -138,3 +138,7 @@
     color: settings.$color-primary;
   }
 }
+
+@mixin blockquote() {
+  font-style: italic;
+}
