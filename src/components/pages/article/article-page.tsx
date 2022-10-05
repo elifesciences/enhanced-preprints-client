@@ -25,7 +25,7 @@ export const ArticlePage = ({ metaData, content, status }: { metaData: ArticlePa
     <div className={styles['grid-header']}>
       <SiteHeader />
     </div>
-    <div className={styles['primary-column-header']}>
+    <div className={styles['primary-section-header']}>
       <ContentHeader
         doi={metaData.doi}
         msas={metaData.msas}
@@ -35,7 +35,7 @@ export const ArticlePage = ({ metaData, content, status }: { metaData: ArticlePa
         title={metaData.title}
       />
     </div>
-    <main className={styles['primary-column']}>
+    <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
           <JumpToMenu active={1} headings={metaData.headings} />
@@ -49,10 +49,10 @@ export const ArticlePage = ({ metaData, content, status }: { metaData: ArticlePa
         </Tab>
       </TabbedNavigation>
     </main>
-    <div className={styles['secondary-column']}>
+    <aside className={styles['side-section']}>
       <ArticleStatus articleStatus={status.status} articleType={status.articleType}/>
       <Timeline events={status.timeline}/>
       <ContextualData citations={metaData.citations} tweets={metaData.tweets} views={metaData.views} />
-    </div>
+    </aside>
   </div>
 );
