@@ -6,13 +6,12 @@ describe('ArticleContent', () => {
     render(<ReviewContent content="I am an article"/>);
 
     expect(screen.getByText('I am an article')).toBeInTheDocument();
-    expect(screen.getByText('I am an article').tagName).toStrictEqual('P');
   });
 
-  it('renders with a complex markdown', async () => {
-    render(<ReviewContent content={`# Markdown title
+  it('renders with a complex html', async () => {
+    render(<ReviewContent content={`<h1>Markdown title</h1>
 
-*I am an em*`}/>);
+<em>I am an em<em>`}/>);
 
     expect(screen.getByText('Markdown title')).toBeInTheDocument();
     expect(screen.getByText('Markdown title').tagName).toStrictEqual('H1');
