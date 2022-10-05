@@ -52,7 +52,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
     <div className={styles['grid-header']}>
       <SiteHeader />
     </div>
-    <div className={styles['primary-column-header']}>
+    <div className={styles['primary-section-header']}>
       <ContentHeader
         doi={props.metaData.doi}
         msas={props.metaData.msas}
@@ -62,7 +62,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
         title={props.metaData.title}
       />
     </div>
-    <main className={styles['primary-column']}>
+    <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
           <JumpToMenu active={1} headings={props.metaData.headings} />
@@ -79,10 +79,10 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
         </Tab>
       </TabbedNavigation>
     </main>
-    <div className={styles['secondary-column']}>
+    <aside className={styles['side-section']}>
       <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
       <Timeline events={props.status.timeline}/>
       <ContextualData citations={props.metaData.citations} tweets={props.metaData.tweets} views={props.metaData.views} />
-    </div>
+    </aside>
   </div>
 );
