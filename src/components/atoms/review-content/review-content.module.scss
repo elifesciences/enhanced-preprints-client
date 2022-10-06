@@ -28,3 +28,35 @@
     }
   }
 }
+
+.review-content--assessment {
+  background-color: settings.$color-background;
+  @include mixins.padding(32);
+}
+
+.review-content_body {
+
+}
+
+.review-content_links {
+  @include mixins.padding(0);
+
+  list-style: none;
+}
+
+.review-content_links-item {
+  @include typography.body-small();
+  display: inline-block;
+
+  &:after {
+    content: " • ";
+  }
+
+  &:last-child:after {
+    content: "";
+  }
+
+  a {
+    @include typography.link-text();
+  }
+}
