@@ -41,7 +41,7 @@
   background-color: settings.$color-background;
 }
 
-.review-content_body .review-content_links {
+.review-content_links {
   @include mixins.padding(0);
 
   list-style: none;
@@ -50,7 +50,7 @@
 .review-content_links-item {
   @include typography.body-small();
 
-  display: inline-block;
+  display: inline;
 
   &::after {
     content: " • ";
