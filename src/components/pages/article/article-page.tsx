@@ -13,6 +13,8 @@ import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-a
 import { ReviewContent } from '../../atoms/review-content/review-content';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
+  msid: string,
+  version: string,
   headings: JumpMenuHeading[]
 };
 
@@ -54,7 +56,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
     </div>
     <div className={styles['primary-section-header']}>
       <ContentHeader
-        doi={props.metaData.doi}
+        doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
         msas={props.metaData.msas}
         strengthOfEvidence={props.metaData.strengthOfEvidence}
         importance={props.metaData.importance}
