@@ -7,12 +7,12 @@ const terms = [
 const highlightTerms = (content: string): string => {
   let highlightedContent = content;
   terms.forEach((term) => {
-    highlightedContent = highlightedContent.replace(` ${term} `, ` <strong class="${styles['highlighted-term']}">${term}</strong> `);
+    highlightedContent = highlightedContent.replace(new RegExp(`([^\\w]+)${term}([^\\w]+)`, 'g'), `$1<strong class="${styles['highlighted-term']}">${term}</strong>$2`);
   });
   return highlightedContent;
 };
 
-export const ReviewContent = ({ content, isAssessment = false }: { content: string, isAssessment: boolean }): JSX.Element => (
+export const ReviewContent = ({ content, isAssessment = false }: { content: string, isAssessment?: boolean }): JSX.Element => (
   <section className={`${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`}>
     <div className={styles['review-content_body']} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
