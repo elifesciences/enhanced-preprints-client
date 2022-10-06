@@ -36,5 +36,5 @@ Header.args = {
     { name: 'Avengers Tower', address: { addressCountry: 'New York' } },
     { name: 'Bat Cave', address: { addressCountry: 'Gotham' } },
     { name: 'Arrow Cave', address: { addressCountry: 'Central City' } },
-  ]
+  ],
 };
