@@ -9,7 +9,7 @@ import { config } from '../../config';
 import { msids } from '../../manuscripts';
 import { Content } from '../../types/content';
 
-export const Page = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
 );
 
@@ -44,6 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   return {
     props: {
       metaData,
+      abstract: metaData.abstract,
       content,
       status,
       peerReview,

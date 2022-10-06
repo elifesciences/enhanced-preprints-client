@@ -13,7 +13,7 @@ import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-a
 import { ReviewContent } from '../../atoms/review-content/review-content';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
-  headings: JumpMenuHeading[]
+  headings: JumpMenuHeading[],
 };
 
 export type ArticleStatusProps = {
@@ -47,7 +47,7 @@ export type PeerReviewProps = {
   authorResponse?: Evaluation,
 };
 
-export const ArticlePage = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
       <SiteHeader />
@@ -65,8 +65,8 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={props.metaData.headings} />
-          <ArticleContent content={props.content} />
+          <JumpToMenu active={1} headings={[{ id: 'abstract', text: 'Abstract' }, ...props.metaData.headings]} />
+          <ArticleContent content={[props.abstract, props.content]} />
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
