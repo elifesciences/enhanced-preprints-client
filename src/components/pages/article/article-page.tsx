@@ -11,7 +11,6 @@ import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
-import { contentToJsx } from '../../../utils/content-to-jsx';
 import { Abstract } from '../../atoms/abstract/abstract';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
