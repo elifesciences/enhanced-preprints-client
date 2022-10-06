@@ -6,7 +6,7 @@
   @include typography.badge-text();
   @include mixins.padding(6 10 6 10);
 
-  background-color: settings.$color-background;
+  background-color: settings.$color-button;
   border-radius: 3px;
   cursor: pointer;
   font-weight: 600;

@@ -67,8 +67,11 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={props.metaData.headings} />
-          <ArticleContent content={props.content} />
+          <JumpToMenu active={1} headings={[{ id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings]} />
+          <div className={styles['article-body-container']}>
+            <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
+            <ArticleContent content={props.content} />
+          </div>
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
