@@ -3,7 +3,6 @@ import { Heading } from '../../atoms/heading/heading';
 import { Heading as JumpMenuHeading, JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader, ContentHeaderProps } from '../../molecules/content-header/content-header';
-import { ContextualData, ContextualDataProps } from '../../molecules/contextual-data/contextual-data';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -12,7 +11,7 @@ import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 
-export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
+export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
   version: string,
   headings: JumpMenuHeading[]
