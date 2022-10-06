@@ -11,6 +11,7 @@ import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
+import { contentToJsx } from '../../../utils/content-to-jsx';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   msid: string,
@@ -68,7 +69,8 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
       <TabbedNavigation>
         <Tab label="Full text">
           <JumpToMenu active={1} headings={[{ id: 'abstract', text: 'Abstract' }, ...props.metaData.headings]} />
-          <ArticleContent content={[props.abstract, props.content]} />
+          <section className="abstract">{contentToJsx(props.abstract)}</section>
+          <ArticleContent content={props.content} />
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
