@@ -35,7 +35,11 @@
 }
 
 .review-content_body {
+  strong {
+    @include typography.body();
 
+    font-weight: 600;
+  }
 }
 
 .review-content_links {
