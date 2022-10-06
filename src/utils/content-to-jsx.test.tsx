@@ -32,7 +32,7 @@ describe('Content to JSX', () => {
       target: 'target',
     });
 
-    expect(result).toStrictEqual(<a href={'target'}>I am a citation</a>);
+    expect(result).toStrictEqual(<>(<a href={'target'}>I am a citation</a>)</>);
   });
 
   it('generates the expected html when passed a Link', () => {
