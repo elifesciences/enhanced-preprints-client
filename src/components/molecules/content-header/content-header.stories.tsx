@@ -30,4 +30,11 @@ Header.args = {
     { givenNames: ['Kal'], familyNames: ['El'] },
     { givenNames: ['Oliver'], familyNames: ['Queen'] },
   ],
+  institutions: [
+    { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
+    { name: 'Star Labs', address: { addressCountry: 'Star City' } },
+    { name: 'Avengers Tower', address: { addressCountry: 'New York' } },
+    { name: 'Bat Cave', address: { addressCountry: 'Gotham' } },
+    { name: 'Arrow Cave', address: { addressCountry: 'Central City' } },
+  ]
 };
