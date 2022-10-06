@@ -12,8 +12,16 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
-export const ReviewContent = ({ content, isAssessment = false }: { content: string, isAssessment?: boolean }): JSX.Element => (
-  <section className={`${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`}>
+export const ReviewContent = ({ content, isAssessment = false }: { content: string, isAssessment?: boolean }): JSX.Element => {
+  const sectionProps: Record<string, string> = {
+    className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
+  };
+  if (isAssessment) {
+    sectionProps.id = 'assessment';
+  }
+
+  return (
+  <section {...sectionProps}>
     <div className={styles['review-content_body']} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
       <ul className={styles['review-content_links']}>
@@ -22,4 +30,5 @@ export const ReviewContent = ({ content, isAssessment = false }: { content: stri
       </ul>
     ) : ''}
   </section>
-);
+  );
+};
