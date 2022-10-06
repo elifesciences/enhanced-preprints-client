@@ -1,7 +1,6 @@
 @use "../../../sass/settings";
 @use "../../../sass/generated-content";
 
-
 .article-body {
   @include generated-content.generated-content();
 }
