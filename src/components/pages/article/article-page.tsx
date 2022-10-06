@@ -24,7 +24,7 @@ export type ArticleStatusProps = {
   status: string,
 };
 
-enum ReviewType {
+export enum ReviewType {
   EvaluationSummary = 'evaluation-summary',
   Review = 'review-article',
   AuthorResponse = 'reply',

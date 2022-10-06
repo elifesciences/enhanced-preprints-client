@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticlePage } from './article-page';
+import { ArticlePage, ReviewType } from './article-page';
 import { mockContent } from '../../atoms/article-content/mock-content';
 
 export default {
@@ -14,6 +14,8 @@ ArticlePageStory.args = {
   content: mockContent,
   metaData: {
     doi: '10.1101/2022.04.13.488149',
+    msid: '123456',
+    version: '1',
     msas: ['Mad Science', 'Alchemy'],
     importance: 'Landmark',
     strengthOfEvidence: 'Tour-de-force',
@@ -44,5 +46,20 @@ ArticlePageStory.args = {
       { name: 'Peer review done', date: '2022-01-02' },
       { name: 'Preprint posted', date: '2022-01-01' },
     ],
+  },
+  peerReview: {
+    evaluationSummary: {
+      date: new Date('2022-01-02'),
+      participants: [
+        {
+          institution: 'Somewhere',
+          name: 'Dr Stephen Strange',
+          role: 'editor',
+        },
+      ],
+      reviewType: ReviewType.EvaluationSummary,
+      text: 'This paper is important and is very convincing',
+    },
+    reviews: [],
   },
 };
