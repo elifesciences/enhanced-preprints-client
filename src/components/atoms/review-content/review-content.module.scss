@@ -36,13 +36,14 @@
 }
 
 .review-content--assessment {
-  @include mixins.padding(32);
+  @include mixins.padding(24 36 36 36);
 
   background-color: settings.$color-background;
 }
 
 .review-content_links {
   @include mixins.padding(0);
+  @include mixins.margin(12 0 12 0);
 
   list-style: none;
 }
