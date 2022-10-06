@@ -44,7 +44,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
 type ManuscriptConfig = ReviewedPreprintConfig & {
   msid: string
   version: string,
-}
+};
 
 export const manuscripts: Record<string, ManuscriptConfig> = {
   '77558': { // eslint-disable-line quote-props
