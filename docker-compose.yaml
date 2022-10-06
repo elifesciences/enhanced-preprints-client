@@ -38,8 +38,10 @@ services:
       REPO_PASSWORD: testtest
       IIIF_SERVER: http://image-server:8182
       IMPORT_DIR_PATH: /opt/epp-data/data/enhanced-preprints-data/data/10.1101/
+    ports:
+      - 3000:3000
     volumes:
-    - import_data:/opt/epp-data
+      - import_data:/opt/epp-data
 
   api-fetch-data:
     image: k8s.gcr.io/git-sync/git-sync:v3.5.0

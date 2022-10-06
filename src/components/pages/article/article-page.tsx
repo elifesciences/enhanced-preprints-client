@@ -12,6 +12,7 @@ import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { contentToJsx } from '../../../utils/content-to-jsx';
+import { Abstract } from '../../atoms/abstract/abstract';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   msid: string,
@@ -68,9 +69,12 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={[{ id: 'abstract', text: 'Abstract' }, ...props.metaData.headings]} />
-          <section className="abstract">{contentToJsx(props.abstract)}</section>
-          <ArticleContent content={props.content} />
+          <JumpToMenu active={0} headings={[{ id: 'abstract', text: 'Abstract' }, { id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings]} />
+          <div className={styles['article-body-container']}>
+            <Abstract content={props.abstract} />
+            <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
+            <ArticleContent content={props.content} />
+          </div>
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />

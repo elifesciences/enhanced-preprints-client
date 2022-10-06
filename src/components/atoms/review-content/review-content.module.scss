@@ -3,6 +3,12 @@
 @use "../../../sass/mixins";
 
 .review-content {
+  .highlighted-term {
+    @include typography.body();
+
+    font-weight: 600;
+  }
+
   p {
     @include typography.body();
   }
@@ -26,5 +32,36 @@
     strong {
       @include typography.heading-4();
     }
+  }
+}
+
+.review-content--assessment {
+  @include mixins.padding(24 36 36 36);
+
+  background-color: settings.$color-background;
+}
+
+.review-content_links {
+  @include mixins.padding(0);
+  @include mixins.margin(12 0 12 0);
+
+  list-style: none;
+}
+
+.review-content_links-item {
+  @include typography.body-small();
+
+  display: inline;
+
+  &::after {
+    content: " • ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
+
+  a {
+    @include typography.link-text();
   }
 }
