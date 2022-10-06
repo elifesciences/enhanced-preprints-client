@@ -6,5 +6,4 @@
 .abstract {
   @include generated-content.generated-content();
   @include mixins.margin(36, "bottom");
-
 }
