@@ -3,6 +3,12 @@
 @use "../../../sass/mixins";
 
 .review-content {
+  .highlighted-term {
+    @include typography.body();
+
+    font-weight: 600;
+  }
+
   p {
     @include typography.body();
   }
@@ -30,19 +36,12 @@
 }
 
 .review-content--assessment {
-  background-color: settings.$color-background;
   @include mixins.padding(32);
+
+  background-color: settings.$color-background;
 }
 
-.review-content_body {
-  strong {
-    @include typography.body();
-
-    font-weight: 600;
-  }
-}
-
-.review-content_links {
+.review-content_body .review-content_links {
   @include mixins.padding(0);
 
   list-style: none;
@@ -50,13 +49,14 @@
 
 .review-content_links-item {
   @include typography.body-small();
+
   display: inline-block;
 
-  &:after {
-    content: " • ";
+  &::after {
+    content: " • ";
   }
 
-  &:last-child:after {
+  &:last-child::after {
     content: "";
   }
 

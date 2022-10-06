@@ -7,7 +7,7 @@ const terms = [
 const highlightTerms = (content: string): string => {
   let highlightedContent = content;
   terms.forEach((term) => {
-    highlightedContent = highlightedContent.replaceAll(` ${term} `, ` <strong>${term}</strong> `);
+    highlightedContent = highlightedContent.replace(` ${term} `, ` <strong class="${styles['highlighted-term']}">${term}</strong> `);
   });
   return highlightedContent;
 };
