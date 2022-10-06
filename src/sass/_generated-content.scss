@@ -1,0 +1,37 @@
+@use "./typography";
+@use "./settings";
+
+@mixin generated-content() {
+  @include typography.body();
+
+  h1 {
+    @include typography.heading-1();
+  }
+
+  h2 {
+    @include typography.heading-2();
+  }
+
+  h3 {
+    @include typography.heading-3();
+  }
+
+  h4 {
+    @include typography.heading-4();
+  }
+
+  a {
+    border-bottom: 1px dotted settings.$link-decoration;
+    color: settings.$link-decoration;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom-color: settings.$color-primary;
+      color: settings.$color-primary;
+    }
+  }
+
+  span > a:not(:first-child):before {
+    content: "; ";
+  }
+}

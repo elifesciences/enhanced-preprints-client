@@ -1,6 +1,8 @@
 @use "../../../sass/settings";
 @use "../../../sass/generated-content";
+@use "../../../sass/mixins";
 
-.article-body {
+.abstract {
   @include generated-content.generated-content();
+  @include mixins.margin(36, "bottom");
 }
