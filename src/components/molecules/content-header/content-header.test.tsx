@@ -11,6 +11,9 @@ describe('ContentHeader', () => {
         authors={[
           { givenNames: ['Joe'], familyNames: ['Blogs'] },
         ]}
+        institutions={[
+          { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
+        ]}
         doi={'10.1101/123456'}
         title={'title'}/>,
     );
@@ -20,6 +23,7 @@ describe('ContentHeader', () => {
     expect(screen.getByText('important')).toBeInTheDocument();
     expect(screen.getByText('strong')).toBeInTheDocument();
     expect(screen.getByText('Joe Blogs')).toBeInTheDocument();
+    expect(screen.getByText('Charles Xavier\'s School for Gifted Youngsters')).toBeInTheDocument();
     expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
     expect(screen.getByText('title')).toBeInTheDocument();
   });

@@ -61,6 +61,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         strengthOfEvidence={props.metaData.strengthOfEvidence}
         importance={props.metaData.importance}
         authors={props.metaData.authors}
+        institutions={props.metaData.institutions}
         title={props.metaData.title}
       />
     </div>
