@@ -44,3 +44,10 @@
     content: " ";
   }
 }
+.reference__doi {
+  display: block;
+}
+
+.reference__doi_link {
+  @include typography.link-text();
+}
