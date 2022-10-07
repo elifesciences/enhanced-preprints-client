@@ -5,43 +5,42 @@
   list-style: none;
   padding: 0;
 }
+
 .reference-list__item {
   @include mixins.margin(24, "bottom");
   @include typography.body-alternative();
 }
+
 .reference__authors_list {
   display: inline;
   list-style: none;
   padding: 0;
 
   &::after {
-    content: ' '
+    content: " ";
   }
 }
+
 .reference__author {
   display: inline;
 
   &:not(:first-child)::before {
-    content: ', '
+    content: ", ";
   }
 }
+
 .reference__authors_list_suffix::before {
-  content: '('
+  content: "(";
 }
+
 .reference__authors_list_suffix::after {
-  content: ') '
+  content: ") ";
 }
 
-.reference__authors_list_suffix {
-
-}
 .reference__title {
   @include typography.author-list-text();
 
   &::after {
-    content: ' '
+    content: " ";
   }
-}
-.reference__origin {
-
 }
