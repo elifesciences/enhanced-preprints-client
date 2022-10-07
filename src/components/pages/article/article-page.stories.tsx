@@ -38,6 +38,13 @@ ArticlePageStory.args = {
     views: 1,
     citations: 2,
     tweets: 3,
+    institutions: [
+      { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
+      { name: 'Star Labs', address: { addressCountry: 'Star City' } },
+      { name: 'Avengers Tower', address: { addressCountry: 'New York' } },
+      { name: 'Bat Cave', address: { addressCountry: 'Gotham' } },
+      { name: 'Arrow Cave', address: { addressCountry: 'Central City' } },
+    ],
   },
   status: {
     articleType: 'Reviewed Preprint',
