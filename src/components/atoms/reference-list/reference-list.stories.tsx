@@ -73,7 +73,7 @@ ReferenceStory.args = {
     },
     {
       type: 'Article',
-      id: 'c2',
+      id: 'c3',
       authors: [
         { type: 'Person', familyNames: ['Aryan'], givenNames: ['L'] },
         { type: 'Person', familyNames: ['Younessi'], givenNames: ['D'] },
