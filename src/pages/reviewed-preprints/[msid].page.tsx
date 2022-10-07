@@ -9,7 +9,7 @@ import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
 import { Content } from '../../types/content';
 
-export const Page = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
 );
 
@@ -51,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         version: manuscriptConfig.version,
         institutions: metaData.authors.flatMap((author) => author.affiliations),
       },
+      abstract: metaData.abstract,
       content,
       status,
       peerReview,

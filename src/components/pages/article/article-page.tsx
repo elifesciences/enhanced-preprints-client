@@ -11,11 +11,12 @@ import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
+import { Abstract } from '../../atoms/abstract/abstract';
 
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   msid: string,
   version: string,
-  headings: JumpMenuHeading[]
+  headings: JumpMenuHeading[],
 };
 
 export type ArticleStatusProps = {
@@ -49,7 +50,7 @@ export type PeerReviewProps = {
   authorResponse?: Evaluation,
 };
 
-export const ArticlePage = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
       <SiteHeader />
@@ -68,8 +69,9 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, content: Conten
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={1} headings={[{ id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings]} />
+          <JumpToMenu active={0} headings={[{ id: 'abstract', text: 'Abstract' }, { id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings]} />
           <div className={styles['article-body-container']}>
+            <Abstract content={props.abstract} />
             <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
             <ArticleContent content={props.content} />
           </div>
