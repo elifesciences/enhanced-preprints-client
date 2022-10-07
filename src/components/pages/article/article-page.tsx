@@ -3,7 +3,6 @@ import { Heading } from '../../atoms/heading/heading';
 import { Heading as JumpMenuHeading, JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader, ContentHeaderProps } from '../../molecules/content-header/content-header';
-import { ContextualData, ContextualDataProps } from '../../molecules/contextual-data/contextual-data';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -13,7 +12,7 @@ import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-a
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
 
-export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
+export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
   version: string,
   headings: JumpMenuHeading[],
@@ -90,7 +89,6 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
     <aside className={styles['side-section']}>
       <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
       <Timeline events={props.status.timeline}/>
-      <ContextualData citations={props.metaData.citations} tweets={props.metaData.tweets} views={props.metaData.views} />
     </aside>
   </div>
 );

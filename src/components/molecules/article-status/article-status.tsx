@@ -16,15 +16,6 @@ export const ArticleStatus = ({ articleType = defaultArticleType, articleStatus 
       <li className={styles['article-actions__list-item']}>
         <Button text="Download" iconName="download" />
       </li>
-      <li className={styles['article-actions__list-item']}>
-        <Button text="Cite" iconName="format_quote" />
-      </li>
-      <li className={styles['article-actions__list-item']}>
-        <Button text="Follow" iconName="notifications" />
-      </li>
-      <li className={styles['article-actions__list-item']}>
-        <Button text="Share" iconName="share" />
-      </li>
     </ul>
   </div>
 );
