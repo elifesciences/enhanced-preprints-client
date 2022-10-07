@@ -1,5 +1,9 @@
 @use "../../../sass/typography";
 
+.reference-list {
+  list-style: none;
+  padding: 0;
+}
 .reference-list__item {
   @include typography.body-alternative();
 }

@@ -1,4 +1,4 @@
-import styles from './reference.module.scss';
+import styles from './reference-list.module.scss';
 
 export type Address = {
   addressCountry: string,
@@ -20,7 +20,7 @@ export type Publication = {
   volumeNumber?: number,
   isPartOf?: Publication,
 };
-export type ReferenceData = {
+export type Reference = {
   type: 'Article',
   id: string,
   title: string,
@@ -34,7 +34,7 @@ export type ReferenceData = {
 
 const formatName = (author: Author) => `${author.familyNames.join(' ')} ${author.givenNames.join(' ')}`;
 
-export const Reference = ({ reference }: { reference: ReferenceData }): JSX.Element => {
+const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element => {
   const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   return (
@@ -55,5 +55,11 @@ export const Reference = ({ reference }: { reference: ReferenceData }): JSX.Elem
         {reference.pageStart}{reference.pageEnd ? `–${reference.pageEnd}` : ''}
       </span>
     </li>
-  )
+  );
 };
+
+export const ReferenceList = ({ references }: { references: Reference[] }): JSX.Element => (
+  <ul className={styles['reference-list']}>
+    {references.map((reference, index) => <ReferenceListItem key={index} reference={reference} />)}
+  </ul>
+);
