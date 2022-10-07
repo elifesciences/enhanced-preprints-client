@@ -49,6 +49,25 @@ export type PeerReviewProps = {
   authorResponse?: Evaluation,
 };
 
+const getFigures = (content: Content): Content => {
+  if (typeof content === 'undefined') {
+    return '';
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+
+  if (Array.isArray(content)) {
+    return content.map((part) => getFigures(part));
+  }
+  switch (content.type) {
+    case 'Figure':
+      return content;
+    default:
+      return '';
+  }
+};
+
 export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
@@ -77,6 +96,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         </Tab>
         <Tab label="Figures and data">
           <Heading id="figures" headingLevel={2} content="Figures and data" />
+          <ArticleContent content={getFigures(props.content)} />
         </Tab>
         <Tab label="Peer review">
           <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
