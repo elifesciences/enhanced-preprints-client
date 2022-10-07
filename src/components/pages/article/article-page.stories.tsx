@@ -35,9 +35,6 @@ ArticlePageStory.args = {
       { givenNames: ['Oliver'], familyNames: ['Queen'] },
     ],
     headings: [{ id: 's1', text: 'Introduction' }],
-    views: 1,
-    citations: 2,
-    tweets: 3,
     institutions: [
       { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
       { name: 'Star Labs', address: { addressCountry: 'Star City' } },
