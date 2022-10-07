@@ -1,3 +1,4 @@
+import { Heading } from '../heading/heading';
 import styles from './reference-list.module.scss';
 
 export type Address = {
@@ -59,7 +60,10 @@ const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element
 };
 
 export const ReferenceList = ({ references }: { references: Reference[] }): JSX.Element => (
-  <ul className={styles['reference-list']}>
-    {references.map((reference, index) => <ReferenceListItem key={index} reference={reference} />)}
-  </ul>
+  <section>
+    <Heading id="references" headingLevel={2} content="References" />
+    <ul className={styles['reference-list']}>
+      {references.map((reference, index) => <ReferenceListItem key={index} reference={reference} />)}
+    </ul>
+  </section>
 );
