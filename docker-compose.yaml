@@ -29,8 +29,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 2s
-    ports:
-    - 3000:3000
     environment:
       REPO_TYPE: MongoDB
       REPO_CONNECTION: mongodb:27017
