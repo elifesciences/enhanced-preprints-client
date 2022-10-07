@@ -31,7 +31,7 @@ export type Reference = {
   authors: Array<Author>,
   datePublished: string,
   isPartOf?: Publication,
-  identifiers: {
+  identifiers?: {
     type: string,
     name: string,
     propertyID: string,
@@ -39,13 +39,13 @@ export type Reference = {
   }[],
 };
 
-const formatName = (author: Author) => `${author.familyNames.join(' ')} ${author.givenNames.join(' ')}`;
+const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
 
 const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element => {
   const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
 
-  const doiIdentifier = reference.identifiers.find((identifier) => identifier.name === 'doi');
+  const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
 
   return (
     <li id={reference.id} className={styles['reference-list__item']}>
