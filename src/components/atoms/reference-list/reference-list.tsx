@@ -61,7 +61,7 @@ const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element
 
 export const ReferenceList = ({ references }: { references: Reference[] }): JSX.Element => (
   <section>
-    <Heading id="references" headingLevel={2} content="References" />
+    <Heading id="references" headingLevel={1} content="References" />
     <ul className={styles['reference-list']}>
       {references.map((reference, index) => <ReferenceListItem key={index} reference={reference} />)}
     </ul>
