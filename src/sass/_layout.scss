@@ -1,5 +1,9 @@
 @use "settings";
 
+body {
+  background-color: #fff;
+}
+
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -40,12 +44,6 @@
 }
 
 @media only all and (min-width: settings.$breakpoint-large) {
-  .grid-container {
-    display: grid;
-    grid-column-gap: settings.$grid-gutter;
-    grid-template-columns: repeat(12, 1fr);
-    max-width: settings.$max-site-width;
-  }
 
   .grid-header {
     grid-column: 1/13;

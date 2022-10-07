@@ -1,13 +1,172 @@
 @use "../../../sass/mixins";
 @use "../../../sass/settings";
+@use "../../../sass/typography";
 
 .site-header {
-  @include mixins.margin(48, "bottom");
+  @include mixins.margin(48, "top");
+  @include mixins.margin(72, "bottom");
+}
 
-  border-bottom: settings.$border;
+.site-header-container {
+  display: grid;
 }
 
 .site-header__logo {
-  @include mixins.margin(28, "bottom");
-  @include mixins.margin(28, "top");
+  @include mixins.padding(24, "right");
+
+  border-right: 1px solid settings.$divider;
+  grid-column: 1/2;
+}
+
+// Navigation css to be moved to it's own file when basic styling as been done
+
+.nav-primary {
+  display: none;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "left");
+    @include mixins.margin(2, "top");
+
+    display: inline-block;
+    grid-column: 2/7;
+    height: 24px;
+  }
+}
+
+.nav-primary__list {
+  @include mixins.margin(0);
+  @include mixins.padding(0, "left");
+  @include mixins.padding(0, "top");
+
+  display: flex;
+  align-items: top;
+  justify-content: top;
+}
+
+.nav-primary__item {
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.padding(24, "left");
+
+  font-family: settings.$font-family-primary;
+  font-weight: bold;
+  color: settings.$link-decoration;
+  list-style-type: none;
+
+  a {
+    color: settings.$link-decoration;
+    text-decoration: none;
+
+    &:hover {
+      color: settings.$color-primary;
+    }
+  }
+
+  &.nav-primary__item--inactive {
+
+    a {
+      pointer-events: none;
+    }
+  }
+}
+
+.nav-primary__item--first {
+  @include mixins.padding(0, "left");
+  text-indent: -9999px;
+
+  a {
+    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat 0 0;
+    background-size: 24px;
+    display: block;
+    width: 24px;
+
+    &:hover {
+      background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
+      color: settings.$color-primary;
+    }
+  }
+}
+
+.nav-secondary {
+  display: none;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(2, "top");
+
+    display: block;
+    grid-column: 7/13;
+  }
+}
+
+.nav-secondary__list {
+  @include mixins.margin(0);
+  @include mixins.padding(0);
+
+  display: flex;
+  float: right;
+}
+
+.nav-secondary__item {
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.padding(24, "left");
+
+  font-family: settings.$font-family-primary;
+  font-weight: bold;
+  color: settings.$link-decoration;
+  list-style-type: none;
+}
+
+.nav-secondary__item--search {
+  @include mixins.padding(30, "right");
+
+  text-indent: -9999px;
+
+  background: url('../../../images/menu/search.svg') no-repeat right 0;
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    text-indent: 0;
+
+    a {
+      color: settings.$link-decoration;
+      text-decoration: none;
+
+      &:hover {
+        color: settings.$color-primary;
+      }
+    }
+  }
+}
+
+.nav-secondary__item--alert {
+  @include mixins.padding(30, "right");
+
+  background: url('../../../images/menu/alerts.svg') no-repeat right 0;
+
+  a {
+    display: block;
+    color: settings.$link-decoration;
+    text-decoration: none;
+
+    &:hover {
+      color: settings.$color-primary;
+    }
+  }
+}
+
+.block-button {
+  @include typography.font-size-and-vertical-height(11, 22);
+
+  border-radius: 3px;
+  color: settings.$color-text;
+  font-weight: normal;
+  height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &.block-button__variant-one {
+    @include mixins.padding(3 6);
+
+    background-color: settings.$color-primary;
+    color: #fff;
+  }
 }
