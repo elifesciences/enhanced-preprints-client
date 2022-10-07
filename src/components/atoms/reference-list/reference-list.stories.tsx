@@ -1,8 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReferenceList } from './reference-list';
+import { exampleReferences } from './reference-list.test';
 
 export default {
-  title: 'Atoms/Reference',
+  title: 'Atoms/Reference List',
   component: ReferenceList,
 } as ComponentMeta<typeof ReferenceList>;
 

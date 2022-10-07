@@ -38,7 +38,7 @@ const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element
   const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   return (
-    <li className={styles['reference-list__item']}>
+    <li id={reference.id} className={styles['reference-list__item']}>
       <ol className={styles.reference__authors_list}>
         {reference.authors.map((author, index) => (
           <li key={index} className={styles.reference__author}>
