@@ -31,13 +31,22 @@ export type Reference = {
   authors: Array<Author>,
   datePublished: string,
   isPartOf?: Publication,
+  identifiers?: {
+    type: string,
+    name: string,
+    propertyID: string,
+    value: string,
+  }[],
 };
 
-const formatName = (author: Author) => `${author.familyNames.join(' ')} ${author.givenNames.join(' ')}`;
+const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
 
 const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element => {
   const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
+
+  const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
+
   return (
     <li id={reference.id} className={styles['reference-list__item']}>
       <ol className={styles.reference__authors_list}>
@@ -55,6 +64,11 @@ const ReferenceListItem = ({ reference }: { reference: Reference }): JSX.Element
         {referenceVolume ? <b>{referenceVolume}:</b> : ''}
         {reference.pageStart}{reference.pageEnd ? `–${reference.pageEnd}` : ''}
       </span>
+      {doiIdentifier && <span className={styles.reference__doi}>
+            <a href={`https://doi.org/${doiIdentifier.value}`} className={styles.reference__doi_link}>
+            https://doi.org/{doiIdentifier.value}
+            </a>
+        </span>}
     </li>
   );
 };

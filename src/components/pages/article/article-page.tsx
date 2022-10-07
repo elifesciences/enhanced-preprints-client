@@ -11,10 +11,12 @@ import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
+import { Reference, ReferenceList } from '../../atoms/reference-list/reference-list';
 
 export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
   version: string,
+  references: Reference[],
   headings: JumpMenuHeading[],
 };
 
@@ -87,11 +89,12 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={0} headings={[{ id: 'abstract', text: 'Abstract' }, { id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings]} />
+          <JumpToMenu active={0} headings={[{ id: 'abstract', text: 'Abstract' }, { id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings, { id: 'references', text: 'References' }]} />
           <div className={styles['article-body-container']}>
             <Abstract content={props.abstract} />
             <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
             <ArticleContent content={props.content} />
+            <ReferenceList references={props.metaData.references} />
           </div>
         </Tab>
         <Tab label="Figures and data">
