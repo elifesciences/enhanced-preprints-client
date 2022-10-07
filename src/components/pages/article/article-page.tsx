@@ -17,6 +17,7 @@ import { Reference, ReferenceList } from '../../atoms/reference-list/reference-l
 export type ArticlePageProps = ContentHeaderProps & ContextualDataProps & {
   msid: string,
   version: string,
+  references: Reference[],
   headings: JumpMenuHeading[],
 };
 
@@ -51,7 +52,7 @@ export type PeerReviewProps = {
   authorResponse?: Evaluation,
 };
 
-export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps, references: Reference[] }): JSX.Element => (
+export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <div className={`${styles['grid-container']} ${styles['article-page']}`}>
     <div className={styles['grid-header']}>
       <SiteHeader />
@@ -74,7 +75,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
             <Abstract content={props.abstract} />
             <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
             <ArticleContent content={props.content} />
-            <ReferenceList references={props.references} />
+            <ReferenceList references={props.metaData.references} />
           </div>
         </Tab>
         <Tab label="Figures and data">

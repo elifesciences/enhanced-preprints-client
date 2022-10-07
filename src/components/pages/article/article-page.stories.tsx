@@ -32,6 +32,14 @@ const exampleReferences: Reference[] = [
     pageEnd: 2843,
     pageStart: 2831,
     title: 'Resurgent Na currents in four classes of neurons of the cerebellum',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.7554/eLife.16135',
+      },
+    ],
   },
   {
     type: 'Article',
@@ -52,6 +60,14 @@ const exampleReferences: Reference[] = [
     isPartOf: { type: 'Periodical', name: 'Int J Mol Sci' },
     pageStart: 21,
     title: 'The Role of Estrogen Receptors in Cardiovascular Disease',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.7554/eLife.16136',
+      },
+    ],
   },
 ];
 
@@ -81,6 +97,7 @@ ArticlePageStory.args = {
       { givenNames: ['Oliver'], familyNames: ['Queen'] },
     ],
     headings: [{ id: 's1', text: 'Introduction' }],
+    references: exampleReferences,
     views: 1,
     citations: 2,
     tweets: 3,
@@ -108,5 +125,4 @@ ArticlePageStory.args = {
     },
     reviews: [],
   },
-  references: exampleReferences,
 };
