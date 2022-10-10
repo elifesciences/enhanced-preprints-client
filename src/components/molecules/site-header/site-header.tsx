@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './site-header.module.scss';
 
-const Overlay = (): JSX.Element => createPortal(<div className="overlay" id="overlayMainMenu" style={{ height: '100vh', zIndex: 30 }}></div>, document.getElementsByTagName('BODY')[0]);
+const Overlay = (): JSX.Element => createPortal(<div className={styles['overlay']} id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
 export const SiteHeader = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
