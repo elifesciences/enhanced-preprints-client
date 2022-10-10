@@ -11,6 +11,22 @@ export const SiteHeader = (): JSX.Element => (
           width="88"
           height="35"
       />
+
+      <header className="site-header clearfix" id="siteHeader">
+        <div className="site-header__title{{#borderVariant}}-border{{/borderVariant}} clearfix" role="banner">
+          <div className="site-header__skip_to_content">
+            <a href="#maincontent" className="site-header__skip_to_content__link button button--default">Skip to Content</a>
+          </div>
+          <a href="{{homePagePath}}" className="site-header__logo_link">
+            <picture className="site-header__logo_link_image">
+              <source srcSet="../img/patterns/organisms/elife-logo-xs.svg" type="image/svg+xml" />
+              <img src="/img/patterns/organisms/elife-logo-xs@1x.png{{/assetRewrite}}" alt="eLife logo" className="site-header__logo_link"/>
+            </picture>
+            <span className="visuallyhidden" >eLife home page</span>
+          </a>
+        </div>
+      </header>
+
       <nav className={styles['nav-primary']}>
         <ul className={styles['nav-primary__list']}>
           <li className={`${styles["nav-primary__item"]} ${styles["nav-primary__item--first"]}`}>
