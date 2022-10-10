@@ -207,7 +207,10 @@
 }
 
 .main-menu__list_item {
+  @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px, 48);
   @include mixins.padding(24, "bottom");
+
+  font-family: settings.$font-family-primary;
 
   display: block;
   line-height: 0;
@@ -327,10 +330,37 @@
 // Overlay styling
 
 .overlay {
-  background-color: rgba(0, 0 , 0, 0.8);
+  background-color: rgb(0 0 0 / 80%);
   height: 100vh;
   position: fixed;
   top: 0;
   width: 100vw;
   z-index: 10;
+}
+
+.js .main-menu .to-top-link {
+  display: none;
+}
+
+.wrapper {
+  @include mixins.wrapper();
+}
+
+.site-header__skip_to_content {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  white-space: nowrap;
+}
+
+.site-header__skip_to_content__link {
+  @include mixins.visuallyhidden();
+  @include mixins.padding(15 36 14);
+  z-index: 50;
+
+  &:focus {
+    @include mixins.visuallyunhidden();
+    position: absolute;
+  }
 }

@@ -17,51 +17,37 @@ export const SiteHeader = (): JSX.Element => {
           height="35"
         />
 
-        <header className="site-header" id="siteHeader">
-          <div className="site-header__title{{#borderVariant}}-border{{/borderVariant}} clearfix" role="banner">
-            <div className="site-header__skip_to_content">
-              <a href="#maincontent" className="site-header__skip_to_content__link button button--default">Skip to Content</a>
-            </div>
-            <a href="{{homePagePath}}" className="site-header__logo_link">
-              <picture className="site-header__logo_link_image">
-                <source srcSet="../img/patterns/organisms/elife-logo-xs.svg" type="image/svg+xml"/>
-                <img src="/img/patterns/organisms/elife-logo-xs@1x.png{{/assetRewrite}}" alt="eLife logo" className="site-header__logo_link"/>
-              </picture>
-              <span className="visuallyhidden">eLife home page</span>
-            </a>
-          </div>
-        </header>
         {showMenu &&
             <>
               <Overlay/>
-              <div className="main-menu main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
-                <nav className="main-menu__container" role="navigation">
-                  <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
-                  <h3 className="list-heading">Menu</h3>
-                  <ul className="main-menu__list">
-                    <li className="main-menu__list_item">
-                      <a href="/subjects" className="main-menu__list_link">Research categories</a>
+              <div className={`${styles['wrapper']} ${styles['main-menu']} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
+                <nav className={styles['main-menu__container']} role="navigation">
+                  <button className={styles['main-menu__close_control']} id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
+                  <h3 className={styles['list-heading']}>Menu</h3>
+                  <ul className={styles['main-menu__list']}>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="/subjects" className={styles['main-menu__list_link']}>Research categories</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className={styles['main-menu__list_link']}>Author guide</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className="main-menu__list_link">Reviewer guide</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className={styles['main-menu__list_link']}>Reviewer guide</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="/about" className="main-menu__list_link">About</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="/about" className={styles['main-menu__list_link']}>About</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="/inside-elife" className="main-menu__list_link">Inside eLife</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="/inside-elife" className={styles['main-menu__list_link']}>Inside eLife</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="/community" className="main-menu__list_link">Community</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="/community" className={styles['main-menu__list_link']}>Community</a>
                     </li>
-                    <li className="main-menu__list_item">
-                      <a href="/labs" className="main-menu__list_link">Innovation</a>
+                    <li className={styles['main-menu__list_item']}>
+                      <a href="/labs" className={styles['main-menu__list_link']}>Innovation</a>
                     </li>
                   </ul>
-                  <a href="#siteHeader" className="to-top-link">Back to top</a>
+                  <a href="#siteHeader" className={styles['to-top-link']}>Back to top</a>
                 </nav>
               </div>
             </>
