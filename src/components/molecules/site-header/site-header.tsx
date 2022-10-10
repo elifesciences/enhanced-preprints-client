@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './site-header.module.scss';
+
+const Overlay = (): JSX.Element => createPortal(<div className="overlay" id="overlayMainMenu" style={{ height: '100vh', zIndex: 30 }}></div>, document.getElementsByTagName('BODY')[0]);
 
 export const SiteHeader = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,44 +24,47 @@ export const SiteHeader = (): JSX.Element => {
             </div>
             <a href="{{homePagePath}}" className="site-header__logo_link">
               <picture className="site-header__logo_link_image">
-                <source srcSet="../img/patterns/organisms/elife-logo-xs.svg" type="image/svg+xml" />
+                <source srcSet="../img/patterns/organisms/elife-logo-xs.svg" type="image/svg+xml"/>
                 <img src="/img/patterns/organisms/elife-logo-xs@1x.png{{/assetRewrite}}" alt="eLife logo" className="site-header__logo_link"/>
               </picture>
-              <span className="visuallyhidden" >eLife home page</span>
+              <span className="visuallyhidden">eLife home page</span>
             </a>
           </div>
         </header>
-        { showMenu &&
-          <div className="main-menu main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
-            <nav className="main-menu__container" role="navigation">
-              <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
-              <h3 className="list-heading">Menu</h3>
-              <ul className="main-menu__list">
-                <li className="main-menu__list_item">
-                  <a href="/subjects" className="main-menu__list_link">Research categories</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className="main-menu__list_link">Reviewer guide</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="/about" className="main-menu__list_link">About</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="/inside-elife" className="main-menu__list_link">Inside eLife</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="/community" className="main-menu__list_link">Community</a>
-                </li>
-                <li className="main-menu__list_item">
-                  <a href="/labs" className="main-menu__list_link">Innovation</a>
-                </li>
-              </ul>
-              <a href="#siteHeader" className="to-top-link">Back to top</a>
-            </nav>
-          </div>
+        {showMenu &&
+            <>
+              <Overlay/>
+              <div className="main-menu main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
+                <nav className="main-menu__container" role="navigation">
+                  <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
+                  <h3 className="list-heading">Menu</h3>
+                  <ul className="main-menu__list">
+                    <li className="main-menu__list_item">
+                      <a href="/subjects" className="main-menu__list_link">Research categories</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className="main-menu__list_link">Reviewer guide</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="/about" className="main-menu__list_link">About</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="/inside-elife" className="main-menu__list_link">Inside eLife</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="/community" className="main-menu__list_link">Community</a>
+                    </li>
+                    <li className="main-menu__list_item">
+                      <a href="/labs" className="main-menu__list_link">Innovation</a>
+                    </li>
+                  </ul>
+                  <a href="#siteHeader" className="to-top-link">Back to top</a>
+                </nav>
+              </div>
+            </>
         }
         <nav className={styles['nav-primary']}>
           <ul className={styles['nav-primary__list']}>
