@@ -8,7 +8,7 @@
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.margin(48, "top");
-    @include mixins.margin(72, "bottom");
+    @include mixins.margin(54, "bottom");
   }
 }
 
