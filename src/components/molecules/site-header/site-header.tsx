@@ -8,12 +8,12 @@ export const SiteHeader = (): JSX.Element => (
         className={styles['site-header__logo']}
         src="/elife-logo.svg"
           alt="eLife logo"
-          width="80"
-          height="30"
+          width="88"
+          height="35"
       />
       <nav className={styles['nav-primary']}>
         <ul className={styles['nav-primary__list']}>
-          <li className={`${styles["nav-secondary__item"]} ${styles["nav-primary__item--first"]}`}>
+          <li className={`${styles["nav-primary__item"]} ${styles["nav-primary__item--first"]}`}>
             <a href="#mainMenu">Menu</a>
           </li>
           <li className={styles['nav-primary__item']}>
@@ -39,7 +39,7 @@ export const SiteHeader = (): JSX.Element => (
           <li className={`${styles["nav-secondary__item"]} ${styles["nav-secondary__item--alert"]}`}>
             <a href="#">Alerts</a>
           </li>
-          <li className={`${styles["nav-secondary__item"]} ${styles["nav-secondary__item--hide-narrow"]}`}>
+          <li className={styles['nav-secondary__item']}>
             <a href="#" className={`${styles["block-button"]} ${styles["block-button__variant-one"]}`}>Submit your research</a>
           </li>
         </ul>
