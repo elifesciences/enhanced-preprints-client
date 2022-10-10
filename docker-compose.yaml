@@ -22,7 +22,7 @@ services:
 
   # services for API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-05a4bb01-20220929.2124
+    image: ghcr.io/elifesciences/enhanced-preprints:master-ea0c883d-20221007.1315
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
@@ -36,8 +36,10 @@ services:
       REPO_PASSWORD: testtest
       IIIF_SERVER: http://image-server:8182
       IMPORT_DIR_PATH: /opt/epp-data/data/enhanced-preprints-data/data/10.1101/
+    ports:
+      - 3000:3000
     volumes:
-    - import_data:/opt/epp-data
+      - import_data:/opt/epp-data
 
   api-fetch-data:
     image: k8s.gcr.io/git-sync/git-sync:v3.5.0

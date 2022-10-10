@@ -25,6 +25,11 @@ type CiteContent = DecoratedContent & {
   target: string,
 };
 
+type CiteGroupContent = {
+  type: 'CiteGroup',
+  items: CiteContent[],
+};
+
 type HeadingContent = DecoratedContent & {
   type: 'Heading',
   id: string,
@@ -70,6 +75,7 @@ type ContentPart =
   DateContent |
   LinkContent |
   CiteContent |
+  CiteGroupContent |
   FigureContent |
   ImageObjectContent;
 

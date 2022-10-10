@@ -25,14 +25,14 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1}/>);
   });
 
-  it('generates the expected html when passed a Cite', () => {
+  it('generates the expected html when passed a Cite (including using page fragment target)', () => {
     const result = contentToJsx({
       type: 'Cite',
       content: 'I am a citation',
       target: 'target',
     });
 
-    expect(result).toStrictEqual(<a href={'target'}>I am a citation</a>);
+    expect(result).toStrictEqual(<>(<a href={'#target'}>I am a citation</a>)</>);
   });
 
   it('generates the expected html when passed a Link', () => {

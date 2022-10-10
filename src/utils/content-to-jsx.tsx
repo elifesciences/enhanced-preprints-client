@@ -21,6 +21,9 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
     case 'Heading':
       return <Heading id={content.id} content={content.content} headingLevel={content.depth}/>;
     case 'Cite':
+      return <>(<a key={index} href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</>;
+    case 'CiteGroup':
+      return <span>({content.items.map((citeContent) => <a key={index} href={`#${citeContent.target}`}>{contentToJsx(citeContent.content)}</a>)})</span>;
     case 'Link':
       return <a key={index} href={content.target}>{contentToJsx(content.content)}</a>;
     case 'Paragraph':
