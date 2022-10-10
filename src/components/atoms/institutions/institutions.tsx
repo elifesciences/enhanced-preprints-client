@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './institutions.module.scss';
 
-type Institution = {
+export type Institution = {
   name: string,
   address?: {
     addressCountry: string,

@@ -6,10 +6,10 @@ import {
   PeerReviewProps,
 } from '../../components/pages/article/article-page';
 import { config } from '../../config';
-import { msids } from '../../manuscripts';
+import { manuscripts } from '../../manuscripts';
 import { Content } from '../../types/content';
 
-export const Page = (props: { metaData: ArticlePageProps, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
 );
 
@@ -25,25 +25,33 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { props: {} };
   }
 
-  if (!msids[msid]) {
+  if (!manuscripts[msid]) {
     console.log('Cannot find msid configured'); // eslint-disable-line no-console
     return { props: {} };
   }
 
+  const manuscriptConfig = manuscripts[msid];
+
   // map msid to preprint doi
-  const { preprintDoi } = msids[msid];
+  const { preprintDoi } = manuscriptConfig;
 
   const [metaData, content, peerReview, status] = await Promise.all([
     await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
     await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
     await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
     // replace with call for data
-    msids[msid].status,
+    manuscripts[msid].status,
   ]);
 
   return {
     props: {
-      metaData,
+      metaData: {
+        ...metaData,
+        msid,
+        version: manuscriptConfig.version,
+        institutions: metaData.authors.flatMap((author: { affiliations: { name: string, address?: { addressCountry: string } }, }) => author.affiliations),
+      },
+      abstract: metaData.abstract,
       content,
       status,
       peerReview,
