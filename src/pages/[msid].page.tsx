@@ -4,10 +4,10 @@ import {
   ArticlePageProps,
   ArticleStatusProps,
   PeerReviewProps,
-} from '../../components/pages/article/article-page';
-import { config } from '../../config';
-import { manuscripts } from '../../manuscripts';
-import { Content } from '../../types/content';
+} from '../components/pages/article/article-page';
+import { config } from '../config';
+import { manuscripts } from '../manuscripts';
+import { Content } from '../types/content';
 
 export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const { preprintDoi } = manuscriptConfig;
 
   const [metaData, content, peerReview, status] = await Promise.all([
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
     // replace with call for data
     manuscripts[msid].status,
   ]);
