@@ -13,7 +13,7 @@ const nextConfig = {
         destination: '/_next/:path*',
       },
       {
-        source: '/reviewed-preprints/:path([^\\d]+)',
+        source: '/reviewed-preprints/:path((?!\\d+v{0,1}\\d*))',
         destination: '/:path*',
       },
     ],
