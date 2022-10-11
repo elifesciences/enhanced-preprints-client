@@ -2,10 +2,23 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  rewrites: () => [
-  ],
+  rewrites: async () => ({
+    beforeFiles: [
+      {
+        source: '/:msid(\\d+)',
+        destination: '/reviewed-preprints/:msid',
+      },
+      {
+        source: '/reviewed-preprints/_next/:path*',
+        destination: '/_next/:path*',
+      },
+      {
+        source: '/reviewed-preprints/:path([^\\d]+)',
+        destination: '/:path*',
+      },
+    ],
+  }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
-  basePath: '/reviewed-preprints',
 }
 
 module.exports = nextConfig

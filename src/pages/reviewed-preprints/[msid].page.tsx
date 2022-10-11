@@ -4,10 +4,10 @@ import {
   ArticlePageProps,
   ArticleStatusProps,
   PeerReviewProps,
-} from '../components/pages/article/article-page';
-import { config } from '../config';
-import { manuscripts } from '../manuscripts';
-import { Content } from '../types/content';
+} from '../../components/pages/article/article-page';
+import { config } from '../../config';
+import { manuscripts } from '../../manuscripts';
+import { Content } from '../../types/content';
 
 export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
