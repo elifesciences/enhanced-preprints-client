@@ -143,4 +143,64 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     version: '1',
     ...preprintConfigs['10.1101/2022.07.26.501569'],
   },
+  '80993': { // eslint-disable-line quote-props
+    msid: '80993',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.28.493855'],
+  },
+  '80993v1': { // eslint-disable-line quote-props
+    msid: '80993',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.28.493855'],
+  },
+  '80984': { // eslint-disable-line quote-props
+    msid: '80984',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.06.30.498369'],
+  },
+  '80984v1': { // eslint-disable-line quote-props
+    msid: '80984',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.06.30.498369'],
+  },
+  '80729': { // eslint-disable-line quote-props
+    msid: '80729',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.30.22275761'],
+  },
+  '80729v1': { // eslint-disable-line quote-props
+    msid: '80729',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.30.22275761'],
+  },
+  '81727': { // eslint-disable-line quote-props
+    msid: '81727',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.07.21.500925'],
+  },
+  '81727v1': { // eslint-disable-line quote-props
+    msid: '81727',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.07.21.500925'],
+  },
+  '81274': { // eslint-disable-line quote-props
+    msid: '81274',
+    version: '1',
+    ...preprintConfigs['10.1101/2020.07.27.223354'],
+  },
+  '81274v1': { // eslint-disable-line quote-props
+    msid: '81274',
+    version: '1',
+    ...preprintConfigs['10.1101/2020.07.27.223354'],
+  },
+  '81535': { // eslint-disable-line quote-props
+    msid: '81535',
+    version: '1',
+    ...preprintConfigs['10.1101/2021.11.12.468444'],
+  },
+  '81535v1': { // eslint-disable-line quote-props
+    msid: '81535',
+    version: '1',
+    ...preprintConfigs['10.1101/2021.11.12.468444'],
+  },
 };
