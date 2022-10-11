@@ -27,7 +27,6 @@
 // Navigation css to be moved to it's own file when basic styling as been done
 
 .nav-primary {
-  display: none;
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(-15, "left");
@@ -49,29 +48,12 @@
   justify-content: top;
 }
 
-.nav-primary__item--first {
-  @include mixins.padding(0, "left");
-
-  text-indent: -9999px;
-
-  a {
-    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat 0 0;
-    background-size: 24px;
-    display: block;
-    width: 24px;
-
-    &:hover {
-      background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
-      color: settings.$color-primary;
-    }
-  }
-}
-
 .nav-primary__item {
   @include typography.font-size-and-vertical-height(14);
   @include mixins.padding(24, "left");
 
   color: settings.$link-decoration;
+  display: none;
   font-family: settings.$font-family-primary;
   font-weight: bold;
   list-style-type: none;
@@ -89,6 +71,31 @@
     a {
       pointer-events: none;
     }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    display: list-item;
+  }
+}
+
+.nav-primary__item--first {
+  @include mixins.padding(0, "left");
+  display: list-item;
+
+  a {
+    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat 0 0;
+    background-size: 24px;
+    display: block;
+    width: 24px;
+
+    &:hover {
+      background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
+      color: settings.$color-primary;
+    }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    text-indent: -9999px;
   }
 }
 
@@ -275,6 +282,7 @@
 
   &.main-menu--shown {
     background-color: #fff;
+    box-sizing: border-box;
     color: settings.$color-text;
     display: block;
     float: left;
