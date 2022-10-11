@@ -12,8 +12,8 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-03-04' },
         { name: 'Preprint posted', date: '2022-03-05' },
+        { name: 'Sent for peer review', date: '2022-03-04' },
       ],
     },
   },
@@ -23,8 +23,8 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-06-24' },
         { name: 'Preprint posted', date: '2022-06-26' },
+        { name: 'Sent for peer review', date: '2022-06-24' },
       ],
     },
   },
@@ -34,8 +34,8 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-07-26' },
         { name: 'Preprint posted', date: '2022-07-28' },
+        { name: 'Sent for peer review', date: '2022-07-26' },
       ],
     },
   },
@@ -45,7 +45,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-12-07' },
+        { name: 'Sent for peer review', date: '2022-07-12' },
         { name: 'Preprint posted', date: '2022-05-29' },
       ],
     },
@@ -56,8 +56,8 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-07-01' },
         { name: 'Preprint posted', date: '2022-07-02' },
+        { name: 'Sent for peer review', date: '2022-07-01' },
       ],
     },
   },
@@ -78,8 +78,8 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
-        { name: 'Sent for peer review', date: '2022-07-21' },
         { name: 'Preprint posted', date: '2022-07-22' },
+        { name: 'Sent for peer review', date: '2022-07-21' },
       ],
     },
   },
