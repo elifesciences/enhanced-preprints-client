@@ -5,7 +5,7 @@ const nextConfig = {
   rewrites: async () => ({
     beforeFiles: [
       {
-        source: '/:msid(\\d+)',
+        source: '/:msid(\\d+v{0,1}\\d*)',
         destination: '/reviewed-preprints/:msid',
       },
       {
