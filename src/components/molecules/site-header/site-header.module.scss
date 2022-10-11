@@ -3,7 +3,7 @@
 @use "../../../sass/typography";
 
 .site-header {
-  @include mixins.margin(36, "top");
+  @include mixins.margin(30, "top");
   @include mixins.margin(36, "bottom");
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
@@ -13,21 +13,18 @@
 }
 
 .site-header-container {
-  display: grid;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .site-header__logo {
-  @include mixins.margin(6, "top");
   @include mixins.padding(24, "right");
-
-  border-right: 1px solid settings.$divider;
-  grid-column: 1/2;
 }
 
 // Navigation css to be moved to it's own file when basic styling as been done
 
 .nav-primary {
-
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(-15, "left");
     @include mixins.margin(13, "top");
@@ -83,7 +80,8 @@
   display: list-item;
 
   a {
-    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat 0 0;
+    @include mixins.padding(48, "right");
+    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat right 0;
     background-size: 24px;
     display: block;
     width: 24px;
@@ -201,12 +199,13 @@
 }
 
 .main-menu__title {
-  @include typography.font-size-and-vertical-height(14);
-  @include mixins.padding(5, "bottom");
+  @include mixins.padding(30, "top");
+  @include mixins.padding(18, "bottom");
+  @include mixins.padding(0, "left");
 
-  font-family: settings.$font-family-primary;
-  font-weight: bold;
-  text-transform: uppercase;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .main-menu__list {
@@ -255,13 +254,11 @@
 .main-menu__close_control {
   @include typography.font-size-and-vertical-height(14, 24);
   @include mixins.padding(0);
-  @include mixins.margin(8, "top");
 
-  background: url("../../../images/menu/close.svg") no-repeat 49px 3px;
+  background: url("../../../images/menu/close.svg") no-repeat 49px 5px;
   background-size: 14px;
   border: none;
   color: settings.$color-text;
-  float: right;
   font-family: settings.$font-family-primary;
   font-weight: bold;
   text-align: left;
@@ -307,7 +304,6 @@
 }
 
 .main-menu__container {
-  @include mixins.margin(30, "top");
 
   @media only screen and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(42, "top");

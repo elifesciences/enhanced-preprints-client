@@ -21,14 +21,16 @@ export const SiteHeader = (): JSX.Element => {
             <>
               <Overlay/>
               <div className={`${styles['wrapper']} ${styles['main-menu']} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
-                <nav className={styles['main-menu__container']} role="navigation">
-                  <button className={styles['main-menu__close_control']} id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
+                <div className={styles['main-menu__title']}>
                   <img
                       src="/elife-logo.svg"
                       alt="eLife logo"
                       width="88"
                       height="35"
                   />
+                  <button className={styles['main-menu__close_control']} id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
+                </div>
+                <nav className={styles['main-menu__container']} role="navigation">
                   <ul className={styles['main-menu__list']}>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']}`}>
                       <a href="https://elifesciences.org/" className={styles['main-menu__list_link']}>Home</a>
