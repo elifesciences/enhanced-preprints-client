@@ -30,8 +30,9 @@
 
 .nav-primary {
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(-15, "left");
+    @include mixins.margin(20, "left");
 
+    border-left: settings.$border;
     display: inline-block;
     height: 24px;
   }
@@ -99,6 +100,10 @@
 
   @media only all and (min-width: settings.$breakpoint-large) {
     text-indent: -9999px;
+
+    a {
+      @include mixins.padding(24, "right");
+    }
   }
 }
 
