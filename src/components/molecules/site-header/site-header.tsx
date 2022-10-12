@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import styles from './site-header.module.scss';
 import logo from '../../../../public/elife-logo.svg';
 
-const Overlay = (): JSX.Element => createPortal(<div className={styles['overlay']} id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
+const Overlay = (): JSX.Element => createPortal(<div className={styles.overlay} id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
 export const SiteHeader = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
@@ -22,7 +22,7 @@ export const SiteHeader = (): JSX.Element => {
         {showMenu &&
             <>
               <Overlay/>
-              <div className={`${styles['wrapper']} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
+              <div className={`${styles.wrapper} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
                 <div className={styles['main-menu__title']}>
                   <Image
                       src={logo}
