@@ -4,9 +4,14 @@
 
 .jump-menu {
   @media only all and (min-width: settings.$breakpoint-large) {
-    grid-column: 1/3;
-
     @include mixins.margin(24, "right");
+    @include mixins.margin(75, "top");
+
+    align-self: flex-start;
+    grid-column: 1/3;
+    position: sticky;
+    top: 96px;
+
   }
 }
 
