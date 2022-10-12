@@ -40,13 +40,6 @@
 }
 
 @media only all and (min-width: settings.$breakpoint-large) {
-  .grid-container {
-    display: grid;
-    grid-column-gap: settings.$grid-gutter;
-    grid-template-columns: repeat(12, 1fr);
-    max-width: settings.$max-site-width;
-  }
-
   .grid-header {
     grid-column: 1/13;
   }
@@ -57,8 +50,12 @@
   }
 
   .side-section {
+    align-self: flex-start;
     grid-column: 10/13;
     grid-row: 2/4;
+    margin-top: 75px;
+    position: sticky;
+    top: 96px;
   }
 
   .primary-section {

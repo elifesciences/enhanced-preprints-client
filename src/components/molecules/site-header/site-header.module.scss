@@ -1,13 +1,377 @@
 @use "../../../sass/mixins";
 @use "../../../sass/settings";
+@use "../../../sass/typography";
 
 .site-header {
-  @include mixins.margin(48, "bottom");
+  @include mixins.margin(30, "top");
+  @include mixins.margin(36, "bottom");
 
-  border-bottom: settings.$border;
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.margin(48, "top");
+    @include mixins.margin(54, "bottom");
+  }
+}
+
+.site-header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    justify-content: unset;
+  }
 }
 
 .site-header__logo {
-  @include mixins.margin(28, "bottom");
-  @include mixins.margin(28, "top");
+  @include mixins.padding(24, "right");
+}
+
+// Navigation css to be moved to it's own file when basic styling as been done
+
+.nav-primary {
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(-15, "left");
+
+    display: inline-block;
+    height: 24px;
+  }
+}
+
+.nav-primary__list {
+  @include mixins.margin(0);
+  @include mixins.padding(0, "left");
+  @include mixins.padding(0, "top");
+
+  align-items: top;
+  display: flex;
+  justify-content: top;
+}
+
+/* stylelint-disable no-descending-specificity */
+.nav-primary__item {
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.padding(24, "left");
+
+  color: settings.$link-decoration;
+  display: none;
+  font-family: settings.$font-family-primary;
+  font-weight: bold;
+  list-style-type: none;
+
+  a {
+    color: settings.$link-decoration;
+    text-decoration: none;
+
+    &:hover {
+      color: settings.$color-primary;
+    }
+  }
+
+  &.nav-primary__item--inactive {
+    a {
+      pointer-events: none;
+    }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    display: list-item;
+  }
+}
+
+.nav-primary__item--first {
+  @include mixins.padding(0, "left");
+
+  display: list-item;
+
+  a {
+    @include mixins.padding(48, "right");
+
+    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat right 0;
+    background-size: 24px;
+    display: block;
+    width: 24px;
+
+    &:hover {
+      background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
+      color: settings.$color-primary;
+    }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    text-indent: -9999px;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */
+
+.nav-secondary {
+  @include mixins.margin(10, "top");
+
+  display: none;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "top");
+
+    display: block;
+    margin-left: auto;
+  }
+}
+
+.nav-secondary__list {
+  @include mixins.margin(0);
+  @include mixins.padding(0);
+
+  display: flex;
+  float: right;
+}
+
+.nav-secondary__item {
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.margin(2, "top");
+  @include mixins.padding(24, "left");
+
+  color: settings.$link-decoration;
+  font-family: settings.$font-family-primary;
+  font-weight: bold;
+  list-style-type: none;
+}
+
+.nav-secondary__item--search {
+  @include mixins.padding(30, "right");
+
+  background: url("../../../images/menu/search.svg") no-repeat right 0;
+  background-size: 21px;
+  text-indent: -9999px;
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    text-indent: 0;
+
+    a {
+      color: settings.$link-decoration;
+      text-decoration: none;
+
+      &:hover {
+        color: settings.$color-primary;
+      }
+    }
+  }
+}
+
+.nav-secondary__item--alert {
+  @include mixins.padding(30, "right");
+
+  background: url("../../../images/menu/alerts.svg") no-repeat right 0;
+  background-size: 21px;
+  text-indent: -9999px;
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    text-indent: 0;
+
+    a {
+      color: settings.$link-decoration;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        color: settings.$color-primary;
+      }
+    }
+  }
+}
+
+.block-button {
+  @include typography.font-size-and-vertical-height(11, 22);
+
+  border-radius: 3px;
+  color: settings.$color-text;
+  font-weight: normal;
+  height: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &.block-button__variant-one {
+    @include mixins.margin(1, "top");
+    @include mixins.padding(5 9 3 9);
+
+    background-color: settings.$color-primary;
+    color: #fff;
+  }
+}
+
+// modal menu
+
+.main-menu__section {
+  @include mixins.padding(15, "bottom");
+}
+
+.main-menu__title {
+  @include mixins.padding(18, "bottom");
+  @include mixins.padding(0, "left");
+  @include mixins.margin(30, "top");
+
+  @media only screen and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(42, "top");
+  }
+
+  @media only screen and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.margin(52, "top");
+  }
+
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-menu__list {
+  @include mixins.padding(0, "left");
+}
+
+.main-menu__list_item {
+  @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px, 48);
+  @include mixins.padding(24, "bottom");
+
+  display: block;
+  font-family: settings.$font-family-primary;
+  line-height: 0;
+  text-align: left;
+
+  @media only screen and (min-width: settings.$breakpoint-large) {
+    &.hidden-wide {
+      display: none;
+    }
+  }
+
+  &.end-of-group {
+    @include mixins.margin(24, "bottom");
+
+    border-bottom: settings.$border;
+  }
+
+  &:last-child {
+    @include mixins.padding(48, "bottom");
+  }
+}
+
+.main-menu__list_link {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: settings.$color-text;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: settings.$color-primary;
+  }
+}
+
+.main-menu__close_control {
+  @include typography.font-size-and-vertical-height(14, 24);
+  @include mixins.padding(0);
+
+  background: url("../../../images/menu/close.svg") no-repeat 49px 5px;
+  background-size: 14px;
+  border: none;
+  color: settings.$color-text;
+  font-family: settings.$font-family-primary;
+  font-weight: bold;
+  text-align: left;
+  width: 68px;
+
+  &:hover {
+    background-image: url("../../../images/menu/close-blue.svg");
+    color: settings.$color-primary;
+  }
+}
+
+.main-menu__container {
+  &:hover {
+    color: settings.$color-primary;
+  }
+
+  .site-header__title {
+    @include mixins.margin(30, "bottom");
+
+    float: none;
+  }
+
+  .site-header__logo_link {
+    display: block;
+    float: none;
+    height: 35px;
+    width: 88px;
+  }
+}
+
+.main-menu--js {
+  display: none;
+
+  .main-menu__container {
+    display: block;
+  }
+
+  &.main-menu--shown {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: settings.$color-text;
+    display: block;
+    float: left;
+    height: 100vh;
+    left: -3000px;
+    max-width: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    transform: translate3d(3000px, 0, 0);
+    width: 100%;
+    z-index: 40;
+
+    @media only screen and (min-width: settings.$breakpoint-large) {
+      width: 320px;
+    }
+  }
+
+  .main_menu__quit {
+    display: none;
+  }
+}
+
+// Overlay styling
+
+.overlay {
+  background-color: rgb(0 0 0 / 80%);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+.to-top-link {
+  display: none;
+}
+
+.wrapper {
+  @include mixins.wrapper();
+}
+
+.site-header__skip_to_content {
+  display: block;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+}
+
+.site-header__skip_to_content__link {
+  @include mixins.visuallyhidden();
+  @include mixins.padding(15 36 14);
+
+  z-index: 50;
+
+  &:focus {
+    @include mixins.visuallyunhidden();
+
+    position: absolute;
+  }
 }

@@ -49,3 +49,48 @@
     margin: #{typography.get-rem-from-px($size_in_px)}rem;
   }
 }
+
+@mixin wrapper($padding: true) {
+  box-sizing: content-box;
+  margin: auto;
+
+  @include constrain-width(settings.$max-site-width, "max");
+
+  @if $padding {
+    padding-left: #{settings.$site-spacing};
+    padding-right: #{settings.$site-spacing};
+
+    @media only screen and (min-width: settings.$breakpoint-small) {
+      padding-left: #{settings.$site-spacing-large};
+      padding-right: #{settings.$site-spacing-large};
+    }
+  }
+}
+
+@mixin constrain-width($size_in_px, $extreme) {
+  @if $extreme == min or $extreme == max {
+    #{$extreme}-width: #{$size_in_px};
+    #{$extreme}-width: #{typography.get-rem-from-px($size_in_px)}rem;
+  }
+}
+
+@mixin visuallyhidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  user-select: none;
+  width: 1px;
+}
+
+@mixin visuallyunhidden() {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: auto;
+  position: static;
+  width: auto;
+}
