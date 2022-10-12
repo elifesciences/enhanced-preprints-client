@@ -61,17 +61,6 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
   },
-  '10.1101/2022.05.30.22275761': {
-    preprintDoi: '10.1101/2022.05.30.22275761',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This preprint was published after peer review by eLife.',
-      timeline: [
-        { name: 'Sent for peer review', date: '2022-06-29' },
-        { name: 'Posted to medRxiv', date: '2022-05-31' },
-      ],
-    },
-  },
   '10.1101/2022.07.21.500925': {
     preprintDoi: '10.1101/2022.07.21.500925',
     status: {
@@ -162,16 +151,6 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     msid: '80984',
     version: '1',
     ...preprintConfigs['10.1101/2022.06.30.498369'],
-  },
-  '80729': { // eslint-disable-line quote-props
-    msid: '80729',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.30.22275761'],
-  },
-  '80729v1': { // eslint-disable-line quote-props
-    msid: '80729',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.30.22275761'],
   },
   '81727': { // eslint-disable-line quote-props
     msid: '81727',
