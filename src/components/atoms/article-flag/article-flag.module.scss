@@ -3,15 +3,12 @@
 @use "../../../sass/typography";
 
 .article-flag__link {
+  @include typography.msa-link-text();
   @include mixins.padding(6 0);
-  @include typography.font-size-and-vertical-height(14, 16);
 
   border-radius: 3px;
-  color: settings.$color-primary;
   cursor: pointer;
   display: inline-block;
-  font-family: settings.$font-family-primary;
-  font-weight: 600;
   text-decoration: none;
 
   &:hover {

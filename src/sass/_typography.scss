@@ -126,6 +126,14 @@
   font-weight: 600;
 }
 
+@mixin msa-link-text() {
+  @include font-size-and-vertical-height(14, 24);
+
+  color: settings.$color-primary;
+  font-family: settings.$font-family-primary;
+  font-weight: 600;
+}
+
 @mixin link-text() {
   @include font-size-and-vertical-height(12, 24);
 
