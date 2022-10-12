@@ -15,15 +15,13 @@ export type ContentHeaderProps = FlagProps & {
 
 export const ContentHeader = ({
   msas,
-  strengthOfEvidence,
-  importance,
   title,
   authors,
   institutions,
   doi,
 }: ContentHeaderProps): JSX.Element => (
   <header className={styles['content-header']}>
-    <ArticleFlagList msas={msas} strengthOfEvidence={strengthOfEvidence} importance={importance} />
+    <ArticleFlagList msas={msas} />
     <Title title={title} />
     <Authors authors={authors} />
     <Institutions institutions={institutions} />

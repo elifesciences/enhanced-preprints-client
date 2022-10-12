@@ -3,17 +3,16 @@
 @use "../../../sass/typography";
 
 .article-flag__link {
-  @include typography.badge-text();
-  @include mixins.padding(6 10);
+  @include typography.msa-link-text();
+  @include mixins.padding(6 0);
 
-  background-color: settings.$color-button;
   border-radius: 3px;
   cursor: pointer;
-  display: block;
-  font-weight: 600;
+  display: inline-block;
   text-decoration: none;
 
-  &.article-flag__link-msa {
-    color: settings.$color-primary;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
