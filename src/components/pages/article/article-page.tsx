@@ -79,8 +79,6 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
       <ContentHeader
         doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
         msas={props.metaData.msas}
-        strengthOfEvidence={props.metaData.strengthOfEvidence}
-        importance={props.metaData.importance}
         authors={props.metaData.authors}
         institutions={props.metaData.institutions}
         title={props.metaData.title}

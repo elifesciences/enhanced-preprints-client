@@ -12,4 +12,12 @@
   @include mixins.padding(6, "right");
 
   display: inline-block;
+
+  &::after {
+    content: ", ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
 }

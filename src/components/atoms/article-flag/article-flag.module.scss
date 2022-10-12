@@ -4,16 +4,12 @@
 
 .article-flag__link {
   @include typography.badge-text();
-  @include mixins.padding(6 10);
+  @include mixins.padding(6 0);
 
-  background-color: settings.$color-button;
   border-radius: 3px;
+  color: settings.$color-primary;
   cursor: pointer;
-  display: block;
+  display: inline-block;
   font-weight: 600;
   text-decoration: none;
-
-  &.article-flag__link-msa {
-    color: settings.$color-primary;
-  }
 }
