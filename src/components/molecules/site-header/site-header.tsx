@@ -20,7 +20,7 @@ export const SiteHeader = (): JSX.Element => {
         {showMenu &&
             <>
               <Overlay/>
-              <div className={`${styles['wrapper']} ${styles['main-menu']} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
+              <div className={`${styles['wrapper']} ${styles['main-menu--js']} ${styles['main-menu--shown']}`} id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
                 <div className={styles['main-menu__title']}>
                   <img
                       src="/elife-logo.svg"
@@ -47,7 +47,7 @@ export const SiteHeader = (): JSX.Element => {
                     <li className={styles['main-menu__list_item']}>
                       <a href="https://elifesciences.org/subjects" className={styles['main-menu__list_link']}>Research categories</a>
                     </li>
-                    <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']} ${styles['end-of-group']}`}>
+                    <li className={`${styles['main-menu__list_item']} ${styles['end-of-group']}`}>
                       <a href="https://elifesciences.org/inside-elife" className={styles['main-menu__list_link']}>Inside eLife</a>
                     </li>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']}`}>
@@ -56,7 +56,7 @@ export const SiteHeader = (): JSX.Element => {
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']} ${styles['end-of-group']}`}>
                       <a href="https://elifesciences.org/content-alerts" className={styles['main-menu__list_link']}>Subscribe to alerts</a>
                     </li>
-                    <li className={styles['main-menu__list_item']}>
+                    <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']}`}>
                       <a href="https://reviewer.elifesciences.org/login" className={styles['main-menu__list_link']}>Submit your research</a>
                     </li>
                     <li className={styles['main-menu__list_item']}>

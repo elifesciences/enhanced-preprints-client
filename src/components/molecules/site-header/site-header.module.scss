@@ -45,6 +45,7 @@
   justify-content: top;
 }
 
+/* stylelint-disable no-descending-specificity */
 .nav-primary__item {
   @include typography.font-size-and-vertical-height(14);
   @include mixins.padding(24, "left");
@@ -77,10 +78,12 @@
 
 .nav-primary__item--first {
   @include mixins.padding(0, "left");
+
   display: list-item;
 
   a {
     @include mixins.padding(48, "right");
+
     background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat right 0;
     background-size: 24px;
     display: block;
@@ -96,6 +99,8 @@
     text-indent: -9999px;
   }
 }
+
+/* stylelint-enable no-descending-specificity */
 
 .nav-secondary {
   @include mixins.margin(10, "top");
@@ -199,9 +204,17 @@
 }
 
 .main-menu__title {
-  @include mixins.padding(30, "top");
   @include mixins.padding(18, "bottom");
   @include mixins.padding(0, "left");
+  @include mixins.margin(30, "top");
+
+  @media only screen and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(42, "top");
+  }
+
+  @media only screen and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.margin(52, "top");
+  }
 
   align-items: center;
   display: flex;
@@ -216,9 +229,8 @@
   @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px, 48);
   @include mixins.padding(24, "bottom");
 
-  font-family: settings.$font-family-primary;
-
   display: block;
+  font-family: settings.$font-family-primary;
   line-height: 0;
   text-align: left;
 
@@ -270,6 +282,25 @@
   }
 }
 
+.main-menu__container {
+  &:hover {
+    color: settings.$color-primary;
+  }
+
+  .site-header__title {
+    @include mixins.margin(30, "bottom");
+
+    float: none;
+  }
+
+  .site-header__logo_link {
+    display: block;
+    float: none;
+    height: 35px;
+    width: 88px;
+  }
+}
+
 .main-menu--js {
   display: none;
 
@@ -303,34 +334,6 @@
   }
 }
 
-.main-menu__container {
-
-  @media only screen and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(42, "top");
-  }
-
-  @media only screen and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.margin(52, "top");
-  }
-
-  &:hover {
-    color: settings.$color-primary;
-  }
-
-  .site-header__title {
-    @include mixins.margin(30, "bottom");
-
-    float: none;
-  }
-
-  .site-header__logo_link {
-    display: block;
-    float: none;
-    height: 35px;
-    width: 88px;
-  }
-}
-
 // Overlay styling
 
 .overlay {
@@ -352,19 +355,21 @@
 
 .site-header__skip_to_content {
   display: block;
+  left: 20px;
   position: absolute;
   top: 20px;
-  left: 20px;
   white-space: nowrap;
 }
 
 .site-header__skip_to_content__link {
   @include mixins.visuallyhidden();
   @include mixins.padding(15 36 14);
+
   z-index: 50;
 
   &:focus {
     @include mixins.visuallyunhidden();
+
     position: absolute;
   }
 }
