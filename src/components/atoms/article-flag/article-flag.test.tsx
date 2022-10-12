@@ -10,5 +10,4 @@ describe('ArticleFlag', () => {
     expect(flag.classList).toContain('article-flag__link');
     expect(flag.getAttribute('href')).toStrictEqual('www.google.com');
   });
-
 });
