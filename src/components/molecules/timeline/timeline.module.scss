@@ -31,9 +31,10 @@
 }
 
 .review-timeline__date {
-  @include typography.body-small();
+  @include typography.font-size-and-vertical-height(12, 24);
 
   color: settings.$color-text-inactive;
+  font-family: settings.$font-family-primary;
   font-weight: 600;
   margin: 0;
 
@@ -49,13 +50,14 @@
 }
 
 .review-timeline__link {
-  @include typography.body-small();
+  @include typography.font-size-and-vertical-height(12, 24);
 
   color: settings.$color-text-inactive;
+  font-family: settings.$font-family-primary;
   font-weight: 600;
   text-decoration: none;
 
   &::before {
-    content: " • ";
+    content: "\00a0\00a0•\00a0\00a0";
   }
 }
