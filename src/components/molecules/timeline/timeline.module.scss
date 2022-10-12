@@ -11,6 +11,7 @@
 
 .review-timeline__list {
   @include mixins.padding(0, "left");
+  @include mixins.margin(0);
 
   list-style: none;
   padding-left: 0;
@@ -19,7 +20,6 @@
 .review-timeline__event {
   @include typography.body-small();
 
-  flex-basis: 100%;
   font-weight: 600;
   margin: 0;
 
@@ -34,16 +34,28 @@
   @include typography.body-small();
 
   color: settings.$color-text-inactive;
-  flex-basis: 100%;
+  font-weight: 600;
   margin: 0;
 
   @include mixins.margin(8, "bottom");
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(16, "bottom");
+
+    &:last-child {
+      @include mixins.margin(0, "bottom");
+    }
   }
 }
 
-.review-timeline__reviews_link {
-  @include typography.link-text();
+.review-timeline__link {
+  @include typography.body-small();
+
+  color: settings.$color-text-inactive;
+  font-weight: 600;
+  text-decoration: none;
+
+  &::before {
+    content: " • ";
+  }
 }

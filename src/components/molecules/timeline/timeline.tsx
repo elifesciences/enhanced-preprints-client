@@ -4,6 +4,7 @@ import styles from './timeline.module.scss';
 export type TimelineEvent = {
   name: string,
   date: string,
+  url?: string,
 };
 
 type TimelineProps = {
@@ -17,13 +18,13 @@ export const Timeline = ({ events }: TimelineProps): JSX.Element => (
         events.map((entry, index) => (
           <Fragment key={index}>
             <dt className={styles['review-timeline__event']}>{entry.name}</dt>
-            <dd className={styles['review-timeline__date']}>{new Date(entry.date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
+              <dd className={styles['review-timeline__date']}>
+                <span>{new Date(entry.date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                { entry.url && <a className={styles['review-timeline__link']} href={entry.url}>Go to bioRxiv</a>}
+              </dd>
           </Fragment>
         ))
       }
     </dl>
-    <a className={styles['review-timeline__reviews_link']}>
-      Read the peer-review by eLife
-    </a>
   </div>
 );
