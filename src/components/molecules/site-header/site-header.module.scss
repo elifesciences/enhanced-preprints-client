@@ -16,6 +16,10 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    justify-content: unset;
+  }
 }
 
 .site-header__logo {
@@ -27,10 +31,8 @@
 .nav-primary {
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(-15, "left");
-    @include mixins.margin(13, "top");
 
     display: inline-block;
-    grid-column: 2/7;
     height: 24px;
   }
 }
@@ -108,10 +110,10 @@
   display: none;
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(12, "top");
+    @include mixins.margin(0, "top");
 
     display: block;
-    grid-column: 7/13;
+    margin-left: auto;
   }
 }
 
