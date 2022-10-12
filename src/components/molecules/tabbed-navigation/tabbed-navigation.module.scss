@@ -5,14 +5,14 @@
 .tabbed-navigation__tabs {
   @include mixins.margin(36, "bottom");
 
+  align-self: flex-start;
+  background-color: #fff;
   border-bottom: settings.$border;
   display: flex;
   justify-content: center;
   list-style: none;
-  align-self: flex-start;
   position: sticky;
   top: 0;
-  background-color: #fff;
 }
 
 .tabbed-navigation__tab-label {

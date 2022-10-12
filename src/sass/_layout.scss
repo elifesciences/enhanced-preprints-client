@@ -57,12 +57,12 @@
   }
 
   .side-section {
+    align-self: flex-start;
     grid-column: 10/13;
     grid-row: 2/4;
-    align-self: flex-start;
+    margin-top: 75px;
     position: sticky;
     top: 96px;
-    margin-top: 75px;
   }
 
   .primary-section {
