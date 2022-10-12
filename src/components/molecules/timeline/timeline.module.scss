@@ -14,11 +14,6 @@
 
   list-style: none;
   padding-left: 0;
-
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    display: flex;
-    flex-flow: row wrap;
-  }
 }
 
 .review-timeline__event {
@@ -30,8 +25,8 @@
 
   @include mixins.margin(8, "bottom");
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    flex-basis: 50%;
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "bottom");
   }
 }
 
@@ -44,10 +39,8 @@
 
   @include mixins.margin(8, "bottom");
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    flex-basis: 35%;
-    flex-grow: 1;
-    text-align: right;
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(16, "bottom");
   }
 }
 
