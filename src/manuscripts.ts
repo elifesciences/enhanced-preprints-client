@@ -39,6 +39,17 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
   },
+  '10.1101/2022.05.30.22275761': {
+    preprintDoi: '10.1101/2022.05.30.22275761',
+    status: {
+      articleType: 'Example Reviewed Preprint',
+      status: 'This preprint has been reviewed by eLife. Authors have responded but not yet submitted a revised edition',
+      timeline: [
+        { name: 'Peer review', date: '2022-09-03' },
+        { name: 'Preprint posted', date: '2022-05-31' },
+      ],
+    },
+  },
 };
 
 type ManuscriptConfig = ReviewedPreprintConfig & {
@@ -76,5 +87,15 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     msid: '81926',
     version: '1',
     ...preprintConfigs['10.1101/2022.07.26.501569'],
+  },
+  '80729': { // eslint-disable-line quote-props
+    msid: '80729',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.30.22275761'],
+  },
+  '80729v1': { // eslint-disable-line quote-props
+    msid: '80729',
+    version: '1',
+    ...preprintConfigs['10.1101/2022.05.30.22275761'],
   },
 };
