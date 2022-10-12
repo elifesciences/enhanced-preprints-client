@@ -17,17 +17,17 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const msid = context.params?.msid;
   if (msid === undefined) {
     console.log('no msid in path'); // eslint-disable-line no-console
-    return { props: {} };
+    return { notFound: true };
   }
 
   if (Array.isArray(msid)) {
     console.log('multiple ids in path'); // eslint-disable-line no-console
-    return { props: {} };
+    return { notFound: true };
   }
 
   if (!manuscripts[msid]) {
     console.log('Cannot find msid configured'); // eslint-disable-line no-console
-    return { props: {} };
+    return { notFound: true };
   }
 
   const manuscriptConfig = manuscripts[msid];
