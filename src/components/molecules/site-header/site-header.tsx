@@ -79,16 +79,16 @@ export const SiteHeader = (): JSX.Element => {
               <a href="#mainMenu" onClick={() => setShowMenu(true)}>Menu</a>
             </li>
             <li className={styles['nav-primary__item']}>
-              <a href="#">Home</a>
+              <a href="https://elifesciences.org/">Home</a>
             </li>
             <li className={styles['nav-primary__item']}>
-              <a href="#">Magazine</a>
+              <a href="https://elifesciences.org/magazine">Magazine</a>
             </li>
             <li className={styles['nav-primary__item']}>
-              <a href="#">Community</a>
+              <a href="https://elifesciences.org/community">Community</a>
             </li>
             <li className={styles['nav-primary__item']}>
-              <a href="#">About</a>
+              <a href="https://elifesciences.org/about">About</a>
             </li>
           </ul>
         </nav>
