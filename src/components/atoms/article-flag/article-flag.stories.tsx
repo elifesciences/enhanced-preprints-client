@@ -11,7 +11,6 @@ const Template: ComponentStory<typeof ArticleFlag> = (args) => <ArticleFlag {...
 
 export const MSA = Template.bind({});
 MSA.args = {
-  isMSA: true,
   flagText: 'MSA',
   url: 'https://bbc.co.uk',
 };

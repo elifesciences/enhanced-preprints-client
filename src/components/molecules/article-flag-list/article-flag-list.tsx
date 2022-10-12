@@ -9,7 +9,7 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => (
   <ul className={styles['article-flag-list']}>
     {msas.map((msa, index) => (
       <li className={styles['article-flag-list__item']} key={index}>
-        <ArticleFlag flagText={msa} isMSA={true} url={''}/>
+        <ArticleFlag flagText={msa} url={''}/>
       </li>))}
   </ul>
 );
