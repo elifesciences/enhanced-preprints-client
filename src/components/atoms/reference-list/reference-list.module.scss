@@ -1,0 +1,54 @@
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+
+.reference-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reference-list__item {
+  @include mixins.margin(24, "bottom");
+  @include typography.body-alternative();
+}
+
+.reference__authors_list {
+  display: inline;
+  list-style: none;
+  padding: 0;
+
+  &::after {
+    content: " ";
+  }
+}
+
+.reference__author {
+  display: inline;
+
+  &:not(:first-child)::before {
+    content: ", ";
+  }
+}
+
+.reference__authors_list_suffix::before {
+  content: "(";
+}
+
+.reference__authors_list_suffix::after {
+  content: ") ";
+}
+
+.reference__title {
+  @include typography.author-list-text();
+
+  &::after {
+    content: " ";
+  }
+}
+
+.reference__doi {
+  display: block;
+}
+
+.reference__doi_link {
+  @include typography.link-text();
+}

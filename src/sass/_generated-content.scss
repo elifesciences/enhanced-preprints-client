@@ -30,4 +30,8 @@
       color: settings.$color-primary;
     }
   }
+
+  span > a:not(:first-child)::before {
+    content: "; ";
+  }
 }

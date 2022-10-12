@@ -36,9 +36,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const { preprintDoi } = manuscriptConfig;
 
   const [metaData, content, peerReview, status] = await Promise.all([
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
-    await fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
+    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
     // replace with call for data
     manuscripts[msid].status,
   ]);
@@ -49,6 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         ...metaData,
         msid,
         version: manuscriptConfig.version,
+        institutions: metaData.authors.flatMap((author: { affiliations: { name: string, address?: { addressCountry: string } }, }) => author.affiliations),
       },
       abstract: metaData.abstract,
       content,

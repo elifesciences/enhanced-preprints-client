@@ -12,8 +12,6 @@ const Template: ComponentStory<typeof ContentHeader> = (args) => <ContentHeader 
 export const Header = Template.bind({});
 Header.args = {
   msas: ['Mad Science', 'Alchemy'],
-  importance: 'Landmark',
-  strengthOfEvidence: 'Tour-de-force',
   title: 'This is a title',
   doi: 'bbc.co.uk',
   authors: [
@@ -29,5 +27,12 @@ Header.args = {
     { givenNames: ['Arthur'], familyNames: ['Curry'] },
     { givenNames: ['Kal'], familyNames: ['El'] },
     { givenNames: ['Oliver'], familyNames: ['Queen'] },
+  ],
+  institutions: [
+    { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
+    { name: 'Star Labs', address: { addressCountry: 'Star City' } },
+    { name: 'Avengers Tower', address: { addressCountry: 'New York' } },
+    { name: 'Bat Cave', address: { addressCountry: 'Gotham' } },
+    { name: 'Arrow Cave', address: { addressCountry: 'Central City' } },
   ],
 };

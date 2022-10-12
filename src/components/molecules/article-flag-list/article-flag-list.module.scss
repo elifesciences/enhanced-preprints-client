@@ -8,7 +8,16 @@
 }
 
 .article-flag-list__item {
+  @include mixins.margin(6, "bottom");
   @include mixins.padding(6, "right");
 
-  display: inline;
+  display: inline-block;
+
+  &::after {
+    content: ", ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
 }

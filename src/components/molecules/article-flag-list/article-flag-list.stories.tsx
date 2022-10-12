@@ -12,6 +12,4 @@ const Template: ComponentStory<typeof ArticleFlagList> = (args) => <ArticleFlagL
 export const FlagList = Template.bind({});
 FlagList.args = {
   msas: ['Mad Science', 'Alchemy'],
-  importance: 'Landmark',
-  strengthOfEvidence: 'Tour-de-force',
 };
