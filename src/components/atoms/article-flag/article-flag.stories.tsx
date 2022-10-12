@@ -15,10 +15,3 @@ MSA.args = {
   flagText: 'MSA',
   url: 'https://bbc.co.uk',
 };
-
-export const CurationLabel = Template.bind({});
-CurationLabel.args = {
-  isMSA: false,
-  flagText: 'Curation',
-  url: 'https://bbc.co.uk',
-};

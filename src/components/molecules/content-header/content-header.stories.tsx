@@ -12,8 +12,6 @@ const Template: ComponentStory<typeof ContentHeader> = (args) => <ContentHeader 
 export const Header = Template.bind({});
 Header.args = {
   msas: ['Mad Science', 'Alchemy'],
-  importance: 'Landmark',
-  strengthOfEvidence: 'Tour-de-force',
   title: 'This is a title',
   doi: 'bbc.co.uk',
   authors: [

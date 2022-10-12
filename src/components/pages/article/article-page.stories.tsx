@@ -79,8 +79,6 @@ ArticlePageStory.args = {
     msid: '123456',
     version: '1',
     msas: ['Mad Science', 'Alchemy'],
-    importance: 'Landmark',
-    strengthOfEvidence: 'Tour-de-force',
     title: 'This is a title',
     authors: [
       { givenNames: ['Steve'], familyNames: ['Rogers'] },
