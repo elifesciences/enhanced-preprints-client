@@ -16,7 +16,8 @@ module.exports = {
     "import/no-extraneous-dependencies": ["error", {
       "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*", "**/*.test.tsx"],
       "peerDependencies": true
-    }]
+    }],
+    "operator-linebreak": 0
   },
   settings: {
     react: {
