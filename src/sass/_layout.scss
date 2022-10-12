@@ -59,6 +59,10 @@
   .side-section {
     grid-column: 10/13;
     grid-row: 2/4;
+    align-self: flex-start;
+    position: sticky;
+    top: 40px;
+    margin-top: 75px;
   }
 
   .primary-section {
