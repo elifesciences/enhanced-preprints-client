@@ -16,7 +16,11 @@ const nextConfig = {
         source: '/reviewed-preprints/:path((?!\\d+v{0,1}\\d*))',
         destination: '/:path*',
       },
-    ],
+      {
+        source: '/ping',
+        destination: '/api/ping',
+      },
+    ]
   }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   assetPrefix: process.env.ASSET_PREFIX ?? '',
