@@ -16,4 +16,4 @@ CMD [ "yarn", "storybook" ]
 
 FROM base as prod
 RUN yarn build
-CMD [ "yarn", "start" ]
+CMD [ "sh", "-c", "yarn build && yarn start" ]
