@@ -5,9 +5,8 @@ console.log(manuscripts);
 export const App = (): JSX.Element => (
   <div className="App">
     <ul>
-      {Object.values(manuscripts)
-        .map((manuscript) => manuscript.msid)
-        .filter((v, i, a) => a.indexOf(v) === i)
+      {Object.keys(manuscripts)
+        .sort()
         .map((msid, index) => <li key={index}><a href={`/reviewed-preprints/${msid}`}>{msid}</a></li>)
       }
     </ul>
