@@ -1,7 +1,5 @@
 import { manuscripts } from '../manuscripts';
 
-console.log(manuscripts);
-
 export const App = (): JSX.Element => (
   <div className="App">
     <ul>
