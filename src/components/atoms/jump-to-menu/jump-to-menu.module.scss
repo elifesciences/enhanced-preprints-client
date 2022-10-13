@@ -30,6 +30,7 @@
 
 .jump-menu-list__item {
   @include mixins.margin(24, "bottom");
+  @include mixins.margin(-2, "left");
   @include mixins.padding(20, "left");
 
   border-left: 2px solid settings.$color-button;
