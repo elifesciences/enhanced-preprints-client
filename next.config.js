@@ -20,6 +20,10 @@ const nextConfig = {
         source: '/ping',
         destination: '/api/ping',
       },
+      {
+        source: '/status',
+        destination: '/api/status',
+      },
     ]
   }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
