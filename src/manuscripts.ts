@@ -6,6 +6,7 @@ type ReviewedPreprintConfig = {
 };
 
 const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
+  /* Unused because of a VoR already existing.
   '10.1101/2022.03.04.482974': {
     preprintDoi: '10.1101/2022.03.04.482974',
     status: {
@@ -18,6 +19,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
   },
+  */
   '10.1101/2022.06.24.497502': {
     preprintDoi: '10.1101/2022.06.24.497502',
     status: {
@@ -116,6 +118,7 @@ type ManuscriptConfig = ReviewedPreprintConfig & {
 };
 
 export const manuscripts: Record<string, ManuscriptConfig> = {
+  /* Unused because of a VoR already existing
   '77558': { // eslint-disable-line quote-props
     msid: '77558',
     version: '1',
@@ -126,6 +129,7 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     version: '1',
     ...preprintConfigs['10.1101/2022.03.04.482974'],
   },
+  */
   '80494': { // eslint-disable-line quote-props
     msid: '80494',
     version: '1',
