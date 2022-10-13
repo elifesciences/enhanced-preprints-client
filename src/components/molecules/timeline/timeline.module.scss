@@ -11,46 +11,53 @@
 
 .review-timeline__list {
   @include mixins.padding(0, "left");
+  @include mixins.margin(0);
 
   list-style: none;
   padding-left: 0;
-
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    display: flex;
-    flex-flow: row wrap;
-  }
 }
 
 .review-timeline__event {
   @include typography.body-small();
 
-  flex-basis: 100%;
   font-weight: 600;
   margin: 0;
 
   @include mixins.margin(8, "bottom");
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    flex-basis: 50%;
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "bottom");
   }
 }
 
 .review-timeline__date {
-  @include typography.body-small();
+  @include typography.font-size-and-vertical-height(12, 24);
 
   color: settings.$color-text-inactive;
-  flex-basis: 100%;
+  font-family: settings.$font-family-primary;
+  font-weight: 600;
   margin: 0;
 
   @include mixins.margin(8, "bottom");
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    flex-basis: 35%;
-    flex-grow: 1;
-    text-align: right;
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(16, "bottom");
+
+    &:last-child {
+      @include mixins.margin(0, "bottom");
+    }
   }
 }
 
-.review-timeline__reviews_link {
-  @include typography.link-text();
+.review-timeline__link {
+  @include typography.font-size-and-vertical-height(12, 24);
+
+  color: settings.$color-text-inactive;
+  font-family: settings.$font-family-primary;
+  font-weight: 600;
+  text-decoration: none;
+
+  &::before {
+    content: "\00a0\00a0•\00a0\00a0";
+  }
 }
