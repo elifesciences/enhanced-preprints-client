@@ -14,7 +14,7 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   useEffect(() => setExpanded(false), []);
 
   return (
-    <div className="authors">
+    <div className={styles['authors']}>
       <ol className={styles['authors-list']}>
         { authors.slice(0, expanded !== false ? authors.length : authorLimit).map(({ givenNames, familyNames }, index) => (
           <li className={styles['authors-list__item']} key={index}>
