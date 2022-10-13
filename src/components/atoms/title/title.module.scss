@@ -4,5 +4,5 @@
 .title {
   @include mixins.margin(0, "top");
   @include mixins.margin(24, "bottom");
-  @include typography.h1(); 
+  @include typography.h1();
 }

@@ -2,7 +2,7 @@
 @use "../../../sass/typography";
 
 .authors {
-  @include mixins.margin(12, "bottom"); 
+  @include mixins.margin(12, "bottom");
 }
 
 .authors-list {
