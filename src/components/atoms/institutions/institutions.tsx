@@ -14,7 +14,7 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={styles['institutions']}>
+    <div className={styles.institutions}>
       <ol className={styles['institutions-list']}>
         { institutions.slice(0, expanded ? institutions.length : institutionLimit).map(({ name, address }, index) => (
           <li className={styles['institutions-list__item']} key={index}>
