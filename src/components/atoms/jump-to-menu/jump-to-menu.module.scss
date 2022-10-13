@@ -3,11 +3,14 @@
 @use "../../../sass/typography";
 
 .jump-menu {
+  display: none;
+
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(24, "right");
     @include mixins.margin(24, "top");
 
     align-self: flex-start;
+    display: block;
     grid-column: 1/3;
     position: sticky;
     top: 110px;
