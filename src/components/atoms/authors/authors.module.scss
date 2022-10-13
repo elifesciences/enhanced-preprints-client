@@ -1,6 +1,10 @@
 @use "../../../sass/mixins";
 @use "../../../sass/typography";
 
+.authors {
+  @include mixins.margin(12, "bottom");
+}
+
 .authors-list {
   @include mixins.margin(0);
   @include mixins.padding(0);

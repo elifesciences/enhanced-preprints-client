@@ -1,6 +1,10 @@
 @use "../../../sass/mixins";
 @use "../../../sass/typography";
 
+.institutions {
+  @include mixins.margin(24, "bottom");
+}
+
 .institutions-list {
   @include mixins.margin(0);
   @include mixins.padding(0);
