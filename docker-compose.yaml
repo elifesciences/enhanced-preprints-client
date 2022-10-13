@@ -22,7 +22,7 @@ services:
 
   # services for API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-ea0c883d-20221007.1315
+    image: ghcr.io/elifesciences/enhanced-preprints:master-8240a5a8-20221012.0916
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
