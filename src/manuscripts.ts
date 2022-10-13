@@ -12,6 +12,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-03-05', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.03.04.482974', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-03-04' },
       ],
@@ -23,6 +24,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.06.24.497502', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-06-24' },
       ],
@@ -34,6 +36,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This preprint was published after peer review by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-07-28', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.07.26.501569', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-07-26' },
       ],
