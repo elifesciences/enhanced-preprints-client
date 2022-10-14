@@ -16,6 +16,7 @@ import { Reference, ReferenceList } from '../../atoms/reference-list/reference-l
 export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
   version: string,
+  pdfUrl: string,
   references: Reference[],
   headings: JumpMenuHeading[],
 };
