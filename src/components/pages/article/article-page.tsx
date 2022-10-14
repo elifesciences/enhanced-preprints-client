@@ -16,6 +16,7 @@ import { Reference, ReferenceList } from '../../atoms/reference-list/reference-l
 export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
   version: string,
+  pdfUrl: string,
   references: Reference[],
   headings: JumpMenuHeading[],
 };
@@ -84,6 +85,10 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         title={props.metaData.title}
       />
     </div>
+    <aside className={styles['side-section']}>
+      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl}/>
+      <Timeline events={props.status.timeline}/>
+    </aside>
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
@@ -107,9 +112,5 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         </Tab>
       </TabbedNavigation>
     </main>
-    <aside className={styles['side-section']}>
-      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
-      <Timeline events={props.status.timeline}/>
-    </aside>
   </div>
 );

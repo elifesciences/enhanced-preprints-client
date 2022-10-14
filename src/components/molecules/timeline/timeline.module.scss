@@ -7,6 +7,17 @@
   @include mixins.padding(24, "bottom");
 
   border-bottom: settings.$border;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    border-bottom: none;
+    grid-column: 8/13;
+    max-width: 232px;
+    min-width: 100px;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    border-bottom: settings.$border;
+  }
 }
 
 .review-timeline__list {

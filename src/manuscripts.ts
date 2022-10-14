@@ -3,6 +3,7 @@ import { ArticleStatusProps } from './components/pages/article/article-page';
 type ReviewedPreprintConfig = {
   preprintDoi: string,
   status: ArticleStatusProps
+  pdfUrl: string
 };
 
 const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
@@ -18,6 +19,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-03-04' },
       ],
     },
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.03.04.482974/2022.03.04.482974.pdf',
   },
   */
   '10.1101/2022.06.24.497502': {
@@ -31,6 +33,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-06-24' },
       ],
     },
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.24.497502/2022.06.24.497502.pdf',
   },
   '10.1101/2022.07.26.501569': {
     preprintDoi: '10.1101/2022.07.26.501569',
@@ -43,6 +46,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-07-26' },
       ],
     },
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.26.501569/2022.07.26.501569.pdf',
   },
   '10.1101/2022.05.28.493855': {
     preprintDoi: '10.1101/2022.05.28.493855',
@@ -54,6 +58,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to bioRxiv', date: '2022-05-29' },
       ],
     },
+    pdfUrl: '#',
   },
   '10.1101/2022.06.30.498369': {
     preprintDoi: '10.1101/2022.06.30.498369',
@@ -65,6 +70,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-07-01' },
       ],
     },
+    pdfUrl: '#',
   },
   '10.1101/2022.05.30.22275761': {
     preprintDoi: '10.1101/2022.05.30.22275761',
@@ -76,6 +82,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to medRxiv', date: '2022-05-31' },
       ],
     },
+    pdfUrl: '#',
   },
   '10.1101/2022.07.21.500925': {
     preprintDoi: '10.1101/2022.07.21.500925',
@@ -87,6 +94,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-07-21' },
       ],
     },
+    pdfUrl: '#',
   },
   '10.1101/2020.07.27.223354': {
     preprintDoi: '10.1101/2020.07.27.223354',
@@ -98,6 +106,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to bioRxiv', date: '2022-06-21' },
       ],
     },
+    pdfUrl: '#',
   },
   '10.1101/2021.11.12.468444': {
     preprintDoi: '10.1101/2021.11.12.468444',
@@ -109,6 +118,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to bioRxiv', date: '2022-06-29' },
       ],
     },
+    pdfUrl: '#',
   },
 };
 

@@ -3,9 +3,21 @@
 @use "../../../sass/typography";
 
 .article-status {
+  @include mixins.padding(24, "top");
   @include mixins.padding(24, "bottom");
 
   border-bottom: settings.$border;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    border-bottom: none;
+    grid-column: 1/7;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.padding(0, "top");
+
+    border-bottom: settings.$border;
+  }
 }
 
 .article-status__heading {
