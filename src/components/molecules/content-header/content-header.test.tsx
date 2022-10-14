@@ -7,10 +7,13 @@ describe('ContentHeader', () => {
       <ContentHeader
         msas={['msa1', 'msa2']}
         authors={[
-          { givenNames: ['Joe'], familyNames: ['Blogs'] },
-        ]}
-        institutions={[
-          { name: 'Charles Xavier\'s School for Gifted Youngsters', address: { addressCountry: 'West Chester' } },
+          {
+            givenNames: ['Jean'],
+            familyNames: ['Gray'],
+            affiliations: [
+              { name: 'X-Men', address: { addressCountry: 'West Chester' } },
+            ],
+          },
         ]}
         doi={'10.1101/123456'}
         title={'title'}/>,
@@ -18,8 +21,8 @@ describe('ContentHeader', () => {
 
     expect(screen.getByText('msa1')).toBeInTheDocument();
     expect(screen.getByText('msa2')).toBeInTheDocument();
-    expect(screen.getByText('Joe Blogs')).toBeInTheDocument();
-    expect(screen.getByText('Charles Xavier\'s School for Gifted Youngsters')).toBeInTheDocument();
+    expect(screen.getByText('Jean Gray')).toBeInTheDocument();
+    expect(screen.getByText('X-Men')).toBeInTheDocument();
     expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
     expect(screen.getByText('title')).toBeInTheDocument();
   });

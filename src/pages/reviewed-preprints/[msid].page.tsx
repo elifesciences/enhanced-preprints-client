@@ -50,7 +50,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         msid,
         version: manuscriptConfig.version,
         pdfUrl: manuscriptConfig.pdfUrl,
-        institutions: metaData.authors.flatMap((author: { affiliations: { name: string, address?: { addressCountry: string } }, }) => author.affiliations ?? []),
       },
       abstract: metaData.abstract,
       content,

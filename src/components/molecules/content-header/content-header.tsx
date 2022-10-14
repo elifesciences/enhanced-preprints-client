@@ -10,21 +10,21 @@ export type ContentHeaderProps = FlagProps & {
   authors: Author[];
   doi: string;
   title: Content;
-  institutions: Institution[]
 };
+
+const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
 
 export const ContentHeader = ({
   msas,
   title,
   authors,
-  institutions,
   doi,
 }: ContentHeaderProps): JSX.Element => (
   <header className={styles['content-header']}>
-    <ArticleFlagList msas={msas} />
-    <Title title={title} />
-    <Authors authors={authors} />
-    <Institutions institutions={institutions} />
-    <Descriptors doi={doi} />
+    <ArticleFlagList msas={msas}/>
+    <Title title={title}/>
+    <Authors authors={authors}/>
+    <Institutions institutions={authors.flatMap((author) => author.affiliations).filter(filterInstitutions)}/>
+    <Descriptors doi={doi}/>
   </header>
 );
