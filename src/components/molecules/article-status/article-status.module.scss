@@ -8,7 +8,7 @@
 
   border-bottom: settings.$border;
 
-  @media only all and (min-width: settings.$breakpoint-small) {
+  @media only all and (min-width: settings.$breakpoint-medium) {
     border-bottom: none;
     grid-column: 1/7;
   }

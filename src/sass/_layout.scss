@@ -33,9 +33,6 @@
   }
 
   .side-section {
-    @include mixins.grid();
-
-    border-bottom: settings.$border;
     grid-column: 1/13;
     grid-row: 3;
   }
@@ -53,6 +50,9 @@
   }
 
   .side-section {
+    @include mixins.grid();
+
+    border-bottom: settings.$border;
     grid-column: 2/12;
     grid-row: 3;
   }
