@@ -4,6 +4,7 @@
 
 .tabbed-navigation__tabs {
   @include mixins.margin(36, "bottom");
+  @include mixins.padding(0, "left");
 
   align-self: flex-start;
   background-color: #fff;
