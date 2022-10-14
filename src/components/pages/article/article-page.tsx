@@ -86,7 +86,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
       />
     </div>
     <aside className={styles['side-section']}>
-      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
+      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl}/>
       <Timeline events={props.status.timeline}/>
     </aside>
     <main className={styles['primary-section']}>

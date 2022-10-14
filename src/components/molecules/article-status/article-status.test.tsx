@@ -3,7 +3,7 @@ import { ArticleStatus } from './article-status';
 
 describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
-    render(<ArticleStatus articleType="cookie recipe" articleStatus="delicious" />);
+    render(<ArticleStatus articleType="cookie recipe" articleStatus="delicious" pdfUrl='#'/>);
 
     expect(screen.getByText('cookie recipe')).toBeInTheDocument();
     expect(screen.getByText('delicious')).toBeInTheDocument();

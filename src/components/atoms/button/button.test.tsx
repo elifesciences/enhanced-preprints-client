@@ -3,7 +3,7 @@ import { Button } from './button';
 
 describe('Button', () => {
   it('renders with the provided text and iconName', () => {
-    render(<Button text="button text" iconName="dark_mode" />);
+    render(<Button text="button text" iconName="dark_mode" url='#' />);
 
     expect(screen.getByText('button text')).toBeInTheDocument();
     expect(screen.getByText('dark_mode')).toBeInTheDocument();
