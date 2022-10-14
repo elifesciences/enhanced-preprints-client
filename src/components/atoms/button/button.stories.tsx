@@ -13,22 +13,26 @@ export const DownloadButton = Template.bind({});
 DownloadButton.args = {
   text: 'Download',
   iconName: 'download',
+  url: '#',
 };
 
 export const ShareButton = Template.bind({});
 ShareButton.args = {
   text: 'Share',
   iconName: 'share',
+  url: '#',
 };
 
 export const CiteButton = Template.bind({});
 CiteButton.args = {
   text: 'Cite',
   iconName: 'format_quote',
+  url: '#',
 };
 
 export const FollowButton = Template.bind({});
 FollowButton.args = {
   text: 'Follow',
   iconName: 'notifications',
+  url: '#',
 };
