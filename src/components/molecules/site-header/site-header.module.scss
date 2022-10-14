@@ -146,18 +146,13 @@
 
   background: url("../../../images/menu/search.svg") no-repeat right 0;
   background-size: 21px;
-  text-indent: -9999px;
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    text-indent: 0;
+  a {
+    color: settings.$link-decoration;
+    text-decoration: none;
 
-    a {
-      color: settings.$link-decoration;
-      text-decoration: none;
-
-      &:hover {
-        color: settings.$color-primary;
-      }
+    &:hover {
+      color: settings.$color-primary;
     }
   }
 }
@@ -167,21 +162,17 @@
 
   background: url("../../../images/menu/alerts.svg") no-repeat right 0;
   background-size: 21px;
-  text-indent: -9999px;
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    text-indent: 0;
+  a {
+    color: settings.$link-decoration;
+    display: block;
+    text-decoration: none;
 
-    a {
-      color: settings.$link-decoration;
-      display: block;
-      text-decoration: none;
-
-      &:hover {
-        color: settings.$color-primary;
-      }
+    &:hover {
+      color: settings.$color-primary;
     }
   }
+
 }
 
 .block-button {
