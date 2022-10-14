@@ -10,7 +10,9 @@
 
   @media only all and (min-width: settings.$breakpoint-small) {
     border-bottom: none;
-    grid-column: 7/13;
+    grid-column: 8/13;
+    min-width: 100px;
+    max-width: 232px;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
