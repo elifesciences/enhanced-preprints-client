@@ -107,8 +107,6 @@
   }
 }
 
-/* stylelint-enable no-descending-specificity */
-
 .nav-secondary {
   @include mixins.margin(10, "top");
 
@@ -172,8 +170,9 @@
       color: settings.$color-primary;
     }
   }
-
 }
+
+/* stylelint-enable no-descending-specificity */
 
 .block-button {
   @include typography.font-size-and-vertical-height(11, 22);
