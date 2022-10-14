@@ -39,18 +39,15 @@
   @include mixins.margin(0 -24);
   @include mixins.padding(24);
 
-
   @media only all and (min-width: settings.$breakpoint-small) {
-
     @include mixins.margin(0 -48);
     @include mixins.padding(36 48);
   }
 
-    @media only all and (min-width: settings.$breakpoint-small) {
-
-      @include mixins.margin(0);
-      @include mixins.padding(24 36);
-    }
+  @media only all and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0);
+    @include mixins.padding(24 36);
+  }
 
   background-color: settings.$color-background;
 }
