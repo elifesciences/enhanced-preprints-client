@@ -2,6 +2,14 @@
 @use "settings";
 @use "typography";
 
+@mixin grid() {
+  @supports (display: grid) {
+    display: grid;
+    grid-column-gap: settings.$grid-gutter;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
     padding-#{$dimension}: #{$size_in_px}px;

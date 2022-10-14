@@ -1,4 +1,5 @@
 @use "settings";
+@use "mixins";
 
 .visuallyhidden {
   border: 0;
@@ -14,11 +15,7 @@
 
 .grid-container {
   @media only all and (min-width: settings.$breakpoint-small) {
-    @supports (display: grid) {
-      display: grid;
-      grid-column-gap: settings.$grid-gutter;
-      grid-template-columns: repeat(12, 1fr);
-    }
+    @include mixins.grid();
   }
 
   max-width: settings.$max-site-width;
@@ -36,6 +33,9 @@
   }
 
   .side-section {
+    @include mixins.grid();
+
+    border-bottom: settings.$border;
     grid-column: 1/13;
     grid-row: 3;
   }
@@ -75,6 +75,8 @@
 
   .side-section {
     align-self: flex-start;
+    border-bottom: none;
+    display: block;
     grid-column: 10/13;
     grid-row: 2/4;
     margin-top: 75px;
