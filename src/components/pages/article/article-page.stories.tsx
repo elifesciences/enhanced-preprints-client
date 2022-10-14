@@ -78,6 +78,7 @@ ArticlePageStory.args = {
     doi: '10.1101/2022.04.13.488149',
     msid: '123456',
     version: '1',
+    pdfUrl: '#',
     msas: ['Mad Science', 'Alchemy'],
     title: 'This is a title',
     authors: [
