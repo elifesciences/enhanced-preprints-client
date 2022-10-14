@@ -8,16 +8,14 @@
   border-bottom: settings.$border;
 
   @media only all and (min-width: settings.$breakpoint-small) {
-    grid-column: 1/7;
     border-bottom: none;
+    grid-column: 1/7;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     border-bottom: settings.$border;
   }
 }
-
-
 
 .article-status__heading {
   @include mixins.margin(0, "top");

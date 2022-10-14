@@ -9,14 +9,13 @@
   border-bottom: settings.$border;
 
   @media only all and (min-width: settings.$breakpoint-small) {
-    grid-column: 7/13;
     border-bottom: none;
+    grid-column: 7/13;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     border-bottom: settings.$border;
   }
-
 }
 
 .review-timeline__list {
