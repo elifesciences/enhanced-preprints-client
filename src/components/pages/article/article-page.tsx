@@ -84,6 +84,10 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         title={props.metaData.title}
       />
     </div>
+    <aside className={styles['side-section']}>
+      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
+      <Timeline events={props.status.timeline}/>
+    </aside>
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
@@ -107,9 +111,5 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         </Tab>
       </TabbedNavigation>
     </main>
-    <aside className={styles['side-section']}>
-      <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType}/>
-      <Timeline events={props.status.timeline}/>
-    </aside>
   </div>
 );
