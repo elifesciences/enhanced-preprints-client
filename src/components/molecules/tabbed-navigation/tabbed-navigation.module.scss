@@ -3,7 +3,7 @@
 @use "../../../sass/typography";
 
 .tabbed-navigation__tabs {
-  @include mixins.margin(36, "bottom");
+  @include mixins.margin(0 -24 36);
   @include mixins.padding(0, "left");
 
   align-self: flex-start;
@@ -14,6 +14,14 @@
   list-style: none;
   position: sticky;
   top: 0;
+
+  @media only screen and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0 -48 36);
+  }
+
+  @media only screen and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(0 0 36);
+  }
 }
 
 .tabbed-navigation__tab-label {

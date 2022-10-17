@@ -699,7 +699,7 @@ export const mockContent: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: '/opt/epp/data/10.1101/2022.04.13.488149/488149v1_fig1',
+        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
         meta: {
           inline: false
         }
@@ -1435,7 +1435,7 @@ export const mockContent: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: '/opt/epp/data/10.1101/2022.04.13.488149/488149v1_fig2',
+        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
         meta: {
           inline: false
         }
@@ -2113,7 +2113,7 @@ export const mockContent: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: '/opt/epp/data/10.1101/2022.04.13.488149/488149v1_fig3',
+        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
         meta: {
           inline: false
         }
@@ -2732,7 +2732,7 @@ export const mockContent: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: '/opt/epp/data/10.1101/2022.04.13.488149/488149v1_fig4',
+        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
         meta: {
           inline: false
         }
