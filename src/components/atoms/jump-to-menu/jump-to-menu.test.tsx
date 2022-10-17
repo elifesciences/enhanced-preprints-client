@@ -10,7 +10,7 @@ const headings = [
 
 describe('JumpToMenu', () => {
   it('should render all the headings passed in as a prop', () => {
-    render(<JumpToMenu headings={headings} active={0} />);
+    render(<JumpToMenu headings={headings} />);
 
     expect(screen.getByText('heading 1')).toBeInTheDocument();
     expect(screen.getByText('heading 2')).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('JumpToMenu', () => {
   });
 
   it('should higlight the specified item', () => {
-    render(<JumpToMenu headings={headings} active={0} />);
+    render(<JumpToMenu headings={headings} />);
 
     expect(screen.getByText('heading 1').parentElement).toHaveClass('jump-menu-list__item--active');
     expect(screen.getByText('heading 2').parentElement).not.toHaveClass('jump-menu-list__item--active');
