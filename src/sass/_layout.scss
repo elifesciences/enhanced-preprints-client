@@ -69,6 +69,8 @@
   }
 
   .primary-section-header {
+    @include mixins.padding(36, "right");
+
     grid-column: 1/10;
     grid-row: 2;
   }
@@ -85,6 +87,8 @@
   }
 
   .primary-section {
+    @include mixins.padding(36, "right");
+
     grid-column: 1/10;
     grid-row: 3;
   }
