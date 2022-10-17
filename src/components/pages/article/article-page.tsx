@@ -92,7 +92,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={0} headings={[
+          <JumpToMenu headings={[
             { id: 'abstract', text: 'Abstract' },
             { id: 'assessment', text: 'eLife assessment' },
             ...props.metaData.headings,
