@@ -108,14 +108,32 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
           </div>
         </Tab>
         <Tab label="Figures and data">
-          <Heading id="figures" headingLevel={2} content="Figures and data" />
-          <ArticleContent content={getFigures(props.content)} />
+          <JumpToMenu active={0} headings={[
+            { id: 'abstract', text: 'Abstract' },
+            { id: 'assessment', text: 'eLife assessment' },
+            ...props.metaData.headings,
+            { id: 'references', text: 'References' },
+            { id: 'author-list', text: 'Author Information' },
+          ]} />
+          <div className={styles['article-body-container']}>
+            <Heading id="figures" headingLevel={2} content="Figures and data" />
+            <ArticleContent content={getFigures(props.content)} />
+          </div>
         </Tab>
         <Tab label="Peer review">
-          <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
-          {props.peerReview.reviews.map((review, index) => (
+          <JumpToMenu active={0} headings={[
+            { id: 'abstract', text: 'Abstract' },
+            { id: 'assessment', text: 'eLife assessment' },
+            ...props.metaData.headings,
+            { id: 'references', text: 'References' },
+            { id: 'author-list', text: 'Author Information' },
+          ]} />
+          <div className={styles['article-body-container']}>
+            <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
+            {props.peerReview.reviews.map((review, index) => (
             <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
-          ))}
+            ))}
+          </div>
         </Tab>
       </TabbedNavigation>
     </main>

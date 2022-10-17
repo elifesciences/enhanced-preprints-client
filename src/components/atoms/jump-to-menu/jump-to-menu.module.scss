@@ -5,7 +5,7 @@
 .jump-menu {
   display: none;
 
-  @media only all and (min-width: settings.$breakpoint-large) {
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.margin(24, "right");
     @include mixins.margin(24, "top");
 
@@ -13,6 +13,8 @@
     display: block;
     position: sticky;
     top: 110px;
+    max-width: 180px;
+    width: 100%;
   }
 }
 
