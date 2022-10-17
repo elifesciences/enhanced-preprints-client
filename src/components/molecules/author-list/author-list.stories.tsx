@@ -1,19 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { ContentHeader } from './content-header';
+import { AuthorList } from './author-list';
 
 export default {
-  title: 'Molecules/ContentHeader',
-  component: ContentHeader,
-} as ComponentMeta<typeof ContentHeader>;
+  title: 'Molecules/AuthorList',
+  component: AuthorList,
+} as ComponentMeta<typeof AuthorList>;
 
-const Template: ComponentStory<typeof ContentHeader> = (args) => <ContentHeader {...args} />;
+const Template: ComponentStory<typeof AuthorList> = (args) => (
+  <AuthorList {...args} />
+);
 
-export const Header = Template.bind({});
-Header.args = {
-  msas: ['Mad Science', 'Alchemy'],
-  title: 'This is a title',
-  doi: 'bbc.co.uk',
+export const Authors = Template.bind({});
+Authors.args = {
   authors: [
     { givenNames: ['Steve'], familyNames: ['Rogers'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
     { givenNames: ['Antony'], familyNames: ['Stark'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },

@@ -6,4 +6,5 @@ if (!process.env.API_SERVER && process.env.NEXT_PHASE !== 'phase-production-buil
 export const config = {
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
+  gtmId: process.env.NEXT_PUBLIC_GTM_ID,
 };
