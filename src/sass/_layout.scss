@@ -50,8 +50,9 @@
   }
 
   .side-section {
-    @include mixins.grid();
-
+    display: flex;
+    flex-direction: row;
+    align-items: start;
     border-bottom: settings.$border;
     grid-column: 2/12;
     grid-row: 3;
@@ -76,9 +77,11 @@
   }
 
   .side-section {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     align-self: flex-start;
     border-bottom: none;
-    display: block;
     grid-column: 10/13;
     grid-row: 2/4;
     margin-top: 75px;
