@@ -16,5 +16,4 @@ JumpMenu.args = {
     { id: 's2', text: 'heading 2' },
     { id: 's3', text: 'heading 3' },
   ],
-  active: 0,
 };
