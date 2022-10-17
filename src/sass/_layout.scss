@@ -33,9 +33,6 @@
   }
 
   .side-section {
-    @include mixins.grid();
-
-    border-bottom: settings.$border;
     grid-column: 1/13;
     grid-row: 3;
   }
@@ -53,6 +50,10 @@
   }
 
   .side-section {
+    align-items: start;
+    border-bottom: settings.$border;
+    display: flex;
+    flex-direction: row;
     grid-column: 2/12;
     grid-row: 3;
   }
@@ -69,22 +70,29 @@
   }
 
   .primary-section-header {
+    @include mixins.padding(36, "right");
+
     grid-column: 1/10;
     grid-row: 2;
   }
 
   .side-section {
+    align-items: end;
     align-self: flex-start;
     border-bottom: none;
-    display: block;
+    display: flex;
+    flex-direction: column;
     grid-column: 10/13;
     grid-row: 2/4;
+    justify-content: space-between;
     margin-top: 75px;
     position: sticky;
     top: 125px;
   }
 
   .primary-section {
+    @include mixins.padding(36, "right");
+
     grid-column: 1/10;
     grid-row: 3;
   }

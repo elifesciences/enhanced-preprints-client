@@ -114,7 +114,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         <Tab label="Peer review">
           <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
           {props.peerReview.reviews.map((review, index) => (
-            <ReviewContent key={index} content={review.text} />
+            <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
           ))}
         </Tab>
       </TabbedNavigation>

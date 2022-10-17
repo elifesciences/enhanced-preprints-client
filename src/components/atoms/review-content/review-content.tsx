@@ -12,7 +12,7 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
-export const ReviewContent = ({ content, isAssessment = false }: { content: string, isAssessment?: boolean }): JSX.Element => {
+export const ReviewContent = ({ content, isAssessment = false, id = '' }: { content: string, isAssessment?: boolean, id?: string }): JSX.Element => {
   const sectionProps: Record<string, string> = {
     className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
   };
@@ -21,7 +21,7 @@ export const ReviewContent = ({ content, isAssessment = false }: { content: stri
   }
 
   return (
-  <section {...sectionProps}>
+  <section id={id} {...sectionProps}>
     <div className={styles['review-content_body']} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
       <ul className={styles['review-content_links']}>
