@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './authors.module.scss';
+import { Institution } from '../institutions/institutions';
 
 export type Author = {
   givenNames: string[],
   familyNames: string[],
+  affiliations?: Institution[],
 };
 
 const authorLimit = 10;

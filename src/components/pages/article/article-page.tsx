@@ -12,6 +12,7 @@ import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-a
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
 import { Reference, ReferenceList } from '../../atoms/reference-list/reference-list';
+import { AuthorList } from '../../molecules/author-list/author-list';
 
 export type ArticlePageProps = ContentHeaderProps & {
   msid: string,
@@ -81,7 +82,6 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
         doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
         msas={props.metaData.msas}
         authors={props.metaData.authors}
-        institutions={props.metaData.institutions}
         title={props.metaData.title}
       />
     </div>
@@ -92,12 +92,19 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
     <main className={styles['primary-section']}>
       <TabbedNavigation>
         <Tab label="Full text">
-          <JumpToMenu active={0} headings={[{ id: 'abstract', text: 'Abstract' }, { id: 'assessment', text: 'eLife assessment' }, ...props.metaData.headings, { id: 'references', text: 'References' }]} />
+          <JumpToMenu active={0} headings={[
+            { id: 'abstract', text: 'Abstract' },
+            { id: 'assessment', text: 'eLife assessment' },
+            ...props.metaData.headings,
+            { id: 'references', text: 'References' },
+            { id: 'author-list', text: 'Author Information' },
+          ]} />
           <div className={styles['article-body-container']}>
             <Abstract content={props.abstract} />
             <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} />
             <ArticleContent content={props.content} />
             <ReferenceList references={props.metaData.references} />
+            <AuthorList authors={props.metaData.authors}/>
           </div>
         </Tab>
         <Tab label="Figures and data">

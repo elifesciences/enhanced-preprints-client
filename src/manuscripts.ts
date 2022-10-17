@@ -3,7 +3,8 @@ import { ArticleStatusProps } from './components/pages/article/article-page';
 type ReviewedPreprintConfig = {
   preprintDoi: string,
   status: ArticleStatusProps
-  pdfUrl: string
+  pdfUrl: string,
+  msas: string[],
 };
 
 const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
@@ -34,6 +35,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.24.497502/2022.06.24.497502.pdf',
+    msas: ['Cell Biology'],
   },
   '10.1101/2022.07.26.501569': {
     preprintDoi: '10.1101/2022.07.26.501569',
@@ -47,6 +49,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.26.501569/2022.07.26.501569.pdf',
+    msas: ['Stem Cells and Regenerative Medicine'],
   },
   '10.1101/2022.05.28.493855': {
     preprintDoi: '10.1101/2022.05.28.493855',
@@ -59,6 +62,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Evolutionary Biology'],
   },
   '10.1101/2022.06.30.498369': {
     preprintDoi: '10.1101/2022.06.30.498369',
@@ -71,6 +75,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Developmental Biology', 'Plant Biology'],
   },
   '10.1101/2022.05.30.22275761': {
     preprintDoi: '10.1101/2022.05.30.22275761',
@@ -83,6 +88,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Epidemiology and Global Health'],
   },
   '10.1101/2022.07.21.500925': {
     preprintDoi: '10.1101/2022.07.21.500925',
@@ -95,6 +101,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Structural Biology and Molecular Biophysics'],
   },
   '10.1101/2020.07.27.223354': {
     preprintDoi: '10.1101/2020.07.27.223354',
@@ -107,6 +114,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Immunology and Inflammation'],
   },
   '10.1101/2021.11.12.468444': {
     preprintDoi: '10.1101/2021.11.12.468444',
@@ -119,6 +127,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       ],
     },
     pdfUrl: '#',
+    msas: ['Neuroscience'],
   },
 };
 
