@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Content } from '../types/content';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
@@ -19,11 +20,11 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
   }
   switch (content.type) {
     case 'Heading':
-      return <Heading id={content.id} content={content.content} headingLevel={content.depth}/>;
+      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth}/>;
     case 'Cite':
-      return <>(<a key={index} href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</>;
+      return <Fragment key={index}>(<a href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</Fragment>;
     case 'CiteGroup':
-      return <span>({content.items.map((citeContent) => <a key={index} href={`#${citeContent.target}`}>{contentToJsx(citeContent.content)}</a>)})</span>;
+      return <span key={index}>({content.items.map((citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{contentToJsx(citeContent.content)}</a>)})</span>;
     case 'Link':
       return <a key={index} href={content.target}>{contentToJsx(content.content)}</a>;
     case 'Paragraph':
@@ -40,7 +41,7 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       return <time key={index}>{contentToJsx(content.content)}</time>;
     case 'Figure':
       return (
-        <Figure content={content} />
+        <Figure key={index} content={content} />
       );
     case 'ImageObject':
       if (!content.contentUrl) {

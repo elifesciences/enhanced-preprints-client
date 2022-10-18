@@ -11,7 +11,7 @@ export const EditorsAndReviewers = ({ participants }: { participants: Participan
     <h2 className={styles['editors-and-reviewers__header']} id="editors-and-reviewers" data-jump-menu-target>Editors</h2>
     <ul className={styles['editors-and-reviewers__list']}>
       {participants.map((participant, index) => (
-        <li key={index}className={styles['editors-and-reviewers__person']}>
+        <li key={index} className={styles['editors-and-reviewers__person']}>
           <div className={styles['editors-and-reviewers__person-role']}>{participant.role}</div>
           <div className={styles['editors-and-reviewers__person-name']}>{participant.name}</div>
           <div className={styles['editors-and-reviewers__person-affiliation']}>{participant.institution}</div>
