@@ -49,8 +49,9 @@
   font-weight: 600;
   text-decoration: none;
 
-  a {
-    color: settings.$color-primary;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 
