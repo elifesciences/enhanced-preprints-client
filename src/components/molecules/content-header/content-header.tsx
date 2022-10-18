@@ -19,12 +19,25 @@ export const ContentHeader = ({
   title,
   authors,
   doi,
-}: ContentHeaderProps): JSX.Element => (
-  <header className={styles['content-header']}>
-    <ArticleFlagList msas={msas}/>
-    <Title title={title}/>
-    <Authors authors={authors}/>
-    <Institutions institutions={authors.flatMap((author) => author.affiliations).filter(filterInstitutions)}/>
-    <Descriptors doi={doi}/>
-  </header>
-);
+}: ContentHeaderProps): JSX.Element => {
+  const processedInstitutions = authors
+    .flatMap((author) => author.affiliations)
+    .filter(filterInstitutions)
+    .reduce<Institution[]>((deduped, current) => {
+    if (!deduped.find((ins) => ins.name === current.name && ins.address?.addressCountry === current.address?.addressCountry)) {
+      deduped.push(current);
+    }
+    return deduped;
+  }, []);
+
+  return (
+    <header className={styles['content-header']}>
+      <ArticleFlagList msas={msas}/>
+      <Title title={title}/>
+      <Authors authors={authors}/>
+      <Institutions institutions={processedInstitutions}/>
+      <Descriptors doi={doi}/>
+    </header>
+  );
+};
+
