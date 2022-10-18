@@ -108,14 +108,18 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
           </div>
         </Tab>
         <Tab label="Figures and data">
-          <Heading id="figures" headingLevel={2} content="Figures and data" />
-          <ArticleContent content={getFigures(props.content)} />
+          <div className={styles['article-body-container']}>
+            <Heading id="figures" headingLevel={2} content="Figures and data" />
+            <ArticleContent content={getFigures(props.content)} />
+          </div>
         </Tab>
         <Tab label="Peer review">
-          <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
-          {props.peerReview.reviews.map((review, index) => (
+          <div className={styles['article-body-container']}>
+            <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
+            {props.peerReview.reviews.map((review, index) => (
             <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
-          ))}
+            ))}
+          </div>
         </Tab>
       </TabbedNavigation>
     </main>

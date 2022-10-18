@@ -2,6 +2,6 @@
 
 .tabbed-navigation__content {
   @media only all and (min-width: settings.$breakpoint-large) {
-    display: grid;
+    display: flex;
   }
 }
