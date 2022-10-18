@@ -585,10 +585,12 @@ export const mockContent: Content = [
     id: 'fig1',
     caption: [
       {
-        type: 'Paragraph',
-        content: [
+        type: 'Heading',
+        content:
           'Processed ligand-bound HaloTag from HaloTag-LC3 is a quantifiable readout\n                            reflecting autophagic flux.\n                        '
-        ]
+        ,
+        depth: 4,
+        id: 'fig1-heading',
       },
       {
         type: 'Paragraph',
@@ -1279,10 +1281,11 @@ export const mockContent: Content = [
     id: 'fig2',
     caption: [
       {
-        type: 'Paragraph',
-        content: [
-          'HaloTag-based reporters can be used to examine autophagic flux by fluorescence\n                            imaging.\n                        '
-        ]
+        type: 'Heading',
+        content:
+          'HaloTag-based reporters can be used to examine autophagic flux by fluorescence\n                            imaging.\n                        ',
+        depth: 4,
+        id: 'fig2-heading',
       },
       {
         type: 'Paragraph',
@@ -1908,10 +1911,11 @@ export const mockContent: Content = [
     id: 'fig3',
     caption: [
       {
-        type: 'Paragraph',
-        content: [
-          'HaloTag-based reporters can be adapted to monitor selective autophagy.'
-        ]
+        type: 'Heading',
+        content:
+          'HaloTag-based reporters can be adapted to monitor selective autophagy.',
+        depth: 4,
+        id: 'fig3-heading'
       },
       {
         type: 'Paragraph',
