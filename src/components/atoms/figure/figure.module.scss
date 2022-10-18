@@ -11,6 +11,7 @@ figure {
     @include mixins.padding(12);
 
     border: 1px solid settings.$divider;
+    box-sizing: border-box;
     width: 100%;
   }
 
