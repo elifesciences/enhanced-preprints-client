@@ -53,7 +53,7 @@ export const SiteHeader = (): JSX.Element => {
                       <a href="https://elifesciences.org/inside-elife" className={styles['main-menu__list_link']}>Inside eLife</a>
                     </li>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']}`}>
-                      <a href="https://elifesciences.org/about" className={styles['main-menu__list_link']}>Search</a>
+                      <a href="https://elifesciences.org/search" className={styles['main-menu__list_link']}>Search</a>
                     </li>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']} ${styles['end-of-group']}`}>
                       <a href="https://elifesciences.org/content-alerts" className={styles['main-menu__list_link']}>Subscribe to alerts</a>
