@@ -2,7 +2,6 @@
 @use "../../../sass/mixins";
 @use "../../../sass/settings";
 
-
 figure {
   margin: 0;
 
@@ -28,7 +27,7 @@ figure {
 }
 
 .figure__caption {
-  @include mixins.margin(12, 'bottom');
+  @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
   font-family: settings.$font-family-primary;
