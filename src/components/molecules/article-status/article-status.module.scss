@@ -9,12 +9,15 @@
   border-bottom: settings.$border;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.padding(72, "right");
+
     border-bottom: none;
     width: 100%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.padding(0, "top");
+    @include mixins.padding(0, "right");
 
     border-bottom: settings.$border;
     max-width: 232px;
