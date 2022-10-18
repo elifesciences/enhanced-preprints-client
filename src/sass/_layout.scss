@@ -1,6 +1,7 @@
 @use "settings";
 @use "mixins";
 
+
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -11,6 +12,11 @@
   position: absolute;
   user-select: none;
   width: 1px;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .grid-container {

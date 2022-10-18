@@ -585,10 +585,12 @@ export const mockContent: Content = [
     id: 'fig1',
     caption: [
       {
-        type: 'Paragraph',
-        content: [
+        type: 'Heading',
+        content:
           'Processed ligand-bound HaloTag from HaloTag-LC3 is a quantifiable readout\n                            reflecting autophagic flux.\n                        '
-        ]
+        ,
+        depth: 4,
+        id: 'fig1-heading',
       },
       {
         type: 'Paragraph',

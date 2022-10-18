@@ -108,7 +108,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
           </div>
         </Tab>
         <Tab label="Figures and data">
-          <JumpToMenu active={0} headings={[
+          <JumpToMenu headings={[
             { id: 'abstract', text: 'Abstract' },
             { id: 'assessment', text: 'eLife assessment' },
             ...props.metaData.headings,
@@ -121,7 +121,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
           </div>
         </Tab>
         <Tab label="Peer review">
-          <JumpToMenu active={0} headings={[
+          <JumpToMenu headings={[
             { id: 'abstract', text: 'Abstract' },
             { id: 'assessment', text: 'eLife assessment' },
             ...props.metaData.headings,
