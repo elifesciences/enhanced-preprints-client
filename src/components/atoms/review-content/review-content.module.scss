@@ -79,4 +79,5 @@
 
 .review-content_body {
   display: block;
+  @include typography.body();
 }
