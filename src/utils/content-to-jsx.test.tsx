@@ -140,6 +140,6 @@ describe('Content to JSX', () => {
     ]);
 
     // eslint-disable-next-line react/jsx-key
-    expect(result).toStrictEqual([[<Heading headingLevel={1} id="h1" content="heading" />]]);
+    expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} id="h1" content="heading" />]]);
   });
 });
