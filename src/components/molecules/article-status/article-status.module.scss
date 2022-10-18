@@ -45,6 +45,7 @@
   @include typography.font-size-and-vertical-height(14, 24);
 
   color: settings.$color-primary;
+  cursor: pointer;
   display: block;
   font-weight: 600;
   text-decoration: none;
