@@ -37,14 +37,29 @@
 .article-status__text {
   @include typography.body-small;
   @include typography.font-size-and-vertical-height(12, 22);
+}
 
+.article-status__link {
+  @include mixins.margin(36, "bottom");
+  @include typography.body-small;
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: settings.$color-primary;
+  cursor: pointer;
+  display: block;
   font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 
 .article-actions {
   @include mixins.margin(0);
   @include mixins.padding(0, "left");
-  @include mixins.padding(24, "top");
+  @include mixins.padding(0, "top");
 
   list-style: none;
 }
