@@ -26,7 +26,7 @@ export const ReviewContent = ({ content, isAssessment = false, id = '' }: { cont
     {isAssessment ? (
       <ul className={styles['review-content_links']}>
         <li className={styles['review-content_links-item']}><a href="#">Read the peer reviews</a></li>
-        <li className={styles['review-content_links-item']}><a href="#">About eLife assessments</a></li>
+        <li className={styles['review-content_links-item']}><a href="https://elifesciences.org/inside-elife/db24dd46">About eLife assessments</a></li>
       </ul>
     ) : ''}
   </section>
