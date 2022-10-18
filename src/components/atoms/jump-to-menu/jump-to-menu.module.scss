@@ -5,14 +5,16 @@
 .jump-menu {
   display: none;
 
-  @media only all and (min-width: settings.$breakpoint-large) {
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.margin(24, "right");
     @include mixins.margin(24, "top");
 
     align-self: flex-start;
     display: block;
+    max-width: 180px;
     position: sticky;
     top: 110px;
+    width: 100%;
   }
 }
 
