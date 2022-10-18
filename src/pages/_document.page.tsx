@@ -21,6 +21,12 @@ export default function Document() {
           }
           `}
         </style>
+        { config.cookiebotId &&
+          <script
+            id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid={config.cookiebotId}></script>
+        }
         { config.gtmId &&
           <script dangerouslySetInnerHTML={{__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
