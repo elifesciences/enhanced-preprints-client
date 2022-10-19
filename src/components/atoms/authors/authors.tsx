@@ -25,7 +25,13 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
         ))}
       </ol>
       { authors.length > authorLimit
-        ? <span onClick={() => setExpanded(!expanded)} className={styles['authors-list__expansion']+' '+styles['authors-list__expansion__'+(expanded ? 'less' : 'more')]}>{expanded === null ? '' : `${expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}`}</span> : ''}
+        ? <span
+            onClick={() => setExpanded(!expanded)}
+            className={`${styles['authors-list__expansion']} ${styles[`authors-list__expansion__${expanded ? 'less' : 'more'}`]}`}>
+              {expanded === null ? '' : `${expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}`}
+          </span>
+        : ''
+      }
     </div>
   );
 };
