@@ -51,7 +51,6 @@
 
   .side-section {
     align-items: start;
-    border-bottom: settings.$border;
     display: flex;
     flex-direction: row;
     grid-column: 2/12;
@@ -79,7 +78,6 @@
   .side-section {
     align-items: end;
     align-self: flex-start;
-    border-bottom: none;
     display: flex;
     flex-direction: column;
     grid-column: 10/13;
