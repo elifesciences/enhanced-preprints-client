@@ -19,6 +19,10 @@ export default function Document() {
           body {
             background-color: #fff;
           }
+          // Ensure that we can accommodate the fixed tabbed menu.
+          [id] {
+            scroll-margin: 74px;
+          }
           `}
         </style>
         { config.cookiebotId &&
