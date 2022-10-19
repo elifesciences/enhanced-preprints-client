@@ -36,13 +36,11 @@
 
 .article-status__text {
   @include typography.body-small;
-  @include typography.font-size-and-vertical-height(12, 22);
 }
 
 .article-status__link {
   @include mixins.margin(36, "bottom");
   @include typography.body-small;
-  @include typography.font-size-and-vertical-height(14, 24);
 
   color: settings.$color-primary;
   cursor: pointer;
