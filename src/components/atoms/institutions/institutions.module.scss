@@ -42,15 +42,3 @@
 
   cursor: pointer;
 }
-
-.institutions-list__expansion__more {
-  &::before {
-    content: ", ";
-  }
-}
-
-.institutions-list__expansion__less {
-  &::before {
-    content: " ";
-  }
-}

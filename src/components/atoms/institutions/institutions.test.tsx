@@ -44,15 +44,9 @@ describe('Institutions', () => {
       render(<Institutions institutions={institutionList}/>);
       expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
 
-      const expansionElement = screen.getByText('...show', { exact: false });
-
-      expect(expansionElement.classList).not.toContain('institutions-list__expansion__less');
-      expect(expansionElement.classList).toContain('institutions-list__expansion__more');
+      const expansionElement = screen.getByText('show', { exact: false });
 
       fireEvent.click(expansionElement);
-
-      expect(expansionElement.classList).toContain('institutions-list__expansion__less');
-      expect(expansionElement.classList).not.toContain('institutions-list__expansion__more');
 
       expect(screen.queryByText('Bat Cave')).toBeInTheDocument();
     });
@@ -61,7 +55,7 @@ describe('Institutions', () => {
       render(<Institutions institutions={institutionList}/>);
       expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
 
-      const expansionElement = screen.getByText('...show', { exact: false });
+      const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
       expect(screen.queryByText('Bat Cave')).toBeInTheDocument();

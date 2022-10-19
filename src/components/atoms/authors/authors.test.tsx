@@ -34,7 +34,7 @@ describe('authors', () => {
 
   it('shows a clickable expansion element when over the author limit', () => {
     render(<Authors authors={authorList}/>);
-    const expansionElement = screen.getByText('...show', { exact: false });
+    const expansionElement = screen.getByText('show', { exact: false });
 
     expect(expansionElement).toBeInTheDocument();
   });
@@ -51,7 +51,7 @@ describe('authors', () => {
       render(<Authors authors={authorList}/>);
       expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
 
-      const expansionElement = screen.getByText('...show', { exact: false });
+      const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
       expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe('authors', () => {
       render(<Authors authors={authorList}/>);
       expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
 
-      const expansionElement = screen.getByText('...show', { exact: false });
+      const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
       expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();

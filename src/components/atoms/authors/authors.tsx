@@ -27,8 +27,8 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
       { authors.length > authorLimit
         ? <span
             onClick={() => setExpanded(!expanded)}
-            className={`${styles['authors-list__expansion']} ${styles[`authors-list__expansion__${expanded ? 'less' : 'more'}`]}`}>
-              {expanded === null ? '' : `${expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}`}
+            className={`${styles['authors-list__expansion']}`}>
+              {expanded === null ? '' : `${expanded ? 'show less' : `show ${authors.length - authorLimit} more`}`}
           </span>
         : ''
       }

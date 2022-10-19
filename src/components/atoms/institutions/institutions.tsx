@@ -25,8 +25,8 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
       { institutions.length > institutionLimit
         ? <span
             onClick={() => setExpanded(!expanded)}
-            className={`${styles['institutions-list__expansion']} ${styles[`institutions-list__expansion__${expanded ? 'less' : 'more'}`]}`}>
-              {expanded ? 'show less' : `...show ${institutions.length - institutionLimit} more`}
+            className={`${styles['institutions-list__expansion']}`}>
+              {expanded ? 'show less' : `show ${institutions.length - institutionLimit} more`}
           </span>
         : ''
       }

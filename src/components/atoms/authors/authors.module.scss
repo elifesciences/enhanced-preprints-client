@@ -33,16 +33,4 @@
 
   cursor: pointer;
   font-weight: 600;
-
-  .authors-list__expansion__more {
-    &::before {
-      content: ", ";
-    }
-  }
-
-  .authors-list__expansion__less {
-    &::before {
-      content: " ";
-    }
-  }
 }
