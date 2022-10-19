@@ -19,6 +19,9 @@ export default function Document() {
           body {
             background-color: #fff;
           }
+          [id] {
+            scroll-margin: 74px;
+          }
           `}
         </style>
         { config.cookiebotId &&
