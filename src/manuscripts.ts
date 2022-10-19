@@ -42,6 +42,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-07-02', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.06.30.498369', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-07-01' },
       ],
@@ -55,6 +56,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Sent for peer review', date: '2022-06-29' },
         { name: 'Posted to medRxiv', date: '2022-05-31', link: { url: 'https://www.medrxiv.org/content/10.1101/2022.05.30.22275761', text: 'Go to medRxiv' } },
       ],
@@ -68,6 +70,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-07-22', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.07.21.500925', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-07-21' },
       ],
@@ -81,6 +84,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Sent for peer review', date: '2022-07-12' },
         { name: 'Posted to bioRxiv', date: '2022-06-29', link: { url: 'https://www.biorxiv.org/content/10.1101/2021.11.12.468444', text: 'Go to bioRxiv' } },
       ],
