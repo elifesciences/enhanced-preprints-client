@@ -53,7 +53,7 @@ export const SiteHeader = (): JSX.Element => {
                       <a href="https://elifesciences.org/inside-elife" className={styles['main-menu__list_link']}>Inside eLife</a>
                     </li>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']}`}>
-                      <a href="https://elifesciences.org/about" className={styles['main-menu__list_link']}>Search</a>
+                      <a href="https://elifesciences.org/search" className={styles['main-menu__list_link']}>Search</a>
                     </li>
                     <li className={`${styles['main-menu__list_item']} ${styles['hidden-wide']} ${styles['end-of-group']}`}>
                       <a href="https://elifesciences.org/content-alerts" className={styles['main-menu__list_link']}>Subscribe to alerts</a>
@@ -96,10 +96,10 @@ export const SiteHeader = (): JSX.Element => {
         <nav className={styles['nav-secondary']}>
           <ul className={styles['nav-secondary__list']}>
             <li className={`${styles['nav-secondary__item']} ${styles['nav-secondary__item--search']}`}>
-              <a href="#" rel="search">Search</a>
+              <a href="https://elifesciences.org/search" rel="search">Search</a>
             </li>
             <li className={`${styles['nav-secondary__item']} ${styles['nav-secondary__item--alert']}`}>
-              <a href="#">Alerts</a>
+              <a href="https://elifesciences.org/content-alerts">Alerts</a>
             </li>
             <li className={styles['nav-secondary__item']}>
               <a href="#" className={`${styles['block-button']} ${styles['block-button__variant-one']}`}>Submit your research</a>
