@@ -2,6 +2,8 @@
 
 .heading-1 {
   @include typography.heading-1();
+  // Ensure that we can accommodate the fixed tabbed menu.
+  scroll-margin: 74px;
 }
 
 .heading-2 {
