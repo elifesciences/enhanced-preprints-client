@@ -27,14 +27,14 @@ describe('Institutions', () => {
 
   it('shows a clickable expansion element when over the institution limit', () => {
     render(<Institutions institutions={institutionList}/>);
-    const expansionElement = screen.getByText('...show', { exact: false });
+    const expansionElement = screen.getByText('show', { exact: false });
 
     expect(expansionElement).toBeInTheDocument();
   });
 
   it('does not show a clickable expansion element when under the institution limit', () => {
     render(<Institutions institutions={[institutionList[0]]}/>);
-    const expansionElement = screen.queryByText('...show', { exact: false });
+    const expansionElement = screen.queryByText('show', { exact: false });
 
     expect(expansionElement).not.toBeInTheDocument();
   });

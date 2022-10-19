@@ -41,7 +41,7 @@ describe('authors', () => {
 
   it('does not show a clickable expansion element when under the author limit', () => {
     render(<Authors authors={[authorList[0]]}/>);
-    const expansionElement = screen.queryByText('...show', { exact: false });
+    const expansionElement = screen.queryByText('show', { exact: false });
 
     expect(expansionElement).not.toBeInTheDocument();
   });
