@@ -12,7 +12,9 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
-export const ReviewContent = ({ content, isAssessment = false, id = '' }: { content: string, isAssessment?: boolean, id?: string }): JSX.Element => {
+export const ReviewContent = ({
+  content, isAssessment = false, id = '', setActiveTab,
+}: { content: string, isAssessment?: boolean, id?: string, setActiveTab?: (index: number) => void }): JSX.Element => {
   const sectionProps: Record<string, string> = {
     className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
   };
@@ -25,7 +27,7 @@ export const ReviewContent = ({ content, isAssessment = false, id = '' }: { cont
     <div className={styles['review-content_body']} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
       <ul className={styles['review-content_links']}>
-        <li className={styles['review-content_links-item']}><a href="#">Read the peer reviews</a></li>
+        { setActiveTab && <li className={styles['review-content_links-item']}><a onClick={() => setActiveTab(2)} href="#">Read the peer reviews</a></li> }
         <li className={styles['review-content_links-item']}><a href="https://elifesciences.org/inside-elife/db24dd46">About eLife assessments</a></li>
       </ul>
     ) : ''}

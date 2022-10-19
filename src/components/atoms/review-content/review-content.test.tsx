@@ -20,7 +20,7 @@ describe('ArticleContent', () => {
     expect(screen.getByText('I am an em').tagName).toStrictEqual('EM');
   });
 
-  it('highlights the terms when an assesssment', async () => {
+  it('highlights the terms when an assessment', async () => {
     render(<ReviewContent isAssessment={true} content="I am an important article that is very convincing dslfkjhas"/>);
 
     expect(screen.getByText('important')).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe('ArticleContent', () => {
   });
 
   it('shows links to explain assessment terms', async () => {
-    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good"/>);
+    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" setActiveTab={() => {}}/>);
 
     expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
     expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
