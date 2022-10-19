@@ -112,12 +112,14 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
             </div>
           </Tab>
           <Tab label="Figures and data">
+            <div className={styles['menu-spacer']}/>
             <div className={styles['article-body-container']}>
               <Heading id="figures" headingLevel={2} content="Figures and data" />
               <ArticleContent content={getFigures(props.content)} />
             </div>
           </Tab>
           <Tab label="Peer review">
+            <div className={styles['menu-spacer']}/>
             <div className={styles['article-body-container']}>
               <EditorsAndReviewers participants={props.peerReview.evaluationSummary.participants} />
               {props.peerReview.reviews.map((review, index) => (
