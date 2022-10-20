@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import Head from 'next/head';
 import {
   ArticlePage,
   ArticlePageProps,
@@ -8,9 +9,15 @@ import {
 import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
 import { Content } from '../../types/content';
+import { contentToString } from '../../utils/content-to-string';
 
 export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
-  <ArticlePage {...props}></ArticlePage>
+  <>
+  <Head>
+    <title>{contentToString(props.metaData.title)}</title>
+  </Head>
+  <ArticlePage {...props} />
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
