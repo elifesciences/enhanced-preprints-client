@@ -90,6 +90,10 @@
   @include heading-base();
 }
 
+@mixin heading-5() {
+  @include heading-4();
+}
+
 @mixin body() {
   @include font-size-and-vertical-height(16, 24);
 

@@ -8,21 +8,6 @@ type ReviewedPreprintConfig = {
 };
 
 const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
-  /* Unused because of a VoR already existing.
-  '10.1101/2022.03.04.482974': {
-    preprintDoi: '10.1101/2022.03.04.482974',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Posted to bioRxiv', date: '2022-03-05', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.03.04.482974', text: 'Go to bioRxiv' } },
-        { name: 'Sent for peer review', date: '2022-03-04' },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.03.04.482974/2022.03.04.482974.pdf',
-  },
-  */
   '10.1101/2022.06.24.497502': {
     preprintDoi: '10.1101/2022.06.24.497502',
     status: {
@@ -51,30 +36,18 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
     pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.26.501569/2022.07.26.501569.pdf',
     msas: ['Stem Cells and Regenerative Medicine'],
   },
-  '10.1101/2022.05.28.493855': {
-    preprintDoi: '10.1101/2022.05.28.493855',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Sent for peer review', date: '2022-07-12' },
-        { name: 'Posted to bioRxiv', date: '2022-05-29', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.05.28.493855', text: 'Go to bioRxiv' } },
-      ],
-    },
-    pdfUrl: '#',
-    msas: ['Evolutionary Biology'],
-  },
   '10.1101/2022.06.30.498369': {
     preprintDoi: '10.1101/2022.06.30.498369',
     status: {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-07-02', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.06.30.498369', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-07-01' },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.30.498369/2022.06.30.498369.pdf',
     msas: ['Developmental Biology', 'Plant Biology'],
   },
   '10.1101/2022.05.30.22275761': {
@@ -83,11 +56,12 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Sent for peer review', date: '2022-06-29' },
         { name: 'Posted to medRxiv', date: '2022-05-31', link: { url: 'https://www.medrxiv.org/content/10.1101/2022.05.30.22275761', text: 'Go to medRxiv' } },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.05.30.22275761/2022.05.30.22275761.pdf',
     msas: ['Epidemiology and Global Health'],
   },
   '10.1101/2022.07.21.500925': {
@@ -96,25 +70,13 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Posted to bioRxiv', date: '2022-07-22', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.07.21.500925', text: 'Go to bioRxiv' } },
         { name: 'Sent for peer review', date: '2022-07-21' },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.21.500925/2022.07.21.500925.pdf',
     msas: ['Structural Biology and Molecular Biophysics'],
-  },
-  '10.1101/2020.07.27.223354': {
-    preprintDoi: '10.1101/2020.07.27.223354',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Sent for peer review', date: '2022-07-20' },
-        { name: 'Posted to bioRxiv', date: '2022-06-21', link: { url: 'https://www.biorxiv.org/content/10.1101/2020.07.27.223354', text: 'Go to bioRxiv' } },
-      ],
-    },
-    pdfUrl: '#',
-    msas: ['Immunology and Inflammation'],
   },
   '10.1101/2021.11.12.468444': {
     preprintDoi: '10.1101/2021.11.12.468444',
@@ -122,11 +84,12 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
       articleType: 'Reviewed Preprint',
       status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
       timeline: [
+        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
         { name: 'Sent for peer review', date: '2022-07-12' },
         { name: 'Posted to bioRxiv', date: '2022-06-29', link: { url: 'https://www.biorxiv.org/content/10.1101/2021.11.12.468444', text: 'Go to bioRxiv' } },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2021.11.12.468444/2021.11.12.468444.pdf',
     msas: ['Neuroscience'],
   },
 };
@@ -137,18 +100,6 @@ type ManuscriptConfig = ReviewedPreprintConfig & {
 };
 
 export const manuscripts: Record<string, ManuscriptConfig> = {
-  /* Unused because of a VoR already existing
-  '77558': { // eslint-disable-line quote-props
-    msid: '77558',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.03.04.482974'],
-  },
-  '77558v1': { // eslint-disable-line quote-props
-    msid: '77558',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.03.04.482974'],
-  },
-  */
   '80494': { // eslint-disable-line quote-props
     msid: '80494',
     version: '1',
@@ -168,16 +119,6 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     msid: '81926',
     version: '1',
     ...preprintConfigs['10.1101/2022.07.26.501569'],
-  },
-  '80993': { // eslint-disable-line quote-props
-    msid: '80993',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.28.493855'],
-  },
-  '80993v1': { // eslint-disable-line quote-props
-    msid: '80993',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.28.493855'],
   },
   '80984': { // eslint-disable-line quote-props
     msid: '80984',
@@ -208,16 +149,6 @@ export const manuscripts: Record<string, ManuscriptConfig> = {
     msid: '81727',
     version: '1',
     ...preprintConfigs['10.1101/2022.07.21.500925'],
-  },
-  '81274': { // eslint-disable-line quote-props
-    msid: '81274',
-    version: '1',
-    ...preprintConfigs['10.1101/2020.07.27.223354'],
-  },
-  '81274v1': { // eslint-disable-line quote-props
-    msid: '81274',
-    version: '1',
-    ...preprintConfigs['10.1101/2020.07.27.223354'],
   },
   '81535': { // eslint-disable-line quote-props
     msid: '81535',
