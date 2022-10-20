@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     props: {
       metaData: {
         ...metaData,
-        msid,
+        msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
