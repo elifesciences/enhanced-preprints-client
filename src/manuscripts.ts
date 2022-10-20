@@ -47,7 +47,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-07-01' },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.30.498369/2022.06.30.498369.pdf',
     msas: ['Developmental Biology', 'Plant Biology'],
   },
   '10.1101/2022.05.30.22275761': {
@@ -61,7 +61,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to medRxiv', date: '2022-05-31', link: { url: 'https://www.medrxiv.org/content/10.1101/2022.05.30.22275761', text: 'Go to medRxiv' } },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.05.30.22275761/2022.05.30.22275761.pdf',
     msas: ['Epidemiology and Global Health'],
   },
   '10.1101/2022.07.21.500925': {
@@ -75,7 +75,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Sent for peer review', date: '2022-07-21' },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.21.500925/2022.07.21.500925.pdf',
     msas: ['Structural Biology and Molecular Biophysics'],
   },
   '10.1101/2021.11.12.468444': {
@@ -89,7 +89,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
         { name: 'Posted to bioRxiv', date: '2022-06-29', link: { url: 'https://www.biorxiv.org/content/10.1101/2021.11.12.468444', text: 'Go to bioRxiv' } },
       ],
     },
-    pdfUrl: '#',
+    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2021.11.12.468444/2021.11.12.468444.pdf',
     msas: ['Neuroscience'],
   },
 };
