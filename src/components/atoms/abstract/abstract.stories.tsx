@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { mockContent } from '../article-content/mock-content';
 import { Abstract } from './abstract';
-import { content } from '../../../utils/mocks';
 
 export default {
   title: 'Atoms/Abstract',
@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof Abstract> = (args) => (
 
 export const Article = Template.bind({});
 Article.args = {
-  content,
+  content: mockContent,
 };
