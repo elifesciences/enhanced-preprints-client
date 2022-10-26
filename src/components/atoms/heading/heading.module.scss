@@ -1,19 +1,19 @@
 @use "../../../sass/typography";
 
 .heading-1 {
-  @include typography.heading-1();
-}
-
-.heading-2 {
   @include typography.heading-2();
 }
 
-.heading-3 {
+.heading-2 {
   @include typography.heading-3();
+}
+
+.heading-3 {
+  @include typography.heading-4();
 }
 
 .heading-4,
 .heading-5,
 .heading-6 {
-  @include typography.heading-4();
+  @include typography.heading-5();
 }

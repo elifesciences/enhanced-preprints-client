@@ -205,12 +205,8 @@
   @include mixins.padding(0, "left");
   @include mixins.margin(30, "top");
 
-  @media only screen and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(42, "top");
-  }
-
   @media only screen and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.margin(52, "top");
+    @include mixins.margin(48, "top");
   }
 
   align-items: center;

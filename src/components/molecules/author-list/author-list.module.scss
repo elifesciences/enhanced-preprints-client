@@ -4,7 +4,7 @@
 .author-list__title {
   @include mixins.margin(0);
   @include mixins.padding(21, "bottom");
-  @include typography.heading-1();
+  @include typography.heading-2();
 }
 
 .author-list__authors {
@@ -21,7 +21,7 @@
 .author-list__author_name {
   @include mixins.margin(0);
   @include mixins.padding(12, "bottom");
-  @include typography.heading-2();
+  @include typography.heading-3();
 }
 
 .author-list__affiliations {
