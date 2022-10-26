@@ -15,7 +15,7 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
 
   return (
     <div className={styles.institutions}>
-      <ol className={styles['institutions-list']}>
+      <ol className={styles['institutions-list']} aria-label="Author institutions">
         { institutions.slice(0, expanded ? institutions.length : institutionLimit).map(({ name, address }, index) => (
           <li className={styles['institutions-list__item']} key={index}>
             {name}{ address ? <address className={styles.institution__address}>{address.addressCountry ?? ''}</address> : ''}
@@ -23,7 +23,7 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
         ))}
       </ol>
       { institutions.length > institutionLimit
-        ? <span className={styles['institutions-list__expansion']} onClick={() => setExpanded(!expanded)}>{expanded ? 'show less' : `...show ${institutions.length - institutionLimit} more`}</span> : ''}
+        ? <span className={styles['institutions-list__expan```sion']} onClick={() => setExpanded(!expanded)}>{expanded ? 'show less' : `...show ${institutions.length - institutionLimit} more`}</span> : ''}
     </div>
   );
 };
