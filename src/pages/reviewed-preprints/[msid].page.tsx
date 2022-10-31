@@ -50,11 +50,13 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     manuscripts[msid].status,
   ]);
 
+  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
+
   return {
     props: {
       metaData: {
         ...metaData,
-        msid,
+        msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
