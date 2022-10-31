@@ -104,8 +104,6 @@ services:
 
   # storybook server
   storybook:
-    profiles:
-    - storybook
     build:
       context: .
       target: storybook
