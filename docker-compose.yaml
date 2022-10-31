@@ -1,12 +1,35 @@
+version: '3.4'
 services:
+  # Dependant services
+  ## Image Server
+  image-server:
+    image: ghcr.io/elifesciences/epp-image-server:master-05a4bb01-20220929.2121
+    volumes:
+    - ./.docker/cantaloupe.properties:/opt/cantaloupe/cantaloupe.properties
+    - ./data:/opt/epp/data
+    healthcheck:
+      test: curl http://image-server:8182/
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 2s
+
+  ## Database (MongoDB) server
   mongodb:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: testtest
     volumes:
-      - data:/home/couchdb/data
+      - data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb:27017/test -u admin -p testtest --authenticationDatabase admin --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 2s
 
+  ## Database (MongoDB) GUI
   mongo-express:
     image: mongo-express
     environment:
@@ -16,11 +39,12 @@ services:
       - ME_CONFIG_MONGODB_AUTH_USERNAME=admin
       - ME_CONFIG_MONGODB_AUTH_PASSWORD=testtest
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     ports:
       - "8081:8081"
 
-  # services for API
+  ## EPP API
   api:
     image: ghcr.io/elifesciences/enhanced-preprints:master-8240a5a8-20221012.0916
     healthcheck:
@@ -40,7 +64,7 @@ services:
       - 3000:3000
     volumes:
       - import_data:/opt/epp-data
-
+  ## EPP API data fetch
   api-fetch-data:
     image: k8s.gcr.io/git-sync/git-sync:v3.5.0
     environment:
@@ -58,15 +82,6 @@ services:
     volumes:
       - import_data:/tmp/git
 
-  # Image Server
-  image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-05a4bb01-20220929.2121
-    ports:
-    - "8182:8182"
-    volumes:
-    - ./.docker/cantaloupe.properties:/opt/cantaloupe/cantaloupe.properties
-    - ./data:/opt/epp/data
-
   # Main app server
   app:
     build:
@@ -81,6 +96,8 @@ services:
     environment:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
+    ports:
+    - 3001:3000
     volumes:
     - ./:/opt/epp-client/
     - node_modules:/opt/epp-client/node_modules
