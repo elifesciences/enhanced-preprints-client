@@ -6,6 +6,6 @@ import {
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage metaData={metaData} abstract={content} content={content} status={status} peerReview={peerReview}/>)).not.toThrow();
+    expect(() => render(<ArticlePage metaData={metaData} content={content} status={status} peerReview={peerReview}/>)).not.toThrow();
   });
 });
