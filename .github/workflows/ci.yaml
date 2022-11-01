@@ -29,6 +29,8 @@ jobs:
         run: yarn lint-sass
       - name: Unit Test
         run: yarn test
+      - name: Production build
+        run: yarn build
   build-and-push:
     needs: [test]
     runs-on: ubuntu-latest
