@@ -1,15 +1,15 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import {
   ArticlePage,
-  ArticlePageProps,
   ArticleStatusProps,
-  PeerReviewProps,
 } from '../../components/pages/article/article-page';
 import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
 import { Content } from '../../types/content';
+import { jsonFetch } from '../../utils/json-fetch';
+import { MetaData, PeerReview } from '../../types';
 
-export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+export const Page = (props: { metaData: MetaData, content: Content, status: ArticleStatusProps, peerReview: PeerReview }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>
 );
 
@@ -34,11 +34,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
-
   const [metaData, content, peerReview, status] = await Promise.all([
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`),
+    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
     // replace with call for data
     manuscripts[msid].status,
   ]);
@@ -54,7 +53,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
       },
-      abstract: metaData.abstract,
       content,
       status,
       peerReview,

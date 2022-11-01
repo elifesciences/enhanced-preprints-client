@@ -1,7 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ArticlePage, ReviewType } from './article-page';
+import { ArticlePage } from './article-page';
 import { mockContent } from '../../atoms/article-content/mock-content';
 import { Reference } from '../../atoms/reference-list/reference-list';
+import { ReviewType } from '../../../types/peer-review';
 
 export default {
   title: 'Pages/Article Page',
@@ -75,6 +76,7 @@ export const ArticlePageStory = Template.bind({});
 ArticlePageStory.args = {
   content: mockContent,
   metaData: {
+    abstract: mockContent,
     doi: '10.1101/2022.04.13.488149',
     msid: '123456',
     version: '1',
