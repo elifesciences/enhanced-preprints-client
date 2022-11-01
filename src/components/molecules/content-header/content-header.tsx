@@ -1,12 +1,16 @@
 import styles from './content-header.module.scss';
-import { Authors } from '../../atoms/authors/authors';
+import { Content } from '../../../types/content';
+import { Author, Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { Title } from '../../atoms/title/title';
-import { ArticleFlagList } from '../article-flag-list/article-flag-list';
+import { ArticleFlagList, Props as FlagProps } from '../article-flag-list/article-flag-list';
 import { Institution, Institutions } from '../../atoms/institutions/institutions';
-import { MetaData } from '../../../types';
 
-export type ContentHeaderProps = Omit<MetaData, 'abstract'>;
+export type ContentHeaderProps = FlagProps & {
+  authors: Author[];
+  doi: string;
+  title: Content;
+};
 
 const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
 
