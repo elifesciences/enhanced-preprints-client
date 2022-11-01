@@ -17,7 +17,7 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
 
   return (
     <div className={styles.authors}>
-      <ol className={styles['authors-list']}>
+      <ol className={styles['authors-list']} aria-label="Authors of this article">
         { authors.slice(0, expanded !== false ? authors.length : authorLimit).map(({ givenNames, familyNames }, index) => (
           <li className={styles['authors-list__item']} key={index}>
             {givenNames.join(' ')} {familyNames.join(' ')}
