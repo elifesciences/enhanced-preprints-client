@@ -7,7 +7,8 @@ type ButtonProps = {
 };
 
 export const Button = ({ text, iconName, url }: ButtonProps): JSX.Element => (
-  <a className={`${styles['button-icon']} ${styles.button} ${styles[iconName]}`} href={url}>
+  <a className={styles.button} href={url}>
+    <span className={`material-icons ${styles['button-icon']}`}>{iconName}</span>
     {text}
   </a>
 );

@@ -9,13 +9,6 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const DefaultButton = Template.bind({});
-DefaultButton.args = {
-  text: 'Default',
-  iconName: '',
-  url: '#',
-};
-
 export const DownloadButton = Template.bind({});
 DownloadButton.args = {
   text: 'Download',
@@ -32,14 +25,14 @@ ShareButton.args = {
 
 export const CiteButton = Template.bind({});
 CiteButton.args = {
-  text: 'Citation',
-  iconName: 'citation',
+  text: 'Cite',
+  iconName: 'format_quote',
   url: '#',
 };
 
 export const FollowButton = Template.bind({});
 FollowButton.args = {
   text: 'Follow',
-  iconName: 'follow',
+  iconName: 'notifications',
   url: '#',
 };

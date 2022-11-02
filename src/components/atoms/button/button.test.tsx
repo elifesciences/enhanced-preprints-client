@@ -3,11 +3,10 @@ import { Button } from './button';
 
 describe('Button', () => {
   it('renders with the provided text and iconName', () => {
-    render(<Button text="button text" iconName="dark_mode" url='bbc.co.uk' />);
+    render(<Button text="button text" iconName="dark_mode" url='#' />);
 
     expect(screen.getByText('button text')).toBeInTheDocument();
-    expect(screen.getByText('button text')).toHaveClass('dark_mode');
-    expect(screen.getByText('button text')).toHaveAttribute('href');
-    expect(screen.getByText('button text').getAttribute('href')).toStrictEqual('bbc.co.uk');
+    expect(screen.getByText('dark_mode')).toBeInTheDocument();
+    expect(screen.getByText('dark_mode')).toHaveClass('material-icons');
   });
 });
