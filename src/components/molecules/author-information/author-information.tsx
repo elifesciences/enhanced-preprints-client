@@ -1,5 +1,5 @@
-import { Author } from '../../atoms/authors/authors';
 import styles from './author-list.module.scss';
+import { Author } from '../../../types';
 
 export const AuthorInformation = ({ authors }: { authors: Author[] }): JSX.Element => (
   <section id="author-list" className={styles['author-list']}>

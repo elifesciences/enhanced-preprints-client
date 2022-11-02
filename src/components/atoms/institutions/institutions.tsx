@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import styles from './institutions.module.scss';
-
-export type Institution = {
-  name: string,
-  address?: {
-    addressCountry: string,
-  },
-};
+import { Institution } from '../../../types';
 
 const institutionLimit = 3;
 

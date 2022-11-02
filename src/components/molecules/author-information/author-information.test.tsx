@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Author } from '../../atoms/authors/authors';
+import { Author } from '../../../types';
 import { AuthorInformation } from './author-information';
 
 const authors: Author[] = [
