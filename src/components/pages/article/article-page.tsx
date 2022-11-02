@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ArticleContent } from '../../atoms/article-content/article-content';
 import { Heading } from '../../atoms/heading/heading';
-import { Heading as JumpMenuHeading, JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
+import { JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
-import { ContentHeader, ContentHeaderProps } from '../../molecules/content-header/content-header';
+import { ContentHeader } from '../../molecules/content-header/content-header';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -12,46 +12,14 @@ import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
-import { Reference, ReferenceList } from '../../atoms/reference-list/reference-list';
+import { ReferenceList } from '../../atoms/reference-list/reference-list';
 import { AuthorList } from '../../molecules/author-list/author-list';
-
-export type ArticlePageProps = ContentHeaderProps & {
-  msid: string,
-  version: string,
-  pdfUrl: string,
-  references: Reference[],
-  headings: JumpMenuHeading[],
-};
+import { MetaData, PeerReview } from '../../../types';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
   articleType: string,
   status: string,
-};
-
-export enum ReviewType {
-  EvaluationSummary = 'evaluation-summary',
-  Review = 'review-article',
-  AuthorResponse = 'reply',
-}
-
-type Participant = {
-  name: string,
-  role: string,
-  institution: string,
-};
-
-type Evaluation = {
-  date: Date,
-  reviewType: ReviewType,
-  text: string,
-  participants: Participant[],
-};
-
-export type PeerReviewProps = {
-  evaluationSummary: Evaluation,
-  reviews: Evaluation[],
-  authorResponse?: Evaluation,
 };
 
 const getFigures = (content: Content): Content => {
@@ -73,7 +41,7 @@ const getFigures = (content: Content): Content => {
   }
 };
 
-export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => {
+export const ArticlePage = (props: { metaData: MetaData, content: Content, status: ArticleStatusProps, peerReview: PeerReview }): JSX.Element => {
   const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
@@ -104,7 +72,7 @@ export const ArticlePage = (props: { metaData: ArticlePageProps, abstract: Conte
               { id: 'author-list', text: 'Author Information' },
             ]} />
             <div className={styles['article-body-container']}>
-              <Abstract content={props.abstract} />
+              <Abstract content={props.metaData.abstract} />
               <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} setActiveTab={setActiveTab}/>
               <ArticleContent content={props.content} />
               <ReferenceList references={props.metaData.references} />
