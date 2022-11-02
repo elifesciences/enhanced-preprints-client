@@ -13,7 +13,6 @@ export const Heading = ({
   headingLevel, content, id, className,
 }: HeadingProps): JSX.Element => {
   const normalisedClassName = className || styles[`heading-${headingLevel}`];
-  // eslint-disable-next-line default-case
   switch (headingLevel) {
     case 1:
       return <h1 id={id} className={normalisedClassName}>{contentToJsx(content)}</h1>;
