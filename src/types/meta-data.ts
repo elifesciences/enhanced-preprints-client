@@ -1,7 +1,7 @@
 import { Content } from './content';
-import { Reference } from '../components/atoms/reference-list/reference-list';
 import { Heading } from '../components/atoms/jump-to-menu/jump-to-menu';
 import { Author } from './author';
+import { Reference } from './reference';
 
 export type MetaData = {
   abstract: Content;

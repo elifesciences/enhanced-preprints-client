@@ -1,43 +1,6 @@
 import { Heading } from '../heading/heading';
 import styles from './reference-list.module.scss';
-
-export type Address = {
-  addressCountry: string,
-};
-export type Organisation = {
-  name: string,
-  address?: Address,
-};
-export type Author = {
-  type: 'Person'
-  familyNames: string[],
-  givenNames: string[],
-  affiliations?: Organisation[],
-};
-export type PublicationType = 'PublicationVolume' | 'Periodical';
-export type Publication = {
-  type: PublicationType,
-  name?: string,
-  volumeNumber?: number,
-  isPartOf?: Publication,
-};
-export type Reference = {
-  type: 'Article',
-  id: string,
-  title: string,
-  url?: string,
-  pageEnd?: number,
-  pageStart: number,
-  authors: Array<Author>,
-  datePublished: string,
-  isPartOf?: Publication,
-  identifiers?: {
-    type: string,
-    name: string,
-    propertyID: string,
-    value: string,
-  }[],
-};
+import { Author, Reference } from '../../../types';
 
 const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
 
