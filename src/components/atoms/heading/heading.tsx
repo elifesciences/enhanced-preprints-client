@@ -1,4 +1,4 @@
-import { Content } from '../../../types/content';
+import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import styles from './heading.module.scss';
 

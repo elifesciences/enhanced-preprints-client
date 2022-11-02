@@ -1,11 +1,10 @@
 import styles from './content-header.module.scss';
-import { Content } from '../../../types/content';
 import { Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { Title } from '../../atoms/title/title';
 import { ArticleFlagList, Props as FlagProps } from '../article-flag-list/article-flag-list';
 import { Institutions } from '../../atoms/institutions/institutions';
-import { Author, Institution } from '../../../types';
+import { Author, Content, Institution } from '../../../types';
 
 export type ContentHeaderProps = FlagProps & {
   authors: Author[];

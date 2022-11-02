@@ -7,14 +7,13 @@ import { ContentHeader } from '../../molecules/content-header/content-header';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
-import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
 import { ReferenceList } from '../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../molecules/author-information-list/author-information-list';
-import { MetaData, PeerReview } from '../../../types';
+import { Content, MetaData, PeerReview } from '../../../types';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
