@@ -13,7 +13,7 @@ import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-a
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
 import { ReferenceList } from '../../atoms/reference-list/reference-list';
-import { AuthorInformation } from '../../molecules/author-information/author-information';
+import { AuthorInformationList } from '../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../types';
 
 export type ArticleStatusProps = {
@@ -76,7 +76,7 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
               <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} setActiveTab={setActiveTab}/>
               <ArticleContent content={props.content} />
               <ReferenceList references={props.metaData.references} />
-              <AuthorInformation authors={props.metaData.authors}/>
+              <AuthorInformationList authors={props.metaData.authors}/>
             </div>
           </Tab>
           <Tab label="Figures and data">
