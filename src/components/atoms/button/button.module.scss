@@ -21,3 +21,27 @@
   color: settings.$link-decoration;
   vertical-align: middle;
 }
+
+.download {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+}
+
+.share {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/share/share.svg") no-repeat 11px 8px;
+}
+
+.citation {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+}
+
+.follow {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
+}
