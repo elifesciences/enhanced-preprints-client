@@ -1,7 +1,7 @@
 import { Author } from '../../atoms/authors/authors';
 import styles from './author-list.module.scss';
 
-export const AuthorList = ({ authors }: { authors: Author[] }): JSX.Element => (
+export const AuthorInformation = ({ authors }: { authors: Author[] }): JSX.Element => (
   <section id="author-list" className={styles['author-list']}>
     <h2 id="author-information" className={styles['author-list__title']}>Author information</h2>
     <ol className={styles['author-list__authors']}>

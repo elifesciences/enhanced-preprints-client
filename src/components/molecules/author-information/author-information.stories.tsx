@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { AuthorList } from './author-list';
+import { AuthorInformation } from './author-information';
 import { authors } from '../../../utils/mocks';
 
 export default {
   title: 'Molecules/AuthorList',
-  component: AuthorList,
-} as ComponentMeta<typeof AuthorList>;
+  component: AuthorInformation,
+} as ComponentMeta<typeof AuthorInformation>;
 
-const Template: ComponentStory<typeof AuthorList> = (args) => (
-  <AuthorList {...args} />
+const Template: ComponentStory<typeof AuthorInformation> = (args) => (
+  <AuthorInformation {...args} />
 );
 
 export const Authors = Template.bind({});
