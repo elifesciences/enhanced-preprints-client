@@ -18,6 +18,7 @@ export const SiteHeader = (): JSX.Element => {
           width="80"
           height="30"
         />
+        <span className={styles['site-header__title']}>Enhanced Preprints</span>
 
         {showMenu &&
             <>
