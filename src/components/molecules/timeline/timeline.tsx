@@ -22,7 +22,7 @@ export const Timeline = ({ events }: TimelineProps): JSX.Element => (
           <Fragment key={index}>
             <dt className={styles['review-timeline__event']}>{entry.name}</dt>
               <dd className={styles['review-timeline__date']}>
-                <span>{new Date(entry.date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                {new Date(entry.date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
                 { entry.link && <a className={styles['review-timeline__link']} href={entry.link.url}>{entry.link.text}</a>}
               </dd>
           </Fragment>
