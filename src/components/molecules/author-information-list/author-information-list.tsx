@@ -1,4 +1,4 @@
-import styles from './author-list.module.scss';
+import styles from './author-information-list.module.scss';
 import { Author } from '../../../types';
 
 const AuthorInformation = ({ author }: { author: Author }): JSX.Element => (
