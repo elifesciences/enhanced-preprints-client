@@ -20,8 +20,8 @@ export type ArticlePageLayoutProps = {
   activeTab: 'fulltext' | 'figures' | 'reviews',
 };
 
-export const ArticlePageLayout = ({ children, metaData, status, activeTab }: ArticlePageLayoutProps): JSX.Element => {
-  const [renderedActiveTab, setActiveTab] = useState<string>(activeTab);
+export const ArticlePageLayout = (props: ArticlePageLayoutProps): JSX.Element => {
+  const [activeTab, setActiveTab] = useState<string>(props.activeTab);
   return (
     <div className={`${styles['grid-container']} ${styles['article-page']}`}>
       <div className={styles['grid-header']}>
@@ -29,31 +29,31 @@ export const ArticlePageLayout = ({ children, metaData, status, activeTab }: Art
       </div>
       <div className={styles['primary-section-header']}>
         <ContentHeader
-          doi={`10.7554/eLife.${metaData.msid}.${metaData.version}`}
-          msas={metaData.msas}
-          authors={metaData.authors}
-          title={metaData.title}
+          doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
+          msas={props.metaData.msas}
+          authors={props.metaData.authors}
+          title={props.metaData.title}
         />
       </div>
       <aside className={styles['side-section']}>
-        <ArticleStatus articleStatus={status.status} articleType={status.articleType} pdfUrl={metaData.pdfUrl}/>
-        <Timeline events={status.timeline}/>
+        <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl}/>
+        <Timeline events={props.status.timeline}/>
       </aside>
       <main className={styles['primary-section']}>
       <div className={styles['tabbed-navigation']}>
         <ul className={styles['tabbed-navigation__tabs']}>
-          <li className={`${styles['tabbed-navigation__tab-label']}${renderedActiveTab === 'fulltext' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('fulltext')}>
-            <Link href={`/reviewed-preprints/${metaData.msid}`}>Full text</Link>
+          <li className={`${styles['tabbed-navigation__tab-label']}${activeTab === 'fulltext' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('fulltext')}>
+            <Link href={`/reviewed-preprints/${props.metaData.msid}`}>Full text</Link>
           </li>
-          <li className={`${styles['tabbed-navigation__tab-label']}${renderedActiveTab === 'figures' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('figures')}>
-            <Link href={`/reviewed-preprints/${metaData.msid}/figures`}>Figures and data</Link>
+          <li className={`${styles['tabbed-navigation__tab-label']}${activeTab === 'figures' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('figures')}>
+            <Link href={`/reviewed-preprints/${props.metaData.msid}/figures`}>Figures and data</Link>
           </li>
-          <li className={`${styles['tabbed-navigation__tab-label']}${renderedActiveTab === 'reviews' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('reviews')}>
-            <Link href={`/reviewed-preprints/${metaData.msid}/reviews`}>Peer review</Link>
+          <li className={`${styles['tabbed-navigation__tab-label']}${activeTab === 'reviews' ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab('reviews')}>
+            <Link href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>
           </li>
         </ul>
       </div>
-      {children}
+      {props.children}
       </main>
     </div>
   );
