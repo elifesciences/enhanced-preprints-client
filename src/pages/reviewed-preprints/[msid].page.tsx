@@ -5,9 +5,8 @@ import {
 } from '../../components/pages/article/article-page';
 import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
-import { Content } from '../../types/content';
 import { jsonFetch } from '../../utils/json-fetch';
-import { MetaData, PeerReview } from '../../types';
+import { Content, MetaData, PeerReview } from '../../types';
 
 export const Page = (props: { metaData: MetaData, content: Content, status: ArticleStatusProps, peerReview: PeerReview }): JSX.Element => (
   <ArticlePage {...props}></ArticlePage>

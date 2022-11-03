@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Content } from '../types/content';
+import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';

@@ -1,6 +1,6 @@
 import styles from './abstract.module.scss';
 import { contentToJsx } from '../../../utils/content-to-jsx';
-import { Content } from '../../../types/content';
+import { Content } from '../../../types';
 
 export const Abstract = ({ content }: { content: Content }): JSX.Element => (
   <section className={styles.abstract}>
