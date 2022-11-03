@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Figure } from './figure';
-import { FigureContent } from '../../../types/content';
+import { FigureContent } from '../../../types';
 
 const content: FigureContent = {
   caption: 'this is a figure',

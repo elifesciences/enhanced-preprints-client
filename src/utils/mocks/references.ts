@@ -1,4 +1,4 @@
-import { Reference } from '../../components/atoms/reference-list/reference-list';
+import { Reference } from '../../types';
 
 export const references: Reference[] = [
   {

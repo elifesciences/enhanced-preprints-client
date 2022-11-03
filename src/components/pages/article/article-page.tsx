@@ -7,14 +7,13 @@ import { ContentHeader } from '../../molecules/content-header/content-header';
 import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
-import { Content } from '../../../types/content';
 import styles from './article-page.module.scss';
 import { EditorsAndReviewers } from '../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../atoms/review-content/review-content';
 import { Abstract } from '../../atoms/abstract/abstract';
 import { ReferenceList } from '../../atoms/reference-list/reference-list';
-import { AuthorList } from '../../molecules/author-list/author-list';
-import { MetaData, PeerReview } from '../../../types';
+import { AuthorInformationList } from '../../molecules/author-information-list/author-information-list';
+import { Content, MetaData, PeerReview } from '../../../types';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -76,7 +75,7 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
               <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} setActiveTab={setActiveTab}/>
               <ArticleContent content={props.content} />
               <ReferenceList references={props.metaData.references} />
-              <AuthorList authors={props.metaData.authors}/>
+              <AuthorInformationList authors={props.metaData.authors}/>
             </div>
           </Tab>
           <Tab label="Figures and data">

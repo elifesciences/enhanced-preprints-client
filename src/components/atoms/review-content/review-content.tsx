@@ -12,9 +12,10 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
+type Props = { content: string, isAssessment?: boolean, id?: string, setActiveTab?: (index: number) => void };
 export const ReviewContent = ({
   content, isAssessment = false, id = '', setActiveTab,
-}: { content: string, isAssessment?: boolean, id?: string, setActiveTab?: (index: number) => void }): JSX.Element => {
+}: Props): JSX.Element => {
   const sectionProps: Record<string, string> = {
     className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
   };
