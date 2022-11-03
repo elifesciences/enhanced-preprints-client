@@ -26,6 +26,10 @@
   @include mixins.padding(24, "right");
 }
 
+.site-header__title {
+  @include mixins.visuallyhidden();
+}
+
 // Navigation css to be moved to it's own file when basic styling as been done
 
 .nav-primary {
