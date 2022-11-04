@@ -44,10 +44,7 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
   const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
-    <div className={`${styles['grid-container']} ${styles['article-page']}`}>
-      <div className={styles['grid-header']}>
-        <SiteHeader />
-      </div>
+    <>
       <div className={styles['primary-section-header']}>
         <ContentHeader
           doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
@@ -96,6 +93,6 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
           </Tab>
         </TabbedNavigation>
       </main>
-    </div>
+    </>
   );
 };
