@@ -24,7 +24,7 @@ export const Timeline = ({ events }: TimelineProps): JSX.Element => (
           <Fragment key={index}>
             <dt className={styles['review-timeline__event']}>{entry.name}</dt>
             <dd className={styles['review-timeline__date']}>
-              <span>{formatDate(entry.date)}</span>
+              {formatDate(entry.date)}
               { entry.link && <a className={styles['review-timeline__link']} href={entry.link.url}>{entry.link.text}</a>}
             </dd>
           </Fragment>
