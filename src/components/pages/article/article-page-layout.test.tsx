@@ -3,12 +3,24 @@ import { ArticlePageLayout } from './article-page-layout';
 import {
   content, metaData, peerReview, status,
 } from '../../../utils/mocks';
-import { ArticlePageFullTextTab } from './tabs/fulltext-tab.stories';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
     expect(() => render(<ArticlePageLayout metaData={metaData} status={status} activeTab="fulltext">
-        <ArticlePageFullTextTab content={content} peerReview={peerReview} metaData={metaData} status={status} />
+        <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
+      </ArticlePageLayout>)).not.toThrow();
+  });
+
+  it('renders with figures tab', () => {
+    expect(() => render(<ArticlePageLayout metaData={metaData} status={status} activeTab="figures">
+        <ArticleFiguresTab content={content} />
+      </ArticlePageLayout>)).not.toThrow();
+  });
+
+  it('renders with figures tab', () => {
+    expect(() => render(<ArticlePageLayout metaData={metaData} status={status} activeTab="reviews">
+        <ArticleReviewsTab peerReview={peerReview} />
       </ArticlePageLayout>)).not.toThrow();
   });
 });
