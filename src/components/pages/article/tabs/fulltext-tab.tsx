@@ -19,7 +19,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
     ]} />
     <div className={styles['article-body-container']}>
       <Abstract content={props.metaData.abstract} />
-      <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true}/>
+      <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/>
       <ArticleContent content={props.content} />
       <ReferenceList references={props.metaData.references} />
       <AuthorList authors={props.metaData.authors}/>
