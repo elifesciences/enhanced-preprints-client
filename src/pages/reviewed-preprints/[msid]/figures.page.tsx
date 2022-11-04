@@ -1,11 +1,10 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { config } from '../../../config';
 import { manuscripts } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData } from '../../../types';
-import { ArticlePageLayout } from '../../../components/pages/article/article-page-layout';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleFiguresTab } from '../../../components/pages/article/tabs/figures-tab';
 
 const getFigures = (content: Content): Content => {
@@ -34,9 +33,9 @@ type PageProps = {
 };
 
 export const Page = (props: PageProps): JSX.Element => (
-  <ArticlePageLayout metaData={props.metaData} status={props.status} activeTab="figures">
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
     <ArticleFiguresTab content={getFigures(props.content)}></ArticleFiguresTab>
-  </ArticlePageLayout>
+  </ArticlePage>
 );
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {

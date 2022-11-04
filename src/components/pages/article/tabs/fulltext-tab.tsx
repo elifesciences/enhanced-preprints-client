@@ -1,4 +1,4 @@
-import styles from '../article-page-layout.module.scss';
+import styles from '../article-page.module.scss';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Content } from '../../../../types/content';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';

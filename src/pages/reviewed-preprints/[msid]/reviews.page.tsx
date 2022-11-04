@@ -1,10 +1,9 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { config } from '../../../config';
 import { manuscripts } from '../../../manuscripts';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
-import { ArticlePageLayout } from '../../../components/pages/article/article-page-layout';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
 
 type PageProps = {
@@ -13,9 +12,9 @@ type PageProps = {
   peerReview: PeerReview
 };
 export const Page = (props: PageProps): JSX.Element => (
-  <ArticlePageLayout metaData={props.metaData} status={props.status} activeTab="reviews">
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="reviews">
     <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
-  </ArticlePageLayout>
+  </ArticlePage>
 );
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {

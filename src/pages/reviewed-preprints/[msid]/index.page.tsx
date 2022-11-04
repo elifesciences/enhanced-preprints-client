@@ -1,12 +1,11 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import { ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { config } from '../../../config';
 import { manuscripts } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
-import { ArticlePageLayout } from '../../../components/pages/article/article-page-layout';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 
 type PageProps = {
   metaData: MetaData,
@@ -16,9 +15,9 @@ type PageProps = {
 };
 
 export const Page = (props: PageProps): JSX.Element => (
-  <ArticlePageLayout metaData={props.metaData} status={props.status} activeTab="fulltext">
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
     <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
-  </ArticlePageLayout>
+  </ArticlePage>
 );
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
