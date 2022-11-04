@@ -14,15 +14,15 @@ export default {
 const tabs = [
   {
     id: 'fulltext',
-    element: <LinkTo story='Article-Page-Full-Text-Tab'>Full text</LinkTo>,
+    linkElement: <LinkTo story='Article-Page-Full-Text-Tab'>Full text</LinkTo>,
   },
   {
     id: 'figures',
-    element: <LinkTo story='Article-Page-Figures-Tab'>Figures and data</LinkTo>,
+    linkElement: <LinkTo story='Article-Page-Figures-Tab'>Figures and data</LinkTo>,
   },
   {
     id: 'reviews',
-    element: <LinkTo story='Article-Page-Reviews-Tab'>Peer review</LinkTo>,
+    linkElement: <LinkTo story='Article-Page-Reviews-Tab'>Peer review</LinkTo>,
   },
 ];
 
