@@ -26,7 +26,7 @@ export const ArticlePageLayout = (props: ArticlePageLayoutProps): JSX.Element =>
   const tabs = [
     {
       id: 'fulltext',
-      label: 'Full Text',
+      label: 'Full text',
       url: `/reviewed-preprints/${props.metaData.msid}`,
     },
     {
