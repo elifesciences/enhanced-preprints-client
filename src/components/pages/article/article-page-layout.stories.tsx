@@ -1,3 +1,4 @@
+import LinkTo from '@storybook/addon-links/react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   content, metaData, peerReview, status,
@@ -14,15 +15,15 @@ export default {
 const tabs = [
   {
     id: 'fulltext',
-    element: <a href='?path=/story/pages-article-page--article-page-full-text-tab'>Full text</a>,
+    element: <LinkTo story='Article-Page-Full-Text-Tab'>Full text</LinkTo>,
   },
   {
     id: 'figures',
-    element: <a href='?path=/story/pages-article-page--article-page-figures-tab'>Figures and data</a>,
+    element: <LinkTo story='Article-Page-Figures-Tab'>Figures and data</LinkTo>,
   },
   {
     id: 'reviews',
-    element: <a href='?path=/story/pages-article-page--article-page-reviews-tab'>Peer review</a>,
+    element: <LinkTo story='Article-Page-Reviews-Tab'>Peer review</LinkTo>,
   },
 ];
 
