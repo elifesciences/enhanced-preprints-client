@@ -1,3 +1,3 @@
-export type { ArticleFullTextTab } from './fulltext-tab';
-export type { ArticleFiguresTab } from './figures-tab';
-export type { ArticleReviewsTab } from './reviews-tab';
+export { ArticleFullTextTab } from './fulltext-tab';
+export { ArticleFiguresTab } from './figures-tab';
+export { ArticleReviewsTab } from './reviews-tab';
