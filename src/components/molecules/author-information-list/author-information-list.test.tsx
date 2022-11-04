@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Author } from '../../atoms/authors/authors';
-import { AuthorList } from './author-list';
+import { Author } from '../../../types';
+import { AuthorInformationList } from './author-information-list';
 
 const authors: Author[] = [
   {
@@ -43,15 +43,15 @@ const authors: Author[] = [
   },
 ];
 
-describe('AuthorList', () => {
+describe('AuthorInformationList', () => {
   it('renders correctly', () => {
-    render(<AuthorList authors={authors}/>);
+    render(<AuthorInformationList authors={authors}/>);
 
     expect(screen.getByText('Author information')).toBeInTheDocument();
   });
 
   it('renders each author in the list', () => {
-    render(<AuthorList authors={authors}/>);
+    render(<AuthorInformationList authors={authors}/>);
 
     expect(screen.getByText('Thor Odinson')).toBeInTheDocument();
     expect(screen.getByText('Loki Laufeyson')).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe('AuthorList', () => {
   });
 
   it('renders the authors affiliations', () => {
-    render(<AuthorList authors={authors}/>);
+    render(<AuthorInformationList authors={authors}/>);
 
     expect(screen.getByText('Thor Odinson').nextSibling).toHaveTextContent('The Avengers');
     expect(screen.getByText('Loki Laufeyson').nextSibling).toHaveTextContent('The Revengers');

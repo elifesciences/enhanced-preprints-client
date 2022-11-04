@@ -1,4 +1,4 @@
-import { Content } from '../../../types/content';
+import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import styles from './heading.module.scss';
 
@@ -13,7 +13,6 @@ export const Heading = ({
   headingLevel, content, id, className,
 }: HeadingProps): JSX.Element => {
   const normalisedClassName = className || styles[`heading-${headingLevel}`];
-  // eslint-disable-next-line default-case
   switch (headingLevel) {
     case 1:
       return <h1 id={id} className={normalisedClassName}>{contentToJsx(content)}</h1>;

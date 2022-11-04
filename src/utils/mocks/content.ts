@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Content } from '../../types/content';
+import { Content } from '../../types';
 
 export const content: Content = [
   {

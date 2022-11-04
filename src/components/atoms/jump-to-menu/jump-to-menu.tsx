@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Content } from '../../../types/content';
+import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import styles from './jump-to-menu.module.scss';
 import { throttle } from '../../../utils/throttle';

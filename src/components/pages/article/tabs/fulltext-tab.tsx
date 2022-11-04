@@ -5,7 +5,7 @@ import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
-import { AuthorList } from '../../../molecules/author-list/author-list';
+import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 
 export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview: PeerReview }): JSX.Element => (
@@ -22,7 +22,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
       <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/>
       <ArticleContent content={props.content} />
       <ReferenceList references={props.metaData.references} />
-      <AuthorList authors={props.metaData.authors}/>
+      <AuthorInformationList authors={props.metaData.authors}/>
     </div>
   </div>
 );

@@ -6,5 +6,6 @@ describe('SiteHeader', () => {
     render(<SiteHeader />);
 
     expect(screen.getByAltText('eLife logo', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('Enhanced Preprints')).toBeInTheDocument();
   });
 });

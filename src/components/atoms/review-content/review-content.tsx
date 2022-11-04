@@ -13,9 +13,10 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
+type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string };
 export const ReviewContent = ({
   content, isAssessment = false, id = '', peerReviewUrl = undefined,
-}: { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string }): JSX.Element => {
+}: Props): JSX.Element => {
   const sectionProps: Record<string, string> = {
     className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
   };
