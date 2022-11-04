@@ -14,16 +14,23 @@ export type ArticleStatusProps = {
   status: string,
 };
 
+export type Tab = {
+  id: string,
+  label: string,
+  url: string,
+};
+
 export type ArticlePageLayoutProps = {
   metaData: MetaData,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: 'fulltext' | 'figures' | 'reviews',
+  tabs?: Tab[],
 };
 
 export const ArticlePageLayout = (props: ArticlePageLayoutProps): JSX.Element => {
   const [activeTab, setActiveTab] = useState<string>(props.activeTab);
-  const tabs = [
+  const tabs = props.tabs ?? [
     {
       id: 'fulltext',
       label: 'Full text',
