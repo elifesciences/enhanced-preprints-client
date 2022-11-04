@@ -16,8 +16,7 @@ export type ArticleStatusProps = {
 
 export type Tab = {
   id: string,
-  label: string,
-  url: string,
+  element: ReactElement,
 };
 
 export type ArticlePageLayoutProps = {
@@ -33,18 +32,15 @@ export const ArticlePageLayout = (props: ArticlePageLayoutProps): JSX.Element =>
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      label: 'Full text',
-      url: `/reviewed-preprints/${props.metaData.msid}`,
+      element: <Link href={`/reviewed-preprints/${props.metaData.msid}`}>Full text</Link>,
     },
     {
       id: 'figures',
-      label: 'Figures and data',
-      url: `/reviewed-preprints/${props.metaData.msid}/figures`,
+      element: <Link href={`/reviewed-preprints/${props.metaData.msid}/figures`}>Figures and data</Link>,
     },
     {
       id: 'reviews',
-      label: 'Peer review',
-      url: `/reviewed-preprints/${props.metaData.msid}/reviews`,
+      element: <Link href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
     },
   ];
   return (
@@ -69,7 +65,7 @@ export const ArticlePageLayout = (props: ArticlePageLayoutProps): JSX.Element =>
         <ul className={styles['tabbed-navigation__tabs']}>
           {tabs.map((tab, index) => (
             <li key={index} className={`${styles['tabbed-navigation__tab-label']}${activeTab === tab.id ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab(tab.id)}>
-              <Link href={tab.url}>{tab.label}</Link>
+              {tab.element}
             </li>
           ))}
         </ul>
