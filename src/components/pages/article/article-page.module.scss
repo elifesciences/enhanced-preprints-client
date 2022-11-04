@@ -66,9 +66,10 @@
   a {
     @include mixins.margin(0 6);
     @include mixins.padding(18 6);
+
     color: settings.$color-text-inactive;
+    display: block;
     text-decoration: none;
-    display: block
   }
 
   &.tabbed-navigation__tab-label--active {
