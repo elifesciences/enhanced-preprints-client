@@ -3,6 +3,15 @@
   "extends": [
     "config:base"
   ],
+  "regexManagers": [
+		{
+			"fileMatch": ["^Dockerfile$"],
+			"matchStrings": ["node:(?<currentValue>.*?)-alpine"],
+			"depNameTemplate": "node",
+			"datasourceTemplate": "node",
+			"versioningTemplate": "node"
+		}
+	],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
