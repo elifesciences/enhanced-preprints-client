@@ -2,12 +2,6 @@
 @use "../../../sass/layout";
 @use "../../../sass/mixins";
 
-.article-page {
-  @include settings.container-padding();
-
-  margin: 0 auto;
-}
-
 .article-body-container {
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     margin-left: 36px;
