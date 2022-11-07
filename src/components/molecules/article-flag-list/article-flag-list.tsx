@@ -5,6 +5,11 @@ export type Props = {
   msas: string[],
 };
 
+export type SubjectItem = {
+  id: string,
+  name: string,
+};
+
 const msaURLs: Record<string, string> = {
   'Biochemistry and Chemical Biology': 'https://elifesciences.org/subjects/biochemistry-chemical-biology',
   'Cancer Biology': 'https://elifesciences.org/subjects/cancer-biology',
@@ -40,4 +45,11 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
         </li>))}
     </ul>
   );
+};
+
+export const SubjectList = ({ msas }: Props): Array<SubjectItem> => {
+  return msas.map(msa => ({
+    id: msaURLs[msa].substring(msaURLs[msa].lastIndexOf('/') + 1),
+    name: msa,
+  }));
 };
