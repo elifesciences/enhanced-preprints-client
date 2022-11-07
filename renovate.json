@@ -6,7 +6,7 @@
   "regexManagers": [
 		{
 			"fileMatch": ["^Dockerfile$"],
-			"matchStrings": ["node:(?<currentValue>.*?)-alpine"],
+			"matchStrings": ["node_version=(?<currentValue>.*?)-alpine"],
 			"depNameTemplate": "node",
 			"datasourceTemplate": "node",
 			"versioningTemplate": "node"
@@ -16,6 +16,11 @@
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["node"],
+      "matchDatasources": ["docker"],
+      "enabled": false
     }
   ]
 }
