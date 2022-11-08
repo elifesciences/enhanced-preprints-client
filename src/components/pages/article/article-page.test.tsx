@@ -18,7 +18,7 @@ describe('ArticlePage', () => {
       </ArticlePage>)).not.toThrow();
   });
 
-  it('renders with figures tab', () => {
+  it('renders with reviews tab', () => {
     expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="reviews">
         <ArticleReviewsTab peerReview={peerReview} />
       </ArticlePage>)).not.toThrow();
