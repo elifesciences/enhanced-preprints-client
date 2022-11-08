@@ -1,9 +1,5 @@
 import { PageNotFound } from '../components/pages/error-pages/page-not-found';
 
-export const App = (): JSX.Element => (
-  <div className="App">
-    <PageNotFound></PageNotFound>
-  </div>
-);
+export const MissingPage = (): JSX.Element => <PageNotFound />;
 
-export default App;
+export default MissingPage;
