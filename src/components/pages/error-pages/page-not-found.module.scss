@@ -26,7 +26,7 @@
     max-width: 180px;
     width: 100%;
   }
-} 
+}
 
 .full-width-section {
   grid-column: 1/13;
@@ -42,9 +42,9 @@
   @include mixins.padding(72, "bottom");
   @include mixins.wrapper();
 
+  box-sizing: content-box;
   font-family: settings.$font-family-secondary;
   text-align: center;
-  box-sizing: content-box;
 
   .error__icon {
     @include mixins.padding(48, "bottom");
@@ -58,6 +58,5 @@
   p {
     @include mixins.margin(24, "bottom");
     @include typography.font-size-and-vertical-height(16, 24);
-
   }
 }

@@ -23,15 +23,19 @@
 }
 
 .default {
-  @include mixins.padding(15 36 14);
+  @include mixins.padding(15 20 14);
+
+  background-color: settings.$color-primary;
   color: #fff;
   font-weight: normal;
   text-transform: uppercase;
 
-  background-color: settings.$color-primary;
-
   &:hover {
     background-color: settings.$color-primary-dark;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    @include mixins.padding(15 36 14);
   }
 }
 
