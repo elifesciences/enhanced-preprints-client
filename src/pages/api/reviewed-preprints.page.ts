@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
 import { SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
 
