@@ -2,7 +2,6 @@ import { ReactElement, useState } from 'react';
 import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import styles from './article-page.module.scss';
 import { MetaData } from '../../../types';
@@ -44,10 +43,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
     },
   ];
   return (
-    <div className={`${styles['grid-container']} ${styles['article-page']}`}>
-      <div className={styles['grid-header']}>
-        <SiteHeader />
-      </div>
+    <>
       <div className={styles['primary-section-header']}>
         <ContentHeader
           doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
@@ -72,6 +68,6 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       </div>
       {props.children}
       </main>
-    </div>
+    </>
   );
 };

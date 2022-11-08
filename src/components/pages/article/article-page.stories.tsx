@@ -5,6 +5,7 @@ import {
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
+import { DefaultLayout } from '../../layouts/default';
 
 export default {
   title: 'Pages/Article Page',
@@ -26,7 +27,7 @@ const tabs = [
   },
 ];
 
-const FullTextTemplate: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage tabs={tabs} {...args}><ArticleFullTextTab metaData={metaData} peerReview={peerReview} content={content} /></ArticlePage>;
+const FullTextTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleFullTextTab metaData={metaData} peerReview={peerReview} content={content} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
 ArticlePageFullTextTab.args = {
   metaData,
@@ -34,7 +35,7 @@ ArticlePageFullTextTab.args = {
   activeTab: 'fulltext',
 };
 
-const FiguresTemplate: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage tabs={tabs} {...args}><ArticleFiguresTab content={content} /></ArticlePage>;
+const FiguresTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleFiguresTab content={content} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFiguresTab = FiguresTemplate.bind({});
 ArticlePageFiguresTab.args = {
   metaData,
@@ -42,7 +43,7 @@ ArticlePageFiguresTab.args = {
   activeTab: 'figures',
 };
 
-const ReviewsTemplate: ComponentStory<typeof ArticlePage> = (args) => <ArticlePage tabs={tabs} {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage>;
+const ReviewsTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
 export const ArticlePageReviewsTab = ReviewsTemplate.bind({});
 ArticlePageReviewsTab.args = {
   metaData,
