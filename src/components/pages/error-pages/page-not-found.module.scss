@@ -1,0 +1,63 @@
+@use "../../../sass/settings";
+@use "../../../sass/layout";
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+
+.article-page {
+  @include settings.container-padding();
+
+  margin: 0 auto;
+}
+
+.article-body-container {
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    margin-left: 36px;
+  }
+}
+
+.menu-spacer {
+  display: none;
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.margin(24, "right");
+
+    display: block;
+    flex: 0 0 auto;
+    max-width: 180px;
+    width: 100%;
+  }
+} 
+
+.full-width-section {
+  grid-column: 1/13;
+}
+
+.error-wrapper {
+  grid-column: 3/10;
+  text-align: center;
+}
+
+.error {
+  @include mixins.padding(72, "top");
+  @include mixins.padding(72, "bottom");
+  @include mixins.wrapper();
+
+  font-family: settings.$font-family-secondary;
+  text-align: center;
+  box-sizing: content-box;
+
+  .error__icon {
+    @include mixins.padding(48, "bottom");
+  }
+
+  .error__title {
+    @include mixins.margin(48, "top");
+    @include typography.heading-2();
+  }
+
+  p {
+    @include mixins.margin(24, "bottom");
+    @include typography.font-size-and-vertical-height(16, 24);
+
+  }
+}

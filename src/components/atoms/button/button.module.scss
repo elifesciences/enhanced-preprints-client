@@ -22,6 +22,19 @@
   vertical-align: middle;
 }
 
+.default {
+  @include mixins.padding(15 36 14);
+  color: #fff;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  background-color: settings.$color-primary;
+
+  &:hover {
+    background-color: settings.$color-primary-dark;
+  }
+}
+
 .download {
   @include mixins.padding(41, "left");
 
