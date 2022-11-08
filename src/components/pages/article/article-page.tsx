@@ -4,7 +4,6 @@ import { Heading } from '../../atoms/heading/heading';
 import { JumpToMenu } from '../../atoms/jump-to-menu/jump-to-menu';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { SiteHeader } from '../../molecules/site-header/site-header';
 import { Tab, TabbedNavigation } from '../../molecules/tabbed-navigation';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import styles from './article-page.module.scss';
@@ -44,10 +43,7 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
   const [activeTab, setActiveTab] = useState<number>(0);
 
   return (
-    <div className={`${styles['grid-container']} ${styles['article-page']}`}>
-      <div className={styles['grid-header']}>
-        <SiteHeader />
-      </div>
+    <>
       <div className={styles['primary-section-header']}>
         <ContentHeader
           doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
@@ -96,6 +92,6 @@ export const ArticlePage = (props: { metaData: MetaData, content: Content, statu
           </Tab>
         </TabbedNavigation>
       </main>
-    </div>
+    </>
   );
 };
