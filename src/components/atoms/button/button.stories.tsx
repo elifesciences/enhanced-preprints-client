@@ -11,8 +11,8 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
-  text: 'Default',
-  iconName: '',
+  text: 'Back to Homepage',
+  iconName: 'default',
   url: '#',
 };
 
