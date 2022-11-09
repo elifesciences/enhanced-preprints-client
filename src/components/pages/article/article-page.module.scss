@@ -1,3 +1,4 @@
+@use "../../../sass/layout";
 @use "../../../sass/settings";
 @use "../../../sass/mixins";
 
@@ -18,4 +19,8 @@
     max-width: 180px;
     width: 100%;
   }
+}
+
+.burger {
+  display: block;
 }
