@@ -1,4 +1,5 @@
 @use "../../../sass/settings";
+@use "../../../sass/mixins";
 
 .article-body-container {
   @media only all and (min-width: settings.$breakpoint-extra-large) {
