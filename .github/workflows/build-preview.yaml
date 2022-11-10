@@ -40,7 +40,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: run test
-        run: docker run ${{ env.IMAGE_REPO }}:preview-${{ github.sha }} yarn test
+        run: docker run ${{ env.IMAGE_REPO }}:preview-${{ github.sha }} yarn test --ci --watchAll=false
       - name: run lint
         run: docker run ${{ env.IMAGE_REPO }}:preview-${{ github.sha }} yarn lint
       - name: run lint-sass
