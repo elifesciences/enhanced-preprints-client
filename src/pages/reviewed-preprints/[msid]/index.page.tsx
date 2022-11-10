@@ -1,15 +1,23 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import {
-  ArticlePage,
-  ArticleStatusProps,
-} from '../../components/pages/article/article-page';
-import { config } from '../../config';
-import { manuscripts } from '../../manuscripts';
-import { jsonFetch } from '../../utils/json-fetch';
-import { Content, MetaData, PeerReview } from '../../types';
+import { config } from '../../../config';
+import { manuscripts } from '../../../manuscripts';
+import { Content } from '../../../types/content';
+import { jsonFetch } from '../../../utils/json-fetch';
+import { MetaData, PeerReview } from '../../../types';
+import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 
-export const Page = (props: { metaData: MetaData, content: Content, status: ArticleStatusProps, peerReview: PeerReview }): JSX.Element => (
-  <ArticlePage {...props}></ArticlePage>
+type PageProps = {
+  metaData: MetaData,
+  status: ArticleStatusProps,
+  content: Content,
+  peerReview: PeerReview,
+};
+
+export const Page = (props: PageProps): JSX.Element => (
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
+    <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
+  </ArticlePage>
 );
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
