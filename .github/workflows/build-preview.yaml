@@ -50,9 +50,10 @@ jobs:
           context: .
           push: true
           target: prod
-          tags: $IMAGE_REPO:preview-$(GITHASH)
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
+          tags: |
+            $IMAGE_REPO:preview-$(GITHASH)
       - name: Move cache
         run:
           rm -rf /tmp/.buildx-cache
