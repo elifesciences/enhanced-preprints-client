@@ -36,15 +36,15 @@ jobs:
           load: true
           target: prod
           tags: |
-            $IMAGE_REPO:preview-$(GITHASH)
+            ${{ IMAGE_REPO }}:preview-${{ github.sha }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: run test
-        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn test
+        run: docker run ${{ IMAGE_REPO }}:preview-${{ github.sha }} yarn test
       - name: run lint
-        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn lint
+        run: docker run ${{ IMAGE_REPO }}:preview-${{ github.sha }} yarn lint
       - name: run lint-sass
-        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn lint-sass
+        run: docker run ${{ IMAGE_REPO }}:preview-${{ github.sha }} yarn lint-sass
       - name: push preview image
         uses: docker/build-push-action@v2
         with:
