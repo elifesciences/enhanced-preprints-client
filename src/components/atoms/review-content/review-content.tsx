@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './review-content.module.scss';
 
 const terms = [
@@ -12,9 +13,10 @@ const highlightTerms = (content: string): string => {
   return highlightedContent;
 };
 
+type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string };
 export const ReviewContent = ({
-  content, isAssessment = false, id = '', setActiveTab,
-}: { content: string, isAssessment?: boolean, id?: string, setActiveTab?: (index: number) => void }): JSX.Element => {
+  content, isAssessment = false, id = '', peerReviewUrl = undefined,
+}: Props): JSX.Element => {
   const sectionProps: Record<string, string> = {
     className: `${styles['review-content']}${isAssessment ? ` ${styles['review-content--assessment']}` : ''}`,
   };
@@ -27,7 +29,7 @@ export const ReviewContent = ({
     <div className={styles['review-content_body']} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
       <ul className={styles['review-content_links']}>
-        { setActiveTab && <li className={styles['review-content_links-item']}><a onClick={() => setActiveTab(2)} href="#">Read the peer reviews</a></li> }
+        { peerReviewUrl && <li className={styles['review-content_links-item']}><Link href={peerReviewUrl}>Read the peer reviews</Link></li> }
         <li className={styles['review-content_links-item']}><a href="https://elifesciences.org/inside-elife/db24dd46">About eLife assessments</a></li>
       </ul>
     ) : ''}

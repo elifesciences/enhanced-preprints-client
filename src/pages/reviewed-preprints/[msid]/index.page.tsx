@@ -1,16 +1,23 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import {
-  ArticlePage,
-  ArticlePageProps,
-  ArticleStatusProps,
-  PeerReviewProps,
-} from '../../components/pages/article/article-page';
-import { config } from '../../config';
-import { manuscripts } from '../../manuscripts';
-import { Content } from '../../types/content';
+import { config } from '../../../config';
+import { manuscripts } from '../../../manuscripts';
+import { Content } from '../../../types/content';
+import { jsonFetch } from '../../../utils/json-fetch';
+import { MetaData, PeerReview } from '../../../types';
+import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 
-export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
-  <ArticlePage {...props}></ArticlePage>
+type PageProps = {
+  metaData: MetaData,
+  status: ArticleStatusProps,
+  content: Content,
+  peerReview: PeerReview,
+};
+
+export const Page = (props: PageProps): JSX.Element => (
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
+    <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
+  </ArticlePage>
 );
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
@@ -34,11 +41,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
-
   const [metaData, content, peerReview, status] = await Promise.all([
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`),
+    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
     // replace with call for data
     manuscripts[msid].status,
   ]);
@@ -54,7 +60,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
       },
-      abstract: metaData.abstract,
       content,
       status,
       peerReview,

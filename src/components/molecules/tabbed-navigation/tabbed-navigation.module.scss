@@ -2,6 +2,10 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
+.tabbed-navigation {
+  display: block;
+}
+
 .tabbed-navigation__tabs {
   @include mixins.margin(0 -24 36);
   @include mixins.padding(0, "left");
@@ -23,9 +27,13 @@
   @media only screen and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(0 0 36);
   }
+
+  @media only screen and (min-width: settings.$breakpoint-large) {
+    border-top: none;
+  }
 }
 
-.tabbed-navigation__tab-label {
+.tabbed-navigation__tabs-item {
   @include typography.body();
   @include mixins.margin(0 6);
   @include mixins.padding(18 6);
@@ -35,7 +43,7 @@
   display: inline;
   font-family: settings.$font-family-primary;
 
-  &.tabbed-navigation__tab-label--active {
+  &.tabbed-navigation__tabs-item--active {
     @include mixins.padding(0, "bottom");
 
     border-bottom: 4px solid settings.$color-primary;

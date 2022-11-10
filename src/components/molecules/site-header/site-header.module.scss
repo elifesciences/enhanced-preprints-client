@@ -26,6 +26,10 @@
   @include mixins.padding(24, "right");
 }
 
+.site-header__title {
+  @include mixins.visuallyhidden();
+}
+
 // Navigation css to be moved to it's own file when basic styling as been done
 
 .nav-primary {
@@ -205,12 +209,8 @@
   @include mixins.padding(0, "left");
   @include mixins.margin(30, "top");
 
-  @media only screen and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(42, "top");
-  }
-
   @media only screen and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.margin(52, "top");
+    @include mixins.margin(48, "top");
   }
 
   align-items: center;
@@ -268,6 +268,7 @@
   background-size: 14px;
   border: none;
   color: settings.$color-text;
+  cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: bold;
   text-align: left;
