@@ -35,7 +35,8 @@ jobs:
           context: .
           load: true
           target: prod
-          tags: $IMAGE_REPO:preview-$(GITHASH)
+          tags: |
+            $IMAGE_REPO:preview-$(GITHASH)
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       - name: run test
