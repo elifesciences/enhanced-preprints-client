@@ -54,7 +54,7 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            $IMAGE_REPO:preview-$(GITHASH)
+            ${{ env.IMAGE_REPO }}:preview-${{ github.sha }}
       - name: Move cache
         run:
           rm -rf /tmp/.buildx-cache
