@@ -14,19 +14,22 @@ const wrapContent = (content: Content, type: string) : string => {
     tag = 'sub';
   }
 
-  return (tag ? `<${tag}>` : '')+renderContent(content)+(tag ? `</${tag}>` : '');
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  return (tag ? `<${tag}>` : '') + renderContent(content) + (tag ? `</${tag}>` : '');
 };
 
 const renderContent = (content: Content) : string => {
   if (Array.isArray(content)) {
-    return content.map(i => {
+    return content.map((i) => {
       if (typeof i === 'string') {
         return i;
       }
 
-      if (!Array.isArray(i) && i === Object(i) && i.hasOwnProperty('content')) {
+      if (!Array.isArray(i) && i === Object(i)) {
         return wrapContent(i.content, i.type);
       }
+
+      return '';
     }).join(' ');
   }
 
@@ -37,8 +40,6 @@ const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' '
 
 const prepareAuthors = (authors: Author[]) : string => {
   let authorLine = '';
-
-  console.log(authors);
 
   if (authors.length > 0) {
     authorLine += prepareAuthor(authors[0]);
@@ -56,33 +57,31 @@ const prepareAuthors = (authors: Author[]) : string => {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const ids = Object.keys(manuscripts).filter(id => id.match(/^[0-9]+$/)).sort();
+  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/)).sort();
 
-  const meta = await Promise.all(ids.map(async id => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then(js => {
-    return {
-      id,
-      title: renderContent(js.title),
-      authorLine: prepareAuthors(js.authors),
-    };
-  })));
+  const meta = await Promise.all(ids.map(async (id) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then((js) => ({
+    id,
+    title: renderContent(js.title),
+    authorLine: prepareAuthors(js.authors),
+  }))));
 
-  const items = ids.map(id => {
-    const iMeta = meta.find(obj => obj.id === id)
+  const items = ids.map((id) => {
+    const iMeta = meta.find((obj) => obj.id === id);
 
     return {
       id,
       doi: manuscripts[id].preprintDoi,
       pdf: manuscripts[id].pdfUrl,
-      status: "reviewed",
+      status: 'reviewed',
       authorLine: iMeta?.authorLine,
       title: iMeta?.title,
-      stage: "published",
+      stage: 'published',
       subjects: SubjectList({ msas: manuscripts[id].msas }),
     };
   });
 
   res.status(200).json({
     total: ids.length,
-    items: items,
+    items,
   });
 };
