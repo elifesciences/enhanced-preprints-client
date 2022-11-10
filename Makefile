@@ -26,3 +26,9 @@ build-prod-and-push:
 		-t $(IMAGE_REPO_PREFIX)client:$(GITHASH) \
 		-t $(IMAGE_REPO_PREFIX)client:$(GITBRANCH)-$(GITSHORTHASH)-$(DATETIME) \
 		 --platform linux/amd64,linux/arm64 --target prod --push .
+
+build-preview-and-push:
+# only build preview images for x86
+	docker buildx build \
+		-t $(IMAGE_REPO_PREFIX)client:preview-$(GITHASH) \
+		 --platform linux/amd64 --target prod --push .
