@@ -8,6 +8,8 @@ jobs:
   build-preview-image:
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
+    env:
+      IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
     steps:
       - uses: actions/checkout@v3
       - name: Set up QEMU
@@ -20,9 +22,38 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: build preview image
-        run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-preview
-      - name: test preview image
-        run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make test-preview
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Build and load preview image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          load: true
+          target: prod
+          tags: $IMAGE_REPO:preview-$(GITHASH)
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+      - name: run test
+        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn test
+      - name: run lint
+        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn lint
+      - name: run lint-sass
+        run: docker run $IMAGE_REPO:preview-$(GITHASH) yarn lint-sass
       - name: push preview image
-        run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make push-preview
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          target: prod
+          tags: $IMAGE_REPO:preview-$(GITHASH)
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+      - name: Move cache
+        run:
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
