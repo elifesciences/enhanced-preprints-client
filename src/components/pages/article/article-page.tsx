@@ -31,15 +31,15 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link href={`/reviewed-preprints/${props.metaData.msid}`}>Full text</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}`}>Full text</Link>,
     },
     {
       id: 'figures',
-      linkElement: <Link href={`/reviewed-preprints/${props.metaData.msid}/figures`}>Figures and data</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/figures`}>Figures and data</Link>,
     },
     {
       id: 'reviews',
-      linkElement: <Link href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
     },
   ];
   return (
