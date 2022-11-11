@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './institutions.module.scss';
 import { Institution } from '../../../types';
 
 const institutionLimit = 3;
 
 export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
-  const [expanded, setExpanded] = useState(false);
-  const displayInstitutions = institutions.slice(0, expanded ? institutions.length : institutionLimit);
+  const [expanded, setExpanded] = useState<boolean | null>(null);
+
+  useEffect(() => setExpanded(false), []);
+  const displayInstitutions = institutions.slice(0, expanded !== false ? institutions.length : institutionLimit);
   const expansionText = expanded ? 'show less' : `show ${institutions.length - institutionLimit} more`;
 
   return (
@@ -18,8 +20,7 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
           </li>
         ))}
       </ol>
-      { institutions.length > institutionLimit
-        ? <span className={styles['institutions-list__expansion']} onClick={() => setExpanded(!expanded)}>{expansionText}</span> : ''}
+      {(institutions.length > institutionLimit && expanded !== null) && <span className={styles['institutions-list__expansion']} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
     </div>
   );
 };
