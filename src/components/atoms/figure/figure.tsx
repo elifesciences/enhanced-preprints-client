@@ -1,6 +1,6 @@
-import { FigureContent } from '../../../types/content';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import styles from './figure.module.scss';
+import { FigureContent } from '../../../types';
 
 export const Figure = ({ content }: { content: FigureContent }) => (
   <figure className={styles.figure} id={content.id}>

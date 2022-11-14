@@ -21,3 +21,40 @@
   color: settings.$link-decoration;
   vertical-align: middle;
 }
+
+.default {
+  @include mixins.padding(15 20 14);
+
+  background-color: settings.$color-primary;
+  color: #fff;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: settings.$color-primary-dark;
+  }
+}
+
+.download {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+}
+
+.share {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/share/share.svg") no-repeat 11px 8px;
+}
+
+.citation {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+}
+
+.follow {
+  @include mixins.padding(41, "left");
+
+  background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
+}

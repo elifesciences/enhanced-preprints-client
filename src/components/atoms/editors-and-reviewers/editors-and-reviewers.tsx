@@ -1,6 +1,6 @@
 import styles from './editors-and-reviewers.module.scss';
 
-export type Participant = {
+type Participant = {
   name: string,
   role: string,
   institution: string,

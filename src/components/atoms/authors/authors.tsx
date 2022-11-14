@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './authors.module.scss';
-import { Institution } from '../institutions/institutions';
-
-export type Author = {
-  givenNames: string[],
-  familyNames: string[],
-  affiliations?: Institution[],
-};
+import { Author } from '../../../types';
 
 const authorLimit = 10;
 
@@ -14,18 +8,19 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
+  const displayAuthors = authors.slice(0, expanded !== false ? authors.length : authorLimit);
+  const expansionText = expanded ? 'show less' : `show ${authors.length - authorLimit} more`;
 
   return (
     <div className={styles.authors}>
       <ol className={styles['authors-list']} aria-label="Authors of this article">
-        { authors.slice(0, expanded !== false ? authors.length : authorLimit).map(({ givenNames, familyNames }, index) => (
+        { displayAuthors.map(({ givenNames, familyNames }, index) => (
           <li className={styles['authors-list__item']} key={index}>
             {givenNames.join(' ')} {familyNames.join(' ')}
           </li>
         ))}
       </ol>
-      { authors.length > authorLimit
-        ? <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>{expanded === null ? '' : `${expanded ? 'show less' : `...show ${authors.length - authorLimit} more`}`}</span> : ''}
+      {(authors.length > authorLimit && expanded !== null) && <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
     </div>
   );
 };

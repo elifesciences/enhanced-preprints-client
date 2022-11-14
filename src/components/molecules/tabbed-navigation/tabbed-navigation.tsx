@@ -10,14 +10,14 @@ type TabbedNavigationProps = {
 };
 
 export const TabbedNavigation = ({ children, activeTab, setActiveTab }: TabbedNavigationProps): JSX.Element => (
-  <div className={styles['tabbed-navigation']}>
+  <nav className={styles['tabbed-navigation']} aria-label="Main tabbed navigation">
     <ul className={styles['tabbed-navigation__tabs']}>
       {children.map((child, index) => {
         const { label } = child.props;
 
-        return (<li className={`${styles['tabbed-navigation__tab-label']}${activeTab === index ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
+        return (<li className={`${styles['tabbed-navigation__tabs-item']}${activeTab === index ? ` ${styles['tabbed-navigation__tabs-item--active']}` : ''}`} key={label} onClick={() => setActiveTab(index)}>{label}</li>);
       })}
     </ul>
     {children[activeTab]}
-  </div>
+  </nav>
 );

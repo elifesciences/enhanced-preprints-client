@@ -4,10 +4,13 @@ GITSHORTHASH:=$(shell git log -1 --pretty=format:"%H" | head -c 8)
 DATETIME:=$(shell date -u '+%Y%m%d.%H%M')
 GITBRANCH?=$(shell git branch --show-current)
 
-.PHONY: build
+.PHONY: start-dev start-prod build-storybook-and-push build-prod-and-push
 
-start:
+start-dev:
 	docker-compose up
+
+start-prod:
+	docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up
 
 build-storybook-and-push:
 	docker buildx build \
@@ -15,7 +18,6 @@ build-storybook-and-push:
 		-t $(IMAGE_REPO_PREFIX)storybook:$(GITHASH) \
 		-t $(IMAGE_REPO_PREFIX)storybook:$(GITBRANCH)-$(GITSHORTHASH)-$(DATETIME) \
 		 --platform linux/amd64,linux/arm64 --target storybook --push .
-
 
 build-prod-and-push:
 	docker buildx build \

@@ -1,26 +1,30 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import {
-  ArticlePage,
-  ArticlePageProps,
-  ArticleStatusProps,
-  PeerReviewProps,
-} from '../../components/pages/article/article-page';
-import { config } from '../../config';
-import { manuscripts } from '../../manuscripts';
-import { Content } from '../../types/content';
-import { contentToString } from '../../utils/content-to-string';
+import { config } from '../../../config';
+import { manuscripts } from '../../../manuscripts';
+import { jsonFetch } from '../../../utils/json-fetch';
+import { MetaData, PeerReview } from '../../../types';
+import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
+import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
+import { contentToString } from '../../../utils/content-to-string';
 
-export const Page = (props: { metaData: ArticlePageProps, abstract: Content, content: Content, status: ArticleStatusProps, peerReview: PeerReviewProps }): JSX.Element => (
+type PageProps = {
+  metaData: MetaData,
+  status: ArticleStatusProps,
+  peerReview: PeerReview
+};
+export const Page = (props: PageProps): JSX.Element => (
   <>
   <Head>
     <title>{contentToString(props.metaData.title)}</title>
   </Head>
-  <ArticlePage {...props} />
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="reviews">
+    <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
+  </ArticlePage>
   </>
 );
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   const msid = context.params?.msid;
   if (msid === undefined) {
     console.log('no msid in path'); // eslint-disable-line no-console
@@ -41,11 +45,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
-
-  const [metaData, content, peerReview, status] = await Promise.all([
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`).then((res) => res.json()),
-    fetch(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`).then((res) => res.json()),
+  const [metaData, peerReview, status] = await Promise.all([
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
+    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
     // replace with call for data
     manuscripts[msid].status,
   ]);
@@ -61,8 +63,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
       },
-      abstract: metaData.abstract,
-      content,
       status,
       peerReview,
     },
