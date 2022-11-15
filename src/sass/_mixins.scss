@@ -82,6 +82,18 @@
   }
 }
 
+@mixin height($size_in_px) {
+  height: #{$size_in_px}px;
+  height: #{typography.get-rem-from-px($size_in_px)}rem;
+}
+
+@mixin constrain-height($size_in_px, $extreme) {
+  @if $extreme == min or $extreme == max {
+    #{$extreme}-height: #{$size_in_px}px;
+    #{$extreme}-height: #{typography.get-rem-from-px($size_in_px)}rem;
+  }
+}
+
 @mixin visuallyhidden() {
   border: 0;
   clip: rect(0 0 0 0);
