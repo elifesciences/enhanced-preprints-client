@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { config } from '../../../config';
-import { getManuscript, manuscripts } from '../../../manuscripts';
+import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData } from '../../../types';

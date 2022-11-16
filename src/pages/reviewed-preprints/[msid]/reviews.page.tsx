@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { config } from '../../../config';
-import { getManuscript, manuscripts } from '../../../manuscripts';
+import { getManuscript } from '../../../manuscripts';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
