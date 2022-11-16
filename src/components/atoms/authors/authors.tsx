@@ -9,7 +9,7 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
 
   useEffect(() => setExpanded(false), []);
   const displayAuthors = authors.slice(0, expanded !== false ? authors.length : authorLimit);
-  const expansionText = expanded ? 'show less' : `...show ${authors.length - authorLimit} more`;
+  const expansionText = expanded ? 'show less' : `show ${authors.length - authorLimit} more`;
 
   return (
     <div className={styles.authors}>

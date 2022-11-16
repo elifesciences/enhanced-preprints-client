@@ -37,7 +37,7 @@ describe('ArticleContent', () => {
   });
 
   it('shows links to explain assessment terms', async () => {
-    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" setActiveTab={() => {}}/>);
+    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
 
     expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
     expect(screen.getByText('About eLife assessments')).toBeInTheDocument();

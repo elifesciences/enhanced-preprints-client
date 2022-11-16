@@ -47,7 +47,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push storybook image
-        run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-storybook-and-push
       - name: Build and push client image
         run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-prod-and-push
+      - name: Build and push storybook image
+        run: IMAGE_REPO_PREFIX=ghcr.io/elifesciences/enhanced-preprints- make build-storybook-and-push
