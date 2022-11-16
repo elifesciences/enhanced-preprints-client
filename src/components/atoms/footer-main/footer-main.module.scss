@@ -9,9 +9,7 @@
 }
 
 .footer-navigation {
-  @include mixins.padding(24, "bottom");
-
-  padding: 0;
+  @include mixins.padding(48, "bottom");
 }
 
 .footer-navigation__list {
@@ -148,9 +146,11 @@
   }
 }
 
- @media only all and (min-width: settings.$breakpoint-extra-large) {
+ @media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
     @include mixins.padding(0 15);
+
+    padding: 0 6%;
   }
 
   .footer-navigation {
