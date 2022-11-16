@@ -4,12 +4,13 @@
 
 .site-footer {
   border-top: 1px solid settings.$divider;
-  @include mixins.padding(24, "top");
+  @include mixins.padding(48, "top");
   @include mixins.padding(16, "bottom");
 }
 
 .footer-navigation {
-  @include padding(24, "bottom");
+  @include mixins.padding(24, "bottom");
+
   padding: 0;
 }
 
@@ -21,6 +22,8 @@
 }
 
 .footer-navigation__list_item {
+  @include typography.font-size-and-vertical-height(11, 24);
+
   font-family: settings.$font-family-primary;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -37,15 +40,15 @@
 }
 
 .site-smallprint__copyright_link {
-  color: $color-text;
+  color: settings.$color-text;
   text-decoration: none;
 
   &:hover {
-    color: $color-primary;
+    color: settings.$color-primary;
   }
 }
 
-@media only screen and (min-width: #{typography.get-rem-from-px(730)}em) {
+ @media only all and (min-width: settings.$breakpoint-medium) {
 
   .footer-navigation__list {
     column-count: 2;
@@ -59,10 +62,15 @@
 }
 
 .site-smallprint {
+  @include typography.font-size-and-vertical-height(11, 24);
+
+  font-family: settings.$font-family-secondary;
   padding: 0 6%;
   text-align: center;
 
   small {
+    @include typography.font-size-and-vertical-height(11, 24);
+
     display: block;
   }
 
@@ -81,31 +89,34 @@
     max-width: 247px;
   }
 
-  @media only screen and (min-width: #{get-rem-from-px(730)}rem) {
+  @media only all and (min-width: settings.$breakpoint-medium) {
     text-align: left;
   }
 }
 
-@media only screen and (min-width: #{get-rem-from-px(730)}em) {
+ @media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
+    @include mixins.padding(0 6%);
+
     display: table;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    max-width: #{get-rem-from-px($max-site-width)}rem;
-    padding: 0 6%;
+    max-width: settings.$max-site-width;
 
     .grid-cell:nth-child(1) {
+      @include mixins.padding(12, "bottom");
+
       float: left;
       flex: 1 50%;
-      @include blg-spacing("bottom", "small");
       width: 50%;
     }
 
     .grid-cell:nth-child(2) {
+      @include mixins.padding(12, "bottom");
+
       float: right;
       flex: 1 50%;
-      @include blg-spacing("bottom", "small");
       width: 50%;
     }
 
@@ -117,7 +128,8 @@
   }
 
   .site-smallprint {
-    padding: 0;
+    @include mixins.padding(0);
+
     text-align: left;
   }
 
@@ -125,17 +137,114 @@
     text-align: center;
   }
 
+  small {
+    @include mixins.padding(24, "bottom");
+  }
+
   address {
-    padding-bottom: 84px;
+    @include mixins.padding(84, "bottom");
+
+    font-style: normal;
   }
 }
 
-@media only screen and (min-width: #{get-rem-from-px($max-site-width)}em) {
+ @media only all and (min-width: settings.$breakpoint-extra-large) {
   .site-footer__container {
-    @include padding(0 15);
+    @include mixins.padding(0 15);
   }
 
   .footer-navigation {
-    @include blg-spacing("bottom", "large", "padding");
+    @include mixins.padding(72, "bottom");
+  }
+}
+
+// Social Links
+
+.social-links {
+  @include mixins.padding(0 0 19 0);
+  text-align: center;
+}
+
+.social-links__list {
+  margin: 0;
+  padding: 1px 0 0;
+}
+
+.social-links__list_item {
+  @include mixins.padding(0 5);
+
+  display: inline-block;
+  margin: 0;
+}
+
+.social-links__list_link {
+  svg path {
+    fill: settings.$color-text;
+  }
+  &:hover svg path {
+    fill: settings.$color-primary;
+  }
+}
+
+.github-link-wrapper {
+  text-align: center;
+
+  .github-link {
+    @include mixins.margin(0 0 60);
+
+    align-items: center;
+    color: settings.$color-text;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    min-height: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+
+    svg path {
+      fill: settings.$color-text;
+    }
+    &:hover svg path {
+      fill: settings.$color-primary;
+    }
+
+    &:hover {
+      color: settings.$color-primary;
+    }
+
+    .github-link--text {
+      @include typography.font-size-and-vertical-height(11,24);
+      @include mixins.margin(2 0 0 7);
+
+      color: settings.$color-text;
+      font-family: settings.$font-family-primary;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+  }
+
+}
+
+ @media only all and (min-width: settings.$breakpoint-medium) {
+  .social-links {
+    text-align: left;
+  }
+
+  .github-link-wrapper {
+    text-align: initial;
+
+    .github-link {
+      @include mixins.margin(0 0 72);
+      justify-content: start;
+    }
+
+  }
+
+  .social-links__list_item {
+    padding: 0;
+
+    @include mixins.padding(24, "right");
+
   }
 }
