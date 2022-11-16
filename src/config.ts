@@ -9,4 +9,5 @@ export const config = {
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
+  manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
 };
