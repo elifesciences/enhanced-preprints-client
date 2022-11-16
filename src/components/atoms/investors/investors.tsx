@@ -13,8 +13,8 @@ export const Investors = (): JSX.Element => (
           className={styles['investor-logos__img']}
           src={hhmi}
           alt="Howard Hughes Medical Institute"
-          width="100%"
-          height="100%"
+          width="606"
+          height="100"
         />
       </div>
     </li>
@@ -24,8 +24,8 @@ export const Investors = (): JSX.Element => (
           className={styles['investor-logos__img']}
           src={wellcome}
           alt="Wellcome Trust"
-          width="100%"
-          height="100%"
+          width="72"
+          height="72"
         />
       </div>
     </li>
@@ -35,8 +35,8 @@ export const Investors = (): JSX.Element => (
           className={styles['investor-logos__img']}
           src={max}
           alt="Max-Planck-Gesellschaft"
-          width="100%"
-          height="100%"
+          width="280"
+          height="84"
         />
       </div>
     </li>
@@ -46,8 +46,8 @@ export const Investors = (): JSX.Element => (
           className={styles['investor-logos__img']}
           src={kaw}
           alt="Knut and Alice Wallenberg Foundation"
-          width="100%"
-          height="100%"
+          width="128"
+          height="74"
         />
       </div>
     </li>
