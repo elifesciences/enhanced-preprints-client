@@ -120,10 +120,10 @@ export const FooterMain = (): JSX.Element => (
       <div className={styles['grid-cell']}>
 
         <div className={styles['site-smallprint']}>
-          <small>eLife is a non-profit organisation inspired by research funders and led by scientists. Our mission is to help scientists accelerate discovery by operating a platform for research communication that encourages and recognises the most responsible behaviours in science.</small>
-          <small>eLife Sciences Publications, Ltd is a limited liability non-profit non-stock corporation incorporated in the State of Delaware, USA, with company number 5030732, and is registered in the UK with company number FC030576 and branch number BR015634 at the address:</small>
+          <small className={styles.small}>eLife is a non-profit organisation inspired by research funders and led by scientists. Our mission is to help scientists accelerate discovery by operating a platform for research communication that encourages and recognises the most responsible behaviours in science.</small>
+          <small className={styles.small}>eLife Sciences Publications, Ltd is a limited liability non-profit non-stock corporation incorporated in the State of Delaware, USA, with company number 5030732, and is registered in the UK with company number FC030576 and branch number BR015634 at the address:</small>
 
-          <address>
+          <address className={styles.address}>
             eLife Sciences Publications, Ltd<br />
             Westbrook Centre, Milton Road<br />
             Cambridge CB4 1YG<br />

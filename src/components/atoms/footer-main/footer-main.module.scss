@@ -134,11 +134,11 @@
     text-align: center;
   }
 
-  small {
+  .small {
     @include mixins.padding(24, "bottom");
   }
 
-  address {
+  .address {
     @include mixins.padding(84, "bottom");
 
     font-style: normal;
