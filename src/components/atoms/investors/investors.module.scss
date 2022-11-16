@@ -34,8 +34,6 @@ $image-width: 185;
 .investor-logos__img {
   display: block;
   margin: auto;
-  max-height: $image-height;
-  max-width: $image-width;
 }
 
 @media only screen and (min-width: #{typography.get-rem-from-px(520)}em) {

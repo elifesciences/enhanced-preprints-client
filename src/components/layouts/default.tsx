@@ -1,5 +1,5 @@
 import { SiteHeader } from '../molecules/site-header/site-header';
-import { Footer } from '../molecules/footer/footer';
+import { SiteFooter } from '../molecules/site-footer/site-footer';
 import styles from './default.module.scss';
 
 export const DefaultLayout = ({ children }: any): JSX.Element => (
@@ -10,7 +10,7 @@ export const DefaultLayout = ({ children }: any): JSX.Element => (
       </div>
         {children}
     </div>
-    <Footer/>
+    <SiteFooter/>
   </>
 
 );
