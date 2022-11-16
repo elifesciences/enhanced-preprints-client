@@ -1,6 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Sign } from 'crypto';
-import { SignUp } from '../../atoms/sign-up/sign-up';
 import { Footer } from './footer';
 
 export default {

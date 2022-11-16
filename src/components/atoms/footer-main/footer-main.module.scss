@@ -4,6 +4,7 @@
 
 .site-footer {
   border-top: 1px solid settings.$divider;
+
   @include mixins.padding(48, "top");
   @include mixins.padding(16, "bottom");
 }
@@ -22,10 +23,10 @@
 .footer-navigation__list_item {
   @include typography.font-size-and-vertical-height(11, 24);
 
+  color: settings.$color-text;
   font-family: settings.$font-family-primary;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: settings.$color-text;
 }
 
 .footer-navigation__list_link {
@@ -46,8 +47,7 @@
   }
 }
 
- @media only all and (min-width: settings.$breakpoint-medium) {
-
+@media only all and (min-width: settings.$breakpoint-medium) {
   .footer-navigation__list {
     column-count: 2;
     column-gap: 0.5rem;
@@ -71,7 +71,6 @@
 
     display: block;
   }
-
 }
 
 .carbon-neutral-wrapper {
@@ -92,7 +91,7 @@
   }
 }
 
- @media only all and (min-width: settings.$breakpoint-medium) {
+@media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
     @include mixins.padding(0 6%);
 
@@ -105,16 +104,16 @@
     .grid-cell:nth-child(1) {
       @include mixins.padding(12, "bottom");
 
-      float: left;
       flex: 1 50%;
+      float: left;
       width: 50%;
     }
 
     .grid-cell:nth-child(2) {
       @include mixins.padding(12, "bottom");
 
-      float: right;
       flex: 1 50%;
+      float: right;
       width: 50%;
     }
 
@@ -146,7 +145,7 @@
   }
 }
 
- @media only all and (min-width: settings.$breakpoint-medium) {
+@media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
     @include mixins.padding(0 15);
 
@@ -162,6 +161,7 @@
 
 .social-links {
   @include mixins.padding(0 0 19 0);
+
   text-align: center;
 }
 
@@ -181,6 +181,7 @@
   svg path {
     fill: settings.$color-text;
   }
+
   &:hover svg path {
     fill: settings.$color-primary;
   }
@@ -205,6 +206,7 @@
     svg path {
       fill: settings.$color-text;
     }
+
     &:hover svg path {
       fill: settings.$color-primary;
     }
@@ -223,10 +225,9 @@
       text-transform: uppercase;
     }
   }
-
 }
 
- @media only all and (min-width: settings.$breakpoint-medium) {
+@media only all and (min-width: settings.$breakpoint-medium) {
   .social-links {
     text-align: left;
   }
@@ -236,15 +237,14 @@
 
     .github-link {
       @include mixins.margin(0 0 72);
+
       justify-content: start;
     }
-
   }
 
   .social-links__list_item {
     padding: 0;
 
     @include mixins.padding(24, "right");
-
   }
 }
