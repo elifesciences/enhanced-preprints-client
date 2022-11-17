@@ -8,7 +8,7 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview: PeerReview }): JSX.Element => (
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview }): JSX.Element => (
   <div className={styles['tabbed-navigation__content']}>
     <JumpToMenu headings={[
       { id: 'abstract', text: 'Abstract' },
@@ -19,7 +19,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
     ]} />
     <div className={styles['article-body-container']}>
       <Abstract content={props.metaData.abstract} />
-      <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/>
+      { props.peerReview !== undefined ? <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/> : '' }
       <ArticleContent content={props.content} />
       <ReferenceList references={props.metaData.references} />
       <AuthorInformationList authors={props.metaData.authors}/>
