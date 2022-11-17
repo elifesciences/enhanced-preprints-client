@@ -36,10 +36,6 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  if (doiParts.length === 3) {
-    const tab = doiParts.pop();
-  }
-
   if (doiParts.length !== 2) {
     console.log('doi not in two parts'); // eslint-disable-line no-console
     return { notFound: true };
@@ -69,6 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         articleType: 'Preview Preprint',
         status: 'This Preview Preprint isn\'t published yet.',
         timeline: [
+          { name: 'Preview Preprint generated', date: new Date().toDateString() },
         ],
       },
     },
