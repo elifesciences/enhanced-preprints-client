@@ -41,7 +41,7 @@
 .review-timeline__date {
   @include typography.font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-text-inactive;
+  color: settings.$color-text-secondary;
   font-family: settings.$font-family-primary;
   font-weight: 600;
   margin: 0;
@@ -60,7 +60,7 @@
 .review-timeline__link {
   @include typography.font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-text-inactive;
+  color: settings.$color-text-secondary;
   font-family: settings.$font-family-primary;
   font-weight: 600;
   text-decoration: none;
