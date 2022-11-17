@@ -8,21 +8,27 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview }): JSX.Element => (
-  <div className={styles['tabbed-navigation__content']}>
-    <JumpToMenu headings={[
-      { id: 'abstract', text: 'Abstract' },
-      { id: 'assessment', text: 'eLife assessment' },
-      ...props.metaData.headings,
-      { id: 'references', text: 'References' },
-      { id: 'author-list', text: 'Author Information' },
-    ]} />
-    <div className={styles['article-body-container']}>
-      <Abstract content={props.metaData.abstract} />
-      { props.peerReview !== undefined ? <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/> : '' }
-      <ArticleContent content={props.content} />
-      <ReferenceList references={props.metaData.references} />
-      <AuthorInformationList authors={props.metaData.authors}/>
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview }): JSX.Element => {
+  const assessment = [];
+  if (props.peerReview !== undefined) {
+    assessment.push({ id: 'assessment', text: 'eLife assessment' });
+  }
+  return (
+    <div className={styles['tabbed-navigation__content']}>
+      <JumpToMenu headings={[
+        { id: 'abstract', text: 'Abstract' },
+        ...assessment,
+        ...props.metaData.headings,
+        { id: 'references', text: 'References' },
+        { id: 'author-list', text: 'Author Information' },
+      ]} />
+      <div className={styles['article-body-container']}>
+        <Abstract content={props.metaData.abstract} />
+        { props.peerReview !== undefined ? <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/> : '' }
+        <ArticleContent content={props.content} />
+        <ReferenceList references={props.metaData.references} />
+        <AuthorInformationList authors={props.metaData.authors}/>
+      </div>
     </div>
-  </div>
-);
+  );
+};
