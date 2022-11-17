@@ -19,6 +19,7 @@
   list-style: none;
   position: sticky;
   top: 0;
+  z-index: 100;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(0 -48 36);

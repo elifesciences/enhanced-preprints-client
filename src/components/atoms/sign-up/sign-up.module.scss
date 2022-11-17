@@ -1,0 +1,47 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.email-cta {
+  @include mixins.padding(48, "top");
+  @include mixins.padding(72, "bottom");
+
+  border-top: 1px solid settings.$divider;
+  text-align: center;
+}
+
+.email-cta__container {
+  box-sizing: content-box;
+  margin: 0 auto;
+  max-width: 27.5rem;
+  padding: 0 6%;
+}
+
+.email-cta__header_text {
+  @include mixins.margin(0);
+  @include mixins.padding(24, "top");
+  @include mixins.padding(24, "bottom");
+  @include typography.font-size-and-vertical-height(20);
+
+  color: settings.$color-text;
+  font-family: settings.$font-family-primary;
+}
+
+.email-cta__privacy {
+  display: block;
+
+  @include typography.font-size-and-vertical-height(12, 24);
+  @include mixins.margin(4, "bottom");
+  @include mixins.margin(12, "top");
+}
+
+.email-cta__privacy_link {
+  color: settings.$color-text-secondary;
+  font-family: settings.$font-family-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: settings.$color-primary;
+    text-decoration: underline;
+  }
+}
