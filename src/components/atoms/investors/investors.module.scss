@@ -1,0 +1,57 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+$image-height: 72;
+$image-width: 185;
+
+.investor-logos {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.investor-logos__item {
+  @include mixins.padding(24);
+
+  border-top: 1px solid settings.$divider;
+}
+
+.investor-logos__container {
+  @include mixins.constrain-width($image-width, "max");
+  @include mixins.height($image-height);
+
+  margin: auto;
+  text-align: center;
+
+  @supports (display: flex) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.investor-logos__img {
+  display: block;
+  margin: auto;
+}
+
+@media only all and (min-width: settings.$breakpoint-small) {
+  .investor-logos {
+    border-top: 1px solid settings.$divider;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .investor-logos__item {
+    border: 0;
+    border-right: 1px solid settings.$divider;
+    display: table-cell;
+    vertical-align: top;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}

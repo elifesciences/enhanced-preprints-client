@@ -9,25 +9,6 @@ import { ArticlePage, ArticleStatusProps } from '../../../components/pages/artic
 import { ArticleFiguresTab } from '../../../components/pages/article/tabs/figures-tab';
 import { contentToString } from '../../../utils/content-to-string';
 
-const getFigures = (content: Content): Content => {
-  if (typeof content === 'undefined') {
-    return '';
-  }
-  if (typeof content === 'string') {
-    return content;
-  }
-
-  if (Array.isArray(content)) {
-    return content.map((part) => getFigures(part));
-  }
-  switch (content.type) {
-    case 'Figure':
-      return content;
-    default:
-      return '';
-  }
-};
-
 type PageProps = {
   metaData: MetaData,
   status: ArticleStatusProps,
@@ -40,7 +21,7 @@ export const Page = (props: PageProps): JSX.Element => (
     <title>{contentToString(props.metaData.title)}</title>
   </Head>
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
-    <ArticleFiguresTab content={getFigures(props.content)}></ArticleFiguresTab>
+    <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
   </ArticlePage>
   </>
 );
