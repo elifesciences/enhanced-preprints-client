@@ -20,7 +20,7 @@ export const Page = (props: PageProps): JSX.Element => {
   if (props.tab === 'fulltext') {
     childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
   } else {
-    childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
+    childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }
   return (
     <ArticlePage metaData={props.metaData} status={props.status} activeTab={props.tab} tabs={[
