@@ -36,7 +36,7 @@ $image-width: 185;
   margin: auto;
 }
 
-@media only screen and (min-width: #{typography.get-rem-from-px(520)}em) {
+@media only all and (min-width: settings.$breakpoint-small) {
   .investor-logos {
     border-top: 1px solid settings.$divider;
     display: table;
