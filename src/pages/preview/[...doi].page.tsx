@@ -4,25 +4,39 @@ import { config } from '../../config';
 import { Content } from '../../types/content';
 import { jsonFetch } from '../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../types';
-import { ArticleFullTextTab } from '../../components/pages/article/tabs/fulltext-tab';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
-
+import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 
 type PageProps = {
+  tab: 'fulltext' | 'figures',
   metaData: MetaData,
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
 };
 
-export const Page = (props: PageProps): JSX.Element => (
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext" tabs={[{
-    id: 'fulltext',
-    linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}`}>Full text</Link>,
-  }]}>
-    <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
-  </ArticlePage>
-);
+export const Page = (props: PageProps): JSX.Element => {
+  let childTab;
+  if (props.tab === 'fulltext') {
+    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
+  } else {
+    childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
+  }
+  return (
+    <ArticlePage metaData={props.metaData} status={props.status} activeTab={props.tab} tabs={[
+      {
+        id: 'fulltext',
+        linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}`}>Full text</Link>,
+      },
+      {
+        id: 'figures',
+        linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}/figures`}>Figures and data</Link>,
+      },
+    ]}>
+      { childTab }
+    </ArticlePage>
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const doiParts = context.params?.doi;
@@ -34,6 +48,11 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   if (!Array.isArray(doiParts)) {
     console.log('need multiple ids in path'); // eslint-disable-line no-console
     return { notFound: true };
+  }
+
+  let tab = 'fulltext';
+  if (doiParts.length === 3) {
+    tab = doiParts.pop() || 'fulltext';
   }
 
   if (doiParts.length !== 2) {
@@ -53,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
 
   return {
     props: {
+      tab,
       metaData: {
         ...metaData,
         msid: `preview-${doi}`,
