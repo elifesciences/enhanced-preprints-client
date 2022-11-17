@@ -1,10 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import Link from 'next/link';
 import { config } from '../../config';
 import { Content } from '../../types/content';
 import { jsonFetch } from '../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../types';
 import { ArticleFullTextTab } from '../../components/pages/article/tabs/fulltext-tab';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
+
 
 type PageProps = {
   metaData: MetaData,
@@ -14,7 +16,10 @@ type PageProps = {
 };
 
 export const Page = (props: PageProps): JSX.Element => (
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
+  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext" tabs={[{
+    id: 'fulltext',
+    linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}`}>Full text</Link>,
+  }]}>
     <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
   </ArticlePage>
 );
