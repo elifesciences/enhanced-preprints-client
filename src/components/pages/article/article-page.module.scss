@@ -52,7 +52,7 @@
 .tabbed-navigation__tab-label {
   @include typography.body();
 
-  color: settings.$color-text-inactive;
+  color: settings.$color-text-secondary;
   cursor: pointer;
   display: inline;
   font-family: settings.$font-family-primary;
@@ -61,7 +61,7 @@
     @include mixins.margin(0 6);
     @include mixins.padding(18 6);
 
-    color: settings.$color-text-inactive;
+    color: settings.$color-text-secondary;
     display: block;
     text-decoration: none;
   }
