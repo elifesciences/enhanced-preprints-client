@@ -49,7 +49,7 @@ const renderContent = (content: Content) : string => {
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
-const prepareAuthors = (authors: Author[]) : string => {
+const prepareAuthorLine = (authors: Author[]) : string => {
   let authorLine = '';
 
   if (authors.length > 0) {
@@ -73,7 +73,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const meta = await Promise.all(ids.map(async (id) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then((js) => ({
     id,
     title: renderContent(js.title),
-    authorLine: prepareAuthors(js.authors),
+    authorLine: prepareAuthorLine(js.authors),
   }))));
 
   const items = ids.map((id) => {
@@ -91,8 +91,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     };
   });
 
-  res.status(200).json({
-    total: ids.length,
-    items,
-  });
+  res
+    .setHeader('Content-Type', 'application/vnd.elife.reviewed-preprint-list+json; version=1')
+    .status(200)
+    .write(JSON.stringify({
+      total: ids.length,
+      items,
+    }));
+
+  res.end();
 };
