@@ -71,7 +71,7 @@ const prepareAuthorLine = (authors: Author[]) : string => {
 const reviewedDate = (timeline: TimelineEvent[]) : string | null => {
   const reviewedEvent = timeline.find((obj) => obj.name === 'Reviewed Preprint posted');
 
-  return reviewedEvent ? reviewedEvent.date + 'T03:00:00Z' : null;
+  return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : null;
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
