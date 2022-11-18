@@ -5,41 +5,45 @@ import { jsonFetch } from '../../utils/json-fetch';
 import { Author, Content, MetaData } from '../../types';
 import { SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
 
-const wrapContent = (content: Content, type: string) : string => {
+const wrapContent = (content: Content) : string => {
   let tag = null;
+  let c = null;
 
-  if (type === 'Emphasis') {
-    tag = 'i';
-  } else if (type === 'Subscript') {
-    tag = 'sub';
+  if (typeof content !== 'string' && !Array.isArray(content)) {
+    switch (content.type) {
+      case 'Emphasis':
+        tag = 'i';
+        c = content.content;
+        break;
+      case 'Strong':
+        tag = 'b';
+        c = content.content;
+        break;
+      case 'Subscript':
+        tag = 'sub';
+        c = content.content;
+        break;
+      case 'Superscript':
+        tag = 'sup';
+        c = content.content;
+        break;
+    }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  return (tag ? `<${tag}>` : '') + renderContent(content) + (tag ? `</${tag}>` : '');
+  return (tag ? `<${tag}>` : '') + renderContent(c !== null ? c : content) + (tag ? `</${tag}>` : '');
 };
 
 const renderContent = (content: Content) : string => {
-  if (Array.isArray(content)) {
-    return content.map((i: Content) => {
-      if (typeof i === 'string') {
-        return i;
-      }
-
-      if (
-        !Array.isArray(i) &&
-        (
-          i.type === 'Emphasis' ||
-          i.type === 'Subscript'
-        )
-      ) {
-        return wrapContent(i.content, i.type);
-      }
-
-      return '';
-    }).join(' ');
+  if (typeof content === 'string') {
+    return content;
   }
 
-  return content as string;
+  if (Array.isArray(content)) {
+    return content.map((i: Content) => wrapContent(i)).join(' ');
+  }
+
+  return wrapContent(content);
 };
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
