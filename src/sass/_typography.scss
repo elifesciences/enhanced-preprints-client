@@ -35,7 +35,7 @@
 
   &::before {
     color: settings.$color-text;
-    content: ", ";
+    content: " ... ";
   }
 }
 
@@ -57,7 +57,7 @@
 @mixin identifiers-list-text() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text-inactive;
+  color: settings.$color-text-secondary;
   font-family: settings.$font-family-primary;
 }
 
@@ -117,7 +117,7 @@
 @mixin navigation-heading() {
   @include font-size-and-vertical-height(14, 26);
 
-  color: settings.$color-text-inactive;
+  color: settings.$color-text-secondary;
   font-family: settings.$font-family-primary;
   font-weight: 400;
 }

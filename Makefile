@@ -19,7 +19,6 @@ build-storybook-and-push:
 		-t $(IMAGE_REPO_PREFIX)storybook:$(GITBRANCH)-$(GITSHORTHASH)-$(DATETIME) \
 		 --platform linux/amd64,linux/arm64 --target storybook --push .
 
-
 build-prod-and-push:
 	docker buildx build \
 		-t $(IMAGE_REPO_PREFIX)client:latest \
