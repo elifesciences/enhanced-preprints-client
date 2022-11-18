@@ -20,12 +20,18 @@ const wrapContent = (content: Content, type: string) : string => {
 
 const renderContent = (content: Content) : string => {
   if (Array.isArray(content)) {
-    return content.map((i) => {
+    return content.map((i: Content) => {
       if (typeof i === 'string') {
         return i;
       }
 
-      if (!Array.isArray(i) && i === Object(i)) {
+      if (
+        !Array.isArray(i) &&
+        (
+          i.type === 'Emphasis' ||
+          i.type === 'Subscript'
+        )
+      ) {
         return wrapContent(i.content, i.type);
       }
 
