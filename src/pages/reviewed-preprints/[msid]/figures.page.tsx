@@ -7,25 +7,6 @@ import { MetaData } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleFiguresTab } from '../../../components/pages/article/tabs/figures-tab';
 
-const getFigures = (content: Content): Content => {
-  if (typeof content === 'undefined') {
-    return '';
-  }
-  if (typeof content === 'string') {
-    return content;
-  }
-
-  if (Array.isArray(content)) {
-    return content.map((part) => getFigures(part));
-  }
-  switch (content.type) {
-    case 'Figure':
-      return content;
-    default:
-      return '';
-  }
-};
-
 type PageProps = {
   metaData: MetaData,
   status: ArticleStatusProps,
@@ -34,7 +15,7 @@ type PageProps = {
 
 export const Page = (props: PageProps): JSX.Element => (
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
-    <ArticleFiguresTab content={getFigures(props.content)}></ArticleFiguresTab>
+    <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
   </ArticlePage>
 );
 
