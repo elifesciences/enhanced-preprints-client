@@ -27,6 +27,7 @@ const wrapContent = (content: Content) : string => {
         tag = 'sup';
         c = content.content;
         break;
+      default:
     }
   }
 
