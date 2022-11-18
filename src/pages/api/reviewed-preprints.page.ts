@@ -4,6 +4,7 @@ import { manuscripts } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, Content, MetaData } from '../../types';
 import { SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
+import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 
 const wrapContent = (content: Content) : string => {
   let tag = null;
@@ -67,6 +68,12 @@ const prepareAuthorLine = (authors: Author[]) : string => {
   return authorLine;
 };
 
+const reviewedDate = (timeline: TimelineEvent[]) : string | null => {
+  const reviewedEvent = timeline.find((obj) => obj.name === 'Reviewed Preprint posted');
+
+  return reviewedEvent ? reviewedEvent.date + 'T03:00:00Z' : null;
+};
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/)).sort();
 
@@ -78,6 +85,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const items = ids.map((id) => {
     const iMeta = meta.find((obj) => obj.id === id);
+    const reviewed = reviewedDate(manuscripts[id].status.timeline);
 
     return {
       id,
@@ -86,6 +94,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       status: 'reviewed',
       authorLine: iMeta?.authorLine,
       title: iMeta?.title,
+      published: reviewed,
+      reviewedData: reviewed,
+      versionDate: reviewed,
+      statusDate: reviewed,
       stage: 'published',
       subjects: SubjectList({ msas: manuscripts[id].msas }),
     };
