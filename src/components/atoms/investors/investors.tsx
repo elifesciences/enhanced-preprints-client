@@ -46,8 +46,8 @@ export const Investors = (): JSX.Element => (
           className={styles['investor-logos__img']}
           src={kaw}
           alt="Knut and Alice Wallenberg Foundation"
-          width="128"
-          height="74"
+          width="125"
+          height="72"
         />
       </div>
     </li>
