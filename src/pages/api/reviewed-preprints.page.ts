@@ -95,7 +95,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       authorLine: iMeta?.authorLine,
       title: iMeta?.title,
       published: reviewed,
-      reviewedData: reviewed,
+      reviewedDate: reviewed,
       versionDate: reviewed,
       statusDate: reviewed,
       stage: 'published',
