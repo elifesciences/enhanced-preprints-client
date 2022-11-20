@@ -139,12 +139,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     badResponse(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
+  items.sort((a, b) => {
+    const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
+
+    if (order === 'asc') {
+      return diff > 0 ? 1 : -1;
+    } else {
+      return diff < 0 ? 1 : -1;
+    }
+  });
+
+  const offset = (page - 1) * perPage;
+
   res
     .setHeader('Content-Type', 'application/vnd.elife.reviewed-preprint-list+json; version=1')
     .status(200)
     .write(JSON.stringify({
       total: ids.length,
-      items,
+      items: items.slice(offset, offset + perPage),
     }));
 
   res.end();
