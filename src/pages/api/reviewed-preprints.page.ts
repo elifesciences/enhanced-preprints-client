@@ -142,11 +142,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   items.sort((a, b) => {
     const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
 
-    if (order === 'asc') {
-      return diff > 0 ? 1 : -1;
-    } else {
-      return diff < 0 ? 1 : -1;
-    }
+    return (order === 'asc' && diff > 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
   });
 
   const offset = (page - 1) * perPage;
