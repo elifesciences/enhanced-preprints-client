@@ -74,8 +74,22 @@ const reviewedDate = (timeline: TimelineEvent[]) : string | null => {
   return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : null;
 };
 
+const badResponse = (res: NextApiResponse, message: string) : void => {
+  res
+    .setHeader('Content-Type', 'application/problem+json')
+    .status(400)
+    .write(JSON.stringify({
+      title: 'bad request',
+      detail: message,
+    }));
+
+  res.end();
+};
+
+const queryParam = (req: NextApiRequest, key: string, defaultValue: string | Number | Array<string | Number> | null = null) : string | Number | Array<string | Number> | null => req.query[key] ?? defaultValue;
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/)).sort();
+  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/));
 
   const meta = await Promise.all(ids.map(async (id) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then((js) => ({
     id,
@@ -102,6 +116,28 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       subjects: SubjectList({ msas: manuscripts[id].msas }),
     };
   });
+
+  const [perPage, page] = [
+    queryParam(req, 'per-page', 20),
+    queryParam(req, 'page', 1),
+  ].map((v) => {
+    const n = Number(v);
+
+    return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
+  });
+  const order = queryParam(req, 'order', 'desc');
+
+  if (page <= 0) {
+    badResponse(res, 'expecting positive integer for \'page\' parameter');
+  }
+
+  if (perPage <= 0 || perPage > 100) {
+    badResponse(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
+  }
+
+  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
+    badResponse(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
+  }
 
   res
     .setHeader('Content-Type', 'application/vnd.elife.reviewed-preprint-list+json; version=1')
