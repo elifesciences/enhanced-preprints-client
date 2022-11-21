@@ -7,8 +7,8 @@ import { SubjectItem, SubjectList } from '../../components/molecules/article-fla
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 
 type BadRequestMessage = {
-  title: 'bad request',
-  detail: string,
+  title: 'bad request' | 'not found',
+  detail?: string,
 };
 
 export type ReviewedPreprintItemResponse = {
@@ -107,7 +107,7 @@ const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
   return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : undefined;
 };
 
-export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
+export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
   res
     .setHeader('Content-Type', contentType)
     .status(statusCode)
@@ -120,6 +120,12 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
   writeResponse(res, 'application/problem+json', 400, {
     title: 'bad request',
     detail: message,
+  });
+};
+
+export const errorNotFoundRequest = (res: NextApiResponse) : void => {
+  writeResponse(res, 'application/json', 404, {
+    title: 'not found',
   });
 };
 
