@@ -81,7 +81,7 @@ const renderContent = (content: Content) : string => {
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
-const prepareAuthorLine = (authors: Author[]) : string | undefined => {
+const prepareAuthorLine = (authors: Author[]) : undefined | string => {
   if (authors.length === 0) {
     return;
   }
@@ -100,6 +100,7 @@ const prepareAuthorLine = (authors: Author[]) : string | undefined => {
     authorLine += `${(authors.length > 3) ? ' ... ' : ', '}${prepareAuthor(authors[authors.length - 1])}`;
   }
 
+  // eslint-disable-next-line consistent-return
   return authorLine;
 };
 

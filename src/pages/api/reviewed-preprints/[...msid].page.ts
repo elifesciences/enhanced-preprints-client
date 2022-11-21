@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const manuscript = manuscripts[msid];
 
-  const [metaData, content] = await Promise.all([
+  const [metaData] = await Promise.all([
     jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
     jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
   ]);
@@ -32,6 +32,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     'application/vnd.elife.reviewed-preprint-item+json; version=1',
     200,
     // Need to convert content to a string.
-    {...item, indexContent: 'content as string' }
+    { ...item, indexContent: 'content as string' },
   );
 };
