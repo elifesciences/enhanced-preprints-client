@@ -1,18 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../config';
-import { manuscripts } from '../../../manuscripts';
+import { getManuscripts } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData } from '../../../types';
 import { errorNotFoundRequest, reviewedPreprintSnippet, writeResponse } from '../reviewed-preprints.page';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const msidFound = req.url.match(/\/(?<msid>[A-z0-9]+)$/);
-  const msid = msidFound ? msidFound.groups.msid : null;
+  const msidFound = req.url?.match(/\/(?<msid>[A-z0-9]+)$/);
+  const msid = msidFound ? msidFound.groups?.msid : null;
 
-  if (msid === null || !manuscripts[msid]) {
+  const manuscripts = getManuscripts(config.manuscriptConfigFile);
+
+  if (typeof msid !== 'string' || !manuscripts[msid]) {
     console.log('Cannot find msid configured'); // eslint-disable-line no-console
     errorNotFoundRequest(res);
+    return;
   }
 
   const manuscript = manuscripts[msid];

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
-import { manuscripts, ManuscriptConfig } from '../../manuscripts';
+import { FullManuscriptConfig, getManuscripts } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, Content, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
@@ -34,6 +34,8 @@ type ReviewedPreprintListResponse = {
   total: number,
   items: ReviewedPreprintSnippet[],
 };
+
+const manuscripts = getManuscripts(config.manuscriptConfigFile);
 
 const wrapContent = (content: Content) : string => {
   let tag = null;
@@ -133,7 +135,7 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
 
-export const reviewedPreprintSnippet = (meta: MetaData, manuscript: ManuscriptConfig) : ReviewedPreprintSnippet => {
+export const reviewedPreprintSnippet = (meta: MetaData, manuscript: FullManuscriptConfig) : ReviewedPreprintSnippet => {
   const reviewed = reviewedDate(manuscript.status.timeline);
 
   return {

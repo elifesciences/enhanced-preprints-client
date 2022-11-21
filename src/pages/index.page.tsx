@@ -1,7 +1,12 @@
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
-import { manuscripts } from '../manuscripts';
+import { config } from '../config';
+import { getManuscripts, Manuscripts } from '../manuscripts';
 
-export const App = (): JSX.Element => (
+type PageProps = {
+  manuscripts: Manuscripts
+};
+export const App = ({ manuscripts }: PageProps): JSX.Element => (
   <div className="App">
     <ul>
       {Object.keys(manuscripts)
@@ -11,5 +16,11 @@ export const App = (): JSX.Element => (
     </ul>
   </div>
 );
+
+export const getServerSideProps: GetServerSideProps<PageProps> = async () => ({
+  props: {
+    manuscripts: getManuscripts(config.manuscriptConfigFile),
+  },
+});
 
 export default App;

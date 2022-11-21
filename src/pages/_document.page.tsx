@@ -39,7 +39,7 @@ export default function Document() {
             })(window,document,'script','dataLayer','${config.gtmId}');`,
           }}></script>
         }
-
+        <title>Enhanced Preprints Platform</title>
       </Head>
       <body>
         { config.gtmId &&
