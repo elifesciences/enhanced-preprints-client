@@ -47,7 +47,7 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   );
 };
 
-export const SubjectList = ({ msas }: Props): Array<SubjectItem> => msas.map((msa) => ({
+export const SubjectList = ({ msas }: Props): SubjectItem[] => msas.map((msa) => ({
   id: msaURLs[msa].substring(msaURLs[msa].lastIndexOf('/') + 1),
   name: msa,
 }));

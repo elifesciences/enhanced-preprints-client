@@ -3,8 +3,33 @@ import { config } from '../../config';
 import { manuscripts } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, Content, MetaData } from '../../types';
-import { SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
+import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
+
+type BadRequestMessage = {
+  title: 'bad request',
+  detail: string,
+};
+
+type ReviewedPreprintSnippet = {
+  id: string,
+  doi: string,
+  pdf: string,
+  status: string,
+  authorLine?: string,
+  title?: string,
+  published?: string,
+  reviewedDate?: string,
+  versionDate?: string,
+  statusDate?: string,
+  stage: string,
+  subjects?: SubjectItem[],
+};
+
+type ReviewedPreprintListResponse = {
+  total: number,
+  items: ReviewedPreprintSnippet[],
+};
 
 const wrapContent = (content: Content) : string => {
   let tag = null;
@@ -50,7 +75,11 @@ const renderContent = (content: Content) : string => {
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
-const prepareAuthorLine = (authors: Author[]) : string => {
+const prepareAuthorLine = (authors: Author[]) : string | undefined => {
+  if (authors.length === 0) {
+    return;
+  }
+
   let authorLine = '';
 
   if (authors.length > 0) {
@@ -68,22 +97,26 @@ const prepareAuthorLine = (authors: Author[]) : string => {
   return authorLine;
 };
 
-const reviewedDate = (timeline: TimelineEvent[]) : string | null => {
+const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
   const reviewedEvent = timeline.find((obj) => obj.name === 'Reviewed Preprint posted');
 
-  return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : null;
+  return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : undefined;
 };
 
-const badResponse = (res: NextApiResponse, message: string) : void => {
+const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400, message: BadRequestMessage | ReviewedPreprintListResponse) : void => {
   res
-    .setHeader('Content-Type', 'application/problem+json')
-    .status(400)
-    .write(JSON.stringify({
-      title: 'bad request',
-      detail: message,
-    }));
+    .setHeader('Content-Type', contentType)
+    .status(statusCode)
+    .write(JSON.stringify(message));
 
   res.end();
+};
+
+const errorBadRequest = (res: NextApiResponse, message: string) : void => {
+  writeResponse(res, 'application/problem+json', 400, {
+    title: 'bad request',
+    detail: message,
+  });
 };
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: string | Number | Array<string | Number> | null = null) : string | Number | Array<string | Number> | null => req.query[key] ?? defaultValue;
@@ -100,6 +133,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const items = ids.map((id) => {
     const iMeta = meta.find((obj) => obj.id === id);
     const reviewed = reviewedDate(manuscripts[id].status.timeline);
+
+    const item = {
+      id,
+      doi: manuscripts[id].preprintDoi,
+      pdf: manuscripts[id].pdfUrl,
+      status: 'reviewed',
+      authorLine: iMeta?.authorLine,
+      title: iMeta?.title,
+      published: reviewed,
+      reviewedDate: reviewed,
+      versionDate: reviewed,
+      statusDate: reviewed,
+      stage: 'published',
+      subjects: SubjectList({ msas: manuscripts[id].msas }),
+    };
+
+    
 
     return {
       id,
@@ -128,15 +178,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const order = queryParam(req, 'order', 'desc');
 
   if (page <= 0) {
-    badResponse(res, 'expecting positive integer for \'page\' parameter');
+    errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
   }
 
   if (perPage <= 0 || perPage > 100) {
-    badResponse(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
+    errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
   }
 
   if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
-    badResponse(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
+    errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
   items.sort((a, b) => {
@@ -147,13 +197,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const offset = (page - 1) * perPage;
 
-  res
-    .setHeader('Content-Type', 'application/vnd.elife.reviewed-preprint-list+json; version=1')
-    .status(200)
-    .write(JSON.stringify({
-      total: ids.length,
-      items: items.slice(offset, offset + perPage),
-    }));
-
-  res.end();
+  writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
+    total: ids.length,
+    items: items.slice(offset, offset + perPage),
+  });
 };
