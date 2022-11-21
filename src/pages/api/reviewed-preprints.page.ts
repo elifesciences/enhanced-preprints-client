@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
-import { manuscripts } from '../../manuscripts';
+import { manuscripts, ManuscriptConfig } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, Content, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
@@ -121,50 +121,41 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: string | Number | Array<string | Number> | null = null) : string | Number | Array<string | Number> | null => req.query[key] ?? defaultValue;
 
+export const reviewedPreprintSnippet = (meta: MetaData, manuscript: ManuscriptConfig) : ReviewedPreprintSnippet => {
+  const reviewed = reviewedDate(manuscript.status.timeline);
+
+  return {
+    id: manuscript.msid,
+    doi: manuscript.preprintDoi,
+    pdf: manuscript.pdfUrl,
+    status: 'reviewed',
+    authorLine: prepareAuthorLine(meta.authors),
+    title: renderContent(meta.title),
+    published: reviewed,
+    reviewedDate: reviewed,
+    versionDate: reviewed,
+    statusDate: reviewed,
+    stage: 'published',
+    subjects: SubjectList({ msas: manuscript.msas }),
+  };
+};
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/));
 
   const meta = await Promise.all(ids.map(async (id) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then((js) => ({
     id,
-    title: renderContent(js.title),
-    authorLine: prepareAuthorLine(js.authors),
+    data: js,
   }))));
 
   const items = ids.map((id) => {
-    const iMeta = meta.find((obj) => obj.id === id);
-    const reviewed = reviewedDate(manuscripts[id].status.timeline);
+    const iMeta = meta.find((obj) => obj.id === id)?.data;
 
-    const item = {
-      id,
-      doi: manuscripts[id].preprintDoi,
-      pdf: manuscripts[id].pdfUrl,
-      status: 'reviewed',
-      authorLine: iMeta?.authorLine,
-      title: iMeta?.title,
-      published: reviewed,
-      reviewedDate: reviewed,
-      versionDate: reviewed,
-      statusDate: reviewed,
-      stage: 'published',
-      subjects: SubjectList({ msas: manuscripts[id].msas }),
-    };
+    if (iMeta === undefined) {
+      throw new Error(`MetaData not found for ${id}`);
+    }
 
-    
-
-    return {
-      id,
-      doi: manuscripts[id].preprintDoi,
-      pdf: manuscripts[id].pdfUrl,
-      status: 'reviewed',
-      authorLine: iMeta?.authorLine,
-      title: iMeta?.title,
-      published: reviewed,
-      reviewedDate: reviewed,
-      versionDate: reviewed,
-      statusDate: reviewed,
-      stage: 'published',
-      subjects: SubjectList({ msas: manuscripts[id].msas }),
-    };
+    return reviewedPreprintSnippet(iMeta, manuscripts[id]);
   });
 
   const [perPage, page] = [
