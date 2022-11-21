@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import Head from 'next/head';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
@@ -6,6 +7,7 @@ import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
+import { contentToString } from '../../../utils/content-to-string';
 
 type PageProps = {
   metaData: MetaData,
@@ -15,9 +17,14 @@ type PageProps = {
 };
 
 export const Page = (props: PageProps): JSX.Element => (
+  <>
+  <Head>
+    <title>{contentToString(props.metaData.title)}</title>
+  </Head>
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
     <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
   </ArticlePage>
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
