@@ -94,7 +94,7 @@ const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
   },
 };
 
-type ManuscriptConfig = ReviewedPreprintConfig & {
+export type ManuscriptConfig = ReviewedPreprintConfig & {
   msid: string
   version: string,
 };
