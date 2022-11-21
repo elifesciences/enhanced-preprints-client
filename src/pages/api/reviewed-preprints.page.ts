@@ -123,7 +123,9 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
   });
 };
 
-const queryParam = (req: NextApiRequest, key: string, defaultValue: string | Number | Array<string | Number> | null = null) : string | Number | Array<string | Number> | null => req.query[key] ?? defaultValue;
+type Param = string | Number | Array<string | Number> | null;
+
+const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
 
 export const reviewedPreprintSnippet = (meta: MetaData, manuscript: ManuscriptConfig) : ReviewedPreprintSnippet => {
   const reviewed = reviewedDate(manuscript.status.timeline);
