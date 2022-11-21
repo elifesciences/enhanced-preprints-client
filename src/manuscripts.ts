@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs';
 import { ArticleStatusProps } from './components/pages/article/article-page';
 
 type ReviewedPreprintConfig = {
@@ -7,157 +8,41 @@ type ReviewedPreprintConfig = {
   msas: string[],
 };
 
-const preprintConfigs: Record<string, ReviewedPreprintConfig> = {
-  '10.1101/2022.06.24.497502': {
-    preprintDoi: '10.1101/2022.06.24.497502',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.06.24.497502', text: 'Go to bioRxiv' } },
-        { name: 'Sent for peer review', date: '2022-06-24' },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.24.497502/2022.06.24.497502.pdf',
-    msas: ['Cell Biology'],
-  },
-  '10.1101/2022.07.26.501569': {
-    preprintDoi: '10.1101/2022.07.26.501569',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Posted to bioRxiv', date: '2022-07-28', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.07.26.501569', text: 'Go to bioRxiv' } },
-        { name: 'Sent for peer review', date: '2022-07-26' },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.26.501569/2022.07.26.501569.pdf',
-    msas: ['Stem Cells and Regenerative Medicine'],
-  },
-  '10.1101/2022.06.30.498369': {
-    preprintDoi: '10.1101/2022.06.30.498369',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Posted to bioRxiv', date: '2022-07-02', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.06.30.498369', text: 'Go to bioRxiv' } },
-        { name: 'Sent for peer review', date: '2022-07-01' },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.30.498369/2022.06.30.498369.pdf',
-    msas: ['Developmental Biology', 'Plant Biology'],
-  },
-  '10.1101/2022.05.30.22275761': {
-    preprintDoi: '10.1101/2022.05.30.22275761',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Sent for peer review', date: '2022-06-29' },
-        { name: 'Posted to medRxiv', date: '2022-05-31', link: { url: 'https://www.medrxiv.org/content/10.1101/2022.05.30.22275761', text: 'Go to medRxiv' } },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.05.30.22275761/2022.05.30.22275761.pdf',
-    msas: ['Epidemiology and Global Health'],
-  },
-  '10.1101/2022.07.21.500925': {
-    preprintDoi: '10.1101/2022.07.21.500925',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Posted to bioRxiv', date: '2022-07-22', link: { url: 'https://www.biorxiv.org/content/10.1101/2022.07.21.500925', text: 'Go to bioRxiv' } },
-        { name: 'Sent for peer review', date: '2022-07-21' },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.21.500925/2022.07.21.500925.pdf',
-    msas: ['Structural Biology and Molecular Biophysics'],
-  },
-  '10.1101/2021.11.12.468444': {
-    preprintDoi: '10.1101/2021.11.12.468444',
-    status: {
-      articleType: 'Reviewed Preprint',
-      status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
-      timeline: [
-        { name: 'Reviewed Preprint posted', date: '2022-10-20' },
-        { name: 'Sent for peer review', date: '2022-07-12' },
-        { name: 'Posted to bioRxiv', date: '2022-06-29', link: { url: 'https://www.biorxiv.org/content/10.1101/2021.11.12.468444', text: 'Go to bioRxiv' } },
-      ],
-    },
-    pdfUrl: 'https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2021.11.12.468444/2021.11.12.468444.pdf',
-    msas: ['Neuroscience'],
-  },
+type ManuscriptConfig = {
+  msid: string
+  version: string,
+  preprintDoi: string
 };
 
-type ManuscriptConfig = ReviewedPreprintConfig & {
+type FullManuscriptConfig = ReviewedPreprintConfig & {
   msid: string
   version: string,
 };
 
-export const manuscripts: Record<string, ManuscriptConfig> = {
-  '80494': { // eslint-disable-line quote-props
-    msid: '80494',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.06.24.497502'],
-  },
-  '80494v1': { // eslint-disable-line quote-props
-    msid: '80494',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.06.24.497502'],
-  },
-  '81926': { // eslint-disable-line quote-props
-    msid: '81926',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.07.26.501569'],
-  },
-  '81926v1': { // eslint-disable-line quote-props
-    msid: '81926',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.07.26.501569'],
-  },
-  '80984': { // eslint-disable-line quote-props
-    msid: '80984',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.06.30.498369'],
-  },
-  '80984v1': { // eslint-disable-line quote-props
-    msid: '80984',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.06.30.498369'],
-  },
-  '80729': { // eslint-disable-line quote-props
-    msid: '80729',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.30.22275761'],
-  },
-  '80729v1': { // eslint-disable-line quote-props
-    msid: '80729',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.05.30.22275761'],
-  },
-  '81727': { // eslint-disable-line quote-props
-    msid: '81727',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.07.21.500925'],
-  },
-  '81727v1': { // eslint-disable-line quote-props
-    msid: '81727',
-    version: '1',
-    ...preprintConfigs['10.1101/2022.07.21.500925'],
-  },
-  '81535': { // eslint-disable-line quote-props
-    msid: '81535',
-    version: '1',
-    ...preprintConfigs['10.1101/2021.11.12.468444'],
-  },
-  '81535v1': { // eslint-disable-line quote-props
-    msid: '81535',
-    version: '1',
-    ...preprintConfigs['10.1101/2021.11.12.468444'],
-  },
+type ConfigFile = {
+  preprints: Record<string, ReviewedPreprintConfig>,
+  manuscripts: Record<string, ManuscriptConfig>
 };
+
+export type Manuscripts = Record<string, FullManuscriptConfig>;
+
+export const getManuscripts = (configFile: string): Manuscripts => {
+  const configJson = JSON.parse(readFileSync(configFile).toString());
+  if (typeof configJson.preprints !== 'object' || typeof configJson.manuscripts !== 'object') {
+    throw Error(`config file ${configFile} does not contain valid JSON with preprints and manuscripts keys`);
+  }
+
+  const { manuscripts, preprints } = configJson as ConfigFile;
+
+  const fullManuscriptConfigs: Manuscripts = {};
+
+  Object.entries(manuscripts).forEach(([msid, manuscriptConfig]) => {
+    fullManuscriptConfigs[msid] = {
+      ...manuscriptConfig,
+      ...preprints[manuscriptConfig.preprintDoi],
+    };
+  });
+  return fullManuscriptConfigs;
+};
+
+export const getManuscript = (configFile: string, msid: string): FullManuscriptConfig => getManuscripts(configFile)[msid];

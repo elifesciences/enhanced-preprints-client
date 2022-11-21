@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { config } from '../../../config';
-import { manuscripts } from '../../../manuscripts';
+import { getManuscript } from '../../../manuscripts';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
@@ -36,12 +36,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  if (!manuscripts[msid]) {
+  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
+
+  if (manuscriptConfig === undefined) {
     console.log('Cannot find msid configured'); // eslint-disable-line no-console
     return { notFound: true };
   }
-
-  const manuscriptConfig = manuscripts[msid];
 
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
     jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
     // replace with call for data
-    manuscripts[msid].status,
+    manuscriptConfig.status,
   ]);
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
