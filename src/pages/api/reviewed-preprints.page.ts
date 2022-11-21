@@ -107,7 +107,7 @@ const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
   return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : undefined;
 };
 
-const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400, message: BadRequestMessage | ReviewedPreprintListResponse) : void => {
+export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
   res
     .setHeader('Content-Type', contentType)
     .status(statusCode)
