@@ -11,7 +11,11 @@ type BadRequestMessage = {
   detail: string,
 };
 
-type ReviewedPreprintSnippet = {
+export type ReviewedPreprintItemResponse = {
+  indexContent?: string,
+} & ReviewedPreprintSnippet;
+
+export type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
   pdf: string,
