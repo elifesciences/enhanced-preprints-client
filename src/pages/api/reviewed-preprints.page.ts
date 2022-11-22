@@ -20,14 +20,14 @@ type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
   pdf: string,
-  status: string,
+  status: 'reviewed',
   authorLine?: string,
   title?: string,
   published?: string,
   reviewedDate?: string,
   versionDate?: string,
   statusDate?: string,
-  stage: string,
+  stage: 'published',
   subjects?: SubjectItem[],
 };
 
