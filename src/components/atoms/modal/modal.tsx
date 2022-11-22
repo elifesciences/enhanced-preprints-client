@@ -3,7 +3,7 @@ import styles from './modal.module.scss';
 
 export const Modal = (): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const closeModal = () => setShowModal(false);
 
   const clickHandler = (event: MouseEvent<HTMLDivElement>) => {
