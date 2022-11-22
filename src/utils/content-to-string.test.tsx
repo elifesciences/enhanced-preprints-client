@@ -110,22 +110,22 @@ describe('Content to String', () => {
     [
       {
         content: ['one', 'two', { type: 'Strong', content: 'three' }],
-        contentTypeTags: [ { id: ContentType.strong, tag: 'b' } ],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }],
         expected: 'onetwo<b>three</b>',
       },
       {
         content: ['one', 'two', { type: 'Strong', content: 'three' }],
-        contentTypeTags: [ { id: ContentType.strong, tag: 'strong' } ],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'strong' }],
         expected: 'onetwo<strong>three</strong>',
       },
       {
         content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-        contentTypeTags: [ { id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' } ],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' }],
         expected: 'onetwothree<sub>four</sub>five',
       },
       {
         content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-        contentTypeTags: [ { id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' } ],
+        contentTypeTags: [{ id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' }],
         expected: 'onetwo<p>three<sub>four</sub>five</p>',
       },
     ].forEach((c) => {

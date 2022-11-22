@@ -6,12 +6,12 @@ export enum ContentType {
   strong = 'Strong',
   subscript = 'Subscript',
   superscript = 'Superscript',
-};
+}
 
 type ContentTypeTag = {
   id: ContentType,
   tag: string,
-}
+};
 
 export const contentToString = (content: Content, contentTypeTags?: ContentTypeTag[]): string => {
   if (typeof content === 'undefined') {
@@ -30,7 +30,7 @@ export const contentToString = (content: Content, contentTypeTags?: ContentTypeT
     case ContentType.strong:
     case ContentType.subscript:
     case ContentType.superscript:
-      const tag = contentTypeTags?.find((typeTag) => typeTag.id === content.type)?.tag;
+      const tag = contentTypeTags?.find((typeTag) => typeTag.id === content.type)?.tag; // eslint-disable-line no-case-declarations
       return (tag ? `<${tag}>` : '') + contentToString(content.content, contentTypeTags) + (tag ? `</${tag}>` : '');
     default:
       return '';
