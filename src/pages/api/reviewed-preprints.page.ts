@@ -158,19 +158,8 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/));
 
-  const meta = await Promise.all(ids.map(async (id) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscripts[id].preprintDoi}/metadata`).then((js) => ({
-    id,
-    data: js,
-  }))));
-
   const items = ids.map((id) => {
-    const iMeta = meta.find((obj) => obj.id === id)?.data;
-
-    if (iMeta === undefined) {
-      throw new Error(`MetaData not found for ${id}`);
-    }
-
-    return reviewedPreprintSnippet(manuscripts[id], iMeta);
+    return reviewedPreprintSnippet(manuscripts[id]);
   });
 
   const [perPage, page] = [
@@ -203,8 +192,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const offset = (page - 1) * perPage;
 
+  const itemsOnPage = items.slice(offset, offset + perPage);
+  
+  const meta = await Promise.all(itemsOnPage.map(async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`).then((js) => ({
+    id: item.id,
+    data: js,
+  }))));
+
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
     total: ids.length,
-    items: items.slice(offset, offset + perPage),
+    items: itemsOnPage.map((item) => {
+      const iMeta = meta.find((obj) => obj.id === item.id)?.data;
+
+      if (iMeta === undefined) {
+        throw new Error(`MetaData not found for ${item.id}`);
+      }
+
+      return {...item, title: renderContent(iMeta.title), authorLine: prepareAuthorLine(iMeta.authors)};
+    }),
   });
 };

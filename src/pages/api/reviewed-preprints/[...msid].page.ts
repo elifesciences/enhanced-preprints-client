@@ -2,8 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../config';
 import { getManuscripts } from '../../../manuscripts';
 import { Content } from '../../../types/content';
-import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData } from '../../../types';
+import { contentToString } from '../../../utils/content-to-string';
+import { jsonFetch } from '../../../utils/json-fetch';
 import { errorNotFoundRequest, reviewedPreprintSnippet, writeResponse } from '../reviewed-preprints.page';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,18 +21,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const manuscript = manuscripts[msid];
 
-  const [metaData] = await Promise.all([
+  const [metaData, content] = await Promise.all([
     jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
     jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
   ]);
 
-  const item = reviewedPreprintSnippet(metaData, manuscript);
+  const item = reviewedPreprintSnippet(manuscript, metaData);
 
   writeResponse(
     res,
     'application/vnd.elife.reviewed-preprint-item+json; version=1',
     200,
-    // Need to convert content to a string.
-    { ...item, indexContent: 'content as string' },
+    { ...item, indexContent: contentToString(content) },
   );
 };
