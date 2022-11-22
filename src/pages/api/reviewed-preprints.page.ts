@@ -136,7 +136,7 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
 
-export const reviewedPreprintSnippet = (meta: MetaData, manuscript: FullManuscriptConfig) : ReviewedPreprintSnippet => {
+export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?: MetaData) : ReviewedPreprintSnippet => {
   const reviewed = reviewedDate(manuscript.status.timeline);
 
   return {
@@ -144,8 +144,8 @@ export const reviewedPreprintSnippet = (meta: MetaData, manuscript: FullManuscri
     doi: manuscript.preprintDoi,
     pdf: manuscript.pdfUrl,
     status: 'reviewed',
-    authorLine: prepareAuthorLine(meta.authors),
-    title: renderContent(meta.title),
+    authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
+    title: meta ? renderContent(meta.title) : undefined,
     published: reviewed,
     reviewedDate: reviewed,
     versionDate: reviewed,
@@ -170,7 +170,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       throw new Error(`MetaData not found for ${id}`);
     }
 
-    return reviewedPreprintSnippet(iMeta, manuscripts[id]);
+    return reviewedPreprintSnippet(manuscripts[id], iMeta);
   });
 
   const [perPage, page] = [
