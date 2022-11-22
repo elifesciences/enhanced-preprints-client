@@ -1,6 +1,7 @@
-import { contentToString } from './content-to-string';
+import { contentToString, ContentType } from './content-to-string';
+import { Content } from '../types';
 
-describe('Content to JSX', () => {
+describe('Content to String', () => {
   it('returns the string unchanged if passed a simple string', () => {
     const result = contentToString('foo');
 
@@ -103,5 +104,33 @@ describe('Content to JSX', () => {
 
     // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual('');
+  });
+
+  it('optionally wraps content in tags', () => {
+    [
+      {
+        content: ['one', 'two', { type: 'Strong', content: 'three' }],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }],
+        expected: 'onetwo<b>three</b>',
+      },
+      {
+        content: ['one', 'two', { type: 'Strong', content: 'three' }],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'strong' }],
+        expected: 'onetwo<strong>three</strong>',
+      },
+      {
+        content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
+        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' }],
+        expected: 'onetwothree<sub>four</sub>five',
+      },
+      {
+        content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
+        contentTypeTags: [{ id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' }],
+        expected: 'onetwo<p>three<sub>four</sub>five</p>',
+      },
+    ].forEach((c) => {
+      const result = contentToString(c.content as Content, c.contentTypeTags);
+      expect(result).toStrictEqual(c.expected);
+    });
   });
 });
