@@ -18,12 +18,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     errorNotFoundRequest(res);
   } else {
     const manuscript = manuscripts[msid];
-  
+
     const [metaData, content] = await Promise.all([
       jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
       jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
     ]);
-  
+
     writeResponse(
       res,
       'application/vnd.elife.reviewed-preprint-item+json; version=1',

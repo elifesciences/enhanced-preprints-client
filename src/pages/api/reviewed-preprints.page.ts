@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscripts } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
-import { Author, Content, MetaData } from '../../types';
+import { Author, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
+import { ContentType, contentToString } from '../../utils/content-to-string';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -37,47 +38,24 @@ type ReviewedPreprintListResponse = {
 
 const manuscripts = getManuscripts(config.manuscriptConfigFile);
 
-const wrapContent = (content: Content) : string => {
-  let tag = null;
-  let c = null;
-
-  if (typeof content !== 'string' && !Array.isArray(content)) {
-    switch (content.type) {
-      case 'Emphasis':
-        tag = 'i';
-        c = content.content;
-        break;
-      case 'Strong':
-        tag = 'b';
-        c = content.content;
-        break;
-      case 'Subscript':
-        tag = 'sub';
-        c = content.content;
-        break;
-      case 'Superscript':
-        tag = 'sup';
-        c = content.content;
-        break;
-      default:
-    }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  return (tag ? `<${tag}>` : '') + renderContent(c !== null ? c : content) + (tag ? `</${tag}>` : '');
-};
-
-const renderContent = (content: Content) : string => {
-  if (typeof content === 'string') {
-    return content;
-  }
-
-  if (Array.isArray(content)) {
-    return content.map((i: Content) => wrapContent(i)).join(' ');
-  }
-
-  return wrapContent(content);
-};
+const titleTags = [
+  {
+    id: ContentType.emphasis,
+    tag: 'i',
+  },
+  {
+    id: ContentType.strong,
+    tag: 'b',
+  },
+  {
+    id: ContentType.subscript,
+    tag: 'sub',
+  },
+  {
+    id: ContentType.superscript,
+    tag: 'sup',
+  },
+];
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
@@ -100,8 +78,7 @@ const prepareAuthorLine = (authors: Author[]) : undefined | string => {
     authorLine += `${(authors.length > 3) ? ' ... ' : ', '}${prepareAuthor(authors[authors.length - 1])}`;
   }
 
-  // eslint-disable-next-line consistent-return
-  return authorLine;
+  return authorLine; // eslint-disable-line consistent-return
 };
 
 const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
@@ -145,7 +122,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
     pdf: manuscript.pdfUrl,
     status: 'reviewed',
     authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
-    title: meta ? renderContent(meta.title) : undefined,
+    title: meta ? contentToString(meta.title, titleTags) : undefined,
     published: reviewed,
     reviewedDate: reviewed,
     versionDate: reviewed,
@@ -158,9 +135,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/));
 
-  const items = ids.map((id) => {
-    return reviewedPreprintSnippet(manuscripts[id]);
-  });
+  const items = ids.map((id) => reviewedPreprintSnippet(manuscripts[id]));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
@@ -193,7 +168,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const offset = (page - 1) * perPage;
 
   const itemsOnPage = items.slice(offset, offset + perPage);
-  
+
   const meta = await Promise.all(itemsOnPage.map(async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`).then((js) => ({
     id: item.id,
     data: js,
@@ -208,7 +183,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         throw new Error(`MetaData not found for ${item.id}`);
       }
 
-      return {...item, title: renderContent(iMeta.title), authorLine: prepareAuthorLine(iMeta.authors)};
+      return { ...item, title: contentToString(iMeta.title, titleTags), authorLine: prepareAuthorLine(iMeta.authors) };
     }),
   });
 };
