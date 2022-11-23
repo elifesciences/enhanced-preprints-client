@@ -34,6 +34,7 @@ $image-width: 185;
 .investor-logos__img {
   display: block;
   margin: auto;
+  width: 100%;
 }
 
 @media only all and (min-width: settings.$breakpoint-small) {
