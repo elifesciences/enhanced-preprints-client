@@ -17,7 +17,7 @@ export const Modal = (): JSX.Element => {
     <button onClick={() => setShowModal(!showModal)}>Popup Link</button>
     <div onClick={(event) => clickHandler(event)} className={`${styles['modal-container']} ${showModal ? styles['modal-content__show'] : ''} `}>
       <div ref={contentRef} className={styles['modal-content']}>
-        <button onClick={closeModal}>Close</button>
+        <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
         <div className="modal-content__show">
           <h6>Modal Window Title</h6>
           This is a modal window
