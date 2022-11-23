@@ -106,31 +106,29 @@ describe('Content to String', () => {
     expect(result).toStrictEqual('');
   });
 
-  it('optionally wraps content in tags', () => {
+  it.each([
     [
-      {
-        content: ['one', 'two', { type: 'Strong', content: 'three' }],
-        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }],
-        expected: 'onetwo<b>three</b>',
-      },
-      {
-        content: ['one', 'two', { type: 'Strong', content: 'three' }],
-        contentTypeTags: [{ id: ContentType.strong, tag: 'strong' }],
-        expected: 'onetwo<strong>three</strong>',
-      },
-      {
-        content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-        contentTypeTags: [{ id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' }],
-        expected: 'onetwothree<sub>four</sub>five',
-      },
-      {
-        content: ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-        contentTypeTags: [{ id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' }],
-        expected: 'onetwo<p>three<sub>four</sub>five</p>',
-      },
-    ].forEach((c) => {
-      const result = contentToString(c.content as Content, c.contentTypeTags);
-      expect(result).toStrictEqual(c.expected);
-    });
+      ['one', 'two', { type: 'Strong', content: 'three' }],
+      [{ id: ContentType.strong, tag: 'b' }],
+      'onetwo<b>three</b>',
+    ],
+    [
+      ['one', 'two', { type: 'Strong', content: 'three' }],
+      [{ id: ContentType.strong, tag: 'strong' }],
+      'onetwo<strong>three</strong>',
+    ],
+    [
+      ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
+      [{ id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' }],
+      'onetwothree<sub>four</sub>five',
+    ],
+    [
+      ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
+      [{ id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' }],
+      'onetwo<p>three<sub>four</sub>five</p>',
+    ],
+  ])('optionally wraps content in tags (%#)', (content, tags, expected: string) => {
+    const result = contentToString(content as Content, tags);
+    expect(result).toStrictEqual(expected);
   });
 });
