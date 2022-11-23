@@ -125,6 +125,9 @@ services:
     build:
       context: .
       target: storybook
+    depends_on:
+      yarn:
+        condition: service_completed_successfully
     ports:
     - "6006:6006"
     volumes:
