@@ -1,5 +1,4 @@
-import { contentToString, ContentType } from './content-to-string';
-import { Content } from '../types';
+import { contentToString } from './content-to-string';
 
 describe('Content to String', () => {
   it('returns the string unchanged if passed a simple string', () => {
@@ -59,7 +58,7 @@ describe('Content to String', () => {
     expect(result).toStrictEqual('I am a paragraph');
   });
 
-  it('generates the expected html when passed a Emphasis', () => {
+  it('generates the expected text when passed a Emphasis', () => {
     const result = contentToString({
       type: 'Emphasis',
       content: 'I am emphasised',
@@ -68,7 +67,7 @@ describe('Content to String', () => {
     expect(result).toStrictEqual('I am emphasised');
   });
 
-  it('generates the expected html when passed a Strong', () => {
+  it('generates the expected text when passed a Strong', () => {
     const result = contentToString({
       type: 'Strong',
       content: 'I am strong',
@@ -77,7 +76,7 @@ describe('Content to String', () => {
     expect(result).toStrictEqual('I am strong');
   });
 
-  it('generates the expected html when passed a Superscript', () => {
+  it('generates the expected text when passed a Superscript', () => {
     const result = contentToString({
       type: 'Superscript',
       content: 'I am super',
@@ -86,7 +85,7 @@ describe('Content to String', () => {
     expect(result).toStrictEqual('I am super');
   });
 
-  it('generates the expected html when passed a Subscript', () => {
+  it('generates the expected text when passed a Subscript', () => {
     const result = contentToString({
       type: 'Subscript',
       content: 'I am a subscript',
@@ -104,31 +103,5 @@ describe('Content to String', () => {
 
     // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual('');
-  });
-
-  it.each([
-    [
-      ['one', 'two', { type: 'Strong', content: 'three' }],
-      [{ id: ContentType.strong, tag: 'b' }],
-      'onetwo<b>three</b>',
-    ],
-    [
-      ['one', 'two', { type: 'Strong', content: 'three' }],
-      [{ id: ContentType.strong, tag: 'strong' }],
-      'onetwo<strong>three</strong>',
-    ],
-    [
-      ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-      [{ id: ContentType.strong, tag: 'b' }, { id: ContentType.subscript, tag: 'sub' }],
-      'onetwothree<sub>four</sub>five',
-    ],
-    [
-      ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],
-      [{ id: ContentType.paragraph, tag: 'p' }, { id: ContentType.subscript, tag: 'sub' }],
-      'onetwo<p>three<sub>four</sub>five</p>',
-    ],
-  ])('optionally wraps content in tags (%#)', (content, tags, expected: string) => {
-    const result = contentToString(content as Content, tags);
-    expect(result).toStrictEqual(expected);
   });
 });
