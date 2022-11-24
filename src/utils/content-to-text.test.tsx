@@ -1,6 +1,6 @@
 import { contentToText } from './content-to-text';
 
-describe('Content to String', () => {
+describe('Content to Text', () => {
   it('returns the string unchanged if passed a simple string', () => {
     const result = contentToText('foo');
 
