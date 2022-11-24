@@ -5,7 +5,7 @@ import { jsonFetch } from '../../utils/json-fetch';
 import { Author, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
-import { ContentType, contentToString } from '../../utils/content-to-string';
+import { contentToHtml } from '../../utils/content-to-html';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -37,25 +37,6 @@ type ReviewedPreprintListResponse = {
 };
 
 const manuscripts = getManuscripts(config.manuscriptConfigFile);
-
-const titleTags = [
-  {
-    id: ContentType.emphasis,
-    tag: 'i',
-  },
-  {
-    id: ContentType.strong,
-    tag: 'b',
-  },
-  {
-    id: ContentType.subscript,
-    tag: 'sub',
-  },
-  {
-    id: ContentType.superscript,
-    tag: 'sup',
-  },
-];
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
@@ -122,7 +103,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
     pdf: manuscript.pdfUrl,
     status: 'reviewed',
     authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
-    title: meta ? contentToString(meta.title, titleTags) : undefined,
+    title: meta ? contentToHtml(meta.title) : undefined,
     published: reviewed,
     reviewedDate: reviewed,
     versionDate: reviewed,
@@ -183,7 +164,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         throw new Error(`MetaData not found for ${item.id}`);
       }
 
-      return { ...item, title: contentToString(iMeta.title, titleTags), authorLine: prepareAuthorLine(iMeta.authors) };
+      return { ...item, title: contentToHtml(iMeta.title), authorLine: prepareAuthorLine(iMeta.authors) };
     }),
   });
 };

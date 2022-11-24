@@ -3,7 +3,7 @@ import { config } from '../../../config';
 import { getManuscripts } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { MetaData } from '../../../types';
-import { contentToString } from '../../../utils/content-to-string';
+import { contentToHtml } from '../../../utils/content-to-html';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { errorNotFoundRequest, reviewedPreprintSnippet, writeResponse } from '../reviewed-preprints.page';
 
@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res,
       'application/vnd.elife.reviewed-preprint-item+json; version=1',
       200,
-      { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: contentToString(content) },
+      { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: contentToHtml(content) },
     );
   }
 };
