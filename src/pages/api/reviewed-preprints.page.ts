@@ -73,7 +73,7 @@ export const writeResponse = (res: NextApiResponse, contentType: string, statusC
     .writeHead(statusCode, {
       'Content-Type': contentType,
       'Cache-Control': statusCode === 200 ? 'max-age=300, public, stale-if-error=86400, stale-while-revalidate=300' : 'must-revalidate, no-cache, private',
-      'Vary': ['Accept', 'Authorization'],
+      Vary: ['Accept', 'Authorization'],
     })
     .end(JSON.stringify(message));
 };
