@@ -70,11 +70,12 @@ const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
 
 export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
   res
-    .setHeader('Content-Type', contentType)
-    .status(statusCode)
-    .write(JSON.stringify(message));
-
-  res.end();
+    .writeHead(statusCode, {
+      'Content-Type': contentType,
+      'Cache-Control': statusCode === 200 ? 'max-age=300, public, stale-if-error=86400, stale-while-revalidate=300' : 'must-revalidate, no-cache, private',
+      'Vary': ['Accept', 'Authorization'],
+    })
+    .end(JSON.stringify(message));
 };
 
 const errorBadRequest = (res: NextApiResponse, message: string) : void => {
