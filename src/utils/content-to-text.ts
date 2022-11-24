@@ -1,6 +1,6 @@
 import { Content } from '../types/content';
 
-export const contentToString = (content: Content): string => {
+export const contentToText = (content: Content): string => {
   if (typeof content === 'undefined') {
     return '';
   }
@@ -9,7 +9,7 @@ export const contentToString = (content: Content): string => {
   }
 
   if (Array.isArray(content)) {
-    return content.map((part) => contentToString(part)).join('');
+    return content.map((part) => contentToText(part)).join('');
   }
   switch (content.type) {
     case 'Paragraph':
@@ -17,7 +17,7 @@ export const contentToString = (content: Content): string => {
     case 'Strong':
     case 'Superscript':
     case 'Subscript':
-      return contentToString(content.content);
+      return contentToText(content.content);
     default:
       return '';
   }
