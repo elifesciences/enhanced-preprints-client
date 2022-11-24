@@ -6,7 +6,7 @@ import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
-import { contentToString } from '../../../utils/content-to-string';
+import { contentToText } from '../../../utils/content-to-text';
 
 type PageProps = {
   metaData: MetaData,
@@ -16,7 +16,7 @@ type PageProps = {
 export const Page = (props: PageProps): JSX.Element => (
   <>
   <Head>
-    <title>{contentToString(props.metaData.title)}</title>
+    <title>{contentToText(props.metaData.title)}</title>
   </Head>
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="reviews">
     <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>

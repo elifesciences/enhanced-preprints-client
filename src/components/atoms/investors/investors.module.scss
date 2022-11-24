@@ -33,7 +33,8 @@ $image-width: 185;
 
 .investor-logos__img {
   display: block;
-  margin: auto;
+  height: 100%;
+  object-fit: contain;
   width: 100%;
 }
 

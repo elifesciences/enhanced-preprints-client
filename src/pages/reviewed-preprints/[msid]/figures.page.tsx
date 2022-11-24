@@ -7,7 +7,7 @@ import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleFiguresTab } from '../../../components/pages/article/tabs/figures-tab';
-import { contentToString } from '../../../utils/content-to-string';
+import { contentToText } from '../../../utils/content-to-text';
 
 type PageProps = {
   metaData: MetaData,
@@ -18,7 +18,7 @@ type PageProps = {
 export const Page = (props: PageProps): JSX.Element => (
   <>
   <Head>
-    <title>{contentToString(props.metaData.title)}</title>
+    <title>{contentToText(props.metaData.title)}</title>
   </Head>
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
     <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
