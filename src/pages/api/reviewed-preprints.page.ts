@@ -115,7 +115,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[0-9]+$/));
+  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[a-z0-9-]+$/));
 
   const items = ids.map((id) => reviewedPreprintSnippet(manuscripts[id]));
 
