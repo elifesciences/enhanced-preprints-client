@@ -24,6 +24,8 @@
 
 .tabbed-navigation {
   display: block;
+  position: sticky;
+  top: 0;
 }
 
 .tabbed-navigation__tabs {
@@ -37,8 +39,6 @@
   display: flex;
   justify-content: center;
   list-style: none;
-  position: sticky;
-  top: 0;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(0 -48 36);
