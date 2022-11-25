@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
-import { FullManuscriptConfig, getManuscripts } from '../../manuscripts';
+import { FullManuscriptConfig, getManuscripts, getManuscript } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
@@ -115,9 +115,9 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const ids = Object.keys(manuscripts).filter((id) => id.match(/^[a-z0-9-]+$/));
+  const msids = Object.keys(manuscripts).filter((id) => id.match(/^[a-z0-9-]+$/));
 
-  const items = ids.map((id) => reviewedPreprintSnippet(manuscripts[id]));
+  const items = msids.map((msid) => reviewedPreprintSnippet(getManuscript(config.manuscriptConfigFile, msid)));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
@@ -157,7 +157,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }))));
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: ids.length,
+    total: msids.length,
     items: itemsOnPage.map((item) => {
       const iMeta = meta.find((obj) => obj.id === item.id)?.data;
 

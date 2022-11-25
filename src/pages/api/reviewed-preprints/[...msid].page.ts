@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
       jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
     ]);
-  
+
     writeResponse(
       res,
       'application/vnd.elife.reviewed-preprint-item+json; version=1',
@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: contentToHtml(content) },
     );
   } else {
-    console.log('Cannot find msid configured');
+    console.log('Cannot find msid configured'); // eslint-disable-line no-console
     errorNotFoundRequest(res);
   }
 };
