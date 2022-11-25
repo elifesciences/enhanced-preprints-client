@@ -2,3 +2,9 @@
 services:
   app:
     command: sh -c 'yarn build; yarn start'
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'apk add curl; curl -X POST http://app:3000/'"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
