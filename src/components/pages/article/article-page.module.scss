@@ -22,6 +22,10 @@
   }
 }
 
+.tabbed-navigation {
+  display: block;
+}
+
 .tabbed-navigation__tabs {
   @include mixins.margin(0 -24 36);
   @include mixins.padding(0, "left");
