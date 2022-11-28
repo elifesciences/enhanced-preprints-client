@@ -57,7 +57,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className={styles['primary-section']}>
-      <div className={styles['tabbed-navigation']}>
+      <nav className={styles['tabbed-navigation']} aria-label="Main tabbed navigation">
         <ul className={styles['tabbed-navigation__tabs']}>
           {tabs.map((tab, index) => (
             <li key={index} className={`${styles['tabbed-navigation__tab-label']}${activeTab === tab.id ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab(tab.id)}>
@@ -65,7 +65,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
       {props.children}
       </main>
     </>

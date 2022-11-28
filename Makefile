@@ -4,13 +4,16 @@ GITSHORTHASH:=$(shell git log -1 --pretty=format:"%H" | head -c 8)
 DATETIME:=$(shell date -u '+%Y%m%d.%H%M')
 GITBRANCH?=$(shell git branch --show-current)
 
-.PHONY: start-dev start-prod build-storybook-and-push build-prod-and-push
+.PHONY: start-dev start-prod build-storybook-and-push build-prod-and-push node_modules
 
-start-dev:
+start-dev: node_modules
 	docker-compose up
 
-start-prod:
+start-prod: node_modules
 	docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up
+
+node_modules:
+	yarn
 
 build-storybook-and-push:
 	docker buildx build \
