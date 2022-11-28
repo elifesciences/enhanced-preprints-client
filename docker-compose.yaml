@@ -73,7 +73,7 @@ services:
       - import_data:/opt/epp-data
   ## EPP API data fetch
   api-fetch-data:
-    image: k8s.gcr.io/git-sync/git-sync:v3.6.1
+    image: k8s.gcr.io/git-sync/git-sync:v3.6.2
     environment:
       GIT_SYNC_HTTP_BIND: localhost:8080
       GIT_SYNC_ROOT: "/tmp/git/data"
@@ -90,6 +90,14 @@ services:
       - import_data:/tmp/git
 
   # Main app server
+  yarn:
+    build:
+      context: .
+      target: dev
+    command: yarn
+    volumes:
+    - ./:/opt/epp-client/
+    - node_modules:/opt/epp-client/node_modules
   app:
     build:
       context: .
@@ -103,6 +111,9 @@ services:
     environment:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
+    depends_on:
+      yarn:
+        condition: service_completed_successfully
     ports:
     - 3001:3000
     volumes:
@@ -114,6 +125,9 @@ services:
     build:
       context: .
       target: storybook
+    depends_on:
+      yarn:
+        condition: service_completed_successfully
     ports:
     - "6006:6006"
     volumes:

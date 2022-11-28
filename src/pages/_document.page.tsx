@@ -39,7 +39,6 @@ export default function Document() {
             })(window,document,'script','dataLayer','${config.gtmId}');`,
           }}></script>
         }
-
       </Head>
       <body>
         { config.gtmId &&
