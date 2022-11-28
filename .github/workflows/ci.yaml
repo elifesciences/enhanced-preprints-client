@@ -29,6 +29,16 @@ jobs:
         run: yarn lint-sass
       - name: Unit Test
         run: yarn test
+      - name: Install operating system dependencies
+        run: |
+          npx playwright install
+          npx playwright install-deps
+      - name: Browser Tests
+        run: |
+          docker-compose -f docker-compose-browser-test.yaml up
+          ./.docker/wait-healthy.sh app 120
+          npm run playwright
+          docker-compose -f docker-compose-browser-test.yaml down
       - name: Production build
         run: yarn build
   build-and-push:

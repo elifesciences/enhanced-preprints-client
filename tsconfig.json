@@ -23,7 +23,8 @@
   },
   "include": [
     "src/",
-    "pages/"
+    "pages/",
+    "browser-tests"
   ],
   "exclude": [
     "node_modules"
