@@ -39,6 +39,7 @@ jobs:
           ./.docker/wait-healthy.sh enhanced-preprints-client_app_1 120
           yarn test:browser
           docker-compose -f docker-compose-browser-test.yaml down
+          rm -rf .next
       - name: Production build
         run: yarn build
   build-and-push:
