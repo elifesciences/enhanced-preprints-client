@@ -36,7 +36,7 @@ jobs:
       - name: Browser Tests
         run: |
           docker-compose -f docker-compose-browser-test.yaml up -d
-          ./.docker/wait-healthy.sh app 120
+          ./.docker/wait-healthy.sh enhanced-preprints-client-app-1 120
           npm run playwright
           docker-compose -f docker-compose-browser-test.yaml down
       - name: Production build
