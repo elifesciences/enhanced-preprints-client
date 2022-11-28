@@ -35,7 +35,7 @@ jobs:
           npx playwright install-deps
       - name: Browser Tests
         run: |
-          docker-compose -f docker-compose-browser-test.yaml up
+          docker-compose -f docker-compose-browser-test.yaml up -d
           ./.docker/wait-healthy.sh app 120
           npm run playwright
           docker-compose -f docker-compose-browser-test.yaml down
