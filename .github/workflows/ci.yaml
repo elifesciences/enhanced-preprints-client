@@ -29,15 +29,15 @@ jobs:
         run: yarn lint-sass
       - name: Unit Test
         run: yarn test
+      - name: Production build
+        run: yarn build
       - name: Install operating system dependencies
         run: |
           yarn playwright install
           yarn playwright install-deps
-      - name: Production build
-        run: yarn build
       - name: Browser Tests
         run: |
-          docker-compose -f docker-compose.browsertest.yaml up -d --wait
+          docker-compose -f docker-compose.browsertest.yaml up -d
           yarn test:browser
           docker-compose -f docker-compose-browser-test.yaml down
   build-and-push:
