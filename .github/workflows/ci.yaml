@@ -37,9 +37,9 @@ jobs:
           yarn playwright install-deps
       - name: Browser Tests
         run: |
-          docker-compose -f docker-compose.browsertest.yaml up -d
+          docker compose -f docker-compose.browsertest.yaml up -d --wait
           yarn test:browser
-          docker-compose -f docker-compose-browser-test.yaml down
+          docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
     needs: [test]
     runs-on: ubuntu-latest
