@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
-import { FullManuscriptConfig, getManuscripts, getManuscript } from '../../manuscripts';
+import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, MetaData } from '../../types';
 import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
@@ -35,8 +35,6 @@ type ReviewedPreprintListResponse = {
   total: number,
   items: ReviewedPreprintSnippet[],
 };
-
-const manuscripts = getManuscripts(config.manuscriptConfigFile);
 
 const prepareAuthor = (author: Author) : string => `${author.givenNames.join(' ')} ${author.familyNames.join(' ')}`;
 
@@ -115,9 +113,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const msids = Object.keys(manuscripts).filter((id) => id.match(/^[a-z0-9-]+$/));
-
-  const items = msids.map((msid) => reviewedPreprintSnippet(getManuscript(config.manuscriptConfigFile, msid)));
+  const items = getManuscriptsLatest(config.manuscriptConfigFile).map((manuscript) => reviewedPreprintSnippet(manuscript));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
@@ -141,31 +137,26 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  items.sort((a, b) => {
-    const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
-
-    return (order === 'asc' && diff > 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
-  });
-
   const offset = (page - 1) * perPage;
 
-  const itemsOnPage = items.slice(offset, offset + perPage);
-
-  const meta = await Promise.all(itemsOnPage.map(async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`).then((js) => ({
-    id: item.id,
-    data: js,
-  }))));
-
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: msids.length,
-    items: itemsOnPage.map((item) => {
-      const iMeta = meta.find((obj) => obj.id === item.id)?.data;
-
-      if (iMeta === undefined) {
-        throw new Error(`MetaData not found for ${item.id}`);
-      }
-
-      return { ...item, title: contentToHtml(iMeta.title), authorLine: prepareAuthorLine(iMeta.authors) };
-    }),
+    total: items.length,
+    items: await Promise
+      .all(
+        (
+          items
+            // Order is not working when per-page is set.
+            .sort((a, b) => {
+              const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
+          
+              return (order === 'asc' && diff > 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
+            })
+            .slice(offset, offset + perPage)
+        )
+        .map(
+          async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
+            .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) }))
+        )
+      ),
   });
 };

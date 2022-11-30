@@ -45,4 +45,6 @@ export const getManuscripts = (configFile: string): Manuscripts => {
   return fullManuscriptConfigs;
 };
 
+export const getManuscriptsLatest = (configFile: string): FullManuscriptConfig[] => Object.values(getManuscripts(configFile)).filter((manuscript) => manuscript.msid.match(/^[a-z0-9-]+$/));
+
 export const getManuscript = (configFile: string, msid: string): FullManuscriptConfig => getManuscripts(configFile)[msid];
