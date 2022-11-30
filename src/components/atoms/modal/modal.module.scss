@@ -61,10 +61,10 @@
   background: url(../../../images/actions/close.svg) right 4px no-repeat;
   border: none;
   color: settings.$color-text;
+  cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: bold;
   grid-column: 2/3;
-  grid-row: 1;
   justify-self: end;
   height: auto;
   z-index: 2000;
