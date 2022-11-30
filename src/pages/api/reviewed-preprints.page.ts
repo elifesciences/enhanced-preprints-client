@@ -148,15 +148,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             // Order is not working when per-page is set.
             .sort((a, b) => {
               const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
-          
+
               return (order === 'asc' && diff > 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
             })
             .slice(offset, offset + perPage)
         )
-        .map(
-          async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
-            .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) }))
-        )
+          .map(
+            async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
+              .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
+          ),
       ),
   });
 };
