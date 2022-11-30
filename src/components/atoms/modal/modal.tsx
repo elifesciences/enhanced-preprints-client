@@ -14,7 +14,7 @@ export const Modal = (): JSX.Element => {
 
   return (
   <>
-    <button onClick={() => setShowModal(!showModal)}>Popup Link</button>
+    <button className="burger" onClick={() => setShowModal(!showModal)}>Modal Link</button>
     <div onClick={(event) => clickHandler(event)} className={`${styles['modal-container']} ${showModal ? styles['modal-content__show'] : ''} `}>
       <div ref={contentRef} className={styles['modal-content']}>
         <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
