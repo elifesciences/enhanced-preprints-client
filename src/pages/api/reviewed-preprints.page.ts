@@ -3,7 +3,7 @@ import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
 import { jsonFetch } from '../../utils/json-fetch';
 import { Author, MetaData } from '../../types';
-import { SubjectItem, SubjectList } from '../../components/molecules/article-flag-list/article-flag-list';
+import { getSubjects, Subject } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
 
@@ -28,7 +28,7 @@ type ReviewedPreprintSnippet = {
   versionDate?: string,
   statusDate?: string,
   stage: 'published',
-  subjects?: SubjectItem[],
+  subjects?: Subject[],
 };
 
 type ReviewedPreprintListResponse = {
@@ -108,7 +108,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
     versionDate: reviewed,
     statusDate: reviewed,
     stage: 'published',
-    subjects: SubjectList({ msas: manuscript.msas }),
+    subjects: getSubjects(manuscript.msas),
   };
 };
 

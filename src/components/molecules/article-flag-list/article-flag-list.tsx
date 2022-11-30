@@ -5,7 +5,7 @@ export type Props = {
   msas: string[],
 };
 
-export type SubjectItem = {
+export type Subject = {
   id: string,
   name: string,
 };
@@ -47,7 +47,7 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   );
 };
 
-export const SubjectList = ({ msas }: Props): SubjectItem[] => msas.map((msa) => ({
-  id: msaURLs[msa].substring(msaURLs[msa].lastIndexOf('/') + 1),
-  name: msa,
+export const getSubjects = (subjectIds: string[]) : Subject[] => subjectIds.map((subjectId) => ({
+  id: msaURLs[subjectId].substring(msaURLs[subjectId].lastIndexOf('/') + 1),
+  name: subjectId,
 }));
