@@ -10,8 +10,8 @@
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "5.43.0",
-    "@typescript-eslint/parser": "5.43.0",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
+    "@typescript-eslint/parser": "5.45.0",
     "eslint": "^8.22.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -34,7 +34,8 @@
     "lint-sass": "stylelint **/*.scss",
     "lint-sass:fix": "stylelint --fix **/*.scss",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "test:browser": "playwright test"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.28.0",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-interactions": "^6.5.10",

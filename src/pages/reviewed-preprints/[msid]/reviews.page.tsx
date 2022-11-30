@@ -1,10 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import Head from 'next/head';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
+import { contentToText } from '../../../utils/content-to-text';
 
 type PageProps = {
   metaData: MetaData,
@@ -12,9 +14,14 @@ type PageProps = {
   peerReview: PeerReview
 };
 export const Page = (props: PageProps): JSX.Element => (
+  <>
+  <Head>
+    <title>{contentToText(props.metaData.title)}</title>
+  </Head>
   <ArticlePage metaData={props.metaData} status={props.status} activeTab="reviews">
     <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
   </ArticlePage>
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
