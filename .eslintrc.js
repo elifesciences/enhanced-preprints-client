@@ -14,7 +14,7 @@ module.exports = {
     }],
     "import/extensions": 0,
     "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*", "**/*.test.tsx"],
+      "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*", "**/*.test.tsx", "**/browser-tests/**/*.*"],
       "peerDependencies": true
     }],
     "operator-linebreak": 0

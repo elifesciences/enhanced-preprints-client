@@ -1,0 +1,53 @@
+{
+  "doi": "10.1101/123456",
+  "abstract": {
+    "type": "Paragraph",
+    "content": "A study of world domination by genetically enhanced mice."
+  },
+  "msid": "123",
+  "version": "1",
+  "pdfUrl": "#",
+  "msas": [
+    "World Domination", "Pondering", "Narf!"
+  ],
+  "title": "Tonight we take over the world!",
+  "authors":  [
+    { "givenNames": [
+      "Brain"
+    ], "familyNames": [], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] },
+    { "givenNames": [
+      "Pinky"
+    ], "familyNames": [
+      "Mouse"
+    ], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] }
+  ],
+  "headings": [{ "id": "s1",
+    "text": "Introduction" }],
+  "references": [
+    {
+      "type": "Article",
+      "id": "c1",
+      "authors": [
+        { "type": "Person", "familyNames": ["Coyote"], "givenNames": ["Wile", "E"] },
+        { "type": "Person", "familyNames": ["Devil"], "givenNames": ["Taz"] }
+      ],
+      "datePublished": "2004-01-01T00:00:00.000Z",
+      "isPartOf": {
+        "type": "PublicationVolume",
+        "isPartOf": { "type": "Periodical", "name": "ACME Journal of Demolitions" },
+        "volumeNumber": 92
+      },
+      "pageEnd": 2843,
+      "pageStart": 2831,
+      "title": "Dangers of roadrunners with reality warping powers",
+      "identifiers": [
+        {
+          "type": "PropertyValue",
+          "name": "doi",
+          "propertyID": "https://registry.identifiers.org/registry/doi",
+          "value": "10.1101/654321"
+        }
+      ]
+    }
+  ]
+}

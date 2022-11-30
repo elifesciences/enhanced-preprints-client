@@ -17,3 +17,11 @@ CMD [ "yarn", "storybook" ]
 FROM base as prod
 RUN yarn build
 CMD [ "sh", "-c", "yarn build && yarn start" ]
+
+FROM mcr.microsoft.com/playwright:focal as browser-tests
+WORKDIR /opt/tests
+COPY package.json package.json
+COPY yarn.lock yarn.lock
+COPY playwright.config.ts playwright.config.ts
+RUN yarn
+CMD ["yarn", "test:browser"]

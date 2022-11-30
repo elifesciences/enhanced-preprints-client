@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Next.js
 .next/
+/test-results/
+/playwright-report/
+/playwright/.cache/
