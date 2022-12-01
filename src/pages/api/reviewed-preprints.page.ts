@@ -113,7 +113,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const items = getManuscriptsLatest(config.manuscriptConfigFile).map((manuscript) => reviewedPreprintSnippet(manuscript));
+  const allItems = getManuscriptsLatest(config.manuscriptConfigFile).map((manuscript) => reviewedPreprintSnippet(manuscript));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
@@ -139,24 +139,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const offset = (page - 1) * perPage;
 
-  writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: items.length,
-    items: await Promise
-      .all(
-        (
-          items
-            // Order is not working when per-page is set.
-            .sort((a, b) => {
-              const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
+  const items = await Promise
+    .all(
+      (
+        allItems
+          .sort((a, b) => {
+            const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
 
-              return (order === 'asc' && diff > 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
-            })
-            .slice(offset, offset + perPage)
-        )
-          .map(
-            async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
-              .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
-          ),
-      ),
+            return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
+          })
+          .slice(offset, offset + perPage)
+      )
+        .map(
+          async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
+            .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
+        ),
+    );
+
+  writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
+    total: allItems.length,
+    items,
   });
 };
