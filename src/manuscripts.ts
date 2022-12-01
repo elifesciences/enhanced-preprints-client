@@ -45,7 +45,6 @@ export const getManuscripts = (configFile: string): Manuscripts => {
   return fullManuscriptConfigs;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const getManuscriptsLatest = (configFile: string): FullManuscriptConfig[] => Object.entries(getManuscripts(configFile)).filter(([msid, manuscript]) => msid === manuscript.msid).map(([_msid, manuscript]) => manuscript);
+export const getManuscriptsLatest = (configFile: string): FullManuscriptConfig[] => Object.entries(getManuscripts(configFile)).filter(([msid, manuscript]) => msid === manuscript.msid).map(([, manuscript]) => manuscript);
 
 export const getManuscript = (configFile: string, msid: string): FullManuscriptConfig => getManuscripts(configFile)[msid];
