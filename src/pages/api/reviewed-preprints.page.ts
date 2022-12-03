@@ -99,6 +99,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   return {
     id: manuscript.msid,
     doi: manuscript.preprintDoi,
+    published: reviewed,
     pdf: manuscript.pdfUrl,
     status: 'reviewed',
     authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
@@ -113,7 +114,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const allItems = getManuscriptsLatest(config.manuscriptConfigFile).map((manuscript) => reviewedPreprintSnippet(manuscript));
+  const allItems = Object.values(getManuscriptsLatest(config.manuscriptConfigFile)).map((manuscript) => reviewedPreprintSnippet(manuscript));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),

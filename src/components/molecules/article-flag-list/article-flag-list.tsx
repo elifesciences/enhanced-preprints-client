@@ -10,29 +10,28 @@ export type Subject = {
   name: string,
 };
 
-const msaURLs: Record<string, string> = {
-  'Biochemistry and Chemical Biology': 'https://elifesciences.org/subjects/biochemistry-chemical-biology',
-  'Cancer Biology': 'https://elifesciences.org/subjects/cancer-biology',
-  'Cell Biology': 'https://elifesciences.org/subjects/cell-biology',
-  'Chromosomes and Gene Expression': 'https://elifesciences.org/subjects/chromosomes-gene-expression',
-  'Computational and Systems Biology': 'https://elifesciences.org/subjects/computational-systems-biology',
-  'Developmental Biology': 'https://elifesciences.org/subjects/developmental-biology',
-  // eslint-disable-next-line quote-props
-  'Ecology': 'https://elifesciences.org/subjects/ecology',
-  'Epidemiology and Global Health': 'https://elifesciences.org/subjects/epidemiology-global-health',
-  'Evolutionary Biology': 'https://elifesciences.org/subjects/evolutionary-biology',
-  'Genetics and Genomics': 'https://elifesciences.org/subjects/genetics-genomics',
-  'Immunology and Inflammation': 'https://elifesciences.org/subjects/immunology-inflammation',
-  // eslint-disable-next-line quote-props
-  'Medicine': 'https://elifesciences.org/subjects/medicine',
-  'Microbiology and Infectious Disease': 'https://elifesciences.org/subjects/microbiology-infectious-disease',
-  // eslint-disable-next-line quote-props
-  'Neuroscience': 'https://elifesciences.org/subjects/neuroscience',
-  'Physics of Living Systems': 'https://elifesciences.org/subjects/physics-living-systems',
-  'Plant Biology': 'https://elifesciences.org/subjects/plant-biology',
-  'Stem Cells and Regenerative Medicine': 'https://elifesciences.org/subjects/stem-cells-regenerative-medicine',
-  'Structural Biology and Molecular Biophysics': 'https://elifesciences.org/subjects/structural-biology-molecular-biophysics',
+const msaNames: Record<string, string> = {
+  'Biochemistry and Chemical Biology': 'biochemistry-chemical-biology',
+  'Cancer Biology': 'cancer-biology',
+  'Cell Biology': 'cell-biology',
+  'Chromosomes and Gene Expression': 'chromosomes-gene-expression',
+  'Computational and Systems Biology': 'computational-systems-biology',
+  'Developmental Biology': 'developmental-biology',
+  Ecology: 'ecology',
+  'Epidemiology and Global Health': 'epidemiology-global-health',
+  'Evolutionary Biology': 'evolutionary-biology',
+  'Genetics and Genomics': 'genetics-genomics',
+  'Immunology and Inflammation': 'immunology-inflammation',
+  Medicine: 'medicine',
+  'Microbiology and Infectious Disease': 'microbiology-infectious-disease',
+  Neuroscience: 'neuroscience',
+  'Physics of Living Systems': 'physics-living-systems',
+  'Plant Biology': 'plant-biology',
+  'Stem Cells and Regenerative Medicine': 'stem-cells-regenerative-medicine',
+  'Structural Biology and Molecular Biophysics': 'structural-biology-molecular-biophysics',
 };
+
+const msaURLs: Record<string, string> = Object.fromEntries(Object.entries(msaNames).map(([name, id]) => [name, `https://elifesciences.org/subjects/${id}`]));
 
 export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   const msasWithURLS = msas.map((msa) => ({ msa, url: msaURLs[msa] }));
@@ -47,7 +46,7 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   );
 };
 
-export const getSubjects = (subjectIds: string[]) : Subject[] => subjectIds.map((subjectId) => ({
-  id: msaURLs[subjectId].substring(msaURLs[subjectId].lastIndexOf('/') + 1),
-  name: subjectId,
+export const getSubjects = (subjectNames: string[]) : Subject[] => subjectNames.map((subjectName) => ({
+  id: msaNames[subjectName],
+  name: subjectName,
 }));
