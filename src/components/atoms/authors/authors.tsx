@@ -11,7 +11,12 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   useEffect(() => setExpanded(false), []);
 
   return (
-    <div className={`${styles.authors}${authors.length > authorLimit && expanded !== null ? ` ${styles['authors--collapsible']}` : ''}${expanded !== null ? authorLimits.map((limit) => limit < authors.length ? ` ${styles[`authors--limit-${limit}`]}` : '').join(' ') : ''}`}>
+    <div className={
+      `
+      ${styles.authors}${authors.length > authorLimit && expanded !== null ? ` ${styles['authors--collapsible']}` : ''}
+      ${expanded !== null ? authorLimits.map((limit) => (limit < authors.length ? ` ${styles[`authors--limit-${limit}`]}` : '')).join(' ') : ''}
+      `
+    }>
       <ol className={`${styles['authors-list']}${expanded ? ` ${styles['authors-list--expanded']}` : ''}`} aria-label="Authors of this article">
         { authors.map(({ givenNames, familyNames }, index) => (
           <li className={styles['authors-list__item']} key={index}>
@@ -19,7 +24,11 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
           </li>
         ))}
       </ol>
-        {(authors.length > authorLimit && expanded !== null) && <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>show{!expanded ? authorLimits.map((limit) => <span className={`${styles[`authors-list__expansion-count`]} ${styles[`authors-list__expansion-count-${limit}`]}`}> {authors.length - limit}</span>) : ''} {expanded ? 'less' : 'more'}</span>}
+        {(authors.length > authorLimit && expanded !== null) &&
+        <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>
+          show{!expanded ? authorLimits.map(
+          (limit, index) => <span key={index} className={`${styles['authors-list__expansion-count']} ${styles[`authors-list__expansion-count-${limit}`]}`}> {authors.length - limit}</span>,
+        ) : ''} {expanded ? 'less' : 'more'}</span>}
     </div>
   );
 };

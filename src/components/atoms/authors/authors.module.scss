@@ -16,6 +16,7 @@
 
 .authors-list__item {
   @include typography.author-list-text();
+
   display: inline;
 
   &::before {
@@ -27,14 +28,12 @@
       content: "";
     }
   }
-}
 
-.authors-list__item {
   .authors--collapsible & {
     &:nth-of-type(1n+3) {
       display: none;
     }
-  
+
     &:last-of-type {
       display: inline;
 
@@ -60,7 +59,7 @@
     }
   }
 
-  .authors-list--expanded & {
+  .authors-list--expanded & { /* stylelint-disable-line no-descending-specificity */
     &:nth-of-type(1n+3) {
       display: inline;
     }
@@ -81,7 +80,7 @@
   .authors--collapsible & {
     @include typography.font-size-and-vertical-height(16, 24);
     @include typography.expansion-text();
-  
+
     cursor: pointer;
     font-weight: 600;
 
