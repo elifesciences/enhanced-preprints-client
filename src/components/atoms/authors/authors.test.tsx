@@ -25,8 +25,8 @@ describe('authors', () => {
   });
 
   it('should hide authors after the author limit', () => {
-    const {container} = render(<Authors authors={authorList}/>);
-  
+    const { container } = render(<Authors authors={authorList}/>);
+
     expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
     expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
   });
@@ -47,8 +47,8 @@ describe('authors', () => {
 
   describe('expansion behaviour', () => {
     it('shows on click', () => {
-      const {container} = render(<Authors authors={authorList}/>);
-  
+      const { container } = render(<Authors authors={authorList}/>);
+
       expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
       expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
 
@@ -59,8 +59,8 @@ describe('authors', () => {
     });
 
     it('hides on click', () => {
-      const {container} = render(<Authors authors={authorList}/>);
-  
+      const { container } = render(<Authors authors={authorList}/>);
+
       expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
       expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
 
