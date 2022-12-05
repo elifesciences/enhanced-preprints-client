@@ -1,7 +1,11 @@
 import { useRef, useState, MouseEvent } from 'react';
 import styles from './modal.module.scss';
 
-export const Modal = (): JSX.Element => {
+type Props = {
+  modalTitle: string, modalContent: string
+};
+
+export const Modal = ({ modalTitle, modalContent }: Props): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const closeModal = () => setShowModal(false);
@@ -19,8 +23,8 @@ export const Modal = (): JSX.Element => {
       <div ref={contentRef} className={styles['modal-content']}>
         <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
         <div className="modal-content__block">
-          <h6>Modal Window Title</h6>
-          This is a modal window
+          <h6>{modalTitle}</h6>
+          {modalContent}
         </div>
       </div>
     </div>

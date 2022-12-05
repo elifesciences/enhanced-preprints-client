@@ -6,8 +6,12 @@ export default {
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = () => (
-  <Modal />
+const Template: ComponentStory<typeof Modal> = (args) => (
+  <Modal {...args} />
 );
 
 export const ModalContainer = Template.bind({});
+ModalContainer.args = {
+  modalTitle: 'This is a title',
+  modalContent: 'This is some content',
+};
