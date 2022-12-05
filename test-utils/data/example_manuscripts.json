@@ -21,6 +21,11 @@
       "version": "1",
       "preprintDoi": "preprintprovider/preprint1"
     },
+    "msid1v1": {
+      "msid": "msid1",
+      "version": "1",
+      "preprintDoi": "preprintprovider/preprint1"
+    },
     "msid2": {
       "msid": "msid2",
       "version": "2",
