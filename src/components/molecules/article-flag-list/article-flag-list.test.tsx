@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ArticleFlagList } from './article-flag-list';
+import { ArticleFlagList, getSubjects } from './article-flag-list';
 
 const msas = [
   'Mad Science',
@@ -27,5 +27,26 @@ describe('ArticleFlagList', () => {
     const resultMsa = screen.getByText('Neuroscience');
     expect(resultMsa).toBeInTheDocument();
     expect(resultMsa).toHaveAttribute('href', 'https://elifesciences.org/subjects/neuroscience');
+  });
+});
+
+describe('getSubjects', () => {
+  it('should return subject list', () => {
+    const results = getSubjects(['Neuroscience', 'Genetics and Genomics', 'Structural Biology and Molecular Biophysics']);
+
+    expect(results).toStrictEqual([
+      {
+        id: 'neuroscience',
+        name: 'Neuroscience',
+      },
+      {
+        id: 'genetics-genomics',
+        name: 'Genetics and Genomics',
+      },
+      {
+        id: 'structural-biology-molecular-biophysics',
+        name: 'Structural Biology and Molecular Biophysics',
+      },
+    ]);
   });
 });
