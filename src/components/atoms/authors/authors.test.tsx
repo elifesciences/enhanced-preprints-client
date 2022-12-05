@@ -25,11 +25,10 @@ describe('authors', () => {
   });
 
   it('should hide authors after the author limit', () => {
-    render(<Authors authors={authorList}/>);
-    const ironMan = screen.getByText('Antony Stark');
-
-    expect(ironMan).toBeInTheDocument();
-    expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+    const {container} = render(<Authors authors={authorList}/>);
+  
+    expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
+    expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
   });
 
   it('shows a clickable expansion element when over the author limit', () => {
@@ -48,28 +47,32 @@ describe('authors', () => {
 
   describe('expansion behaviour', () => {
     it('shows on click', () => {
-      render(<Authors authors={authorList}/>);
-      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+      const {container} = render(<Authors authors={authorList}/>);
+  
+      expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
+      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
 
       const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
-      expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();
+      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(1);
     });
 
     it('hides on click', () => {
-      render(<Authors authors={authorList}/>);
-      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+      const {container} = render(<Authors authors={authorList}/>);
+  
+      expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
+      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
 
       const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
-      expect(screen.queryByText('Oliver Queen')).toBeInTheDocument();
+      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(1);
 
       const contractionElement = screen.getByText('show less');
       fireEvent.click(contractionElement);
 
-      expect(screen.queryByText('Oliver Queen')).not.toBeInTheDocument();
+      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
     });
   });
 });
