@@ -63,6 +63,11 @@
   display: inline;
   font-family: settings.$font-family-primary;
 
+  @media only screen and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0);
+    @include mixins.padding(24 18);
+  }
+
   a {
     color: settings.$color-text-secondary;
     display: block;
@@ -86,13 +91,6 @@
       overflow: hidden;
       white-space: nowrap;
       width: 52px;
-    }
-  }
-
-  @media only screen and (min-width: settings.$breakpoint-small) {
-    a {
-      @include mixins.margin(0);
-      @include mixins.padding(24 18);
     }
   }
 }
