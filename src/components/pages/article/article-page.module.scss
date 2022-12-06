@@ -54,6 +54,8 @@
 }
 
 .tabbed-navigation__tab-label {
+  @include mixins.margin(0 6);
+  @include mixins.padding(18 6);
   @include typography.body();
 
   color: settings.$color-text-secondary;
@@ -62,9 +64,6 @@
   font-family: settings.$font-family-primary;
 
   a {
-    @include mixins.margin(0 6);
-    @include mixins.padding(18 6);
-
     color: settings.$color-text-secondary;
     display: block;
     text-decoration: none;
