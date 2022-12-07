@@ -1,20 +1,29 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { ContentHeader } from './page-objects/content-header';
 
-test('homepage has title and links to intro page', async ({ page }) => {
-  await page.goto('http://localhost:3001/reviewed-preprints/123');
+test.describe('content header', () => {
+  let contentHeader: ContentHeader;
+  test.beforeEach(async ({ page }) => {
+    await page.goto('http://localhost:3001/reviewed-preprints/123');
+    contentHeader = new ContentHeader(page);
+  });
 
-  // Expect a title "to contain" a substring.
-  await expect(page.getByText('Tonight we take over the world!')).toBeVisible();
+  test('homepage has title and links to intro page', async () => {
+    await contentHeader.assertTitle('Tonight we take over the world!');
+  });
 
-  // create a locator
-  // const getStarted = page.getByRole('link', { name: 'Get started' });
-  //
-  // // Expect an attribute "to be strictly equal" to the value.
-  // await expect(getStarted).toHaveAttribute('href', '/docs/intro');
-  //
-  // // Click the get started link.
-  // await getStarted.click();
-  //
-  // // Expects the URL to contain intro.
-  // await expect(page).toHaveURL(/.*intro/);
+  test('homepage has correct msas', async () => {
+    await contentHeader.assertMSAExists('World Domination');
+    await contentHeader.assertMSAExists('Pondering');
+    await contentHeader.assertMSAExists('Narf!');
+  });
+
+  test('homepage has correct authors', async () => {
+    await contentHeader.assertAuthorExists('Brain');
+    await contentHeader.assertAuthorExists('Pinky Mouse');
+  });
+
+  test('homepage has correct institutions', async () => {
+    await contentHeader.assertInstitutionExists('Acme LabsNew York'); // formatted this way due to css before adding space nad comma
+  });
 });
