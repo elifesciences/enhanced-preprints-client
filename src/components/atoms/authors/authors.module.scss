@@ -52,7 +52,7 @@
       }
     }
 
-    &:last-of-type {
+    &:last-of-type { /* stylelint-disable-line no-duplicate-selectors */
       display: inline;
     }
   }
