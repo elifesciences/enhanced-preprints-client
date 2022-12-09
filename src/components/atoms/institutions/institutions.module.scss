@@ -50,6 +50,4 @@
 .institutions-list__expansion {
   @include typography.expansion-text();
   @include typography.font-size-and-vertical-height(14, 24);
-
-  cursor: pointer;
 }

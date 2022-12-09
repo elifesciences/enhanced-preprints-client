@@ -47,15 +47,13 @@
         display: inline;
       }
 
-      &:last-of-type {
-        &::before {
-          content: ", ";
-        }
-      }
-
-      &:nth-of-type(1n+11) {
+      &:nth-of-type(1n+10) {
         display: none;
       }
+    }
+
+    &:last-of-type {
+      display: inline;
     }
   }
 
@@ -78,11 +76,10 @@
   display: none;
 
   .authors--collapsible & {
-    @include typography.font-size-and-vertical-height(16, 24);
     @include typography.expansion-text();
+    @include typography.font-size-and-vertical-height(16, 24);
 
     cursor: pointer;
-    font-weight: 600;
 
     .authors-list__expansion-count {
       display: none;
