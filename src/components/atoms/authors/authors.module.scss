@@ -29,17 +29,29 @@
     }
   }
 
+  .authors--limit-3 & {
+    @media only all and (max-width: settings.$breakpoint-medium) {
+      &:last-of-type {
+        &::before {
+          content: " ... ";
+        }
+      }
+    }
+  }
+
+  .authors--limit-10 & {
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      &:last-of-type {
+        &::before {
+          content: " ... ";
+        }
+      }
+    }
+  }
+
   .authors--collapsible & {
     &:nth-of-type(1n+3) {
       display: none;
-    }
-
-    &:last-of-type {
-      display: inline;
-
-      &::before {
-        content: " ... ";
-      }
     }
 
     @media only all and (min-width: settings.$breakpoint-medium) {
@@ -52,7 +64,7 @@
       }
     }
 
-    &:last-of-type { /* stylelint-disable-line no-duplicate-selectors */
+    &:last-of-type {
       display: inline;
     }
   }

@@ -8,7 +8,7 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(24, "bottom");
 
-    display: inline;
+    display: block;
   }
 }
 
