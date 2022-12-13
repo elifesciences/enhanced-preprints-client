@@ -23,12 +23,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Get PR pull_number
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: echo "PR_ID=$(pull_number=$(jq --raw-output .pull_request.number \"$GITHUB_EVENT_PATH\"))" >> $GITHUB_ENV
       - name: "Update deployment status: in progress"
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh api \
             --method POST \
@@ -63,8 +63,8 @@ jobs:
           tags: |
             ${{ env.IMAGE_REPO }}:preview-${{ github.sha }}
       - name: "Update deployment status: success"
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh api \
             --method POST \
