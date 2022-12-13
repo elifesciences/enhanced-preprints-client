@@ -22,10 +22,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get PR pull_number
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: echo "PR_ID=$(pull_number=$(jq --raw-output .pull_request.number \"$GITHUB_EVENT_PATH\"))" >> $GITHUB_ENV
       - name: "Update deployment status: in progress"
         env:
           GH_TOKEN: ${{ github.token }}
@@ -36,7 +32,7 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.sha }}' \
             -f description='Preview environment' \
-            -f environment=preview-$PR_ID \
+            -f environment=preview-${{ github.event.number }} \
             -f state=in_progress
       - name: Build and load preview image
         uses: docker/build-push-action@v3
@@ -72,6 +68,6 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.sha }}' \
             -f description='Preview environment' \
-            -f environment=preview-$PR_ID \
+            -f environment=preview-${{ github.event.number }} \
             -f state=success \
             -f environment_url=https://pr-${pull_number}--epp.elifesciences.org/
