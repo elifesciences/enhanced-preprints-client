@@ -16,7 +16,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "{\"ref\": \"${{ github.head_ref }}\", \"description\": \"Preview environment\", \"required_contexts\": [\"build-preview-image\"], \"environment\": \"preview-${{ github.event.number }}\", \"state\": \"pending\"}" |
+          echo "{\"ref\": \"${{ github.head_ref }}\", \"description\": \"Preview environment\", \"required_contexts\": [], \"environment\": \"preview-${{ github.event.number }}\", \"state\": \"pending\"}" |
             gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
