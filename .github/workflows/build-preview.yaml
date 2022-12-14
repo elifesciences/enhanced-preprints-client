@@ -5,8 +5,11 @@ on:
     types: [labeled, synchronize, opened, reopened]
 
 jobs:
-  create-deployment:
+  build-preview-image:
     runs-on: ubuntu-latest
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
+    env:
+      IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
     steps:
       - name: "Create deployment"
         id: deployment
@@ -19,14 +22,6 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             /repos/elifesciences/enhanced-preprints-client/deployments \
             --input -
-  build-preview-image:
-    runs-on: ubuntu-latest
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
-    needs:
-      - create-deployment
-    env:
-      IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
-    steps:
       - uses: actions/checkout@v3
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -62,11 +57,6 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_REPO }}:preview-${{ github.sha }}
-  update-deployment-status:
-    if: ${{ always() }}
-    needs:
-      - build-preview-image
-    steps:
       - name: "Update deployment status: Success"
         if: ${{ success() }}
         env:
