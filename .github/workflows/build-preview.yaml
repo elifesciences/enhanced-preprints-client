@@ -22,18 +22,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: "Update deployment status: in progress"
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.sha }}' \
-            -f description='Preview environment' \
-            -f environment=preview-${{ github.event.number }} \
-            -f state=in_progress
       - name: Build and load preview image
         uses: docker/build-push-action@v3
         with:
@@ -58,16 +46,10 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_REPO }}:preview-${{ github.sha }}
-      - name: "Update deployment status: success"
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.sha }}' \
-            -f description='Preview environment' \
-            -f environment=preview-${{ github.event.number }} \
-            -f state=success \
-            -f environment_url=https://pr-${pull_number}--epp.elifesciences.org/
+      - name: "Update preview status with URL"
+        if: ${{ success() }}
+        uses: myrotvorets/set-commit-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: success
+          targetUrl: https://pr-${{ github.event.number }}--epp.elifesciences.org/
