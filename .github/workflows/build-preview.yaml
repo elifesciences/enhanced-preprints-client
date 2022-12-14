@@ -11,17 +11,6 @@ jobs:
     env:
       IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
     steps:
-      - name: "Create deployment"
-        id: deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo "deployment=$(echo "{\"ref\": \"${{ github.head_ref }}\", \"description\": \"Preview environment\", \"required_contexts\": [], \"environment\": \"preview-${{ github.event.number }}\", \"state\": \"pending\"}" |
-            gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/elifesciences/enhanced-preprints-client/deployments \
-            --input -)" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v3
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -57,28 +46,10 @@ jobs:
           push: true
           tags: |
             ${{ env.IMAGE_REPO }}:preview-${{ github.sha }}
-      - name: "Update deployment status: Success"
+      - name: "Update preview status with URL"
         if: ${{ success() }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          deployment_id=$(echo '${{ steps.deployment.outputs.deployment }}' | jq -r .id)
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/elifesciences/enhanced-preprints-client/deployments/${deployment_id}/statuses \
-            -f description='Preview environment image was build successfully' \
-            -f state=success \
-            -f environment_url=https://pr-${{ github.event.number }}--epp.elifesciences.org/
-      - name: "Update deployment status: Failed"
-        if: ${{ !success() }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          deployment_id=$(echo '${{ steps.deployment.outputs.deployment }}' | jq -r .id)
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            /repos/elifesciences/enhanced-preprints-client/deployments/${deployment_id}/statuses \
-            -f description='Preview environment image build failed' \
-            -f state=failure \
+        uses: myrotvorets/set-commit-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: success
+          targetUrl: https://pr-${{ github.event.number }}--epp.elifesciences.org/
