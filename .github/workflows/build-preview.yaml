@@ -62,7 +62,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          deployment_id=$(echo '${{ jobs.create-deployment.outputs.deployment }}' | jq -r .id)
+          deployment_id=$(echo '${{ steps.deployment }}' | jq -r .id)
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
@@ -75,7 +75,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          deployment_id=$(echo '${{ jobs.create-deployment.outputs.deployment }}' | jq -r .id)
+          deployment_id=$(echo '${{ steps.deployment }}' | jq -r .id)
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
