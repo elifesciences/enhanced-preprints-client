@@ -23,13 +23,7 @@
       "enabled": false
     },
     {
-      "matchFiles": ["^docker-compose.yaml$"],
-      "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server"],
-      "versioning": "loose"
-    },
-    {
-      "matchFiles": ["^docker-compose.yaml$"],
-      "matchPackageNames": ["ghcr.io/elifesciences/enhanced-preprints"],
+      "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server", "ghcr.io/elifesciences/enhanced-preprints"],
       "versioning": "loose"
     }
   ]
