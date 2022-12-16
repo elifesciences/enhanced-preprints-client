@@ -22,7 +22,7 @@ export type ArticlePageProps = {
   metaData: MetaData,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
-  activeTab: 'fulltext' | 'figures' | 'reviews',
+  activeTab: string,
   tabs?: Tab[],
 };
 
