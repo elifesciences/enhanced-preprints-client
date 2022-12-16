@@ -22,7 +22,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
+  <ArticlePage metaData={props.metaData} status={props.status} tabs={[]} activeTab="">
     <>
       <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
       <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
