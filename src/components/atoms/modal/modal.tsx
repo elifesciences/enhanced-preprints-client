@@ -1,5 +1,5 @@
 import { useRef, useState, MouseEvent } from 'react';
-import styles from './modal.module.scss';
+import './modal.scss';
 
 type Props = {
   modalTitle: string, modalContent: string
@@ -19,9 +19,9 @@ export const Modal = ({ modalTitle, modalContent }: Props): JSX.Element => {
   return (
   <>
     <button className="modal-button" onClick={() => setShowModal(!showModal)}>Modal Link</button>
-    <div onClick={(event) => clickHandler(event)} className={`${styles['modal-container']} ${showModal ? styles['modal-content__show'] : ''} `}>
-      <div ref={contentRef} className={styles['modal-content']}>
-        <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
+    <div onClick={(event) => clickHandler(event)} className={`modal-container${showModal ? ' modal-content__show' : ''} `}>
+      <div ref={contentRef} className="modal-content">
+        <button className="modal-content__close-button" onClick={closeModal}>Close</button>
         <div className="modal-content__block">
           <h6>{modalTitle}</h6>
           {modalContent}

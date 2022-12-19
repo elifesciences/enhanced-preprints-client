@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './institutions.module.scss';
+import './institutions.scss';
 import { Institution } from '../../../types';
 
 const institutionLimit = 3;
@@ -12,15 +12,15 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
   const expansionText = expanded ? 'show less' : `show ${institutions.length - institutionLimit} more`;
 
   return (
-    <div className={styles.institutions}>
-      <ol className={styles['institutions-list']} aria-label="Author institutions">
+    <div className="institutions">
+      <ol className="institutions-list" aria-label="Author institutions">
         { displayInstitutions.map(({ name, address }, index) => (
-          <li className={styles['institutions-list__item']} key={index}>
-            {name}{ address ? <address className={styles.institution__address}>{address.addressCountry ?? ''}</address> : ''}
+          <li className="institutions-list__item" key={index}>
+            {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
           </li>
         ))}
       </ol>
-      {(institutions.length > institutionLimit && expanded !== null) && <span className={styles['institutions-list__expansion']} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
+      {(institutions.length > institutionLimit && expanded !== null) && <span className="institutions-list__expansion" onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
     </div>
   );
 };
