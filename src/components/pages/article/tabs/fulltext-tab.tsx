@@ -1,4 +1,4 @@
-import styles from '../article-page.module.scss';
+import '../article-page.scss';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
@@ -20,9 +20,9 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
   }
 
   return (
-    <div className={styles['tabbed-navigation__content']}>
+    <div className="tabbed-navigation__content">
       <JumpToMenu headings={headings} />
-      <div className={styles['article-body-container']}>
+      <div className="article-body-container">
         <Abstract content={props.metaData.abstract} />
         { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/> }
         <ArticleContent content={props.content} />

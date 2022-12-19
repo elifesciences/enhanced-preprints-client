@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './authors.module.scss';
+import './authors.scss';
 import { Author } from '../../../types';
 
 const authorLimit = 3;
@@ -13,21 +13,21 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   return (
     <div className={
       `
-      ${styles.authors}${authors.length > authorLimit && expanded !== null ? ` ${styles['authors--collapsible']}` : ''}
-      ${expanded !== null ? authorLimits.map((limit) => (limit < authors.length ? ` ${styles[`authors--limit-${limit}`]}` : '')).join(' ') : ''}
+      authors${authors.length > authorLimit && expanded !== null ? ' authors--collapsible' : ''}
+      ${expanded !== null ? authorLimits.map((limit) => (limit < authors.length ? ` authors--limit-${limit}` : '')).join(' ') : ''}
       `
     }>
-      <ol className={`${styles['authors-list']}${expanded ? ` ${styles['authors-list--expanded']}` : ''}`} aria-label="Authors of this article">
+      <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
         { authors.map(({ givenNames, familyNames }, index) => (
-          <li className={styles['authors-list__item']} key={index}>
+          <li className="authors-list__item" key={index}>
             {givenNames.join(' ')} {familyNames.join(' ')}
           </li>
         ))}
       </ol>
         {(authors.length > authorLimit && expanded !== null) &&
-        <span className={styles['authors-list__expansion']} onClick={() => setExpanded(!expanded)}>
+        <span className="authors-list__expansion" onClick={() => setExpanded(!expanded)}>
           show{!expanded ? authorLimits.map(
-          (limit, index) => <span key={index} aria-hidden="true" className={`${styles['authors-list__expansion-count']} ${styles[`authors-list__expansion-count-${limit}`]}`}> {authors.length - limit}</span>,
+          (limit, index) => <span key={index} aria-hidden="true" className={`authors-list__expansion-count authors-list__expansion-count-${limit}`}> {authors.length - limit}</span>,
         ) : ''} {expanded ? 'less' : 'more'}</span>}
     </div>
   );

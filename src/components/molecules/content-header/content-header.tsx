@@ -1,4 +1,4 @@
-import styles from './content-header.module.scss';
+import './content-header.scss';
 import { Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { Title } from '../../atoms/title/title';
@@ -31,7 +31,7 @@ export const ContentHeader = ({
   }, []);
 
   return (
-    <header className={styles['content-header']}>
+    <header className="content-header">
       <ArticleFlagList msas={msas}/>
       <Title title={title}/>
       <Authors authors={authors}/>
@@ -40,4 +40,3 @@ export const ContentHeader = ({
     </header>
   );
 };
-
