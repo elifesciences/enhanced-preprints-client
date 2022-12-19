@@ -33,6 +33,7 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
 
+    // This removes the modular CSS requirement, allowing us to use regular SCSS imports in components
     config.module.rules.forEach((rule) => {
       const { oneOf } = rule;
       if (oneOf) {
