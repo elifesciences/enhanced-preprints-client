@@ -24,7 +24,7 @@ export const Modal = ({ modalTitle, children }: Props): JSX.Element => {
     <div onClick={(event) => clickHandler(event)} className={`${styles['modal-container']} ${showModal ? styles['modal-content__show'] : ''} `}>
       <div ref={contentRef} className={styles['modal-content']}>
         <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
-        <div className={styles['modal-content__block']}>
+        <div className={styles['modal-content__show']}>
           <h6>{modalTitle}</h6>
           {children}
         </div>

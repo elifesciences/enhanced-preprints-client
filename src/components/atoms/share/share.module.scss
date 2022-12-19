@@ -9,12 +9,12 @@
 .social-media-sharers {
   @include mixins.padding(0, "left");
 
-    li {
-      @include mixins.margin(0, "left");
-      @include mixins.margin(6, "right");
+  li {
+    @include mixins.margin(0, "left");
+    @include mixins.margin(6, "right");
 
-      display: inline-block;
-    }
+    display: inline-block;
+  }
 }
 
 .email {
@@ -92,12 +92,13 @@
   cursor: pointer;
   display: inline-block;
   font-family: settings.$font-family-primary;
-  @include typography.font-size-and-vertical-height(14, 14);
   font-weight: 500;
-  @include mixins.padding(17 40 16);
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+
+  @include typography.font-size-and-vertical-height(14, 14);
+  @include mixins.padding(17 40 16);
 }
 
 .button--default {
