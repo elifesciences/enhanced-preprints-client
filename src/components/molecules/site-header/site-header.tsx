@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import './site-header.scss';
 import logo from '../../../../public/elife-logo.svg';
 
-const Overlay = ({ closeOverlay }: { closeOverlay: () => void }): JSX.Element => createPortal(<div onClick={() => closeOverlay()} className={styles.overlay} id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
+const Overlay = ({ closeOverlay }: { closeOverlay: () => void }): JSX.Element => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
 export const SiteHeader = (): JSX.Element => {
   const [showMenu, setShowMenu] = useState(false);
