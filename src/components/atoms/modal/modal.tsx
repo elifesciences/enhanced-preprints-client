@@ -1,11 +1,13 @@
-import { useRef, useState, MouseEvent } from 'react';
+import {
+  useRef, useState, MouseEvent, ReactElement,
+} from 'react';
 import styles from './modal.module.scss';
 
 type Props = {
-  modalTitle: string, modalContent: string
+  modalTitle: string, children: ReactElement
 };
 
-export const Modal = ({ modalTitle, modalContent }: Props): JSX.Element => {
+export const Modal = ({ modalTitle, children }: Props): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const closeModal = () => setShowModal(false);
@@ -22,9 +24,9 @@ export const Modal = ({ modalTitle, modalContent }: Props): JSX.Element => {
     <div onClick={(event) => clickHandler(event)} className={`${styles['modal-container']} ${showModal ? styles['modal-content__show'] : ''} `}>
       <div ref={contentRef} className={styles['modal-content']}>
         <button className={styles['modal-content__close-button']} onClick={closeModal}>Close</button>
-        <div className="modal-content__block">
+        <div className={styles['modal-content__block']}>
           <h6>{modalTitle}</h6>
-          {modalContent}
+          {children}
         </div>
       </div>
     </div>
