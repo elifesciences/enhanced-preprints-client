@@ -1,0 +1,115 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.share-container {
+  width: 100%;
+}
+
+.social-media-sharers {
+  @include mixins.padding(0, "left");
+
+    li {
+      @include mixins.margin(0, "left");
+      @include mixins.margin(6, "right");
+
+      display: inline-block;
+    }
+}
+
+.email {
+  background: url("../../../images/share/email.svg") no-repeat 0 0;
+}
+
+.twitter {
+  background: url("../../../images/share/tweet.svg") no-repeat 0 0;
+}
+
+.facebook {
+  background: url("../../../images/share/facebook.svg") no-repeat 0 0;
+}
+
+.linkedin {
+  background: url("../../../images/share/linkedin.svg") no-repeat 0 0;
+}
+
+.reddit {
+  background: url("../../../images/share/reddit.svg") no-repeat 0 0;
+}
+
+.social-media-sharer {
+  @include mixins.margin(0 8);
+  @include mixins.padding(2 0);
+
+  display: inline-block;
+  height: 24px;
+  text-decoration: none;
+  text-indent: -10000px;
+  transition: 25ms ease-out;
+  width: 24px;
+}
+
+.form-item {
+  @include mixins.padding(36, "bottom");
+
+  display: grid;
+
+  & > :last-child {
+    margin-bottom: 0 // Margins don't collapse on <select>s
+  }
+}
+
+.text-field,
+.text-field[type="text"],
+.text-field[type="email"] {
+  appearance: none;
+}
+
+.text-field {
+  @include typography.font-size-and-vertical-height(16);
+  @include mixins.padding(11 12);
+  @include mixins.margin(6, "bottom");
+
+  border: 1px solid settings.$divider;
+  color: settings.$color-text;
+  display: inline-block;
+  font-family: settings.$font-family-primary;
+
+  &:focus {
+    border: 1px solid black;
+    outline: 0;
+  }
+}
+
+.text-field--textarea {
+  resize: vertical;
+}
+
+.button {
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: settings.$font-family-primary;
+  @include typography.font-size-and-vertical-height(14, 14);
+  font-weight: 500;
+  @include mixins.padding(17 40 16);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button--default {
+  @include mixins.margin(48, "left");
+  @include mixins.padding(15 18);
+
+  background-color: settings.$color-primary;
+  color: #fff;
+  max-height: 48px;
+
+  &:hover {
+    background-color: settings.$color-primary-dark;
+    color: #fff;
+  }
+}
