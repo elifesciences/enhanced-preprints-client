@@ -1,4 +1,4 @@
-import styles from './button.module.scss';
+import './button.scss';
 
 type ButtonProps = {
   iconName: string,
@@ -7,7 +7,7 @@ type ButtonProps = {
 };
 
 export const Button = ({ text, iconName, url }: ButtonProps): JSX.Element => (
-  <a className={`${styles['button-icon']} ${styles.button} ${styles[iconName]}`} href={url}>
+  <a className={`button-icon button ${iconName}`} href={url}>
     {text}
   </a>
 );
