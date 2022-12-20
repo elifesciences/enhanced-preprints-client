@@ -43,10 +43,3 @@ FollowButton.args = {
   iconName: 'follow',
   url: '#',
 };
-
-export const EmailButton = Template.bind({});
-EmailButton.args = {
-  text: 'Email',
-  iconName: 'email',
-  url: '#',
-};

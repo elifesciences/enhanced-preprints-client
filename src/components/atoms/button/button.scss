@@ -58,9 +58,3 @@
 
   background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
 }
-
-.email {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-primary url("../../../images/actions/email.svg") no-repeat 11px 8px;
-}
