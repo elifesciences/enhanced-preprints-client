@@ -9,7 +9,9 @@
 .form-item {
   @include mixins.padding(36, "bottom");
 
-  display: grid;
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    display: grid;
+  }
 
   & > :last-child {
     margin-bottom: 0 // Margins don't collapse on <select>s
@@ -25,12 +27,17 @@
 .text-field {
   @include typography.font-size-and-vertical-height(16);
   @include mixins.padding(11 12);
-  @include mixins.margin(6, "bottom");
+  @include mixins.margin(36, "bottom");
 
   border: 1px solid settings.$divider;
+  box-sizing: border-box;
   color: settings.$color-text;
-  display: inline-block;
   font-family: settings.$font-family-primary;
+  width: 100%;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 1/2;
+  }
 
   &:focus {
     border: 1px solid black;
@@ -59,15 +66,20 @@
 }
 
 .button--default {
-  @include mixins.margin(48, "left");
   @include mixins.padding(15 18);
 
   background-color: settings.$color-primary;
   color: #fff;
+  grid-column: 2/3;
   max-height: 48px;
+  max-width: 212px;
 
   &:hover {
     background-color: settings.$color-primary-dark;
     color: #fff;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(48, "left");
   }
 }
