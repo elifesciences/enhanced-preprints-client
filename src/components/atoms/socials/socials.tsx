@@ -15,27 +15,27 @@ export const Socials = ({
     <ul className={styles['socials-sharers']}>
       <li>
         <a className={`${styles['socials-sharer']} ${styles.email}`} href={ emailUrl } target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
-          email
+          Email
         </a>
       </li>
       <li>
         <a className={`${styles['socials-sharer']} ${styles.twitter}`} href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Twitter">
-          email
+          Twitter
         </a>
       </li>
       <li>
         <a className={`${styles['socials-sharer']} ${styles.facebook}`} href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Facebook">
-          email
+          Facebook
         </a>
       </li>
       <li>
         <a className={`${styles['socials-sharer']} ${styles.linkedin}`} href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by LinkedIn">
-          email
+          LinkedIn
         </a>
       </li>
       <li>
         <a className={`${styles['socials-sharer']} ${styles.reddit}`} href={redditUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Reddit">
-          email
+          Reddit
         </a>
       </li>
     </ul>

@@ -4,7 +4,7 @@ import { Modal } from './modal';
 import { Socials } from '../socials/socials';
 
 export default {
-  title: 'Atoms/ Modal',
+  title: 'Atoms/Modal',
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
