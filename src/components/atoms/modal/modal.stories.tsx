@@ -18,7 +18,7 @@ ModalContainer.args = {
 };
 
 const ClipboardTemplate: ComponentStory<typeof Modal> = (args) => (
-  <Modal {...args}><Clipboard /><Socials emailUrl={''} facebookUrl={''} twitterUrl={''} linkedinUrl={''} redditUrl={''} /></Modal>
+  <Modal {...args}><Clipboard text={'https://doi.org/10.7554/eLife.09560'} /><Socials emailUrl={''} facebookUrl={''} twitterUrl={''} linkedinUrl={''} redditUrl={''} /></Modal>
 );
 
 export const ModalShare = ClipboardTemplate.bind({});
