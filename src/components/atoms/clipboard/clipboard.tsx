@@ -5,7 +5,7 @@ type ClipboardProps = {
   text: string,
 };
 
-const supportsClipboardAPI = () => (navigator.clipboard ? true : false);
+const supportsClipboardAPI = () => (!!navigator.clipboard);
 
 export const Clipboard = ({ text }: ClipboardProps): JSX.Element => {
   const [showButton, setShowButton] = useState<boolean>(false);
@@ -18,7 +18,7 @@ export const Clipboard = ({ text }: ClipboardProps): JSX.Element => {
       <div className="form-item">
           <input type="input" className="text-field" value={text} />
 
-          {(showButton ? <button className={`button button--default${copied ? ' copied' : ''}`} onClick={() => {setCopied(true); navigator.clipboard.writeText(text);}}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
+          {(showButton ? <button className={`button button--default${copied ? ' copied' : ''}`} onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
       </div>
     </div>
   );

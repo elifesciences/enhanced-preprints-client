@@ -3,19 +3,19 @@ import { Modal } from './modal';
 
 describe('Modal window', () => {
   it('button shows', () => {
-    render(<Modal modalTitle='This is the title' children='This is the content' />);
+    render(<Modal modalTitle='This is the title'>This is the content</Modal>);
 
     expect(screen.getByText('Modal Link')).toBeInTheDocument();
   });
 
   it('does not show', () => {
-    render(<Modal modalTitle='This is the title' children='This is the content' />);
+    render(<Modal modalTitle='This is the title'>This is the content</Modal>);
 
     expect(screen.getByText('This is the content').parentElement?.parentElement).not.toHaveClass('modal-content__show');
   });
 
   it('shows on click', () => {
-    render(<Modal modalTitle='This is the title' children='This is the content' />);
+    render(<Modal modalTitle='This is the title'>This is the content</Modal>);
     expect(screen.getByText('This is the content').parentElement?.parentElement).not.toHaveClass('modal-content__show');
 
     const showModalBlock = screen.getByText('modal link', { exact: false });
@@ -25,7 +25,7 @@ describe('Modal window', () => {
   });
 
   it('hides on click', () => {
-    render(<Modal modalTitle='This is the title' children='This is the content' />);
+    render(<Modal modalTitle='This is the title'>This is the content</Modal>);
     expect(screen.getByText('This is the content').parentElement?.parentElement).not.toHaveClass('modal-content__show');
 
     const showModalBlock = screen.getByText('modal link', { exact: false });

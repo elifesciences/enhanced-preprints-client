@@ -7,7 +7,6 @@
 }
 
 .form-item {
-
   @media only all and (min-width: settings.$breakpoint-medium) {
     display: grid;
     grid-column-gap: settings.$grid-gutter;
