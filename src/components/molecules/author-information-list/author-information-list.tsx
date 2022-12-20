@@ -3,7 +3,7 @@ import { Author } from '../../../types';
 
 const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
   const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
-  
+
   return (
     <li className="author-list__author">
       <h4 className="author-list__author_name">{author.givenNames.join(' ')} {author.familyNames.join(' ')}</h4>
@@ -17,13 +17,12 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
       {
         orcids.length > 0 && (
           <div className="author-list__orcids">
-            ORCID iD: {orcids.map(({ value }, index) => (<>{!!index && ', '}<a key={index} className="author-list__orcids_link" href={value}>{value.substr(value.lastIndexOf('/')+1)}</a></>))}
+            ORCID iD: {orcids.map(({ value }, index) => (<>{!!index && ', '}<a key={index} className="author-list__orcids_link" href={value}>{value.substr(value.lastIndexOf('/') + 1)}</a></>))}
           </div>
         )
       }
     </li>
   );
-
 };
 
 export const AuthorInformationList = ({ authors }: { authors: Author[] }): JSX.Element => (
