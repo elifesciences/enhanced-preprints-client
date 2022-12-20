@@ -1,5 +1,5 @@
 import { ArticleFlag } from '../../atoms/article-flag/article-flag';
-import styles from './article-flag-list.module.scss';
+import './article-flag-list.scss';
 
 export type Props = {
   msas: string[],
@@ -37,9 +37,9 @@ export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   const msasWithURLS = msas.map((msa) => ({ msa, url: msaURLs[msa] }));
 
   return (
-    <ul className={styles['article-flag-list']}>
+    <ul className="article-flag-list">
       {msasWithURLS.map(({ msa, url }, index) => (
-        <li className={styles['article-flag-list__item']} key={index}>
+        <li className="article-flag-list__item" key={index}>
           <ArticleFlag flagText={msa} url={url}/>
         </li>))}
     </ul>

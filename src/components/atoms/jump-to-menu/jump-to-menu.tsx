@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
-import styles from './jump-to-menu.module.scss';
+import './jump-to-menu.scss';
 import { throttle } from '../../../utils/throttle';
 
 export type Heading = {
@@ -52,13 +52,13 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element =
   }, [jumping]);
 
   return (
-    <div className={styles['jump-menu']}>
-      <nav className={styles['jump-menu-navigation']}>
-        <ul className={styles['jump-menu-list']}>
+    <div className="jump-menu">
+      <nav className="jump-menu-navigation">
+        <ul className="jump-menu-list">
           {
             headings.map((heading, index) => (
-              <li className={`${styles['jump-menu-list__item']} ${active === index ? ` ${styles['jump-menu-list__item--active']}` : ''}`} key={index}>
-                <a onClick={() => linkClickHandler(index)} className={styles['jump-menu-list__link']} href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>
+              <li className={`jump-menu-list__item${active === index ? ' jump-menu-list__item--active' : ''}`} key={index}>
+                <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>
               </li>
             ))
           }
@@ -67,4 +67,3 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element =
     </div>
   );
 };
-
