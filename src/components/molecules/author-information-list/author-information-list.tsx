@@ -17,7 +17,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
       {
         orcids.length > 0 && (
           <div className="author-list__orcids">
-            ORCID iD: {orcids.map(({ value }, index) => (<>{!!index && ', '}<a key={index} className="author-list__orcids_link" href={value}>{value.substr(value.lastIndexOf('/') + 1)}</a></>))}
+            ORCID iD: {orcids.map(({ value }, index) => (<>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substr(value.lastIndexOf('/') + 1)}</a></>))}
           </div>
         )
       }
