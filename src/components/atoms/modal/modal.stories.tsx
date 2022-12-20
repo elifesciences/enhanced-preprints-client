@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Share } from '../share/share';
+import { Clipboard } from '../clipboard/clipboard';
 import { Modal } from './modal';
+import { Socials } from '../socials/socials';
 
 export default {
   title: 'Atoms/ Modal',
@@ -16,11 +17,11 @@ ModalContainer.args = {
   modalTitle: 'This is a title',
 };
 
-const ShareTemplate: ComponentStory<typeof Modal> = (args) => (
-  <Modal {...args}><Share /></Modal>
+const ClipboardTemplate: ComponentStory<typeof Modal> = (args) => (
+  <Modal {...args}><Clipboard /><Socials emailUrl={''} facebookUrl={''} twitterUrl={''} linkedinUrl={''} redditUrl={''} /></Modal>
 );
 
-export const ModalShare = ShareTemplate.bind({});
+export const ModalShare = ClipboardTemplate.bind({});
 ModalShare.args = {
   modalTitle: 'Share this article',
 };
