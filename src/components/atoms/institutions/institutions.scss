@@ -1,16 +1,27 @@
 @use "../../../sass/mixins";
+@use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .institutions {
-  @include mixins.margin(24, "bottom");
+  display: none;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(24, "bottom");
+
+    display: block;
+  }
 }
 
 .institutions-list {
   @include mixins.margin(0);
   @include mixins.padding(0);
 
-  display: inline;
+  display: none;
   list-style: none;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    display: inline;
+  }
 }
 
 .institutions-list__item {
@@ -39,6 +50,4 @@
 .institutions-list__expansion {
   @include typography.expansion-text();
   @include typography.font-size-and-vertical-height(14, 24);
-
-  cursor: pointer;
 }

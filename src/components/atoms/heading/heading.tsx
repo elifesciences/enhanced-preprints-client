@@ -1,6 +1,6 @@
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
-import styles from './heading.module.scss';
+import './heading.scss';
 
 type HeadingProps = {
   content: Content,
@@ -12,7 +12,7 @@ type HeadingProps = {
 export const Heading = ({
   headingLevel, content, id, className,
 }: HeadingProps): JSX.Element => {
-  const normalisedClassName = className || styles[`heading-${headingLevel}`];
+  const normalisedClassName = className || `heading-${headingLevel}`;
   switch (headingLevel) {
     case 1:
       return <h1 id={id} className={normalisedClassName}>{contentToJsx(content)}</h1>;

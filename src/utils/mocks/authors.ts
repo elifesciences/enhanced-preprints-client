@@ -9,6 +9,6 @@ export const authors = [
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   { givenNames: ['Kara'], familyNames: ['Zor-el'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }] },
   { givenNames: ['Kal'], familyNames: ['El'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }] },
-  { givenNames: ['Arthur'], familyNames: ['Curry'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }] },
+  { givenNames: ['Arthur'], familyNames: ['Curry'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }], identifiers: [{ type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5688' }] },
   { givenNames: ['Oliver'], familyNames: ['Queen'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Central City' } }] },
 ];

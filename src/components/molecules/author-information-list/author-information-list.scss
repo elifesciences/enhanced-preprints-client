@@ -16,7 +16,7 @@
 }
 
 .author-list__author {
-  @include mixins.margin(24, "bottom");
+  @include mixins.margin(36, "bottom");
 }
 
 .author-list__author_name {
@@ -26,6 +26,7 @@
 }
 
 .author-list__affiliations {
+  @include mixins.margin(24, "bottom");
   @include typography.body();
 }
 
@@ -35,4 +36,9 @@
 
 .author-list__orcids_link {
   color: settings.$color-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: settings.$color-primary-dark;
+  }
 }

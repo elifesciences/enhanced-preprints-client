@@ -299,7 +299,7 @@ describe('reviewedPreprintSnippet', () => {
       ],
       'First Author, Second Author ... Fifth Author',
     ],
-  ])('prepares authorLine (%#)', (authors: Author[], expected: string) => {
+  ])('prepares authorLine (%#)', (authors: Author[], expected: string | undefined) => {
     const result = reviewedPreprintSnippet({
       msid: 'msid1',
       version: '1',

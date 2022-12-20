@@ -1,0 +1,124 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.authors {
+  @include mixins.margin(12, "bottom");
+}
+
+.authors-list {
+  @include mixins.margin(0);
+  @include mixins.padding(0);
+
+  display: inline;
+  list-style: none;
+}
+
+.authors-list__item {
+  @include typography.author-list-text();
+
+  display: inline;
+
+  &::before {
+    content: ", ";
+  }
+
+  &:first-of-type {
+    &::before {
+      content: "";
+    }
+  }
+
+  .authors--limit-3 & {
+    @media only all and (max-width: settings.$breakpoint-medium) {
+      &:last-of-type {
+        &::before {
+          content: " ... ";
+        }
+      }
+    }
+  }
+
+  .authors--limit-10 & {
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      &:last-of-type {
+        &::before {
+          content: " ... ";
+        }
+      }
+    }
+  }
+
+  .authors--collapsible & {
+    &:nth-of-type(1n+3) {
+      display: none;
+    }
+
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      &:nth-of-type(1n+3) {
+        display: inline;
+      }
+
+      &:nth-of-type(1n+10) {
+        display: none;
+      }
+    }
+
+    &:last-of-type {
+      display: inline;
+    }
+  }
+
+  .authors-list--expanded & { /* stylelint-disable-line no-descending-specificity */
+    &:nth-of-type(1n+3) {
+      display: inline;
+    }
+
+    &:last-of-type {
+      display: inline;
+
+      &::before {
+        content: ", ";
+      }
+    }
+  }
+}
+
+.authors-list__expansion {
+  display: none;
+
+  .authors--collapsible & {
+    @include typography.expansion-text();
+    @include typography.font-size-and-vertical-height(16, 24);
+
+    cursor: pointer;
+
+    .authors-list__expansion-count {
+      display: none;
+
+      @media only all and (max-width: settings.$breakpoint-medium) {
+        &.authors-list__expansion-count-3 {
+          display: inline;
+        }
+      }
+
+      @media only all and (min-width: settings.$breakpoint-medium) {
+        &.authors-list__expansion-count-10 {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  .authors--limit-3 & {
+    @media only all and (max-width: settings.$breakpoint-medium) {
+      display: inline;
+    }
+  }
+
+  .authors--limit-10 & {
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      display: inline;
+    }
+  }
+}
