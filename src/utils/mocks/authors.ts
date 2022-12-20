@@ -1,5 +1,5 @@
 export const authors = [
-  { givenNames: ['Steve'], familyNames: ['Rogers'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
+  { givenNames: ['Steve'], familyNames: ['Rogers'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }], identifiers: [{ type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }] },
   { givenNames: ['Antony'], familyNames: ['Stark'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Natasha'], familyNames: ['Romanov'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Bruce'], familyNames: ['Banner'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },

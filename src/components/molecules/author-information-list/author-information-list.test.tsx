@@ -12,6 +12,12 @@ const authors: Author[] = [
         address: { addressCountry: 'New York' },
       },
     ],
+    identifiers: [
+      {
+        type: 'orcid',
+        value: 'http://orcid.org/0000-0002-1234-5678',
+      },
+    ],
   },
   {
     givenNames: ['Loki'],

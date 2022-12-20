@@ -1,4 +1,5 @@
 @use "../../../sass/mixins";
+@use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .author-list__title {
@@ -26,4 +27,12 @@
 
 .author-list__affiliations {
   @include typography.body();
+}
+
+.author-list__orcids {
+  @include typography.body();
+}
+
+.author-list__orcids_link {
+  color: settings.$color-primary;
 }
