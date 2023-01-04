@@ -5,4 +5,10 @@ export type Author = {
   givenNames: string[],
   familyNames: string[],
   affiliations?: Institution[],
+  identifiers?: {
+    type?: string,
+    name?: string,
+    propertyID?: string,
+    value: string,
+  }[],
 };
