@@ -50,20 +50,15 @@
   resize: vertical;
 }
 
-.button {
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: settings.$font-family-primary;
-  font-weight: 500;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-
+.button-clipboard {
   @include typography.font-size-and-vertical-height(14, 14);
   @include mixins.padding(17 40 16);
+
+  border: none;
+  color: #fff;
+  font-family: settings.$font-family-primary;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .button--default {

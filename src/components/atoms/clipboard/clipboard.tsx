@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '../button/button.scss';
 import './clipboard.scss';
 
 type ClipboardProps = {
@@ -18,7 +19,7 @@ export const Clipboard = ({ text }: ClipboardProps): JSX.Element => {
       <div className="form-item">
           <input type="input" className="text-field" value={text} />
 
-          {(showButton ? <button className={`button button--default${copied ? ' copied' : ''}`} onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
+          {(showButton ? <button className={`button button--default button-clipboard${copied ? ' copied' : ''}`} onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
       </div>
     </div>
   );
