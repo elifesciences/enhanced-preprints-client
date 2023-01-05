@@ -1,0 +1,56 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.form-item {
+  // @include blg-spacing("bottom", "small", "margin");
+
+  & > :last-child {
+    @include mixins.margin(0, "bottom"); // Margins don't collapse on <select>s
+  }
+}
+
+.form-item__label_container {
+  @supports (display: flex) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.form-item__label {
+  @include mixins.margin(4, "bottom");
+  // @include typeg-form-label();
+  display: block;
+}
+
+.form-item__title {
+  @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px);
+  @include mixins.padding(12, "bottom");
+  @include mixins.padding(24, "top");
+  display: block;
+  font-family: settings.$font-family-secondary;
+  font-weight: bold;
+}
+
+.form-item__sub_title {
+  @include mixins.padding(12, "bottom");
+  @include mixins.padding(24, "top");
+  @include typography.font-size-and-vertical-height(12, 24);
+  color: #757575;
+  display: inline-block;
+  font-family: settings.$font-family-secondary;
+}
+
+.form-item__message {
+  // @include typeg-form-message();
+  @include mixins.margin(4, "top");
+  display: block;
+}
+
+.form-item__message--invalid {
+  color: settings.$color-attention;
+}
+
+.form-item__message--info {
+  color: settings.$color-information;
+}

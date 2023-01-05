@@ -1,0 +1,32 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.text-field,
+.text-field[type="text"],
+.text-field[type="email"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.text-field {
+  @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px);
+  @include mixins.margin(settings.$site-spacing / 4, "bottom");
+  @include mixins.padding(settings.$site-spacing - 1 12);
+  border: 1px solid settings.$divider;
+  border-radius: 3px;
+  color: settings.$color-text;
+  display: block;
+  font-family: settings.$font-family-secondary;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid settings.$color-text-placeholder;
+    outline: 0;
+  }
+}
+
+.text-field--invalid {
+  border: 1px solid settings.$color-attention;
+}
