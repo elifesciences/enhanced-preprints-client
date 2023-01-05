@@ -45,7 +45,7 @@ export const TextField = ({
       <div className="form-item__label_container">
         <label
           className={`form-item__label${label.isVisuallyHidden ? ' visuallyhidden' : ''}`}
-          {...{for: id ? id : undefined,}}
+          {...{ for: id || undefined }}
         >
         {label.labelText}
       </label>
@@ -63,7 +63,7 @@ export const TextField = ({
         disabled,
         placeholder,
       }}
-      {...value ? {value} : {}}
+      {...value ? { value } : {}}
     />
 
     {messageGroup ? (
@@ -76,7 +76,7 @@ export const TextField = ({
         {'errorText' in messageGroup ? (
           <div className="form-item__message form-item__message--invalid">{messageGroup.errorText}</div>
         ) : ''}
-  
+
       </div>
     ) : ''}
   </div>

@@ -33,7 +33,7 @@ TextFieldError.args = {
   messageGroup: {
     id: 'idOfTheMessageGroup',
     errorText: 'Please provide a valid value',
-  }
+  },
 };
 
 export const TextFieldInfo = Template.bind({});
@@ -50,7 +50,7 @@ TextFieldInfo.args = {
   messageGroup: {
     id: 'idOfTheMessageGroup',
     infoText: 'You may wish to consider this',
-  }
+  },
 };
 
 export const TextFieldInfoError = Template.bind({});
@@ -66,5 +66,5 @@ TextFieldInfoError.args = {
     id: 'idOfTheMessageGroup',
     errorText: 'Please provide a valid value',
     infoText: 'You may wish to consider this',
-  }
+  },
 };

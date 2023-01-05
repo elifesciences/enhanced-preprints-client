@@ -19,6 +19,7 @@
 
 .form-item__label {
   @include mixins.margin(4, "bottom");
+
   // @include typeg-form-label();
   display: block;
 }
@@ -27,6 +28,7 @@
   @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px);
   @include mixins.padding(12, "bottom");
   @include mixins.padding(24, "top");
+
   display: block;
   font-family: settings.$font-family-secondary;
   font-weight: bold;
@@ -36,6 +38,7 @@
   @include mixins.padding(12, "bottom");
   @include mixins.padding(24, "top");
   @include typography.font-size-and-vertical-height(12, 24);
+
   color: #757575;
   display: inline-block;
   font-family: settings.$font-family-secondary;
@@ -44,6 +47,7 @@
 .form-item__message {
   // @include typeg-form-message();
   @include mixins.margin(4, "top");
+
   display: block;
 }
 
