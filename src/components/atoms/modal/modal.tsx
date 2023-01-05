@@ -1,4 +1,6 @@
-import { useRef, useState, MouseEvent } from 'react';
+import {
+  useRef, useState, MouseEvent, ReactElement,
+} from 'react';
 import './modal.scss';
 
 type Props = {
