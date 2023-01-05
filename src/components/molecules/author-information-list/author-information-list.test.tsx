@@ -12,6 +12,16 @@ const authors: Author[] = [
         address: { addressCountry: 'New York' },
       },
     ],
+    identifiers: [
+      {
+        type: 'orcid',
+        value: 'http://orcid.org/0000-0002-1234-5678',
+      },
+      {
+        type: 'orcid',
+        value: 'http://orcid.org/0000-0002-1234-5679',
+      },
+    ],
   },
   {
     givenNames: ['Loki'],
@@ -20,6 +30,12 @@ const authors: Author[] = [
       name: 'The Revengers',
       address: { addressCountry: 'Sakaar' },
     }],
+    identifiers: [
+      {
+        type: 'orcid',
+        value: 'http://orcid.org/0000-0002-1234-5698',
+      },
+    ],
   },
   {
     givenNames: ['Bruce'],
@@ -32,6 +48,16 @@ const authors: Author[] = [
   {
     givenNames: ['The', 'Incredible'],
     familyNames: ['Hulk'],
+  },
+  {
+    givenNames: ['Peter'],
+    familyNames: ['Parker'],
+    identifiers: [
+      {
+        type: 'orcid',
+        value: 'http://orcid.org/0000-0002-1234-5688',
+      },
+    ],
   },
   {
     givenNames: ['Valkyrie'],
@@ -57,6 +83,7 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Loki Laufeyson')).toBeInTheDocument();
     expect(screen.getByText('Bruce Banner')).toBeInTheDocument();
     expect(screen.getByText('The Incredible Hulk')).toBeInTheDocument();
+    expect(screen.getByText('Peter Parker')).toBeInTheDocument();
     expect(screen.getByText('Valkyrie Brunnhilde')).toBeInTheDocument();
   });
 
@@ -68,5 +95,16 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Bruce Banner').nextSibling).toHaveTextContent('The Avengers');
     expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
     expect(screen.getByText('Valkyrie Brunnhilde').nextSibling).toHaveTextContent('The Valkyrie');
+  });
+
+  it('renders the authors ORCID\'s', () => {
+    render(<AuthorInformationList authors={authors}/>);
+
+    expect(screen.getByText('Thor Odinson').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5678, 0000-0002-1234-5679');
+    expect(screen.getByText('Loki Laufeyson').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5698');
+    expect(screen.getByText('Bruce Banner').nextSibling?.nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('Peter Parker').nextSibling).toHaveTextContent('0000-0002-1234-5688');
+    expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 });
