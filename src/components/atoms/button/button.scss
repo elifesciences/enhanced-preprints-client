@@ -38,11 +38,13 @@
 
   background-color: settings.$color-primary;
   color: #fff;
-  grid-column: 8/13;
-  grid-row: 1;
   max-height: 48px;
-  max-width: 212px;
-  min-width: 212px;
+  width: 100%;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    max-width: 212px;
+    min-width: 212px;
+  }
 
   &:hover {
     background-color: settings.$color-primary-dark;
@@ -52,8 +54,11 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(48, "left");
 
+    grid-column: 8/13;
+    grid-row: 1;
     justify-self: right;
   }
+
 }
 
 .default {
