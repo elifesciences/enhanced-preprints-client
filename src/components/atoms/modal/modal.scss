@@ -65,10 +65,6 @@
   grid-row: 1;
 }
 
-.modal-content__close-button {
-  grid-row: 1;
-}
-
 .modal-content__show {
   opacity: 1;
   overflow-y: scroll;
@@ -87,6 +83,7 @@
   cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: bold;
+  grid-row: 1;
   height: auto;
   justify-self: end;
   z-index: 2000;
