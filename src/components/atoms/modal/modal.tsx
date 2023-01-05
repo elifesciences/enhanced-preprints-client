@@ -1,10 +1,10 @@
 import {
-  useRef, useState, MouseEvent, ReactElement,
+  useRef, useState, MouseEvent,
 } from 'react';
 import './modal.scss';
 
 type Props = {
-  modalTitle: string, children: ReactElement
+  modalTitle: string, children?: React.ReactNode
 };
 
 export const Modal = ({ modalTitle, children }: Props): JSX.Element => {
