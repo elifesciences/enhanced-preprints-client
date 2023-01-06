@@ -22,7 +22,7 @@ export const Modal = ({
 
   return (
   <>
-    <div onClick={(event) => { if (onModalClose !== undefined && clickDetectedOutsideOfModal(event)) { onModalClose(); } }} className={`modal-container${open ? ' modal-content__show' : ''} `}>
+    <div onClick={(event) => { onModalClose !== undefined && clickDetectedOutsideOfModal(event) && onModalClose(); }} className={`modal-container${open ? ' modal-content__show' : ''} `}>
       <div ref={contentRef} className="modal-content">
         <div className="modal-content__block">
           <div className="modal-content__top">
