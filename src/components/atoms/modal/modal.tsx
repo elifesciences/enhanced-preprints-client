@@ -1,30 +1,35 @@
-import { useRef, useState, MouseEvent } from 'react';
+import {
+  useRef, MouseEvent,
+} from 'react';
 import './modal.scss';
 
 type Props = {
-  modalTitle: string, modalContent: string
+  modalTitle: string,
+  children?: React.ReactNode,
+  open?: boolean,
+  onModalClose?: () => void,
 };
 
-export const Modal = ({ modalTitle, modalContent }: Props): JSX.Element => {
-  const [showModal, setShowModal] = useState(false);
+export const Modal = ({
+  modalTitle,
+  children,
+  open = false,
+  onModalClose,
+}: Props): JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
-  const closeModal = () => setShowModal(false);
 
-  const clickHandler = (event: MouseEvent<HTMLDivElement>) => {
-    if (contentRef.current && !contentRef.current.contains(event.target as Element)) {
-      closeModal();
-    }
-  };
+  const clickDetectedOutsideOfModal = (event: MouseEvent<HTMLDivElement>) => contentRef.current && !contentRef.current.contains(event.target as Element);
 
   return (
   <>
-    <button className="modal-button" onClick={() => setShowModal(!showModal)}>Modal Link</button>
-    <div onClick={(event) => clickHandler(event)} className={`modal-container${showModal ? ' modal-content__show' : ''} `}>
+    <div onClick={(event) => { if (onModalClose !== undefined && clickDetectedOutsideOfModal(event)) { onModalClose(); } }} className={`modal-container${open ? ' modal-content__show' : ''} `}>
       <div ref={contentRef} className="modal-content">
-        <button className="modal-content__close-button" onClick={closeModal}>Close</button>
         <div className="modal-content__block">
-          <h6>{modalTitle}</h6>
-          {modalContent}
+          <div className="modal-content__top">
+            <h6 className="modal-content__title">{modalTitle}</h6>
+            {onModalClose !== undefined ? (<button className="modal-content__close-button" onClick={onModalClose}>Close</button>) : ''}
+          </div>
+          {children !== undefined ? (<div className="modal-content__body">{children}</div>) : ''}
         </div>
       </div>
     </div>
