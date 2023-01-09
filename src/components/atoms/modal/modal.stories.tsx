@@ -1,17 +1,27 @@
+import {
+  useState,
+} from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Modal } from './modal';
 
 export default {
-  title: 'Atoms/ Modal',
+  title: 'Atoms/Modal',
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => (
-  <Modal {...args} />
-);
+const Template: ComponentStory<typeof Modal> = (args) => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => { setShowModal(true); }}>Modal Link</button>
+      <Modal {...args} open={showModal} onModalClose={() => { setShowModal(false); }} />
+    </>
+  );
+};
 
 export const ModalContainer = Template.bind({});
 ModalContainer.args = {
   modalTitle: 'This is a title',
-  modalContent: 'This is some content',
+  children: (<>This is content</>),
 };
