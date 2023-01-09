@@ -24,6 +24,10 @@ test.describe('content header', () => {
   });
 
   test('homepage has correct institutions', async () => {
-    await contentHeader.assertInstitutionExists('Acme LabsNew York'); // formatted this way due to css before adding space nad comma
+    await contentHeader.assertInstitutionExists('Acme LabsNew York'); // formatted this way due to css before adding space and comma
+  });
+
+  test('homepage has correct doi', async () => {
+    await contentHeader.assertDOI('10.7554/eLife.123.1');
   });
 });
