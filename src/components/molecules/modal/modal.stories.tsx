@@ -2,12 +2,12 @@ import {
   useState,
 } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Clipboard } from '../clipboard/clipboard';
+import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Modal } from './modal';
-import { Socials } from '../socials/socials';
+import { Socials } from '../../atoms/socials/socials';
 
 export default {
-  title: 'Atoms/Modal',
+  title: 'Molecules/Modal',
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
