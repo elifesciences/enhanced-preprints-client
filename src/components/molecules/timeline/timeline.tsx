@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import styles from './timeline.module.scss';
+import './timeline.scss';
 
 export type TimelineEvent = {
   name: string,
@@ -17,15 +17,15 @@ type TimelineProps = {
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 
 export const Timeline = ({ events }: TimelineProps): JSX.Element => (
-  <div className={styles['review-timeline']}>
-    <dl className={styles['review-timeline__list']}>
+  <div className="review-timeline">
+    <dl className="review-timeline__list">
       {
         events.map((entry, index) => (
           <Fragment key={index}>
-            <dt className={styles['review-timeline__event']}>{entry.name}</dt>
-            <dd className={styles['review-timeline__date']}>
+            <dt className="review-timeline__event">{entry.name}</dt>
+            <dd className="review-timeline__date">
               {formatDate(entry.date)}
-              { entry.link && <a className={styles['review-timeline__link']} href={entry.link.url}>{entry.link.text}</a>}
+              { entry.link && <a className="review-timeline__link" href={entry.link.url}>{entry.link.text}</a>}
             </dd>
           </Fragment>
         ))

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
-import styles from './article-page.module.scss';
+import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 
@@ -22,7 +22,7 @@ export type ArticlePageProps = {
   metaData: MetaData,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
-  activeTab: 'fulltext' | 'figures' | 'reviews',
+  activeTab: string,
   tabs?: Tab[],
 };
 
@@ -44,7 +44,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   ];
   return (
     <>
-      <div className={styles['primary-section-header']}>
+      <div className="primary-section-header">
         <ContentHeader
           doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
           msas={props.metaData.msas}
@@ -52,15 +52,15 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
           title={props.metaData.title}
         />
       </div>
-      <aside className={styles['side-section']}>
+      <aside className="side-section">
         <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl}/>
         <Timeline events={props.status.timeline}/>
       </aside>
-      <main className={styles['primary-section']}>
-      <nav className={styles['tabbed-navigation']} aria-label="Main tabbed navigation">
-        <ul className={styles['tabbed-navigation__tabs']}>
+      <main className="primary-section">
+      <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
+        <ul className="tabbed-navigation__tabs">
           {tabs.map((tab, index) => (
-            <li key={index} className={`${styles['tabbed-navigation__tab-label']}${activeTab === tab.id ? ` ${styles['tabbed-navigation__tab-label--active']}` : ''}`} onClick={() => setActiveTab(tab.id)}>
+            <li key={index} className={`tabbed-navigation__tab-label${activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`} onClick={() => setActiveTab(tab.id)}>
               {tab.linkElement}
             </li>
           ))}

@@ -31,7 +31,9 @@
 
 @mixin expansion-text() {
   color: settings.$color-primary;
+  cursor: pointer;
   font-family: settings.$font-family-primary;
+  font-weight: 400;
 
   &::before {
     color: settings.$color-text;

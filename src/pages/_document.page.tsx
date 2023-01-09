@@ -18,6 +18,7 @@ export default function Document() {
           }
           body {
             background-color: #fff;
+            margin: 0;
           }
           [id] {
             scroll-margin: 74px;

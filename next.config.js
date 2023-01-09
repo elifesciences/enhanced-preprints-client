@@ -1,3 +1,5 @@
+var path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -30,6 +32,17 @@ const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX ?? '',
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
+
+    // This removes the modular CSS requirement, allowing us to use regular SCSS imports in components
+    config.module.rules.forEach((rule) => {
+      const { oneOf } = rule;
+      if (oneOf) {
+        oneOf.forEach((one) => {
+          if (!`${one.issuer?.and}`.includes('_app')) return;
+          one.issuer.and = [path.resolve(__dirname)];
+        });
+      }
+    });
 
     return config;
   },
