@@ -12,8 +12,14 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {
   text: 'Back to Homepage',
-  iconName: 'default',
   url: '#',
+};
+
+export const ActionButton = Template.bind({});
+ActionButton.args = {
+  text: 'Action Button',
+  url: '#',
+  variant: 'action',
 };
 
 export const DownloadButton = Template.bind({});
@@ -21,6 +27,7 @@ DownloadButton.args = {
   text: 'Download',
   iconName: 'download',
   url: '#',
+  variant: 'action',
 };
 
 export const ShareButton = Template.bind({});
@@ -28,6 +35,7 @@ ShareButton.args = {
   text: 'Share',
   iconName: 'share',
   url: '#',
+  variant: 'action',
 };
 
 export const CiteButton = Template.bind({});
@@ -35,6 +43,7 @@ CiteButton.args = {
   text: 'Citation',
   iconName: 'citation',
   url: '#',
+  variant: 'action',
 };
 
 export const FollowButton = Template.bind({});
@@ -42,4 +51,5 @@ FollowButton.args = {
   text: 'Follow',
   iconName: 'follow',
   url: '#',
+  variant: 'action',
 };
