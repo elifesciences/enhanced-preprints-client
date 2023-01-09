@@ -30,16 +30,17 @@
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(180, "top");
-    @include mixins.margin(auto, "right");
-    @include mixins.margin(24, "top");
+    @include mixins.margin(24, "bottom");
 
+    margin-left: auto;
+    margin-right: auto;
     max-width: 730px;
   }
 
   h6 {
     @include mixins.margin(0);
     @include mixins.padding(0 0 12);
-    @include typography.font-size-and-vertical-height(16,24);
+    @include typography.font-size-and-vertical-height(16, 24);
 
     grid-column: 1/6;
     grid-row: 1;
