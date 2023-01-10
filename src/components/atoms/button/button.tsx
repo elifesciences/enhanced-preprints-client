@@ -1,4 +1,5 @@
 import './button.scss';
+import { classVariant } from '../../../utils/class-variant';
 
 type ButtonProps = {
   iconName?: string,
@@ -10,7 +11,7 @@ type ButtonProps = {
 export const Button = ({
   text, iconName, url, variant,
 }: ButtonProps): JSX.Element => (
-  <a className={`button${iconName !== undefined ? ` button--icon button--icon-${iconName}` : ''}${variant !== undefined ? ` button--${variant}` : ''}`} href={url}>
+  <a className={`button${classVariant(iconName, ' button--icon button--icon', '-')}${classVariant(variant, ' button')}`} href={url}>
     {text}
   </a>
 );
