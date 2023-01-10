@@ -56,13 +56,13 @@
 }
 
 .button--icon-share {
-  background: settings.$color-button url("../../../images/share/share.svg") no-repeat 11px 8px;
+  background-image: url("../../../images/share/share.svg");
 }
 
 .button--icon-citation {
-  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+  background-image: url("../../../images/actions/download.svg");
 }
 
 .button--icon-follow {
-  background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
+  background-image: url("../../../images/actions/follow.svg");
 }
