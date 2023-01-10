@@ -17,7 +17,7 @@ DefaultButton.args = {
 
 export const ActionButton = Template.bind({});
 ActionButton.args = {
-  text: 'Action Button',
+  text: 'Action button',
   url: '#',
   variant: 'action',
 };
@@ -40,7 +40,7 @@ ShareButton.args = {
 
 export const CiteButton = Template.bind({});
 CiteButton.args = {
-  text: 'Citation',
+  text: 'Cite',
   iconName: 'citation',
   url: '#',
   variant: 'action',

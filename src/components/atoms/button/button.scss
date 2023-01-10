@@ -12,6 +12,7 @@
   cursor: pointer;
   display: inline-block;
   font-weight: normal;
+  letter-spacing: 0.2px;
   max-height: 40px;
   text-decoration: none;
   text-transform: uppercase;
@@ -28,6 +29,7 @@
   background-color: settings.$color-button;
   color: settings.$color-text;
   font-weight: 600;
+  text-transform: none;
 
   &:hover {
     background-color: #d7d9de;
