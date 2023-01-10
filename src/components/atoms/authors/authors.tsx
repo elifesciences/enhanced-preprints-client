@@ -20,7 +20,7 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
       <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
         { authors.map(({ givenNames, familyNames }, index) => (
           <li className="authors-list__item" key={index}>
-            {givenNames.join(' ')} {familyNames.join(' ')}
+            {givenNames?.join(' ')} {familyNames?.join(' ')}
           </li>
         ))}
       </ol>
