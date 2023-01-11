@@ -3,8 +3,8 @@ import {
 } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Modal } from './modal';
-import { Socials } from '../socials/socials';
-import { Clipboard } from '../clipboard/clipboard';
+import { Socials } from '../../atoms/socials/socials';
+import { Clipboard } from '../../atoms/clipboard/clipboard';
 
 export default {
   title: 'Molecules/Modal',
