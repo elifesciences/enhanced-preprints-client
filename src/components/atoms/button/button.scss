@@ -36,33 +36,22 @@
   }
 }
 
-.button--icon {
-  @include mixins.padding(41, "left");
-
-  background-position-x: 11px;
-  background-position-y: 15px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-
-  &.button--action {
-    @include mixins.padding(20, "right");
-
-    background-position-y: 8px;
-  }
-}
-
 .button--icon-download {
+  @include mixins.button-icon();
   background-image: url("../../../images/actions/download.svg");
 }
 
 .button--icon-share {
+  @include mixins.button-icon();
   background-image: url("../../../images/share/share.svg");
 }
 
 .button--icon-citation {
+  @include mixins.button-icon();
   background-image: url("../../../images/actions/cite.svg");
 }
 
 .button--icon-follow {
+  @include mixins.button-icon();
   background-image: url("../../../images/actions/follow.svg");
 }
