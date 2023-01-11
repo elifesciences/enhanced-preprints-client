@@ -11,6 +11,7 @@
   grid-column-gap: settings.$grid-gutter;
   grid-template-columns: repeat(12, 1fr);
 
+
   & > :last-child {
     margin-bottom: 0 // Margins don't collapse on <select>s
   }
@@ -35,11 +36,6 @@
   grid-row: 1;
   width: 100%;
 
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    grid-column: 1/9;
-    grid-row: 1;
-  }
-
   &:focus {
     border: 1px solid black;
     outline: 0;
@@ -48,4 +44,12 @@
 
 .text-field--textarea {
   resize: vertical;
+}
+
+.text-field--clipboard {
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 1/9;
+    grid-row: 1;
+  }
 }
