@@ -5,6 +5,25 @@ import { Button } from './button';
 export default {
   title: 'Atoms/Button',
   component: Button,
+  argTypes: {
+    variant: {
+      options: [
+        '',
+        'action',
+      ],
+      control: { type: 'radio', labels: { '': 'None', action: 'Action' } },
+    },
+    iconName: {
+      options: [
+        '',
+        'download',
+        'share',
+        'citation',
+        'follow',
+      ],
+      control: { type: 'select', labels: { '': 'None' } },
+    },
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;

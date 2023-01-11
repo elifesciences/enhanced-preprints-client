@@ -1,24 +1,24 @@
-import { classVariant } from './class-variant';
+import { classNameVariant } from './class-name-variant';
 
 describe('Class Variant', () => {
   it('returns string prefixed', () => {
-    const result = classVariant('bar', 'foo');
+    const result = classNameVariant('bar', 'foo');
 
     expect(result).toStrictEqual('foo--bar');
   });
 
   it('returns empty string if text is undefined', () => {
-    const result = classVariant(undefined, 'foo');
+    const result = classNameVariant(undefined, 'foo');
 
     expect(result).toStrictEqual('');
   });
 
   it('can override the default separator', () => {
-    const result = classVariant('bar', 'other foo', '-');
+    const result = classNameVariant('bar', 'other foo', '-');
 
     expect(result).toStrictEqual('other foo-bar');
 
-    const result2 = classVariant('bar', ' other foo---', '');
+    const result2 = classNameVariant('bar', ' other foo---', '');
 
     expect(result2).toStrictEqual(' other foo---bar');
   });
