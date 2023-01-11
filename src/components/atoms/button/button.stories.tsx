@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './button';
+import { Button, buttonIconNames, buttonVariants } from './button';
 
 export default {
   title: 'Atoms/Button',
@@ -9,17 +9,14 @@ export default {
     variant: {
       options: [
         '',
-        'action',
+        ...buttonVariants,
       ],
-      control: { type: 'radio', labels: { '': 'None', action: 'Action' } },
+      control: { type: 'radio', labels: { '': 'None' } },
     },
     iconName: {
       options: [
         '',
-        'download',
-        'share',
-        'citation',
-        'follow',
+        ...buttonIconNames,
       ],
       control: { type: 'select', labels: { '': 'None' } },
     },
