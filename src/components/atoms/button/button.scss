@@ -40,12 +40,16 @@
   @include mixins.padding(13 18);
 
   border: none;
-  grid-column: 8/13;
-  grid-row: 1;
-  justify-self: right;
+  grid-column: 1/13;
   max-height: 48px;
-  max-width: 212px;
-  min-width: 212px;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 8/13;
+    grid-row: 1;
+    justify-self: right;
+    max-width: 212px;
+    min-width: 212px;
+  }
 }
 
 @mixin button-icon($background_image) {

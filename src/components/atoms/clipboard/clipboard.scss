@@ -7,11 +7,9 @@
 }
 
 .form-item {
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    display: grid;
-    grid-column-gap: settings.$grid-gutter;
-    grid-template-columns: repeat(12, 1fr);
-  }
+  display: grid;
+  grid-column-gap: settings.$grid-gutter;
+  grid-template-columns: repeat(12, 1fr);
 
   & > :last-child {
     margin-bottom: 0 // Margins don't collapse on <select>s
@@ -33,6 +31,8 @@
   box-sizing: border-box;
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
+  grid-column: 1/13;
+  grid-row: 1;
   width: 100%;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
