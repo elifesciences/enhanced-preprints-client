@@ -36,9 +36,10 @@
   }
 }
 
-@mixin button-icon() {
+@mixin button-icon($background_image) {
   @include mixins.padding(41, "left");
 
+  background-image: url($background_image);
   background-position-x: 11px;
   background-position-y: 15px;
   background-repeat: no-repeat;
@@ -52,25 +53,17 @@
 }
 
 .button--icon-download {
-  @include button-icon();
-
-  background-image: url("../../../images/actions/download.svg");
+  @include button-icon("../../../images/actions/download.svg");
 }
 
 .button--icon-share {
-  @include button-icon();
-
-  background-image: url("../../../images/share/share.svg");
+  @include button-icon("../../../images/share/share.svg");
 }
 
 .button--icon-citation {
-  @include button-icon();
-
-  background-image: url("../../../images/actions/cite.svg");
+  @include button-icon("../../../images/actions/cite.svg");
 }
 
 .button--icon-follow {
-  @include button-icon();
-
-  background-image: url("../../../images/actions/follow.svg");
+  @include button-icon("../../../images/actions/follow.svg");
 }
