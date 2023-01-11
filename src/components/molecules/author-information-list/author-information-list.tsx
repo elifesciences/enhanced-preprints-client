@@ -6,7 +6,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
 
   return (
     <li className="author-list__author">
-      <h4 className="author-list__author_name">{author.givenNames.join(' ')} {author.familyNames.join(' ')}</h4>
+      <h4 className="author-list__author_name">{author.givenNames?.join(' ')} {author.familyNames?.join(' ')}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
