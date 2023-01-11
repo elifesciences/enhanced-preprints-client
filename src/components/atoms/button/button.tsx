@@ -14,7 +14,7 @@ type ButtonProps = {
 export const Button = ({
   text, iconName, url, variant,
 }: ButtonProps): JSX.Element => (
-  <a className={`button${classNameVariant(iconName, ' button--icon button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url}>
+  <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url}>
     {text}
   </a>
 );

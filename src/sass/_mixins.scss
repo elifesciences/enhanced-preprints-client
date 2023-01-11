@@ -107,18 +107,3 @@
   position: static;
   width: auto;
 }
-
-@mixin button-icon() {
-  @include padding(41, "left");
-
-  background-position-x: 11px;
-  background-position-y: 15px;
-  background-repeat: no-repeat;
-  vertical-align: middle;
-
-  &.button--action {
-    @include padding(20, "right");
-
-    background-position-y: 8px;
-  }
-}
