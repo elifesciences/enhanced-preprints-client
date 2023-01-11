@@ -36,6 +36,22 @@
   }
 }
 
+.button--clipboard {
+  @include mixins.padding(13 18);
+
+  border: none;
+  grid-column: 1/13;
+  max-height: 48px;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 8/13;
+    grid-row: 1;
+    justify-self: right;
+    max-width: 212px;
+    min-width: 212px;
+  }
+}
+
 @mixin button-icon($background_image) {
   @include mixins.padding(41, "left");
 

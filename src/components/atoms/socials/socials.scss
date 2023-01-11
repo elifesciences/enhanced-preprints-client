@@ -1,0 +1,50 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.socials-container {
+  width: 100%;
+}
+
+.socials-sharers {
+  @include mixins.padding(0, "left");
+
+  li {
+    @include mixins.margin(0, "left");
+    @include mixins.margin(6, "right");
+
+    display: inline-block;
+  }
+}
+
+.email {
+  background: url("../../../images/share/email.svg") no-repeat 0 0;
+}
+
+.twitter {
+  background: url("../../../images/share/tweet.svg") no-repeat 0 0;
+}
+
+.facebook {
+  background: url("../../../images/share/facebook.svg") no-repeat 0 0;
+}
+
+.linkedin {
+  background: url("../../../images/share/linkedin.svg") no-repeat 0 0;
+}
+
+.reddit {
+  background: url("../../../images/share/reddit.svg") no-repeat 0 0;
+}
+
+.socials-sharer {
+  @include mixins.margin(0 8);
+  @include mixins.padding(2 0);
+
+  display: inline-block;
+  height: 24px;
+  text-decoration: none;
+  text-indent: -10000px;
+  transition: 25ms ease-out;
+  width: 24px;
+}

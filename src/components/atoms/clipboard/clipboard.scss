@@ -1,0 +1,53 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.clipboard-container {
+  width: 100%;
+}
+
+.form-item {
+  display: grid;
+  grid-column-gap: settings.$grid-gutter;
+  grid-template-columns: repeat(12, 1fr);
+
+  & > :last-child {
+    margin-bottom: 0 // Margins don't collapse on <select>s
+  }
+}
+
+.text-field,
+.text-field[type="text"],
+.text-field[type="email"] {
+  appearance: none;
+}
+
+.text-field {
+  @include typography.font-size-and-vertical-height(16);
+  @include mixins.padding(11 12);
+  @include mixins.margin(36, "bottom");
+
+  border: 1px solid settings.$divider;
+  box-sizing: border-box;
+  color: settings.$color-text;
+  font-family: settings.$font-family-primary;
+  grid-column: 1/13;
+  grid-row: 1;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid black;
+    outline: 0;
+  }
+}
+
+.text-field--textarea {
+  resize: vertical;
+}
+
+.text-field--clipboard {
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 1/9;
+    grid-row: 1;
+  }
+}
