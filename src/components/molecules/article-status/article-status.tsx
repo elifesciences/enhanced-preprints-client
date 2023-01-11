@@ -16,7 +16,7 @@ export const ArticleStatus = ({ articleType = defaultArticleType, articleStatus,
     <a href="https://elifesciences.org/peer-review-process" className="article-status__link">About eLife&apos;s process</a>
     <ul className="article-actions">
       <li className="article-actions__list-item">
-        <Button text="Download" iconName="download" url={pdfUrl}/>
+        <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
       </li>
     </ul>
   </div>

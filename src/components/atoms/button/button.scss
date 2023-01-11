@@ -3,31 +3,18 @@
 @use "../../../sass/typography";
 
 .button {
-  @include mixins.padding(8 20 8 12);
+  @include mixins.padding(15 20 14);
   @include typography.body-small();
 
-  background-color: settings.$color-button;
+  background-color: settings.$color-primary;
   border-radius: 4px;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-weight: 600;
+  font-weight: normal;
+  letter-spacing: 0.2px;
   max-height: 40px;
   text-decoration: none;
-}
-
-.button-icon {
-  @include mixins.margin(6, "right");
-
-  color: settings.$link-decoration;
-  vertical-align: middle;
-}
-
-.default {
-  @include mixins.padding(15 20 14);
-
-  background-color: settings.$color-primary;
-  color: #fff;
-  font-weight: normal;
   text-transform: uppercase;
 
   &:hover {
@@ -35,26 +22,48 @@
   }
 }
 
-.download {
-  @include mixins.padding(41, "left");
+.button--action {
+  @include mixins.margin(6, "right");
+  @include mixins.padding(8 12);
 
-  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+  background-color: settings.$color-button;
+  color: settings.$color-text;
+  font-weight: 600;
+  text-transform: none;
+
+  &:hover {
+    background-color: #d7d9de;
+  }
 }
 
-.share {
+@mixin button-icon($background_image) {
   @include mixins.padding(41, "left");
 
-  background: settings.$color-button url("../../../images/share/share.svg") no-repeat 11px 8px;
+  background-image: url($background_image);
+  background-position-x: 11px;
+  background-position-y: 15px;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+
+  &.button--action {
+    @include mixins.padding(20, "right");
+
+    background-position-y: 8px;
+  }
 }
 
-.citation {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+.button--icon-download {
+  @include button-icon("../../../images/actions/download.svg");
 }
 
-.follow {
-  @include mixins.padding(41, "left");
+.button--icon-share {
+  @include button-icon("../../../images/share/share.svg");
+}
 
-  background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
+.button--icon-citation {
+  @include button-icon("../../../images/actions/cite.svg");
+}
+
+.button--icon-follow {
+  @include button-icon("../../../images/actions/follow.svg");
 }

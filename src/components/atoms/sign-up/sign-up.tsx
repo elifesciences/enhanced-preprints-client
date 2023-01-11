@@ -8,7 +8,7 @@ export const SignUp = (): JSX.Element => (
         <h2 className="email-cta__header_text">Be the first to read new articles from eLife</h2>
       </header>
 
-      <Button iconName={'default'} text={'Sign up for email alerts'} url={'/content-alerts'} />
+      <Button text={'Sign up for email alerts'} url={'/content-alerts'} />
 
       <div className="email-cta__privacy">
         <a className="email-cta__privacy_link" href="/privacy">Privacy notice</a>

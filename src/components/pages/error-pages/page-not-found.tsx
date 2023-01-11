@@ -10,7 +10,7 @@ export const PageNotFound = (): JSX.Element => (
         <Image src={MissingImage} width="64" height="157" alt="Oops" className="error__icon" />
         <h1 className="error__title">Oops!</h1>
         <p>The page you were looking for is not found.</p>
-        <Button iconName={'default'} text={'Back to homepage'} url={'/'} />
+        <Button text={'Back to homepage'} url={'/'} />
       </div>
     </div>
   </main>
