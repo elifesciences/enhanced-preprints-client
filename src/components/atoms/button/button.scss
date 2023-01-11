@@ -42,10 +42,10 @@
   border: none;
   grid-column: 8/13;
   grid-row: 1;
+  justify-self: right;
   max-height: 48px;
   max-width: 212px;
   min-width: 212px;
-  justify-self: right;
 }
 
 @mixin button-icon($background_image) {
