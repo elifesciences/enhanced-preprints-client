@@ -3,96 +3,67 @@
 @use "../../../sass/typography";
 
 .button {
-  @include mixins.padding(8 20 8 12);
+  @include mixins.padding(15 20 14);
   @include typography.body-small();
 
-  background-color: settings.$color-button;
+  background-color: settings.$color-primary;
   border-radius: 4px;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-weight: 600;
+  font-weight: normal;
+  letter-spacing: 0.2px;
   max-height: 40px;
   text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: settings.$color-primary-dark;
+  }
 }
 
-.button-icon {
+.button--action {
   @include mixins.margin(6, "right");
+  @include mixins.padding(8 12);
 
-  color: settings.$link-decoration;
+  background-color: settings.$color-button;
+  color: settings.$color-text;
+  font-weight: 600;
+  text-transform: none;
+
+  &:hover {
+    background-color: #d7d9de;
+  }
+}
+
+@mixin button-icon($background_image) {
+  @include mixins.padding(41, "left");
+
+  background-image: url($background_image);
+  background-position-x: 11px;
+  background-position-y: 15px;
+  background-repeat: no-repeat;
   vertical-align: middle;
-}
 
-.button-clipboard {
-  @include typography.font-size-and-vertical-height(14, 14);
-  @include mixins.padding(17 40 16);
+  &.button--action {
+    @include mixins.padding(20, "right");
 
-  border: none;
-  color: #fff;
-  font-family: settings.$font-family-primary;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.button--default {
-  @include mixins.padding(15 18);
-
-  background-color: settings.$color-primary;
-  color: #fff;
-  max-height: 48px;
-  width: 100%;
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    max-width: 212px;
-    min-width: 212px;
-  }
-
-  &:hover {
-    background-color: settings.$color-primary-dark;
-    color: #fff;
-  }
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(48, "left");
-
-    grid-column: 8/13;
-    grid-row: 1;
-    justify-self: right;
+    background-position-y: 8px;
   }
 }
 
-.default {
-  @include mixins.padding(15 20 14);
-
-  background-color: settings.$color-primary;
-  color: #fff;
-  font-weight: normal;
-  text-transform: uppercase;
-
-  &:hover {
-    background-color: settings.$color-primary-dark;
-  }
+.button--icon-download {
+  @include button-icon("../../../images/actions/download.svg");
 }
 
-.download {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
+.button--icon-share {
+  @include button-icon("../../../images/share/share.svg");
 }
 
-.share {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-button url("../../../images/share/share.svg") no-repeat 11px 8px;
+.button--icon-citation {
+  @include button-icon("../../../images/actions/cite.svg");
 }
 
-.citation {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-button url("../../../images/actions/download.svg") no-repeat 11px 8px;
-}
-
-.follow {
-  @include mixins.padding(41, "left");
-
-  background: settings.$color-button url("../../../images/actions/follow.svg") no-repeat 11px 8px;
+.button--icon-follow {
+  @include button-icon("../../../images/actions/follow.svg");
 }
