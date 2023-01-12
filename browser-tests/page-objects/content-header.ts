@@ -37,8 +37,9 @@ export class ContentHeader {
   }
 
   async assertVisibleAuthorCount(count: number): Promise<void> {
-    const visibleAuthors = await this.authors.locator('li:visible').count();
-    expect(visibleAuthors).toStrictEqual(count);
+    const authors = await this.authors.locator('li').all();
+    const visibleAuthors = authors.filter(await (async (author) => author.isVisible())); // isVisible is detecting invisible authors.
+    expect(visibleAuthors.length).toStrictEqual(count);
   }
 
   async assertInstitutionExists(institution: string): Promise<void> {
