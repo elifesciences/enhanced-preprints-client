@@ -49,6 +49,14 @@ export class ContentHeader {
     expect(visibleAuthorsCount).toStrictEqual(count);
   }
 
+  async assertAuthorShowMore(more: number, smallViewport: boolean = false): Promise<void> {
+    const expansion = this.authors.locator('.authors-list__expansion');
+    await expect(expansion).toBeVisible();
+    await expect(expansion).toContainText('show');
+    await expect(expansion).toContainText('more');
+    await expect(expansion.locator(`.authors-list__expansion-count-${smallViewport ? '3' : '10'}`)).toHaveText(more.toString());
+  }
+
   async assertInstitutionExists(institution: string): Promise<void> {
     const institutions = await this.institutions.locator('li').allInnerTexts();
     expect(institutions.map((item) => item.trim())).toContain(institution);

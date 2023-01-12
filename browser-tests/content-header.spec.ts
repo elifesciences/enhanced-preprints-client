@@ -4,6 +4,7 @@ import { ContentHeader } from './page-objects/content-header';
 test.describe('content header', () => {
   let contentHeader: ContentHeader;
   test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 1000, height: 1000, });
     await page.goto('http://localhost:3001/reviewed-preprints/123');
     contentHeader = new ContentHeader(page);
   });
@@ -32,10 +33,17 @@ test.describe('content header', () => {
   });
 
   test('content header displays correct number of authors', async ({ page }) => {
-    await page.setViewportSize({ width: 1000, height: 1000, });
     await contentHeader.assertVisibleAuthorCount(10);
     
     await page.setViewportSize({ width: 767, height: 1000, });
     await contentHeader.assertVisibleAuthorCount(3);
+  });
+
+  test('content header display show more for author list', async ({ page }) => {
+    await contentHeader.assertVisibleAuthorCount(10);
+    await contentHeader.assertAuthorShowMore(1);
+    
+    await page.setViewportSize({ width: 767, height: 1000, });
+    await contentHeader.assertAuthorShowMore(8, true);
   });
 });
