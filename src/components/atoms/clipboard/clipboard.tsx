@@ -20,7 +20,7 @@ export const Clipboard = ({ text }: ClipboardProps): JSX.Element => {
           <input type="input" className="text-field text-field--clipboard" value={text} />
 
           {(showButton ? <button className={`button button--clipboard${copied ? ' copied' : ''}`}
-            onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
+            onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'Copy to clipboard'}</button> : <></>)}
       </div>
     </div>
   );

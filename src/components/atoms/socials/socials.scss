@@ -13,13 +13,19 @@
   margin: 24px auto;
 
   li {
-    @include mixins.margin( 8);
+    @include mixins.margin(6);
 
     display: inline-block;
+
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    margin: 0 auto;
+    margin: 0;
   }
 }
 
@@ -53,4 +59,10 @@
   text-indent: -10000px;
   transition: 25ms ease-out;
   width: 24px;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
