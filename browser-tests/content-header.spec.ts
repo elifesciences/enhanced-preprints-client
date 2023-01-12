@@ -32,6 +32,6 @@ test.describe('content header', () => {
   });
 
   test('content header displays correct number of authors', async () => {
-    await contentHeader.assertVisibleAuthorCount(2);
+    await contentHeader.assertVisibleAuthorCount(10);
   });
 });

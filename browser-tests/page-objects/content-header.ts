@@ -38,8 +38,15 @@ export class ContentHeader {
 
   async assertVisibleAuthorCount(count: number): Promise<void> {
     const authors = await this.authors.locator('li').all();
-    const visibleAuthors = authors.filter(await (async (author) => author.isVisible())); // isVisible is detecting invisible authors.
-    expect(visibleAuthors.length).toStrictEqual(count);
+    const visibleAuthorsCount = (await Promise.all(
+      authors.map(
+        async (author) => author.evaluate((element) => window.getComputedStyle(element).display !== 'none'),
+      ),
+    ))
+      .filter((value) => value)
+      .length;
+
+    expect(visibleAuthorsCount).toStrictEqual(count);
   }
 
   async assertInstitutionExists(institution: string): Promise<void> {
