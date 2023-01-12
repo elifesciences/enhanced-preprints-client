@@ -39,11 +39,22 @@ test.describe('content header', () => {
     await contentHeader.assertVisibleAuthorCount(3);
   });
 
-  test('content header display show more for author list', async ({ page }) => {
+  test('content header displays show more for author list', async ({ page }) => {
     await contentHeader.assertVisibleAuthorCount(10);
     await contentHeader.assertAuthorShowMore(1);
     
     await page.setViewportSize({ width: 767, height: 1000, });
     await contentHeader.assertAuthorShowMore(8, true);
+  });
+
+  test('content header displays all authors when show more is clicked', async () => {
+    await contentHeader.assertVisibleAuthorCount(10);
+    await contentHeader.assertVisibleAuthorCountAfterToggle(11);
+  });
+
+  test('content header displays fewer authors when show less is clicked', async () => {
+    await contentHeader.assertVisibleAuthorCountAfterToggle(11);
+    await contentHeader.assertAuthorShowLess();
+    await contentHeader.assertVisibleAuthorCountAfterToggle(10);
   });
 });
