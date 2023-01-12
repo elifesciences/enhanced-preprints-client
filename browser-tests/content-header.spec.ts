@@ -31,7 +31,11 @@ test.describe('content header', () => {
     await contentHeader.assertDOI('10.7554/eLife.123.1');
   });
 
-  test('content header displays correct number of authors', async () => {
+  test('content header displays correct number of authors', async ({ page }) => {
+    await page.setViewportSize({ width: 1000, height: 1000, });
     await contentHeader.assertVisibleAuthorCount(10);
+    
+    await page.setViewportSize({ width: 767, height: 1000, });
+    await contentHeader.assertVisibleAuthorCount(3);
   });
 });
