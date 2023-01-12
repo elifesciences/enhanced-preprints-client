@@ -11,7 +11,7 @@ export default {
         '',
         ...buttonVariants,
       ],
-      control: { type: 'radio', labels: { '': 'None' } },
+      control: { type: 'select', labels: { '': 'None' } },
     },
     iconName: {
       options: [
