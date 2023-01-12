@@ -14,7 +14,7 @@ export const Socials = ({
   <div className="socials-container">
     <ul className="socials-sharers">
       <li>
-        <a className="socials-sharer email" href={ emailUrl } target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
+        <a className="socials-sharer email" href={emailUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
           Email
         </a>
       </li>
