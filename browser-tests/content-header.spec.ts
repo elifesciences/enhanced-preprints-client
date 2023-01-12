@@ -30,4 +30,8 @@ test.describe('content header', () => {
   test('content header has correct doi', async () => {
     await contentHeader.assertDOI('10.7554/eLife.123.1');
   });
+
+  test('content header displays correct number of authors', async () => {
+    await contentHeader.assertVisibleAuthorCount(2);
+  });
 });
