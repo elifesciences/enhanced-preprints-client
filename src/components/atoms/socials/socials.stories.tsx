@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Socials } from './socials';
 
 export default {
-  title: 'Atoms/ Socials',
+  title: 'Atoms/Socials',
   component: Socials,
 } as ComponentMeta<typeof Socials>;
 
