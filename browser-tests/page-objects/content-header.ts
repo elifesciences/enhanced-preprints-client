@@ -37,16 +37,9 @@ export class ContentHeader {
   }
 
   async assertVisibleAuthorCount(count: number): Promise<void> {
-    const authors = await this.authors.locator('li').all();
-    const visibleAuthorsCount = (await Promise.all(
-      authors.map(
-        async (author) => author.evaluate((element) => window.getComputedStyle(element).display !== 'none'),
-      ),
-    ))
-      .filter((value) => value)
-      .length;
+    const authors = await this.authors.locator('li:visible');
 
-    expect(visibleAuthorsCount).toStrictEqual(count);
+    await expect(authors).toHaveCount(count);
   }
 
   async assertAuthorShowMore(more: number, smallViewport: boolean = false): Promise<void> {
