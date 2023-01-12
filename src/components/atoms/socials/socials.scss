@@ -3,15 +3,17 @@
 @use "../../../sass/mixins";
 
 .socials-container {
+  display: flex;
   width: 100%;
 }
 
 .socials-sharers {
   @include mixins.padding(0, "left");
 
+  margin: 24px auto;
+
   li {
-    @include mixins.margin(0, "left");
-    @include mixins.margin(6, "right");
+    @include mixins.margin( 8);
 
     display: inline-block;
   }
