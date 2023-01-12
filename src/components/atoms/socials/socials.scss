@@ -17,6 +17,10 @@
 
     display: inline-block;
   }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    margin: 0 auto;
+  }
 }
 
 .email {
