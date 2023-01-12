@@ -36,6 +36,11 @@ export class ContentHeader {
     expect(authors.map((item) => item.trim())).toContain(author);
   }
 
+  async assertVisibleAuthorCount(count: number): Promise<void> {
+    const visibleAuthors = await this.authors.locator('li:visible').count();
+    expect(visibleAuthors).toStrictEqual(count);
+  }
+
   async assertInstitutionExists(institution: string): Promise<void> {
     const institutions = await this.institutions.locator('li').allInnerTexts();
     expect(institutions.map((item) => item.trim())).toContain(institution);
