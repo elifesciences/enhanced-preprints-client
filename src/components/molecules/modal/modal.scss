@@ -21,8 +21,7 @@
   box-shadow: 0 0 20px rgb(0 0 0 / 22%);
   display: grid;
   font-family: settings.$font-family-primary;
-  margin: 0;
-  padding: 36px;
+  grid-template-columns: repeat(4, 1fr);
 
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(24);

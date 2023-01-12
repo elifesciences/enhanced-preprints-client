@@ -2,7 +2,7 @@ import './button.scss';
 import { classNameVariant } from '../../../utils/class-name-variant';
 
 export const buttonIconNames: Array<string> = ['download', 'share', 'citation', 'follow'];
-export const buttonVariants: Array<string> = ['action'];
+export const buttonVariants: Array<string> = ['action', 'clipboard'];
 
 type ButtonProps = {
   iconName?: typeof buttonIconNames[number],
