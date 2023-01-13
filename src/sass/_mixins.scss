@@ -107,3 +107,7 @@
   position: static;
   width: auto;
 }
+
+@mixin z-index($value) {
+  z-index: ($value * 10);
+}
