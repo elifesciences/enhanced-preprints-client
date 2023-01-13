@@ -29,7 +29,7 @@
       "Sylvester"
     ], "familyNames": [
       "J Pussycat"
-    ], "affiliations": [] },
+    ], "affiliations": [{ "name": "Acme Investments", "address": { "addressCountry": "New York" } }] },
     { "givenNames": [
       "Elmer"
     ], "familyNames": [
@@ -49,7 +49,7 @@
       "Pepe"
     ], "familyNames": [
       "Le Pew"
-    ], "affiliations": [] },
+    ], "affiliations": [{ "name": "French Foreign Legion", "address": { "addressCountry": "Paris" } }] },
     { "givenNames": [
       "Porky"
     ], "familyNames": [
@@ -64,7 +64,7 @@
       "Bugs"
     ], "familyNames": [
       "Bunny"
-    ], "affiliations": [] }
+    ], "affiliations": [{ "name": "Harlem Globetrotters", "address": { "addressCountry": "New York" } }] }
   ],
   "headings": [{ "id": "s1",
     "text": "Introduction" }],

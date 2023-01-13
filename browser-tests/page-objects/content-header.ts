@@ -68,6 +68,26 @@ export class ContentHeader {
     expect(institutions.map((item) => item.trim())).toContain(institution);
   }
 
+  async assertVisibleInstitutionsCount(count: number): Promise<void> {
+    const institutions = this.institutions.locator('li');
+
+    await expect(institutions).toHaveCount(count);
+  }
+
+  async assertInstitutionsHidden(): Promise<void> {
+    const institutions = this.institutions.locator('li:visible');
+    await expect(institutions).toHaveCount(0);
+
+    const expansion = this.institutions.locator('.institutions-list__expansion');
+    await expect(expansion).toBeHidden();
+  }
+
+  async assertInstitutionsShowMore(more: number): Promise<void> {
+    const expansion = this.institutions.locator('.institutions-list__expansion');
+    await expect(expansion).toBeVisible();
+    await expect(expansion).toHaveText(`show ${more} more`);
+  }
+
   async assertDOI(doi: string): Promise<void> {
     await expect(this.doi).toContainText(`https://doi.org/${doi}`);
   }
