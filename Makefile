@@ -4,7 +4,7 @@ GITSHORTHASH:=$(shell git log -1 --pretty=format:"%H" | head -c 8)
 DATETIME:=$(shell date -u '+%Y%m%d.%H%M')
 GITBRANCH?=$(shell git branch --show-current)
 
-.PHONY: start-dev start-prod build-storybook-and-push build-prod-and-push node_modules browser-tests
+.PHONY: start-dev start-prod build-storybook-and-push build-prod-and-push node_modules browser-test
 
 start-dev: node_modules
 	docker-compose up
@@ -15,7 +15,7 @@ start-prod: node_modules
 node_modules:
 	yarn
 
-browser-tests: node_modules
+browser-test: node_modules
 	docker-compose -f docker-compose.browsertest.yaml up --wait
 	yarn test:browser
 
