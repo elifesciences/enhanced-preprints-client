@@ -23,10 +23,11 @@
 }
 
 .tabbed-navigation {
+  @include mixins.z-index(1);
+
   display: block;
   position: sticky;
   top: 0;
-  z-index: 5;
 }
 
 .tabbed-navigation__tabs {
