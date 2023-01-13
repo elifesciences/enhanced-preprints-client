@@ -9,6 +9,8 @@ export class ContentHeader {
 
   readonly authors: Locator;
 
+  readonly visibleAuthors: Locator;
+
   readonly authorsExpansion: Locator;
 
   readonly institutions: Locator;
@@ -20,6 +22,7 @@ export class ContentHeader {
     this.msas = this.page.locator('.article-flag-list');
     this.title = this.page.locator('.title');
     this.authors = this.page.locator('.authors');
+    this.visibleAuthors = this.page.locator('.authors li:visible');
     this.authorsExpansion = this.page.locator('.authors-list__expansion');
     this.institutions = this.page.locator('.institutions');
     this.doi = this.page.locator('.descriptors__identifier a'); // may need to change when we have more identifiers
@@ -44,9 +47,7 @@ export class ContentHeader {
   }
 
   async assertVisibleAuthorCount(count: number): Promise<void> {
-    const authors = this.authors.locator('li:visible');
-
-    await expect(authors).toHaveCount(count);
+    await expect(this.visibleAuthors).toHaveCount(count);
   }
 
   async assertAuthorShowMore(more: number, smallViewport: boolean = false): Promise<void> {
