@@ -9,7 +9,15 @@ export class ContentHeader {
 
   readonly authors: Locator;
 
+  readonly visibleAuthors: Locator;
+
+  readonly authorsExpansion: Locator;
+
   readonly institutions: Locator;
+
+  readonly visibleInstitutions: Locator;
+
+  readonly institutionsExpansion: Locator;
 
   readonly doi: Locator;
 
@@ -18,8 +26,20 @@ export class ContentHeader {
     this.msas = this.page.locator('.article-flag-list');
     this.title = this.page.locator('.title');
     this.authors = this.page.locator('.authors');
+    this.visibleAuthors = this.page.locator('.authors li:visible');
+    this.authorsExpansion = this.page.locator('.authors-list__expansion');
     this.institutions = this.page.locator('.institutions');
+    this.visibleInstitutions = this.page.locator('.institutions li:visible');
+    this.institutionsExpansion = this.page.locator('.institutions-list__expansion');
     this.doi = this.page.locator('.descriptors__identifier a'); // may need to change when we have more identifiers
+  }
+
+  async toggleAuthorsExpansion(): Promise<void> {
+    await this.authorsExpansion.click();
+  }
+
+  async toggleInstitutionsExpansion(): Promise<void> {
+    await this.institutionsExpansion.click();
   }
 
   async assertMSAExists(msa: string): Promise<void> {
@@ -31,36 +51,25 @@ export class ContentHeader {
     await expect(this.title).toContainText(title);
   }
 
-  async assertAuthorExists(author: string): Promise<void> {
+  async assertAuthorsExists(author: string): Promise<void> {
     const authors = await this.authors.locator('li').allInnerTexts();
     expect(authors.map((item) => item.trim())).toContain(author);
   }
 
-  async assertVisibleAuthorCount(count: number): Promise<void> {
-    const authors = this.authors.locator('li:visible');
-
-    await expect(authors).toHaveCount(count);
+  async assertVisibleAuthorsCount(count: number): Promise<void> {
+    await expect(this.visibleAuthors).toHaveCount(count);
   }
 
-  async assertVisibleAuthorCountAfterToggle(count: number): Promise<void> {
-    const expansion = this.authors.locator('.authors-list__expansion');
-
-    await expansion.click();
-    await this.assertVisibleAuthorCount(count);
+  async assertAuthorsShowMore(more: number, smallViewport: boolean = false): Promise<void> {
+    await expect(this.authorsExpansion).toBeVisible();
+    await expect(this.authorsExpansion).toContainText('show');
+    await expect(this.authorsExpansion).toContainText('more');
+    await expect(this.authorsExpansion.locator(`.authors-list__expansion-count-${smallViewport ? '3' : '10'}`)).toHaveText(more.toString());
   }
 
-  async assertAuthorShowMore(more: number, smallViewport: boolean = false): Promise<void> {
-    const expansion = this.authors.locator('.authors-list__expansion');
-    await expect(expansion).toBeVisible();
-    await expect(expansion).toContainText('show');
-    await expect(expansion).toContainText('more');
-    await expect(expansion.locator(`.authors-list__expansion-count-${smallViewport ? '3' : '10'}`)).toHaveText(more.toString());
-  }
-
-  async assertAuthorShowLess(): Promise<void> {
-    const expansion = this.authors.locator('.authors-list__expansion');
-    await expect(expansion).toBeVisible();
-    await expect(expansion).toHaveText('show less');
+  async assertAuthorsShowLess(): Promise<void> {
+    await expect(this.authorsExpansion).toBeVisible();
+    await expect(this.authorsExpansion).toHaveText('show less');
   }
 
   async assertInstitutionExists(institution: string): Promise<void> {
@@ -69,7 +78,7 @@ export class ContentHeader {
   }
 
   async assertVisibleInstitutionsCount(count: number): Promise<void> {
-    const institutions = this.institutions.locator('li');
+    const institutions = this.institutions.locator('li:visible');
 
     await expect(institutions).toHaveCount(count);
   }
@@ -86,6 +95,11 @@ export class ContentHeader {
     const expansion = this.institutions.locator('.institutions-list__expansion');
     await expect(expansion).toBeVisible();
     await expect(expansion).toHaveText(`show ${more} more`);
+  }
+
+  async assertInstitutionsShowLess(): Promise<void> {
+    await expect(this.institutionsExpansion).toBeVisible();
+    await expect(this.institutionsExpansion).toHaveText('show less');
   }
 
   async assertDOI(doi: string): Promise<void> {
