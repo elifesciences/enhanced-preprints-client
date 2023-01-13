@@ -64,16 +64,16 @@ test.describe('content header', () => {
 
   test('displays correct number of institutions', async ({ page }) => {
     await contentHeader.assertVisibleInstitutionsCount(3);
-    
-    await page.setViewportSize({ width: 767, height: 1000, });
+
+    await page.setViewportSize({ width: 767, height: 1000 });
     await contentHeader.assertVisibleInstitutionsCount(0);
   });
 
   test('displays show more for institution list', async ({ page }) => {
     await contentHeader.assertVisibleInstitutionsCount(3);
     await contentHeader.assertInstitutionsShowMore(1);
-    
-    await page.setViewportSize({ width: 767, height: 1000, });
+
+    await page.setViewportSize({ width: 767, height: 1000 });
     await contentHeader.assertInstitutionsHidden();
   });
 
