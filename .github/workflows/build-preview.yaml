@@ -32,13 +32,13 @@ jobs:
           target: prod
           load: true
           tags: |
-            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.ref_name }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.head_ref }}
       - name: run test
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.ref_name }} yarn test --ci --watchAll=false
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.head_ref }} yarn test --ci --watchAll=false
       - name: run lint
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.ref_name }} yarn lint
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.head_ref }} yarn lint
       - name: run lint-sass
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.ref_name }} yarn lint-sass
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.head_ref }} yarn lint-sass
       - name: push preview image
         uses: docker/build-push-action@v3
         with:
@@ -46,7 +46,7 @@ jobs:
           target: prod
           push: true
           tags: |
-            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.ref_name }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.head_ref }}
       - name: Build and push preview storybook image
         uses: docker/build-push-action@v3
         with:
@@ -54,7 +54,7 @@ jobs:
           target: storybook
           push: true
           tags: |
-            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.ref_name }}
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.head_ref }}
       - name: wait for new environment to come online before posting an Env URL
         run: timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ github.event.number }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
       - name: "Update preview status with URL"
