@@ -16,8 +16,8 @@ ReferenceStory.args = {
   reference: references[0],
 };
 
-export const ReferenceDoiIsLink = Template.bind({});
-ReferenceDoiIsLink.args = {
+export const ReferenceIsReferenceList = Template.bind({});
+ReferenceIsReferenceList.args = {
   reference: references[0],
-  doiIsLink: true,
+  isReferenceList: true,
 };
