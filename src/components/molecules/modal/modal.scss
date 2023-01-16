@@ -97,3 +97,17 @@
   white-space: nowrap;
   min-width: auto;
 }
+
+.reference-list {
+
+  .modal-content__body & {
+    margin-bottom: 36px;
+  }
+}
+
+.reference__doi {
+
+  .modal-content__body & {
+    margin-top: 12px;
+  }
+}
