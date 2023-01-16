@@ -20,8 +20,8 @@ test.describe('content header', () => {
   });
 
   test('has correct authors', async () => {
-    await contentHeader.assertAuthorExists('Brain');
-    await contentHeader.assertAuthorExists('Pinky Mouse');
+    await contentHeader.assertAuthorsExists('Brain');
+    await contentHeader.assertAuthorsExists('Pinky Mouse');
   });
 
   test('has correct institutions', async () => {
@@ -33,32 +33,62 @@ test.describe('content header', () => {
   });
 
   test('displays correct number of authors', async ({ page }) => {
-    await contentHeader.assertVisibleAuthorCount(10);
+    await contentHeader.assertVisibleAuthorsCount(10);
 
     await page.setViewportSize({ width: 767, height: 1000 });
-    await contentHeader.assertVisibleAuthorCount(3);
+    await contentHeader.assertVisibleAuthorsCount(3);
   });
 
   test('displays show more for author list', async ({ page }) => {
-    await contentHeader.assertVisibleAuthorCount(10);
-    await contentHeader.assertAuthorShowMore(1);
+    await contentHeader.assertVisibleAuthorsCount(10);
+    await contentHeader.assertAuthorsShowMore(1);
 
     await page.setViewportSize({ width: 767, height: 1000 });
-    await contentHeader.assertAuthorShowMore(8, true);
+    await contentHeader.assertAuthorsShowMore(8, true);
   });
 
   test('displays all authors when show more is clicked', async () => {
-    await contentHeader.assertVisibleAuthorCount(10);
-    await contentHeader.toggleAuthorExpansion();
-    await contentHeader.assertVisibleAuthorCount(11);
+    await contentHeader.assertVisibleAuthorsCount(10);
+    await contentHeader.toggleAuthorsExpansion();
+    await contentHeader.assertVisibleAuthorsCount(11);
   });
 
   test('displays fewer authors when show less is clicked', async () => {
-    await contentHeader.toggleAuthorExpansion();
-    await contentHeader.assertVisibleAuthorCount(11);
+    await contentHeader.toggleAuthorsExpansion();
+    await contentHeader.assertVisibleAuthorsCount(11);
 
-    await contentHeader.assertAuthorShowLess();
-    await contentHeader.toggleAuthorExpansion();
-    await contentHeader.assertVisibleAuthorCount(10);
+    await contentHeader.assertAuthorsShowLess();
+    await contentHeader.toggleAuthorsExpansion();
+    await contentHeader.assertVisibleAuthorsCount(10);
+  });
+
+  test('displays correct number of institutions', async ({ page }) => {
+    await contentHeader.assertVisibleInstitutionsCount(3);
+
+    await page.setViewportSize({ width: 767, height: 1000 });
+    await contentHeader.assertVisibleInstitutionsCount(0);
+  });
+
+  test('displays show more for institution list', async ({ page }) => {
+    await contentHeader.assertVisibleInstitutionsCount(3);
+    await contentHeader.assertInstitutionsShowMore(1);
+
+    await page.setViewportSize({ width: 767, height: 1000 });
+    await contentHeader.assertInstitutionsHidden();
+  });
+
+  test('displays all institutions when show more is clicked', async () => {
+    await contentHeader.assertVisibleInstitutionsCount(3);
+    await contentHeader.toggleInstitutionsExpansion();
+    await contentHeader.assertVisibleInstitutionsCount(4);
+  });
+
+  test('displays fewer institutions when show less is clicked', async () => {
+    await contentHeader.toggleInstitutionsExpansion();
+    await contentHeader.assertVisibleInstitutionsCount(4);
+
+    await contentHeader.assertInstitutionsShowLess();
+    await contentHeader.toggleInstitutionsExpansion();
+    await contentHeader.assertVisibleInstitutionsCount(3);
   });
 });
