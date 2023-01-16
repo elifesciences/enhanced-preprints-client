@@ -10,14 +10,13 @@ export const Reference = ({ reference, doiIsLink = false }: { reference: Referen
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
 
   return (
-      <div className="reference">
+      <div className="reference" id={reference.id}>
         <ol className="reference__authors_list">
           {reference.authors.map((author, index) => (
             <li key={index} className="reference__author">
               {formatName(author)}
             </li>
           ))}
-
         </ol>
         <span className="reference__authors_list_suffix">{new Date(reference.datePublished).getFullYear()}</span>
         <span className="reference__title">{reference.title}</span>
