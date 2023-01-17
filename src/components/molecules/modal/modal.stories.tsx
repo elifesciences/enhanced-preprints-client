@@ -34,6 +34,9 @@ export const ModalShare = Template.bind({});
 ModalShare.args = {
   modalTitle: 'Share this article',
   children: (<>
+    <div className="form-item">
+      <input type="input" className="text-field text-field--clipboard" value={'https://doi.org/10.7554/eLife.09560'} />
+    </div>
     <Clipboard text={'https://doi.org/10.7554/eLife.09560'} />
     <Socials emailUrl={''} facebookUrl={''} twitterUrl={''} linkedinUrl={''} redditUrl={''} />
   </>),
