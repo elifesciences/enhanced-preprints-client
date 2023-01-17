@@ -7,6 +7,7 @@ import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Reference } from '../../atoms/reference/reference';
 import { references } from '../../../utils/mocks';
+import { Reference as ReferenceData } from '../../../types';
 
 export default {
   title: 'Molecules/Modal',
@@ -42,18 +43,22 @@ ModalShare.args = {
   </>),
 };
 
+const formatReference = (reference: ReferenceData): string => {
+  const authors = reference.authors.reduce((previous, author) => {
+    return `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
+  }, '');
+  return authors;
+};
+
 export const ModalCite = Template.bind({});
 ModalCite.args = {
-  modalTitle: 'Share this article',
+  modalTitle: 'Cite this article',
   children: (<>
     <Reference isReferenceList={false} reference={references[0]} />
-    <div className="downloads-container">
-      <div className="form-item">
-        <button className='button'>Copy to clipboard</button>
-        <button className='button button--action'>Download BIBTEX</button>
-        <button className='button button--action'>Download .RIS</button>
-      </div>
-    </div>
-
+    <Clipboard text={formatReference(references[0])} />
   </>),
 };
+
+// Laura E Suarez, Yossi Yovel, Martijn P van den Heuvel (2022) A connectomics-based taxonomy of mammals eLife 11:e78635
+
+// https://doi.org/10.7554/eLife.78635
