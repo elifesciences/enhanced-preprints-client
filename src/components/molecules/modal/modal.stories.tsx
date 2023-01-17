@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
-import { ReferenceList } from '../../atoms/reference-list/reference-list';
+import { Reference } from '../../atoms/reference/reference';
 import { references } from '../../../utils/mocks';
 
 export default {
@@ -43,7 +43,7 @@ export const ModalCite = Template.bind({});
 ModalCite.args = {
   modalTitle: 'Share this article',
   children: (<>
-    <ReferenceList references={references} />
+    <Reference isReferenceList={false} reference={references[0]} />
     <div className="downloads-container">
       <div className="form-item">
         <button className='button'>Copy to clipboard</button>
