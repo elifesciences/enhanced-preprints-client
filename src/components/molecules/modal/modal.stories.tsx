@@ -44,10 +44,12 @@ ModalShare.args = {
 };
 
 const formatReference = (reference: ReferenceData): string => {
-  const authors = reference.authors.reduce((previous, author) => {
-    return `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
-  }, '');
-  return authors;
+  const authors = reference.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`, '');
+  const year = new Date(reference.datePublished).getFullYear();
+  const journal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
+  const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
+
+  return `${authors} (${year}) ${reference.title}${journal ? ` ${journal}` : ''}${doiIdentifier ? `\n\nhttps://doi.org/${doiIdentifier.value}` : ''}`;
 };
 
 export const ModalCite = Template.bind({});
