@@ -70,14 +70,16 @@
 }
 
 .modal-content__show {
+  @include mixins.z-index(100);
+
   opacity: 1;
   overflow-y: scroll;
   visibility: visible;
-  z-index: 1000;
 }
 
 .modal-content__close-button {
   @include mixins.padding(0 25 0 0);
+  @include mixins.z-index(200);
   @include typography.font-size-and-vertical-height(16, 24);
 
   align-self: start;
@@ -90,7 +92,6 @@
   grid-row: 1;
   height: auto;
   justify-self: end;
-  z-index: 2000;
 }
 
 .downloads-container {

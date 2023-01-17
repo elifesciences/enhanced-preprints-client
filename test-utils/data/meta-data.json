@@ -19,7 +19,52 @@
       "Pinky"
     ], "familyNames": [
       "Mouse"
-    ], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] }
+    ], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] },
+    { "givenNames": [
+      "Slowpoke"
+    ], "familyNames": [
+      "Rodreigez"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Sylvester"
+    ], "familyNames": [
+      "J Pussycat"
+    ], "affiliations": [{ "name": "Acme Investments", "address": { "addressCountry": "New York" } }] },
+    { "givenNames": [
+      "Elmer"
+    ], "familyNames": [
+      "Fudd"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Yosemite"
+    ], "familyNames": [
+      "Sam"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Fogghorn"
+    ], "familyNames": [
+      "Leghorn"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Pepe"
+    ], "familyNames": [
+      "Le Pew"
+    ], "affiliations": [{ "name": "French Foreign Legion", "address": { "addressCountry": "Paris" } }] },
+    { "givenNames": [
+      "Porky"
+    ], "familyNames": [
+      "Pig"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Speedy"
+    ], "familyNames": [
+      "Gonzales"
+    ], "affiliations": [] },
+    { "givenNames": [
+      "Bugs"
+    ], "familyNames": [
+      "Bunny"
+    ], "affiliations": [{ "name": "Harlem Globetrotters", "address": { "addressCountry": "New York" } }] }
   ],
   "headings": [{ "id": "s1",
     "text": "Introduction" }],
