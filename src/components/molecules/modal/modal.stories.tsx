@@ -60,7 +60,3 @@ ModalCite.args = {
     <Clipboard text={formatReference(references[0])} />
   </>),
 };
-
-// Laura E Suarez, Yossi Yovel, Martijn P van den Heuvel (2022) A connectomics-based taxonomy of mammals eLife 11:e78635
-
-// https://doi.org/10.7554/eLife.78635
