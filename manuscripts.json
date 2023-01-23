@@ -90,13 +90,12 @@
         "articleType": "Reviewed Preprint",
         "status": "This Reviewed Preprint was published after peer review and assessment by eLife.",
         "timeline": [
-          { "name": "Reviewed Preprint posted", "date": "" },
-          { "name": "Sent for peer review", "date": "" },
+          { "name": "Reviewed Preprint posted", "date": "2023-01-23" },
+          { "name": "Sent for peer review", "date": "2022-11-28" },
           { "name": "Posted to bioRxiv", "date": "2022-11-21", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2", "text": "Go to bioRxiv" } }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.08.515698/2022.11.08.515698.pdf",
-      "msas": []
+      "msas": ["Neuroscience"]
     }
   },
   "manuscripts": {
