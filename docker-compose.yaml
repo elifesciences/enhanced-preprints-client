@@ -48,7 +48,7 @@ services:
 
   ## EPP API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-3043eff1-20230115.1116
+    image: ghcr.io/elifesciences/enhanced-preprints:master-3af3b1bb-20230120.1413
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
@@ -73,7 +73,7 @@ services:
       - import_data:/opt/epp-data
   ## EPP API data fetch
   api-fetch-data:
-    image: k8s.gcr.io/git-sync/git-sync:v3.6.2
+    image: k8s.gcr.io/git-sync/git-sync:v3.6.3
     environment:
       GIT_SYNC_HTTP_BIND: localhost:8080
       GIT_SYNC_ROOT: "/tmp/git/data"
