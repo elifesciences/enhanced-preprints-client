@@ -76,6 +76,8 @@
   }
 
   .side-section {
+    @include mixins.z-index(3);
+
     align-items: end;
     align-self: flex-start;
     display: flex;

@@ -13,4 +13,5 @@ export const Status = Template.bind({});
 Status.args = {
   articleStatus: 'This article is made up for the purpose of a story and not reviewed',
   pdfUrl: '#',
+  shareUrl: 'https://google.co.uk',
 };
