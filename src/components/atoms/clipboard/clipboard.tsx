@@ -4,24 +4,25 @@ import './clipboard.scss';
 
 type ClipboardProps = {
   text: string,
+  buttonText?: string,
 };
 
 const supportsClipboardAPI = () => (!!navigator.clipboard);
 
-export const Clipboard = ({ text }: ClipboardProps): JSX.Element => {
+export const Clipboard = ({ text, buttonText = 'Copy to clipboard' }: ClipboardProps): JSX.Element => {
   const [showButton, setShowButton] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
 
   useEffect(() => setShowButton(supportsClipboardAPI()), []);
 
-  return (
-    <div className="clipboard-container">
-      <div className="form-item">
-          <input type="input" className="text-field text-field--clipboard" value={text} />
+  const onClick = () => {
+    setCopied(true);
+    navigator.clipboard.writeText(text);
+  };
 
-          {(showButton ? <button className={`button button--clipboard${copied ? ' copied' : ''}`}
-            onClick={() => { setCopied(true); navigator.clipboard.writeText(text); }}>{copied ? 'copied' : 'copy to clipboard'}</button> : <></>)}
-      </div>
+  return showButton ? (
+    <div className="clipboard-container">
+      <button className={`button button--clipboard${copied ? ' copied' : ''}`} onClick={onClick}>{copied ? 'copied' : buttonText}</button>
     </div>
-  );
+  ) : <></>;
 };
