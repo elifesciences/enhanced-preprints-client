@@ -70,7 +70,7 @@
 }
 
 .modal-content__show {
-  @include mixins.z-index(100);
+  @include mixins.z-index(1);
 
   opacity: 1;
   overflow-y: scroll;
@@ -79,7 +79,7 @@
 
 .modal-content__close-button {
   @include mixins.padding(0 25 0 0);
-  @include mixins.z-index(200);
+  @include mixins.z-index(2);
   @include typography.font-size-and-vertical-height(16, 24);
 
   align-self: start;
@@ -92,4 +92,21 @@
   grid-row: 1;
   height: auto;
   justify-self: end;
+}
+
+.downloads-container {
+  min-width: auto;
+  white-space: nowrap;
+}
+
+.reference-list {
+  .modal-content__body & {
+    margin-bottom: 36px;
+  }
+}
+
+.reference__doi {
+  .modal-content__body & {
+    margin-top: 12px;
+  }
 }
