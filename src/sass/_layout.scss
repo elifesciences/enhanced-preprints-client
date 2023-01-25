@@ -76,7 +76,7 @@
   }
 
   .side-section {
-    @include mixins.z-index(3);
+    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
 
     align-items: end;
     align-self: flex-start;
