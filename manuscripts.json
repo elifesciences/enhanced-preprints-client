@@ -95,6 +95,7 @@
           { "name": "Posted to bioRxiv", "date": "2022-11-21", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2", "text": "Go to bioRxiv" } }
         ]
       },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.08.515698/2022.11.08.515698.pdf",
       "msas": ["Neuroscience"]
     }
   },
