@@ -9,13 +9,12 @@ type ArticleStatusProps = {
   articleType?: string,
   articleStatus: string,
   pdfUrl: string,
-  shareUrl?: string,
 };
 
 const defaultArticleType = 'Reviewed Preprint';
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, pdfUrl, shareUrl,
+  articleType = defaultArticleType, articleStatus, pdfUrl,
 }: ArticleStatusProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
   return <div className="article-status">
@@ -25,7 +24,7 @@ export const ArticleStatus = ({
       <ul className="article-actions">
         <li className="article-actions__list-item">
           <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
-          <Button text="Share" iconName="share" variant="action" onClick={() => setShowModal(true)} />
+          <Button text="Share" iconName="share" variant="action" url={shareURL} onClick={() => setShowModal(true)} />
         </li>
       </ul>
       <Modal modalTitle={'Share'} open={showModal} onModalClose={() => setShowModal(false)}>
