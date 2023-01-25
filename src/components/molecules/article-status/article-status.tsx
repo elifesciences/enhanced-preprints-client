@@ -24,7 +24,7 @@ export const ArticleStatus = ({
       <ul className="article-actions">
         <li className="article-actions__list-item">
           <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
-          <Button text="Share" iconName="share" variant="action" url={shareURL} onClick={() => setShowModal(true)} />
+          <Button text="Share" iconName="share" variant="action" onClick={() => setShowModal(true)} />
         </li>
       </ul>
       <Modal modalTitle={'Share'} open={showModal} onModalClose={() => setShowModal(false)}>
