@@ -18,4 +18,10 @@ describe('ArticlePage', () => {
 
     expect(screen.getByText('I thank you for the review and take it as irrefutable proof and that I more intelligent that Tony.')).toBeInTheDocument();
   });
+
+  it('renders with tabs with correct active label', () => {
+    render(<ArticleReviewsTab peerReview={{ ...peerReview, authorResponse: undefined }} />);
+
+    expect(screen.queryByText('I thank you for the review and take it as irrefutable proof and that I more intelligent that Tony.')).not.toBeInTheDocument();
+  });
 });
