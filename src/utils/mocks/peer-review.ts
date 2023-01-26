@@ -1,13 +1,13 @@
-import { ReviewType } from '../../types/peer-review';
+import { PeerReview, ReviewType } from '../../types/peer-review';
 
-export const peerReview = {
+export const peerReview: PeerReview = {
   evaluationSummary: {
     date: new Date('2022-01-02'),
     participants: [
       {
         institution: 'Somewhere',
-        name: 'Dr Stephen Strange',
-        role: 'editor',
+        name: 'Professor Charles Xavier',
+        role: 'senior-editor',
       },
     ],
     reviewType: ReviewType.EvaluationSummary,
@@ -18,13 +18,25 @@ export const peerReview = {
       date: new Date('2022-01-02'),
       participants: [
         {
-          institution: 'Somewhere',
-          name: 'Dr Stephen Strange',
-          role: 'editor',
+          institution: 'Stark Industries',
+          name: 'Anthony Stark',
+          role: 'peer-reviewer',
         },
       ],
       reviewType: ReviewType.EvaluationSummary,
-      text: 'This paper is important and is very convincing',
+      text: 'Well done, Stephen.',
     },
   ],
+  authorResponse: {
+    date: new Date('2022-01-02'),
+    participants: [
+      {
+        institution: 'Somewhere',
+        name: 'Dr Stephen Strange',
+        role: 'author',
+      },
+    ],
+    reviewType: ReviewType.EvaluationSummary,
+    text: 'I thank you for the review and take it as irrefutable proof and that I more intelligent that Tony.',
+  },
 };
