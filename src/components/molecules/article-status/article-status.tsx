@@ -39,10 +39,10 @@ export const ArticleStatus = ({
             <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
           </li>
         )}
-        <li>
+        <li className="article-actions__list-item">
           <Button text="Share" iconName="share" variant="action" onClick={() => setShowShareModal(true)} />
         </li>
-        <li>
+        <li className="article-actions__list-item">
           <Button text="Cite" iconName="citation" variant="action" onClick={() => setShowCiteModal(true)} />
         </li>
       </ul>
