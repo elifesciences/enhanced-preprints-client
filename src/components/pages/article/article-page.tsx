@@ -6,6 +6,7 @@ import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
+import { contentToText } from '../../../utils/content-to-text';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -53,7 +54,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl}/>
+        <ArticleStatus articleStatus={props.status.status} doi={props.metaData.doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)}/>
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className="primary-section">
