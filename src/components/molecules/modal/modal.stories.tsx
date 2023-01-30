@@ -39,7 +39,7 @@ ModalShare.args = {
       <input type="input" className="text-field text-field--clipboard" value={'https://doi.org/10.7554/eLife.09560'} />
     </div>
     <Clipboard text={'https://doi.org/10.7554/eLife.09560'} />
-    <Socials emailUrl={''} facebookUrl={''} twitterUrl={''} linkedinUrl={''} redditUrl={''} />
+    <Socials shareUrl='www.google.com' title='I am a title' />
   </>),
 };
 
