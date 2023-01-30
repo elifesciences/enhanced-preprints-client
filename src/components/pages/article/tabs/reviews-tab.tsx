@@ -11,7 +11,6 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): J
       {peerReview.reviews.map((review, index) => (
         <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
       ))}
-      {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
     </div>
   </div>
 );

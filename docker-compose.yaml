@@ -48,7 +48,7 @@ services:
 
   ## EPP API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-49756e63-20230126.1942
+    image: ghcr.io/elifesciences/enhanced-preprints:master-83acbd2b-20230124.0249
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
@@ -65,6 +65,7 @@ services:
       REPO_CONNECTION: mongodb:27017
       REPO_USERNAME: admin
       REPO_PASSWORD: testtest
+      IIIF_SERVER: http://localhost:8182
       IMPORT_DIR_PATH: /opt/epp-data/data/enhanced-preprints-data/data/10.1101/
     ports:
       - 3000:3000
