@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof Socials> = (args) => <Socials {...args} />
 export const SocialsContainer = Template.bind({});
 SocialsContainer.args = {
   title: 'some article',
-  shareUrl: 'www.example.com/some-article',
+  doi: 'www.example.com/some-article',
 };

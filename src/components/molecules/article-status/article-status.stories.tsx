@@ -13,6 +13,6 @@ export const Status = Template.bind({});
 Status.args = {
   articleStatus: 'This article is made up for the purpose of a story and not reviewed',
   title: 'An Article',
-  shareUrl: 'https://www.google.com',
+  doi: 'https://www.google.com',
   pdfUrl: '#',
 };

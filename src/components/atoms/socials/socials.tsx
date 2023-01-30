@@ -1,15 +1,15 @@
 import './socials.scss';
 
 type Props = {
-  shareUrl: string,
+  doi: string,
   title: string
 };
 
 export const Socials = ({
-  shareUrl, title,
+  doi, title,
 }: Props): JSX.Element => {
   const encodedTitle = encodeURIComponent(title);
-  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedUrl = encodeURIComponent(doi);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${encodedTitle}&url=${encodedUrl}`;
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;

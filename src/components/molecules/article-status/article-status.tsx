@@ -8,7 +8,7 @@ import './article-status.scss';
 type ArticleStatusProps = {
   articleType?: string,
   articleStatus: string,
-  shareUrl: string,
+  doi: string,
   title: string,
   pdfUrl?: string,
 };
@@ -16,7 +16,7 @@ type ArticleStatusProps = {
 const defaultArticleType = 'Reviewed Preprint';
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, shareUrl, title, pdfUrl,
+  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl,
 }: ArticleStatusProps): JSX.Element => {
   const [showModal, setShowModal] = useState(false);
 
@@ -36,10 +36,10 @@ export const ArticleStatus = ({
       </ul>
       <Modal modalTitle={'Share'} open={showModal} onModalClose={() => setShowModal(false)}>
         <div className="form-item">
-          <input type="input" className="text-field text-field--clipboard" value={`https://doi.org/${shareUrl}`} />
-          <Clipboard text={`https://doi.org/${shareUrl}`} />
+          <input type="input" className="text-field text-field--clipboard" value={`https://doi.org/${doi}`} />
+          <Clipboard text={`https://doi.org/${doi}`} />
         </div>
-        <Socials shareUrl={shareUrl} title={title} />
+        <Socials doi={doi} title={title} />
       </Modal>
     </div>;
 };
