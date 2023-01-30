@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { citation } from '../../../utils/mocks';
 
 import { ArticleStatus } from './article-status';
 
@@ -15,4 +16,5 @@ Status.args = {
   title: 'An Article',
   doi: 'https://www.google.com',
   pdfUrl: '#',
+  citation,
 };

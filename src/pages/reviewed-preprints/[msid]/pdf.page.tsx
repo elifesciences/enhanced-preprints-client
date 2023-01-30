@@ -70,6 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         version: manuscriptConfig.version,
         pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
+        publishedYear: manuscriptConfig.publishedYear,
       },
       content,
       status,

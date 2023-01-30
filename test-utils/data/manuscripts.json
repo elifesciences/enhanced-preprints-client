@@ -19,7 +19,8 @@
     "123": {
       "msid": "123",
       "version": "1",
-      "preprintDoi": "10.1101/123456"
+      "preprintDoi": "10.1101/123456",
+      "publishedYear": 2022
     }
   }
 }

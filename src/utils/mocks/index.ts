@@ -4,3 +4,4 @@ export { content } from './content';
 export { peerReview } from './peer-review';
 export { references } from './references';
 export { status } from './status';
+export { citation } from './citation';

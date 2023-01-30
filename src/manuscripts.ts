@@ -3,20 +3,22 @@ import { ArticleStatusProps } from './components/pages/article/article-page';
 
 type ReviewedPreprintConfig = {
   preprintDoi: string,
-  status: ArticleStatusProps
+  status: ArticleStatusProps,
   pdfUrl: string,
   msas: string[],
 };
 
 type ManuscriptConfig = {
-  msid: string
+  msid: string,
   version: string,
-  preprintDoi: string
+  preprintDoi: string,
+  publishedYear: number,
 };
 
 export type FullManuscriptConfig = ReviewedPreprintConfig & {
-  msid: string
+  msid: string,
   version: string,
+  publishedYear: number,
 };
 
 type ConfigFile = {

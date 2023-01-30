@@ -14,4 +14,5 @@ export type MetaData = {
   references: Reference[],
   title: Content;
   version: string,
+  publishedYear: number,
 };
