@@ -13,4 +13,5 @@ export const metaData = {
   authors,
   headings: [{ id: 's1', text: 'Introduction' }],
   references,
+  publishedYear: 2022,
 };

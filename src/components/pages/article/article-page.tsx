@@ -8,7 +8,6 @@ import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
-import { metaData } from '../../../utils/mocks';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -45,21 +44,23 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
     },
   ];
+  const doi = `10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`;
+
   const citation: CitationData = {
-    authors: metaData.authors,
-    year: 2023,
-    volume: 2023 - 2011,
+    authors: props.metaData.authors,
+    year: props.metaData.publishedYear,
+    volume: props.metaData.publishedYear - 2011,
     journal: 'eLife',
-    id: `RP${metaData.msid}`,
-    title: metaData.title,
-    doi: metaData.doi,
+    id: `RP${props.metaData.msid}`,
+    title: contentToText(props.metaData.title),
+    doi,
   };
 
   return (
     <>
       <div className="primary-section-header">
         <ContentHeader
-          doi={`10.7554/eLife.${props.metaData.msid}.${props.metaData.version}`}
+          doi={doi}
           msas={props.metaData.msas}
           authors={props.metaData.authors}
           title={props.metaData.title}
