@@ -3,8 +3,8 @@
 @use "../../../sass/mixins";
 
 .clipboard-container {
-  grid-column: 1/13;
   width: 100%;
+  grid-column: 1/13;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     grid-column: 10/13;
