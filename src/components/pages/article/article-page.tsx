@@ -7,6 +7,8 @@ import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
+import { CitationData } from '../../atoms/citation/citation';
+import { metaData } from '../../../utils/mocks';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -43,6 +45,16 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
     },
   ];
+  const citation: CitationData = {
+    authors: metaData.authors,
+    year: 2023,
+    volume: 2023 - 2011,
+    journal: 'eLife',
+    id: `RP${metaData.msid}`,
+    title: metaData.title,
+    doi: metaData.doi,
+  };
+
   return (
     <>
       <div className="primary-section-header">
@@ -54,7 +66,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={props.metaData.doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)}/>
+        <ArticleStatus articleStatus={props.status.status} doi={props.metaData.doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation}/>
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className="primary-section">
