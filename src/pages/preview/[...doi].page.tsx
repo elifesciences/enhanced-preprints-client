@@ -79,6 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         version: '0',
         pdfUrl: '',
         msas: [],
+        publishedYear: new Date().getFullYear(),
       },
       content,
       status: {

@@ -1,0 +1,57 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.citation {
+  @include mixins.margin(24, "bottom");
+  @include mixins.margin(12, "right");
+  @include typography.body-small();
+}
+
+.citation__authors_list {
+  display: inline;
+  list-style: none;
+  padding: 0;
+
+  &::after {
+    content: " ";
+  }
+}
+
+.citation__author {
+  display: inline;
+
+  &:not(:first-child)::before {
+    content: ", ";
+  }
+}
+
+.citation__authors_list_suffix::before {
+  content: "(";
+}
+
+.citation__authors_list_suffix::after {
+  content: ") ";
+}
+
+.citation__title {
+  @include typography.author-list-text();
+
+  font-weight: bold;
+
+  &::after {
+    content: " ";
+  }
+}
+
+.citation__origin i::after {
+  content: " ";
+}
+
+.citation__doi {
+  @include mixins.margin(12 0 36);
+  @include typography.body-small();
+
+  color: settings.$color-text-secondary;
+  display: block;
+}

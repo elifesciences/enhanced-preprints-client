@@ -21,6 +21,7 @@ describe('reviewedPreprintSnippet', () => {
         'Cell Biology',
         'Physics of Living Systems',
       ],
+      publishedYear: 2022,
     }, {
       abstract: 'content',
       authors: [
@@ -73,6 +74,7 @@ describe('reviewedPreprintSnippet', () => {
       references: [],
       title: 'title',
       version: 'version',
+      publishedYear: 2023,
     });
 
     expect(result).toStrictEqual({
@@ -119,6 +121,7 @@ describe('reviewedPreprintSnippet', () => {
         'Cell Biology',
         'Physics of Living Systems',
       ],
+      publishedYear: 2023,
     });
 
     expect(result).toStrictEqual({
@@ -315,6 +318,7 @@ describe('reviewedPreprintSnippet', () => {
       },
       pdfUrl: 'https://www.preprintprovider.org/content/preprint1.pdf',
       msas: [],
+      publishedYear: 2022,
     }, {
       abstract: 'content',
       authors,
@@ -326,6 +330,7 @@ describe('reviewedPreprintSnippet', () => {
       references: [],
       title: 'title',
       version: 'version',
+      publishedYear: 2022,
     });
 
     expect(result.authorLine).toStrictEqual(expected);
