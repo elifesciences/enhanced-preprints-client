@@ -11,7 +11,7 @@ export type CitationData = {
   doi: string,
 };
 
-const formatName = (author: Author) => `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')} `;
+const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
 
 export const Citation = ({ citation }: { citation: CitationData }): JSX.Element => (
   <div className="citation">
