@@ -60,7 +60,7 @@ export const SiteHeader = (): JSX.Element => {
                       <a href="https://elifesciences.org/content-alerts" className="main-menu__list_link">Subscribe to alerts</a>
                     </li>
                     <li className="main-menu__list_item hidden-wide">
-                      <a href="https://reviewer.elifesciences.org/login" className="main-menu__list_link">Submit your research</a>
+                      <a href="https://elifesciences.org/submit-your-research" className="main-menu__list_link">Submit your research</a>
                     </li>
                     <li className="main-menu__list_item">
                       <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
@@ -103,7 +103,7 @@ export const SiteHeader = (): JSX.Element => {
               <a href="https://elifesciences.org/content-alerts">Alerts</a>
             </li>
             <li className="nav-secondary__item">
-              <a href="https://reviewer.elifesciences.org/login" className="block-button block-button__variant-one">Submit your research</a>
+              <a href="https://elifesciences.org/submit-your-research" className="block-button block-button__variant-one">Submit your research</a>
             </li>
           </ul>
         </nav>
