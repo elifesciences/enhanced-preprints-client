@@ -1,0 +1,41 @@
+name: Publish Manuscript
+
+on:
+  workflow_dispatch:
+    inputs:
+      doi:
+        required: true
+        description: preprint DOI
+      msid:
+        required: true
+        description: Manuscript ID
+      dateReviewedPreprint:
+        required: true
+        description: Reviewed Preprint posted (YYYY-MM-DD)
+      datePostedToPreprintServer:
+        required: true
+        description: Posted to preprint server (YYYY-MM-DD)
+      urlPostedOnPreprintServer:
+        required: true
+        description: Posted to preprint server (url)
+      preprintServer:
+        description: Preprint server
+        default: bioRxiv
+      dateSentForPeerReview:
+        required: true
+        description: Sent for peer review (YYYY-MM-DD)
+      msa:
+        description: Subject areas (comma separated)
+      pdfUrl:
+        description: PDF location (url)
+      version:
+        description: Manuscript version
+        default: '1'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Confirm inputs
+      run: echo "${{ github.event.inputs.doi }} ${{ github.event.inputs.msid }}"
