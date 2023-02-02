@@ -49,11 +49,19 @@
 }
 
 @mixin h1() {
-  @include font-size-and-vertical-height(36, 48);
+  @include font-size-and-vertical-height(22, 28);
 
   color: settings.$color-text;
   font-family: settings.$font-family-primary;
   font-weight: 600;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    @include font-size-and-vertical-height(26, 36);
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include font-size-and-vertical-height(36, 48);
+  }
 }
 
 @mixin identifiers-list-text() {
