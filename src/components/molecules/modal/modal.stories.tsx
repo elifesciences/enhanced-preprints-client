@@ -5,9 +5,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
-import { Reference } from '../../atoms/reference/reference';
-import { references } from '../../../utils/mocks';
+import { citation, references } from '../../../utils/mocks';
 import { Reference as ReferenceData } from '../../../types';
+import { Citation } from '../../atoms/citation/citation';
 
 export default {
   title: 'Molecules/Modal',
@@ -58,7 +58,7 @@ ModalCite.args = {
   modalTitle: 'Cite this article',
   modalLayout: 'cite',
   children: (<>
-    <Reference isReferenceList={false} reference={references[0]} />
+    <Citation citation={citation} />
     <Clipboard text={formatReference(references[0])} />
   </>),
 };
