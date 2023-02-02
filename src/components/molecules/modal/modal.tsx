@@ -7,6 +7,7 @@ type Props = {
   modalTitle: string,
   children?: React.ReactNode,
   open?: boolean,
+  modalLayout?: 'cite' | 'share',
   onModalClose?: () => void,
 };
 
@@ -15,6 +16,7 @@ export const Modal = ({
   children,
   open = false,
   onModalClose,
+  modalLayout,
 }: Props): JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +25,7 @@ export const Modal = ({
   return (
   <>
     <div onClick={(event) => { if (onModalClose !== undefined && clickDetectedOutsideOfModal(event)) { onModalClose(); } }} className={`modal-container${open ? ' modal-content__show' : ''} `}>
-      <div ref={contentRef} className="modal-content">
+      <div ref={contentRef} className={`modal-content ${modalLayout ? ` modal-content__${modalLayout}` : ''}`}>
         <div className="modal-content__block">
           <div className="modal-content__top">
             <h6 className="modal-content__title">{modalTitle}</h6>

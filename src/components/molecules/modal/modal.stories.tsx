@@ -34,6 +34,7 @@ ModalContainer.args = {
 export const ModalShare = Template.bind({});
 ModalShare.args = {
   modalTitle: 'Share this article',
+  modalLayout: 'share',
   children: (<>
     <div className="form-item">
       <input type="input" className="text-field text-field--clipboard" value={'https://doi.org/10.7554/eLife.09560'} />
@@ -55,6 +56,7 @@ const formatReference = (reference: ReferenceData): string => {
 export const ModalCite = Template.bind({});
 ModalCite.args = {
   modalTitle: 'Cite this article',
+  modalLayout: 'cite',
   children: (<>
     <Reference isReferenceList={false} reference={references[0]} />
     <Clipboard text={formatReference(references[0])} />
