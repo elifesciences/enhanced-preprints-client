@@ -2,6 +2,7 @@
 
 import * as yargs from 'yargs';
 import * as fs from 'fs';
+import { config } from '../config';
 
 interface Args {
   doi: string;
@@ -66,42 +67,42 @@ const args = yargs
   })
   .argv as Args;
 
-const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map((i) => i.trim()) : args.msa;
 const dateReviewedPreprint = args.dateReviewedPreprint ?? (new Date()).toISOString().split('T')[0];
 
 const preprint = {
   [args.doi]: {
     ...{
-      "preprintDoi": args.doi,
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Published from the original preprint after peer review and assessment by eLife.",
-        "timeline": [
-          { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
-          { "name": `Posted to ${args.preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${args.preprintServer}` } },
-          { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
-        ]
+      preprintDoi: args.doi,
+      status: {
+        articleType: 'Reviewed Preprint',
+        status: 'Published from the original preprint after peer review and assessment by eLife.',
+        timeline: [
+          { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
+          { name: `Posted to ${args.preprintServer}`, date: args.datePostedToPreprintServer, link: { url: args.urlPostedOnPreprintServer, text: `Go to ${args.preprintServer}` } },
+          { name: 'Sent for peer review', date: args.dateSentForPeerReview },
+        ],
       },
-      "msas": msa,
+      msas: msa,
     },
-    ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {})
-  }, 
+    ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {}),
+  },
 };
 
 const manuscript = {
-  "msid": args.msid,
-  "version": `${args.versionManuscript}`,
-  "publishedYear": Number(dateReviewedPreprint.split('-')[0]),
-  "preprintDoi": args.doi,
+  msid: args.msid,
+  version: `${args.versionManuscript}`,
+  publishedYear: Number(dateReviewedPreprint.split('-')[0]),
+  preprintDoi: args.doi,
 };
 
 const manuscripts = {
-  [args.msid] : manuscript,
-  [`${args.msid}v${args.versionManuscript}`] : manuscript,
+  [args.msid]: manuscript,
+  [`${args.msid}v${args.versionManuscript}`]: manuscript,
 };
 
-fs.readFile("manuscripts.json", "utf-8", (err, data) => {
-  if (err) throw err;
+fs.readFile(config.manuscriptConfigFile, 'utf-8', (readError, data) => {
+  if (readError) throw readError;
 
   const existingData = JSON.parse(data);
 
@@ -110,11 +111,11 @@ fs.readFile("manuscripts.json", "utf-8", (err, data) => {
 
   const updatedData = {
     preprints: updatedPreprints,
-    manuscripts: updatedManuscripts
+    manuscripts: updatedManuscripts,
   };
 
-  fs.writeFile("manuscripts.json", `${JSON.stringify(updatedData, null, 2)}${"\n"}`, err => {
-    if (err) throw err;
+  fs.writeFile(config.manuscriptConfigFile, `${JSON.stringify(updatedData, null, 2)}${'\n'}`, (writeError) => {
+    if (writeError) throw writeError;
   });
 });
 
