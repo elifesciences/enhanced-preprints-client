@@ -3,16 +3,19 @@
 @use "../../../sass/typography";
 
 .review-timeline {
-  @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
   @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(24, "top");
+
     max-width: 245px;
     min-width: 100px;
     width: 100%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "top");
+
     border-bottom: settings.$border;
   }
 }
