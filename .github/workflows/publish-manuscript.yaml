@@ -1,0 +1,43 @@
+name: Publish Manuscript
+
+on:
+  workflow_dispatch:
+    inputs:
+      doi:
+        required: true
+        description: Preprint DOI
+      msid:
+        required: true
+        description: Manuscript ID
+      dateReviewedPreprint:
+        description: Reviewed Preprint posted (YYYY-MM-DD)
+      datePostedToPreprintServer:
+        required: true
+        description: Posted to preprint server (YYYY-MM-DD)
+      urlPostedOnPreprintServer:
+        required: true
+        description: Posted to preprint server (url)
+      preprintServer:
+        description: Preprint server
+      dateSentForPeerReview:
+        required: true
+        description: Sent for peer review (YYYY-MM-DD)
+      msa:
+        description: Subject areas (comma separated)
+      urlPdf:
+        description: PDF location (url)
+      versionManuscript:
+        description: Manuscript version
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Publish Manuscript
+      run: |
+        yarn publish-manuscript --doi "${{ github.event.inputs.doi }}" \
+          --msid "${{ github.event.inputs.msid }}" \
+          --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
+          --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
+          --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}"
