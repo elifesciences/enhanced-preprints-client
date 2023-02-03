@@ -7,7 +7,7 @@
   @include mixins.padding(24, "bottom");
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    max-width: 232px;
+    max-width: 245px;
     min-width: 100px;
     width: 100%;
   }
