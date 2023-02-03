@@ -57,4 +57,4 @@ jobs:
             --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
             --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
-            --versionManuscript "${{ github.event.inputs.versionManuscript }}"
+            --versionManuscript ${{ github.event.inputs.versionManuscript }}

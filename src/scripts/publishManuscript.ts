@@ -66,6 +66,7 @@ const args = yargs
   .argv as Args;
 
 const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+
 console.log(`Preprint DOI: ${args.doi}`);
 console.log(`Manuscript ID: ${args.msid || 'Not provided'}`);
 console.log(`Reviewed Preprint posted (YYYY-MM-DD): ${args.dateReviewedPreprint || 'Not provided'}`);
