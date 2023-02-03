@@ -49,6 +49,7 @@ jobs:
         run: |
           yarn publish-manuscript --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
+            --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
             --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}"
