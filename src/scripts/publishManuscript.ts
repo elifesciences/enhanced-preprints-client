@@ -72,7 +72,7 @@ console.log(`Posted to preprint server (YYYY-MM-DD): ${args.datePostedToPreprint
 console.log(`Posted to preprint server (url): ${args.urlPostedOnPreprintServer}`);
 console.log(`Preprint server: ${args.preprintServer}`);
 console.log(`Sent for peer review (YYYY-MM-DD): ${args.dateSentForPeerReview}`);
-console.log(`msa: ${args.msa?.join(', ') || 'Not provided'}`);
+console.log(`msa: ${args.msa?.join(' | ') || 'Not provided'}`);
 console.log(`PDF location (url): ${args.urlPdf || 'Not provided'}`);
 console.log(`Manuscript version: ${args.versionManuscript}`);
 
