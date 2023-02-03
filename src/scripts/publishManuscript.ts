@@ -80,20 +80,22 @@ const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i =
 const dateReviewedPreprint = args.dateReviewedPreprint ?? (new Date()).toISOString().split('T')[0];
 
 const preprint = {
-  ...{
-    "preprintDoi": args.doi,
-    "status": {
-      "articleType": "Reviewed Preprint",
-      "status": "Published from the original preprint after peer review and assessment by eLife.",
-      "timeline": [
-        { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
-        { "name": `Posted to ${args.preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${args.preprintServer}` } },
-        { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
-      ]
+  [args.doi]: {
+    ...{
+      "preprintDoi": args.doi,
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
+          { "name": `Posted to ${args.preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${args.preprintServer}` } },
+          { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
+        ]
+      },
+      "msas": msa,
     },
-    "msas": msa,
-  },
-  ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {})
+    ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {})
+  }, 
 };
 
 const manuscript = {
@@ -103,7 +105,12 @@ const manuscript = {
   "preprintDoi": args.doi,
 };
 
-console.log(JSON.stringify(preprint, null, 2));
-console.log(JSON.stringify(manuscript, null, 2));
+const manuscripts = {
+  [args.msid] : manuscript,
+  [`${args.msid}v${args.versionManuscript}`] : manuscript,
+};
+
+console.log('preprint:', JSON.stringify(preprint, null, 2));
+console.log('manuscripts:', JSON.stringify(manuscripts, null, 2));
 
 export {};
