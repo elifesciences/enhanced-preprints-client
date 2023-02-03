@@ -55,6 +55,6 @@ jobs:
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
             --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
-            --msa "$(IFS=','; if [[ "${github.event.inputs.msa}" == *,* ]]; then echo -n "\"${github.event.inputs.msa[*]}\""; else echo -n "${github.event.inputs.msa}"; fi)" \
+            --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
             --versionManuscript "${{ github.event.inputs.versionManuscript }}"
