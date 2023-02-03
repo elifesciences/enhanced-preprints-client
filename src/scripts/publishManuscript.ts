@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import * as yargs from 'yargs';
+import * as fs from 'fs';
 
 interface Args {
   doi: string;
@@ -99,7 +100,22 @@ const manuscripts = {
   [`${args.msid}v${args.versionManuscript}`] : manuscript,
 };
 
-console.log('preprint:', JSON.stringify(preprint, null, 2));
-console.log('manuscripts:', JSON.stringify(manuscripts, null, 2));
+fs.readFile("manuscripts.json", "utf-8", (err, data) => {
+  if (err) throw err;
+
+  const existingData = JSON.parse(data);
+
+  const updatedPreprints = { ...existingData.preprints, ...preprint };
+  const updatedManuscripts = { ...existingData.manuscripts, ...manuscripts };
+
+  const updatedData = {
+    preprints: updatedPreprints,
+    manuscripts: updatedManuscripts
+  };
+
+  fs.writeFile("manuscripts.json", `${JSON.stringify(updatedData, null, 2)}${"\n"}`, err => {
+    if (err) throw err;
+  });
+});
 
 export {};
