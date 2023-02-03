@@ -78,9 +78,10 @@ jobs:
           git config --local user.name "GitHub Actions"
           git commit -m "Publish manuscript using workflow"
       - name: Push Feature Branch
-        run: |
-          git config --global --add --bool push.autoSetupRemote true
-          git push --set-upstream origin $BRANCH_NAME
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: $BRANCH_NAME
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
