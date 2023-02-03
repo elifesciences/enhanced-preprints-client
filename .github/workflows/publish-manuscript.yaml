@@ -45,6 +45,10 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
+      - name: Create Feature Branch
+        run: |
+          BRANCH_NAME=feature/${{ env.GITHUB_SHA }}
+          git checkout -b $BRANCH_NAME
       - name: Publish Manuscript
         run: |
           yarn publish-manuscript \
@@ -58,3 +62,14 @@ jobs:
             --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
             --versionManuscript ${{ github.event.inputs.versionManuscript }}
+      - name: Commit Changes
+        run: |
+          git add .
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -m "Publish manuscript using workflow"
+      - name: Push Feature Branch
+        run: |
+          git push origin $BRANCH_NAME
+      - name: Create Pull Request
+        uses: peter
