@@ -65,6 +65,7 @@ const args = yargs
   })
   .argv as Args;
 
+const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
 console.log(`Preprint DOI: ${args.doi}`);
 console.log(`Manuscript ID: ${args.msid || 'Not provided'}`);
 console.log(`Reviewed Preprint posted (YYYY-MM-DD): ${args.dateReviewedPreprint || 'Not provided'}`);
@@ -72,7 +73,7 @@ console.log(`Posted to preprint server (YYYY-MM-DD): ${args.datePostedToPreprint
 console.log(`Posted to preprint server (url): ${args.urlPostedOnPreprintServer}`);
 console.log(`Preprint server: ${args.preprintServer}`);
 console.log(`Sent for peer review (YYYY-MM-DD): ${args.dateSentForPeerReview}`);
-console.log(`msa: ${args.msa?.join(' | ') || 'Not provided'}`);
+console.log(`msa: ${msa?.join(' | ') || 'Not provided'}`);
 console.log(`PDF location (url): ${args.urlPdf || 'Not provided'}`);
 console.log(`Manuscript version: ${args.versionManuscript}`);
 
