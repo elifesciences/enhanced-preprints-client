@@ -1,0 +1,60 @@
+name: Publish Manuscript
+
+on:
+  workflow_dispatch:
+    inputs:
+      doi:
+        required: true
+        description: Preprint DOI
+      msid:
+        required: true
+        description: Manuscript ID
+      dateReviewedPreprint:
+        description: Reviewed Preprint posted (YYYY-MM-DD)
+      datePostedToPreprintServer:
+        required: true
+        description: Posted to preprint server (YYYY-MM-DD)
+      urlPostedOnPreprintServer:
+        required: true
+        description: Posted to preprint server (url)
+      preprintServer:
+        description: Preprint server
+      dateSentForPeerReview:
+        required: true
+        description: Sent for peer review (YYYY-MM-DD)
+      msa:
+        description: Subject areas (comma separated)
+      urlPdf:
+        description: PDF location (url)
+      versionManuscript:
+        description: Manuscript version
+
+jobs:
+  publish-manuscript:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        id: nvm
+      - name: Use Node.js (.nvmrc)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          cache: yarn
+      - name: yarn install
+        run: yarn
+      - name: Publish Manuscript
+        run: |
+          yarn publish-manuscript \
+            --doi "${{ github.event.inputs.doi }}" \
+            --msid "${{ github.event.inputs.msid }}" \
+            --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
+            --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
+            --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
+            --preprintServer "${{ github.event.inputs.preprintServer }}" \
+            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
+            --msa "$(IFS=','; if [[ "${github.event.inputs.msa}" == *,* ]]; then echo -n "\"${github.event.inputs.msa[*]}\""; else echo -n "${github.event.inputs.msa}"; fi)" \
+            --urlPdf "${{ github.event.inputs.urlPdf }}" \
+            --versionManuscript "${{ github.event.inputs.versionManuscript }}"
