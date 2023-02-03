@@ -5,12 +5,11 @@ on:
     inputs:
       doi:
         required: true
-        description: preprint DOI
+        description: Preprint DOI
       msid:
         required: true
         description: Manuscript ID
       dateReviewedPreprint:
-        required: true
         description: Reviewed Preprint posted (YYYY-MM-DD)
       datePostedToPreprintServer:
         required: true
@@ -20,22 +19,25 @@ on:
         description: Posted to preprint server (url)
       preprintServer:
         description: Preprint server
-        default: bioRxiv
       dateSentForPeerReview:
         required: true
         description: Sent for peer review (YYYY-MM-DD)
       msa:
         description: Subject areas (comma separated)
-      pdfUrl:
+      urlPdf:
         description: PDF location (url)
-      version:
+      versionManuscript:
         description: Manuscript version
-        default: '1'
 
 jobs:
   greet:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Confirm inputs
-      run: echo "${{ github.event.inputs.doi }} ${{ github.event.inputs.msid }}"
+    - name: Publish Manuscript
+      run: |
+        yarn publish-manuscript --doi "${{ github.event.inputs.doi }}" \
+          --msid "${{ github.event.inputs.msid }}" \
+          --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
+          --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
+          --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}"
