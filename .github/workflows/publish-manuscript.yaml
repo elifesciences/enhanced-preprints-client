@@ -45,9 +45,12 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Create Feature Branch
         run: |
-          BRANCH_NAME=feature/${{ env.GITHUB_SHA }}
+          BRANCH_NAME=feature/${{ steps.vars.outputs.sha_short }}
           git checkout -b $BRANCH_NAME
       - name: Publish Manuscript
         run: |
