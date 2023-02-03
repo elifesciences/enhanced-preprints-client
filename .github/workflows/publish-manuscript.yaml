@@ -30,14 +30,25 @@ on:
         description: Manuscript version
 
 jobs:
-  greet:
+  publish-manuscript:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Publish Manuscript
-      run: |
-        yarn publish-manuscript --doi "${{ github.event.inputs.doi }}" \
-          --msid "${{ github.event.inputs.msid }}" \
-          --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
-          --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
-          --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}"
+      - uses: actions/checkout@v3
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        id: nvm
+      - name: Use Node.js (.nvmrc)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          cache: yarn
+      - name: yarn install
+        run: yarn
+      - name: Publish Manuscript
+        run: |
+          yarn publish-manuscript --doi "${{ github.event.inputs.doi }}" \
+            --msid "${{ github.event.inputs.msid }}" \
+            --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
+            --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
+            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}"
