@@ -8,10 +8,9 @@ import { jsonFetch } from '../../../utils/json-fetch';
 import { errorNotFoundRequest, reviewedPreprintSnippet, writeResponse } from '../reviewed-preprints.page';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const msidFound = req.url?.match(/\/(?<msid>[a-z0-9-]+)$/);
-  const msid = msidFound ? msidFound.groups?.msid : null;
+  const { msid } = req.query;
 
-  const manuscript = getManuscript(config.manuscriptConfigFile, msid ?? '');
+  const manuscript = getManuscript(config.manuscriptConfigFile, (Array.isArray(msid) ? msid[0] : msid) ?? '');
 
   if (manuscript) {
     const [metaData, content] = await Promise.all([
