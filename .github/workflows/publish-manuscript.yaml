@@ -72,4 +72,15 @@ jobs:
         run: |
           git push origin $BRANCH_NAME
       - name: Create Pull Request
-        uses: peter
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: $BRANCH_NAME
+          title: "Publish manuscript ${{ github.event.inputs.msid }}"
+          base: master
+          body:
+            |
+            Manuscript ID: ${{ github.event.inputs.msid }}
+            DOI: ${{ github.event.inputs.doi }}
+
+            Please review and merge this feature branch to master.
+          token: ${{ secrets.GITHUB_TOKEN }}
