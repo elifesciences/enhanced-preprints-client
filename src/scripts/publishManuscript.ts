@@ -66,16 +66,40 @@ const args = yargs
   .argv as Args;
 
 const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+const dateReviewedPreprint = args.dateReviewedPreprint ?? (new Date()).toISOString().split('T')[0];
 
-console.log(`Preprint DOI: ${args.doi}`);
-console.log(`Manuscript ID: ${args.msid || 'Not provided'}`);
-console.log(`Reviewed Preprint posted (YYYY-MM-DD): ${args.dateReviewedPreprint || 'Not provided'}`);
-console.log(`Posted to preprint server (YYYY-MM-DD): ${args.datePostedToPreprintServer}`);
-console.log(`Posted to preprint server (url): ${args.urlPostedOnPreprintServer}`);
-console.log(`Preprint server: ${args.preprintServer}`);
-console.log(`Sent for peer review (YYYY-MM-DD): ${args.dateSentForPeerReview}`);
-console.log(`msa: ${msa?.join(' | ') || 'Not provided'}`);
-console.log(`PDF location (url): ${args.urlPdf || 'Not provided'}`);
-console.log(`Manuscript version: ${args.versionManuscript}`);
+const preprint = {
+  [args.doi]: {
+    ...{
+      "preprintDoi": args.doi,
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
+          { "name": `Posted to ${args.preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${args.preprintServer}` } },
+          { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
+        ]
+      },
+      "msas": msa,
+    },
+    ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {})
+  }, 
+};
+
+const manuscript = {
+  "msid": args.msid,
+  "version": `${args.versionManuscript}`,
+  "publishedYear": Number(dateReviewedPreprint.split('-')[0]),
+  "preprintDoi": args.doi,
+};
+
+const manuscripts = {
+  [args.msid] : manuscript,
+  [`${args.msid}v${args.versionManuscript}`] : manuscript,
+};
+
+console.log('preprint:', JSON.stringify(preprint, null, 2));
+console.log('manuscripts:', JSON.stringify(manuscripts, null, 2));
 
 export {};
