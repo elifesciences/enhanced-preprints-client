@@ -73,7 +73,7 @@ jobs:
           git commit -m "Publish manuscript using workflow"
       - name: Push Feature Branch
         run: |
-          git push origin $BRANCH_NAME
+          git push --set-upstream origin $BRANCH_NAME
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
