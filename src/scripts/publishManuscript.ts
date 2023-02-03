@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import * as yargs from 'yargs';
+import * as fs from 'fs';
 
 interface Args {
   doi: string;
@@ -66,17 +67,6 @@ const args = yargs
   .argv as Args;
 
 const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
-// console.log(`Preprint DOI: ${args.doi}`);
-// console.log(`Manuscript ID: ${args.msid || 'Not provided'}`);
-// console.log(`Reviewed Preprint posted (YYYY-MM-DD): ${args.dateReviewedPreprint || 'Not provided'}`);
-// console.log(`Posted to preprint server (YYYY-MM-DD): ${args.datePostedToPreprintServer}`);
-// console.log(`Posted to preprint server (url): ${args.urlPostedOnPreprintServer}`);
-// console.log(`Preprint server: ${args.preprintServer}`);
-// console.log(`Sent for peer review (YYYY-MM-DD): ${args.dateSentForPeerReview}`);
-// console.log(`msa: ${msa?.join(' | ') || 'Not provided'}`);
-// console.log(`PDF location (url): ${args.urlPdf || 'Not provided'}`);
-// console.log(`Manuscript version: ${args.versionManuscript}`);
-
 const dateReviewedPreprint = args.dateReviewedPreprint ?? (new Date()).toISOString().split('T')[0];
 
 const preprint = {
@@ -110,7 +100,22 @@ const manuscripts = {
   [`${args.msid}v${args.versionManuscript}`] : manuscript,
 };
 
-console.log('preprint:', JSON.stringify(preprint, null, 2));
-console.log('manuscripts:', JSON.stringify(manuscripts, null, 2));
+fs.readFile("manuscripts.json", "utf-8", (err, data) => {
+  if (err) throw err;
+
+  const existingData = JSON.parse(data);
+
+  const updatedPreprints = { ...existingData.preprints, ...preprint };
+  const updatedManuscripts = { ...existingData.manuscripts, ...manuscripts };
+
+  const updatedData = {
+    preprints: updatedPreprints,
+    manuscripts: updatedManuscripts
+  };
+
+  fs.writeFile("manuscripts.json", `${JSON.stringify(updatedData, null, 2)}${"\n"}`, err => {
+    if (err) throw err;
+  });
+});
 
 export {};

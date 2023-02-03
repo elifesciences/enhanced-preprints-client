@@ -1,5 +1,11 @@
 name: Publish Manuscript
 
+# Set the access for individual scopes, or use permissions: write-all
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -34,7 +40,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
@@ -45,6 +52,13 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Create Feature Branch
+        run: |
+          BRANCH_NAME=feature/${{ steps.vars.outputs.sha_short }}
+          git checkout -b $BRANCH_NAME
       - name: Publish Manuscript
         run: |
           yarn publish-manuscript \
@@ -55,6 +69,31 @@ jobs:
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
             --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
-            --msa "$(IFS=','; if [[ "${github.event.inputs.msa}" == *,* ]]; then echo -n "\"${github.event.inputs.msa[*]}\""; else echo -n "${github.event.inputs.msa}"; fi)" \
+            --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
-            --versionManuscript "${{ github.event.inputs.versionManuscript }}"
+            --versionManuscript ${{ github.event.inputs.versionManuscript }}
+      - name: Commit Changes
+        run: |
+          git add .
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -m "Publish manuscript using workflow"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Push Feature Branch
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: $BRANCH_NAME
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: $BRANCH_NAME
+          title: "Publish manuscript ${{ github.event.inputs.msid }}"
+          base: master
+          body:
+            |
+            Manuscript ID: ${{ github.event.inputs.msid }}
+            DOI: ${{ github.event.inputs.doi }}
+
+            Please review and merge this feature branch to master.
+          token: ${{ secrets.GITHUB_TOKEN }}
