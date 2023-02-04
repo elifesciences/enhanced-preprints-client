@@ -79,7 +79,7 @@ jobs:
           git add .
           git commit -m "Publish manuscript using workflow"
       - name: Push Feature Branch
-        uses: ad-m/github-push-action@v0.8.0
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ env.GITHUB_TOKEN }}
           branch: $BRANCH_NAME
