@@ -70,21 +70,12 @@ jobs:
             --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
             --versionManuscript ${{ github.event.inputs.versionManuscript }}
-      - name: Commit Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
-          git add .
-          git commit -m "Publish manuscript using workflow"
-      - name: Push Feature Branch
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ env.GITHUB_TOKEN }}
-          branch: "${{ env.BRANCH_NAME }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "${{ env.BRANCH_NAME }}"
+          commit-message: Publish manuscript using workflow
+          committer: GitHub Actions <action@github.com>
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
           base: master
           body:
