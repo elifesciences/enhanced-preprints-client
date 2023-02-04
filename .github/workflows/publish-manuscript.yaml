@@ -49,13 +49,14 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Set outputs
+      - name: Set sha_short
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Create Feature Branch
+        env:
+          BRANCH_NAME: "feature/${{ steps.vars.outputs.sha_short }}"
         run: |
-          BRANCH_NAME=feature/${{ steps.vars.outputs.sha_short }}
-          git checkout -b $BRANCH_NAME
+          git checkout -b "${{ env.BRANCH_NAME }}"
       - name: Publish Manuscript
         run: |
           yarn publish-manuscript \
@@ -79,11 +80,11 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ env.GITHUB_TOKEN }}
-          branch: $BRANCH_NAME
+          branch: "${{ env.BRANCH_NAME }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          head: $BRANCH_NAME
+          branch: "${{ env.BRANCH_NAME }}"
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
           base: master
           body:
