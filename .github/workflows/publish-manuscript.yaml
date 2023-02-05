@@ -43,9 +43,6 @@ jobs:
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
-      - name: Generate unique sha
-        run: echo "UNIQUE=$(date +%s | git hash-object -w --stdin | head -c 8)" >> $GITHUB_OUTPUT
-        id: sha
       - name: Use Node.js (.nvmrc)
         uses: actions/setup-node@v3
         with:
@@ -55,7 +52,8 @@ jobs:
         run: yarn
       - name: Publish Manuscript
         run: |
-          yarn publish-manuscript \
+          cat manuscripts.json | \
+            yarn publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
@@ -65,11 +63,14 @@ jobs:
             --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
             --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
-            --versionManuscript ${{ github.event.inputs.versionManuscript }}
+            --versionManuscript ${{ github.event.inputs.versionManuscript }} | \
+            tee manuscripts.json > /dev/null
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "${{ env.BRANCH_NAME }}--${{ steps.sha.outputs.UNIQUE }}"
+          branch: "${{ env.BRANCH_NAME }}"
+          branch-suffix: short-commit-hash
           commit-message: Publish manuscript using workflow
           committer: GitHub Actions <action@github.com>
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
@@ -80,3 +81,12 @@ jobs:
 
             Please review and merge.
           token: ${{ env.GITHUB_TOKEN }}
+      - name: Enable Pull Request Automerge
+        if: |
+          steps.cpr.outputs.pull-request-operation == 'created' &&
+          github.head_ref != 'master'
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.PAT }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
