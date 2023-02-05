@@ -87,6 +87,6 @@ jobs:
           github.head_ref != 'master'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ env.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
