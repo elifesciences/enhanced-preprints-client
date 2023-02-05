@@ -81,7 +81,7 @@ const preprint = {
           { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
           { "name": `Posted to ${preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${preprintServer}` } },
           { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
-        ]
+        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())
       },
       msas: msa,
     },
