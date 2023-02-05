@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 import * as yargs from 'yargs';
-import * as fs from 'fs';
-import { config } from '../config';
 
 interface Args {
   doi: string;
@@ -65,12 +63,50 @@ const args = yargs
   })
   .argv as Args;
 
-const preprintServer = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv'; 
-const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
-const dateReviewedPreprint = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
-const versionManuscript = args.versionManuscript ?? 1;
+const preprintServer: string = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv'; 
+const msa: string[] | undefined = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+const dateReviewedPreprint: string = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
+const versionManuscript: number = args.versionManuscript ?? 1;
 
-const preprint = {
+type Preprint = {
+  preprintDoi: string;
+  status: {
+    articleType: string;
+    status: string;
+    timeline: {
+      name: string;
+      date: string;
+      link?: {
+        url: string;
+        text: string;
+      }
+    }[]
+  };
+  pdfUrl?: string;
+  msas?: string[];
+};
+
+type Preprints = {
+  [preprintDoi: string]: Preprint;
+};
+
+type Manuscript = {
+  msid: string;
+  version: string;
+  publishedYear: number;
+  preprintDoi: string;
+};
+
+type Manuscripts = {
+  [msidVersion: string]: Manuscript;
+};
+
+type PreprintManuscripts = {
+  preprints: Preprints,
+  manuscripts: Manuscripts,
+};
+
+const preprints: Preprints = {
   [args.doi]: {
     ...{
       "preprintDoi": args.doi,
@@ -81,7 +117,7 @@ const preprint = {
           { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
           { "name": `Posted to ${preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${preprintServer}` } },
           { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
-        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())
+        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
       },
       msas: msa,
     },
@@ -89,34 +125,43 @@ const preprint = {
   }, 
 };
 
-const manuscript = {
+const manuscript: Manuscript = {
   "msid": args.msid,
   "version": `${versionManuscript}`,
   "publishedYear": Number(dateReviewedPreprint.split('-')[0]),
   "preprintDoi": args.doi,
 };
 
-const manuscripts = {
+const manuscripts: Manuscripts = {
   [args.msid] : manuscript,
   [`${args.msid}v${versionManuscript}`] : manuscript,
 };
 
-fs.readFile(config.manuscriptConfigFile, 'utf-8', (readError, data) => {
-  if (readError) throw readError;
+const addManuscript = (preprintManuscripts: PreprintManuscripts | undefined, preprints: Preprints, manuscripts: Manuscripts) : void => {
+  const data: PreprintManuscripts = (preprintManuscripts !== undefined) ? preprintManuscripts : { preprints: {}, manuscripts: {} };
+  const updatedPreprints: Preprints = { ...data.preprints, ...preprints };
+  const updatedManuscripts: Manuscripts = { ...data.manuscripts, ...manuscripts };
 
-  const existingData = JSON.parse(data);
-
-  const updatedPreprints = { ...existingData.preprints, ...preprint };
-  const updatedManuscripts = { ...existingData.manuscripts, ...manuscripts };
-
-  const updatedData = {
+  const updatedData: PreprintManuscripts = {
     preprints: updatedPreprints,
     manuscripts: updatedManuscripts,
   };
 
-  fs.writeFile(config.manuscriptConfigFile, `${JSON.stringify(updatedData, null, 2)}${'\n'}`, (writeError) => {
-    if (writeError) throw writeError;
+  process.stdout.write(`${JSON.stringify(updatedData, null, 2)}\n`);
+};
+
+let input = '';
+
+if (!process.stdin.isTTY) {
+  process.stdin.on('data', (chunk) => {
+    input += chunk;
   });
-});
+
+  process.stdin.on('end', () => {
+    addManuscript(input.length ? JSON.parse(input) : undefined, preprints, manuscripts);
+  });
+} else {
+  addManuscript(undefined, preprints, manuscripts);
+}
 
 export {};
