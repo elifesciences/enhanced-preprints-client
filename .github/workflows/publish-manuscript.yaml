@@ -31,7 +31,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  BRANCH_NAME: "publish-${{ github.event.inputs.msid }}-v${{ github.event.inputs.msid }}"
+  BRANCH_NAME: "publish-${{ github.event.inputs.msid }}"
 
 jobs:
   publish-manuscript:
@@ -69,7 +69,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "${{ env.BRANCH_NAME }}-${{ steps.sha.outputs.UNIQUE }}"
+          branch: "${{ env.BRANCH_NAME }}--${{ steps.sha.outputs.UNIQUE }}"
           commit-message: Publish manuscript using workflow
           committer: GitHub Actions <action@github.com>
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
