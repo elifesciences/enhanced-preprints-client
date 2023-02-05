@@ -1,11 +1,5 @@
 name: Publish Manuscript
 
-# Set the access for individual scopes, or use permissions: write-all
-permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
-
 on:
   workflow_dispatch:
     inputs:
@@ -35,6 +29,10 @@ on:
       versionManuscript:
         description: Manuscript version
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  BRANCH_NAME: "publish-${{ github.event.inputs.msid }}"
+
 jobs:
   publish-manuscript:
     runs-on: ubuntu-latest
@@ -45,6 +43,9 @@ jobs:
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
+      - name: Generate unique sha
+        run: echo "UNIQUE=$(date +%s | git hash-object -w --stdin | head -c 8)" >> $GITHUB_OUTPUT
+        id: sha
       - name: Use Node.js (.nvmrc)
         uses: actions/setup-node@v3
         with:
@@ -52,13 +53,6 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: Create Feature Branch
-        run: |
-          BRANCH_NAME=feature/${{ steps.vars.outputs.sha_short }}
-          git checkout -b $BRANCH_NAME
       - name: Publish Manuscript
         run: |
           yarn publish-manuscript \
@@ -72,28 +66,17 @@ jobs:
             --msa "${{ github.event.inputs.msa }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
             --versionManuscript ${{ github.event.inputs.versionManuscript }}
-      - name: Commit Changes
-        run: |
-          git add .
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
-          git commit -m "Publish manuscript using workflow"
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Push Feature Branch
-        uses: ad-m/github-push-action@v0.5.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: $BRANCH_NAME
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: $BRANCH_NAME
+          branch: "${{ env.BRANCH_NAME }}--${{ steps.sha.outputs.UNIQUE }}"
+          commit-message: Publish manuscript using workflow
+          committer: GitHub Actions <action@github.com>
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
-          base: master
           body:
             |
             Manuscript ID: ${{ github.event.inputs.msid }}
             DOI: ${{ github.event.inputs.doi }}
 
-            Please review and merge this feature branch to master.
-          token: ${{ secrets.GITHUB_TOKEN }}
+            Please review and merge.
+          token: ${{ env.GITHUB_TOKEN }}

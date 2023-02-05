@@ -45,7 +45,6 @@ const args = yargs
   .option('preprintServer', {
     type: 'string',
     describe: 'Preprint server',
-    default: 'bioRxiv',
   })
   .option('dateSentForPeerReview', {
     type: 'string',
@@ -63,42 +62,43 @@ const args = yargs
   .option('versionManuscript', {
     type: 'number',
     describe: 'Manuscript version',
-    default: 1,
   })
   .argv as Args;
 
-const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map((i) => i.trim()) : args.msa;
-const dateReviewedPreprint = args.dateReviewedPreprint ?? (new Date()).toISOString().split('T')[0];
+const preprintServer = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv'; 
+const msa = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+const dateReviewedPreprint = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
+const versionManuscript = args.versionManuscript ?? 1;
 
 const preprint = {
   [args.doi]: {
     ...{
-      preprintDoi: args.doi,
-      status: {
-        articleType: 'Reviewed Preprint',
-        status: 'Published from the original preprint after peer review and assessment by eLife.',
-        timeline: [
-          { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
-          { name: `Posted to ${args.preprintServer}`, date: args.datePostedToPreprintServer, link: { url: args.urlPostedOnPreprintServer, text: `Go to ${args.preprintServer}` } },
-          { name: 'Sent for peer review', date: args.dateSentForPeerReview },
-        ],
+      "preprintDoi": args.doi,
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
+          { "name": `Posted to ${preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${preprintServer}` } },
+          { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
+        ]
       },
       msas: msa,
     },
-    ...(args.urlPdf ? { pdfUrl: args.urlPdf } : {}),
-  },
+    ...((args.urlPdf && args.urlPdf.trim() !== '') ? { pdfUrl: args.urlPdf.trim() } : {})
+  }, 
 };
 
 const manuscript = {
-  msid: args.msid,
-  version: `${args.versionManuscript}`,
-  publishedYear: Number(dateReviewedPreprint.split('-')[0]),
-  preprintDoi: args.doi,
+  "msid": args.msid,
+  "version": `${versionManuscript}`,
+  "publishedYear": Number(dateReviewedPreprint.split('-')[0]),
+  "preprintDoi": args.doi,
 };
 
 const manuscripts = {
-  [args.msid]: manuscript,
-  [`${args.msid}v${args.versionManuscript}`]: manuscript,
+  [args.msid] : manuscript,
+  [`${args.msid}v${versionManuscript}`] : manuscript,
 };
 
 fs.readFile(config.manuscriptConfigFile, 'utf-8', (readError, data) => {
