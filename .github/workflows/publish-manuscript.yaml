@@ -66,7 +66,6 @@ jobs:
             --versionManuscript ${{ github.event.inputs.versionManuscript }} | \
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
-        if: github.head_ref == 'master'
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "${{ env.BRANCH_NAME }}"
@@ -78,11 +77,14 @@ jobs:
             |
             Manuscript ID: ${{ github.event.inputs.msid }}
             DOI: ${{ github.event.inputs.doi }}
+            github.ref: ${{ github.ref }}
+            github.head_ref: ${{ github.head_ref }}
+            github.base_ref: ${{ github.base_ref }}
 
             Please review and merge.
           token: ${{ env.GITHUB_TOKEN }}
       - name: Commit changes to existing branch (not master)
-        if: github.head_ref != 'master'
+        if: github.head_ref == 'master'
         uses: EndBug/add-and-commit@v9
         with:
           committer_name: GitHub Actions
