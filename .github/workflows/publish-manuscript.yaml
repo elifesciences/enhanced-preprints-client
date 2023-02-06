@@ -65,13 +65,13 @@ jobs:
             --urlPdf "${{ github.event.inputs.urlPdf }}" \
             --versionManuscript ${{ github.event.inputs.versionManuscript }} | \
             tee manuscripts.json > /dev/null
-      - name: Create Pull Request
-        id: cpr
+      - name: Create Pull Request (master)
+        if: github.head_ref == 'master'
         uses: peter-evans/create-pull-request@v3
         with:
           branch: "${{ env.BRANCH_NAME }}"
           branch-suffix: short-commit-hash
-          commit-message: Publish manuscript using workflow
+          commit-message: "Publish manuscript ${{ github.event.inputs.msid }} using workflow"
           committer: GitHub Actions <action@github.com>
           title: "Publish manuscript ${{ github.event.inputs.msid }}"
           body:
@@ -81,12 +81,11 @@ jobs:
 
             Please review and merge.
           token: ${{ env.GITHUB_TOKEN }}
-      - name: Enable Pull Request Automerge
-        if: |
-          steps.cpr.outputs.pull-request-operation == 'created' &&
-          github.head_ref != 'master'
-        uses: peter-evans/enable-pull-request-automerge@v2
+      - name: Commit changes to existing branch (not master)
+        if: github.head_ref != 'master'
+        uses: EndBug/add-and-commit@v9
         with:
-          token: ${{ env.GITHUB_TOKEN }}
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: squash
+          committer_name: GitHub Actions
+          committer_email: action@github.com
+          message: "Publish manuscript ${{ github.event.inputs.msid }} using workflow"
+
