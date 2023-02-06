@@ -53,7 +53,7 @@ jobs:
       - name: Publish Manuscript
         run: |
           cat manuscripts.json | \
-            yarn publish-manuscript \
+            yarn --silent publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
