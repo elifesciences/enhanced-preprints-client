@@ -63,8 +63,8 @@ const args = yargs
   })
   .argv as Args;
 
-const preprintServer: string = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv'; 
-const msa: string[] | undefined = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map(i => i.trim()) : args.msa;
+const preprintServer: string = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv';
+const msa: string[] | undefined = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map((i) => i.trim()) : args.msa;
 const dateReviewedPreprint: string = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
 const versionManuscript: number = args.versionManuscript ?? 1;
 
@@ -106,35 +106,35 @@ type PreprintManuscripts = {
   manuscripts: Manuscripts,
 };
 
-const preprints: Preprints = {
+const newPreprints: Preprints = {
   [args.doi]: {
     ...{
-      "preprintDoi": args.doi,
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Published from the original preprint after peer review and assessment by eLife.",
-        "timeline": [
-          { "name": "Reviewed Preprint posted", "date": dateReviewedPreprint },
-          { "name": `Posted to ${preprintServer}`, "date": args.datePostedToPreprintServer, "link": { "url": args.urlPostedOnPreprintServer, "text": `Go to ${preprintServer}` } },
-          { "name": "Sent for peer review", "date": args.dateSentForPeerReview }
-        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
+      preprintDoi: args.doi,
+      status: {
+        articleType: 'Reviewed Preprint',
+        status: 'Published from the original preprint after peer review and assessment by eLife.',
+        timeline: [
+          { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
+          { name: `Posted to ${preprintServer}`, date: args.datePostedToPreprintServer, link: { url: args.urlPostedOnPreprintServer, text: `Go to ${preprintServer}` } },
+          { name: 'Sent for peer review', date: args.dateSentForPeerReview },
+        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())),
       },
       msas: msa,
     },
-    ...((args.urlPdf && args.urlPdf.trim() !== '') ? { pdfUrl: args.urlPdf.trim() } : {})
-  }, 
+    ...((args.urlPdf && args.urlPdf.trim() !== '') ? { pdfUrl: args.urlPdf.trim() } : {}),
+  },
 };
 
-const manuscript: Manuscript = {
-  "msid": args.msid,
-  "version": `${versionManuscript}`,
-  "publishedYear": Number(dateReviewedPreprint.split('-')[0]),
-  "preprintDoi": args.doi,
+const newManuscript: Manuscript = {
+  msid: args.msid,
+  version: `${versionManuscript}`,
+  publishedYear: Number(dateReviewedPreprint.split('-')[0]),
+  preprintDoi: args.doi,
 };
 
-const manuscripts: Manuscripts = {
-  [args.msid] : manuscript,
-  [`${args.msid}v${versionManuscript}`] : manuscript,
+const newManuscripts: Manuscripts = {
+  [args.msid]: newManuscript,
+  [`${args.msid}v${versionManuscript}`]: newManuscript,
 };
 
 const addManuscript = (preprintManuscripts: PreprintManuscripts | undefined, preprints: Preprints, manuscripts: Manuscripts) : void => {
@@ -158,10 +158,10 @@ if (!process.stdin.isTTY) {
   });
 
   process.stdin.on('end', () => {
-    addManuscript(input.length ? JSON.parse(input) : undefined, preprints, manuscripts);
+    addManuscript(input.length ? JSON.parse(input) : undefined, newPreprints, newManuscripts);
   });
 } else {
-  addManuscript(undefined, preprints, manuscripts);
+  addManuscript(undefined, newPreprints, newManuscripts);
 }
 
 export {};
