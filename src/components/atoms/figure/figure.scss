@@ -5,7 +5,7 @@
 .figure {
   margin: 0;
 
-  >img {
+  > img {
     @include mixins.margin(18, "bottom");
     @include mixins.padding(12);
 
