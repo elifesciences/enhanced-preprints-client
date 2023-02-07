@@ -21,6 +21,34 @@
   max-width: settings.$max-site-width;
 }
 
+.grid-header {
+  @media only all and (min-width: settings.$breakpoint-small) {
+    grid-column: 1/13;
+    grid-row: 1;
+  }
+}
+
+.primary-section-header {
+  @media only all and (min-width: settings.$breakpoint-small) {
+    grid-column: 1/13;
+    grid-row: 2;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 2/12;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    grid-column: 1/9;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.padding(36, "right");
+
+    grid-column: 1/10;
+  }
+}
+
 .primary-section {
   @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
@@ -74,33 +102,5 @@
     @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
 
     grid-column: 10/13;
-  }
-}
-
-.primary-section-header {
-  @media only all and (min-width: settings.$breakpoint-small) {
-    grid-column: 1/13;
-    grid-row: 2;
-  }
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    grid-column: 2/12;
-  }
-
-  @media only all and (min-width: settings.$breakpoint-large) {
-    grid-column: 1/9;
-  }
-
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.padding(36, "right");
-
-    grid-column: 1/10;
-  }
-}
-
-.grid-header {
-  @media only all and (min-width: settings.$breakpoint-small) {
-    grid-column: 1/13;
-    grid-row: 1;
   }
 }
