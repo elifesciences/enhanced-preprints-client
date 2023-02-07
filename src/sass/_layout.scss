@@ -22,7 +22,6 @@
 }
 
 .primary-section {
-
   @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
     grid-row: 4;
@@ -40,7 +39,6 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-
     grid-column: 1/9;
   }
 
@@ -52,7 +50,6 @@
 }
 
 .side-section {
-
   @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
     grid-row: 3;
@@ -79,11 +76,11 @@
     top: 125px;
   }
 
-    @media only all and (min-width: settings.$breakpoint-extra-large) {
-      @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
 
-      grid-column: 10/13;
-    }
+    grid-column: 10/13;
+  }
 }
 
 .primary-section-header {
