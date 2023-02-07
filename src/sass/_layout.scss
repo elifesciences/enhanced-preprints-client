@@ -32,14 +32,8 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.padding(36, "right");
-
-    grid-column: 1/10;
-    grid-row: 3;
-  }
-
-  @media only all and (min-width: settings.$breakpoint-large) {
     grid-column: 1/9;
+    grid-row: 3;
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
@@ -94,6 +88,10 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
+    grid-column: 1/9;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.padding(36, "right");
 
     grid-column: 1/10;
