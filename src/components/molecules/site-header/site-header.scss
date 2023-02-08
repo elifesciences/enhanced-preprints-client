@@ -43,9 +43,7 @@
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
-  align-items: top;
   display: flex;
-  justify-content: top;
 }
 
 /* stylelint-disable no-descending-specificity */
