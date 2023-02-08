@@ -22,10 +22,6 @@
   }
 }
 
-.site-header__logo {
-  @include mixins.padding(24, "right");
-}
-
 .site-header__title {
   @include mixins.visuallyhidden();
 }
