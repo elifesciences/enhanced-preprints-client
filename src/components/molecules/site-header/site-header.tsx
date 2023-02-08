@@ -11,7 +11,7 @@ export const SiteHeader = (): JSX.Element => {
   return (
     <div className="site-header">
       <div className="site-header-container">
-        <a href="https://elifesciences.org">
+        <a href="/">
           <Image
             className="site-header__logo"
             src={logo}
