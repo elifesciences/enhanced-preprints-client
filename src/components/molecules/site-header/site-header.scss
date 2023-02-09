@@ -3,11 +3,14 @@
 @use "../../../sass/typography";
 
 .site-header {
-  @include mixins.margin(30, "top");
+  @include mixins.margin(36, "top");
   @include mixins.margin(36, "bottom");
 
-  @media only all and (min-width: settings.$breakpoint-extra-large) {
+  @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(48, "top");
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.margin(54, "bottom");
   }
 }

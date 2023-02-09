@@ -229,6 +229,32 @@
         ]
       },
       "msas": ["Cell Biology"]
+    },
+    "10.1101/2021.06.21.449261": {
+      "preprintDoi": "10.1101/2021.06.21.449261",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": "2023-02-09" },
+          { "name": "Sent for peer review", "date": "2022-12-02" },
+          { "name": "Posted to bioRxiv", "date": "2022-11-10", "link": { "url": "https://www.biorxiv.org/content/10.1101/2021.06.21.449261v4", "text": "Go to bioRxiv" } }
+        ]
+      },
+      "msas": ["Computational and Systems Biology"]
+    },
+    "10.1101/2022.07.22.501195": {
+      "preprintDoi": "10.1101/2022.07.22.501195",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": "2023-02-09" },
+          { "name": "Sent for peer review", "date": "2022-11-16" },
+          { "name": "Posted to bioRxiv", "date": "2022-10-31", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.07.22.501195v3", "text": "Go to bioRxiv" } }
+        ]
+      },
+      "msas": ["Neuroscience"]
     }
   },
   "manuscripts": {
@@ -339,6 +365,30 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.12.01.518662"
+    },
+    "84855": {
+      "msid": "84855",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.06.21.449261"
+    },
+    "84855v1": {
+      "msid": "84855",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.06.21.449261"
+    },
+    "84630": {
+      "msid": "84630",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.07.22.501195"
+    },
+    "84630v1": {
+      "msid": "84630",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.07.22.501195"
     }
   }
 }
