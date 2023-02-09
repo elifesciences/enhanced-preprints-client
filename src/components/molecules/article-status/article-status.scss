@@ -69,6 +69,14 @@
   @include mixins.margin(12, "right");
 
   display: inline-block;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "right");
+
+    &:nth-of-type(odd) {
+      @include mixins.margin(12, "right");
+    }
+  }
 }
 
 .form-item {
