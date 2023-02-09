@@ -55,8 +55,9 @@
   }
 
   @media only screen and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.padding(215, "left");
+
     justify-content: normal;
-    padding-left: 215px;
   }
 }
 
