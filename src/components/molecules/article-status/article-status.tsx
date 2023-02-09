@@ -46,14 +46,14 @@ export const ArticleStatus = ({
           <Button text="Cite" iconName="citation" variant="action" onClick={() => setShowCiteModal(true)} />
         </li>
       </ul>
-      <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)}>
+      <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
         <div className="form-item">
           <input readOnly={true} type="input" className="text-field text-field--clipboard" value={`https://doi.org/${doi}`} />
           <Clipboard text={`https://doi.org/${doi}`} />
         </div>
         <Socials doi={doi} title={title} />
       </Modal>
-      <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)}>
+      <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
         <Citation citation={citation} />
         <Clipboard text={formatStringCitation(citation)} />
       </Modal>
