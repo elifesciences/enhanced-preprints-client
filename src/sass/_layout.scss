@@ -21,68 +21,76 @@
   max-width: settings.$max-site-width;
 }
 
-@media only all and (min-width: settings.$breakpoint-small) {
-  .grid-header {
+.grid-header {
+  @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
     grid-row: 1;
   }
+}
 
-  .primary-section-header {
+.primary-section-header {
+  @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
     grid-row: 2;
   }
 
-  .side-section {
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 2/12;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    grid-column: 1/9;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.padding(36, "right");
+
+    grid-column: 1/10;
+  }
+}
+
+.primary-section {
+  @media only all and (min-width: settings.$breakpoint-small) {
+    grid-column: 1/13;
+    grid-row: 4;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    grid-column: 2/12;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    grid-column: 1/9;
+    grid-row: 3;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.padding(36, "right");
+
+    grid-column: 1/10;
+  }
+}
+
+.side-section {
+  @media only all and (min-width: settings.$breakpoint-small) {
     grid-column: 1/13;
     grid-row: 3;
   }
 
-  .primary-section {
-    grid-column: 1/13;
-    grid-row: 4;
-  }
-}
-
-@media only all and (min-width: settings.$breakpoint-medium) {
-  .primary-section-header {
-    grid-column: 2/12;
-    grid-row: 2;
-  }
-
-  .side-section {
+  @media only all and (min-width: settings.$breakpoint-medium) {
     align-items: start;
     display: flex;
     flex-direction: row;
     grid-column: 2/12;
-    grid-row: 3;
   }
 
-  .primary-section {
-    grid-column: 2/12;
-    grid-row: 4;
-  }
-}
-
-@media only all and (min-width: settings.$breakpoint-large) {
-  .grid-header {
-    grid-column: 1/13;
-  }
-
-  .primary-section-header {
-    @include mixins.padding(36, "right");
-
-    grid-column: 1/10;
-    grid-row: 2;
-  }
-
-  .side-section {
+  @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
 
     align-items: end;
     align-self: flex-start;
-    display: flex;
     flex-direction: column;
-    grid-column: 10/13;
+    grid-column: 9/13;
     grid-row: 2/4;
     justify-content: space-between;
     margin-top: 62px;
@@ -90,10 +98,9 @@
     top: 125px;
   }
 
-  .primary-section {
-    @include mixins.padding(36, "right");
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
 
-    grid-column: 1/10;
-    grid-row: 3;
+    grid-column: 10/13;
   }
 }
