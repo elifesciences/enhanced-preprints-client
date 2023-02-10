@@ -22,6 +22,7 @@
   display: grid;
   font-family: settings.$font-family-primary;
   grid-template-columns: repeat(4, 1fr);
+  z-index: 200;
 
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(24);
@@ -45,6 +46,11 @@
     grid-row: 1;
     justify-self: start;
   }
+}
+
+.modal-content__body {
+  display: grid;
+  grid-column: 1/6;
 }
 
 .modal-content__block {
