@@ -11,13 +11,15 @@ export const SiteHeader = (): JSX.Element => {
   return (
     <div className="site-header">
       <div className="site-header-container">
-        <Image
-          className="site-header__logo"
-          src={logo}
-          alt="eLife logo"
-          width="80"
-          height="30"
-        />
+        <a href="/" className="site-header__logo_link">
+          <Image
+            className="site-header__logo"
+            src={logo}
+            alt="eLife logo"
+            width="80"
+            height="30"
+          />
+        </a>
         <span className="site-header__title">Enhanced Preprints</span>
 
         {showMenu &&
