@@ -77,7 +77,7 @@ services:
       GIT_SYNC_HTTP_BIND: localhost:8080
       GIT_SYNC_ROOT: "/tmp/git/data"
       GIT_SYNC_REPO: https://github.com/elifesciences/enhanced-preprints-data
-      GIT_SYNC_BRANCH: master
+      GIT_SYNC_BRANCH: staging
       GIT_SYNC_DEPTH: "0"
       GIT_SYNC_WEBHOOK_URL: http://api:3000/import
       GIT_SYNC_WEBHOOK_TIMEOUT: "10s"
