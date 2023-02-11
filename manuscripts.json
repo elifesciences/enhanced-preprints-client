@@ -215,7 +215,8 @@
           { "name": "Sent for peer review", "date": "2022-10-28" }
         ]
       },
-      "msas": ["Genetics and Genomics", "Neuroscience"]
+      "msas": ["Genetics and Genomics", "Neuroscience"],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.10.28.514241/2022.10.28.514241.pdf"
     },
     "10.1101/2022.12.01.518662": {
       "preprintDoi": "10.1101/2022.12.01.518662",
@@ -228,7 +229,8 @@
           { "name": "Posted to bioRxiv", "date": "2022-12-01", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.12.01.518662v1", "text": "Go to bioRxiv" } }
         ]
       },
-      "msas": ["Cell Biology"]
+      "msas": ["Cell Biology"],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.12.01.518662/2022.12.01.518662.pdf"
     },
     "10.1101/2021.06.21.449261": {
       "preprintDoi": "10.1101/2021.06.21.449261",
