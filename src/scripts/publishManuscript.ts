@@ -5,6 +5,8 @@ import * as yargs from 'yargs';
 interface Args {
   doi: string;
   msid: string;
+  articleType?: string;
+  status?: string;
   dateReviewedPreprint?: string;
   datePostedToPreprintServer: string;
   urlPostedOnPreprintServer: string;
@@ -25,6 +27,14 @@ const args = yargs
     type: 'string',
     describe: 'Manuscript ID',
     demandOption: true,
+  })
+  .option('articleType', {
+    type: 'string',
+    describe: 'articleType',
+  })
+  .option('status', {
+    type: 'string',
+    describe: 'status',
   })
   .option('dateReviewedPreprint', {
     type: 'string',
@@ -63,6 +73,8 @@ const args = yargs
   })
   .argv as Args;
 
+const articleType: string = (args.articleType && args.articleType.trim() !== '') ? args.articleType.trim() : 'Reviewed Preprint';
+const status: string = (args.status && args.status.trim() !== '') ? args.status.trim() : 'Published from the original preprint after peer review and assessment by eLife.';
 const preprintServer: string = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv';
 const msa: string[] | undefined = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map((i) => i.trim()) : args.msa;
 const dateReviewedPreprint: string = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
@@ -111,8 +123,8 @@ const newPreprints: Preprints = {
     ...{
       preprintDoi: args.doi,
       status: {
-        articleType: 'Reviewed Preprint',
-        status: 'Published from the original preprint after peer review and assessment by eLife.',
+        articleType,
+        status,
         timeline: [
           { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
           { name: `Posted to ${preprintServer}`, date: args.datePostedToPreprintServer, link: { url: args.urlPostedOnPreprintServer, text: `Go to ${preprintServer}` } },

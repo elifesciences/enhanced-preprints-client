@@ -9,6 +9,12 @@ on:
       msid:
         required: true
         description: Manuscript ID
+      articleType:
+        description: articleType
+        default: Reviewed Preprint
+      status:
+        description: status
+        default: Published from the original preprint after peer review and assessment by eLife.
       dateReviewedPreprint:
         description: Reviewed Preprint posted (YYYY-MM-DD)
       datePostedToPreprintServer:
@@ -19,6 +25,7 @@ on:
         description: Posted to preprint server (url)
       preprintServer:
         description: Preprint server
+        default: bioRxiv
       dateSentForPeerReview:
         required: true
         description: Sent for peer review (YYYY-MM-DD)
@@ -56,6 +63,8 @@ jobs:
             yarn --silent publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
+            --articleType "${{ github.event.inputs.articleType }}" \
+            --status "${{ github.event.inputs.status }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
             --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
