@@ -80,8 +80,8 @@ services:
       GIT_SYNC_BRANCH: staging
       GIT_SYNC_DEPTH: "0"
       GIT_SYNC_WEBHOOK_URL: http://api:3000/import
-      GIT_SYNC_WEBHOOK_TIMEOUT: "10"
-      GIT_SYNC_WEBHOOK_BACKOFF: "10"
+      GIT_SYNC_WEBHOOK_TIMEOUT: "10s"
+      GIT_SYNC_WEBHOOK_BACKOFF: "10s"
       GIT_SYNC_TIMEOUT: "240"
     depends_on:
       api:
