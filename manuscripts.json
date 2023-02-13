@@ -151,6 +151,45 @@
         ]
       },
       "msas": ["Neuroscience"]
+    },
+    "10.1101/2022.11.25.517922": {
+      "preprintDoi": "10.1101/2022.11.25.517922",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": "2023-02-13" },
+          { "name": "Sent for peer review", "date": "2022-11-25" },
+          { "name": "Posted to bioRxiv", "date": "2022-11-26", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.11.25.517922v1", "text": "Go to bioRxiv" } }
+        ]
+      },
+      "msas": ["Plant Biology"]
+    },
+    "10.1101/2022.10.17.512253": {
+      "preprintDoi": "10.1101/2022.10.17.512253",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": "2023-02-13" },
+          { "name": "Sent for peer review", "date": "2022-11-08" },
+          { "name": "Posted to bioRxiv", "date": "2022-10-17", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.10.17.512253v1", "text": "Go to bioRxiv" } }
+        ]
+      },
+      "msas": ["Cell Biology"]
+    },
+    "10.1101/2022.11.01.514717": {
+      "preprintDoi": "10.1101/2022.11.01.514717",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          { "name": "Reviewed Preprint posted", "date": "2023-02-13" },
+          { "name": "Sent for peer review", "date": "2022-11-01" },
+          { "name": "Posted to bioRxiv", "date": "2022-11-01", "link": { "url": "https://www.biorxiv.org/content/10.1101/2022.11.01.514717v1", "text": "Go to bioRxiv" } }
+        ]
+      },
+      "msas": ["Neuroscience"]
     }
   },
   "manuscripts": {
@@ -285,6 +324,24 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.07.22.501195"
+    },
+    "84747": {
+      "msid": "84747",
+      "version": "1",
+      "publishedYear": "2023",
+      "preprintDoi": "10.1101/2022.11.25.517922"
+    },
+    "84364": {
+      "msid": "84364",
+      "version": "1",
+      "publishedYear": "2023",
+      "preprintDoi": "10.1101/2022.10.17.512253"
+    },
+    "84338": {
+      "msid": "84338",
+      "version": "1",
+      "publishedYear": "2023",
+      "preprintDoi": "10.1101/2022.11.01.514717"
     }
   }
 }
