@@ -24,7 +24,8 @@
   "include": [
     "src/",
     "pages/",
-    "browser-tests"
+    "browser-tests",
+    "./manuscripts.json"
   ],
   "exclude": [
     "node_modules"
