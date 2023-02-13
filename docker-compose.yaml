@@ -143,7 +143,7 @@ services:
       app:
         condition: service_healthy
       api-fetch-data:
-        condition: service_healthy
+        condition: service_started
     ports:
     - 8080:80
     volumes:
