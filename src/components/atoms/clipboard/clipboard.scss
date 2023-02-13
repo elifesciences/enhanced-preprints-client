@@ -13,3 +13,12 @@
     margin: 0;
   }
 }
+
+.copied {
+  background-color: #629f43;
+  min-width: 159px;
+
+  &:hover {
+    background-color: #2b7306;
+  }
+}

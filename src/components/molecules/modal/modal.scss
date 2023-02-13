@@ -123,6 +123,8 @@
     }
 
     .modal-content__cite & {
+      @include mixins.margin(36, "bottom");
+
       grid-column: 1/13;
       grid-row: 2;
     }
