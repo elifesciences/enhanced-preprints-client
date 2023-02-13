@@ -22,7 +22,7 @@ export const Clipboard = ({ text, buttonText = 'Copy to clipboard' }: ClipboardP
 
   return showButton ? (
     <div className="clipboard-container">
-      <button className={`button button--clipboard${copied ? ' copied' : ''}`} onClick={onClick}>{copied ? 'copied' : buttonText}</button>
+      <button className={`button button--clipboard${copied ? ' copied' : ''}`} onClick={onClick}>{copied ? 'Copied' : buttonText}</button>
     </div>
   ) : <></>;
 };
