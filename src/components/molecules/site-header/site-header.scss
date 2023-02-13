@@ -25,12 +25,12 @@
   }
 }
 
-.site-header__logo {
-  @include mixins.padding(24, "right");
-}
-
 .site-header__title {
   @include mixins.visuallyhidden();
+}
+
+.site-header__logo_link {
+  line-height: 0;
 }
 
 // Navigation css to be moved to it's own file when basic styling as been done
@@ -292,13 +292,6 @@
     @include mixins.margin(30, "bottom");
 
     float: none;
-  }
-
-  .site-header__logo_link {
-    display: block;
-    float: none;
-    height: 35px;
-    width: 88px;
   }
 }
 
