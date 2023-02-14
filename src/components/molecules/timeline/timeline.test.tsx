@@ -11,9 +11,12 @@ describe('Timeline', () => {
       { name: 'event2', date: '2002-02-14' },
     ]}/>);
 
+    const firstEvent = screen.getByText('14 February 2002');
+    const secondEvent = screen.getByText('13 January 2001');
+    expect(firstEvent).toBeInTheDocument();
+    expect(secondEvent).toBeInTheDocument();
+    expect(firstEvent.compareDocumentPosition(secondEvent)).toBe(4);
     expect(screen.getByText('event1')).toBeInTheDocument();
-    expect(screen.getByText('13 January 2001')).toBeInTheDocument();
     expect(screen.getByText('event2')).toBeInTheDocument();
-    expect(screen.getByText('14 February 2002')).toBeInTheDocument();
   });
 });
