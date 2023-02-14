@@ -67,7 +67,7 @@ jobs:
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           branch: "${{ env.BRANCH_NAME }}"
           branch-suffix: short-commit-hash
