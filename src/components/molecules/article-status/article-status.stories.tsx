@@ -14,7 +14,7 @@ export const Status = Template.bind({});
 Status.args = {
   articleStatus: 'This article is made up for the purpose of a story and not reviewed',
   title: 'An Article',
-  doi: 'https://www.google.com',
+  doi: '10.1101/123456',
   pdfUrl: '#',
   citation,
 };
