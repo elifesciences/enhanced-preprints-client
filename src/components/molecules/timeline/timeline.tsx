@@ -20,7 +20,7 @@ export const Timeline = ({ events }: TimelineProps): JSX.Element => (
   <div className="review-timeline">
     <dl className="review-timeline__list">
       {
-        events.map((entry, index) => (
+        events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((entry, index) => (
           <Fragment key={index}>
             <dt className="review-timeline__event">{entry.name}</dt>
             <dd className="review-timeline__date">
