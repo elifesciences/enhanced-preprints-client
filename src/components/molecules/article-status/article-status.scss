@@ -79,16 +79,6 @@
   }
 }
 
-.form-item {
-  display: grid;
-  grid-column-gap: settings.$grid-gutter;
-  grid-template-columns: repeat(12, 1fr);
-
-  & > :last-child {
-    margin-bottom: 0 // Margins don't collapse on <select>s
-  }
-}
-
 .text-field,
 .text-field[type="text"],
 .text-field[type="email"] {

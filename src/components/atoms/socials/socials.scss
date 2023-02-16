@@ -10,10 +10,10 @@
 .socials-sharers {
   @include mixins.padding(0, "left");
 
-  margin: 24px auto;
+  margin: 24px 0;
 
   li {
-    @include mixins.margin(6);
+    @include mixins.margin(6 6 6 0);
 
     display: inline-block;
 
@@ -60,9 +60,7 @@
   transition: 25ms ease-out;
   width: 24px;
 
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    &:first-child {
-      margin-left: 0;
-    }
+  &:first-child {
+    margin-left: 0;
   }
 }
