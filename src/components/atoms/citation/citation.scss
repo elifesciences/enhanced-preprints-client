@@ -3,9 +3,10 @@
 @use "../../../sass/typography";
 
 .citation {
-  @include mixins.margin(24, "bottom");
   @include mixins.margin(12, "right");
   @include typography.body-small();
+
+  grid-column: 1/13;
 }
 
 .citation__authors_list {

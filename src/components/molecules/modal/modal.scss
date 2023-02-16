@@ -22,6 +22,7 @@
   display: grid;
   font-family: settings.$font-family-primary;
   grid-template-columns: repeat(4, 1fr);
+  z-index: 200;
 
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(24);
@@ -107,6 +108,46 @@
 
 .reference__doi {
   .modal-content__body & {
+    margin-bottom: 0;
     margin-top: 12px;
+  }
+}
+
+.clipboard-container {
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    .modal-content__share & {
+      grid-column: 10/13;
+      grid-row: 1;
+      justify-self: right;
+      width: auto;
+    }
+
+    .modal-content__cite & {
+      @include mixins.margin(36, "bottom");
+
+      grid-column: 1/13;
+      grid-row: 2;
+    }
+  }
+}
+
+.socials-container {
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    .modal-content__share & {
+      grid-row: 2;
+    }
+  }
+}
+
+.form-item {
+  .modal-content__share & {
+    display: grid;
+    grid-column: 1/13;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    .modal-content__share & {
+      grid-column: 1/10;
+    }
   }
 }
