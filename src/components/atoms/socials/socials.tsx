@@ -8,8 +8,9 @@ type Props = {
 export const Socials = ({
   doi, title,
 }: Props): JSX.Element => {
+  const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const encodedUrl = encodeURIComponent(doi);
+  const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${encodedTitle}&url=${encodedUrl}`;
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
