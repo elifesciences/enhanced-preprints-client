@@ -347,7 +347,8 @@
       },
       "msas": [
         "Plant Biology"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.25.517922/2022.11.25.517922.pdf"
     },
     "10.1101/2022.10.17.512253": {
       "preprintDoi": "10.1101/2022.10.17.512253",
@@ -375,7 +376,8 @@
       },
       "msas": [
         "Cell Biology"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.10.17.512253/2022.10.17.512253.pdf"
     },
     "10.1101/2022.11.01.514717": {
       "preprintDoi": "10.1101/2022.11.01.514717",
@@ -403,7 +405,8 @@
       },
       "msas": [
         "Neuroscience"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.01.514717/2022.11.01.514717.pdf"
     },
     "10.1101/2022.12.07.519455": {
       "preprintDoi": "10.1101/2022.12.07.519455",
@@ -431,7 +434,8 @@
       },
       "msas": [
         "Neuroscience"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.12.07.519455/2022.12.07.519455.pdf"
     }
   },
   "manuscripts": {
