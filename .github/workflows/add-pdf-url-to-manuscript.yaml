@@ -36,7 +36,7 @@ jobs:
           cat manuscripts.json | \
             yarn --silent add-pdf-url-to-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
-            --urlPdf "${{ github.event.inputs.urlPdf }}"
+            --urlPdf "${{ github.event.inputs.urlPdf }}" | \
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
