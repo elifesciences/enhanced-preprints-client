@@ -51,12 +51,14 @@ const addPdfUrlToManuscript = (preprintManuscripts: PreprintManuscripts, preprin
     throw new Error(`doi not found in manuscripts.json (${preprintDoi})`);
   }
 
-  preprintManuscripts.preprints[preprintDoi] = {
+  const updatedData: PreprintManuscripts = preprintManuscripts;
+
+  updatedData.preprints[preprintDoi] = {
     ...preprintManuscripts.preprints[preprintDoi],
-    pdfUrl,
+    ...{ pdfUrl },
   };
 
-  process.stdout.write(`${JSON.stringify(preprintManuscripts, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(updatedData, null, 2)}\n`);
 };
 
 let input = '';
