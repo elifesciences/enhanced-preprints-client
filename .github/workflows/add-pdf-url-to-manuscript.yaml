@@ -1,0 +1,63 @@
+name: Add PDF url to manuscript
+
+on:
+  workflow_dispatch:
+    inputs:
+      doi:
+        required: true
+        description: Preprint DOI
+      urlPdf:
+        required: true
+        description: PDF location (url)
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  BRANCH_NAME: "pdfurl-${{ github.event.inputs.msid }}"
+
+jobs:
+  publish-manuscript:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        id: nvm
+      - name: Use Node.js (.nvmrc)
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          cache: yarn
+      - name: yarn install
+        run: yarn
+      - name: Add PDF url to manuscript
+        run: |
+          cat manuscripts.json | \
+            yarn --silent add-pdf-url-to-manuscript \
+            --doi "${{ github.event.inputs.doi }}" \
+            --urlPdf "${{ github.event.inputs.urlPdf }}"
+            tee manuscripts.json > /dev/null
+      - name: Create Pull Request (master)
+        if: github.ref == 'refs/heads/master'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: "${{ env.BRANCH_NAME }}"
+          branch-suffix: short-commit-hash
+          commit-message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
+          committer: GitHub Actions <action@github.com>
+          title: "Add pdf url to manuscript ${{ github.event.inputs.doi }}"
+          body:
+            |
+            DOI: ${{ github.event.inputs.doi }}
+
+            Please review and merge.
+          token: ${{ env.GITHUB_TOKEN }}
+      - name: Commit changes to existing branch (not master)
+        if: github.ref != 'refs/heads/master'
+        uses: EndBug/add-and-commit@v9
+        with:
+          committer_name: GitHub Actions
+          committer_email: action@github.com
+          message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
+

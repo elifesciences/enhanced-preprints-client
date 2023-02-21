@@ -31,7 +31,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "test:browser": "playwright test",
-    "publish-manuscript": "ts-node src/scripts/publishManuscript.ts"
+    "publish-manuscript": "ts-node src/scripts/publishManuscript.ts",
+    "add-pdf-url-to-manuscript": "ts-node src/scripts/addPdfUrlToManuscript.ts"
   },
   "eslintConfig": {
     "extends": [
