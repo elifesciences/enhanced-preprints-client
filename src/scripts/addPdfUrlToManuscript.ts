@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-import { Exception } from 'sass';
 import * as yargs from 'yargs';
 
 interface Args {
