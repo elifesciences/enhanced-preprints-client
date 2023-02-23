@@ -34,4 +34,8 @@
   span > a:not(:first-child)::before {
     content: "; ";
   }
+
+  img {
+    max-width: 100%;
+  }
 }
