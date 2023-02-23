@@ -24,7 +24,7 @@
           }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.24.497502/2022.06.24.497502.pdf",
+      "pdfUrl": "http://manuscripts.com/test-dont-merge.pdf",
       "msas": [
         "Cell Biology"
       ]
