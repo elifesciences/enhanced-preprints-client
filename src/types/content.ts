@@ -68,6 +68,10 @@ type ListItemContent = DecoratedContent & {
   type: 'ListItem',
 };
 
+type ListContent = DecoratedContent & {
+  type: 'List',
+};
+
 type ContentPart =
   string |
   HeadingContent |
@@ -82,6 +86,7 @@ type ContentPart =
   CiteGroupContent |
   FigureContent |
   ImageObjectContent |
-  ListItemContent;
+  ListItemContent |
+  ListContent;
 
 export type Content = ContentPart | Array<Content>;
