@@ -68,8 +68,9 @@ type ListItemContent = DecoratedContent & {
   type: 'ListItem',
 };
 
-type ListContent = DecoratedContent & {
+type ListContent = {
   type: 'List',
+  items: Array<ListItemContent>,
 };
 
 type ContentPart =

@@ -155,7 +155,7 @@ describe('Content to JSX', () => {
   it('generates the expected html when passed a List', () => {
     const result = contentToJsx({
       type: 'List',
-      content: [
+      items: [
         {
           type: 'ListItem',
           content: 'foo',
