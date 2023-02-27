@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ReviewContent } from './review-content';
+import { ReviewContent, terms } from './review-content';
 
 describe('ArticleContent', () => {
   it('renders with a simple string content', async () => {
@@ -29,6 +29,14 @@ describe('ArticleContent', () => {
     expect(screen.getByText('convincing')).toBeInTheDocument();
     expect(screen.getByText('convincing').tagName).toStrictEqual('STRONG');
   });
+
+  it.each(terms)('highlights the term: %s when review-content is an editors assessment', async (term) => {
+    render(<ReviewContent isAssessment={true} content={`the term is ${term} and should be bold`}/>);
+
+    expect(screen.getByText(term)).toBeInTheDocument();
+    expect(screen.getByText(term).tagName).toStrictEqual('STRONG');
+  });
+
 
   it('does not highlight terms unless term is exact', async () => {
     render(<ReviewContent isAssessment={true} content="I am an important article that is very convincingly good."/>);
