@@ -142,4 +142,13 @@ describe('Content to JSX', () => {
     // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} id="h1" content="heading" />]]);
   });
+
+  it('generates the expected html when passed a ListItem', () => {
+    const result = contentToJsx({
+      type: 'ListItem',
+      content: 'foo',
+    });
+
+    expect(result).toStrictEqual(<li>foo</li>);
+  });
 });

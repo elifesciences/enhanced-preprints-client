@@ -64,6 +64,10 @@ type SubscriptContent = DecoratedContent & {
   type: 'Subscript',
 };
 
+type ListItemContent = DecoratedContent & {
+  type: 'ListItem',
+};
+
 type ContentPart =
   string |
   HeadingContent |
@@ -77,6 +81,7 @@ type ContentPart =
   CiteContent |
   CiteGroupContent |
   FigureContent |
-  ImageObjectContent;
+  ImageObjectContent |
+  ListItemContent;
 
 export type Content = ContentPart | Array<Content>;
