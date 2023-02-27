@@ -70,6 +70,7 @@ type ListItemContent = DecoratedContent & {
 
 type ListContent = {
   type: 'List',
+  order: 'Unordered' | 'Ascending',
   items: Array<ListItemContent>,
 };
 
