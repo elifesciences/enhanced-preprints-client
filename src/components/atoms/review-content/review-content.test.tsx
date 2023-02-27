@@ -37,7 +37,6 @@ describe('ArticleContent', () => {
     expect(screen.getByText(term).tagName).toStrictEqual('STRONG');
   });
 
-
   it('does not highlight terms unless term is exact', async () => {
     render(<ReviewContent isAssessment={true} content="I am an important article that is very convincingly good."/>);
 
