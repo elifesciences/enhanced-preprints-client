@@ -155,15 +155,18 @@ describe('Content to JSX', () => {
   it('generates the expected html when passed a List', () => {
     const result = contentToJsx({
       type: 'List',
-      content: [{
-        type: 'ListItem',
-        content: 'foo',
-      },{
-        type: 'ListItem',
-        content: 'bar',
-      }],
-    }, 0);
+      content: [
+        {
+          type: 'ListItem',
+          content: 'foo',
+        },
+        {
+          type: 'ListItem',
+          content: 'bar',
+        },
+      ],
+    });
 
-    expect(result).toStrictEqual(<ul><li>foo</li><li>bar</li></ul>);
+    expect(result).toStrictEqual(<ul><li key={0}>foo</li><li key={1}>bar</li></ul>);
   });
 });
