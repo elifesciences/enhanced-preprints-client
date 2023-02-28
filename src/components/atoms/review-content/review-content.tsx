@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import './review-content.scss';
 
-const terms = [
-  'landmark', 'fundamental', 'important', 'noteworthy', 'useful', 'flawed', 'tour-de-force', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate',
+export const terms = [
+  'landmark', 'fundamental', 'important', 'noteworthy', 'useful', 'flawed', 'tour-de-force', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'valuable',
 ];
 
 const highlightTerms = (content: string): string => {
