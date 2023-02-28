@@ -267,6 +267,282 @@ export const content: Content = [
     ]
   },
   {
+    "type": "Paragraph",
+    "content": [
+      "Adaptation Profile\r\n"
+    ]
+  },
+  {
+    "type": "List",
+    "items": [
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "No Adaptation ="
+                ]
+              },
+              {
+                "type": "Superscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "noA"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 1, 9, 10"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Weak Depression ="
+                ]
+              },
+              {
+                "type": "Superscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "weakD"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 5, 6, 11"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Medium Depression ="
+                ]
+              },
+              {
+                "type": "Superscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "medD"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 2, 3, 7"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Strong Depression ="
+                ]
+              },
+              {
+                "type": "Superscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "strgD"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 4, 8"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Potentiation ="
+                ]
+              },
+              {
+                "type": "Superscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "Pot"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 12"
+            ]
+          }
+        ]
+      }
+    ],
+    "order": "Unordered"
+  },
+  {
+    "type": "Paragraph",
+    "content": [
+      "Response Shape\r\n"
+    ]
+  },
+  {
+    "type": "List",
+    "items": [
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "On-response ="
+                ]
+              },
+              {
+                "type": "Subscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "On"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 1, 2"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Long/sustained response ="
+                ]
+              },
+              {
+                "type": "Subscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "L"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 3, 4"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Medium-length response ="
+                ]
+              },
+              {
+                "type": "Subscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "M"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 5, 6, 9"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ListItem",
+        "content": [
+          {
+            "type": "Paragraph",
+            "content": [
+              {
+                "type": "Strong",
+                "content": [
+                  "Short/transient response ="
+                ]
+              },
+              {
+                "type": "Subscript",
+                "content": [
+                  {
+                    "type": "Emphasis",
+                    "content": [
+                      "S"
+                    ]
+                  }
+                ]
+              },
+              ": Cluster 7, 8,10,11"
+            ]
+          }
+        ]
+      }
+    ],
+    "order": "Unordered"
+  },
+  {
     type: 'Paragraph',
     content: [
       'In mammalian cells, autophagic flux is often estimated from the amount of selective\n                autophagic cargo degraded or, with the LC3 turnover assay, the amount of LC3-II produced in the presence\n                of a lysosomal inhibitor (i.e., the amount of LC3-II that would have otherwise been degraded) (\n                ',
@@ -695,6 +971,110 @@ export const content: Content = [
           },
           '.\n                            Mean values of data from three experiments are shown with red points that are traced by\n                            lines.\n                        '
         ]
+      },
+      {
+        "type": "List",
+        "items": [
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "Representation of βCDR3aa networks from DPCD3",
+                  { "type": "Superscript", "content": ["−"] },
+                  ", DPCD3",
+                  { "type": "Superscript", "content": ["+"] },
+                  " and CD8+. Each dot represents a single CDR3. Dot are connected (forming clusters) by edges defined by Levenshtein distance of ≤1 (one AA substitution/insertion/deletion)."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "Percentage of clustered βCDR3aa. (*p=0.0152 and ****p<0.0001, Mann-Whitney test)."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "βCDR3aa clustered from DPCD3",
+                  { "type": "Superscript", "content": ["+"] },
+                  " and ThyCD8. Each dot represents a single βCDR3aa. The colour scale represents the number of neighbours for each CDR3. Blue dots have only 1 connection while Red dots have more than 3 connections (up to 30)."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "Degree of clustered βCDR3aa. (****p<0.0001, Mann-Whitney test)."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "Generation probability of dispersed and clustered βCDR3aa in DPCD3+ or CD8+ cells. ****p<0.0001, Mann-Whitney test)."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "Correlation between ",
+                  { "type": "Emphasis", "content": ["Pgen"] },
+                  " and βCDR3 number of connections in the CD8",
+                  { "type": "Superscript", "content": ["+"] },
+                  " thymocyte repertoire. Contour plot represent the generation probability as a function of βCDR3 connections in the CD8",
+                  { "type": "Superscript", "content": ["+"] },
+                  " thymocytes for donor P29. Linear regression curves between ",
+                  { "type": "Emphasis", "content": ["Pgen"] },
+                  " and number of connections are represented as red dotted lines (“y” represent the regression curve’s equation). Pearson correlation coefficient “R” and p-value “p” are calculated for each individual (",
+                  {
+                    "type": "Link",
+                    "relation": "fig",
+                    "target": "#figS3",
+                    "content": ["Supplementary Figure 3C"]
+                  },
+                  ")."
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ListItem",
+            "content": [
+              {
+                "type": "Paragraph",
+                "content": [
+                  "PCA analysis of TRB VJ gene combinations in CD8 thymocytes. Blue: dispersed nodes; Red: clustered nodes."
+                ]
+              }
+            ]
+          }
+        ],
+        "order": "Ascending"
       }
     ],
     label: 'Figure 1.',
