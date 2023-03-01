@@ -48,6 +48,10 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
         return '';
       }
       return <img key={index} src={generateImageUrl(content.contentUrl)}></img>;
+    case 'ListItem':
+      return <li key={index}>{contentToJsx(content.content)}</li>;
+    case 'List':
+      return content.order === 'Ascending' ? <ol key={index}>{contentToJsx(content.items)}</ol> : <ul key={index}>{contentToJsx(content.items)}</ul>;
     default:
       return '';
   }
