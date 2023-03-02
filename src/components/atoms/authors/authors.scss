@@ -84,17 +84,23 @@
   }
 }
 
-.authors-email {
-  background: url("../../../images/icons/email.svg") no-repeat right 0;
-  background-size: 16px;
-  display: inline-block;
-  padding-right: 24px;
+.authors-link {
+  text-decoration: none;
+
+  &:visited {
+    color: settings.$color-primary;
+  }
+
+  &:hover {
+    color: settings.$color-primary;
+  }
 }
 
-.burger {
-  &:hover {
-    color: red;
-  }
+.authors-email {
+  background: url("../../../images/icons/email.svg") no-repeat right 2px;
+  background-size: 22px;
+  display: inline-block;
+  padding-right: 28px;
 }
 
 .authors-list__expansion {
