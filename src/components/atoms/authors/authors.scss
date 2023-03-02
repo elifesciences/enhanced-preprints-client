@@ -84,6 +84,19 @@
   }
 }
 
+.authors-email {
+  background: url("../../../images/icons/email.svg") no-repeat right 0;
+  background-size: 16px;
+  display: inline-block;
+  padding-right: 24px;
+}
+
+.burger {
+  &:hover {
+    color: red;
+  }
+}
+
 .authors-list__expansion {
   display: none;
 
