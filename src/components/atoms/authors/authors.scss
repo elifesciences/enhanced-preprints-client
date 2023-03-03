@@ -84,19 +84,6 @@
   }
 }
 
-.authors-link {
-  color: settings.$color-text;
-  text-decoration: none;
-
-  &:visited {
-    color: settings.$color-text;
-  }
-
-  &:hover {
-    color: settings.$color-primary;
-  }
-}
-
 .authors-email {
   background: url("../../../images/icons/email.svg") no-repeat right 2px;
   background-size: 22px;
