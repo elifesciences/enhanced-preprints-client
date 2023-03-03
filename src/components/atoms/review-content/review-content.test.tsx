@@ -38,9 +38,9 @@ describe('ArticleContent', () => {
   });
 
   it('does not highlight terms unless term is exact', async () => {
-    render(<ReviewContent isAssessment={true} content="I am an important article that is very convincingly good."/>);
+    render(<ReviewContent isAssessment={true} content="I am an important article that is very exceptionally good."/>);
 
-    expect(screen.queryByText('convincing')).not.toBeInTheDocument();
+    expect(screen.queryByText('exceptional')).not.toBeInTheDocument();
   });
 
   it('shows links to explain assessment terms', async () => {
