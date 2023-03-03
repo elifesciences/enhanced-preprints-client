@@ -6,7 +6,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
   const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
 
   return (
-    <li className="author-list__author">
+    <li id={`${author.givenNames?.join(' ')}${author.familyNames?.join(' ')}`} className="author-list__author">
       <h4 className="author-list__author_name">{author.givenNames?.join(' ')} {author.familyNames?.join(' ')}</h4>
       {
         author.affiliations && (

@@ -85,10 +85,11 @@
 }
 
 .authors-link {
+  color: settings.$color-text;
   text-decoration: none;
 
   &:visited {
-    color: settings.$color-primary;
+    color: settings.$color-text;
   }
 
   &:hover {
@@ -100,7 +101,7 @@
   background: url("../../../images/icons/email.svg") no-repeat right 2px;
   background-size: 22px;
   display: inline-block;
-  padding-right: 28px;
+  padding-right: 26px;
 }
 
 .authors-list__expansion {
