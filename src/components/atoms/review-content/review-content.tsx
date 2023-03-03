@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import './review-content.scss';
 
+/* eslint-disable */
 export const terms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 
   'Landmark', 'Fundamental', 'Important', 'Valuable', 'Useful', 'Exceptional', 'Compelling', 'Convincing', 'Solid', 'Incomplete', 'Inadequate', 
   'incompletely', 'inadequately', 'convincingly',
 ];
 
+/* eslint-enable */
 const highlightTerms = (content: string): string => {
   let highlightedContent = content;
   terms.forEach((term) => {
