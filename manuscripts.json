@@ -577,6 +577,35 @@
         "Biochemistry and Chemical Biology",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2022.11.11.516105": {
+      "preprintDoi": "10.1101/2022.11.11.516105",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-11-14",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.11.11.516105v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2022-11-11"
+          }
+        ]
+      },
+      "msas": [
+        "Genetics and Genomics",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -633,6 +662,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.10.21.513195"
+    },
+    "84537": {
+      "msid": "84537",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.11.516105"
     },
     "84570": {
       "msid": "84570",
@@ -819,6 +854,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.10.21.513195"
+    },
+    "84537v1": {
+      "msid": "84537",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.11.516105"
     }
   }
 }
