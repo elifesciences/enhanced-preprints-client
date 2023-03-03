@@ -493,6 +493,62 @@
         "Stem Cells and Regenerative Medicine"
       ]
     },
+    "10.1101/2022.11.24.517802": {
+      "preprintDoi": "10.1101/2022.11.24.517802",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-03"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-11-25",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.11.24.517802v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2022-11-24"
+          }
+        ]
+      },
+      "msas": [
+        "Cancer Biology"
+      ]
+    },
+    "10.1101/2022.10.29.514266": {
+      "preprintDoi": "10.1101/2022.10.29.514266",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-03"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2022-11-14"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-10-31",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.29.514266v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Genetics and Genomics"
+      ]
+    },
     "10.1101/2022.10.21.513195": {
       "preprintDoi": "10.1101/2022.10.21.513195",
       "status": {
@@ -608,11 +664,23 @@
       "publishedYear": "2023",
       "preprintDoi": "10.1101/2022.11.25.517922"
     },
+    "84792": {
+      "msid": "84792",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.24.517802"
+    },
     "84855": {
       "msid": "84855",
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2021.06.21.449261"
+    },
+    "84874": {
+      "msid": "84874",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.29.514266"
     },
     "84918": {
       "msid": "84918",
@@ -733,6 +801,18 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.03.522550"
+    },
+    "84792v1": {
+      "msid": "84792",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.24.517802"
+    },
+    "84874v1": {
+      "msid": "84874v1",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.29.514266"
     },
     "84427v1": {
       "msid": "84427",
