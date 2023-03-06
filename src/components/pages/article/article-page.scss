@@ -4,6 +4,7 @@
 @use "../../../sass/typography";
 
 .article-body-container {
+  min-width: 0;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
