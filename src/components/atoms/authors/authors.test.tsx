@@ -66,44 +66,26 @@ describe('authors', () => {
     it('show email icon for corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      screen.debug();
-
       expect(screen.getByText('Kara Zor-el')).toHaveClass('authors-email');
       expect(screen.getByText('Kal El')).toHaveClass('authors-email');
     });
 
     it('does not show email icon for non corresponding authors', () => {
-      const { container } = render(<Authors authors={authors}/>);
+      render(<Authors authors={authors}/>);
 
-      expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
-
-      const expansionElement = screen.getByText('show', { exact: false });
-      fireEvent.click(expansionElement);
-
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(1);
-
-      const contractionElement = screen.getByText('show less');
-      fireEvent.click(contractionElement);
-
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
+      expect(screen.getByText('Steve Rogers')).not.toHaveClass('authors-email');
+      expect(screen.getByText('Antony Stark')).not.toHaveClass('authors-email');
     });
 
     it('shows accessibility span', () => {
-      const { container } = render(<Authors authors={authors}/>);
+      render(<Authors authors={authors}/>);
 
-      expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
-
-      const expansionElement = screen.getByText('show', { exact: false });
-      fireEvent.click(expansionElement);
-
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(1);
-
-      const contractionElement = screen.getByText('show less');
-      fireEvent.click(contractionElement);
-
-      expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
+      const karaAccessibilityElement = screen.getByText('Kara Zor-el').firstElementChild;
+      const kalAccessibilityElement = screen.getByText('Kal El').firstElementChild;
+      expect(karaAccessibilityElement).toHaveClass('visuallyhidden');
+      expect(karaAccessibilityElement).toHaveTextContent('authors email address');
+      expect(kalAccessibilityElement).toHaveClass('visuallyhidden');
+      expect(kalAccessibilityElement).toHaveTextContent('authors email address');
     });
   });
 });

@@ -12,8 +12,12 @@ export const authors = [
   { givenNames: ['Bucky'], familyNames: ['Barnes'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Barry'], familyNames: ['Allen'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
-  { givenNames: ['Kara'], familyNames: ['Zor-el'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' }, emails: ['kara.danvers@katco.com'] }] },
-  { givenNames: ['Kal'], familyNames: ['El'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' }, emails: ['clark.kent@dailyplanet.com'] }] },
+  {
+    givenNames: ['Kara'], familyNames: ['Zor-el'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }], emails: ['kara.danvers@katco.com'],
+  },
+  {
+    givenNames: ['Kal'], familyNames: ['El'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }], emails: ['clark.kent@dailyplanet.com'],
+  },
   {
     givenNames: ['Arthur'],
     familyNames: ['Curry'],
