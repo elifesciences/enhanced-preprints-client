@@ -2,10 +2,20 @@ import '../article-page.scss';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';
+import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 
-export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): JSX.Element => (
+export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): JSX.Element => {
+  const headings = [
+    { id: 'editors-and-reviewers', text: 'Editors' },
+    ...peerReview.reviews.map((_, index) => (
+      { id: `peer-review-${index}`, text: `Reviewer #${index + 1}` }
+    )),
+    ...peerReview.authorResponse ? [{ id: 'author-response', text: 'Author Response' }] : [],
+  ];
+
+  return (
   <div className="tabbed-navigation__content">
-    <div className="menu-spacer"/>
+    <JumpToMenu headings={headings} />
     <div className="article-body-container">
       <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
       {peerReview.reviews.map((review, index) => (
@@ -14,4 +24,5 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): J
       {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
     </div>
   </div>
-);
+  );
+};
