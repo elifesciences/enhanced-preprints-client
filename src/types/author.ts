@@ -11,4 +11,5 @@ export type Author = {
     propertyID?: string,
     value: string,
   }[],
+  emails?: string[],
 };
