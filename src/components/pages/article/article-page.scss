@@ -4,6 +4,10 @@
 @use "../../../sass/typography";
 
 .article-body-container {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     margin-left: 36px;
   }
