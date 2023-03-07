@@ -66,15 +66,15 @@ describe('authors', () => {
     it('show email icon for corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      expect(screen.getByText('Kara Zor-el')).toHaveClass('authors-email');
-      expect(screen.getByText('Kal El')).toHaveClass('authors-email');
+      expect(screen.getByText('Kara Zor-el')).toHaveClass('authors-email__link');
+      expect(screen.getByText('Kal El')).toHaveClass('authors-email__link');
     });
 
     it('does not show email icon for non corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      expect(screen.getByText('Steve Rogers')).not.toHaveClass('authors-email');
-      expect(screen.getByText('Antony Stark')).not.toHaveClass('authors-email');
+      expect(screen.getByText('Steve Rogers')).not.toHaveClass('authors-email__link');
+      expect(screen.getByText('Antony Stark')).not.toHaveClass('authors-email__link');
     });
 
     it('shows accessibility span', () => {
@@ -83,9 +83,9 @@ describe('authors', () => {
       const karaAccessibilityElement = screen.getByText('Kara Zor-el').firstElementChild;
       const kalAccessibilityElement = screen.getByText('Kal El').firstElementChild;
       expect(karaAccessibilityElement).toHaveClass('visuallyhidden');
-      expect(karaAccessibilityElement).toHaveTextContent('authors email address');
+      expect(karaAccessibilityElement).toHaveTextContent('author has email address');
       expect(kalAccessibilityElement).toHaveClass('visuallyhidden');
-      expect(kalAccessibilityElement).toHaveTextContent('authors email address');
+      expect(kalAccessibilityElement).toHaveTextContent('author has email address');
     });
   });
 });
