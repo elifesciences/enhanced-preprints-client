@@ -19,4 +19,8 @@ describe('ReviewsTab', () => {
 
     expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
   });
+
+  it('jump to menu links match content', () => {
+    const {container} = render(<ArticleReviewsTab peerReview={peerReview} />);
+  });
 });
