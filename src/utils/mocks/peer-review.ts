@@ -26,6 +26,18 @@ export const peerReview: PeerReview = {
       reviewType: ReviewType.EvaluationSummary,
       text: 'Well done, Stephen.',
     },
+    {
+      date: new Date('2022-01-03'),
+      participants: [
+        {
+          institution: 'S.H.I.E.L.D',
+          name: 'Gemma Simmons',
+          role: 'peer-reviewer',
+        },
+      ],
+      reviewType: ReviewType.EvaluationSummary,
+      text: 'Strange as the author, I am a scientist not a wizard.',
+    },
   ],
   authorResponse: {
     date: new Date('2022-01-02'),
