@@ -1653,7 +1653,7 @@ export const content: Content = [
           'SF650'
         ]
       },
-      ' is stable in acidic lysosomes. Although autophagosomes\n                    cannot be distinguished from autolysosomes with Halo-LC3, the number of ligand-bound Halo puncta\n                    formed following pulse-labeling of Halo-based reporters can indicate autophagic flux.\n                '
+      ' is stable in acidic lysosomes. Although autophagosomes\n                    cannot be distinguished from autolysosomes with Halo-LC3, the number of ligand-bound Halo puncta\n                    formed following pulse-labeling of Halo-based reporters can indicate autophagic flux \n \n ARTi.6588 – target site: TCCGGATGAAGTTTATATCGAA / shRNAmir (97mer): TGCTGTTGACAGTGAGCGCCCGGATGAAGTTTATATCGAATAGTGAAGCCACAGATGTATTCGATATAAACTTCAT CCGGATGCCTACTGCCTCGGA                '
     ]
   },
   {
