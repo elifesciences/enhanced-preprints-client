@@ -28,6 +28,22 @@ describe('FulltextTab', () => {
           text: 'Introduction',
         },
         {
+          href: '#s2',
+          text: 'Results',
+        },
+        {
+          href: '#s3',
+          text: 'Discussion',
+        },
+        {
+          href: '#s4',
+          text: 'Materials and methods',
+        },
+        {
+          href: '#s5',
+          text: 'Data and material availability',
+        },
+        {
           href: '#references',
           text: 'References',
         },
@@ -49,6 +65,22 @@ describe('FulltextTab', () => {
         {
           href: '#s1',
           text: 'Introduction',
+        },
+        {
+          href: '#s2',
+          text: 'Results',
+        },
+        {
+          href: '#s3',
+          text: 'Discussion',
+        },
+        {
+          href: '#s4',
+          text: 'Materials and methods',
+        },
+        {
+          href: '#s5',
+          text: 'Data and material availability',
         },
         {
           href: '#references',
