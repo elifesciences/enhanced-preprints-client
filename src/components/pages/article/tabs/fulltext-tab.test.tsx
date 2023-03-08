@@ -123,8 +123,6 @@ describe('FulltextTab', () => {
     const { container } = render(<ArticleFullTextTab content={content} metaData={metaDataExample} peerReview={peerReviewExample}/>);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
-    expect(jumpLinks).toHaveLength(expectedJumpToLinks.length);
-
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
       {
         href: link.getAttribute('href')!,

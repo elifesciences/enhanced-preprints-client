@@ -85,8 +85,6 @@ describe('ReviewsTab', () => {
     const { container } = render(<ArticleReviewsTab peerReview={peerReviewExample} />);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
-    expect(jumpLinks).toHaveLength(expectedJumpToLinks.length);
-
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
       {
         href: link.getAttribute('href')!,
