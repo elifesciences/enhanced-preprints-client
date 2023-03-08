@@ -88,11 +88,9 @@ describe('ReviewsTab', () => {
         },
       ],
     },
-  ])('jump to menu links match content ($description)', ({
+  ])('passes down the correct headings to jump-to-menu ($description)', ({
     peerReviewExample,
     expectedJumpToLinks,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    description,
   }: ExpectedJumpLinksType) => {
     const { container } = render(<ArticleReviewsTab peerReview={peerReviewExample} />);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
@@ -107,5 +105,17 @@ describe('ReviewsTab', () => {
     ));
 
     expect(jumpLinkValues).toStrictEqual(expectedJumpToLinks);
+  });
+
+  it('uses the heading ids for the hrefs in jump-to-menu', () => {
+    const { container } = render(<ArticleReviewsTab peerReview={peerReview} />);
+
+    const headings = Array.from(container.querySelectorAll('section[id], h2[id]'));
+    const ids = headings.map(({ id }) => id);
+
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>('.jump-menu-list__link'));
+    const hrefs = links.map(({ href }) => href.slice(href.indexOf('#') + 1));
+
+    expect(ids).toStrictEqual(expect.arrayContaining(hrefs));
   });
 });
