@@ -1,18 +1,14 @@
 import Link from 'next/link';
 import './review-content.scss';
 
-/* eslint-disable */
 export const terms = [
-  'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 
-  'Landmark', 'Fundamental', 'Important', 'Valuable', 'Useful', 'Exceptional', 'Compelling', 'Convincing', 'Solid', 'Incomplete', 'Inadequate', 
-  'incompletely', 'inadequately', 'convincingly',
+  '[Ll]andmark', '[Ff]undamental', '[Ii]mportant', '[Vv]aluable', '[Uu]seful', '[Ee]xceptional', '[Cc]ompelling', '[Cc]onvincing', '[Ss]olid', '[Ii]ncomplete', '[Ii]nadequate', 'incompletely', 'inadequately', 'convincingly',
 ];
 
-/* eslint-enable */
 const highlightTerms = (content: string): string => {
   let highlightedContent = content;
   terms.forEach((term) => {
-    highlightedContent = highlightedContent.replace(new RegExp(`([^\\w]+)${term}([^\\w]+)`, 'g'), `$1<strong class="highlighted-term">${term}</strong>$2`);
+    highlightedContent = highlightedContent.replace(new RegExp(`([^\\w]+)(${term})([^\\w]+)`, 'g'), '$1<strong class="highlighted-term">$2</strong>$3');
   });
   return highlightedContent;
 };
