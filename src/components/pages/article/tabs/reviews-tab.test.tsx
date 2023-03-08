@@ -10,8 +10,9 @@ describe('ReviewsTab', () => {
   it('renders each review in the peer review passed in', () => {
     render(<ArticleReviewsTab peerReview={peerReview} />);
 
-    expect(screen.getByText(peerReview.reviews[0].text)).toBeInTheDocument();
-    expect(screen.getByText(peerReview.reviews[1].text)).toBeInTheDocument();
+    Array.from(peerReview.reviews)
+      .map((review) => review.text)
+      .forEach((review) => expect(screen.getByText(review)).toBeInTheDocument());
   });
 
   it('renders the author response when it is in the peer review', () => {

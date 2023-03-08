@@ -7,7 +7,11 @@ describe('FulltextTab', () => {
     expect(() => render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
   });
 
-  it.todo('renders the evaluation summary when one is passed in');
+  it('renders the evaluation summary when one is passed in', () => {
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+
+    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincingRead the peer reviewsAbout eLife assessments');
+  });
 
   it.each([
     {
@@ -93,7 +97,7 @@ describe('FulltextTab', () => {
       ],
     },
     {
-      description: 'no peer review',
+      description: 'no metadata headings',
       metaDataExample: { ...metaData, headings: [] },
       peerReviewExample: undefined,
       expectedJumpToLinks: [
