@@ -8,5 +8,106 @@ describe('FulltextTab', () => {
   });
 
   it.todo('renders the evaluation summary when one is passed in');
-  it.todo('jump to menu navigates to relevant content when clicked');
+
+  it.each([
+    {
+      description: 'complete',
+      metaDataExample: metaData,
+      peerReviewExample: peerReview,
+      expectedJumpToLinks: [
+        {
+          href: '#abstract',
+          text: 'Abstract',
+        },
+        {
+          href: '#assessment',
+          text: 'eLife assessment',
+        },
+        {
+          href: '#s1',
+          text: 'Introduction',
+        },
+        {
+          href: '#references',
+          text: 'References',
+        },
+        {
+          href: '#author-list',
+          text: 'Author Information',
+        },
+      ],
+    },
+    {
+      description: 'no peer review',
+      metaDataExample: metaData,
+      peerReviewExample: undefined,
+      expectedJumpToLinks: [
+        {
+          href: '#abstract',
+          text: 'Abstract',
+        },
+        {
+          href: '#s1',
+          text: 'Introduction',
+        },
+        {
+          href: '#references',
+          text: 'References',
+        },
+        {
+          href: '#author-list',
+          text: 'Author Information',
+        },
+      ],
+    },
+    {
+      description: 'no peer review',
+      metaDataExample: { ...metaData, headings: [] },
+      peerReviewExample: undefined,
+      expectedJumpToLinks: [
+        {
+          href: '#abstract',
+          text: 'Abstract',
+        },
+        {
+          href: '#references',
+          text: 'References',
+        },
+        {
+          href: '#author-list',
+          text: 'Author Information',
+        },
+      ],
+    },
+  ])('passes down the correct headings to jump-to-menu ($description)', ({
+    metaDataExample,
+    peerReviewExample,
+    expectedJumpToLinks,
+  }) => {
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaDataExample} peerReview={peerReviewExample}/>);
+    const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
+
+    expect(jumpLinks).toHaveLength(expectedJumpToLinks.length);
+
+    const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
+      {
+        href: link.getAttribute('href')!,
+        text: link.textContent!,
+      }
+    ));
+
+    expect(jumpLinkValues).toStrictEqual(expectedJumpToLinks);
+  });
+
+  it('uses the heading ids for the hrefs in jump-to-menu', () => {
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+
+    const headings = Array.from(container.querySelectorAll('section[id], h1, .heading-1'));
+    const ids = headings.map(({ id }) => id);
+
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>('.jump-menu-list__link'));
+    const hrefs = links.map(({ href }) => href.slice(href.indexOf('#') + 1));
+
+    expect(ids).toStrictEqual(hrefs);
+  });
 });
