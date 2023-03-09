@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
+import { createId } from '../../../utils/object-create-id';
 import { Authors } from './authors';
 
 describe('authors', () => {
@@ -29,6 +30,17 @@ describe('authors', () => {
     const expansionElement = screen.queryByText('show', { exact: false });
 
     expect(expansionElement).not.toBeInTheDocument();
+  });
+
+  it('should contain a link with the author id', () => {
+    const { container } = render(<Authors authors={authors}/>);
+
+    const expectedAuthorHrefs = authors.map((author) => `#${createId(author)}`);
+
+    const receivedAuthorHrefs = Array.from(container.querySelectorAll('.authors-link'))
+      .map((link) => link.getAttribute('href'));
+
+    expect(receivedAuthorHrefs).toStrictEqual(expectedAuthorHrefs);
   });
 
   describe('expansion behaviour', () => {

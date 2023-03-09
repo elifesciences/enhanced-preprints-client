@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
+import { createId } from '../../../utils/object-create-id';
 import { AuthorInformationList } from './author-information-list';
 
 const authors: Author[] = [
@@ -106,5 +107,16 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
     expect(screen.getByText('Peter Parker').nextSibling).toHaveTextContent('0000-0002-1234-5688');
     expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
+  });
+
+  it('should contain an id with the author id', () => {
+    const { container } = render(<AuthorInformationList authors={authors}/>);
+
+    const expectedAuthorIds = authors.map((author) => createId(author));
+
+    const receivedAuthorIds = Array.from(container.querySelectorAll('.author-list__author_name'))
+      .map(({ id }) => id);
+
+    expect(receivedAuthorIds).toStrictEqual(expectedAuthorIds);
   });
 });
