@@ -5,10 +5,9 @@ import { Authors } from './authors';
 
 describe('authors', () => {
   it('should render correctly a list of authors', () => {
-    render(<Authors authors={[authors[0]]}/>);
-    const captainAmerica = screen.getByText('Steve Rogers');
+    const { container } = render(<Authors authors={[authors[0]]}/>);
 
-    expect(captainAmerica).toBeInTheDocument();
+    expect(container.querySelector('.authors-link')!.textContent).toStrictEqual('Steve Rogers');
   });
 
   it('should hide authors after the author limit', () => {
