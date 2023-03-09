@@ -21,8 +21,8 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
       <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
         { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
-            <a href={`#${createAuthorId(author)}`} className={`authors-link ${author.emails ? 'authors-email__link' : ''}`}>
-              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')} {author.emails ? <span className="visuallyhidden">author has email address</span> : ''}
+            <a href={`#${createAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
+              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')}{author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
             </a>
           </li>
         ))}
