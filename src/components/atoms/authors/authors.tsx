@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
+import { createId } from '../../../utils/object-create-id';
 
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
@@ -18,10 +19,10 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
       `
     }>
       <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
-        { authors.map(({ givenNames, familyNames, emails }, index) => (
+        { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
-            <a href="#anchor-id-to-go-here" className={`authors-link ${emails ? 'authors-email__link' : ''}`}>
-              {givenNames?.join(' ')} {familyNames?.join(' ')} {emails ? <span className="visuallyhidden">author has email address</span> : ''}
+            <a href={`#${createId(author)}`} className={`authors-link ${author.emails ? 'authors-email__link' : ''}`}>
+              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')} {author.emails ? <span className="visuallyhidden">author has email address</span> : ''}
             </a>
           </li>
         ))}
