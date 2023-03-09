@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Author } from '../../../types';
-import { createId } from '../../../utils/object-create-id';
+import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 
 const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
@@ -8,7 +8,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
 
   return (
     <li className="author-list__author">
-      <h4 id={createId(author)} className="author-list__author_name">{author.givenNames?.join(' ')} {author.familyNames?.join(' ')}</h4>
+      <h4 id={createAuthorId(author)} className="author-list__author_name">{author.givenNames?.join(' ')} {author.familyNames?.join(' ')}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">

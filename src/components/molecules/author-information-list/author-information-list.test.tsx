@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
-import { createId } from '../../../utils/object-create-id';
+import { createAuthorId } from '../../../utils/create-author-id';
 import { AuthorInformationList } from './author-information-list';
 
 const authors: Author[] = [
@@ -109,7 +109,7 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 
-  it.each(authors.map((author) => createId(author)))('should contain an id with the author id', (id) => {
+  it.each(authors.map((author) => createAuthorId(author)))('should contain an id with the author id', (id) => {
     const { container } = render(<AuthorInformationList authors={authors}/>);
 
     expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();

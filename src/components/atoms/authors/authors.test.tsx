@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
-import { createId } from '../../../utils/object-create-id';
+import { createAuthorId } from '../../../utils/create-author-id';
 import { Authors } from './authors';
 
 describe('authors', () => {
@@ -32,7 +32,7 @@ describe('authors', () => {
     expect(expansionElement).not.toBeInTheDocument();
   });
 
-  it.each(authors.map((author) => createId(author)))('should contain a link with the author id', (id) => {
+  it.each(authors.map((author) => createAuthorId(author)))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
     expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();
