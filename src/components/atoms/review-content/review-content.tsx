@@ -2,16 +2,10 @@ import Link from 'next/link';
 import './review-content.scss';
 
 export const terms = [
-  'landmark', 'fundamental', 'important', 'noteworthy', 'useful', 'flawed', 'tour-de-force', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'valuable',
+  'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
 ];
 
-const highlightTerms = (content: string): string => {
-  let highlightedContent = content;
-  terms.forEach((term) => {
-    highlightedContent = highlightedContent.replace(new RegExp(`([^\\w]+)${term}([^\\w]+)`, 'g'), `$1<strong class="highlighted-term">${term}</strong>$2`);
-  });
-  return highlightedContent;
-};
+const highlightTerms = (content: string): string => content.replaceAll(new RegExp(`([^\\w]+)(?<term>${terms.join('|')})([^\\w]+)`, 'gi'), '$1<strong class="highlighted-term">$<term></strong>$3');
 
 type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string };
 export const ReviewContent = ({

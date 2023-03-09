@@ -69,6 +69,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         uses: peter-evans/create-pull-request@v4
         with:
+          draft: true
           branch: "${{ env.BRANCH_NAME }}"
           branch-suffix: short-commit-hash
           commit-message: "Publish manuscript ${{ github.event.inputs.msid }} using workflow"
