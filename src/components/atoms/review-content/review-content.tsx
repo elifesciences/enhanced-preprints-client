@@ -2,7 +2,7 @@ import Link from 'next/link';
 import './review-content.scss';
 
 export const terms = [
-  'landmark', 'fundamental', 'important', 'noteworthy', 'useful', 'flawed', 'tour-de-force', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'valuable',
+  'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
 ];
 
 const highlightTerms = (content: string): string => {
