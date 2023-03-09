@@ -20,7 +20,7 @@ describe('ArticleContent', () => {
     expect(screen.getByText('I am an em').tagName).toStrictEqual('EM');
   });
 
-  it('highlights the terms when an assessment', async () => {
+  it('highlights the terms within an assessment', async () => {
     render(<ReviewContent isAssessment={true} content="I am an important article that is very convincing dslfkjhas"/>);
 
     expect(screen.getByText('important')).toBeInTheDocument();
@@ -28,6 +28,16 @@ describe('ArticleContent', () => {
 
     expect(screen.getByText('convincing')).toBeInTheDocument();
     expect(screen.getByText('convincing').tagName).toStrictEqual('STRONG');
+  });
+
+  it('highlights the terms within an assessment, regardless of case', async () => {
+    render(<ReviewContent isAssessment={true} content="I am an ImPoRtAnt article that is very CONVINCING dslfkjhas"/>);
+
+    expect(screen.getByText('ImPoRtAnt')).toBeInTheDocument();
+    expect(screen.getByText('ImPoRtAnt').tagName).toStrictEqual('STRONG');
+
+    expect(screen.getByText('CONVINCING')).toBeInTheDocument();
+    expect(screen.getByText('CONVINCING').tagName).toStrictEqual('STRONG');
   });
 
   it.each(terms)('highlights the term: %s when review-content is an editors assessment', async (term) => {
