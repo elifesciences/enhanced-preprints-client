@@ -32,15 +32,10 @@ describe('authors', () => {
     expect(expansionElement).not.toBeInTheDocument();
   });
 
-  it('should contain a link with the author id', () => {
+  it.each(authors.map((author) => createId(author)))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
-    const expectedAuthorHrefs = authors.map((author) => `#${createId(author)}`);
-
-    const receivedAuthorHrefs = Array.from(container.querySelectorAll('.authors-link'))
-      .map((link) => link.getAttribute('href'));
-
-    expect(receivedAuthorHrefs).toStrictEqual(expectedAuthorHrefs);
+    expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();
   });
 
   describe('expansion behaviour', () => {

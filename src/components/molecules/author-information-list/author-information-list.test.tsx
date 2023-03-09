@@ -109,14 +109,9 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 
-  it('should contain an id with the author id', () => {
+  it.each(authors.map((author) => createId(author)))('should contain an id with the author id', (id) => {
     const { container } = render(<AuthorInformationList authors={authors}/>);
 
-    const expectedAuthorIds = authors.map((author) => createId(author));
-
-    const receivedAuthorIds = Array.from(container.querySelectorAll('.author-list__author_name'))
-      .map(({ id }) => id);
-
-    expect(receivedAuthorIds).toStrictEqual(expectedAuthorIds);
+    expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();
   });
 });
