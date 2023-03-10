@@ -10,6 +10,7 @@ describe('authors', () => {
   it('should render correctly a list of authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);
 
+    expect(screen.getByText('Steve Rogers')).toBeInTheDocument();
     expect(container.querySelector('.authors-link')!.textContent).toStrictEqual('Steve Rogers');
   });
 
