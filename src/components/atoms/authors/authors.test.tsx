@@ -1,8 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
-import { createAuthorId } from '../../../utils/create-author-id';
 import { Authors } from './authors';
+import { Author } from '../../../types';
+import { createAuthorId } from '../../../utils/create-author-id';
 
+const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
+jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
 describe('authors', () => {
   it('should render correctly a list of authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);
@@ -31,7 +34,7 @@ describe('authors', () => {
     expect(expansionElement).not.toBeInTheDocument();
   });
 
-  it.each(authors.map((author) => createAuthorId(author)))('should contain a link with the author id', (id) => {
+  it.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
     expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();
