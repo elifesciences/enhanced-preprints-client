@@ -24,8 +24,9 @@
   @include typography.body();
 
   .author-list__email--heading {
+    @include typography.font-size-and-vertical-height(16, 24);
+
     display: inline;
-    font-size: 16px;
   }
 }
 
