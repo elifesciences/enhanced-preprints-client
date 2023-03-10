@@ -1,13 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
 import { Authors } from './authors';
+import { Author } from '../../../types';
+import { createAuthorId } from '../../../utils/create-author-id';
 
+const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
+jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
 describe('authors', () => {
   it('should render correctly a list of authors', () => {
-    render(<Authors authors={[authors[0]]}/>);
-    const captainAmerica = screen.getByText('Steve Rogers');
+    const { container } = render(<Authors authors={[authors[0]]}/>);
 
-    expect(captainAmerica).toBeInTheDocument();
+    expect(screen.getByText('Steve Rogers')).toBeInTheDocument();
+    expect(container.querySelector('.authors-link')!.textContent).toStrictEqual('Steve Rogers');
   });
 
   it('should hide authors after the author limit', () => {
@@ -29,6 +33,12 @@ describe('authors', () => {
     const expansionElement = screen.queryByText('show', { exact: false });
 
     expect(expansionElement).not.toBeInTheDocument();
+  });
+
+  it.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
+    const { container } = render(<Authors authors={authors}/>);
+
+    expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();
   });
 
   describe('expansion behaviour', () => {
