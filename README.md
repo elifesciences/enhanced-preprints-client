@@ -14,7 +14,8 @@ You can work with and view the component library via storybook at [`localhost:60
 
 ## production build - `docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up` or `make start-prod`
 
-To be able to see exactly what a production build will look and behave like, but using local services, we have provided an override command. You can use the command above to start the dev environment, but with the app server behaving like production would, for example without javascript. The app is still available at [`localhost:8080`](http://localhost:8080).
+To be able to see exactly what a production build will look and behave like, but using local services, we have provided an override command. You can use the command above to start the dev environment, but with the app server behaving like production would, for example without javascript and without incremental builds. This is not recommended for development, only for spot checking for differences between a prod build and dev build.
+The app is still available at [`localhost:8080`](http://localhost:8080).
 
 NOTE: this does not affect storybook, which runs the same in either prod or dev
 
