@@ -1069,7 +1069,7 @@ export const prepareArticleVersion = (articleVersion: ArticleVersion): ArticleDa
               } : undefined,
             })),
           ...(author.emailAddresses ? {
-            emails: author.emailAddresses.map((email) => JSON.stringify(email)),
+            emails: author.emailAddresses.map((email) => email),
           } : {}),
         };
       }),
