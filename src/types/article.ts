@@ -1,5 +1,74 @@
 import { MetaData } from './meta-data';
 
+export interface ArticlePoA {
+  /**
+   * For example:
+   * - Ian T Baldwin
+   * - Randy Schekman, Mark Patterson
+   * - Lee R Berger et al.
+   */
+  authorLine?: string;
+  doi: string;
+  elocationId: string;
+  id: string;
+  image?: Image;
+  pdf?: string;
+  /**
+   * Date and time this article was first published.
+   * Not present if 'stage' is 'preview' and version is '1'.
+   */
+  published?: Date;
+  researchOrganisms?: string[];
+  stage: Stage;
+  /**
+   * Date and time this article transitioned to current status.
+   * Not present if 'stage' is 'preview' and version is '1'.
+   */
+  statusDate?: Date;
+  subjects?: SubjectSnippet[];
+  title: string;
+  titlePrefix?: string;
+  type: ArticleType;
+  version: number;
+  /**
+   * Date and time this version of the article was published.
+   * Only present if 'stage' is 'published'.
+   */
+  versionDate?: Date;
+  volume: number;
+  status: Status;
+  curationLabels?: string[];
+  figuresPdf?: string;
+  impactStatement?: string;
+  /**
+   * date of review
+   */
+  reviewedDate?: Date;
+  abstract?: Abstract;
+  additionalFiles?: AssetFile[];
+  authors?: Author[];
+  copyright: Copyright;
+  dataSets?: DataSets;
+  ethics?: EthicElement[];
+  funding?: Funding;
+  issue?: number;
+  reviewers?: Reviewer[];
+  xml?: string;
+  acknowledgements?: AcknowledgementElement[];
+  appendices?: Appendix[];
+  authorResponse?: AuthorResponse;
+  body: BodyElement[];
+  decisionLetter?: DecisionLetter;
+  digest?: Digest;
+  editorEvaluation?: EditorEvaluation;
+  elifeAssessment?: ElifeAssessment;
+  keywords?: string[];
+  publicReviews?: PublicReview[];
+  recommendationsForAuthors?: RecommendationsForAuthors;
+  references?: Reference[];
+  [property: string]: any;
+}
+
 interface ArticleVoR {
   /**
    * For example:
@@ -28,7 +97,7 @@ interface ArticleVoR {
   subjects?: SubjectSnippet[];
   title: string;
   titlePrefix?: string;
-  type: ArticleVoRType;
+  type: ArticleType;
   version: number;
   /**
    * Date and time this version of the article was published.
@@ -954,7 +1023,7 @@ interface SubjectSnippet {
   [property: string]: any;
 }
 
-enum ArticleVoRType {
+enum ArticleType {
   Correction = 'correction',
   Editorial = 'editorial',
   Feature = 'feature',
@@ -1010,4 +1079,4 @@ export const prepareArticleVersion = (articleVersion: ArticleVersion): ArticleDa
   },
 });
 
-export type ArticleVersion = ArticleVoR;
+export type ArticleVersion = ArticlePoA | ArticleVoR;
