@@ -1055,6 +1055,7 @@ export const prepareArticleVersion = (articleVersion: ArticleVersion): ArticleDa
     title: articleVersion.title,
     publishedYear: articleVersion.published ? (new Date(articleVersion.published)).getFullYear() : 0,
     authors: (articleVersion.authors ?? [])
+      .filter((author) => author.name && typeof author.name !== 'string')
       .map((author) => {
         const [familyName, givenName] = author.name && typeof author.name !== 'string' ? author.name.index.split(',') : null;
 
