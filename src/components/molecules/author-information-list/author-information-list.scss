@@ -19,6 +19,17 @@
   @include mixins.margin(36, "bottom");
 }
 
+.author-list__email {
+  @include mixins.margin(24, "bottom");
+  @include typography.body();
+
+  .author-list__email--heading {
+    @include typography.font-size-and-vertical-height(16, 24);
+
+    display: inline;
+  }
+}
+
 .author-list__author_name {
   @include mixins.margin(0);
   @include mixins.padding(12, "bottom");

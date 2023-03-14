@@ -27,5 +27,5 @@ export type Reference = {
   }[],
   meta?: {
     label?: string,
-  }
+  },
 };

@@ -1,6 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
 import { AuthorInformationList } from './author-information-list';
+import { createAuthorId } from '../../../utils/create-author-id';
+
+const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
+jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
 
 const authors: Author[] = [
   {
@@ -106,5 +110,11 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
     expect(screen.getByText('Peter Parker').nextSibling).toHaveTextContent('0000-0002-1234-5688');
     expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
+  });
+
+  it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
+    const { container } = render(<AuthorInformationList authors={authors}/>);
+
+    expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();
   });
 });
