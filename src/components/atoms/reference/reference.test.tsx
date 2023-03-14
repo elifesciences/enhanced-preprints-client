@@ -44,5 +44,5 @@ describe('Reference', () => {
 
       expect(screen.getByText('1.')).toBeInTheDocument();
     });
-  })
+  });
 });
