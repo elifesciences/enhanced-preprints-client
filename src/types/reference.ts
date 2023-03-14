@@ -25,4 +25,7 @@ export type Reference = {
     propertyID: string,
     value: string,
   }[],
+  meta?: {
+    label?: string,
+  },
 };

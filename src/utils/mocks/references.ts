@@ -30,6 +30,9 @@ export const references: Reference[] = [
         value: '10.7554/eLife.16135',
       },
     ],
+    meta: {
+      label: '1.',
+    },
   },
   {
     type: 'Article',
@@ -58,5 +61,8 @@ export const references: Reference[] = [
         value: '10.7554/eLife.16136',
       },
     ],
+    meta: {
+      label: '2.',
+    },
   },
 ];

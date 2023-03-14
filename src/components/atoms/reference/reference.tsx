@@ -10,6 +10,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: { referenc
 
   return (
     <>
+      { (isReferenceList && reference.meta?.label) && <span className="reference__label">{reference.meta.label}</span>}
       <ol className="reference__authors_list">
         {reference.authors.map((author, index) => (
           <li key={index} className="reference__author">
