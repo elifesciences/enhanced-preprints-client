@@ -100,8 +100,7 @@ services:
       S3_BUCKET: eppdata
     ports:
       - 3000:3000
-    volumes:
-      - import_data:/opt/epp-data
+
   ## EPP API data fetch
   api-fetch-data:
     image: k8s.gcr.io/git-sync/git-sync:v3.6.4
@@ -143,6 +142,7 @@ services:
     environment:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
+      MANUSCRIPT_CONFIG_FILE: /opt/epp-client/data/manuscripts.json
     depends_on:
       yarn:
         condition: service_completed_successfully
