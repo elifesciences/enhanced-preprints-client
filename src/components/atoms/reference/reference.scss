@@ -13,6 +13,12 @@
   @include typography.body-small();
 }
 
+.reference__label {
+  &::after {
+    content: " ";
+  }
+}
+
 .reference__doi {
   @include mixins.margin(12 0 36);
   @include typography.body-small();
