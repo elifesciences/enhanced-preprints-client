@@ -101,25 +101,6 @@ services:
     ports:
       - 3000:3000
 
-  ## EPP API data fetch
-  api-fetch-data:
-    image: k8s.gcr.io/git-sync/git-sync:v3.6.4
-    environment:
-      GIT_SYNC_HTTP_BIND: localhost:8080
-      GIT_SYNC_ROOT: "/tmp/git/data"
-      GIT_SYNC_REPO: https://github.com/elifesciences/enhanced-preprints-data
-      GIT_SYNC_BRANCH: staging
-      GIT_SYNC_DEPTH: "0"
-      GIT_SYNC_WEBHOOK_URL: http://api:3000/import
-      GIT_SYNC_WEBHOOK_TIMEOUT: "10s"
-      GIT_SYNC_WEBHOOK_BACKOFF: "10s"
-      GIT_SYNC_TIMEOUT: "480"
-    depends_on:
-      api:
-        condition: service_healthy
-    volumes:
-      - import_data:/tmp/git
-
   # Main app server
   yarn:
     build:
@@ -174,14 +155,21 @@ services:
         condition: service_healthy
       app:
         condition: service_healthy
-      api-fetch-data:
-        condition: service_started
     ports:
       - 8080:80
     volumes:
       - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+
+  curl:
+    image: curlimages/curl
+    depends_on:
+      api:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+    command: curl -X POST http://api:3000/import
+
 volumes:
   data:
-  import_data:
   node_modules:
   minio_storage:
