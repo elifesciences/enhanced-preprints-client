@@ -693,8 +693,8 @@
         "Genetics and Genomics"
       ]
     },
-    "10.1101/2023.01.11.523553v2": {
-      "preprintDoi": "10.1101/2023.01.11.523553v2",
+    "10.1101/2023.01.11.523553": {
+      "preprintDoi": "10.1101/2023.01.11.523553",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -872,7 +872,7 @@
       "msid": "85654",
       "version": "1",
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.01.11.523553v2"
+      "preprintDoi": "10.1101/2023.01.11.523553"
     },
     "80494v1": {
       "msid": "80494",
@@ -1022,7 +1022,7 @@
       "msid": "85654",
       "version": "1",
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.01.11.523553v2"
+      "preprintDoi": "10.1101/2023.01.11.523553"
     }
   }
 }
