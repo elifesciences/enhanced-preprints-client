@@ -2,76 +2,14 @@ import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
 import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
+import { authors } from '../../../utils/mocks';
 
 const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
 jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
 
-const authors: Author[] = [
-  {
-    givenNames: ['Thor'],
-    familyNames: ['Odinson'],
-    affiliations: [
-      {
-        name: 'The Avengers',
-        address: { addressCountry: 'New York' },
-      },
-    ],
-    identifiers: [
-      {
-        type: 'orcid',
-        value: 'http://orcid.org/0000-0002-1234-5678',
-      },
-      {
-        type: 'orcid',
-        value: 'http://orcid.org/0000-0002-1234-5679',
-      },
-    ],
-  },
-  {
-    givenNames: ['Loki'],
-    familyNames: ['Laufeyson'],
-    affiliations: [{
-      name: 'The Revengers',
-      address: { addressCountry: 'Sakaar' },
-    }],
-    identifiers: [
-      {
-        type: 'orcid',
-        value: 'http://orcid.org/0000-0002-1234-5698',
-      },
-    ],
-  },
-  {
-    givenNames: ['Bruce'],
-    familyNames: ['Banner'],
-    affiliations: [{
-      name: 'The Avengers',
-      address: { addressCountry: 'New York' },
-    }],
-  },
-  {
-    givenNames: ['The', 'Incredible'],
-    familyNames: ['Hulk'],
-  },
-  {
-    givenNames: ['Peter'],
-    familyNames: ['Parker'],
-    identifiers: [
-      {
-        type: 'orcid',
-        value: 'http://orcid.org/0000-0002-1234-5688',
-      },
-    ],
-  },
-  {
-    givenNames: ['Valkyrie'],
-    familyNames: ['Brunnhilde'],
-    affiliations: [{
-      name: 'The Valkyrie',
-      address: { addressCountry: 'Asgard' },
-    }],
-  },
-];
+const getName = ({ givenNames, familyNames }: Author) => `${givenNames.join()} ${familyNames.join()}`;
+const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
+const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 
 describe('AuthorInformationList', () => {
   it('renders correctly', () => {
@@ -80,36 +18,29 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Author information')).toBeInTheDocument();
   });
 
-  it('renders each author in the list', () => {
+  it.each(authors.map(getName))('renders each author in the list: %s', (name) => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Thor Odinson')).toBeInTheDocument();
-    expect(screen.getByText('Loki Laufeyson')).toBeInTheDocument();
-    expect(screen.getByText('Bruce Banner')).toBeInTheDocument();
-    expect(screen.getByText('The Incredible Hulk')).toBeInTheDocument();
-    expect(screen.getByText('Peter Parker')).toBeInTheDocument();
-    expect(screen.getByText('Valkyrie Brunnhilde')).toBeInTheDocument();
+    expect(screen.getByText(name)).toBeInTheDocument();
   });
 
-  it('renders the authors affiliations', () => {
-    render(<AuthorInformationList authors={authors}/>);
+  it.each(authors.map(getAffiliationAndAuthor))(
+    'renders the the affiliation: $affiliation for author: $name',
+    ({ affiliation, name }) => {
+      render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Thor Odinson').nextSibling).toHaveTextContent('The Avengers');
-    expect(screen.getByText('Loki Laufeyson').nextSibling).toHaveTextContent('The Revengers');
-    expect(screen.getByText('Bruce Banner').nextSibling).toHaveTextContent('The Avengers');
-    expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
-    expect(screen.getByText('Valkyrie Brunnhilde').nextSibling).toHaveTextContent('The Valkyrie');
-  });
+      expect(screen.getByText(name).nextSibling).toHaveTextContent(affiliation);
+    },
+  );
 
   it('renders the authors ORCID\'s', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Thor Odinson').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5678, 0000-0002-1234-5679');
-    expect(screen.getByText('Loki Laufeyson').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5698');
-    expect(screen.getByText('Bruce Banner').nextSibling?.nextSibling).not.toBeInTheDocument();
-    expect(screen.getByText('The Incredible Hulk').nextSibling).not.toBeInTheDocument();
-    expect(screen.getByText('Peter Parker').nextSibling).toHaveTextContent('0000-0002-1234-5688');
-    expect(screen.getByText('Valkyrie Brunnhilde').nextSibling?.nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('Steve Rogers').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5678, 0000-0002-1234-5679');
+    expect(screen.getByText('Antony Stark').nextSibling?.nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('Natasha Romanov').nextSibling?.nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('Arthur Curry').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5688');
+    expect(screen.getByText('Oliver Queen').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 
   it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
