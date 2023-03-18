@@ -3,7 +3,7 @@ services:
   # Dependant services
   ## Image Server
   image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-e53d15f3-20230307.0757
+    image: ghcr.io/elifesciences/epp-image-server:master-e98296e1-20230316.0421
     ports:
       - "8182:8182"
     volumes:
