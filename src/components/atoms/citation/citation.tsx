@@ -31,7 +31,7 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
       {citation.id}
     </span>
     <span className="citation__doi">
-          https://doi.org/{citation.doi}
-      </span>
+      https://doi.org/{citation.doi}
+    </span>
   </div>
 );

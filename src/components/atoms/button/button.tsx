@@ -9,13 +9,14 @@ type ButtonProps = {
   variant?: typeof buttonVariants[number],
   text: string,
   url?: string,
+  download?: boolean,
   onClick?: () => void,
 };
 
 export const Button = ({
-  text, iconName, url, variant, onClick,
+  text, iconName, url, variant, onClick, download,
 }: ButtonProps): JSX.Element => (
-  <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url} onClick={onClick}>
+  <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url} onClick={onClick} download={download}>
     {text}
   </a>
 );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -28,6 +29,8 @@ export const ArticleStatus = ({
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
+  const router = useRouter();
+  const downloadPath = router.query.msid;
 
   return <div className="article-status">
       <h2 className="article-status__heading">{articleType}</h2>
@@ -55,7 +58,11 @@ export const ArticleStatus = ({
       </Modal>
       <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
         <Citation citation={citation} />
-        <Clipboard text={formatStringCitation(citation)} />
+        {/* TO-DO: Style Download button */}
+        <div className="">
+          <Clipboard text={formatStringCitation(citation)} />
+          <Button iconName="download" variant="action" text="BibTeX" url={`/reviewed-preprints/${downloadPath}.bib`} />
+        </div>
       </Modal>
     </div>;
 };
