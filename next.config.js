@@ -19,6 +19,10 @@ const nextConfig = {
         destination: '/:path*',
       },
       {
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).:format(bib|ris)',
+        destination: '/api/citations/:msid.:format',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },
