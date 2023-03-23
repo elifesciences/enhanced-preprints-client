@@ -83,7 +83,7 @@
 
     @media only screen and (min-width: settings.$breakpoint-small) {
       @include mixins.margin(0);
-      @include mixins.padding(24 18);
+      @include mixins.padding(24 18 20);
     }
   }
 
