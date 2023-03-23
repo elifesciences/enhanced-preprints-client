@@ -5,3 +5,4 @@ docker-compose.yaml
 Dockerfile
 Makefile
 .github/**
+data/
