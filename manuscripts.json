@@ -697,7 +697,8 @@
       },
       "msas": [
         "Genetics and Genomics"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.10.30.514301/2022.10.30.514301.pdf"
     },
     "10.1101/2023.01.11.523553": {
       "preprintDoi": "10.1101/2023.01.11.523553",
@@ -726,7 +727,8 @@
       "msas": [
         "Cell Biology",
         "Microbiology and Infectious Disease"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2023.01.11.523553/2023.01.11.523553.pdf"
     },
     "10.1101/2022.11.14.516431": {
       "preprintDoi": "10.1101/2022.11.14.516431",
@@ -755,6 +757,34 @@
       "msas": [
         "Ecology",
         "Genetics and Genomics"
+      ]
+    },
+    "10.1101/2022.11.09.515847": {
+      "preprintDoi": "10.1101/2022.11.09.515847",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-22"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-04"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.11.09.515847v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Microbiology and Infectious Disease"
       ]
     }
   },
@@ -915,6 +945,12 @@
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.11.523553"
     },
+    "86636": {
+      "msid": "86636",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.09.515847"
+    },
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -1070,6 +1106,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.11.14.516431"
+    },
+    "86636v1": {
+      "msid": "86636",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.09.515847"
     }
   }
 }
