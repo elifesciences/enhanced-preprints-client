@@ -67,7 +67,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation}/>
+        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className="primary-section">

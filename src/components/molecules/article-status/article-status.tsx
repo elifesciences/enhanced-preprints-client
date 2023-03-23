@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -14,6 +13,7 @@ type ArticleStatusProps = {
   title: string,
   pdfUrl?: string,
   citation: CitationData,
+  msid: string,
 };
 
 const defaultArticleType = 'Reviewed Preprint';
@@ -25,12 +25,10 @@ const formatStringCitation = (citation: CitationData): string => {
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation,
+  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
-  const router = useRouter();
-  const downloadPath = router.query.msid;
 
   return <div className="article-status">
       <h2 className="article-status__heading">{articleType}</h2>
@@ -65,7 +63,7 @@ export const ArticleStatus = ({
             <Clipboard text={formatStringCitation(citation)} />
           </li>
           <li className="cite-downloads__list-item">
-            <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${downloadPath}.bib`} />
+            <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} />
           </li>
         </ol>
       </Modal>

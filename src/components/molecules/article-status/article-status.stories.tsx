@@ -17,4 +17,5 @@ Status.args = {
   doi: '10.1101/123456',
   pdfUrl: '#',
   citation,
+  msid: '12345',
 };
