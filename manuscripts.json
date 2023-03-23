@@ -786,6 +786,64 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2022.12.20.521208": {
+      "preprintDoi": "10.1101/2022.12.20.521208",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-01-26"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.20.521208v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Cell Biology",
+        "Developmental Biology"
+      ]
+    },
+    "10.1101/2022.10.21.513138": {
+      "preprintDoi": "10.1101/2022.10.21.513138",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-01-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.21.513138v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Computational and Systems Biology",
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -944,6 +1002,18 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.11.523553"
+    },
+    "85875": {
+      "msid": "85875",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.21.513138"
+    },
+    "86100": {
+      "msid": "86100",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.20.521208"
     },
     "86636": {
       "msid": "86636",
@@ -1112,6 +1182,18 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.11.09.515847"
+    },
+    "86100v1": {
+      "msid": "86100",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.20.521208"
+    },
+    "85875v1": {
+      "msid": "85875",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.21.513138"
     }
   }
 }
