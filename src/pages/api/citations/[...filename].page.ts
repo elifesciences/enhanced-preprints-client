@@ -1,7 +1,7 @@
 import axios from 'axios';
 import path from 'path';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getManuscript } from '../../../manuscripts';
+import { getManuscript, getRppDoi } from '../../../manuscripts';
 import { config } from '../../../config';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const manuscript = getManuscript(config.manuscriptConfigFile, name);
 
     if (manuscript !== undefined && name !== undefined && (ext === '.bib' || ext === '.ris')) {
-      const doi = `10.7554/eLife.${manuscript.msid}.${manuscript.version}`;
+      const doi = getRppDoi(manuscript);
 
       const extReq = await axios.get(
         `${config.apiServer}/api/citations/${doi}/${ext === '.bib' ? 'bibtex' : 'ris'}`,
