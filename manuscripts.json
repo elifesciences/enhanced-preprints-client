@@ -902,6 +902,35 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.1101/2021.09.24.461751": {
+      "preprintDoi": "10.1101/2021.09.24.461751",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-24"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2022-11-08"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-10-10",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.09.24.461751v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Computational and Systems Biology",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -940,6 +969,12 @@
       "version": "1",
       "publishedYear": 2022,
       "preprintDoi": "10.1101/2022.07.26.501569"
+    },
+    "84141": {
+      "msid": "84141",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.09.24.461751"
     },
     "84338": {
       "msid": "84338",
@@ -1276,6 +1311,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.12.20.521179"
+    },
+    "84141v1": {
+      "msid": "84141",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.09.24.461751"
     }
   }
 }
