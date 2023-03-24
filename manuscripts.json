@@ -757,7 +757,8 @@
       "msas": [
         "Ecology",
         "Genetics and Genomics"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.14.516431/2022.11.14.516431.pdf"
     },
     "10.1101/2022.11.09.515847": {
       "preprintDoi": "10.1101/2022.11.09.515847",
@@ -785,7 +786,8 @@
       },
       "msas": [
         "Microbiology and Infectious Disease"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.11.09.515847/2022.11.09.515847.pdf"
     },
     "10.1101/2022.12.20.521208": {
       "preprintDoi": "10.1101/2022.12.20.521208",
