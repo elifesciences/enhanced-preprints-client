@@ -12,8 +12,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const manuscript = getManuscript(config.manuscriptConfigFile, name);
 
     if (manuscript !== undefined && name !== undefined && (ext === '.bib' || ext === '.ris')) {
+      const doi = `10.7554/eLife.${manuscript.msid}.${manuscript.version}`;
+
       const extReq = await axios.get(
-        `${config.apiServer}/api/citations/${manuscript.preprintDoi}/${ext === '.bib' ? 'bibtex' : 'ris'}`,
+        `${config.apiServer}/api/citations/${doi}/${ext === '.bib' ? 'bibtex' : 'ris'}`,
       );
 
       const citation = decodeURI(extReq.data);
