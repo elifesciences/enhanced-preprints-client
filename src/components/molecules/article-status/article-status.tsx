@@ -63,7 +63,7 @@ export const ArticleStatus = ({
             <Clipboard text={formatStringCitation(citation)} />
           </li>
           <li className="cite-downloads__list-item">
-            <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} />
+            <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} download />
           </li>
         </ol>
       </Modal>
