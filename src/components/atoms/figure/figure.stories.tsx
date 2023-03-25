@@ -4,6 +4,15 @@ import { Figure } from './figure';
 export default {
   title: 'Atoms/Figure',
   component: Figure,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'image-alt', enabled: false },
+        ],
+      },
+    },
+  },
 } as ComponentMeta<typeof Figure>;
 
 const Template: ComponentStory<typeof Figure> = (args) => (

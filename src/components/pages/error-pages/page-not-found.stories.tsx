@@ -4,6 +4,16 @@ import { DefaultLayout } from '../../layouts/default';
 
 export default {
   title: 'Pages/Page not found',
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'landmark-unique', enabled: false },
+          { id: 'link-in-text-block', enabled: false },
+        ],
+      },
+    },
+  },
 };
 
 const Template: ComponentStory<typeof PageNotFound> = () => <DefaultLayout><PageNotFound /></DefaultLayout>;

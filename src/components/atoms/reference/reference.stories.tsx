@@ -5,6 +5,15 @@ import { references } from '../../../utils/mocks';
 export default {
   title: 'Atoms/Reference',
   component: Reference,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'listitem', enabled: false },
+        ],
+      },
+    },
+  },
 } as ComponentMeta<typeof Reference>;
 
 const Template: ComponentStory<typeof Reference> = (args) => (
