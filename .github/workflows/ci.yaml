@@ -36,10 +36,13 @@ jobs:
         run: yarn test
       - name: Production build
         run: yarn build
+      - name: Storybook tests
+        run: |
+          yarn test:storybook
       - name: Install operating system dependencies
         run: |
           yarn playwright install
-          yarn playwright install-deps
+          yarn playwright install-deps     
       - name: Browser Tests
         run: |
           docker compose -f docker-compose.browsertest.yaml up -d --wait
