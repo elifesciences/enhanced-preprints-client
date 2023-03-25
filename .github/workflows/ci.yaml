@@ -36,9 +36,13 @@ jobs:
         run: yarn test
       - name: Production build
         run: yarn build
+      - name: Start Storybook
+        run: yarn storybook &
       - name: Storybook tests
         run: |
           yarn test:storybook
+      - name: Stop Storybook
+        run: kill $(lsof -t -i:6006)
       - name: Install operating system dependencies
         run: |
           yarn playwright install
