@@ -5,31 +5,32 @@ import { config } from '../../../../config';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { msid } = req.query;
 
-  if (msid !== undefined && typeof msid === 'string') {
-    const manuscript = getManuscript(config.manuscriptConfigFile, msid);
+  if (msid === undefined || typeof msid !== 'string') {
+    res.status(404).send(`Cannot find msid configured (${msid})`);
+    return;
+  }
 
-    if (manuscript !== undefined) {
-      const doi = getRppDoi(manuscript);
-      const filename = `${msid}.bib`;
+  const manuscript = getManuscript(config.manuscriptConfigFile, msid);
+  const filename = `${msid}.bib`;
 
-      const extReq = await fetch(
-        `${config.apiServer}/api/citations/${doi}/bibtex`,
-      );
-      const data = await extReq.text();
+  if (manuscript === undefined) {
+    const error = `Unable to retrieve citation ${filename}`;
+    console.error(error); // eslint-disable-line no-console
+    res.status(503).send(error);
+    return;
+  }
 
-      const citation = decodeURI(data);
+  const doi = getRppDoi(manuscript);
+  const extReq = await fetch(
+    `${config.apiServer}/api/citations/${doi}/bibtex`,
+  );
+  const data = await extReq.text();
 
-      if (citation) {
-        res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
-        res.setHeader('Content-Type', 'application/x-bibtex');
-        res.status(200).send(citation);
-      } else {
-        const error = `Unable to retrieve citation ${filename}`;
-        console.error(error); // eslint-disable-line no-console
-        res.status(503).send(error);
-      }
-    } else {
-      res.status(404).send(`Cannot find msid configured (${msid})`);
-    }
+  const citation = decodeURI(data);
+
+  if (citation) {
+    res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+    res.setHeader('Content-Type', 'application/x-bibtex');
+    res.status(200).send(citation);
   }
 };
