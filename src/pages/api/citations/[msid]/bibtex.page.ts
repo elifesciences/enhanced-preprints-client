@@ -1,4 +1,3 @@
-import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getManuscript, getRppDoi } from '../../../../manuscripts';
 import { config } from '../../../../config';
@@ -13,11 +12,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const doi = getRppDoi(manuscript);
       const filename = `${msid}.bib`;
 
-      const extReq = await axios.get(
+      const extReq = await fetch(
         `${config.apiServer}/api/citations/${doi}/bibtex`,
       );
+      const data = await extReq.text();
 
-      const citation = decodeURI(extReq.data);
+      const citation = decodeURI(data);
 
       if (citation) {
         res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
