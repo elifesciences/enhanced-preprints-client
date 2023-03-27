@@ -64,7 +64,7 @@ describe('ArticlePage', () => {
     const expectedDoi = '10.7554/eLife.123456.1';
     const encodedExpectedDoi = encodeURIComponent(expectedDoi);
     const { container } = render(
-      <ArticleStatus articleStatus={status.status} doi={expectedDoi} articleType={status.articleType} pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} />,
+      <ArticleStatus articleStatus={status.status} doi={expectedDoi} articleType={status.articleType} pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} msid="12345"/>,
     );
 
     fireEvent.click(screen.getByText('Share'));

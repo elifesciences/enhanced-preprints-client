@@ -114,3 +114,27 @@
     grid-row: 1;
   }
 }
+
+.cite-downloads__list {
+  @include mixins.padding(0);
+  @include mixins.margin(0);
+
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1/13;
+  list-style: none;
+}
+
+.cite-downloads__list-item {
+  @include mixins.margin(24, "right");
+  @include mixins.margin(24, "bottom");
+
+  display: flex;
+  height: 48px;
+  min-width: fit-content;
+
+  &:empty {
+    display: none;
+  }
+}

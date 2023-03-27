@@ -13,6 +13,7 @@ type ArticleStatusProps = {
   title: string,
   pdfUrl?: string,
   citation: CitationData,
+  msid: string,
 };
 
 const defaultArticleType = 'Reviewed Preprint';
@@ -24,7 +25,7 @@ const formatStringCitation = (citation: CitationData): string => {
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation,
+  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
@@ -49,13 +50,22 @@ export const ArticleStatus = ({
       <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
         <div className="form-item">
           <input readOnly={true} type="input" className="text-field text-field--clipboard" value={`https://doi.org/${doi}`} />
-          <Clipboard text={`https://doi.org/${doi}`} />
+          <div className="clipboard-container">
+            <Clipboard text={`https://doi.org/${doi}`} />
+          </div>
         </div>
         <Socials doi={doi} title={title} />
       </Modal>
       <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
         <Citation citation={citation} />
-        <Clipboard text={formatStringCitation(citation)} />
+        <ol className="cite-downloads__list">
+          <li className="cite-downloads__list-item">
+            <Clipboard text={formatStringCitation(citation)} />
+          </li>
+          <li className="cite-downloads__list-item">
+            <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} download />
+          </li>
+        </ol>
       </Modal>
     </div>;
 };
