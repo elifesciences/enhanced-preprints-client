@@ -1016,6 +1016,34 @@
       "msas": [
         "Cell Biology"
       ]
+    },
+    "10.1101/2022.06.17.496451": {
+      "preprintDoi": "10.1101/2022.06.17.496451",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-03-28"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2022-12-22"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-11-14",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.06.17.496451v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -1168,6 +1196,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.04.01.486717"
+    },
+    "84926": {
+      "msid": "84926",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.17.496451"
     },
     "85069": {
       "msid": "85069",
@@ -1438,6 +1472,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.04.01.486717"
+    },
+    "84926v1": {
+      "msid": "84926",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.17.496451"
     }
   }
 }
