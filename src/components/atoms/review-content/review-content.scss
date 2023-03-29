@@ -11,11 +11,12 @@
 
   p {
     @include typography.body();
+
+    &:first-of-type strong {
+      @include typography.heading-2();
+    }
   }
 
-  strong {
-    @include typography.heading-2();
-  }
 
   blockquote {
     @include typography.blockquote();
