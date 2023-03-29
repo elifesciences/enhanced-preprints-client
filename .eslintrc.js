@@ -4,7 +4,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', "no-only-tests"],
   extends: ["airbnb/base", "airbnb-typescript/base", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:storybook/recommended", "plugin:json/recommended"],
   rules: {
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
@@ -17,7 +17,10 @@ module.exports = {
       "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*", "**/*.test.tsx", "**/browser-tests/**/*.*"],
       "peerDependencies": true
     }],
-    "operator-linebreak": 0
+    "operator-linebreak": 0,
+    "no-only-tests/no-only-tests": ["error", {
+      "focus": ["only"]
+    }],
   },
   settings: {
     react: {
