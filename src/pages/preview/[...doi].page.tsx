@@ -45,24 +45,14 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  if (!Array.isArray(doiParts)) {
-    console.log('need multiple ids in path'); // eslint-disable-line no-console
+  const tab = Array.isArray(doiParts) && doiParts.length > 2 && ['fulltext', 'figures'].includes(doiParts[doiParts.length - 1]) ? doiParts.pop() : 'fulltext';
+  const doi = Array.isArray(doiParts) ? doiParts.join('/') : undefined;
+
+  if (doi === undefined) {
+    console.log('doi not found in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  let tab = 'fulltext';
-  if (doiParts.length === 3) {
-    tab = doiParts.pop() || 'fulltext';
-  }
-
-  if (doiParts.length !== 2) {
-    console.log('doi not in two parts'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
-
-  const doi = doiParts.join('/');
-
-  // map msid to preprint doi
   const [metaData, content] = await Promise.all([
     jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${doi}/metadata`),
     jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${doi}/content`),
