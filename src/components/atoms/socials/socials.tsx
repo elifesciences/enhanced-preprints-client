@@ -1,6 +1,5 @@
 import './socials.scss';
 import { useState } from 'react';
-import { Button } from '../button/button';
 
 type Props = {
   doi: string,
@@ -10,6 +9,9 @@ type Props = {
 export const Socials = ({
   doi, title,
 }: Props): JSX.Element => {
+  const [showMastodonInputs, setShowMastodonInputs] = useState(false);
+  const [mastodonAddress, setMastodonAddress] = useState<string>();
+
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
   const encodedUrl = encodeURIComponent(doiUrl);
@@ -18,9 +20,7 @@ export const Socials = ({
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
-
-  const [showMastodonInputs, setShowMastodonInputs] = useState(false);
-  const [mastodonAddress, setMastodonAddress] = useState<string>();
+  const mastodonUrl = `https://${mastodonAddress}/share?text=${encodedTitle}%20${encodedUrl}}`;
 
   return (
     <div className="socials-container">
@@ -51,7 +51,7 @@ export const Socials = ({
           </a>
         </li>
         <li>
-          <a className="socials-sharer mastadon" target="_blank" rel="noopener noreferrer" aria-label="Share by Reddit" onClick={() => setShowMastodonInputs(!showMastodonInputs)}>
+          <a className="socials-sharer mastadon" target="_blank" rel="noopener noreferrer" aria-label="Share by Mastadon with URL input" onClick={() => setShowMastodonInputs(!showMastodonInputs)}>
             Mastadon
           </a>
         </li>
@@ -60,10 +60,10 @@ export const Socials = ({
         <div className="socials-mastadon">
           <input className="socials-mastadon__input" placeholder="Mastadon URL" defaultValue={mastodonAddress ?? ''} onInput={(e) => setMastodonAddress(e.currentTarget.value)} />
           <a
-            className="button button--action"
+            className="button button--action socials-mastadon__action"
             target="_blank"
             rel="noopener noreferrer"
-            href={`https://${mastodonAddress}/share?text=${encodeURIComponent(title)}%20${encodeURIComponent(window.location.href)}`}
+            href={mastodonUrl}
             aria-label="Share by Mastodon">
             Share
           </a>

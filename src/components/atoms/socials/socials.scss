@@ -3,8 +3,8 @@
 @use "../../../sass/mixins";
 
 .socials-container {
-  display: flex;
-  width: 100%;
+  display: grid;
+  grid-column: 1/10;
 }
 
 .socials-sharers {
@@ -54,8 +54,19 @@
   cursor: pointer;
 }
 
+.socials-mastadon {
+  @include mixins.margin(36, "top");
+  
+  display: grid;
+  align-items: center;
+}
+
 .socials-mastadon__input {
-  @include mixins.margin(12, "right");
+  grid-column: 1/8;
+}
+
+.socials-mastadon__action { 
+  grid-column: 11/13
 }
 
 .socials-sharer {
