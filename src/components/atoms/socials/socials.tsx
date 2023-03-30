@@ -20,7 +20,7 @@ export const Socials = ({
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
 
   const [showMastodonInputs, setShowMastodonInputs] = useState(false);
-  const [mastadonAddress, setMastadonAddress] = useState<string>();
+  const [mastodonAddress, setMastodonAddress] = useState<string>();
 
   return (
     <div className="socials-container">
@@ -58,8 +58,8 @@ export const Socials = ({
       </ul>
       { showMastodonInputs &&
         <div className="socials-mastadon">
-          <input className="socials-mastadon__input" placeholder="Mastadon URL" defaultValue={mastadonAddress ?? ''} onInput={(e) => setMastadonAddress(e.currentTarget.value)}/>
-          <a className="button button--action" target="_blank" rel="noopener noreferrer" href={`https://${mastadonAddress}/share?text=${encodeURIComponent(title)}%20${encodeURIComponent(window.location.href)}`} aria-label="Share by Mastodon">Share</a>
+          <input className="socials-mastadon__input" placeholder="Mastadon URL" defaultValue={mastodonAddress ?? ''} onInput={(e) => setMastodonAddress(e.currentTarget.value)}/>
+          <a className="button button--action" target="_blank" rel="noopener noreferrer" href={`https://${mastodonAddress}/share?text=${encodeURIComponent(title)}%20${encodeURIComponent(window.location.href)}`} aria-label="Share by Mastodon">Share</a>
         </div>
       }
     </div>
