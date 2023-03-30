@@ -49,6 +49,14 @@
   background: url("../../../images/share/reddit.svg") no-repeat 0 0;
 }
 
+.mastadon {
+  background-color: rgb(255,111,255);
+}
+
+.socials-mastadon__input {
+  @include mixins.margin(12, "right");
+}
+
 .socials-sharer {
   @include mixins.margin(0 8);
   @include mixins.padding(2 0);

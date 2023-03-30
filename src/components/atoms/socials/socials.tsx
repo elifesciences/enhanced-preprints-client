@@ -1,4 +1,6 @@
 import './socials.scss';
+import { useState } from 'react';
+import { Button } from '../button/button';
 
 type Props = {
   doi: string,
@@ -16,6 +18,9 @@ export const Socials = ({
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
+
+  const [showMastodonInputs, setShowMastodonInputs] = useState(false);
+  const [mastadonAddress, setMassadonAddress] = useState<string>();
 
   return (
     <div className="socials-container">
@@ -45,7 +50,18 @@ export const Socials = ({
             Reddit
           </a>
         </li>
+        <li>
+          <a className="socials-sharer mastadon" target="_blank" rel="noopener noreferrer" aria-label="Share by Reddit" onClick={() => setShowMastodonInputs(!showMastodonInputs)}>
+            Mastadon
+          </a>
+        </li>
       </ul>
+      { showMastodonInputs &&
+        <div className="socials-mastadon">
+          <input className="socials-mastadon__input" placeholder="Mastadon URL" defaultValue={mastadonAddress ?? ''} onInput={(e) => setMassadonAddress(e.currentTarget.value)}/>
+          <a className="button button--action" target="_blank" rel="noopener noreferrer" href={`https://${mastadonAddress}/share?text=${encodeURIComponent(title)}%20${encodeURIComponent(window.location.href)}`} aria-label="Share by Mastodon">Share</a>
+        </div>
+      }
     </div>
   );
 };
