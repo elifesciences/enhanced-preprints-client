@@ -31,7 +31,7 @@ services:
       retries: 10
       start_period: 2s
 
-  ## Database (MongoDB) GUI
+  ## Database (MongoDB) GUI
   mongo-express:
     image: mongo-express
     environment:
