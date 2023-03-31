@@ -46,8 +46,8 @@ export const Socials = ({
         </a>
       </li>
       <li>
-        <a className="socials-sharer mastadon" href={mastodonUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Mastadon via Toot">
-          Mastadon
+        <a className="socials-sharer mastodon" href={mastodonUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Mastodon via Toot">
+          Mastodon
         </a>
       </li>
     </ul>
