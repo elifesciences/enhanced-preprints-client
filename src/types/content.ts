@@ -32,7 +32,7 @@ type CiteGroupContent = {
 
 type HeadingContent = DecoratedContent & {
   type: 'Heading',
-  id: string,
+  id?: string,
   depth: 1 | 2 | 3 | 4 | 5 | 6,
 };
 

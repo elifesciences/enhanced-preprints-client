@@ -136,7 +136,7 @@ describe('FulltextTab', () => {
   it('uses the heading ids for the hrefs in jump-to-menu', () => {
     const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
 
-    const headings = Array.from(container.querySelectorAll('section[id], h1, .heading-1'));
+    const headings = Array.from(container.querySelectorAll('section[id], h1[id], .heading-1'));
     const ids = headings.map(({ id }) => id);
 
     const links = Array.from(container.querySelectorAll<HTMLAnchorElement>('.jump-menu-list__link'));

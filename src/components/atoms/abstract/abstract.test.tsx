@@ -26,7 +26,7 @@ describe('ArticleContent', () => {
   it('renders with a different title than `Abstract`', async () => {
     const complexContent: Content = [
       {
-        type: 'Heading', depth: 1, id: 'abstract1', content: ['Summary'],
+        type: 'Heading', depth: 1, content: ['Summary'],
       },
       { type: 'Paragraph', content: ['This is the text for the summary.'] },
     ];
