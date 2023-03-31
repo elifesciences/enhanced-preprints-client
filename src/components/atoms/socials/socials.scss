@@ -2,10 +2,6 @@
 @use "../../../sass/typography";
 @use "../../../sass/mixins";
 
-.socials-container {
-  display: flex;
-}
-
 .socials-sharers {
   @include mixins.padding(0, "left");
 
