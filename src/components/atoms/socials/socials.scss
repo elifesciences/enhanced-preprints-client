@@ -3,8 +3,7 @@
 @use "../../../sass/mixins";
 
 .socials-container {
-  display: grid;
-  grid-column: 1/10;
+  display: flex;
 }
 
 .socials-sharers {
@@ -52,21 +51,6 @@
 .mastadon {
   background: url("../../../images/share/mastodon.svg") no-repeat 0 0;
   cursor: pointer;
-}
-
-.socials-mastadon {
-  @include mixins.margin(36, "top");
-  
-  display: grid;
-  align-items: center;
-}
-
-.socials-mastadon__input {
-  grid-column: 1/8;
-}
-
-.socials-mastadon__action { 
-  grid-column: 11/13
 }
 
 .socials-sharer {
