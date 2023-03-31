@@ -13,10 +13,6 @@
     @include typography.body();
   }
 
-  strong {
-    @include typography.heading-2();
-  }
-
   blockquote {
     @include typography.blockquote();
     @include mixins.margin(0);
@@ -32,6 +28,10 @@
     strong {
       @include typography.heading-4();
     }
+  }
+
+  p:first-of-type strong {
+    @include typography.heading-2();
   }
 }
 
