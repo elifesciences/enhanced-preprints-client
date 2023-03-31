@@ -2,11 +2,6 @@
 @use "../../../sass/typography";
 @use "../../../sass/mixins";
 
-.socials-container {
-  display: flex;
-  width: 100%;
-}
-
 .socials-sharers {
   @include mixins.padding(0, "left");
 
@@ -47,6 +42,11 @@
 
 .reddit {
   background: url("../../../images/share/reddit.svg") no-repeat 0 0;
+}
+
+.mastodon {
+  background: url("../../../images/share/mastodon.svg") no-repeat 0 0;
+  cursor: pointer;
 }
 
 .socials-sharer {
