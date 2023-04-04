@@ -65,6 +65,9 @@ export const ArticleStatus = ({
           <li className="cite-downloads__list-item">
             <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} download />
           </li>
+          <li className="cite-downloads__list-item">
+            <Button variant="cite-download" text="Download RIS" url={`/reviewed-preprints/${msid}.ris`} download />
+          </li>
         </ol>
       </Modal>
     </div>;
