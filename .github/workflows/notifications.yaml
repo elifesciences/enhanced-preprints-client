@@ -1,11 +1,11 @@
 name: preview-notifications
 on:
   repository_dispatch:
-    types: [Kustomization/epp-previews]
+    types: [Kustomization/epp-deploy.flux-system]
 
 jobs:
   notification-tests:
     runs-on: ubuntu-latest
     steps:
     - name: Notify
-      run: echo "this is a notification too"
+      run: echo "this is a notification"
