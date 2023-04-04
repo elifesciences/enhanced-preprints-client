@@ -1,11 +1,10 @@
 name: preview-notifications
 on:
   repository_dispatch:
-    types: [Kustomization/epp--preview-551.epp--previews]
+    types: [Kustomization/*.epp--previews]
 
 jobs:
   notification-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Notify
-      run: echo "this is a notification"
+    - run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
