@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getManuscript, getRppDoi } from '../../../../manuscripts';
+import { getManuscript, getPreprintDoi, getRppDoi } from '../../../../manuscripts';
 import { config } from '../../../../config';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,17 +20,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const doi = getRppDoi(manuscript);
+  const doi = getPreprintDoi(manuscript);
   const extReq = await fetch(
     `${config.apiServer}/api/citations/${doi}/bibtex`,
   );
   const data = await extReq.text();
 
-  const citation = decodeURI(data);
+  const citation = decodeURIComponent(data);
+  const elifeDoi = getRppDoi(manuscript);
+
+  const newCitation = elifeDoi ? citation.replace(manuscript.preprintDoi, elifeDoi) : citation;
 
   if (citation) {
     res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
     res.setHeader('Content-Type', 'application/x-bibtex');
-    res.status(200).send(citation);
+    res.status(200).send(newCitation);
   }
 };

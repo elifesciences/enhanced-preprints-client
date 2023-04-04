@@ -15,11 +15,7 @@ type ManuscriptConfig = {
   publishedYear: number,
 };
 
-export type FullManuscriptConfig = ReviewedPreprintConfig & {
-  msid: string,
-  version: string,
-  publishedYear: number,
-};
+export type FullManuscriptConfig = ReviewedPreprintConfig & ManuscriptConfig;
 
 type ConfigFile = {
   preprints: Record<string, ReviewedPreprintConfig>,
@@ -52,3 +48,5 @@ export const getManuscriptsLatest = (configFile: string): Manuscripts => Object.
 export const getManuscript = (configFile: string, msid: string): FullManuscriptConfig => getManuscripts(configFile)[msid];
 
 export const getRppDoi = (config: Partial<FullManuscriptConfig>): string => (config.msid && config.version ? `10.7554/eLife.${config.msid}.${config.version}` : '');
+
+export const getPreprintDoi = (config: Partial<FullManuscriptConfig>): string => (config.preprintDoi ? config.preprintDoi : '');
