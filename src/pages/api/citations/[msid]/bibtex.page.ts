@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const citation = decodeURIComponent(data);
   const elifeDoi = getRppDoi(manuscript);
 
-  const newCitation = elifeDoi ? citation.replace(manuscript.preprintDoi, elifeDoi) : citation;
+  const newCitation = elifeDoi ? citation.replace(new RegExp(manuscript.preprintDoi, 'g'), elifeDoi) : citation;
 
   if (citation) {
     res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
