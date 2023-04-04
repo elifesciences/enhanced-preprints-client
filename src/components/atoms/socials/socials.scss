@@ -5,6 +5,7 @@
 .socials-sharers {
   @include mixins.padding(0, "left");
 
+  grid-column: 1/13;
   margin: 24px 0;
 
   li {
