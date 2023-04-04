@@ -10,8 +10,8 @@ jobs:
     - name: debug
       run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
     - name: create client deployment
-      if: contains("/epp-client created", github.event.client_payload.message)
+      if: contains('/epp-client created', github.event.client_payload.message)
       run: echo "client was created"
     - name: create storybook deployment
-      if: contains("/epp-storybook created", github.event.client_payload.message)
+      if: contains('/epp-storybook created', github.event.client_payload.message)
       run: echo "storybook was created"
