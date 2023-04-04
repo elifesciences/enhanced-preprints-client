@@ -1,0 +1,11 @@
+name: preview-notifications
+on:
+  repository_dispatch:
+    types: [Kustomization/epp--preview-551.epp--previews]
+
+jobs:
+  notification-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify
+      run: echo "this is a notification"
