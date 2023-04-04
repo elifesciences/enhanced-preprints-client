@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Notify
-      run: echo "this is a notification"
+      run: echo "this is a notification too"
