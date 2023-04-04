@@ -1,7 +1,7 @@
 name: preview-notifications
 on:
   repository_dispatch:
-    types: [Kustomization/epp-previews]
+    types: [Kustomization/epp-deploy.flux-system]
 
 jobs:
   notification-tests:
