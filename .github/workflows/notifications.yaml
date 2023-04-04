@@ -1,7 +1,7 @@
 name: preview-notifications
 on:
   repository_dispatch:
-    types: [Kustomization/epp--preview-551.epp--previews]
+    types: [Kustomization/*.epp--previews]
 
 jobs:
   notification-tests:
