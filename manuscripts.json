@@ -1101,6 +1101,34 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.02.27.530167": {
+      "preprintDoi": "10.1101/2023.02.27.530167",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-04"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-01",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.27.530167v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-25"
+          }
+        ]
+      },
+      "msas": [
+        "Biochemistry and Chemical Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1332,6 +1360,12 @@
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.15.524087"
     },
+    "87038": {
+      "msid": "87038",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.27.530167"
+    },
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -1559,6 +1593,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.03.08.483420"
+    },
+    "87038v1": {
+      "msid": "87038",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.27.530167"
     }
   }
 }
