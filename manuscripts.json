@@ -1157,6 +1157,91 @@
       "msas": [
         "Medicine"
       ]
+    },
+    "10.1101/2022.10.25.513688": {
+      "preprintDoi": "10.1101/2022.10.25.513688",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-05"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-18"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.25.513688v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Neuroscience"
+      ]
+    },
+    "10.1101/2022.09.08.507137": {
+      "preprintDoi": "10.1101/2022.09.08.507137",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-05"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-15"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-31",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.09.08.507137v3",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Biochemistry and Chemical Biology"
+      ]
+    },
+    "10.1101/2023.02.08.527633": {
+      "preprintDoi": "10.1101/2023.02.08.527633",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-05"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.08.527633v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-08"
+          }
+        ]
+      },
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -1393,6 +1478,24 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.15.524087"
+    },
+    "86699": {
+      "msid": "86699",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.08.527633"
+    },
+    "86722": {
+      "msid": "86722",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.09.08.507137"
+    },
+    "86972": {
+      "msid": "86972",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.25.513688"
     },
     "87038": {
       "msid": "87038",
@@ -1639,6 +1742,24 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.02.08.527616"
+    },
+    "86972v1": {
+      "msid": "86972",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.25.513688"
+    },
+    "86722v1": {
+      "msid": "86722",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.09.08.507137"
+    },
+    "86699v1": {
+      "msid": "86699",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.08.527633"
     }
   }
 }
