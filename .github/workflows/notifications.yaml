@@ -1,11 +1,17 @@
 name: preview-notifications
 on:
   repository_dispatch:
-    types: [Kustomization/epp-previews]
+    types: [Kustomization/*.epp--previews]
 
 jobs:
   notification-tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Notify
-      run: echo "this is a notification"
+    - name: debug
+      run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
+    - name: create client deployment
+      if: contains(github.event.client_payload.message, '/epp-client created')
+      run: echo "client was created"
+    - name: create storybook deployment
+      if: contains(github.event.client_payload.message, '/epp-storybook created')
+      run: echo "storybook was created"
