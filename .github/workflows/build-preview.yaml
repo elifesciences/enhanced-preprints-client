@@ -63,4 +63,15 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           status: success
+          context: EPP Preview
+          description: The EPP client preview environment URL
           targetUrl: https://pr-${{ github.event.number }}--epp.elifesciences.org/
+      - name: "Update storybook preview status with URL"
+        if: ${{ success() }}
+        uses: myrotvorets/set-commit-status-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: success
+          context: Storybook Preview
+          description: The EPP storybook preview environment URL
+          targetUrl: https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/
