@@ -74,6 +74,12 @@ type ListContent = {
   items: Array<ListItemContent>,
 };
 
+type ClaimContent = DecoratedContent & {
+  type: 'Claim',
+  claimType: 'Proof',
+  label: string,
+};
+
 type ContentPart =
   string |
   HeadingContent |
@@ -89,6 +95,7 @@ type ContentPart =
   FigureContent |
   ImageObjectContent |
   ListItemContent |
-  ListContent;
+  ListContent |
+  ClaimContent;
 
 export type Content = ContentPart | Array<Content>;

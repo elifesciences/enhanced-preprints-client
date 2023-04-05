@@ -52,6 +52,11 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
       return content.order === 'Ascending' ? <ol key={index}>{contentToJsx(content.items)}</ol> : <ul key={index}>{contentToJsx(content.items)}</ul>;
+    case 'Claim':
+      return <p key={index}>
+        <strong>{content.label}</strong>
+        {contentToJsx(content.content)}
+      </p>;
     default:
       return '';
   }
