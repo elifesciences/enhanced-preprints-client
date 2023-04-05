@@ -2303,12 +2303,12 @@
     rimraf "^3.0.2"
 
 "@playwright/test@^1.29.2":
-  version "1.32.1"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.32.1.tgz#749c9791adb048c266277a39ba0f7e33fe593ffe"
-  integrity sha512-FTwjCuhlm1qHUGf4hWjfr64UMJD/z0hXYbk+O387Ioe6WdyZQ+0TBDAc6P+pHjx2xCv1VYNgrKbYrNixFWy4Dg==
+  version "1.32.2"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.32.2.tgz#3cbd76b3f94d0f7f50bf054dbd02e504e85e3865"
+  integrity sha512-nhaTSDpEdTTttdkDE8Z6K3icuG1DVRxrl98Qq0Lfc63SS9a2sjc9+x8ezysh7MzCKz6Y+nArml3/mmt+gqRmQQ==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.32.1"
+    playwright-core "1.32.2"
   optionalDependencies:
     fsevents "2.3.2"
 
@@ -4034,9 +4034,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.0.0":
-  version "18.0.32"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.32.tgz#5e88b2af6833251d54ec7fe86d393224499f41d5"
-  integrity sha512-gYGXdtPQ9Cj0w2Fwqg5/ak6BcK3Z15YgjSqtyDizWUfx7mQ8drs0NBUzRRsAdoFVTO8kJ8L2TL8Skm7OFPnLUw==
+  version "18.0.33"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.33.tgz#a1575160cb4376787c2f5fe0312302f824baa61e"
+  integrity sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -12459,10 +12459,10 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-playwright-core@1.32.1:
-  version "1.32.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.1.tgz#5a10c32403323b07d75ea428ebeed866a80b76a1"
-  integrity sha512-KZYUQC10mXD2Am1rGlidaalNGYk3LU1vZqqNk0gT4XPty1jOqgup8KDP8l2CUlqoNKhXM5IfGjWgW37xvGllBA==
+playwright-core@1.32.2:
+  version "1.32.2"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.2.tgz#608810c3c4486fb86a224732ac0d3560a96ded8b"
+  integrity sha512-zD7aonO+07kOTthsrCR3YCVnDcqSHIJpdFUtZEMOb6//1Rc7/6mZDRdw+nlzcQiQltOOsiqI3rrSyn/SlyjnJQ==
 
 pnp-webpack-plugin@1.6.4:
   version "1.6.4"
