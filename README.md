@@ -1,6 +1,6 @@
 # Getting Started with Enhanced Preprints Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following https://nextjs.org/docs/migrating/from-create-react-app
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following <https://nextjs.org/docs/migrating/from-create-react-app>
 
 ## Development build - `docker-compose up` or `make start-dev`
 
@@ -11,6 +11,10 @@ The EPP API server can be viewed at [`localhost:3001`](http://localhost:3001)
 You can also view a rudimentary mongodb GUI client at [`localhost:8081`](http://localhost:8081)
 
 You can work with and view the component library via storybook at [`localhost:6006`](http://localhost:6006).
+
+## Development build with local API - `SERVER_DIR="../your-directory-here" docker compose -f docker-compose.yaml -f docker-compose.localserver.yaml up`
+
+To start the application with a local version of the [`EPP API server`](https://github.com/elifesciences/enhanced-preprints-server) so you can run the application and test local changes of the API, you need to define an environment variable `SERVER_DIR` with the location of your EPP API server project, i.e. `SERVER_DIR="../enhanced-preprints-server"`, then run the above command to invoke the `.localserver` ovverides.
 
 ## production build - `docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up` or `make start-prod`
 
@@ -28,6 +32,7 @@ make IMAGE_REPO_PREFIX=yourdockerhubuser/enhanced-preprints- make build-prod-and
 ```
 
 You can also build an image that runs storybook in dev mode for hosting as a pattern library (which will be suffixed with `storybook`):
+
 ```
 make IMAGE_REPO_PREFIX=yourdockerhubuser/enhanced-preprints- make build-storybook-and-push
 ```
