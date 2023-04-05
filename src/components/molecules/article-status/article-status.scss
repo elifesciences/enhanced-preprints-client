@@ -128,13 +128,27 @@
 
 .cite-downloads__list-item {
   @include mixins.margin(24, "right");
-  @include mixins.margin(24, "bottom");
 
   display: flex;
   height: 48px;
-  min-width: fit-content;
+  width: fit-content;
 
   &:empty {
     display: none;
+  }
+
+  &:last-child {
+    @include mixins.margin(0, "right");
+  }
+
+  @media only all and (max-width: 618px) {
+    @include mixins.margin(0 0 12 0);
+
+    width: 100%;
+    text-align: center;
+
+    &:last-child {
+      @include mixins.margin(0, "bottom");
+    }
   }
 }
