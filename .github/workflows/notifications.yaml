@@ -6,23 +6,60 @@ on:
 jobs:
   notification-tests:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
     steps:
     - name: debug
       run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
-    - name: Get Preview Environment number
-      id: pr_id
+    - name: Get Pull request details
+      id: pr_details
       env:
         PR_ID: ${{ github.event.client_payload.involvedObject.name }}
-      run: echo "pr_id=${PR_ID:13}" >> $GITHUB_OUTPUT
-    - name: create client deployment
-      if: contains(github.event.client_payload.message, '/epp-client created')
-      run: echo "client was created for PR ${{ steps.pr_id.outputs.pr_id }}"
-    - name: create storybook deployment
-      if: contains(github.event.client_payload.message, '/epp-storybook created')
-      run: echo "storybook was created for PR ${{ steps.pr_id.outputs.pr_id }}"
+      run: |
+        pr_id=${PR_ID:13}
+        echo "pr_id=$pr_id" >> $GITHUB_OUTPUT
+        gh pr view $pr_id --json headRefName,headRefOid > pr_details
+        echo "pr_branch=$(cat pr_details | jq -r .headRefName )" >> $GITHUB_OUTPUT
+        echo "pr_ref=$(cat pr_details | jq -r .headRefOid )" >> $GITHUB_OUTPUT
+        echo "client_deployment_status_url=$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ steps.pr_details.outputs.pr_id }}&sha=${{ steps.pr_details.outputs.pr_ref }}' | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
+        echo "storybook_deployment_status_url=$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ steps.pr_details.outputs.pr_id }}&sha=${{ steps.pr_details.outputs.pr_ref }}' | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
+    - name: Update client deployment status
+      if: contains(github.event.client_payload.message, '/epp-client created') || contains(github.event.client_payload.message, '/epp-client configured')
+      run: |
+        echo "client was created for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.client_deployment_status_url }} \
+          -f state=success \
+          -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp.elifesciences.org/' \
+          -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
+    - name: Update storybook deployment status
+      if: contains(github.event.client_payload.message, '/epp-storybook created') || contains(github.event.client_payload.message, '/epp-storybook configured')
+      run: |
+        echo "storybook was created for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.storybook_deployment_status_url }} \
+          -f state=success \
+          -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp-storybook.elifesciences.org/' \
+          -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: remove client deployment
       if: contains(github.event.client_payload.message, '/epp-client deleted')
-      run: echo "client was deleted for PR ${{ steps.pr_id.outputs.pr_id }}"
+      run: |
+        echo "client was removed for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.client_deployment_status_url }} \
+          -f state=inactive \
+          -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp.elifesciences.org/' \
+          -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: remove storybook deployment
       if: contains(github.event.client_payload.message, '/epp-storybook deleted')
-      run: echo "storybook was deleted for PR ${{ steps.pr_id.outputs.pr_id }}"
+      run: |
+        echo "storybook was removed for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.storybook_deployment_status_url }} \
+          -f state=inactive \
+          -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp-storybook.elifesciences.org/' \
+          -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
