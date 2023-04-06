@@ -18,7 +18,7 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
-            -f required_contexts[]= \
+            -f required_contexts[] \
             -F transient_environment=true \
             -F auto_merge=false \
             -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
@@ -34,7 +34,7 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
-            -f required_contexts[]= \
+            -f required_contexts[] \
             -F transient_environment=true \
             -F auto_merge=false \
             -f description="Preview Storybook deployment for PR ${{ github.event.number }}" >> deployment_data
