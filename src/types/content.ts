@@ -77,7 +77,7 @@ type ListContent = {
 type ClaimContent = DecoratedContent & {
   type: 'Claim',
   claimType: 'Statement' | 'Theorem' | 'Lemma' | 'Proof' | 'Postulate' | 'Hypothesis' | 'Proposition' | 'Corollary',
-  label: string,
+  label?: Content,
   title?: Content,
 };
 
