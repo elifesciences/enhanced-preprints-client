@@ -31,6 +31,10 @@ jobs:
         GH_TOKEN: ${{ github.token }}
       run: |
         echo "client was created for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.client_deployment_status_url }} \
+          -f state=in_progress
         echo "waiting for new environment to come online before posting an Env URL"...
         timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ steps.pr_details.outputs.pr_id }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
         gh api \
@@ -45,6 +49,10 @@ jobs:
         GH_TOKEN: ${{ github.token }}
       run: |
         echo "storybook was created for PR ${{ steps.pr_details.outputs.pr_id }}"
+        gh api \
+          --method POST \
+          ${{ steps.pr_details.outputs.storybook_deployment_status_url }} \
+          -f state=in_progress
         echo "waiting for new environment to come online before posting an Env URL"...
         timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ steps.pr_details.outputs.pr_id }}--epp-storybook.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
         gh api \
