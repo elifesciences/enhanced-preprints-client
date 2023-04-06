@@ -127,7 +127,7 @@ jobs:
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
 
 
-  wait-for-preview-env:
+  update-preview-deployment:
     runs-on: ubuntu-latest
     needs: build-preview-image
     steps:
