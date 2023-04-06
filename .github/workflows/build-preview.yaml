@@ -89,13 +89,13 @@ jobs:
           gh api \
             --method POST \
             $deployment_status_url \
-            -f state=success \
+            -f state=failure \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
           gh api \
             --method POST \
             $deployment_status_url \
-            -f state=success \
+            -f state=failure \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
 
