@@ -83,8 +83,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.sha }}'
-          deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.sha }}' | jq -r '.[].statuses_url')"
+          gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}'
+          deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
           echo $deployment_status_url
           gh api \
             --method POST \
