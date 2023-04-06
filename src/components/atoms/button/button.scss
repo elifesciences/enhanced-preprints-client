@@ -33,21 +33,23 @@
 }
 
 .button--clipboard {
-  @include mixins.padding(13 18);
+  @include mixins.padding(12 18 14 18);
 
   border: none;
   margin: 0 auto;
   max-height: 48px;
+  width: 100%;
 }
 
 .button--cite-download {
-  @include mixins.padding(13 18);
+  @include mixins.padding(12 18 14 18);
 
   background-color: settings.$color-button;
   border: none;
   color: settings.$color-text;
   margin: 0 auto;
   max-height: 48px;
+  width: 100%;
 
   &:hover {
     background-color: #d7d9de;
