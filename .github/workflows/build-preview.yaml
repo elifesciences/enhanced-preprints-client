@@ -24,22 +24,6 @@ jobs:
             -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
           echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
 
-      - name: create storybook deployment
-        id: create-storybook-deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api \
-            --method POST \
-            /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.head_ref }}' \
-            -f environment="preview-${{ github.event.number }}" \
-            -f required_contexts[] \
-            -F transient_environment=true \
-            -F auto_merge=false \
-            -f description="Preview Storybook deployment for PR ${{ github.event.number }}" >> deployment_data
-          echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
-
   build-preview-image:
     runs-on: ubuntu-latest
     needs: create-preview-deployment
