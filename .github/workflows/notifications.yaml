@@ -65,7 +65,7 @@ jobs:
         # Delete deployments
         gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
         do
-          gh api --method DELETE $(echo $deployment | jq '.url');
+          gh api --method DELETE $(echo $deployment | jq -r '.url');
         done
     - name: remove storybook deployment
       if: contains(github.event.client_payload.message, '/epp-storybook deleted')
@@ -83,5 +83,5 @@ jobs:
         # Delete deployment
         gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
         do
-          gh api --method DELETE $(echo $deployment | jq '.url');
+          gh api --method DELETE $(echo $deployment | jq -r '.url');
         done
