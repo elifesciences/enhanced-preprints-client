@@ -92,7 +92,7 @@ jobs:
           gh api \
             --method POST \
             /repos/elifesciences/enhanced-preprint-client/deployments \
-            -f ref='${{ github.base_ref }}' \
+            -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview deployment for PR ${{ github.event.number }}"
 
@@ -103,6 +103,6 @@ jobs:
           gh api \
             --method POST \
             /repos/elifesciences/enhanced-preprint-client/deployments \
-            -f ref='${{ github.base_ref }}' \
+            -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview Storybook deployment for PR ${{ github.event.number }}"
