@@ -23,6 +23,21 @@ jobs:
             -F auto_merge=false \
             -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
           echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
+      - name: create storybook deployment
+        id: create-storybook-deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method POST \
+            /repos/elifesciences/enhanced-preprints-client/deployments \
+            -f ref='${{ github.head_ref }}' \
+            -f environment="storybook-preview-${{ github.event.number }}" \
+            -f required_contexts[] \
+            -F transient_environment=true \
+            -F auto_merge=false \
+            -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
+          echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
 
   build-preview-image:
     runs-on: ubuntu-latest
@@ -75,8 +90,8 @@ jobs:
           push: true
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
-      - name: Update deployments on failure
-        if: failure()
+      - name: Update deployments on build success
+        if: success()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -84,14 +99,31 @@ jobs:
           gh api \
             --method POST \
             $deployment_status_url \
-            -f state=failure \
+            -f state=queued \
             -f environment="preview-${{ github.event.number }}" \
-            -f description="Preview image failed to build for PR ${{ github.event.number }}"
+            -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
           gh api \
             --method POST \
             $deployment_status_url \
-            -f state=failure \
+            -f state=queued \
             -f environment="preview-${{ github.event.number }}" \
+            -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
+      - name: Update deployments on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          client_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          storybook_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          gh api \
+            --method POST \
+            $client_deployment_status_url \
+            -f state=failure \
+            -f description="Preview image failed to build for PR ${{ github.event.number }}"
+          gh api \
+            --method POST \
+            $storybook_deployment_status_url \
+            -f state=failure \
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
 
 
@@ -124,18 +156,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          client_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          storybook_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
           gh api \
             --method POST \
-            $deployment_status_url \
+            $client_deployment_status_url \
             -f state=success \
             -f environment_url='https://preview-${{ github.event.number }}--epp.elifesciences.org/' \
-            -f environment="preview-${{ github.event.number }}" \
             -f description="Preview deployed for PR ${{ github.event.number }}"
           gh api \
             --method POST \
-            $deployment_status_url \
+            $storybook_deployment_status_url \
             -f state=success \
             -f environment_url='https://preview-${{ github.event.number }}--epp-storybook.elifesciences.org/' \
-            -f environment="preview-${{ github.event.number }}" \
             -f description="Preview deployed for PR ${{ github.event.number }}"
