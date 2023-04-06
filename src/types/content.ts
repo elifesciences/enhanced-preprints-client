@@ -78,6 +78,7 @@ type ClaimContent = DecoratedContent & {
   type: 'Claim',
   claimType: 'Proof',
   label: string,
+  title?: string,
 };
 
 type ContentPart =
