@@ -96,15 +96,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          client_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          storybook_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
           gh api \
             --method POST \
-            $deployment_status_url \
+            $client_deployment_status_url \
             -f state=queued \
             -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
           gh api \
             --method POST \
-            $deployment_status_url \
+            $storybook_deployment_status_url \
             -f state=queued \
             -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
       - name: Update deployments on failure
