@@ -21,7 +21,7 @@ jobs:
             -f required_contexts[] \
             -F transient_environment=true \
             -F auto_merge=false \
-            -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
+            -f description="Preview deployment for PR ${{ github.event.number }}" > deployment_data
           echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
       - name: create storybook deployment
         id: create-storybook-deployment
@@ -36,7 +36,7 @@ jobs:
             -f required_contexts[] \
             -F transient_environment=true \
             -F auto_merge=false \
-            -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
+            -f description="Preview deployment for PR ${{ github.event.number }}" > deployment_data
           cat deployment_data
           echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
 
