@@ -94,6 +94,7 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
+            -f transient_environment=true \
             -f description="Preview deployment for PR ${{ github.event.number }}"
 
       - name: create storybook deployment
@@ -105,4 +106,5 @@ jobs:
             /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
+            -f transient_environment=true \
             -f description="Preview Storybook deployment for PR ${{ github.event.number }}"
