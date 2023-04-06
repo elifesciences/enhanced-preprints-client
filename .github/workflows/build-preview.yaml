@@ -34,7 +34,6 @@ jobs:
             -f ref='${{ github.head_ref }}' \
             -f environment="storybook-preview-${{ github.event.number }}" \
             -f required_contexts[] \
-            -F transient_environment=true \
             -F auto_merge=false \
             -f description="Preview deployment for PR ${{ github.event.number }}" > deployment_data
           cat deployment_data
