@@ -56,7 +56,7 @@ jobs:
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
 
-  wait-for-preview:
+  wait-for-preview-env:
     runs-on: ubuntu-latest
     needs: build-preview-image
     steps:
@@ -81,7 +81,7 @@ jobs:
           description: The EPP storybook preview environment URL
           targetUrl: https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/
 
-  deploy-preview:
+  create-preview-deployment:
     runs-on: ubuntu-latest
     needs: build-preview-image
     permissions:
