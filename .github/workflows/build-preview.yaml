@@ -34,6 +34,7 @@ jobs:
 
   build-preview-image:
     runs-on: ubuntu-latest
+    needs: create-preview-deployment
     if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
     env:
       CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
