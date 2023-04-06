@@ -24,6 +24,11 @@ const nextConfig = {
         destination: '/api/citations/:msid/bibtex',
       },
       {
+        // Expose path for manuscript ris download
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).ris',
+        destination: '/api/citations/:msid/ris',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },
