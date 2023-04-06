@@ -18,6 +18,7 @@ jobs:
         pr_id=${PR_ID:13}
         echo "pr_id=$pr_id" >> $GITHUB_OUTPUT
         gh pr view --repo elifesciences/enhanced-preprints-client $pr_id --json headRefName,headRefOid > pr_details
+        cat pr_details
         echo "pr_branch=$(cat pr_details | jq -r .headRefName )" >> $GITHUB_OUTPUT
         echo "pr_ref=$(cat pr_details | jq -r .headRefOid )" >> $GITHUB_OUTPUT
         echo "client_deployment_status_url=$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ steps.pr_details.outputs.pr_id }}&sha=${{ steps.pr_details.outputs.pr_ref }}' | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
