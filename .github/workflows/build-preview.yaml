@@ -127,28 +127,28 @@ jobs:
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
 
 
-  update-preview-deployment:
-    runs-on: ubuntu-latest
-    needs: build-preview-image
-    steps:
-      - name: wait for new environment to come online before posting an Env URL
-        run: timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ github.event.number }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
-      - name: Update deployments on success
-        if: ${{ success() }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          client_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
-          storybook_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
-          gh api \
-            --method POST \
-            $client_deployment_status_url \
-            -f state=success \
-            -f environment_url='https://pr-${{ github.event.number }}--epp.elifesciences.org/' \
-            -f description="Preview deployed for PR ${{ github.event.number }}"
-          gh api \
-            --method POST \
-            $storybook_deployment_status_url \
-            -f state=success \
-            -f environment_url='https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/' \
-            -f description="Preview deployed for PR ${{ github.event.number }}"
+  # update-preview-deployment:
+  #   runs-on: ubuntu-latest
+  #   needs: build-preview-image
+  #   steps:
+  #     - name: wait for new environment to come online before posting an Env URL
+  #       run: timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ github.event.number }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
+  #     - name: Update deployments on success
+  #       if: ${{ success() }}
+  #       env:
+  #         GH_TOKEN: ${{ github.token }}
+  #       run: |
+  #         client_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+  #         storybook_deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ github.event.number }}&sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+  #         gh api \
+  #           --method POST \
+  #           $client_deployment_status_url \
+  #           -f state=success \
+  #           -f environment_url='https://pr-${{ github.event.number }}--epp.elifesciences.org/' \
+  #           -f description="Preview deployed for PR ${{ github.event.number }}"
+  #         gh api \
+  #           --method POST \
+  #           $storybook_deployment_status_url \
+  #           -f state=success \
+  #           -f environment_url='https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/' \
+  #           -f description="Preview deployed for PR ${{ github.event.number }}"
