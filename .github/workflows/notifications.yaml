@@ -6,14 +6,13 @@ on:
 jobs:
   notification-tests:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
     steps:
     - name: debug
       run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
     - name: Get Pull request details
       id: pr_details
       env:
+        GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
         PR_ID: ${{ github.event.client_payload.involvedObject.name }}
       run: |
         pr_id=${PR_ID:13}
@@ -25,6 +24,8 @@ jobs:
         echo "storybook_deployment_status_url=$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ steps.pr_details.outputs.pr_id }}&sha=${{ steps.pr_details.outputs.pr_ref }}' | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
     - name: Update client deployment status
       if: contains(github.event.client_payload.message, '/epp-client created') || contains(github.event.client_payload.message, '/epp-client configured')
+      env:
+        GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       run: |
         echo "client was created for PR ${{ steps.pr_details.outputs.pr_id }}"
         gh api \
@@ -35,6 +36,8 @@ jobs:
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: Update storybook deployment status
       if: contains(github.event.client_payload.message, '/epp-storybook created') || contains(github.event.client_payload.message, '/epp-storybook configured')
+      env:
+        GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       run: |
         echo "storybook was created for PR ${{ steps.pr_details.outputs.pr_id }}"
         gh api \
@@ -45,6 +48,8 @@ jobs:
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: remove client deployment
       if: contains(github.event.client_payload.message, '/epp-client deleted')
+      env:
+        GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       run: |
         echo "client was removed for PR ${{ steps.pr_details.outputs.pr_id }}"
         gh api \
@@ -55,6 +60,8 @@ jobs:
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: remove storybook deployment
       if: contains(github.event.client_payload.message, '/epp-storybook deleted')
+      env:
+        GH_TOKEN: ${{ secrets.GH_BOT_TOKEN }}
       run: |
         echo "storybook was removed for PR ${{ steps.pr_details.outputs.pr_id }}"
         gh api \
