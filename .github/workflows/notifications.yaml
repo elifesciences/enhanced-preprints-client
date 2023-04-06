@@ -9,9 +9,20 @@ jobs:
     steps:
     - name: debug
       run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
+    - name: Get Preview Environment number
+      id: pr_id
+      env:
+        PR_ID: ${{ github.event.client_payload.involvedObject.name }}
+      run: echo "pr_id=${PR_ID:13}" >> $GITHUB_OUTPUT
     - name: create client deployment
       if: contains(github.event.client_payload.message, '/epp-client created')
-      run: echo "client was created"
+      run: echo "client was created for PR ${{ steps.pr_id.outputs.pr_id }}"
     - name: create storybook deployment
       if: contains(github.event.client_payload.message, '/epp-storybook created')
-      run: echo "storybook was created"
+      run: echo "storybook was created for PR ${{ steps.pr_id.outputs.pr_id }}"
+    - name: remove client deployment
+      if: contains(github.event.client_payload.message, '/epp-client deleted')
+      run: echo "client was deleted for PR ${{ steps.pr_id.outputs.pr_id }}"
+    - name: remove storybook deployment
+      if: contains(github.event.client_payload.message, '/epp-storybook deleted')
+      run: echo "storybook was deleted for PR ${{ steps.pr_id.outputs.pr_id }}"
