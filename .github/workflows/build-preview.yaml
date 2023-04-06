@@ -80,16 +80,18 @@ jobs:
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
       - name: Update deployments on failure
         if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh api \
             --method POST \
-            ${{ steps.create-client-deployment.outputs.statuses_url }} \
+            $(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.sha }}' | jq -r '.[].statuses_url') \
             -f state=success \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
           gh api \
             --method POST \
-            ${{ steps.create-storybook-deployment.outputs.statuses_url }} \
+            $(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.sha }}' | jq -r '.[].statuses_url') \
             -f state=success \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image failed to build for PR ${{ github.event.number }}"
