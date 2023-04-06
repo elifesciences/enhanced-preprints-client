@@ -43,6 +43,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: test failure
+        run: |
+          exit 1
       - name: Build and load preview image
         uses: docker/build-push-action@v3
         with:
@@ -75,9 +78,6 @@ jobs:
           push: true
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
-      - name: test failure
-        run: |
-          exit 1
       - name: Update deployments on failure
         if: failure()
         run: |
