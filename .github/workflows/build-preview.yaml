@@ -9,19 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: create client deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api \
-            --method POST \
-            /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.head_ref }}' \
-            -f environment="preview-${{ github.event.number }}" \
-            -F required_contexts=[] \
-            -F transient_environment=true \
-            -f description="Preview deployment for PR ${{ github.event.number }}"
-
-      - name: create storybook deployment
+        id: create-client-deployment
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -32,7 +20,23 @@ jobs:
             -f environment="preview-${{ github.event.number }}" \
             -F required_contexts=null \
             -F transient_environment=true \
-            -f description="Preview Storybook deployment for PR ${{ github.event.number }}"
+            -f description="Preview deployment for PR ${{ github.event.number }}" >> deployment_data
+          echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
+
+      - name: create storybook deployment
+        id: create-storybook-deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            --method POST \
+            /repos/elifesciences/enhanced-preprints-client/deployments \
+            -f ref='${{ github.head_ref }}' \
+            -f environment="preview-${{ github.event.number }}" \
+            -F required_contexts=null \
+            -F transient_environment=true \
+            -f description="Preview Storybook deployment for PR ${{ github.event.number }}" >> deployment_data
+          echo "statuses_url=$(cat deployment_data | jq -r .statuses_url)" >> $GITHUB_OUTPUT
 
   build-preview-image:
     runs-on: ubuntu-latest
@@ -85,6 +89,25 @@ jobs:
           push: true
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
+      - name: test failure
+        run: |
+          exit 1
+      - name: Update deployments on failure
+        if: failure()
+        run: |
+          gh api \
+            --method POST \
+            ${{ steps.create-client-deployment.outputs.statuses_url }} \
+            -f state=success \
+            -f environment="preview-${{ github.event.number }}" \
+            -f description="Preview image failed to build for PR ${{ github.event.number }}"
+          gh api \
+            --method POST \
+            ${{ steps.create-storybook-deployment.outputs.statuses_url }} \
+            -f state=success \
+            -f environment="preview-${{ github.event.number }}" \
+            -f description="Preview image failed to build for PR ${{ github.event.number }}"
+
 
   wait-for-preview-env:
     runs-on: ubuntu-latest
