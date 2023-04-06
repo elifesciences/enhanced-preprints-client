@@ -101,13 +101,11 @@ jobs:
             --method POST \
             $deployment_status_url \
             -f state=queued \
-            -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
           gh api \
             --method POST \
             $deployment_status_url \
             -f state=queued \
-            -f environment="preview-${{ github.event.number }}" \
             -f description="Preview image built, waiting for deployment for PR ${{ github.event.number }}"
       - name: Update deployments on failure
         if: failure()
