@@ -133,24 +133,6 @@ jobs:
     steps:
       - name: wait for new environment to come online before posting an Env URL
         run: timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ github.event.number }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
-      - name: "Update preview status with URL"
-        if: ${{ success() }}
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: success
-          context: EPP Preview
-          description: The EPP client preview environment URL
-          targetUrl: https://pr-${{ github.event.number }}--epp.elifesciences.org/
-      - name: "Update storybook preview status with URL"
-        if: ${{ success() }}
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: success
-          context: Storybook Preview
-          description: The EPP storybook preview environment URL
-          targetUrl: https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/
       - name: Update deployments on success
         if: ${{ success() }}
         env:
