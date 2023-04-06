@@ -84,8 +84,6 @@ jobs:
   create-preview-deployment:
     runs-on: ubuntu-latest
     needs: build-preview-image
-    permissions:
-      deployments: write
     steps:
       - name: create client deployment
         env:
@@ -93,7 +91,7 @@ jobs:
         run: |
           gh api \
             --method POST \
-            /repos/elifesciences/enhanced-preprint-client/deployments \
+            /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview deployment for PR ${{ github.event.number }}"
@@ -104,7 +102,7 @@ jobs:
         run: |
           gh api \
             --method POST \
-            /repos/elifesciences/enhanced-preprint-client/deployments \
+            /repos/elifesciences/enhanced-preprints-client/deployments \
             -f ref='${{ github.head_ref }}' \
             -f environment="preview-${{ github.event.number }}" \
             -f description="Preview Storybook deployment for PR ${{ github.event.number }}"
