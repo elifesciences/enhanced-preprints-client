@@ -83,9 +83,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}'
           deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
-          echo $deployment_status_url
           gh api \
             --method POST \
             $deployment_status_url \
@@ -124,3 +122,23 @@ jobs:
           context: Storybook Preview
           description: The EPP storybook preview environment URL
           targetUrl: https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/
+      - name: Update deployments on success
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deployment_status_url="$(gh api '/repos/elifesciences/enhanced-preprints-client/deployments?sha=${{ github.event.pull_request.head.sha }}' | jq -r '.[].statuses_url')"
+          gh api \
+            --method POST \
+            $deployment_status_url \
+            -f state=success \
+            -f environment_url='https://preview-${{ steps.pr_id.outputs.pr_id }}--epp.elifesciences.org/' \
+            -f environment="preview-${{ steps.pr_id.outputs.pr_id }}" \
+            -f description="Preview deployed for PR ${{ steps.pr_id.outputs.pr_id }}"
+          gh api \
+            --method POST \
+            $deployment_status_url \
+            -f state=success \
+            -f environment_url='https://preview-${{ steps.pr_id.outputs.pr_id }}--epp-storybook.elifesciences.org/' \
+            -f environment="preview-${{ steps.pr_id.outputs.pr_id }}" \
+            -f description="Preview deployed for PR ${{ steps.pr_id.outputs.pr_id }}"
