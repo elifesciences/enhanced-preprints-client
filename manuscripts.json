@@ -1242,6 +1242,63 @@
         "Chromosomes and Gene Expression",
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.01.26.525761": {
+      "preprintDoi": "10.1101/2023.01.26.525761",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-11"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-16"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.26.525761v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Cell Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
+    },
+    "10.1101/2023.02.14.528498": {
+      "preprintDoi": "10.1101/2023.02.14.528498",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-11"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-21",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.14.528498v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-14"
+          }
+        ]
+      },
+      "msas": [
+        "Biochemistry and Chemical Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1461,6 +1518,12 @@
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.02.08.527616"
     },
+    "86628": {
+      "msid": "86628",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.14.528498"
+    },
     "86633": {
       "msid": "86633",
       "version": "1",
@@ -1490,6 +1553,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.09.08.507137"
+    },
+    "86776": {
+      "msid": "86776",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.26.525761"
     },
     "86972": {
       "msid": "86972",
@@ -1760,6 +1829,18 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.02.08.527633"
+    },
+    "86776v1": {
+      "msid": "86776",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.26.525761"
+    },
+    "86628v1": {
+      "msid": "86628",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.14.528498"
     }
   }
 }
