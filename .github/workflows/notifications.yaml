@@ -26,7 +26,7 @@ jobs:
         echo "client_deployment_status_url=$(gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-$pr_id&sha=$pr_ref" | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
         echo "storybook_deployment_status_url=$(gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-$pr_id&sha=$pr_ref" | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
     - name: Update client deployment status
-      if: steps.pr_details.outputs.client_deployment_status_url != '' and contains(github.event.client_payload.message, '/epp-client created') || contains(github.event.client_payload.message, '/epp-client configured')
+      if: steps.pr_details.outputs.client_deployment_status_url != '' && contains(github.event.client_payload.message, '/epp-client created') || contains(github.event.client_payload.message, '/epp-client configured')
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
@@ -44,7 +44,7 @@ jobs:
           -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp.elifesciences.org/' \
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: Update storybook deployment status
-      if: steps.pr_details.outputs.storybook_deployment_status_url != '' and contains(github.event.client_payload.message, '/epp-storybook created') || contains(github.event.client_payload.message, '/epp-storybook configured')
+      if: steps.pr_details.outputs.storybook_deployment_status_url != '' && contains(github.event.client_payload.message, '/epp-storybook created') || contains(github.event.client_payload.message, '/epp-storybook configured')
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
@@ -62,7 +62,7 @@ jobs:
           -f environment_url='https://pr-${{ steps.pr_details.outputs.pr_id }}--epp-storybook.elifesciences.org/' \
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
     - name: remove client deployment
-      if: steps.pr_details.outputs.client_deployment_status_url != '' and contains(github.event.client_payload.message, '/epp-client deleted')
+      if: steps.pr_details.outputs.client_deployment_status_url != '' && contains(github.event.client_payload.message, '/epp-client deleted')
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
@@ -80,7 +80,7 @@ jobs:
           gh api --method DELETE $(echo $deployment | jq -r '.url');
         done
     - name: remove storybook deployment
-      if: steps.pr_details.outputs.storybook_deployment_status_url != '' and contains(github.event.client_payload.message, '/epp-storybook deleted')
+      if: steps.pr_details.outputs.storybook_deployment_status_url != '' && contains(github.event.client_payload.message, '/epp-storybook deleted')
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
