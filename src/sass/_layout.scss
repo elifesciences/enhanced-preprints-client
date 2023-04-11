@@ -1,8 +1,8 @@
 @use "settings";
 @use "mixins";
 
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
