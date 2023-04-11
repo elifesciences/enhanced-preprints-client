@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { usePostHog } from 'posthog-js/react';
+import { useFeatureFlagEnabled } from 'posthog-js/react';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -29,6 +31,13 @@ export const ArticleStatus = ({
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
+  const posthog = usePostHog();
+  const openShareModel = () => {
+    if (posthog) { posthog.capture('share modal'); }
+    setShowShareModal(true);
+  };
+
+  const showCiteRis = useFeatureFlagEnabled('show-cite-ris');
 
   return <div className="article-status">
       <h2 className="article-status__heading">{articleType}</h2>
@@ -44,7 +53,7 @@ export const ArticleStatus = ({
           <Button text="Cite" iconName="citation" variant="action" onClick={() => setShowCiteModal(true)} />
         </li>
         <li className="article-actions__list-item">
-          <Button text="Share" iconName="share" variant="action" onClick={() => setShowShareModal(true)} />
+          <Button text="Share" iconName="share" variant="action" onClick={() => openShareModel()} />
         </li>
       </ul>
       <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
@@ -65,9 +74,9 @@ export const ArticleStatus = ({
           <li className="cite-downloads__list-item">
             <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} download />
           </li>
-          <li className="cite-downloads__list-item">
+          { showCiteRis && <li className="cite-downloads__list-item">
             <Button variant="cite-download" text="Download RIS" url={`/reviewed-preprints/${msid}.ris`} download />
-          </li>
+          </li> }
         </ol>
       </Modal>
     </div>;
