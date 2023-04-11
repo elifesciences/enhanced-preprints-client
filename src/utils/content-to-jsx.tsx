@@ -40,9 +40,7 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
     case 'Date':
       return <time key={index}>{contentToJsx(content.content)}</time>;
     case 'Figure':
-      return (
-        <Figure key={index} content={content} />
-      );
+      return <Figure key={index} content={content} />;
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';
@@ -52,6 +50,15 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
       return content.order === 'Ascending' ? <ol key={index}>{contentToJsx(content.items)}</ol> : <ul key={index}>{contentToJsx(content.items)}</ul>;
+    case 'Claim':
+      return (
+        <section key={index}>
+          {(content.label || content.title) &&
+            <h4>{content.label && contentToJsx(content.label)} {content.title && contentToJsx(content.title)}</h4>
+          }
+          {contentToJsx(content.content)}
+        </section>
+      );
     default:
       return '';
   }
