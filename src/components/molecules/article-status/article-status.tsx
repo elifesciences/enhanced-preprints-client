@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useFeatureValue } from '@growthbook/growthbook-react';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -24,7 +25,7 @@ const formatStringCitation = (citation: CitationData): string => {
   return `${authors} (${citation.year}) ${citation.title} ${citation.journal} ${citation.volume}:${citation.id}\n\nhttps://doi.org/${citation.doi}`;
 };
 
-export const ArticleStatus = ({
+const ArticleStatusDefault = ({
   articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
@@ -71,4 +72,20 @@ export const ArticleStatus = ({
         </ol>
       </Modal>
     </div>;
+};
+
+const ArticleStatusSimple = ({
+  articleType = defaultArticleType, articleStatus,
+}: ArticleStatusProps): JSX.Element => <div className="article-status">
+  <h2 className="article-status__heading">{articleType}</h2>
+  <p className="article-status__text">{articleStatus}</p>
+</div>;
+
+export const ArticleStatus = (articleStatusProps: ArticleStatusProps): JSX.Element => {
+  const articleStatusType = useFeatureValue('article-status', 'Default');
+  console.log(`Article Status type = ${articleStatusType}`);
+  if (articleStatusType === 'Simple') {
+    return ArticleStatusSimple(articleStatusProps);
+  }
+  return ArticleStatusDefault(articleStatusProps);
 };
