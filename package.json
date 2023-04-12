@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@growthbook/growthbook": "^0.25.0",
+    "@growthbook/growthbook-react": "^0.15.0",
     "crc-32": "^1.2.2",
     "next": "^13.0.0",
     "react": "^18.2.0",

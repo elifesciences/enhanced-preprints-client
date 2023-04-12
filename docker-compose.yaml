@@ -123,6 +123,8 @@ services:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
       MANUSCRIPT_CONFIG_FILE: /opt/epp-client/data/manuscripts.json
+      NEXT_PUBLIC_GROWTHBOOK_HOST: https://cdn.growthbook.io
+      NEXT_PUBLIC_GROWTHBOOK_KEY: sdk-IZ0AbneoxR1OIY
     depends_on:
       yarn:
         condition: service_completed_successfully
@@ -145,6 +147,20 @@ services:
     volumes:
       - ./:/opt/epp-client/
       - node_modules:/opt/epp-client/node_modules
+
+  # growthbook:
+  #   image: "growthbook/growthbook:2.0.0"
+  #   ports:
+  #     - "3002:3000"
+  #     - "3100:3100"
+  #   depends_on:
+  #     - mongodb
+  #   environment:
+  #     - MONGODB_URI=mongodb://admin:testtest@mongodb:27017/
+  #     - APP_ORIGIN=http://localhost:3002
+  #     - DISABLE_TELEMETRY=true
+  #   volumes:
+  #     - uploads:/usr/local/src/app/packages/back-end/uploads
 
   # Expose API and client via proxy
   nginx:
@@ -173,3 +189,4 @@ volumes:
   data:
   node_modules:
   minio_storage:
+  uploads:

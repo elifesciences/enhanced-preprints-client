@@ -10,4 +10,6 @@ export const config = {
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
+  growthbookKey: process.env.NEXT_PUBLIC_GROWTHBOOK_KEY || '',
+  growthbookHost: process.env.NEXT_PUBLIC_GROWTHBOOK_HOST || 'https://cdn.growthbook.io',
 };
