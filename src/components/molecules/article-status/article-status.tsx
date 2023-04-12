@@ -83,7 +83,6 @@ const ArticleStatusSimple = ({
 
 export const ArticleStatus = (articleStatusProps: ArticleStatusProps): JSX.Element => {
   const articleStatusType = useFeatureValue('article-status', 'Default');
-  console.log(`Article Status type = ${articleStatusType}`);
   if (articleStatusType === 'Simple') {
     return ArticleStatusSimple(articleStatusProps);
   }

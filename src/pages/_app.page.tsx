@@ -1,4 +1,3 @@
-
 import Head from 'next/head';
 import { GrowthBook } from '@growthbook/growthbook';
 import { GrowthBookProvider } from '@growthbook/growthbook-react';
