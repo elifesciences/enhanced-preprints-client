@@ -1356,6 +1356,34 @@
         "Immunology and Inflammation",
         "Medicine"
       ]
+    },
+    "10.1101/2023.02.01.526734": {
+      "preprintDoi": "10.1101/2023.02.01.526734",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-12"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-07",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.01.526734v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+       "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1622,6 +1650,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.09.08.507137"
+    },
+    "86727": {
+      "msid": "86727",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.01.526734"
     },
     "86776": {
       "msid": "86776",
@@ -1898,6 +1932,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.02.08.527633"
+    },
+     "86727v1": {
+      "msid": "86727",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.01.526734"
     },
     "86776v1": {
       "msid": "86776",
