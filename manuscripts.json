@@ -1327,6 +1327,35 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.1101/2022.03.14.483784": {
+      "preprintDoi": "10.1101/2022.03.14.483784",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-12"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-01-24"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.03.14.483784v4",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Immunology and Inflammation",
+        "Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -1509,6 +1538,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.23.525177"
+    },
+    "85597": {
+      "msid": "85597",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.03.14.483784"
     },
     "85646": {
       "msid": "85646",
@@ -1881,6 +1916,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.01.26.525679"
+    },
+    "85597v1": {
+      "msid": "85597",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.03.14.483784"
     }
   }
 }
