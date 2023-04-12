@@ -1299,6 +1299,34 @@
       "msas": [
         "Biochemistry and Chemical Biology"
       ]
+    },
+    "10.1101/2023.01.26.525679": {
+      "preprintDoi": "10.1101/2023.01.26.525679",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-12"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.26.525679v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-14"
+          }
+        ]
+      },
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1511,6 +1539,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.12.20.521208"
+    },
+    "86507": {
+      "msid": "86507",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.26.525679"
     },
     "86591": {
       "msid": "86591",
@@ -1841,6 +1875,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.02.14.528498"
+    },
+    "86507v1": {
+      "msid": "86507",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.26.525679"
     }
   }
 }
