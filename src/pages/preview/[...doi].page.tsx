@@ -54,8 +54,8 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   }
 
   const [metaData, content] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${doi}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${doi}/content`),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/preview--${doi}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/preview--${doi}/content`),
   ]);
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
