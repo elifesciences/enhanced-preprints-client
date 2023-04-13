@@ -11,6 +11,7 @@ import { contentToText } from '../../../utils/content-to-text';
 
 type PageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
 };
@@ -20,7 +21,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
+  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab="figures">
     <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
   </ArticlePage>
   </>
@@ -45,11 +46,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  // map msid to preprint doi
-  const { version } = manuscriptConfig;
   const [metaData, content, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/content`),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/content`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -66,6 +65,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
+      msidWithVersion: msid,
       content,
       status,
     },

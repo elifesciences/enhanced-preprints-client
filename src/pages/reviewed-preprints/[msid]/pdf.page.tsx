@@ -12,6 +12,7 @@ import { ArticleReviewsTab } from '../../../components/pages/article/tabs';
 
 type PageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
@@ -22,7 +23,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} tabs={[]} activeTab="">
+  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} tabs={[]} activeTab="">
     <>
       <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
       <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
@@ -50,11 +51,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  const { version } = manuscriptConfig;
   const [metaData, content, peerReview, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/content`),
-    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/reviews`),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/content`),
+    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/reviews`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -71,6 +71,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
+      msidWithVersion: msid,
       content,
       status,
       peerReview,

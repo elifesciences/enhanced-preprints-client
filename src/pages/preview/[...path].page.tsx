@@ -10,6 +10,7 @@ import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/ar
 type PageProps = {
   tab: 'fulltext' | 'figures',
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
@@ -22,15 +23,16 @@ export const Page = (props: PageProps): JSX.Element => {
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }
+  const id = props.msidWithVersion ?? props.metaData.msid;
   return (
-    <ArticlePage metaData={props.metaData} status={props.status} activeTab={props.tab} tabs={[
+    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={props.tab} tabs={[
       {
         id: 'fulltext',
-        linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}`}>Full text</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${id}`}>Full text</Link>,
       },
       {
         id: 'figures',
-        linkElement: <Link scroll={false} href={`/preview/${props.metaData.doi}/figures`}>Figures and data</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${id}/figures`}>Figures and data</Link>,
       },
     ]}>
       { childTab }
@@ -71,6 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         msas: [],
         publishedYear: new Date().getFullYear(),
       },
+      msidWithVersion: id,
       content,
       status: {
         articleType: 'Preview Preprint',
