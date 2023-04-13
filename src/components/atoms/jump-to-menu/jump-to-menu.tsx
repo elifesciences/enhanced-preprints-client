@@ -57,8 +57,9 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element =
         <ul className="jump-menu-list">
           {
             headings.map((heading, index) => (
+              heading.id &&
               <li className={`jump-menu-list__item${active === index ? ' jump-menu-list__item--active' : ''}`} key={index}>
-                <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>
+                {heading.id && <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>}
               </li>
             ))
           }
