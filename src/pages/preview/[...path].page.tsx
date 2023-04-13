@@ -39,23 +39,23 @@ export const Page = (props: PageProps): JSX.Element => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-  const doiParts = context.params?.doi;
-  if (doiParts === undefined) {
-    console.log('no doi in path'); // eslint-disable-line no-console
+  const idParts = context.params?.path;
+  if (idParts === undefined) {
+    console.log('no id in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const tab = Array.isArray(doiParts) && doiParts.length > 2 && ['fulltext', 'figures'].includes(doiParts[doiParts.length - 1]) ? doiParts.pop() : 'fulltext';
-  const doi = Array.isArray(doiParts) ? doiParts.join('/') : undefined;
+  const tab = Array.isArray(idParts) && idParts.length > 2 && ['fulltext', 'figures'].includes(idParts[idParts.length - 1]) ? idParts.pop() : 'fulltext';
+  const id = Array.isArray(idParts) ? idParts.join('/') : undefined;
 
-  if (doi === undefined) {
-    console.log('doi not found in path'); // eslint-disable-line no-console
+  if (id === undefined) {
+    console.log('id not found in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
   const [metaData, content] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${doi}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${doi}/content`),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${id}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${id}/content`),
   ]);
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       tab,
       metaData: {
         ...metaData,
-        msid: `preview-${doi}`,
+        msid: `preview-${metaData.doi}`,
         version: '0',
         pdfUrl: '',
         msas: [],

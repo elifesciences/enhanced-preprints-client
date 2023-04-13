@@ -14,8 +14,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (manuscript) {
     const [metaData, content] = await Promise.all([
-      jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
-      jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
+      jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${manuscript.version}/metadata`),
+      jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${manuscript.version}/content`),
     ]);
 
     writeResponse(

@@ -50,12 +50,11 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  // map msid to preprint doi
-  const { preprintDoi } = manuscriptConfig;
+  const { version } = manuscriptConfig;
   const [metaData, content, peerReview, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`),
-    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
+    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/metadata`),
+    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/content`),
+    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${msid}/v${version}/reviews`),
     // replace with call for data
     manuscriptConfig.status,
   ]);

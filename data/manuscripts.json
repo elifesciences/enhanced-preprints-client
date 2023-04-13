@@ -142,6 +142,30 @@
       "version": "1",
       "publishedYear": 2022,
       "preprintDoi": "10.1101/2022.07.26.501569"
+    },
+    "80494v1": {
+      "msid": "80494",
+      "version": "1",
+      "publishedYear": 2022,
+      "preprintDoi": "10.1101/2022.06.24.497502"
+    },
+    "80729v1": {
+      "msid": "80729",
+      "version": "1",
+      "publishedYear": 2022,
+      "preprintDoi": "10.1101/2022.05.30.22275761"
+    },
+    "80984v1": {
+      "msid": "80984",
+      "version": "1",
+      "publishedYear": 2022,
+      "preprintDoi": "10.1101/2022.06.30.498369"
+    },
+    "81926v1": {
+      "msid": "81926",
+      "version": "1",
+      "publishedYear": 2022,
+      "preprintDoi": "10.1101/2022.07.26.501569"
     }
   }
 }
