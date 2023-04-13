@@ -24,7 +24,7 @@
           }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.24.497502/2022.06.24.497502.pdf",
+      "pdfUrl": "http://localhost:9000/eppdata/data/80494/v1/80494-v1.pdf",
       "msas": [
         "Cell Biology"
       ]
@@ -53,7 +53,7 @@
           }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.07.26.501569/2022.07.26.501569.pdf",
+      "pdfUrl": "http://localhost:9000/eppdata/data/81926/v1/81926-v1.pdf",
       "msas": [
         "Stem Cells and Regenerative Medicine"
       ]
@@ -82,7 +82,7 @@
           }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.06.30.498369/2022.06.30.498369.pdf",
+      "pdfUrl": "http://localhost:9000/eppdata/data/80984/v1/80984-v1.pdf",
       "msas": [
         "Developmental Biology",
         "Plant Biology"
@@ -112,7 +112,7 @@
           }
         ]
       },
-      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.05.30.22275761/2022.05.30.22275761.pdf",
+      "pdfUrl": "http://localhost:9000/eppdata/data/80729/v1/80729-v1.pdf",
       "msas": [
         "Epidemiology and Global Health"
       ]
