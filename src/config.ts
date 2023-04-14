@@ -10,4 +10,5 @@ export const config = {
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
+  reviewsConfigFile: process.env.REVIEWS_CONFIG_FILE || './reviews.json',
 };
