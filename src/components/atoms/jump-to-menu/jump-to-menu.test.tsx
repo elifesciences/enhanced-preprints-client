@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 
-import { JumpToMenu } from './jump-to-menu';
+import { Heading, JumpToMenu } from './jump-to-menu';
 
 const headings = [
   { id: 's1', text: 'heading 1' },
   { id: 's2', text: 'heading 2' },
   { id: 's3', text: 'heading 3' },
-];
+  { id: null, text: 'heading 4' },
+] as unknown as Heading[];
 
 describe('JumpToMenu', () => {
   it('should render all the headings passed in as a prop', () => {
@@ -17,7 +18,24 @@ describe('JumpToMenu', () => {
     expect(screen.getByText('heading 3')).toBeInTheDocument();
   });
 
-  it('should higlight the specified item', () => {
+  it('should check if heading has an id', () => {
+    render(<JumpToMenu headings={headings} />);
+
+    expect(screen.queryByText('heading 1')).toBeInTheDocument();
+    expect(screen.queryByText('heading 2')).toBeInTheDocument();
+    expect(screen.queryByText('heading 3')).toBeInTheDocument();
+    expect(screen.queryByText('heading 4')).not.toBeInTheDocument();
+  });
+
+  it('should highlight the specified item', () => {
+    render(<JumpToMenu headings={headings} />);
+
+    expect(screen.getByText('heading 1').parentElement).toHaveClass('jump-menu-list__item--active');
+    expect(screen.getByText('heading 2').parentElement).not.toHaveClass('jump-menu-list__item--active');
+    expect(screen.getByText('heading 3').parentElement).not.toHaveClass('jump-menu-list__item--active');
+  });
+
+  it('should highlight the specified item', () => {
     render(<JumpToMenu headings={headings} />);
 
     expect(screen.getByText('heading 1').parentElement).toHaveClass('jump-menu-list__item--active');
