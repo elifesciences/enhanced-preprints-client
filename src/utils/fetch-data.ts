@@ -8,7 +8,7 @@ type ReviewsJson = {
   [index: string]: PeerReview;
 };
 
-const reviewsJson = JSON.parse(readFileSync('reviews.json').toString()) as ReviewsJson;
+const reviewsJson = JSON.parse(readFileSync(config.reviewsConfigFile).toString()) as ReviewsJson;
 
 export const fetchMetadata = (id: string) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${id}/metadata`);
 export const fetchContent = (id: string) => jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${id}/content`);
