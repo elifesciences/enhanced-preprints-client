@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
-import { jsonFetch } from '../../../utils/json-fetch';
+import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
@@ -53,9 +53,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
   const [metaData, content, peerReview, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`),
-    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/reviews`),
+    fetchMetadata(preprintDoi),
+    fetchContent(preprintDoi),
+    fetchReviews(preprintDoi),
     // replace with call for data
     manuscriptConfig.status,
   ]);
