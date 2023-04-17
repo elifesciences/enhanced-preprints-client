@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { usePostHog } from 'posthog-js/react';
+import { useFeatureFlagVariantKey, usePostHog } from 'posthog-js/react';
 import { useFeatureFlagEnabled } from 'posthog-js/react';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -26,7 +26,7 @@ const formatStringCitation = (citation: CitationData): string => {
   return `${authors} (${citation.year}) ${citation.title} ${citation.journal} ${citation.volume}:${citation.id}\n\nhttps://doi.org/${citation.doi}`;
 };
 
-export const ArticleStatus = ({
+const ArticleStatusDefault = ({
   articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
 }: ArticleStatusProps): JSX.Element => {
   const [showShareModal, setShowShareModal] = useState(false);
@@ -36,8 +36,6 @@ export const ArticleStatus = ({
     if (posthog) { posthog.capture('share modal'); }
     setShowShareModal(true);
   };
-
-  const showCiteRis = useFeatureFlagEnabled('show-cite-ris');
 
   return <div className="article-status">
       <h2 className="article-status__heading">{articleType}</h2>
@@ -74,10 +72,26 @@ export const ArticleStatus = ({
           <li className="cite-downloads__list-item">
             <Button variant="cite-download" text="Download BibTeX" url={`/reviewed-preprints/${msid}.bib`} download />
           </li>
-          { showCiteRis && <li className="cite-downloads__list-item">
+          <li className="cite-downloads__list-item">
             <Button variant="cite-download" text="Download RIS" url={`/reviewed-preprints/${msid}.ris`} download />
-          </li> }
+          </li>
         </ol>
       </Modal>
     </div>;
+};
+
+const ArticleStatusSimple = ({
+  articleType = defaultArticleType, articleStatus,
+}: ArticleStatusProps): JSX.Element => <div className="article-status">
+  <h2 className="article-status__heading">{articleType}</h2>
+  <p className="article-status__text">{articleStatus}</p>
+</div>;
+
+export const ArticleStatus = (articleStatusProps: ArticleStatusProps): JSX.Element => {
+  const simpleStatus = useFeatureFlagEnabled('article-status-simple');
+  console.log(`simpleStatus = ${simpleStatus}`);
+  if (simpleStatus) {
+    return ArticleStatusSimple(articleStatusProps);
+  }
+  return ArticleStatusDefault(articleStatusProps);
 };
