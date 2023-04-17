@@ -56,4 +56,13 @@ describe('Figure', () => {
 
     expect(screen.getByText('Italic Text').tagName).toBe('EM');
   });
+
+  describe('caption', () => {
+    it.todo('hides extra caption on the first render');
+    it.todo('has a show more button for long captions');
+    it.todo('has a show less button for expanded long captions');
+    it.todo('does not display the show more button for short captions');
+    it.todo('expands the caption when show more button clicked');
+    it.todo('collapses the caption when show less button clicked');
+  });
 });
