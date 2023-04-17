@@ -1,4 +1,4 @@
-import {useMemo, useRef, useState} from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './figure.scss';
 import { FigureContent } from '../../../types';
