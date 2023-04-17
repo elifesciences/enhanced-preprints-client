@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
-import { jsonFetch } from '../../../utils/json-fetch';
+import { fetchContent, fetchMetadata } from '../../../utils/fetch-data';
 import { MetaData } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleFiguresTab } from '../../../components/pages/article/tabs/figures-tab';
@@ -48,8 +48,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // map msid to preprint doi
   const { preprintDoi } = manuscriptConfig;
   const [metaData, content, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${preprintDoi}/content`),
+    fetchMetadata(preprintDoi),
+    fetchContent(preprintDoi),
     // replace with call for data
     manuscriptConfig.status,
   ]);

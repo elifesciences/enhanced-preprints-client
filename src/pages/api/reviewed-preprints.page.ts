@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { jsonFetch } from '../../utils/json-fetch';
+import { fetchMetadata } from '../../utils/fetch-data';
 import { Author, MetaData } from '../../types';
 import { getSubjects, Subject } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
@@ -151,7 +151,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           .slice(offset, offset + perPage)
       )
         .map(
-          async (item) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${item.doi}/metadata`)
+          async (item) => fetchMetadata(item.doi)
             .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
         ),
     );
