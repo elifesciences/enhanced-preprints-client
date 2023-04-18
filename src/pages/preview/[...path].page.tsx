@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { config } from '../../config';
 import { Content } from '../../types/content';
-import { jsonFetch } from '../../utils/json-fetch';
+import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
 import { MetaData, PeerReview } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
@@ -56,8 +56,8 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   }
 
   const [metaData, content] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${id}/metadata`),
-    jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${id}/content`),
+    fetchMetadata(id),
+    fetchContent(id),
   ]);
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);

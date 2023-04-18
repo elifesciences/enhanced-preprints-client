@@ -1016,7 +1016,8 @@
       },
       "msas": [
         "Cell Biology"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2022.04.01.486717/2022.04.01.486717.pdf"
     },
     "10.1101/2022.06.17.496451": {
       "preprintDoi": "10.1101/2022.06.17.496451",
@@ -1072,7 +1073,8 @@
       },
       "msas": [
         "Neuroscience"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2023.02.10.528013/2023.02.10.528013.pdf"
     },
     "10.1101/2022.03.08.483420": {
       "preprintDoi": "10.1101/2022.03.08.483420",
@@ -1243,7 +1245,8 @@
       "msas": [
         "Chromosomes and Gene Expression",
         "Microbiology and Infectious Disease"
-      ]
+      ],
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/10.1101/2023.02.08.527633/2023.02.08.527633.pdf"
     },
     "10.1101/2023.01.26.525761": {
       "preprintDoi": "10.1101/2023.01.26.525761",
@@ -1641,6 +1644,34 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2020.01.28.922773": {
+      "preprintDoi": "10.1101/2020.01.28.922773",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-18"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-01"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2020-09-02",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2020.01.28.922773v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      },
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -1859,6 +1890,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.12.20.521208"
+    },
+    "86464": {
+      "msid": "86464",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2020.01.28.922773"
     },
     "86507": {
       "msid": "86507",
@@ -2327,6 +2364,12 @@
       "version": "1",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2023.03.06.531323"
+    },
+    "86464v1": {
+      "msid": "86464",
+      "version": "1",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2020.01.28.922773"
     }
   }
 }

@@ -2,11 +2,11 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
-import { jsonFetch } from '../../../utils/json-fetch';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
 import { contentToText } from '../../../utils/content-to-text';
+import { fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
 
 type PageProps = {
   metaData: MetaData,
@@ -45,8 +45,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   }
 
   const [metaData, peerReview, status] = await Promise.all([
-    jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/metadata`),
-    jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${manuscriptConfig.msid}/v${manuscriptConfig.version}/reviews`),
+    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
