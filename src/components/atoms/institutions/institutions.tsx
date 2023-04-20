@@ -14,18 +14,14 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
 
   return (
     <div className="institutions">
-      {expanded !== null && (
-        <>
-          <ol className="institutions-list" aria-label="Author institutions">
-            { displayInstitutions.map(({ name, address }, index) => (
-              <li className="institutions-list__item" key={index}>
-                {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
-              </li>
-            ))}
-          </ol>
-          {(institutions.length > institutionLimit) && <span className="institutions-list__expansion" onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
-        </>
-      )}
+      <ol className="institutions-list no-js-disable" aria-label="Author institutions">
+        { displayInstitutions.map(({ name, address }, index) => (
+          <li className="institutions-list__item" key={index}>
+            {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
+          </li>
+        ))}
+      </ol>
+      {(institutions.length > institutionLimit) && <span className="institutions-list__expansion no-js-disable" onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
       <noscript>
         <ol className="institutions-list" aria-label="Author institutions">
           {institutions.map(({ name, address }, index) => (
@@ -34,6 +30,8 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
             </li>
           ))}
         </ol>
+        {/* eslint-disable-next-line */}
+        <style jsx>{'.no-js-disable { display: none; }'}</style>
       </noscript>
     </div>
   );
