@@ -35,7 +35,6 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
           ))}
         </ol>
       </noscript>
-
     </div>
   );
 };
