@@ -1,5 +1,7 @@
 // colors
 
+
+
 $color-primary: #087acc; // "Brand blue"
 $color-primary-dark: #0769b0;
 
@@ -14,6 +16,11 @@ $divider: #e0e0e0;
 $link-decoration: #212121;
 
 $color-badge-active: #252a36;
+
+$dark-mode-background: #121212;
+$dark-mode-color: #fff;
+$light-mode-background: #fff;
+$light-mode-color: $color-text;
 
 // Borders
 $border: 1px solid $divider;
@@ -39,6 +46,32 @@ $breakpoint-small: 480px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 1000px;
 $breakpoint-extra-large: 1200px;
+
+:root {
+  --color-text--dark-mode: #{$dark-mode-color};
+  --color-text--light-mode: #{$color-text};
+  --color-text: var(--color-text--light-mode);
+
+  --color-background--dark-mode: #{$dark-mode-background};
+  --color-background--light-mode: #{$light-mode-background};
+  --color-background: var(--color-background--light-mode);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-background--dark-mode);
+    --color-text: var(--color-text--dark-mode);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  margin: 0;
+}
 
 @mixin container-padding($padding: true) {
   @if $padding {

@@ -72,7 +72,7 @@
 }
 
 @mixin heading-base() {
-  color: settings.$color-text;
+  color: var(--color-text);
   font-family: settings.$font-family-primary;
   font-weight: 600;
 }
@@ -106,7 +106,7 @@
 @mixin body() {
   @include font-size-and-vertical-height(16, 24);
 
-  color: settings.$color-text;
+  color: var(--color-text);
   font-family: settings.$font-family-secondary;
 }
 
