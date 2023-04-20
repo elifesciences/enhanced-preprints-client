@@ -79,10 +79,10 @@ jobs:
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
 
         # Delete deployments
-        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
-        do
-          gh api --method DELETE $(echo $deployment | jq -r '.url');
-        done
+        # gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
+        # do
+        #   gh api --method DELETE $(echo $deployment | jq -r '.url');
+        # done
     - name: remove storybook deployment
       if: steps.pr_details.outputs.storybook_deployment_status_url != '' && contains(github.event.client_payload.message, '/epp-storybook deleted')
       env:
@@ -97,7 +97,7 @@ jobs:
           -f description="Preview deployed for PR ${{ steps.pr_details.outputs.pr_id }}"
 
         # Delete deployment
-        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
-        do
-          gh api --method DELETE $(echo $deployment | jq -r '.url');
-        done
+        # gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${{ steps.pr_details.outputs.pr_id }}" | jq -c '.[]' | while read -r deployment
+        # do
+        #   gh api --method DELETE $(echo $deployment | jq -r '.url');
+        # done
