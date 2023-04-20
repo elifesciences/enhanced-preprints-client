@@ -5,7 +5,7 @@ import { Institution } from '../../../types';
 const institutionLimit = 3;
 
 export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
-  const [expanded, setExpanded] = useState<boolean | null>(null);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   useLayoutEffect(() => setExpanded(false), []);
   const displayInstitutions = useMemo(() => institutions.slice(0, expanded !== false ? institutions.length : institutionLimit), [expanded]);
@@ -13,14 +13,25 @@ export const Institutions = ({ institutions }: { institutions: Institution[] }):
 
   return (
     <div className="institutions">
-      <ol className="institutions-list" aria-label="Author institutions">
-        { displayInstitutions.map(({ name, address }, index) => (
-          <li className="institutions-list__item" key={index}>
-            {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
-          </li>
-        ))}
-      </ol>
-      {(institutions.length > institutionLimit && expanded !== null) && <span className="institutions-list__expansion" onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
+      <script type="text/javascript">
+        <ol className="institutions-list" aria-label="Author institutions">
+          { displayInstitutions.map(({ name, address }, index) => (
+            <li className="institutions-list__item" key={index}>
+              {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
+            </li>
+          ))}
+        </ol>
+        {(institutions.length > institutionLimit) && <span className="institutions-list__expansion" onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
+      </script>
+      <noscript>
+        <ol className="institutions-list" aria-label="Author institutions">
+          { institutions.map(({ name, address }, index) => (
+            <li className="institutions-list__item" key={index}>
+              {name}{ address ? <address className="institution__address">{address.addressCountry ?? ''}</address> : ''}
+            </li>
+          ))}
+        </ol>
+      </noscript>
     </div>
   );
 };
