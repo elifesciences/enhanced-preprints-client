@@ -19,7 +19,7 @@ type ReviewedPreprintItemResponse = {
 type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
-  pdf: string,
+  pdf?: string,
   status: 'reviewed',
   authorLine?: string,
   title?: string,
