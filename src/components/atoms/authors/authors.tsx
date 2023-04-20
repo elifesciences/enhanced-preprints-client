@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
@@ -9,7 +9,7 @@ const authorLimits = [authorLimit, 10];
 export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
-  useEffect(() => setExpanded(false), []);
+  useLayoutEffect(() => setExpanded(false), []);
 
   return (
     <div className={
