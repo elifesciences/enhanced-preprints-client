@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   content, metaData, peerReview, status,
 } from '../../../utils/mocks';
-import { ArticlePage } from './article-page';
+import { ArticlePage, Tab } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { DefaultLayout } from '../../layouts/default';
 
@@ -12,7 +12,7 @@ export default {
   component: ArticlePage,
 } as ComponentMeta<typeof ArticlePage>;
 
-const tabs = [
+const tabs: Tab[] = [
   {
     id: 'fulltext',
     linkElement: <LinkTo story='Article-Page-Full-Text-Tab'>Full text</LinkTo>,

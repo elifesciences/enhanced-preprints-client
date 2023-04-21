@@ -1,13 +1,14 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useState } from 'react';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
 import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
 import { MetaData, PeerReview } from '../../../types';
-import { ArticleFullTextTab } from '../../../components/pages/article/tabs/fulltext-tab';
-import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
+import { ArticlePage, ArticleStatusProps, TabOptions } from '../../../components/pages/article/article-page';
 import { contentToText } from '../../../utils/content-to-text';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
 
 type PageProps = {
   metaData: MetaData,
@@ -16,16 +17,34 @@ type PageProps = {
   peerReview: PeerReview,
 };
 
-export const Page = (props: PageProps): JSX.Element => (
-  <>
-  <Head>
-    <title>{contentToText(props.metaData.title)}</title>
-  </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext">
-    <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
-  </ArticlePage>
-  </>
-);
+export const Page = (props: PageProps): JSX.Element => {
+  // const router = useRouter();
+  const [tab, setTab] = useState<TabOptions>('fulltext');
+
+  const tabHandler = (event: any, tabId: TabOptions) => {
+    event.preventDefault();
+    setTab(tabId);
+    // TO-DO: Figure out how to set the path without re-routing
+    // if (tabId === 'figures') router.push(router.asPath, `${router.asPath}/figures`, { shallow: true });
+  };
+
+  return (
+    <>
+      <Head>
+        <title>{contentToText(props.metaData.title)}</title>
+      </Head>
+      <ArticlePage metaData={props.metaData} status={props.status} activeTab="fulltext" callback={tabHandler} >
+        {
+          {
+            fulltext: <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview} />,
+            figures: <ArticleFiguresTab content={props.content} />,
+            reviews: <ArticleReviewsTab peerReview={props.peerReview} />,
+          }[tab]
+        }
+      </ArticlePage>
+    </>
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const msid = context.params?.msid;

@@ -16,9 +16,11 @@ export type ArticleStatusProps = {
   status: string,
 };
 
+export type TabOptions = 'fulltext' | 'figures' | 'reviews';
+
 export type Tab = {
-  id: string,
-  linkElement: ReactElement,
+  id: TabOptions,
+  linkElement: ReactElement | JSX.Element,
 };
 
 export type ArticlePageProps = {
@@ -27,6 +29,7 @@ export type ArticlePageProps = {
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs?: Tab[],
+  callback?: (event: any, id: TabOptions) => void,
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
@@ -34,15 +37,15 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}`}>Full text</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}`} onClick={(e) => props.callback && props.callback(e, 'fulltext')}>Full text</Link>,
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/figures`}>Figures and data</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/figures`} onClick={(e) => props.callback && props.callback(e, 'figures')}>Figures and data</Link>,
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`}>Peer review</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`} onClick={(e) => props.callback && props.callback(e, 'reviews')}>Peer review</Link>,
     },
   ];
   const doi = getRppDoi(props.metaData);
