@@ -11,6 +11,7 @@ import { contentToText } from '../../../utils/content-to-text';
 
 type PageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
 };
@@ -20,7 +21,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="figures">
+  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab="figures">
     <ArticleFiguresTab content={props.content}></ArticleFiguresTab>
   </ArticlePage>
   </>
@@ -56,11 +57,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context: GetStat
     return { notFound: true };
   }
 
-  // map msid to preprint doi
-  const { preprintDoi } = manuscriptConfig;
   const [metaData, content, status] = await Promise.all([
-    fetchMetadata(preprintDoi),
-    fetchContent(preprintDoi),
+    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -77,6 +76,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context: GetStat
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
+      msidWithVersion: msid,
       content,
       status,
     },
