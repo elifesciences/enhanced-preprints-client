@@ -4,7 +4,6 @@ import { ArticleStatusProps } from './components/pages/article/article-page';
 type ReviewedPreprintConfig = {
   preprintDoi: string,
   status: ArticleStatusProps,
-  pdfUrl: string,
   msas: string[],
 };
 
@@ -13,13 +12,10 @@ type ManuscriptConfig = {
   version: string,
   preprintDoi: string,
   publishedYear: number,
+  pdfUrl?: string,
 };
 
-export type FullManuscriptConfig = ReviewedPreprintConfig & {
-  msid: string,
-  version: string,
-  publishedYear: number,
-};
+export type FullManuscriptConfig = ReviewedPreprintConfig & ManuscriptConfig;
 
 type ConfigFile = {
   preprints: Record<string, ReviewedPreprintConfig>,

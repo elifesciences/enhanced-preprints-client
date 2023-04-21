@@ -19,7 +19,7 @@ type ReviewedPreprintItemResponse = {
 type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
-  pdf: string,
+  pdf?: string,
   status: 'reviewed',
   authorLine?: string,
   title?: string,
@@ -113,7 +113,8 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const allItems = Object.values(getManuscriptsLatest(config.manuscriptConfigFile)).map((manuscript) => reviewedPreprintSnippet(manuscript));
+  const manuscripts = getManuscriptsLatest(config.manuscriptConfigFile);
+  const allItems = Object.values(manuscripts).map((manuscript) => reviewedPreprintSnippet(manuscript));
 
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
@@ -151,7 +152,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           .slice(offset, offset + perPage)
       )
         .map(
-          async (item) => fetchMetadata(item.doi)
+          async (item) => fetchMetadata(`${manuscripts[item.id].msid}/v${manuscripts[item.id].version}`)
             .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
         ),
     );
