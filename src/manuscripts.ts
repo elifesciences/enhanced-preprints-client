@@ -19,7 +19,7 @@ export type FullManuscriptConfig = ReviewedPreprintConfig & ManuscriptConfig;
 
 type ConfigFile = {
   preprints: Record<string, ReviewedPreprintConfig>,
-  manuscripts: Record<string, ManuscriptConfig>
+  manuscripts: Record<string, ManuscriptConfig | string>
 };
 
 export type Manuscripts = Record<string, FullManuscriptConfig>;
@@ -32,9 +32,19 @@ export const getManuscripts = (configFile: string): Manuscripts => {
 
   const { manuscripts, preprints } = configJson as ConfigFile;
 
+  const getManuscriptEntry = (entryName: string): ManuscriptConfig => {
+    const entry = manuscripts[entryName];
+    if (typeof entry === 'string') {
+      return getManuscriptEntry(entry);
+    }
+    return entry;
+  };
+
   const fullManuscriptConfigs: Manuscripts = {};
 
-  Object.entries(manuscripts).forEach(([msid, manuscriptConfig]) => {
+  Object.keys(manuscripts).forEach((msid) => {
+    const manuscriptConfig = getManuscriptEntry(msid);
+
     fullManuscriptConfigs[msid] = {
       ...manuscriptConfig,
       ...preprints[manuscriptConfig.preprintDoi],
