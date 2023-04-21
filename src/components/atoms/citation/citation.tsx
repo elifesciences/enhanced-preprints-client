@@ -22,7 +22,6 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
         </li>
       ))}
     </ol>
-
     <span className="citation__authors_list_suffix">{citation.year}</span>
     <span className="citation__title">{citation.title}</span>
     <span className="citation__origin">
