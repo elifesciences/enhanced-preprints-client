@@ -10,6 +10,7 @@ import { fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
 
 type PageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   peerReview: PeerReview
 };
@@ -18,7 +19,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} activeTab="reviews">
+  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab="reviews">
     <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
   </ArticlePage>
   </>
@@ -43,11 +44,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  // map msid to preprint doi
-  const { preprintDoi } = manuscriptConfig;
   const [metaData, peerReview, status] = await Promise.all([
-    fetchMetadata(preprintDoi),
-    fetchReviews(preprintDoi),
+    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -64,6 +63,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
+      msidWithVersion: msid,
       status,
       peerReview,
     },

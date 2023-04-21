@@ -25,6 +25,7 @@ export type Tab = {
 
 export type ArticlePageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
@@ -34,18 +35,19 @@ export type ArticlePageProps = {
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const [activeTab, setActiveTab] = useState<string>(props.activeTab);
+  const id = props.msidWithVersion ?? props.metaData.msid;
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}`} onClick={(e) => props.callback && props.callback(e, 'fulltext')}>Full text</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}`} onClick={(e) => props.callback && props.callback(e, 'fulltext')}>Full text</Link>,
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/figures`} onClick={(e) => props.callback && props.callback(e, 'figures')}>Figures and data</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}/figures`} onClick={(e) => props.callback && props.callback(e, 'figures')}>Figures and data</Link>,
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${props.metaData.msid}/reviews`} onClick={(e) => props.callback && props.callback(e, 'reviews')}>Peer review</Link>,
+      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}/reviews`} onClick={(e) => props.callback && props.callback(e, 'reviews')}>Peer review</Link>,
     },
   ];
   const doi = getRppDoi(props.metaData);
