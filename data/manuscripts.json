@@ -173,7 +173,7 @@
     },
     "85111": {
       "msid": "85111",
-      "version": "1",
+      "version": "2",
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.11.08.515698",
       "pdfUrl": "http://localhost:9000/eppdata/data/85111/v1/85111-v1.pdf"
@@ -212,6 +212,12 @@
       "publishedYear": 2023,
       "preprintDoi": "10.1101/2022.11.08.515698",
       "pdfUrl": "http://localhost:9000/eppdata/data/85111/v1/85111-v1.pdf"
+    },
+    "85111v2": {
+      "msid": "85111",
+      "version": "2",
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.08.515698"
     }
   }
 }
