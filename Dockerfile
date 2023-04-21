@@ -18,6 +18,7 @@ FROM base as storybook
 CMD [ "yarn", "storybook" ]
 
 FROM base as prod
+# RUN yarn build
 CMD [ "sh", "-c", "yarn build && yarn start" ]
 
 FROM mcr.microsoft.com/playwright:focal as browser-tests
