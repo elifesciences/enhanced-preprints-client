@@ -18,6 +18,7 @@ FROM base as storybook
 CMD [ "yarn", "storybook" ]
 
 FROM base as prod
+# TO-DO: Add this back in
 # RUN yarn build
 CMD [ "sh", "-c", "yarn build && yarn start" ]
 

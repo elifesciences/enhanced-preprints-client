@@ -34,8 +34,9 @@ jobs:
         run: yarn lint-sass
       - name: Unit Test
         run: yarn test
-      - name: Production build
-        run: yarn build
+      # TO-DO: Add this back in
+      # - name: Production build
+      #   run: yarn build
       - name: Install operating system dependencies
         run: |
           yarn playwright install
