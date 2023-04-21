@@ -1,7 +1,7 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { config } from '../../../config';
-import { getManuscript } from '../../../manuscripts';
+import { getManuscript, getManuscripts } from '../../../manuscripts';
 import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { ArticleReviewsTab } from '../../../components/pages/article/tabs/reviews-tab';
@@ -24,7 +24,18 @@ export const Page = (props: PageProps): JSX.Element => (
   </>
 );
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const manuscripts = getManuscripts(config.manuscriptConfigFile);
+  const paths = Object.keys(manuscripts)
+    .sort()
+    .map((msid) => `/reviewed-preprints/${msid}/reviews`);
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps<PageProps> = async (context: GetStaticPropsContext) => {
   const msid = context.params?.msid;
   if (msid === undefined) {
     console.log('no msid in path'); // eslint-disable-line no-console
@@ -52,7 +63,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     manuscriptConfig.status,
   ]);
 
-  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
+  // context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
   return {
     props: {

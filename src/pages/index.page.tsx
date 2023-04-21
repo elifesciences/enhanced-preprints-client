@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { config } from '../config';
 import { getManuscripts, Manuscripts } from '../manuscripts';
@@ -17,7 +17,7 @@ export const App = ({ manuscripts }: PageProps): JSX.Element => (
   </div>
 );
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async () => ({
+export const getStaticProps: GetStaticProps<PageProps> = async () => ({
   props: {
     manuscripts: getManuscripts(config.manuscriptConfigFile),
   },
