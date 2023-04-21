@@ -99,7 +99,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   return {
     id: manuscript.msid,
     doi: manuscript.preprintDoi,
-    pdf: manuscript.pdfUrl,
+    pdf: manuscript.pdfUrl ?? null,
     status: 'reviewed',
     authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
     title: meta ? contentToHtml(meta.title) : undefined,

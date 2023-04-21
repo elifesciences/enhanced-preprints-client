@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context: GetStat
         ...metaData,
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
-        pdfUrl: manuscriptConfig.pdfUrl,
+        pdfUrl: manuscriptConfig.pdfUrl ?? null,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
