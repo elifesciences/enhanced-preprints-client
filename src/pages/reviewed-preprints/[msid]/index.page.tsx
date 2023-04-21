@@ -18,14 +18,11 @@ type PageProps = {
 };
 
 export const Page = (props: PageProps): JSX.Element => {
-  // const router = useRouter();
   const [tab, setTab] = useState<TabOptions>('fulltext');
 
   const tabHandler = (event: any, tabId: TabOptions) => {
     event.preventDefault();
     setTab(tabId);
-    // TO-DO: Figure out how to set the path without re-routing
-    // if (tabId === 'figures') router.push(router.asPath, `${router.asPath}/figures`, { shallow: true });
   };
 
   return (
