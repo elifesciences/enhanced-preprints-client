@@ -32,10 +32,16 @@ export const getManuscripts = (configFile: string): Manuscripts => {
 
   const { manuscripts, preprints } = configJson as ConfigFile;
 
-  const getManuscriptEntry = (entryName: string): ManuscriptConfig => {
+  const getManuscriptEntry = (entryName: string, existingEntries: string[]): ManuscriptConfig | undefined => {
     const entry = manuscripts[entryName];
+    existingEntries.push(entryName);
+
     if (typeof entry === 'string') {
-      return getManuscriptEntry(entry);
+      if (existingEntries.includes(entry)) {
+        // we've visited this key before
+        return undefined;
+      }
+      return getManuscriptEntry(entry, existingEntries);
     }
     return entry;
   };
@@ -43,7 +49,12 @@ export const getManuscripts = (configFile: string): Manuscripts => {
   const fullManuscriptConfigs: Manuscripts = {};
 
   Object.keys(manuscripts).forEach((msid) => {
-    const manuscriptConfig = getManuscriptEntry(msid);
+    const manuscriptConfig = getManuscriptEntry(msid, []);
+
+    // handle issues with getting an entry by skipping
+    if (manuscriptConfig === undefined) {
+      return;
+    }
 
     fullManuscriptConfigs[msid] = {
       ...manuscriptConfig,
