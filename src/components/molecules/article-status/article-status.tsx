@@ -11,7 +11,7 @@ type ArticleStatusProps = {
   articleStatus: string,
   doi: string,
   title: string,
-  pdfUrl?: string,
+  pdfUrl: string | null,
   citation: CitationData,
   msid: string,
 };

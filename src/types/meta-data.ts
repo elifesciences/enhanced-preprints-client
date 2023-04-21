@@ -10,7 +10,7 @@ export type MetaData = {
   headings: Heading[],
   msas: string[],
   msid: string,
-  pdfUrl?: string,
+  pdfUrl: string | null,
   references: Reference[],
   title: Content;
   version: string,
