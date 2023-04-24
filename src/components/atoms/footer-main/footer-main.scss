@@ -34,7 +34,7 @@
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -43,7 +43,7 @@
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -183,7 +183,7 @@
   }
 
   &:hover svg path {
-    fill: settings.$color-primary;
+    fill: var(--color-primary);
   }
 }
 
@@ -208,11 +208,11 @@
     }
 
     &:hover svg path {
-      fill: settings.$color-primary;
+      fill: var(--color-primary);
     }
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
 
     .github-link--text {

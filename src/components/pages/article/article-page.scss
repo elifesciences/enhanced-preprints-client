@@ -94,7 +94,7 @@
     font-weight: 600;
 
     a {
-      border-bottom: 4px solid settings.$color-primary;
+      border-bottom: 4px solid var(--color-primary);
       color: settings.$color-text;
     }
   }

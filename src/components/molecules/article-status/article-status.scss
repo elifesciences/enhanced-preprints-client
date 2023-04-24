@@ -31,7 +31,7 @@
   @include mixins.margin(0, "top");
   @include typography.font-size-and-vertical-height(18, 22);
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   font-family: settings.$font-family-primary;
   font-weight: 600;
 }
@@ -44,7 +44,7 @@
   @include mixins.margin(36, "bottom");
   @include typography.body-small;
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   cursor: pointer;
   display: block;
   font-weight: 600;

@@ -29,6 +29,6 @@
 .reference__doi_link {
   @include typography.body-small();
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   font-weight: normal;
 }

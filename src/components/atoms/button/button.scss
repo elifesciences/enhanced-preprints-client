@@ -6,7 +6,7 @@
   @include mixins.padding(8 18);
   @include typography.body-small();
 
-  background-color: settings.$color-primary;
+  background-color: var(--color-primary);
   border: 0;
   border-radius: 4px;
   color: #fff;

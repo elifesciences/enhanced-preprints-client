@@ -71,7 +71,7 @@
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 
@@ -101,7 +101,7 @@
 
     &:hover {
       background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 
@@ -157,7 +157,7 @@
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 }
@@ -174,7 +174,7 @@
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 }
@@ -196,7 +196,7 @@
     @include mixins.margin(1, "top");
     @include mixins.padding(5 9 3 9);
 
-    background-color: settings.$color-primary;
+    background-color: var(--color-primary);
     color: #fff;
   }
 }
@@ -259,7 +259,7 @@
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -279,13 +279,13 @@
 
   &:hover {
     background-image: url("../../../images/menu/close-blue.svg");
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
 .main-menu__container {
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 
   .site-header__title {

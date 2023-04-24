@@ -59,8 +59,8 @@
     text-decoration: none;
 
     &:hover {
-      border-bottom-color: settings.$color-primary;
-      color: settings.$color-primary;
+      border-bottom-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
 }

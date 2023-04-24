@@ -41,7 +41,7 @@
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
     text-decoration: underline;
   }
 }

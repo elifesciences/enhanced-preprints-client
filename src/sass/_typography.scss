@@ -30,7 +30,7 @@
 }
 
 @mixin expansion-text() {
-  color: settings.$color-primary;
+  color: var(--color-primary);
   cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: 400;
@@ -142,7 +142,7 @@
 @mixin msa-link-text() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   font-family: settings.$font-family-primary;
   font-weight: 600;
 }
@@ -150,13 +150,13 @@
 @mixin link-text() {
   @include font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   font-family: settings.$font-family-primary;
   font-weight: 600;
   text-decoration: none;
 
   :visited {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
