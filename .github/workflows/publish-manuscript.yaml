@@ -10,7 +10,7 @@ on:
         required: true
         description: Manuscript ID
       dateReviewedPreprint:
-        description: Reviewed Preprint posted (YYYY-MM-DD)
+        description: Reviewed preprint posted (YYYY-MM-DD)
       dateSentForPeerReview:
         description: Sent for peer review (YYYY-MM-DD)
       datePostedToPreprintServer:
