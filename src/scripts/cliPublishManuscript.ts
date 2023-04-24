@@ -54,10 +54,6 @@ const args = yargs
   .argv as Args;
 
 let input = '';
-const defaultManuscripts = {
-  preprints: {},
-  manuscripts: {},
-};
 
 if (!process.stdin.isTTY) {
   process.stdin.on('data', (chunk) => {
