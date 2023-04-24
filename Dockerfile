@@ -1,4 +1,4 @@
-ARG node_version=node:18.16-alpine3.17
+ARG node_version=18.16-alpine3.17
 
 FROM node:${node_version} as builder
 COPY package.json package.json
