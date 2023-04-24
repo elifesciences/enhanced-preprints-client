@@ -88,6 +88,31 @@ describe('addManuscript', () => {
       });
     });
 
+    it('preprints existing - match with existing msa - msa empty string', () => {
+      const { preprints } = addManuscript({
+        preprints: {
+          '10.1101/existing': {
+            preprintDoi: '10.1101/existing',
+            msas: [
+              'msa one',
+              'msa two',
+            ],
+          },
+        },
+        manuscripts: {},
+      }, '10.1101/existing', '11111', []);
+
+      expect(preprints).toStrictEqual({
+        '10.1101/existing': {
+          preprintDoi: '10.1101/existing',
+          msas: [
+            'msa one',
+            'msa two',
+          ],
+        },
+      });
+    });
+
     it('preprints existing - match with new msa', () => {
       const { preprints } = addManuscript({
         preprints: {
