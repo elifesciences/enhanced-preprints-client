@@ -3,16 +3,17 @@ name: Add PDF url to manuscript
 on:
   workflow_dispatch:
     inputs:
-      doi:
+      msid:
         required: true
-        description: Preprint DOI
+        description: Manuscript ID
+      versionManuscript:
+        description: Manuscript version
       urlPdf:
-        required: true
         description: PDF location (url)
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  BRANCH_NAME: "pdfurl-${{ github.event.inputs.msid }}"
+  BRANCH_NAME: "pdfurl-${{ github.event.inputs.msid }}-v${{ github.event.inputs.versionManuscript }}"
 
 jobs:
   publish-manuscript:
@@ -35,7 +36,8 @@ jobs:
         run: |
           cat manuscripts.json | \
             yarn --silent add-pdf-url-to-manuscript \
-            --doi "${{ github.event.inputs.doi }}" \
+            --msid "${{ github.event.inputs.msid }}" \
+            --versionManuscript "${{ github.event.inputs.versionManuscript }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" | \
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
@@ -44,12 +46,12 @@ jobs:
         with:
           branch: "${{ env.BRANCH_NAME }}"
           branch-suffix: short-commit-hash
-          commit-message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
+          commit-message: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }} using workflow"
           committer: GitHub Actions <action@github.com>
-          title: "Add pdf url to manuscript ${{ github.event.inputs.doi }}"
+          title: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }}"
           body:
             |
-            DOI: ${{ github.event.inputs.doi }}
+            ID: ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }}
 
             Please review and merge.
           token: ${{ env.GITHUB_TOKEN }}
@@ -59,5 +61,4 @@ jobs:
         with:
           committer_name: GitHub Actions
           committer_email: action@github.com
-          message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
-
+          message: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }} using workflow"
