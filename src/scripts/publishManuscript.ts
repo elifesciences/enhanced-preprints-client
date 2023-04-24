@@ -1,8 +1,6 @@
 const todayDate = () => (new Date()).toISOString().split('T')[0];
 const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
-const newVersion = (msid: string, manuscripts: Manuscripts) => Object.keys(manuscripts).filter((id) => id.startsWith(`${msid}v`)).length + 1;
-
 type Preprint = {
   preprintDoi: string;
   msas?: string[];
@@ -56,8 +54,8 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
     },
   };
 
-  const v = newVersion(rpMsid, preprintManuscripts.manuscripts);
   const rpMsidRoot = `${rpMsid}v`;
+  const v = Object.keys(preprintManuscripts.manuscripts).filter((id) => id.startsWith(rpMsidRoot)).length + 1;
   const allVersions: Manuscript[] = Object.keys(preprintManuscripts.manuscripts)
     .filter((k) => k.startsWith(rpMsidRoot) && preprintManuscripts && typeof preprintManuscripts.manuscripts[k] !== undefined && typeof preprintManuscripts.manuscripts[k] !== 'string')
     .map((k) => preprintManuscripts.manuscripts[k] as Manuscript);
