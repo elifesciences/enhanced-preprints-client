@@ -45,7 +45,7 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
   const preprintServer: string = (ppServer && ppServer.trim() !== '') ? ppServer.trim() : 'bioRxiv';
   const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate();
 
-  const newMsas = ppMsa === undefined && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
+  const newMsas = (ppMsa === undefined || ppMsa.length === 0) && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
 
   const newPreprints: Preprints = {
     [ppDoi]: {
