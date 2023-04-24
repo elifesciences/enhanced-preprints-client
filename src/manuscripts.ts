@@ -4,7 +4,6 @@ import { ArticleStatusProps } from './components/pages/article/article-page';
 type ReviewedPreprintConfig = {
   preprintDoi: string,
   status: ArticleStatusProps,
-  pdfUrl: string,
   msas: string[],
 };
 
@@ -13,17 +12,14 @@ type ManuscriptConfig = {
   version: string,
   preprintDoi: string,
   publishedYear: number,
+  pdfUrl?: string,
 };
 
-export type FullManuscriptConfig = ReviewedPreprintConfig & {
-  msid: string,
-  version: string,
-  publishedYear: number,
-};
+export type FullManuscriptConfig = ReviewedPreprintConfig & ManuscriptConfig;
 
 type ConfigFile = {
   preprints: Record<string, ReviewedPreprintConfig>,
-  manuscripts: Record<string, ManuscriptConfig>
+  manuscripts: Record<string, ManuscriptConfig | string>
 };
 
 export type Manuscripts = Record<string, FullManuscriptConfig>;
@@ -36,9 +32,30 @@ export const getManuscripts = (configFile: string): Manuscripts => {
 
   const { manuscripts, preprints } = configJson as ConfigFile;
 
+  const getManuscriptEntry = (entryName: string, existingEntries: string[]): ManuscriptConfig | undefined => {
+    const entry = manuscripts[entryName];
+    existingEntries.push(entryName);
+
+    if (typeof entry === 'string') {
+      if (existingEntries.includes(entry)) {
+        // we've visited this key before
+        return undefined;
+      }
+      return getManuscriptEntry(entry, existingEntries);
+    }
+    return entry;
+  };
+
   const fullManuscriptConfigs: Manuscripts = {};
 
-  Object.entries(manuscripts).forEach(([msid, manuscriptConfig]) => {
+  Object.keys(manuscripts).forEach((msid) => {
+    const manuscriptConfig = getManuscriptEntry(msid, []);
+
+    // handle issues with getting an entry by skipping
+    if (manuscriptConfig === undefined) {
+      return;
+    }
+
     fullManuscriptConfigs[msid] = {
       ...manuscriptConfig,
       ...preprints[manuscriptConfig.preprintDoi],
