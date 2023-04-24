@@ -1,4 +1,4 @@
-const todayDate = (new Date()).toISOString().split('T')[0];
+const todayDate = () => (new Date()).toISOString().split('T')[0];
 const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const newVersion = (msid: string, manuscripts: Manuscripts) => Object.keys(manuscripts).filter((id) => id.startsWith(`${msid}v`)).length + 1;
@@ -45,7 +45,7 @@ type PreprintManuscripts = {
 
 const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, rpMsid: string, ppMsa?: string[], ppServer?: string, ppDate?: string, ppUrl?: string, rpDate?: string, prDate?: string) : PreprintManuscripts => {
   const preprintServer: string = (ppServer && ppServer.trim() !== '') ? ppServer.trim() : 'bioRxiv';
-  const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate;
+  const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate();
 
   const newMsas = ppMsa === undefined && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
 

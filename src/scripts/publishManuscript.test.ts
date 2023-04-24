@@ -117,7 +117,7 @@ describe('addManuscript', () => {
   describe('manuscripts', () => {
     beforeAll(() => {
       jest.useFakeTimers();
-      jest.setSystemTime(new Date('2020-01-01'));
+      jest.setSystemTime(new Date('2023-04-23'));
     });
 
     afterAll(() => {
@@ -132,13 +132,13 @@ describe('addManuscript', () => {
         '11111v1': {
           msid: '11111',
           preprintDoi: '10.1101/minimal',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed Preprint posted',
               },
             ],
@@ -154,13 +154,13 @@ describe('addManuscript', () => {
       expect(manuscripts['11111v1']).toStrictEqual({
         msid: '11111',
         preprintDoi: '10.1101/with-server',
-        publishedYear: 2023, // fixme: should be using mock date within addManuscript
+        publishedYear: 2023,
         status: {
           articleType: 'Reviewed Preprint',
           status: 'Published from the original preprint after peer review and assessment by eLife.',
           timeline: [
             {
-              date: '2023-04-23', // fixme: should be using mock date within addManuscript
+              date: '2023-04-23',
               name: 'Reviewed Preprint posted',
             },
             {
@@ -183,13 +183,13 @@ describe('addManuscript', () => {
       expect(manuscripts['11111v1']).toStrictEqual({
         msid: '11111',
         preprintDoi: '10.1101/without-server',
-        publishedYear: 2023, // fixme: should be using mock date within addManuscript
+        publishedYear: 2023,
         status: {
           articleType: 'Reviewed Preprint',
           status: 'Published from the original preprint after peer review and assessment by eLife.',
           timeline: [
             {
-              date: '2023-04-23', // fixme: should be using mock date within addManuscript
+              date: '2023-04-23',
               name: 'Reviewed Preprint posted',
             },
             {
@@ -235,13 +235,13 @@ describe('addManuscript', () => {
         '11111v1': {
           msid: '11111',
           preprintDoi: '10.1101/with-peer-review-date',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed Preprint posted',
               },
               {
@@ -373,13 +373,13 @@ describe('addManuscript', () => {
         '22222v1': {
           msid: '22222',
           preprintDoi: '10.1101/no-match',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed Preprint posted',
               },
             ],
@@ -424,7 +424,7 @@ describe('addManuscript', () => {
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 link: {
                   text: 'Go to version',
                   url: '/reviewed-preprints/11111v2',
@@ -442,13 +442,13 @@ describe('addManuscript', () => {
         '11111v2': {
           msid: '11111',
           preprintDoi: '10.1101/existing',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Revised by authors after peer review.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed preprint version 2',
               },
               {
@@ -498,13 +498,13 @@ describe('addManuscript', () => {
           '11111v2': {
             msid: '11111',
             preprintDoi: '10.1101/existing',
-            publishedYear: 2023, // fixme: should be using mock date within addManuscript
+            publishedYear: 2023,
             status: {
               articleType: 'Reviewed Preprint',
               status: 'Revised by authors after peer review.',
               timeline: [
                 {
-                  date: '2023-04-22', // fixme: should be using mock date within addManuscript
+                  date: '2023-04-23',
                   name: 'Reviewed preprint version 2',
                 },
                 {
@@ -533,7 +533,7 @@ describe('addManuscript', () => {
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 link: {
                   text: 'Go to version',
                   url: '/reviewed-preprints/11111v3',
@@ -565,7 +565,7 @@ describe('addManuscript', () => {
             status: 'Revised by authors after peer review.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 link: {
                   text: 'Go to version',
                   url: '/reviewed-preprints/11111v3',
@@ -591,13 +591,13 @@ describe('addManuscript', () => {
         '11111v3': {
           msid: '11111',
           preprintDoi: '10.1101/existing',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Revised by authors after peer review.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed preprint version 3',
               },
               {
@@ -680,7 +680,7 @@ describe('addManuscript', () => {
             status: 'Published from the original preprint after peer review and assessment by eLife.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 link: {
                   text: 'Go to version',
                   url: '/reviewed-preprints/11111v2',
@@ -698,13 +698,13 @@ describe('addManuscript', () => {
         '11111v2': {
           msid: '11111',
           preprintDoi: '10.1101/different',
-          publishedYear: 2023, // fixme: should be using mock date within addManuscript
+          publishedYear: 2023,
           status: {
             articleType: 'Reviewed Preprint',
             status: 'Revised by authors after peer review.',
             timeline: [
               {
-                date: '2023-04-23', // fixme: should be using mock date within addManuscript
+                date: '2023-04-23',
                 name: 'Reviewed preprint version 2',
               },
               {
