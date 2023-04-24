@@ -4,8 +4,8 @@ import * as yargs from 'yargs';
 import { addManuscript } from './publishManuscript';
 
 interface Args {
-  doi: string;
   msid: string;
+  doi: string;
   dateReviewedPreprint: string;
   dateSentForPeerReview?: string;
   datePostedToPreprintServer?: string;
@@ -17,14 +17,14 @@ interface Args {
 const todayDate = (new Date()).toISOString().split('T')[0];
 
 const args = yargs
-  .option('doi', {
-    type: 'string',
-    describe: 'Preprint DOI',
-    demandOption: true,
-  })
   .option('msid', {
     type: 'string',
     describe: 'Manuscript ID',
+    demandOption: true,
+  })
+  .option('doi', {
+    type: 'string',
+    describe: 'Preprint DOI',
     demandOption: true,
   })
   .option('dateReviewedPreprint', {
