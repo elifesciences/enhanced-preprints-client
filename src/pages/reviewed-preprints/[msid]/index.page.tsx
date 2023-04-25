@@ -3,12 +3,12 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
-import { Content } from '../../../types/content';
+import { Content, MetaData, PeerReview } from '../../../types';
 import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
-import { MetaData, PeerReview } from '../../../types';
 import { ArticlePage, ArticleStatusProps, TabOptions } from '../../../components/pages/article/article-page';
 import { contentToText } from '../../../utils/content-to-text';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
+import { TimelineEvent } from '../../../components/molecules/timeline/timeline';
 
 type PageProps = {
   metaData: MetaData
@@ -27,6 +27,16 @@ export const Page = (props: PageProps): JSX.Element => {
     window.history.pushState({}, '', event.currentTarget.href);
     const navEvent = new PopStateEvent('popstate');
     window.dispatchEvent(navEvent);
+  };
+
+  const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
+    const publishedEvent = events.find(({ name }) => name === 'Reviewed preprint posted');
+    if (publishedEvent) {
+      const date = new Date(publishedEvent.date);
+      return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    }
+
+    return undefined;
   };
 
   useEffect(() => {
@@ -51,6 +61,14 @@ export const Page = (props: PageProps): JSX.Element => {
     <>
       <Head>
         <title>{contentToText(props.metaData.title)}</title>
+        <meta name="citation_title" content={contentToText(props.metaData.title)}/>
+        <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
+        <meta name="citation_doi" content={props.metaData.doi}/>
+        <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
+        <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
+        <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
+        <meta name="citation_language" content="text/html"/>
+    { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}`}/>)}
       </Head>
       <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={tab} callback={tabHandler} >
         {
@@ -98,9 +116,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     props: {
       metaData: {
         ...metaData,
+        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
-        pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
