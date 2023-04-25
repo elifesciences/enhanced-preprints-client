@@ -107,7 +107,7 @@
   @include font-size-and-vertical-height(16, 24);
 
   color: var(--color-text);
-  font-family: settings.$font-family-secondary;
+  font-family: var(--font-family-secondary);
 }
 
 @mixin body-small() {

@@ -62,7 +62,7 @@
 .site-smallprint {
   @include typography.font-size-and-vertical-height(11, 24);
 
-  font-family: settings.$font-family-secondary;
+  font-family: var(--font-family-secondary);
   padding: 0 6%;
   text-align: center;
 
