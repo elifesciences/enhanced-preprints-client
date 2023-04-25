@@ -30,7 +30,7 @@
   @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
 
   h1 {
     @include mixins.margin(0, "top");

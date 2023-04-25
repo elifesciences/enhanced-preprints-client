@@ -71,7 +71,7 @@
   color: var(--color-text-secondary);
   cursor: pointer;
   display: inline;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
 
   a {
     @include mixins.margin(0 6);

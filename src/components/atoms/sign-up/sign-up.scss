@@ -24,7 +24,7 @@
   @include typography.font-size-and-vertical-height(20);
 
   color: var(--color-text);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
 }
 
 .email-cta__privacy {
@@ -37,7 +37,7 @@
 
 .email-cta__privacy_link {
   color: var(--color-text-secondary);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   text-decoration: none;
 
   &:hover {

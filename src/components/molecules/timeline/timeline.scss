@@ -48,7 +48,7 @@
   @include typography.font-size-and-vertical-height(12, 24);
 
   color: var(--color-text-secondary);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: 600;
   margin: 0;
 
@@ -67,7 +67,7 @@
   @include typography.font-size-and-vertical-height(12, 24);
 
   color: var(--color-text-secondary);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
 

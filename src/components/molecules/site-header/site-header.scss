@@ -62,7 +62,7 @@
 
   color: var(--link-decoration);
   display: none;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
 
@@ -141,7 +141,7 @@
   @include mixins.padding(24, "left");
 
   color: var(--link-decoration);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
 }
@@ -230,7 +230,7 @@
   @include mixins.padding(24, "bottom");
 
   display: block;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   line-height: 0;
   text-align: left;
 
@@ -272,7 +272,7 @@
   border: none;
   color: var(--color-text);
   cursor: pointer;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   text-align: left;
   width: 68px;

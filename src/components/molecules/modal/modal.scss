@@ -20,7 +20,7 @@
   border-radius: 3px;
   box-shadow: 0 0 20px rgb(0 0 0 / 22%);
   display: grid;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   grid-template-columns: repeat(4, 1fr);
   z-index: 200;
 
@@ -88,7 +88,7 @@
   border: none;
   color: var(--color-text);
   cursor: pointer;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   grid-row: 1;
   height: auto;

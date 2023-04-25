@@ -32,7 +32,7 @@
   @include typography.font-size-and-vertical-height(18, 22);
 
   color: var(--color-primary);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: 600;
 }
 
@@ -93,7 +93,7 @@
   border: 1px solid var(--divider);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   grid-column: 1/13;
   grid-row: 1;
   width: 100%;
