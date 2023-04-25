@@ -3,31 +3,24 @@ name: Publish Manuscript
 on:
   workflow_dispatch:
     inputs:
-      doi:
-        required: true
-        description: Preprint DOI
       msid:
         required: true
         description: Manuscript ID
+      doi:
+        required: true
+        description: Preprint DOI
       dateReviewedPreprint:
         description: Reviewed Preprint posted (YYYY-MM-DD)
+      dateSentForPeerReview:
+        description: Sent for peer review (YYYY-MM-DD)
       datePostedToPreprintServer:
-        required: true
         description: Posted to preprint server (YYYY-MM-DD)
       urlPostedOnPreprintServer:
-        required: true
         description: Posted to preprint server (url)
       preprintServer:
         description: Preprint server
-      dateSentForPeerReview:
-        required: true
-        description: Sent for peer review (YYYY-MM-DD)
       msa:
         description: Subject areas (comma separated)
-      urlPdf:
-        description: PDF location (url)
-      versionManuscript:
-        description: Manuscript version
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,13 +50,11 @@ jobs:
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
+            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
             --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
-            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
-            --msa "${{ github.event.inputs.msa }}" \
-            --urlPdf "${{ github.event.inputs.urlPdf }}" \
-            --versionManuscript ${{ github.event.inputs.versionManuscript }} | \
+            --msa "${{ github.event.inputs.msa }}" | \
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
@@ -89,4 +80,3 @@ jobs:
           committer_name: GitHub Actions
           committer_email: action@github.com
           message: "Publish manuscript ${{ github.event.inputs.msid }} using workflow"
-
