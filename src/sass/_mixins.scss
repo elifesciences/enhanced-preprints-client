@@ -5,7 +5,7 @@
 @mixin grid() {
   @supports (display: grid) {
     display: grid;
-    grid-column-gap: settings.$grid-gutter;
+    grid-column-gap: var(--grid-gutter);
     grid-template-columns: repeat(12, 1fr);
   }
 }

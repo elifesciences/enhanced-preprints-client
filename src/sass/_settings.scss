@@ -16,6 +16,9 @@
   // Fonts
   --font-family-primary: noto sans,arial,helvetica,sans-serif;
   --font-family-secondary: noto serif,serif;
+
+  // Layout
+  --grid-gutter: 24px;
 }
 
 
@@ -24,7 +27,6 @@ $font-size-base-in-px: 16;
 
 // Layout
 $max-site-width: 1200px;
-$grid-gutter: 24px;
 
 // Site Spacing
 $site-spacing: 24px;
