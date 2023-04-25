@@ -367,6 +367,12 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2022.06.02.494625": {
+      "preprintDoi": "10.1101/2022.06.02.494625",
+      "msas": [
+        "Ecology"
+      ]
     }
   },
   "manuscripts": {
@@ -404,6 +410,7 @@
     "85646": "85646v1",
     "85654": "85654v1",
     "85760": "85760v1",
+    "85795": "85795v1",
     "85875": "85875v1",
     "86016": "86016v1",
     "86100": "86100v1",
@@ -2115,6 +2122,34 @@
           {
             "name": "Sent for peer review",
             "date": "2023-01-16"
+          }
+        ]
+      }
+    },
+    "85795v1": {
+      "msid": "85795",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.02.494625",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.06.02.494625v3",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-14"
           }
         ]
       }
