@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content } from '../../../types/content';
@@ -21,17 +21,38 @@ type PageProps = {
 export const Page = (props: PageProps): JSX.Element => {
   const [tab, setTab] = useState<TabOptions>('fulltext');
 
-  const tabHandler = (event: any, tabId: TabOptions) => {
+  const tabHandler = (event: React.MouseEvent<HTMLAnchorElement>, tabId: TabOptions) => {
     event.preventDefault();
     setTab(tabId);
+    window.history.pushState({}, '', event.currentTarget.href);
+    const navEvent = new PopStateEvent('popstate');
+    window.dispatchEvent(navEvent);
   };
+
+  useEffect(() => {
+    const onLocationChange = (event: PopStateEvent) => {
+      event.preventDefault();
+      if (event.state?.as !== undefined) {
+        if ((event.state?.as as string).includes(props.metaData.msid)) {
+          if ((event.state?.as as string).includes('figures')) setTab('figures');
+          else if ((event.state?.as as string).includes('reviews')) setTab('reviews');
+          else setTab('fulltext');
+        } else window.history.back();
+      }
+    };
+    window.addEventListener('popstate', (event) => onLocationChange(event));
+
+    return () => {
+      window.removeEventListener('popstate', onLocationChange);
+    };
+  }, []);
 
   return (
     <>
       <Head>
         <title>{contentToText(props.metaData.title)}</title>
       </Head>
-      <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab="fulltext" callback={tabHandler} >
+      <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={tab} callback={tabHandler} >
         {
           {
             fulltext: <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview} />,

@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
@@ -30,7 +30,7 @@ export type ArticlePageProps = {
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs?: Tab[],
-  callback?: (event: any, id: TabOptions) => void,
+  callback?: (event: React.MouseEvent<HTMLAnchorElement>, id: TabOptions) => void,
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
@@ -61,6 +61,11 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
     title: contentToText(props.metaData.title),
     doi,
   };
+
+  // Here to set the active tab when going back/forwards
+  useEffect(() => {
+    setActiveTab(props.activeTab);
+  }, [props.activeTab]);
 
   return (
     <>
