@@ -29,11 +29,11 @@ const nextConfig = {
         destination: '/api/citations/:msid/ris',
       },
       {
-        source: '/reviewed-preprints-continuum',
+        source: '/continuum/reviewed-preprints',
         destination: '/api/reviewed-preprints',
       },
       {
-        source: '/reviewed-preprints-continuum/:msid(\\d+v{0,1}\\d*)',
+        source: '/continuum/reviewed-preprints/:msid',
         destination: '/api/reviewed-preprints/:msid',
       },
       {
