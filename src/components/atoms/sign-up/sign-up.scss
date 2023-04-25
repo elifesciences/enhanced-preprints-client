@@ -36,7 +36,7 @@
 }
 
 .email-cta__privacy_link {
-  color: settings.$color-text-secondary;
+  color: var(--color-text-secondary);
   font-family: settings.$font-family-primary;
   text-decoration: none;
 
