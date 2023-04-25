@@ -39,7 +39,7 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(20, "left");
 
-    border-left: settings.$border;
+    border-left: var(--border);
     display: inline-block;
     height: 24px;
   }
@@ -243,7 +243,7 @@
   &.end-of-group {
     @include mixins.margin(24, "bottom");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
   }
 
   &:last-child {

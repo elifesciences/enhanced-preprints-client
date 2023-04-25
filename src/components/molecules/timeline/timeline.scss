@@ -18,7 +18,7 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
     max-width: 233px;
   }
 }

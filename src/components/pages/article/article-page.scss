@@ -40,8 +40,8 @@
 
   align-self: flex-start;
   background-color: #fff;
-  border-bottom: settings.$border;
-  border-top: settings.$border;
+  border-bottom: var(--border);
+  border-top: var(--border);
   display: flex;
   justify-content: center;
   list-style: none;

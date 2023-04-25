@@ -9,10 +9,10 @@
   --color-background: #f7f7f7;
   --divider: #e0e0e0;
   --link-decoration: #212121;
-}
 
-// Borders
-$border: 1px solid var(--divider);
+  // Borders
+  --border: 1px solid var(--divider);
+}
 
 // Fonts
 $font-family-primary: noto sans,arial,helvetica,sans-serif;

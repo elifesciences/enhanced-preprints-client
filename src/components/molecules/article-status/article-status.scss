@@ -7,7 +7,7 @@
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
-  border-bottom: settings.$border;
+  border-bottom: var(--border);
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.padding(72, "right");
@@ -21,7 +21,7 @@
     @include mixins.margin(0, "top");
     @include mixins.padding(0, "right");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
     max-width: 233px;
     min-width: 100px;
   }
