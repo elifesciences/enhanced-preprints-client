@@ -86,7 +86,7 @@
   align-self: start;
   background: url("../../../images/actions/close.svg") right 5px no-repeat;
   border: none;
-  color: settings.$color-text;
+  color: var(--color-text);
   cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: bold;

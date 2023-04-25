@@ -185,7 +185,7 @@
   @include typography.font-size-and-vertical-height(11, 22);
 
   border-radius: 3px;
-  color: settings.$color-text;
+  color: var(--color-text);
   font-weight: normal;
   height: 24px;
   text-decoration: none;
@@ -254,7 +254,7 @@
 .main-menu__list_link {
   @include typography.font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text;
+  color: var(--color-text);
   font-weight: bold;
   text-decoration: none;
 
@@ -270,7 +270,7 @@
   background: url("../../../images/menu/close.svg") no-repeat 49px 5px;
   background-size: 14px;
   border: none;
-  color: settings.$color-text;
+  color: var(--color-text);
   cursor: pointer;
   font-family: settings.$font-family-primary;
   font-weight: bold;
@@ -307,7 +307,7 @@
 
     background-color: #fff;
     box-sizing: border-box;
-    color: settings.$color-text;
+    color: var(--color-text);
     display: block;
     float: left;
     height: 100vh;

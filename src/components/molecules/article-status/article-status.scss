@@ -92,7 +92,7 @@
 
   border: 1px solid settings.$divider;
   box-sizing: border-box;
-  color: settings.$color-text;
+  color: var(--color-text);
   font-family: settings.$font-family-primary;
   grid-column: 1/13;
   grid-row: 1;
