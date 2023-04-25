@@ -21,8 +21,8 @@
   }
 
   a {
-    border-bottom: 1px dotted settings.$link-decoration;
-    color: settings.$link-decoration;
+    border-bottom: 1px dotted var(--link-decoration);
+    color: var(--link-decoration);
     text-decoration: none;
 
     &:hover {
