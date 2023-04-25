@@ -65,12 +65,12 @@
   @include constrain-width(settings.$max-site-width, "max");
 
   @if $padding {
-    padding-left: #{settings.$site-spacing};
-    padding-right: #{settings.$site-spacing};
+    padding-left: var(--site-spacing);
+    padding-right: var(--site-spacing);
 
     @media only screen and (min-width: settings.$breakpoint-small) {
-      padding-left: #{settings.$site-spacing-large};
-      padding-right: #{settings.$site-spacing-large};
+      padding-left: var(--site-spacing-large);
+      padding-right: var(--site-spacing-large);
     }
   }
 }
