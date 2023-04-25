@@ -49,7 +49,7 @@
     @include mixins.padding(24 36);
   }
 
-  background-color: settings.$color-background;
+  background-color: var(--color-background);
 }
 
 .review-content_links {
