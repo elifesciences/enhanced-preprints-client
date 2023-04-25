@@ -3,14 +3,14 @@ name: Publish Manuscript
 on:
   workflow_dispatch:
     inputs:
-      doi:
-        required: true
-        description: Preprint DOI
       msid:
         required: true
         description: Manuscript ID
+      doi:
+        required: true
+        description: Preprint DOI
       dateReviewedPreprint:
-        description: Reviewed Preprint posted (YYYY-MM-DD)
+        description: Reviewed preprint posted (YYYY-MM-DD)
       dateSentForPeerReview:
         description: Sent for peer review (YYYY-MM-DD)
       datePostedToPreprintServer:
@@ -54,7 +54,7 @@ jobs:
             --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
-            --msa "${{ github.event.inputs.msa }}" \
+            --msa "${{ github.event.inputs.msa }}" | \
             tee manuscripts.json > /dev/null
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
