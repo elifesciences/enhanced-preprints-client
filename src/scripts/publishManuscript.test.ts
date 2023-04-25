@@ -88,6 +88,31 @@ describe('addManuscript', () => {
       });
     });
 
+    it('preprints existing - match with existing msa - msa empty string', () => {
+      const { preprints } = addManuscript({
+        preprints: {
+          '10.1101/existing': {
+            preprintDoi: '10.1101/existing',
+            msas: [
+              'msa one',
+              'msa two',
+            ],
+          },
+        },
+        manuscripts: {},
+      }, '10.1101/existing', '11111', []);
+
+      expect(preprints).toStrictEqual({
+        '10.1101/existing': {
+          preprintDoi: '10.1101/existing',
+          msas: [
+            'msa one',
+            'msa two',
+          ],
+        },
+      });
+    });
+
     it('preprints existing - match with new msa', () => {
       const { preprints } = addManuscript({
         preprints: {
@@ -139,7 +164,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -161,7 +186,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2023-04-23',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
             {
               date: '2022-01-01',
@@ -190,7 +215,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2023-04-23',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
             {
               date: '2022-01-01',
@@ -219,7 +244,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2020-01-02',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
           ],
         },
@@ -242,7 +267,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-02',
@@ -274,7 +299,7 @@ describe('addManuscript', () => {
               },
               {
                 date: '2020-01-02',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-01',
@@ -306,7 +331,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2020-01-07',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-02',
@@ -342,7 +367,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },
@@ -364,7 +389,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-22',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -380,7 +405,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -404,7 +429,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },
@@ -645,7 +670,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },

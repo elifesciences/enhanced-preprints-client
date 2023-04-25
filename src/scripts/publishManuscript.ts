@@ -1,8 +1,6 @@
 const todayDate = () => (new Date()).toISOString().split('T')[0];
 const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
-const newVersion = (msid: string, manuscripts: Manuscripts) => Object.keys(manuscripts).filter((id) => id.startsWith(`${msid}v`)).length + 1;
-
 type Preprint = {
   preprintDoi: string;
   msas?: string[];
@@ -47,7 +45,7 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
   const preprintServer: string = (ppServer && ppServer.trim() !== '') ? ppServer.trim() : 'bioRxiv';
   const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate();
 
-  const newMsas = ppMsa === undefined && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
+  const newMsas = (ppMsa === undefined || ppMsa.length === 0) && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
 
   const newPreprints: Preprints = {
     [ppDoi]: {
@@ -56,14 +54,14 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
     },
   };
 
-  const v = newVersion(rpMsid, preprintManuscripts.manuscripts);
   const rpMsidRoot = `${rpMsid}v`;
+  const v = Object.keys(preprintManuscripts.manuscripts).filter((id) => id.startsWith(rpMsidRoot)).length + 1;
   const allVersions: Manuscript[] = Object.keys(preprintManuscripts.manuscripts)
     .filter((k) => k.startsWith(rpMsidRoot) && preprintManuscripts && typeof preprintManuscripts.manuscripts[k] !== undefined && typeof preprintManuscripts.manuscripts[k] !== 'string')
     .map((k) => preprintManuscripts.manuscripts[k] as Manuscript);
 
   const newTimeline: Timeline[] = [
-    { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
+    { name: 'Reviewed preprint posted', date: dateReviewedPreprint },
   ];
 
   if (ppDate && ppUrl) {
