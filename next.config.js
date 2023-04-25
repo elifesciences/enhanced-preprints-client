@@ -29,6 +29,14 @@ const nextConfig = {
         destination: '/api/citations/:msid/ris',
       },
       {
+        source: '/reviewed-preprints-continuum',
+        destination: '/api/reviewed-preprints',
+      },
+      {
+        source: '/reviewed-preprints-continuum/:msid(\\d+v{0,1}\\d*)',
+        destination: '/api/reviewed-preprints/:msid',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },

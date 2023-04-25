@@ -149,6 +149,8 @@ describe('reviewedPreprintSnippet', () => {
     });
   });
 
+  it('prepares a revised preprint snippet', () => {});
+
   it.each([
     [
       [],
