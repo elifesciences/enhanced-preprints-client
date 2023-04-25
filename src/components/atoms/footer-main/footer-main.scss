@@ -3,7 +3,7 @@
 @use "../../../sass/mixins";
 
 .site-footer {
-  border-top: 1px solid settings.$divider;
+  border-top: 1px solid var(--divider);
 
   @include mixins.padding(48, "top");
   @include mixins.padding(16, "bottom");

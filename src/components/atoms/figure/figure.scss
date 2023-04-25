@@ -9,7 +9,7 @@
     @include mixins.margin(18, "bottom");
     @include mixins.padding(12);
 
-    border: 1px solid settings.$divider;
+    border: 1px solid var(--divider);
     box-sizing: border-box;
     width: 100%;
   }

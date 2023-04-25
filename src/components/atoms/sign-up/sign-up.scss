@@ -6,7 +6,7 @@
   @include mixins.padding(48, "top");
   @include mixins.padding(72, "bottom");
 
-  border-top: 1px solid settings.$divider;
+  border-top: 1px solid var(--divider);
   text-align: center;
 }
 

@@ -7,16 +7,15 @@
   --color-text-secondary: #757575;
   --color-button: #edeff4;
   --color-background: #f7f7f7;
+  --divider: #e0e0e0;
 }
-
-$divider: #e0e0e0;
 
 $link-decoration: #212121;
 
 $color-badge-active: #252a36;
 
 // Borders
-$border: 1px solid $divider;
+$border: 1px solid var(--divider);
 
 // Fonts
 $font-family-primary: noto sans,arial,helvetica,sans-serif;

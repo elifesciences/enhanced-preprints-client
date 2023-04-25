@@ -90,7 +90,7 @@
   @include mixins.padding(11 12);
   @include mixins.margin(36, "bottom");
 
-  border: 1px solid settings.$divider;
+  border: 1px solid var(--divider);
   box-sizing: border-box;
   color: var(--color-text);
   font-family: settings.$font-family-primary;
