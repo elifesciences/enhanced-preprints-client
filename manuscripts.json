@@ -387,6 +387,12 @@
         "Genetics and Genomics",
         "Neuroscience"
       ]
+    },
+    "10.1101/2021.05.12.443782": {
+      "preprintDoi": "10.1101/2021.05.12.443782",
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -435,6 +441,7 @@
     "86633": "86633v1",
     "86636": "86636v1",
     "86663": "86663v1",
+    "86670": "86670v1",
     "86689": "86689v1",
     "86699": "86699v1",
     "86700": "86700v1",
@@ -2220,6 +2227,34 @@
             "date": "2023-02-06",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.01.526652v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86670v1": {
+      "msid": "86670",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.05.12.443782",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed Preprint posted",
+            "date": "2023-04-25"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-23"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.05.12.443782v2",
               "text": "Go to bioRxiv"
             }
           }
