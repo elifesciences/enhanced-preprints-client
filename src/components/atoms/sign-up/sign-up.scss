@@ -23,7 +23,7 @@
   @include mixins.padding(24, "bottom");
   @include typography.font-size-and-vertical-height(20);
 
-  color: settings.$color-text;
+  color: var(--color-text);
   font-family: settings.$font-family-primary;
 }
 

@@ -50,6 +50,6 @@
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary-dark;
+    color: var(--color-primary-dark);
   }
 }
