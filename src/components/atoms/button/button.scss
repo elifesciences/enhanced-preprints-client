@@ -22,7 +22,7 @@
 }
 
 .button--action {
-  background-color: settings.$color-button;
+  background-color: var(--color-button);
   color: var(--color-text);
   font-weight: 600;
   text-transform: none;
@@ -44,7 +44,7 @@
 .button--cite-download {
   @include mixins.padding(12 18 14 18);
 
-  background-color: settings.$color-button;
+  background-color: var(--color-button);
   border: none;
   color: var(--color-text);
   margin: 0 auto;
