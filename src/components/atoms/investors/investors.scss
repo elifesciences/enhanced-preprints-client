@@ -14,7 +14,7 @@ $image-width: 185;
 .investor-logos__item {
   @include mixins.padding(24);
 
-  border-top: 1px solid settings.$divider;
+  border-top: 1px solid var(--divider);
 }
 
 .investor-logos__container {
@@ -40,7 +40,7 @@ $image-width: 185;
 
 @media only all and (min-width: settings.$breakpoint-small) {
   .investor-logos {
-    border-top: 1px solid settings.$divider;
+    border-top: 1px solid var(--divider);
     display: table;
     table-layout: fixed;
     width: 100%;
@@ -48,7 +48,7 @@ $image-width: 185;
 
   .investor-logos__item {
     border: 0;
-    border-right: 1px solid settings.$divider;
+    border-right: 1px solid var(--divider);
     display: table-cell;
     vertical-align: top;
 
