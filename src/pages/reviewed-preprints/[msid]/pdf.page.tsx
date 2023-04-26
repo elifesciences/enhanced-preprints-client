@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const [metaData, content, peerReview, status] = await Promise.all([
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchReviews(`${manuscriptConfig.msid}`),
+    fetchReviews(manuscriptConfig.msid),
     // replace with call for data
     manuscriptConfig.status,
   ]);
