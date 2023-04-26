@@ -13,7 +13,7 @@ describe('getManuscripts', () => {
           articleType: 'Reviewed Preprint',
           status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
           timeline: [
-            { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+            { name: 'Reviewed preprint posted', date: '2022-10-20' },
             { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
             { name: 'Sent for peer review', date: '2022-06-24' },
           ],
@@ -29,7 +29,7 @@ describe('getManuscripts', () => {
           articleType: 'Reviewed Preprint',
           status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
           timeline: [
-            { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+            { name: 'Reviewed preprint posted', date: '2022-10-20' },
             { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
             { name: 'Sent for peer review', date: '2022-06-24' },
           ],
@@ -45,7 +45,7 @@ describe('getManuscripts', () => {
           articleType: 'Reviewed Preprint',
           status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
           timeline: [
-            { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+            { name: 'Reviewed preprint posted', date: '2022-10-20' },
             { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
             { name: 'Sent for peer review', date: '2022-06-24' },
           ],
@@ -70,7 +70,7 @@ describe('getManuscriptsLatest', () => {
           articleType: 'Reviewed Preprint',
           status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
           timeline: [
-            { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+            { name: 'Reviewed preprint posted', date: '2022-10-20' },
             { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
             { name: 'Sent for peer review', date: '2022-06-24' },
           ],
@@ -86,7 +86,7 @@ describe('getManuscriptsLatest', () => {
           articleType: 'Reviewed Preprint',
           status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
           timeline: [
-            { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+            { name: 'Reviewed preprint posted', date: '2022-10-20' },
             { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
             { name: 'Sent for peer review', date: '2022-06-24' },
           ],
@@ -110,7 +110,7 @@ describe('getManuscript', () => {
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
-          { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+          { name: 'Reviewed preprint posted', date: '2022-10-20' },
           { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
           { name: 'Sent for peer review', date: '2022-06-24' },
         ],

@@ -61,7 +61,7 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
     .map((k) => preprintManuscripts.manuscripts[k] as Manuscript);
 
   const newTimeline: Timeline[] = [
-    { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
+    { name: 'Reviewed preprint posted', date: dateReviewedPreprint },
   ];
 
   if (ppDate && ppUrl) {

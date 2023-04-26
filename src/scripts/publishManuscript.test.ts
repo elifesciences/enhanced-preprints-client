@@ -164,7 +164,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -186,7 +186,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2023-04-23',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
             {
               date: '2022-01-01',
@@ -215,7 +215,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2023-04-23',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
             {
               date: '2022-01-01',
@@ -244,7 +244,7 @@ describe('addManuscript', () => {
           timeline: [
             {
               date: '2020-01-02',
-              name: 'Reviewed Preprint posted',
+              name: 'Reviewed preprint posted',
             },
           ],
         },
@@ -267,7 +267,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-02',
@@ -299,7 +299,7 @@ describe('addManuscript', () => {
               },
               {
                 date: '2020-01-02',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-01',
@@ -331,7 +331,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2020-01-07',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
               {
                 date: '2020-01-02',
@@ -367,7 +367,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },
@@ -389,7 +389,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-22',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -405,7 +405,7 @@ describe('addManuscript', () => {
             timeline: [
               {
                 date: '2023-04-23',
-                name: 'Reviewed Preprint posted',
+                name: 'Reviewed preprint posted',
               },
             ],
           },
@@ -429,7 +429,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },
@@ -670,7 +670,7 @@ describe('addManuscript', () => {
               timeline: [
                 {
                   date: '2023-04-22',
-                  name: 'Reviewed Preprint posted',
+                  name: 'Reviewed preprint posted',
                 },
               ],
             },
