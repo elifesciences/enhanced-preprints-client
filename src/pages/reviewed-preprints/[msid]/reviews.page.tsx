@@ -46,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const [metaData, peerReview, status] = await Promise.all([
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchReviews(manuscriptConfig.msid),
+    fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -57,9 +57,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     props: {
       metaData: {
         ...metaData,
+        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
-        pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },

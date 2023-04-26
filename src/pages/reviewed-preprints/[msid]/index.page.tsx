@@ -18,7 +18,7 @@ type PageProps = {
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
-  const publishedEvent = events.find(({ name }) => name === 'Reviewed Preprint posted');
+  const publishedEvent = events.find(({ name }) => name === 'Reviewed preprint posted');
   if (publishedEvent) {
     const date = new Date(publishedEvent.date);
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
@@ -68,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   const [metaData, content, peerReview, status] = await Promise.all([
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchReviews(manuscriptConfig.msid),
+    fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -79,9 +79,9 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     props: {
       metaData: {
         ...metaData,
+        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
-        pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
