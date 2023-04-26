@@ -1,7 +1,12 @@
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 
-const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
+const formatName = (author: Author) => {
+  let nameParts: string[] = [];
+  if (author.familyNames) nameParts = [...author.familyNames];
+  if (author.givenNames) nameParts.push(...author.givenNames);
+  return nameParts.join(' ');
+};
 
 export const ReferenceBody = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }): JSX.Element => {
   const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
