@@ -61,7 +61,7 @@ const prepareAuthorLine = (authors: Author[]) : undefined | string => {
 };
 
 const reviewedDate = (timeline: TimelineEvent[]) : string | undefined => {
-  const reviewedEvent = timeline.find((obj) => obj.name === 'Reviewed Preprint posted');
+  const reviewedEvent = timeline.find((obj) => obj.name === 'Reviewed preprint posted');
 
   return reviewedEvent ? `${reviewedEvent.date}T03:00:00Z` : undefined;
 };
