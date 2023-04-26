@@ -12,13 +12,14 @@ export type TimelineEvent = {
 
 type TimelineProps = {
   events: TimelineEvent[],
+  listDescription?: string,
 };
 
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 
-export const Timeline = ({ events }: TimelineProps): JSX.Element => (
+export const Timeline = ({ events, listDescription }: TimelineProps): JSX.Element => (
   <div className="review-timeline">
-    <dl className="review-timeline__list" aria-label="This is the timeline of this Reviewed Preprint">
+    <dl className="review-timeline__list" aria-label={listDescription}>
       {
         events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((entry, index) => (
           <Fragment key={index}>
