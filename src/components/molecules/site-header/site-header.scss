@@ -39,7 +39,7 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(20, "left");
 
-    border-left: settings.$border;
+    border-left: var(--border);
     display: inline-block;
     height: 24px;
   }
@@ -60,18 +60,18 @@
   @include typography.font-size-and-vertical-height(14);
   @include mixins.padding(24, "left");
 
-  color: settings.$link-decoration;
+  color: var(--link-decoration);
   display: none;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
 
   a {
-    color: settings.$link-decoration;
+    color: var(--link-decoration);
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 
@@ -101,7 +101,7 @@
 
     &:hover {
       background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 
@@ -140,8 +140,8 @@
   @include mixins.margin(2, "top");
   @include mixins.padding(24, "left");
 
-  color: settings.$link-decoration;
-  font-family: settings.$font-family-primary;
+  color: var(--link-decoration);
+  font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
 }
@@ -153,11 +153,11 @@
   background-size: 21px;
 
   a {
-    color: settings.$link-decoration;
+    color: var(--link-decoration);
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 }
@@ -169,12 +169,12 @@
   background-size: 21px;
 
   a {
-    color: settings.$link-decoration;
+    color: var(--link-decoration);
     display: block;
     text-decoration: none;
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
   }
 }
@@ -185,7 +185,7 @@
   @include typography.font-size-and-vertical-height(11, 22);
 
   border-radius: 3px;
-  color: settings.$color-text;
+  color: var(--color-text);
   font-weight: normal;
   height: 24px;
   text-decoration: none;
@@ -196,7 +196,7 @@
     @include mixins.margin(1, "top");
     @include mixins.padding(5 9 3 9);
 
-    background-color: settings.$color-primary;
+    background-color: var(--color-primary);
     color: #fff;
   }
 }
@@ -230,7 +230,7 @@
   @include mixins.padding(24, "bottom");
 
   display: block;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   line-height: 0;
   text-align: left;
 
@@ -243,7 +243,7 @@
   &.end-of-group {
     @include mixins.margin(24, "bottom");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
   }
 
   &:last-child {
@@ -254,12 +254,12 @@
 .main-menu__list_link {
   @include typography.font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text;
+  color: var(--color-text);
   font-weight: bold;
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -270,22 +270,22 @@
   background: url("../../../images/menu/close.svg") no-repeat 49px 5px;
   background-size: 14px;
   border: none;
-  color: settings.$color-text;
+  color: var(--color-text);
   cursor: pointer;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   text-align: left;
   width: 68px;
 
   &:hover {
     background-image: url("../../../images/menu/close-blue.svg");
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
 .main-menu__container {
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 
   .site-header__title {
@@ -307,7 +307,7 @@
 
     background-color: #fff;
     box-sizing: border-box;
-    color: settings.$color-text;
+    color: var(--color-text);
     display: block;
     float: left;
     height: 100vh;
