@@ -18,7 +18,7 @@ type PageProps = {
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
-  const publishedEvent = events.find(({ name }) => name === 'Reviewed Preprint posted');
+  const publishedEvent = events.find(({ name }) => name === 'Reviewed preprint posted');
   if (publishedEvent) {
     const date = new Date(publishedEvent.date);
     return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
