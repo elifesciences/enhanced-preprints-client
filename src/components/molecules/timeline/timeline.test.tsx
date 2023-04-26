@@ -8,8 +8,17 @@ describe('Timeline', () => {
       .mockReturnValueOnce('14/02/2002');
     render(<Timeline events={[
       { name: 'event1', date: '2001-01-13' },
-      { name: 'event2', date: '2002-02-14' },
-    ]}/>);
+      {
+        name: 'event2',
+        date: '2002-02-14',
+        link: {
+          text: 'Go to bioRxiv',
+          url: 'https://preprint.url',
+        },
+      },
+    ]}
+    listDescription='This is a timeline'
+    />);
 
     const firstEvent = screen.getByText('14 February 2002');
     const secondEvent = screen.getByText('13 January 2001');
@@ -18,5 +27,8 @@ describe('Timeline', () => {
     expect(firstEvent.compareDocumentPosition(secondEvent)).toBe(4);
     expect(screen.getByText('event1')).toBeInTheDocument();
     expect(screen.getByText('event2')).toBeInTheDocument();
+    expect(screen.getByLabelText('This is a timeline')).toBeInTheDocument();
+    expect(screen.getByLabelText('event2')).toBeInTheDocument();
+    expect(screen.getByLabelText('event2')).toHaveAttribute('href', 'https://preprint.url');
   });
 });
