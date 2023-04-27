@@ -9,7 +9,7 @@ services:
       - S3SOURCE_ENDPOINT=http://minio:9000/
       - S3SOURCE_ACCESS_KEY_ID=minio
       - S3SOURCE_SECRET_KEY=miniotest
-      - S3SOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=data/data/
+      - S3SOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=data/
       - S3SOURCE_BASICLOOKUPSTRATEGY_BUCKET_NAME=eppdata
     ports:
       - "8182:8182"
@@ -75,14 +75,16 @@ services:
       /usr/bin/mc config host add myminio http://minio:9000 minio miniotest;
       /usr/bin/mc mb myminio/eppdata;
       /usr/bin/mc cp --recursive /data myminio/eppdata/;
+      # Set to public to host local PDFs
+      /usr/bin/mc anonymous set public myminio/eppdata;
       exit 0;
       "
     volumes:
-      - ./data:/data
+      - ./data/data:/data
 
   ## EPP API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-239dc5ea-20230411.0921
+    image: ghcr.io/elifesciences/enhanced-preprints:master-95b1a6c0-20230425.1620
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s

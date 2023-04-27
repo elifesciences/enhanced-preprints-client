@@ -12,6 +12,7 @@ import { ArticleReviewsTab } from '../../../components/pages/article/tabs';
 
 type PageProps = {
   metaData: MetaData,
+  msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
@@ -22,7 +23,7 @@ export const Page = (props: PageProps): JSX.Element => (
   <Head>
     <title>{contentToText(props.metaData.title)}</title>
   </Head>
-  <ArticlePage metaData={props.metaData} status={props.status} tabs={[]} activeTab="">
+  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} tabs={[]} activeTab="">
     <>
       <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
       <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
@@ -50,12 +51,10 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  // map msid to preprint doi
-  const { preprintDoi } = manuscriptConfig;
   const [metaData, content, peerReview, status] = await Promise.all([
-    fetchMetadata(preprintDoi),
-    fetchContent(preprintDoi),
-    fetchReviews(preprintDoi),
+    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     // replace with call for data
     manuscriptConfig.status,
   ]);
@@ -66,12 +65,13 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     props: {
       metaData: {
         ...metaData,
+        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
-        pdfUrl: manuscriptConfig.pdfUrl,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
+      msidWithVersion: msid,
       content,
       status,
       peerReview,
