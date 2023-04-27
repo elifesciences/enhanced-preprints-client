@@ -46,10 +46,10 @@
 }
 
 .author-list__orcids_link {
-  color: settings.$color-primary;
+  color: var(--color-primary);
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary-dark;
+    color: var(--color-primary-dark);
   }
 }
