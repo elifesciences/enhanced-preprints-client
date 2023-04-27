@@ -9,6 +9,8 @@ const authorLimits = [authorLimit, 10];
 export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
+  console.log(`window is ${window}`);
+
   return typeof window !== undefined ? (
     <div className={
       `
