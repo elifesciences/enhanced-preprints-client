@@ -5,8 +5,7 @@
 }
 
 @mixin font-size($size_in_px) {
-  font-size: #{$size_in_px}px;
-  font-size: get-rem-from-px($size_in_px) * 1rem;
+  font-size: calc(($size_in_px / 16) * 1rem);
 }
 
 @mixin font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: 24) {
