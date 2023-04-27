@@ -23,6 +23,12 @@
   // Site Spacing
   --site-spacing: 24px;
   --site-spacing-large: 48px;
+
+  // Dark Mode
+  --dark-mode-background: #121212;
+  --dark-mode-color: #fff;
+  --light-mode-background: #fff;
+  --light-mode-color: $color-text;
 }
 
 // Typography
