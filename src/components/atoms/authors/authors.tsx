@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
@@ -7,11 +7,13 @@ const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
 
 export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
+  const isJSEnabled = useMemo(() => typeof window !== 'undefined', [typeof window]);
+
   const [expanded, setExpanded] = useState(false);
 
   console.log(`window is ${window}`);
 
-  return typeof window !== undefined ? (
+  return isJSEnabled ? (
     <div className={
       `
       authors${authors.length > authorLimit ? ' authors--collapsible' : ''}
