@@ -1,14 +1,19 @@
 ARG node_version=18.16-alpine3.17
 
 FROM node:${node_version} as builder
+RUN mkdir /opt/epp-client
+WORKDIR /opt/epp-client
 COPY package.json package.json
 COPY yarn.lock yarn.lock
-RUN yarn
+COPY .yarnrc.yml .yarnrc.yml
+COPY .yarn ./.yarn
+
+RUN yarn workspaces focus --production
 
 FROM node:${node_version} as base
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
-COPY --from=builder /node_modules /opt/epp-client/node_modules
+COPY --from=builder /opt/epp-client/node_modules /opt/epp-client/node_modules
 COPY ./ ./
 
 FROM base as dev
