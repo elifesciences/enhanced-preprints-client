@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { config } from '../../../config';
-import { getManuscript } from '../../../manuscripts';
+import { getManuscript, getRppDoi } from '../../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../../types';
 import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
 import { ArticleFullTextTab } from '../../../components/pages/article/tabs';
@@ -34,10 +34,10 @@ export const Page = (props: PageProps): JSX.Element => (
     <meta name="citation_title" content={contentToText(props.metaData.title)}/>
     <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
     <meta name="citation_journal_title" content="eLife"/>
-    <meta name="citation_volume" content={props.metaData.version}/>
+    <meta name="citation_volume" content={(props.metaData.publishedYear - 2011).toString()}/>
     <meta name="citation_id" content={props.metaData.msid}/>
     <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
-    <meta name="citation_doi" content={props.metaData.doi}/>
+    <meta name="citation_doi" content={getRppDoi(props.metaData)}/>
     <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
     <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
     <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
