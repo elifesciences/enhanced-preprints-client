@@ -33,7 +33,7 @@ export const Page = (props: PageProps): JSX.Element => (
     <title>{contentToText(props.metaData.title)}</title>
     <meta name="citation_title" content={contentToText(props.metaData.title)}/>
     <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
-    <meta name="citation_journal_title" content="eLife Sciences Publications Limited"/>
+    <meta name="citation_journal_title" content="eLife"/>
     <meta name="citation_volume" content={props.metaData.version}/>
     <meta name="citation_id" content={props.metaData.msid}/>
     <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
