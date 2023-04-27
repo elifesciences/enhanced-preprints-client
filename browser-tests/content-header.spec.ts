@@ -3,16 +3,10 @@ import { ContentHeader } from './page-objects/content-header';
 
 test.describe('content header', () => {
   let contentHeader: ContentHeader;
-  let windowSpy: jest.SpyInstance;
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 1000, height: 1000 });
     await page.goto('http://localhost:3001/reviewed-preprints/123');
     contentHeader = new ContentHeader(page);
-    windowSpy = jest.spyOn(window, 'window', 'get');
-    windowSpy.mockImplementation(() => ({}));
-  });
-  test.afterEach(() => {
-    windowSpy.mockRestore();
   });
 
   test('has title and links to intro page', async () => {
