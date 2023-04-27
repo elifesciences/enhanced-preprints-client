@@ -85,15 +85,15 @@
 }
 
 .authors-link {
-  color: settings.$color-text;
+  color: var(--color-text);
   text-decoration: none;
 
   &:visited {
-    color: settings.$color-text;
+    color: var(--color-text);
   }
 
   &:hover {
-    color: settings.$color-primary-dark;
+    color: var(--color-primary-dark);
   }
 }
 
