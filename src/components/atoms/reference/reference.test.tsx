@@ -44,5 +44,11 @@ describe('Reference', () => {
 
       expect(screen.getByText('1.')).toBeInTheDocument();
     });
+
+    it('should render the reference name correctly if givenNames is undefined', () => {
+      render(<Reference reference={references[0]} isReferenceList={true} />);
+
+      expect(screen.getByText('NoGiven').textContent).toStrictEqual('NoGiven');
+    });
   });
 });

@@ -18,7 +18,7 @@
     @include mixins.margin(0);
     @include mixins.padding(16, "left");
 
-    border-left: 1px solid settings.$divider;
+    border-left: 1px solid var(--divider);
 
     p,
     li {
@@ -49,7 +49,7 @@
     @include mixins.padding(24 36);
   }
 
-  background-color: settings.$color-background;
+  background-color: var(--color-background);
 }
 
 .review-content_links {
