@@ -35,10 +35,12 @@ export class ContentHeader {
   }
 
   async toggleAuthorsExpansion(): Promise<void> {
+    await this.page.waitForFunction(() => typeof window !== 'undefined');
     await this.authorsExpansion.click();
   }
 
   async toggleInstitutionsExpansion(): Promise<void> {
+    await this.page.waitForFunction(() => typeof window !== 'undefined');
     await this.institutionsExpansion.click();
   }
 
