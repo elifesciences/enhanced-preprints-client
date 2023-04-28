@@ -31,7 +31,6 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
-  const [activeTab, setActiveTab] = useState<string>(props.activeTab);
   const id = props.msidWithVersion ?? props.metaData.msid;
   const tabs = props.tabs ?? [
     {
@@ -77,7 +76,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
         <ul className="tabbed-navigation__tabs">
           {tabs.map((tab, index) => (
-            <li key={index} className={`tabbed-navigation__tab-label${activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`} onClick={() => setActiveTab(tab.id)}>
+            <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
               {tab.linkElement}
             </li>
           ))}
