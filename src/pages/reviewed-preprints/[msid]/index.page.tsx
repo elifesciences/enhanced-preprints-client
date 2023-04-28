@@ -42,12 +42,18 @@ export const Page = (props: PageProps): JSX.Element => {
   useEffect(() => {
     const onLocationChange = (event: PopStateEvent) => {
       event.preventDefault();
-      if (event.state?.as !== undefined) {
-        if ((event.state?.as as string).includes(props.metaData.msid)) {
-          if ((event.state?.as as string).includes('figures')) setTab('figures');
-          else if ((event.state?.as as string).includes('reviews')) setTab('reviews');
-          else setTab('fulltext');
-        } else window.history.back();
+      const includesCheck = (term: string) => (event.state?.as as string).includes(term);
+      switch (true) {
+        case (event.state?.as === undefined):
+          break;
+        case !includesCheck(props.metaData.msid): window.history.back();
+          break;
+        case includesCheck('figures'): setTab('figures');
+          break;
+        case includesCheck('reviews'): setTab('reviews');
+          break;
+        default: setTab('fulltext');
+          break;
       }
     };
     window.addEventListener('popstate', (event) => onLocationChange(event));
