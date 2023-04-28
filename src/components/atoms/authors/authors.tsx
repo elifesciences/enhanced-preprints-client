@@ -8,7 +8,7 @@ const authorLimits = [authorLimit, 10];
 
 export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
-  useMemo(() => setExpanded(false), []);
+  useMemo(() => typeof window !== 'undefined' && setExpanded(false), [typeof window === 'undefined']);
 
   return expanded !== null ? (
     <div className={

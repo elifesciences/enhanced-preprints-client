@@ -6,7 +6,7 @@ const institutionLimit = 3;
 
 export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
-  useMemo(() => setExpanded(false), []);
+  useMemo(() => typeof window !== 'undefined' && setExpanded(false), [typeof window === 'undefined']);
 
   const displayInstitutions = useMemo(() => institutions.slice(0, expanded !== false ? institutions.length : institutionLimit), [expanded]);
   const expansionText = useMemo(() => (expanded ? 'show less' : `show ${institutions.length - institutionLimit} more`), [expanded]);
