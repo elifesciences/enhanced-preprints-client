@@ -12,7 +12,7 @@
 
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    padding-#{$dimension}: calc(($size_in_px / 16) * 1rem);
+    padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
     $parts-px: ();
     $parts-rem: ();
@@ -28,13 +28,13 @@
     padding: $parts-px;
     padding: $parts-rem;
   } @else {
-    padding: calc(($size_in_px / 16) * 1rem);
+    padding: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
 @mixin margin($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    margin-#{$dimension}: calc(($size_in_px / 16) * 1rem);
+    margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
     $parts-px: ();
     $parts-rem: ();
@@ -50,7 +50,7 @@
     margin: $parts-px;
     margin: $parts-rem;
   } @else {
-    margin: calc(($size_in_px / 16) * 1rem);
+    margin: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
