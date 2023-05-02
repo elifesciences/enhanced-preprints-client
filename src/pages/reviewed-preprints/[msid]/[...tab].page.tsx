@@ -1,6 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../../types';
@@ -39,7 +40,10 @@ export const Page = (props: PageProps): JSX.Element => {
       </>),
   };
   const router = useRouter();
-  const tabName = (router.query.tab?.[0] && tabs[router.query.tab[0]] !== undefined) ? router.query.tab[0] : 'fulltext';
+  const tabName = useMemo(
+    () => (router.query.tab?.[0] && tabs[router.query.tab[0]] !== undefined ? router.query.tab[0] : 'fulltext'),
+    [router.query.tab],
+  );
   const tab = tabs[tabName]();
   return (
     <>
