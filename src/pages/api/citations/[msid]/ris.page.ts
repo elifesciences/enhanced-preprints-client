@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getManuscript, getRppDoi } from '../../../../manuscripts';
+import { getManuscript, getRppVersionDoi } from '../../../../manuscripts';
 import { config } from '../../../../config';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const doi = getRppDoi(manuscript);
+  const doi = getRppVersionDoi(manuscript);
   const extReq = await fetch(
     `${config.apiServer}/api/citations/${doi}/ris`,
   );
