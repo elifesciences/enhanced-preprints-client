@@ -8,7 +8,7 @@ import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
-import { getRppDoi } from '../../../manuscripts';
+import { getRppVersionDoi } from '../../../manuscripts';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -47,7 +47,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}/reviews`}>Peer review</Link>,
     },
   ];
-  const doi = getRppDoi(props.metaData);
+  const doi = getRppVersionDoi(props.metaData);
 
   const citation: CitationData = {
     authors: props.metaData.authors,
