@@ -13,7 +13,6 @@
 }
 
 .modal-content {
-  @include mixins.margin(0);
   @include mixins.padding(36);
 
   background-color: #fff;
@@ -22,6 +21,7 @@
   display: grid;
   font-family: var(--font-family-primary);
   grid-template-columns: repeat(4, 1fr);
+  margin: 0;
   z-index: 200;
 
   @media only all and (min-width: settings.$breakpoint-small) {
@@ -38,13 +38,13 @@
   }
 
   h6 {
-    @include mixins.margin(0);
     @include mixins.padding(0 0 12);
     @include typography.font-size-and-vertical-height(16, 24);
 
     grid-column: 1/6;
     grid-row: 1;
     justify-self: start;
+    margin: 0;
   }
 }
 
@@ -64,10 +64,9 @@
 }
 
 .modal-content__title {
-  @include mixins.padding(0);
-
   grid-column: 2/4;
   grid-row: 1;
+  padding: 0;
 }
 
 .modal-content__show {
