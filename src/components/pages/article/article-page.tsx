@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
@@ -31,20 +31,19 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
-  const [activeTab, setActiveTab] = useState<string>(props.activeTab);
   const id = props.msidWithVersion ?? props.metaData.msid;
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}`}>Full text</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}#article-content`} >Full text</Link>,
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}/figures`}>Figures and data</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/figures#article-content`} >Figures and data</Link>,
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={false} href={`/reviewed-preprints/${id}/reviews`}>Peer review</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/reviews#article-content`} >Peer review</Link>,
     },
   ];
   const doi = getRppVersionDoi(props.metaData);
@@ -77,12 +76,13 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
         <ul className="tabbed-navigation__tabs">
           {tabs.map((tab, index) => (
-            <li key={index} className={`tabbed-navigation__tab-label${activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`} onClick={() => setActiveTab(tab.id)}>
+            <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
               {tab.linkElement}
             </li>
           ))}
         </ul>
       </nav>
+      <a id="article-content" />
       {props.children}
       </main>
     </>

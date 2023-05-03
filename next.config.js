@@ -36,6 +36,12 @@ const nextConfig = {
         source: '/status',
         destination: '/api/status',
       },
+    ],
+    fallback: [
+      {
+        source: '/reviewed-preprints/:path*',
+        destination: '/reviewed-preprints/:path*/fulltext',
+      },
     ]
   }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],

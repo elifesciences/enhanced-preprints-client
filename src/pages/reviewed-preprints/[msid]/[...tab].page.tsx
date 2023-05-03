@@ -1,10 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { config } from '../../../config';
 import { getManuscript, getRppDoi } from '../../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../../types';
 import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
-import { ArticleFullTextTab } from '../../../components/pages/article/tabs';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { contentToText } from '../../../utils/content-to-text';
 import { TimelineEvent } from '../../../components/molecules/timeline/timeline';
@@ -27,28 +29,45 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-export const Page = (props: PageProps): JSX.Element => (
-  <>
-  <Head>
-    <title>{contentToText(props.metaData.title)}</title>
-    <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-    <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
-    <meta name="citation_journal_title" content="eLife"/>
-    <meta name="citation_volume" content={(props.metaData.publishedYear - 2011).toString()}/>
-    <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
-    <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
-    <meta name="citation_doi" content={getRppDoi(props.metaData)}/>
-    <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
-    <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
-    <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
-    <meta name="citation_language" content="en"/>
-    { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim()}/>)}
-  </Head>
-  <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab="fulltext">
-    <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
-  </ArticlePage>
-  </>
-);
+export const Page = (props: PageProps): JSX.Element => {
+  const tabs: { [key: string]: () => JSX.Element } = {
+    fulltext: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>,
+    figures: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
+    reviews: () => <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>,
+    pdf: () => (<>
+        <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
+        <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
+      </>),
+  };
+  const router = useRouter();
+  const tabName = useMemo(
+    () => (router.query.tab?.[0] && tabs[router.query.tab[0]] !== undefined ? router.query.tab[0] : 'fulltext'),
+    [router.query.tab],
+  );
+  const tab = tabs[tabName]();
+  return (
+    <>
+    <Head>
+      <title>{contentToText(props.metaData.title)}</title>
+      <meta name="citation_title" content={contentToText(props.metaData.title)}/>
+      <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
+      <meta name="citation_journal_title" content="eLife"/>
+      <meta name="citation_volume" content={(props.metaData.publishedYear - 2011).toString()}/>
+      <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
+      <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
+      <meta name="citation_doi" content={getRppDoi(props.metaData)}/>
+      <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
+      <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
+      <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
+      <meta name="citation_language" content="en"/>
+      { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim()} />)}
+    </Head>
+    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={ tabName === 'pdf' ? [] : undefined } status={props.status} activeTab={tabName}>
+      { tab }
+    </ArticlePage>
+    </>
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   const msid = context.params?.msid;
