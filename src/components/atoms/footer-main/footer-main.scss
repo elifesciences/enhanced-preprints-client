@@ -125,8 +125,7 @@
   }
 
   .site-smallprint {
-    @include mixins.padding(0);
-
+    padding: 0;
     text-align: left;
   }
 

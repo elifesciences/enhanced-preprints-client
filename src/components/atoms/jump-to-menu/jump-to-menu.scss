@@ -27,9 +27,9 @@
 .jump-menu-list {
   @include mixins.margin(0, "left");
   @include mixins.margin(21, "top");
-  @include mixins.padding(0);
 
   list-style: none;
+  padding: 0;
 }
 
 .jump-menu-list__item {
