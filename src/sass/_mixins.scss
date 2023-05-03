@@ -61,12 +61,12 @@
 
 @mixin constrain-width($size_in_px, $extreme) {
   @if $extreme == min or $extreme == max {
-    #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem)
+    #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
 @mixin height($size_in_px) {
-  height: calc(($size_in_px / var(--base-font-size)) * 1rem)
+  height: calc(($size_in_px / var(--base-font-size)) * 1rem);
 }
 
 @mixin visuallyhidden() {
