@@ -57,11 +57,11 @@
 }
 
 .article-actions {
-  @include mixins.margin(0);
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
   list-style: none;
+  margin: 0;
 }
 
 .article-actions__list-item {
@@ -116,14 +116,13 @@
 }
 
 .cite-downloads__list {
-  @include mixins.padding(0);
-  @include mixins.margin(0);
-
   align-items: stretch;
   display: flex;
   flex-wrap: wrap;
   grid-column: 1/13;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .cite-downloads__list-item {
