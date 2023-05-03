@@ -14,12 +14,7 @@
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
     padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
-    $parts-px: ();
     $parts-rem: ();
-
-    @each $size in $size_in_px {
-      $parts-px: list.append($parts-px, #{$size}px, "space");
-    }
 
     @each $size in $size_in_px {
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
@@ -35,12 +30,7 @@
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
     margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
-    $parts-px: ();
     $parts-rem: ();
-
-    @each $size in $size_in_px {
-      $parts-px: list.append($parts-px, #{$size}px, "space");
-    }
 
     @each $size in $size_in_px {
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
