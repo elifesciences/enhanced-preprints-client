@@ -451,6 +451,25 @@
         "Cell Biology",
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.01.24.525372": {
+      "preprintDoi": "10.1101/2023.01.24.525372",
+      "msas": [
+        "Chromosomes and Gene Expression"
+      ]
+    },
+    "10.1101/2022.05.16.492226": {
+      "preprintDoi": "10.1101/2022.05.16.492226",
+      "msas": [
+        "Cancer Biology",
+        "Cell Biology"
+      ]
+    },
+    "10.1101/2023.03.01.530608": {
+      "preprintDoi": "10.1101/2023.03.01.530608",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -503,6 +522,7 @@
     "86635": "86635v1",
     "86636": "86636v1",
     "86663": "86663v1",
+    "86669": "86669v1",
     "86670": "86670v1",
     "86689": "86689v1",
     "86699": "86699v1",
@@ -512,6 +532,7 @@
     "86776": "86776v1",
     "86784": "86784v1",
     "86823": "86823v1",
+    "86824": "86824v1",
     "86845": "86845v1",
     "86847": "86847v1",
     "86972": "86972v1",
@@ -526,6 +547,7 @@
     "87167": "87167v1",
     "87178": "87178v1",
     "87253": "87253v1",
+    "87281": "87281v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -2576,6 +2598,90 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-13"
+          }
+        ]
+      }
+    },
+    "86669v1": {
+      "msid": "86669",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.24.525372",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-02"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.24.525372v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86824v1": {
+      "msid": "86824",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.05.16.492226",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-03"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.05.16.492226v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87281v1": {
+      "msid": "87281",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.01.530608",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-03"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-02",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.01.530608v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-01"
           }
         ]
       }
