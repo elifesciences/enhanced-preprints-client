@@ -457,6 +457,13 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2022.05.16.492226": {
+      "preprintDoi": "10.1101/2022.05.16.492226",
+      "msas": [
+        "Cancer Biology",
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -519,6 +526,7 @@
     "86776": "86776v1",
     "86784": "86784v1",
     "86823": "86823v1",
+    "86824": "86824v1",
     "86845": "86845v1",
     "86847": "86847v1",
     "86972": "86972v1",
@@ -2609,6 +2617,34 @@
             "date": "2023-01-24",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.01.24.525372v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86824v1": {
+      "msid": "86824",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.05.16.492226",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-03"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.05.16.492226v2",
               "text": "Go to bioRxiv"
             }
           }
