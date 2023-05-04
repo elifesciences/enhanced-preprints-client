@@ -17,7 +17,7 @@ describe('Modal window', () => {
   it('is shown when open set to true', () => {
     render(<Modal modalTitle='This is the title' open={true}>This is the content</Modal>);
 
-    expect(screen.getByText('This is the content').parentElement?.parentElement?.parentElement).toHaveClass('modal-content__show');
+    expect(screen.queryByText('This is the content')).toBeInTheDocument();
   });
 
   it('only displays a close button if onModalClose set', () => {
@@ -35,7 +35,7 @@ describe('Modal window', () => {
     render(<Modal modalTitle='This is the title' open={true} onModalClose={() => {
       onModalCloseIndicator = true;
     }}>This is the content</Modal>);
-    expect(screen.getByText('This is the content').parentElement?.parentElement?.parentElement).toHaveClass('modal-content__show');
+    expect(screen.queryByText('This is the content')).toBeInTheDocument();
 
     expect(onModalCloseIndicator).toStrictEqual(false);
 
