@@ -63,6 +63,7 @@
   }
 }
 
+.review-timeline__description,
 .review-timeline__link {
   @include typography.font-size-and-vertical-height(12, 24);
 
