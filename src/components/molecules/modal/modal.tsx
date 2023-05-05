@@ -31,7 +31,7 @@ export const Modal = ({
             <h6 className="modal-content__title">{modalTitle}</h6>
             {onModalClose !== undefined ? (<button className="modal-content__close-button" onClick={onModalClose}>Close</button>) : ''}
           </div>
-          {children !== undefined ? (<div className="modal-content__body">{children}</div>) : ''}
+          {children !== undefined && open ? (<div className="modal-content__body">{children}</div>) : ''}
         </div>
       </div>
     </div>
