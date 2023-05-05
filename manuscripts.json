@@ -521,6 +521,12 @@
         "Developmental Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.02.19.529115": {
+      "preprintDoi": "10.1101/2023.02.19.529115",
+      "msas": [
+        "Ecology"
+      ]
     }
   },
   "manuscripts": {
@@ -603,6 +609,7 @@
     "87147": "87147v1",
     "87167": "87167v1",
     "87178": "87178v1",
+    "87202": "87202v1",
     "87253": "87253v1",
     "87281": "87281v1",
     "87340": "87340v1",
@@ -2987,6 +2994,34 @@
           {
             "name": "Sent for peer review",
             "date": "2023-02-27"
+          }
+        ]
+      }
+    },
+    "87202v1": {
+      "msid": "87202",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.19.529115",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-05"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-02"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-21",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.19.529115v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
