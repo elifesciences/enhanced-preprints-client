@@ -1439,7 +1439,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/86100/v1/86100-v1.pdf"
     },
     "85875v1": {
       "msid": "85875",
@@ -2508,7 +2509,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/86635/v1/86635-v1.pdf"
     },
     "86617v1": {
       "msid": "86617",
