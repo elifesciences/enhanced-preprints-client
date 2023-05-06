@@ -38,7 +38,7 @@ EventTimelineWithLinks.args = {
       date: '2001-03-03',
     },
   ],
-  listDescription: 'This is the event timeline with a line',
+  listDescription: 'This is the event timeline with a link',
 };
 export const EventTimelineWithDescriptions = Template.bind({});
 EventTimelineWithDescriptions.args = {
@@ -46,31 +46,18 @@ EventTimelineWithDescriptions.args = {
     {
       name: 'event 1',
       date: '1999-01-01',
-      link: {
-        text: 'Go to bioRxiv',
-        url: 'https://preprint.url',
-      },
+      eventDescription: 'This version',
     },
     {
       name: 'event 2',
       date: '2000-02-02',
-      link: {
-        text: 'Go to version',
-        url: 'https://version.url',
-      },
-      eventDescription: 'Version description',
     },
     {
       name: 'event 3',
       date: '2001-03-03',
-      eventDescription: 'Event description',
-    },
-    {
-      name: 'event 4',
-      date: '2001-04-03',
     },
   ],
-  listDescription: 'This is the event timeline with a line',
+  listDescription: 'This is the event timeline with a description',
 };
 export const EventTimelineUnordered = Template.bind({});
 EventTimelineUnordered.args = {
