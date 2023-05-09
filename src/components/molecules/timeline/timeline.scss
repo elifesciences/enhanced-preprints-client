@@ -63,6 +63,7 @@
   }
 }
 
+.review-timeline__description,
 .review-timeline__link {
   @include typography.font-size-and-vertical-height(12, 24);
 
@@ -70,7 +71,9 @@
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+}
 
+.review-timeline__link {
   &::before {
     content: "\00a0\00a0•\00a0\00a0";
   }

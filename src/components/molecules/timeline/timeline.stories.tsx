@@ -38,7 +38,26 @@ EventTimelineWithLinks.args = {
       date: '2001-03-03',
     },
   ],
-  listDescription: 'This is the event timeline with a line',
+  listDescription: 'This is the event timeline with a link',
+};
+export const EventTimelineWithDescriptions = Template.bind({});
+EventTimelineWithDescriptions.args = {
+  events: [
+    {
+      name: 'event 1',
+      date: '1999-01-01',
+      eventDescription: '(this version)',
+    },
+    {
+      name: 'event 2',
+      date: '2000-02-02',
+    },
+    {
+      name: 'event 3',
+      date: '2001-03-03',
+    },
+  ],
+  listDescription: 'This is the event timeline with a description',
 };
 export const EventTimelineUnordered = Template.bind({});
 EventTimelineUnordered.args = {
