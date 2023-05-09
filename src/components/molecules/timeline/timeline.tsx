@@ -43,7 +43,7 @@ export const Timeline = ({ events, listDescription }: TimelineProps): JSX.Elemen
             <dd className="review-timeline__date">
               {formatDate(entry.date)}
               {entry.link && <a className="review-timeline__link" href={entry.link.url} aria-label={entry.name}>{entry.link.text}</a>}
-              {entry.eventDescription && <span className="review-timeline__description">{entry.eventDescription}</span>}
+              {entry.eventDescription && <span className="review-timeline__description"> {entry.eventDescription}</span>}
             </dd>
           </Fragment>
         ))

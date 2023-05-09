@@ -71,8 +71,10 @@
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
-
-  &::before {
-    content: "\00a0\00a0•\00a0\00a0";
-  }
 }
+
+.review-timeline__link {
+   &::before {
+     content: "\00a0\00a0•\00a0\00a0";
+   }
+ }
