@@ -46,7 +46,7 @@ EventTimelineWithDescriptions.args = {
     {
       name: 'event 1',
       date: '1999-01-01',
-      eventDescription: 'This version',
+      eventDescription: '(this version)',
     },
     {
       name: 'event 2',

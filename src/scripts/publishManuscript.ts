@@ -66,7 +66,7 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
     .map((k) => preprintManuscripts.manuscripts[k] as Manuscript);
 
   const newTimeline: Timeline[] = [
-    { name: 'Reviewed preprint posted', date: dateReviewedPreprint, eventDescription: 'This version' },
+    { name: 'Reviewed preprint posted', date: dateReviewedPreprint, eventDescription: '(this version)' },
   ];
 
   if (ppDate && ppUrl) {
@@ -108,7 +108,7 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
 
     const prepTimelines: Timeline[][] = allVersions
       .map((m, i) => [
-        ...prepPosted.map((p, j) => ({ ...p, ...(v - i - 1 === j ? { eventDescription: 'This version' } : { link: { url: `/reviewed-preprints/${rpMsidRoot}${v - j}`, text: 'Go to version' } }) })),
+        ...prepPosted.map((p, j) => ({ ...p, ...(v - i - 1 === j ? { eventDescription: '(this version)' } : { link: { url: `/reviewed-preprints/${rpMsidRoot}${v - j}`, text: 'Go to version' } }) })),
         ...m.status.timeline.filter((t) => !t.name.startsWith('Reviewed ')),
       ]);
 
