@@ -73,5 +73,10 @@
 
   &::before {
     content: "\00a0\00a0•\00a0\00a0";
+    color: var(--color-text-secondary);
+  }
+
+  &:hover {
+    color: var(--color-primary);
   }
 }
