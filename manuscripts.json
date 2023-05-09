@@ -571,6 +571,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.02.22.529558": {
+      "preprintDoi": "10.1101/2023.02.22.529558",
+      "msas": [
+        "Cancer Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -642,6 +648,7 @@
     "86845": "86845v1",
     "86847": "86847v1",
     "86892": "86892v1",
+    "86913": "86913v1",
     "86972": "86972v1",
     "86976": "86976v1",
     "86990": "86990v1",
@@ -3271,6 +3278,34 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.03.527083v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "86913v1": {
+      "msid": "86913",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.22.529558",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.22.529558v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-22"
           }
         ]
       }
