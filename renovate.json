@@ -26,6 +26,10 @@
       "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server", "ghcr.io/elifesciences/enhanced-preprints"],
       "versioning": "regex:^master-(.*)-(?<minor>.*)$",
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["@stencila/encoda"],
+      "automerge": false
     }
   ]
 }
