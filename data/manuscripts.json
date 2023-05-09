@@ -50,7 +50,7 @@
           {
             "name": "Reviewed preprint posted",
             "date": "2022-10-20",
-            "eventDescription":"This version"
+            "eventDescription":"(this version)"
           },
           {
             "name": "Posted to bioRxiv",
@@ -80,7 +80,7 @@
           {
             "name": "Reviewed preprint posted",
             "date": "2022-10-20",
-            "eventDescription": "This version"
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -110,7 +110,7 @@
           {
             "name": "Reviewed preprint posted",
             "date": "2022-10-20",
-            "eventDescription": "This version"
+            "eventDescription": "(this version)"
           },
           {
             "name": "Posted to bioRxiv",
@@ -140,7 +140,7 @@
           {
             "name": "Reviewed preprint posted",
             "date": "2022-10-20",
-            "eventDescription": "This version"
+            "eventDescription": "(this version)"
           },
           {
             "name": "Posted to bioRxiv",
@@ -178,7 +178,7 @@
           {
             "name": "Reviewed preprint version 1",
             "date": "2023-01-25",
-            "eventDescription": "This version"
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -208,7 +208,7 @@
           {
             "name": "Reviewed preprint version 2",
             "date": "2023-04-30",
-            "eventDescription": "This version"
+            "eventDescription": "(this version)"
           },
           {
             "name": "Reviewed preprint version 1",
