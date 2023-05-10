@@ -129,7 +129,7 @@ describe('Content to JSX', () => {
       },
     });
 
-    expect(result).toStrictEqual(<img src="https://placekitten.com/500/300"></img>);
+    expect(result).toStrictEqual(<img loading="lazy" src="https://placekitten.com/500/300"></img>);
   });
 
   it('allows an array of arrays to be generated', () => {

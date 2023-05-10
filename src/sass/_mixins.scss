@@ -5,56 +5,40 @@
 @mixin grid() {
   @supports (display: grid) {
     display: grid;
-    grid-column-gap: settings.$grid-gutter;
+    grid-column-gap: var(--grid-gutter);
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    padding-#{$dimension}: #{$size_in_px}px;
-    padding-#{$dimension}: #{typography.get-rem-from-px($size_in_px)}rem;
+    padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
-    $parts-px: ();
     $parts-rem: ();
 
     @each $size in $size_in_px {
-      $parts-px: list.append($parts-px, #{$size}px, "space");
+      $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
-    @each $size in $size_in_px {
-      $parts-rem: list.append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
-    }
-
-    padding: $parts-px;
     padding: $parts-rem;
   } @else {
-    padding: #{$size_in_px}px;
-    padding: #{typography.get-rem-from-px($size_in_px)}rem;
+    padding: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
 @mixin margin($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    margin-#{$dimension}: #{$size_in_px}px;
-    margin-#{$dimension}: #{typography.get-rem-from-px($size_in_px)}rem;
+    margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
   } @else if $dimension == "" and type_of($size_in_px) == list {
-    $parts-px: ();
     $parts-rem: ();
 
     @each $size in $size_in_px {
-      $parts-px: list.append($parts-px, #{$size}px, "space");
+      $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
-    @each $size in $size_in_px {
-      $parts-rem: list.append($parts-rem, #{typography.get-rem-from-px($size)}rem, "space");
-    }
-
-    margin: $parts-px;
     margin: $parts-rem;
   } @else {
-    margin: #{$size_in_px}px;
-    margin: #{typography.get-rem-from-px($size_in_px)}rem;
+    margin: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
@@ -65,26 +49,24 @@
   @include constrain-width(settings.$max-site-width, "max");
 
   @if $padding {
-    padding-left: #{settings.$site-spacing};
-    padding-right: #{settings.$site-spacing};
+    padding-left: var(--site-spacing);
+    padding-right: var(--site-spacing);
 
     @media only screen and (min-width: settings.$breakpoint-small) {
-      padding-left: #{settings.$site-spacing-large};
-      padding-right: #{settings.$site-spacing-large};
+      padding-left: var(--site-spacing-large);
+      padding-right: var(--site-spacing-large);
     }
   }
 }
 
 @mixin constrain-width($size_in_px, $extreme) {
   @if $extreme == min or $extreme == max {
-    #{$extreme}-width: #{$size_in_px};
-    #{$extreme}-width: #{typography.get-rem-from-px($size_in_px)}rem;
+    #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
 }
 
 @mixin height($size_in_px) {
-  height: #{$size_in_px}px;
-  height: #{typography.get-rem-from-px($size_in_px)}rem;
+  height: calc(($size_in_px / var(--base-font-size)) * 1rem);
 }
 
 @mixin visuallyhidden() {

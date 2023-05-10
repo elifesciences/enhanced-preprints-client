@@ -15,10 +15,10 @@
 
   blockquote {
     @include typography.blockquote();
-    @include mixins.margin(0);
     @include mixins.padding(16, "left");
 
-    border-left: 1px solid settings.$divider;
+    border-left: 1px solid var(--divider);
+    margin: 0;
 
     p,
     li {
@@ -45,18 +45,19 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(0);
     @include mixins.padding(24 36);
+
+    margin: 0;
   }
 
-  background-color: settings.$color-background;
+  background-color: var(--color-background);
 }
 
 .review-content_links {
-  @include mixins.padding(0);
   @include mixins.margin(12 0 12 0);
 
   list-style: none;
+  padding: 0;
 }
 
 .review-content_links-item {
