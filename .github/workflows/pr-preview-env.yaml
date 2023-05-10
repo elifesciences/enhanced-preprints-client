@@ -1,4 +1,4 @@
-name: Preview
+name: Pull Request Preview Environment
 
 on:
   pull_request:
