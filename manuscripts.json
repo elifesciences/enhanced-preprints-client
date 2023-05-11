@@ -3350,7 +3350,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3378,7 +3379,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3406,7 +3408,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3434,7 +3437,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3462,7 +3466,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3490,7 +3495,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Posted to bioRxiv",
@@ -3518,7 +3524,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Posted to bioRxiv",
@@ -3546,7 +3553,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Sent for peer review",
@@ -3574,7 +3582,8 @@
         "timeline": [
           {
             "name": "Reviewed preprint posted",
-            "date": "2023-05-09"
+            "date": "2023-05-09",
+            "eventDescription": "(this version)"
           },
           {
             "name": "Posted to medRxiv",
