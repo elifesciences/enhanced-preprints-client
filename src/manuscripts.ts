@@ -68,4 +68,6 @@ export const getManuscriptsLatest = (configFile: string): Manuscripts => Object.
 
 export const getManuscript = (configFile: string, msid: string): FullManuscriptConfig => getManuscripts(configFile)[msid];
 
-export const getRppDoi = (config: Partial<FullManuscriptConfig>): string => (config.msid && config.version ? `10.7554/eLife.${config.msid}.${config.version}` : '');
+export const getRppVersionDoi = (config: Partial<FullManuscriptConfig>): string => (config.msid && config.version ? `10.7554/eLife.${config.msid}.${config.version}` : '');
+
+export const getRppDoi = (config: Partial<FullManuscriptConfig>): string => (config.msid ? `10.7554/eLife.${config.msid}` : '');

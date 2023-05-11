@@ -29,6 +29,9 @@
   --dark-mode-color: #fff;
   --light-mode-background: #fff;
   --light-mode-color: $color-text;
+
+  // Base font size
+  --base-font-size: 16;
 }
 
 // Typography
@@ -44,12 +47,12 @@ $breakpoint-large: 1000px;
 $breakpoint-extra-large: 1200px;
 
 :root {
-  --color-text--dark-mode: #{$dark-mode-color};
-  --color-text--light-mode: #{$color-text};
+  --color-text--dark-mode: var(--dark-mode-color);
+  --color-text--light-mode: var(--color-text);
   --color-text: var(--color-text--light-mode);
 
-  --color-background--dark-mode: #{$dark-mode-background};
-  --color-background--light-mode: #{$light-mode-background};
+  --color-background--dark-mode: var(--dark-mode-background);
+  --color-background--light-mode: var(--light-mode-background);
   --color-background: var(--color-background--light-mode);
 }
 

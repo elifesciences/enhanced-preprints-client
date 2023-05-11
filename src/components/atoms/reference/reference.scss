@@ -3,14 +3,17 @@
 @use "../../../sass/typography";
 
 .reference__title {
-  @include typography.body-small();
+  @include typography.body();
 
+  font-family: var(--font-family-primary);
   font-weight: bold;
 }
 
 .reference {
   @include mixins.margin(24, "bottom");
-  @include typography.body-small();
+  @include typography.body();
+
+  font-family: var(--font-family-primary);
 }
 
 .reference__label {
