@@ -12,9 +12,17 @@
         "Cell Biology",
         "Developmental Biology"
       ]
+    },
+    "10.1101/2022.12.15.519769": {
+      "preprintDoi": "10.1101/2022.12.15.519769",
+      "msas": [
+        "Computational and Systems Biology",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
+    "86695": "86695v1",
     "87037": "87037v1",
     "87527": "87527v1",
     "87527v1": {
@@ -71,6 +79,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-14"
+          }
+        ]
+      }
+    },
+    "86695v1": {
+      "msid": "86695",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.15.519769",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.15.519769v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
