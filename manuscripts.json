@@ -672,6 +672,12 @@
       "msas": [
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.02.28.530337": {
+      "preprintDoi": "10.1101/2023.02.28.530337",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -775,6 +781,7 @@
     "87281": "87281v1",
     "87283": "87283v1",
     "87340": "87340v1",
+    "87386": "87386v1",
     "87434": "87434v1",
     "87468": "87468v1",
     "87510": "87510v1",
@@ -3986,6 +3993,35 @@
             "date": "2022-11-24",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.11.23.517579v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87386v1": {
+      "msid": "87386",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.28.530337",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-22"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.28.530337v1",
               "text": "Go to bioRxiv"
             }
           }
