@@ -29,6 +29,11 @@
       border-bottom-color: var(--color-primary);
       color: var(--color-primary);
     }
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--dark-mode-color);
+      border-bottom: 1px dotted #fff;
+    }
   }
 
   span > a:not(:first-child)::before {
