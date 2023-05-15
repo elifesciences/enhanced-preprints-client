@@ -19,13 +19,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "src/",
     "pages/",
     "browser-tests",
-    "./manuscripts.json"
+    "./manuscripts.json",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
