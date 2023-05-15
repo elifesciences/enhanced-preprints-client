@@ -80,8 +80,8 @@ services:
     entrypoint: >
       /bin/sh -c "
       /usr/bin/mc config host add myminio http://minio:9000 minio miniotest;
-      /usr/bin/mc mb myminio/eppdata;
-      /usr/bin/mc cp --recursive /data myminio/eppdata/;
+      /usr/bin/mc mb myminio/eppdata || true;
+      /usr/bin/mc mirror /data myminio/eppdata/;
       # Set to public to host local PDFs
       /usr/bin/mc anonymous set public myminio/eppdata;
       exit 0;
