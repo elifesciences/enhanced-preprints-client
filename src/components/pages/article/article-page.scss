@@ -63,6 +63,10 @@
 
     justify-content: normal;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--dark-mode-background);
+  }
 }
 
 .tabbed-navigation__tab-label {
