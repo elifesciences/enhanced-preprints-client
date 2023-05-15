@@ -32,6 +32,12 @@
 
   // Base font size
   --base-font-size: 16;
+
+  // Dark Mode variants
+  --color-text-dark-mode: var(--dark-mode-color);
+  --color-text-light-mode: var(--color-text);
+  --color-background-dark-mode: var(--dark-mode-background);
+  --color-background-light-mode: var(--light-mode-background);
 }
 
 // Typography
@@ -46,20 +52,10 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 1000px;
 $breakpoint-extra-large: 1200px;
 
-:root {
-  --color-text--dark-mode: var(--dark-mode-color);
-  --color-text--light-mode: var(--color-text);
-  --color-text: var(--color-text--light-mode);
-
-  --color-background--dark-mode: var(--dark-mode-background);
-  --color-background--light-mode: var(--light-mode-background);
-  --color-background: var(--color-background--light-mode);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--color-background--dark-mode);
-    --color-text: var(--color-text--dark-mode);
+    --color-background: var(--color-background-dark-mode);
+    --color-text: var(--color-text-dark-mode);
   }
 }
 
