@@ -70,6 +70,10 @@
     color: var(--link-decoration);
     text-decoration: none;
 
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-text--dark-mode);
+    }
+
     &:hover {
       color: var(--color-primary);
     }
@@ -155,6 +159,10 @@
     color: var(--link-decoration);
     text-decoration: none;
 
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-text--dark-mode);
+    }
+
     &:hover {
       color: var(--color-primary);
     }
@@ -171,6 +179,10 @@
     color: var(--link-decoration);
     display: block;
     text-decoration: none;
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-text--dark-mode);
+    }
 
     &:hover {
       color: var(--color-primary);
