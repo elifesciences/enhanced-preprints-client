@@ -27,6 +27,10 @@
   font-weight: 600;
   text-transform: none;
 
+  @media (prefers-color-scheme: dark) {
+    color: var(--light-mode-color);
+  }
+
   &:hover {
     background-color: #d7d9de;
   }
