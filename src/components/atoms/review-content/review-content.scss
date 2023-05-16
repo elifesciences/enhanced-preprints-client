@@ -75,6 +75,7 @@
 
   a {
     @include typography.link-text();
+
     color: var(--color-primary-dark);
   }
 }
