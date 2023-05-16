@@ -1,63 +1,18 @@
 import {
-  render, screen, cleanup, fireEvent,
+  render, screen, fireEvent,
 } from '@testing-library/react';
-import { ArticlePage } from './article-page';
+import { ArticlePageLayout } from './article-page';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import {
-  content, metaData, peerReview, status, citation,
+  metaData, status, citation,
 } from '../../../utils/mocks';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 
-describe('ArticlePage', () => {
+describe('ArticlePageLayout', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="fulltext">
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
-    </ArticlePage>)).not.toThrow();
-  });
-
-  it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="figures">
-      <ArticleFiguresTab content={content} />
-    </ArticlePage>)).not.toThrow();
-  });
-
-  it('renders with reviews tab', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="reviews">
-      <ArticleReviewsTab peerReview={peerReview} />
-    </ArticlePage>)).not.toThrow();
-  });
-
-  it('renders with tabs with correct active label', () => {
-    render(<ArticlePage metaData={metaData} status={status} activeTab="fulltext">
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
-    </ArticlePage>);
-
-    expect(screen.getByText('Full text')).toBeInTheDocument();
-    expect(screen.getByText('Figures and data')).toBeInTheDocument();
-    expect(screen.getByText('Peer review')).toBeInTheDocument();
-
-    expect(screen.getByText('Full text').parentElement?.classList.value).toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
-
-    cleanup();
-    render(<ArticlePage metaData={metaData} status={status} activeTab="figures">
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
-    </ArticlePage>);
-
-    expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).toContain('tab-label--active');
-    expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
-
-    cleanup();
-    render(<ArticlePage metaData={metaData} status={status} activeTab="reviews">
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
-    </ArticlePage>);
-
-    expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Peer review').parentElement?.classList.value).toContain('tab-label--active');
+    expect(() => render(<ArticlePageLayout metaData={metaData} status={status}>
+      Hello
+    </ArticlePageLayout>)).not.toThrow();
   });
 
   it('passes correct doi to status component', () => {

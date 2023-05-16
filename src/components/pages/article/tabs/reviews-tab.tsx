@@ -1,4 +1,4 @@
-import '../article-page.scss';
+import './tabs.scss';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';

@@ -25,13 +25,6 @@ export default async function Layout({
     msas: manuscriptConfig.msas,
     publishedYear: manuscriptConfig.publishedYear,
   };
-  const status = {
-    articleType: 'Preview Preprint',
-    status: 'This Preview Preprint isn\'t published yet.',
-    timeline: [
-      { name: 'Preview Preprint generated', date: new Date().toDateString() },
-    ],
-  };
 
   return (
     <ArticlePageLayout metaData={metaData} status={manuscriptConfig.status}>{children}</ArticlePageLayout>

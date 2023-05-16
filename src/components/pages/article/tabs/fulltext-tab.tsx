@@ -1,4 +1,4 @@
-import '../article-page.scss';
+import './tabs.scss';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
