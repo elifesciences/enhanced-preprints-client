@@ -1,4 +1,3 @@
-import LinkTo from '@storybook/addon-links/react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   content, metaData, peerReview, status,

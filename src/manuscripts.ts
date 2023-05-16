@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { ArticleStatusProps } from './components/pages/article/article-page';
+import { ArticleStatusProps } from './components/layouts/article-page/article-page';
 
 type ReviewedPreprintConfig = {
   preprintDoi: string,
