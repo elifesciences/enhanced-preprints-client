@@ -46,7 +46,6 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-
 export async function generateMetadata({ params }: { params: { path: string[] } }): Promise<Metadata> {
   const { id } = getIdFromPath(params.path);
   const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
@@ -101,11 +100,11 @@ export const Page = async ({ params }: { params: { path: string[] } }): Promise<
 
   const metaData = {
     ...serverMetaData,
-    msid: `preview-${serverMetaData.doi}`,
-    version: '0',
-    pdfUrl: '',
-    msas: [],
-    publishedYear: new Date().getFullYear(),
+    msid: manuscriptConfig.msid,
+    version: manuscriptConfig.version,
+    msas: manuscriptConfig.msas,
+    publishedYear: manuscriptConfig.publishedYear,
+    pdfUrl: manuscriptConfig.pdfUrl,
   };
 
   const childTabs: { [key: string]: () => JSX.Element } = {
