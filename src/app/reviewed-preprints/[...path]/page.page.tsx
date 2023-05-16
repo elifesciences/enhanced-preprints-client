@@ -47,7 +47,7 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
 };
 
 
-export async function generateMetadata({ params }: { params: { path: string[] } }): Metadata {
+export async function generateMetadata({ params }: { params: { path: string[] } }): Promise<Metadata> {
   const { id } = getIdFromPath(params.path);
   const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
   const serverMetaData = await fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`);
