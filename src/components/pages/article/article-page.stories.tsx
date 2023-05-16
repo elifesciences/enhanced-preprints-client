@@ -5,7 +5,7 @@ import {
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
-import { DefaultLayout } from '../../layouts/default';
+import { DefaultLayout } from '../../layouts/default/default';
 
 export default {
   title: 'Pages/Article Page',

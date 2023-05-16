@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import './institutions.scss';
 import { Institution } from '../../../types';

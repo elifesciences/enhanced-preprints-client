@@ -1,5 +1,5 @@
-import { SiteHeader } from '../molecules/site-header/site-header';
-import { SiteFooter } from '../molecules/site-footer/site-footer';
+import { SiteHeader } from '../../molecules/site-header/site-header';
+import { SiteFooter } from '../../molecules/site-footer/site-footer';
 import './default.scss';
 
 export const DefaultLayout = ({ children }: any): JSX.Element => (

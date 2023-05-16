@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react';
 import { PageNotFound } from './page-not-found';
-import { DefaultLayout } from '../../layouts/default';
+import { DefaultLayout } from '../../layouts/default/default';
 
 export default {
   title: 'Pages/Page not found',

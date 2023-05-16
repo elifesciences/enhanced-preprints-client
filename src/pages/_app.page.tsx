@@ -1,6 +1,6 @@
 
 import Head from 'next/head';
-import { DefaultLayout } from '../components/layouts/default';
+import { DefaultLayout } from '../components/layouts/default/default';
 
 export default function MyApp({ Component, pageProps }: any) {
   return (

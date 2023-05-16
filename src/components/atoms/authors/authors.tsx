@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
