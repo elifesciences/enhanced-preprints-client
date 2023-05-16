@@ -128,7 +128,7 @@ export const Page = async ({ params }: { params: { path: string[] } }): Promise<
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Reviews</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</Link>,
     },
   ];
   return (
