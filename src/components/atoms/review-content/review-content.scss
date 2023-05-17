@@ -75,6 +75,8 @@
 
   a {
     @include typography.link-text();
+
+    color: #0b70b9; // Only being used for review content component
   }
 }
 
