@@ -802,6 +802,12 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.03.16.532898": {
+      "preprintDoi": "10.1101/2023.03.16.532898",
+      "msas": [
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -928,6 +934,7 @@
     "87527": "87527v1",
     "87569": "87569v1",
     "87672": "87672v1",
+    "87674": "87674v1",
     "87714": "87714v1",
     "87935": "87935v1",
     "87956": "87956v1",
@@ -4787,6 +4794,35 @@
             "date": "2023-05-03",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2021.08.16.455933v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-15"
+          }
+        ]
+      }
+    },
+    "87674v1": {
+      "msid": "87674",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.16.532898",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-19",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.16.532898v2",
               "text": "Go to bioRxiv"
             }
           },
