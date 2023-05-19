@@ -43,7 +43,7 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Publish Manuscript
+      - name: Prepare manuscripts.json with manuscript version
         run: |
           cat manuscripts.json | \
             yarn --silent publish-manuscript \
@@ -55,7 +55,10 @@ jobs:
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
             --msa "${{ github.event.inputs.msa }}" | \
-            tee manuscripts.json > /dev/null
+            tee manuscripts-new.json > /dev/null
+      - name: Replace manuscripts.json
+        run: |
+          mv manuscripts-new.json manuscripts.json
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
         uses: peter-evans/create-pull-request@v4
