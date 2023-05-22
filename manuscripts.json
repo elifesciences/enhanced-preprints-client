@@ -815,6 +815,12 @@
         "Chromosomes and Gene Expression",
         "Developmental Biology"
       ]
+    },
+    "10.1101/2022.12.16.520841": {
+      "preprintDoi": "10.1101/2022.12.16.520841",
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -939,6 +945,7 @@
     "87510": "87510v1",
     "87515": "87515v1",
     "87521": "87521v1",
+    "87523": "87523v1",
     "87527": "87527v1",
     "87569": "87569v1",
     "87672": "87672v1",
@@ -3186,7 +3193,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/86824/v1/86824-v1.pdf"
     },
     "87281v1": {
       "msid": "87281",
@@ -3275,7 +3283,8 @@
             "date": "2023-03-10"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87340/v1/87340-v1.pdf"
     },
     "86990v1": {
       "msid": "86990",
@@ -3334,7 +3343,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87008/v1/87008-v1.pdf"
     },
     "86892v1": {
       "msid": "86892",
@@ -3422,7 +3432,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87099/v1/87099-v1.pdf"
     },
     "87115v1": {
       "msid": "87115",
@@ -3451,7 +3462,8 @@
             "date": "2023-02-27"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87115/v1/87115-v1.pdf"
     },
     "87202v1": {
       "msid": "87202",
@@ -4924,6 +4936,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-29"
+          }
+        ]
+      }
+    },
+    "87523v1": {
+      "msid": "87523",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.16.520841",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-08"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-07",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.16.520841v2",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
