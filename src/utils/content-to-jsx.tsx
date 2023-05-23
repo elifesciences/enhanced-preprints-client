@@ -45,7 +45,7 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       if (!content.contentUrl) {
         return '';
       }
-      return <img loading="lazy" key={index} src={generateImageUrl(content.contentUrl)}></img>;
+      return <img loading="lazy" className={`${content.meta.inline ? 'inline-image' : ''}`} key={index} src={generateImageUrl(content.contentUrl)}></img>;
     case 'ListItem':
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
