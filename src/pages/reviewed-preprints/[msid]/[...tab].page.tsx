@@ -5,7 +5,9 @@ import { useMemo } from 'react';
 import { config } from '../../../config';
 import { getManuscript, getRppDoi } from '../../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../../types';
-import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
+import {
+  fetchAutomationContent, fetchAutomationMetadata, fetchContent, fetchMetadata, fetchReviews,
+} from '../../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { contentToText } from '../../../utils/content-to-text';
@@ -81,37 +83,57 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     return { notFound: true };
   }
 
-  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
+  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  if (manuscriptConfig === undefined) {
-    console.log('Cannot find msid configured'); // eslint-disable-line no-console
-    return { notFound: true };
+  if (!config.automationFlag) {
+    const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
+
+    if (manuscriptConfig === undefined) {
+      console.log('Cannot find msid configured'); // eslint-disable-line no-console
+      return { notFound: true };
+    }
+
+    const [metaData, content, peerReview, status] = !config.automationFlag ? await Promise.all([
+      fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+      fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+      fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
+      // replace with call for data
+      manuscriptConfig.status,
+    ]) : await Promise.all([
+      fetchAutomationMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+      fetchAutomationContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    ]);
+
+    return {
+      props: {
+        metaData: {
+          ...metaData,
+          ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
+          msid: manuscriptConfig.msid,
+          version: manuscriptConfig.version,
+          msas: manuscriptConfig.msas,
+          publishedYear: manuscriptConfig.publishedYear,
+        },
+        msidWithVersion: msid,
+        content,
+        status,
+        peerReview,
+      },
+    };
   }
 
-  const [metaData, content, peerReview, status] = await Promise.all([
-    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
-    // replace with call for data
-    manuscriptConfig.status,
+  const [metaData, content] = await Promise.all([
+    fetchAutomationMetadata(msid),
+    fetchAutomationContent(msid),
   ]);
-
-  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
   return {
     props: {
-      metaData: {
-        ...metaData,
-        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
-        msid: manuscriptConfig.msid,
-        version: manuscriptConfig.version,
-        msas: manuscriptConfig.msas,
-        publishedYear: manuscriptConfig.publishedYear,
-      },
+      metaData,
       msidWithVersion: msid,
       content,
-      status,
-      peerReview,
+      status: metaData.status,
+      peerReview: metaData.peerReview,
     },
   };
 };
