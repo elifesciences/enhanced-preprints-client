@@ -847,6 +847,13 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2022.10.24.513565": {
+      "preprintDoi": "10.1101/2022.10.24.513565",
+      "msas": [
+        "Neuroscience",
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -980,6 +987,7 @@
     "87569": "87569v1",
     "87672": "87672v1",
     "87674": "87674v1",
+    "87696": "87696v1",
     "87714": "87714v1",
     "87935": "87935v1",
     "87956": "87956v1",
@@ -5111,6 +5119,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-26"
+          }
+        ]
+      }
+    },
+    "87696v1": {
+      "msid": "87696",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.24.513565",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-23",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-31"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-10-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.24.513565v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
