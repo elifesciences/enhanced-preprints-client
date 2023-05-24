@@ -2,8 +2,7 @@ import { readFileSync } from 'fs';
 import { config } from '../config';
 import { jsonFetch } from './json-fetch';
 import { Content } from '../types/content';
-import { MetaData, PeerReview } from '../types';
-import { VersionedMetaData } from '../types/meta-data';
+import { EnhancedArticle, MetaData, PeerReview } from '../types';
 
 type ReviewsJson = {
   [index: string]: PeerReview;
@@ -20,5 +19,4 @@ export const fetchReviews = (id: string, version: string) => {
   return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`);
 };
 
-export const fetchAutomationMetadata = (id: string) => jsonFetch<VersionedMetaData>(`${config.apiServer}/api/preprints/${id}/metadata`);
-export const fetchAutomationContent = (id: string) => jsonFetch<Content>(`${config.apiServer}/api/preprints/${id}/content`);
+export const fetchVersion = (id: string) => jsonFetch<EnhancedArticle>(`${config.apiServer}/api/preprints/${id}`);

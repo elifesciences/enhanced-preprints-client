@@ -6,7 +6,7 @@ import { config } from '../../../config';
 import { getManuscript, getRppDoi } from '../../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../../types';
 import {
-  fetchAutomationContent, fetchAutomationMetadata, fetchContent, fetchMetadata, fetchReviews,
+  fetchContent, fetchMetadata, fetchReviews, fetchVersion,
 } from '../../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
@@ -71,7 +71,7 @@ export const Page = (props: PageProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   const msid = context.params?.msid;
   if (msid === undefined) {
     console.log('no msid in path'); // eslint-disable-line no-console
@@ -93,15 +93,12 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
       return { notFound: true };
     }
 
-    const [metaData, content, peerReview, status] = !config.automationFlag ? await Promise.all([
+    const [metaData, content, peerReview, status] = await Promise.all([
       fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
       fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
       fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
       // replace with call for data
       manuscriptConfig.status,
-    ]) : await Promise.all([
-      fetchAutomationMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-      fetchAutomationContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     ]);
 
     return {
@@ -122,18 +119,20 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     };
   }
 
-  const [metaData, content] = await Promise.all([
-    fetchAutomationMetadata(msid),
-    fetchAutomationContent(msid),
-  ]);
+  const version = await fetchVersion(msid);
 
   return {
     props: {
-      metaData,
+      metaData: {
+        ...version,
+        ...version.article,
+      },
       msidWithVersion: msid,
-      content,
-      status: metaData.status,
-      peerReview: metaData.peerReview,
+      content: version.article.content,
+      status: {
+        timeline: version.timeline,
+      },
+      peerReview: version.peerReview,
     },
   };
 };
