@@ -893,6 +893,20 @@
       "msas": [
         "Cancer Biology"
       ]
+    },
+    "10.1101/2022.06.13.495984": {
+      "preprintDoi": "10.1101/2022.06.13.495984",
+      "msas": [
+        "Genetics and Genomics",
+        "Neuroscience"
+      ]
+    },
+    "10.1101/2023.03.29.534798": {
+      "preprintDoi": "10.1101/2023.03.29.534798",
+      "msas": [
+        "Cell Biology",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -976,6 +990,7 @@
     "86913": "86913v1",
     "86920": "86920v1",
     "86931": "86931v1",
+    "86933": "86933v1",
     "86940": "86940v1",
     "86943": "86943v1",
     "86961": "86961v1",
@@ -1024,6 +1039,7 @@
     "87521": "87521v1",
     "87523": "87523v1",
     "87527": "87527v1",
+    "87528": "87528v1",
     "87569": "87569v1",
     "87616": "87616v1",
     "87671": "87671v1",
@@ -5502,6 +5518,64 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.03.08.483420v2",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "86933v1": {
+      "msid": "86933",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.13.495984",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-24",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.06.13.495984v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87528v1": {
+      "msid": "87528",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.29.534798",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-24",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-31",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.29.534798v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-24"
           }
         ]
       }
