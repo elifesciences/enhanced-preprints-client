@@ -12,6 +12,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../
 import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
 import { contentToText } from '../../../utils/content-to-text';
 import { TimelineEvent } from '../../../components/molecules/timeline/timeline';
+import { convertTimeline } from '../../../utils/timeline-convert';
 
 type PageProps = {
   metaData: MetaData
@@ -126,11 +127,16 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       metaData: {
         ...version,
         ...version.article,
+        msas: [''],
+        version: version.versionIdentifier,
+        publishedYear: version.published.getFullYear(),
       },
       msidWithVersion: msid,
       content: version.article.content,
       status: {
-        timeline: version.timeline,
+        timeline: convertTimeline(version.timeline),
+        articleType: 'Article',
+        status: 'Published',
       },
       peerReview: version.peerReview,
     },

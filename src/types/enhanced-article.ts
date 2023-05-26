@@ -1,4 +1,7 @@
 import { Content } from './content';
+import { Institution } from './institution';
+import { PeerReview } from './peer-review';
+import { Reference } from './reference';
 
 export type Doi = string;
 
@@ -13,10 +16,6 @@ export type ArticleAbstract = Content;
 export type Address = {
   addressCountry?: string,
 };
-export type Organisation = {
-  name: string,
-  address?: Address,
-};
 
 export type OrcidIdentifier = {
   type: 'orcid',
@@ -28,7 +27,7 @@ export type Identifier = OrcidIdentifier;
 export type Author = {
   familyNames: string[],
   givenNames?: string[],
-  affiliations?: Organisation[],
+  affiliations?: Institution[],
   emails?: string[],
   identifiers?: Identifier[],
 };
@@ -39,7 +38,7 @@ export type License = {
 };
 
 export type Heading = {
-  id?: string,
+  id: string,
   text: Content,
 };
 export type PublicationType = 'CreativeWork' | 'Periodical' | 'PublicationIssue' | 'PublicationVolume';
@@ -48,26 +47,6 @@ export type Publication = {
   name?: string,
   volumeNumber?: number,
   isPartOf?: Publication,
-};
-export type Reference = {
-  type: 'Article',
-  id: string,
-  title: string,
-  url?: string,
-  pageEnd?: number,
-  pageStart?: number,
-  authors: Array<Author | Organisation>,
-  datePublished?: Date,
-  isPartOf?: Publication,
-  identifiers?: {
-    type: string,
-    name: string,
-    propertyID?: string,
-    value: string,
-  }[],
-  meta?: {
-    label?: string,
-  },
 };
 
 export type ProcessedArticle = {
@@ -102,19 +81,6 @@ export type Participant = {
   institution: string,
 };
 
-export type Evaluation = {
-  date: Date,
-  reviewType: ReviewType,
-  text: ReviewText,
-  participants: Participant[],
-};
-
-export type PeerReview = {
-  evaluationSummary: Evaluation,
-  reviews: Evaluation[],
-  authorResponse?: Evaluation,
-};
-
 export type Timeline = {
   name: 'PREPRINT_PUBLISHED' | 'SENT_FOR_REVIEW' | 'VERSION_PUBLISHED',
   date: Date,
@@ -134,9 +100,9 @@ export type EnhancedArticle = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  peerReview?: PeerReview,
-  published?: Date,
-  timeline?: Timeline[]
+  peerReview: PeerReview,
+  published: Date,
+  timeline: Timeline[]
 };
 
 export type EnhancedArticleWithVersions = {
