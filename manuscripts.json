@@ -965,6 +965,12 @@
         "Computational and Systems Biology",
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.02.26.530115": {
+      "preprintDoi": "10.1101/2023.02.26.530115",
+      "msas": [
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1094,6 +1100,7 @@
     "87357": "87357v1",
     "87368": "87368v1",
     "87386": "87386v1",
+    "87406": "87406v1",
     "87434": "87434v1",
     "87445": "87445v1",
     "87455": "87455v1",
@@ -5971,6 +5978,35 @@
             "date": "2023-02-26",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.25.530042v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87406v1": {
+      "msid": "87406",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.26.530115",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.26.530115v1",
               "text": "Go to bioRxiv"
             }
           }
