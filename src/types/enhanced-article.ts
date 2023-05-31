@@ -53,7 +53,7 @@ export type ProcessedArticle = {
   doi: string,
   title: ArticleTitle,
   date: Date,
-  authors: Author[],
+  authors?: Author[],
   abstract: ArticleAbstract,
   licenses: License[],
   content: Content,
