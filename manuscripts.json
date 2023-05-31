@@ -1030,6 +1030,13 @@
         "Cancer Biology",
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2022.12.22.521681": {
+      "preprintDoi": "10.1101/2022.12.22.521681",
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1196,6 +1203,7 @@
     "88088": "88088v1",
     "88261": "88261v1",
     "88317": "88317v1",
+    "88623": "88623v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -6373,6 +6381,35 @@
             "date": "2023-02-13",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.09.525144v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "88623v1": {
+      "msid": "88623",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.22.521681",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-18"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.22.521681v1",
               "text": "Go to bioRxiv"
             }
           }
