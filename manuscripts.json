@@ -978,6 +978,12 @@
         "Computational and Systems Biology",
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2023.02.02.526762": {
+      "preprintDoi": "10.1101/2023.02.02.526762",
+      "msas": [
+        "Plant Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1023,6 +1029,7 @@
     "85921": "85921v1",
     "86016": "86016v1",
     "86100": "86100v1",
+    "86169": "86169v1",
     "86194": "86194v1",
     "86324": "86324v1",
     "86464": "86464v1",
@@ -6046,6 +6053,35 @@
               "url": "https://www.researchsquare.com/article/rs-2407778/v1",
               "text": "Go to Research Square"
             }
+          }
+        ]
+      }
+    },
+    "86169v1": {
+      "msid": "86169",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.02.526762",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-05-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.02.526762v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-01"
           }
         ]
       }
