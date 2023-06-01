@@ -3079,16 +3079,16 @@
             "eventDescription": "(this version)"
           },
           {
+            "name": "Sent for peer review",
+            "date": "2023-02-14"
+          },
+          {
             "name": "Posted to bioRxiv",
-            "date": "2023-02-15",
+            "date": "2022-12-15",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.06.02.494625v3",
               "text": "Go to bioRxiv"
             }
-          },
-          {
-            "name": "Sent for peer review",
-            "date": "2023-02-14"
           }
         ]
       }
