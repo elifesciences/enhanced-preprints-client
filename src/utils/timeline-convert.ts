@@ -9,4 +9,5 @@ export const convertTimeline = (events?: Timeline[]) => (events ? events.sort((a
     text: 'Link',
     url: event.url,
   } : undefined,
+  eventDescription: event.name ?? '',
 })) : []);
