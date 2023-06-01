@@ -86,60 +86,61 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  if (!config.automationFlag) {
-    const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
-
-    if (manuscriptConfig === undefined) {
-      console.log('Cannot find msid configured'); // eslint-disable-line no-console
-      return { notFound: true };
-    }
-
-    const [metaData, content, peerReview, status] = await Promise.all([
-      fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-      fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-      fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
-      // replace with call for data
-      manuscriptConfig.status,
-    ]);
+  // FEATURE FLAG
+  if (config.automationFlag) {
+    const version = await fetchVersion(msid);
 
     return {
       props: {
         metaData: {
-          ...metaData,
-          ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
-          msid: manuscriptConfig.msid,
-          version: manuscriptConfig.version,
-          msas: manuscriptConfig.msas,
-          publishedYear: manuscriptConfig.publishedYear,
+          ...version.article,
+          ...version.article.article,
+          authors: version.article.article.authors || [],
+          msas: [''],
+          version: version.article.versionIdentifier,
+          publishedYear: new Date(version.article.published).getFullYear() ?? 0,
         },
         msidWithVersion: msid,
-        content,
-        status,
-        peerReview,
+        content: version.article.article.content,
+        status: {
+          timeline: [], // convertTimeline(version.timeline),
+          articleType: 'Article',
+          status: 'Published',
+        },
+        peerReview: version.article.peerReview,
       },
     };
   }
 
-  const version = await fetchVersion(msid);
+  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
+
+  if (manuscriptConfig === undefined) {
+    console.log('Cannot find msid configured'); // eslint-disable-line no-console
+    return { notFound: true };
+  }
+
+  const [metaData, content, peerReview, status] = await Promise.all([
+    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
+    fetchReviews(manuscriptConfig.msid, manuscriptConfig.version),
+    // replace with call for data
+    manuscriptConfig.status,
+  ]);
 
   return {
     props: {
       metaData: {
-        ...version,
-        ...version.article,
-        authors: version.article.authors || [],
-        msas: [''],
-        version: version.versionIdentifier,
-        publishedYear: version.published?.getFullYear() ?? 0,
+        ...metaData,
+        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
+        msid: manuscriptConfig.msid,
+        version: manuscriptConfig.version,
+        msas: manuscriptConfig.msas,
+        publishedYear: manuscriptConfig.publishedYear,
       },
       msidWithVersion: msid,
-      content: version.article.content,
-      status: {
-        timeline: [], // convertTimeline(version.timeline),
-        articleType: 'Article',
-        status: 'Published',
-      },
-      peerReview: version.peerReview,
+      content,
+      status,
+      peerReview,
     },
   };
 };

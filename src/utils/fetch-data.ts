@@ -19,4 +19,9 @@ export const fetchReviews = (id: string, version: string) => {
   return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`);
 };
 
-export const fetchVersion = (id: string) => jsonFetch<EnhancedArticle>(`${config.apiServer}/api/preprints/${id}`);
+export type EnhancedArticleWithVersions = {
+  article: EnhancedArticle,
+  versions: Record<string, EnhancedArticle>,
+};
+
+export const fetchVersion = (id: string) => jsonFetch<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}`);
