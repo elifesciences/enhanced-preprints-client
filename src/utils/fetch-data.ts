@@ -12,9 +12,9 @@ const reviewsJson = JSON.parse(readFileSync(config.reviewsConfigFile).toString()
 
 export const fetchMetadata = (id: string) => jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${id}/metadata`);
 export const fetchContent = (id: string) => jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${id}/content`);
-export const fetchReviews = (id: string, version: string) => {
-  if (reviewsJson[`${id}/v${version}`]) {
-    return reviewsJson[`${id}/v${version}`];
+export const fetchReviews = (id: string) => {
+  if (reviewsJson[id]) {
+    return reviewsJson[id];
   }
   return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`);
 };

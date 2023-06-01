@@ -165,6 +165,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -187,6 +188,7 @@ describe('addManuscript', () => {
             {
               date: '2023-04-23',
               name: 'Reviewed preprint posted',
+              eventDescription: '(this version)',
             },
             {
               date: '2022-01-01',
@@ -216,6 +218,7 @@ describe('addManuscript', () => {
             {
               date: '2023-04-23',
               name: 'Reviewed preprint posted',
+              eventDescription: '(this version)',
             },
             {
               date: '2022-01-01',
@@ -245,6 +248,7 @@ describe('addManuscript', () => {
             {
               date: '2020-01-02',
               name: 'Reviewed preprint posted',
+              eventDescription: '(this version)',
             },
           ],
         },
@@ -268,6 +272,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
               {
                 date: '2020-01-02',
@@ -300,6 +305,7 @@ describe('addManuscript', () => {
               {
                 date: '2020-01-02',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
               {
                 date: '2020-01-01',
@@ -332,6 +338,7 @@ describe('addManuscript', () => {
               {
                 date: '2020-01-07',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
               {
                 date: '2020-01-02',
@@ -368,6 +375,7 @@ describe('addManuscript', () => {
                 {
                   date: '2023-04-22',
                   name: 'Reviewed preprint posted',
+                  eventDescription: '(this version)',
                 },
               ],
             },
@@ -390,6 +398,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-22',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -406,6 +415,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint posted',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -430,6 +440,7 @@ describe('addManuscript', () => {
                 {
                   date: '2023-04-22',
                   name: 'Reviewed preprint posted',
+                  eventDescription: '(this version)',
                 },
               ],
             },
@@ -459,6 +470,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-22',
                 name: 'Reviewed preprint version 1',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -475,6 +487,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint version 2',
+                eventDescription: '(this version)',
               },
               {
                 date: '2023-04-22',
@@ -515,6 +528,7 @@ describe('addManuscript', () => {
                 {
                   date: '2023-04-21',
                   name: 'Reviewed preprint version 1',
+                  eventDescription: '(this version)',
                 },
               ],
             },
@@ -531,6 +545,7 @@ describe('addManuscript', () => {
                 {
                   date: '2023-04-23',
                   name: 'Reviewed preprint version 2',
+                  eventDescription: '(this version)',
                 },
                 {
                   date: '2023-04-21',
@@ -576,6 +591,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-21',
                 name: 'Reviewed preprint version 1',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -600,6 +616,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-22',
                 name: 'Reviewed preprint version 2',
+                eventDescription: '(this version)',
               },
               {
                 date: '2023-04-21',
@@ -624,6 +641,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint version 3',
+                eventDescription: '(this version)',
               },
               {
                 date: '2023-04-22',
@@ -671,6 +689,7 @@ describe('addManuscript', () => {
                 {
                   date: '2023-04-22',
                   name: 'Reviewed preprint posted',
+                  eventDescription: '(this version)',
                 },
               ],
             },
@@ -715,6 +734,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-22',
                 name: 'Reviewed preprint version 1',
+                eventDescription: '(this version)',
               },
             ],
           },
@@ -731,6 +751,7 @@ describe('addManuscript', () => {
               {
                 date: '2023-04-23',
                 name: 'Reviewed preprint version 2',
+                eventDescription: '(this version)',
               },
               {
                 date: '2023-04-22',
