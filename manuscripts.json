@@ -1087,6 +1087,13 @@
         "Computational and Systems Biology",
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2022.11.03.515022": {
+      "preprintDoi": "10.1101/2022.11.03.515022",
+      "msas": [
+        "Computational and Systems Biology",
+        "Evolutionary Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1184,6 +1191,7 @@
     "86996": "86996v1",
     "87005": "87005v1",
     "87008": "87008v1",
+    "87022": "87022v1",
     "87026": "87026v2",
     "87037": "87037v1",
     "87038": "87038v1",
@@ -6757,6 +6765,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-29"
+          }
+        ]
+      }
+    },
+    "87022v1": {
+      "msid": "87022",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.11.03.515022",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-01",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-11-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.11.03.515022v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
