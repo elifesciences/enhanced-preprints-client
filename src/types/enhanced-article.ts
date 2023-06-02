@@ -83,7 +83,7 @@ export type Participant = {
 
 export type Timeline = {
   name: 'PREPRINT_PUBLISHED' | 'SENT_FOR_REVIEW' | 'VERSION_PUBLISHED',
-  date: Date,
+  date: Date | string,
   url?: string,
 };
 
