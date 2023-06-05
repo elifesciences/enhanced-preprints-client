@@ -16,7 +16,7 @@ export type Reference = {
   title: string,
   url?: string,
   pageEnd?: number,
-  pageStart: number,
+  pageStart?: number,
   authors: Array<Author>,
   datePublished: string,
   isPartOf?: Publication,

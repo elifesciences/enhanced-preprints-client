@@ -27,8 +27,8 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
         {referenceJournal ? <i>{referenceJournal} </i> : ''}
-        {referenceVolume ? <b>{referenceVolume}:</b> : ''}
-        {reference.pageStart}{reference.pageEnd ? `–${reference.pageEnd}` : ''}
+        {referenceVolume !== undefined ? <b>{referenceVolume}</b> : ''}
+        {reference.pageStart !== undefined ? `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}` : ''}
       </span>
       {doiIdentifier && <span className="reference__doi">
         {isReferenceList ?
