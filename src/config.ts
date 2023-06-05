@@ -11,4 +11,5 @@ export const config = {
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
   reviewsConfigFile: process.env.REVIEWS_CONFIG_FILE || './reviews.json',
+  twitterHandle: process.env.TWITTER_HANDLE || 'elife',
 };
