@@ -39,7 +39,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures and data</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</Link>,
     },
     {
       id: 'reviews',
