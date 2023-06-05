@@ -48,14 +48,6 @@
   content: ") ";
 }
 
-.reference__title {
-  @include typography.author-list-text();
-
-  &::after {
-    content: " ";
-  }
-}
-
 .reference__doi {
   @include mixins.margin(12 0 36);
   @include typography.body-small();
