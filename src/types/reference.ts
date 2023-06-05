@@ -6,6 +6,7 @@ type Publication = {
   type: PublicationType,
   name?: string,
   volumeNumber?: number,
+  issueNumber?: number,
   isPartOf?: Publication,
 };
 
@@ -15,7 +16,7 @@ export type Reference = {
   title: string,
   url?: string,
   pageEnd?: number,
-  pageStart: number,
+  pageStart?: number,
   authors: Array<Author>,
   datePublished: string,
   isPartOf?: Publication,
