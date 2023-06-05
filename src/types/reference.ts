@@ -6,6 +6,7 @@ type Publication = {
   type: PublicationType,
   name?: string,
   volumeNumber?: number,
+  issueNumber?: number,
   isPartOf?: Publication,
 };
 

@@ -1,10 +1,15 @@
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 
+type ReferenceBodyProps = {
+  reference: ReferenceData,
+  isReferenceList: boolean
+};
+
 const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
-export const ReferenceBody = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }): JSX.Element => {
-  const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
+export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps): JSX.Element => {
+  const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
 
@@ -18,7 +23,6 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: { referenc
           </li>
         ))}
       </ol>
-
       <span className="reference__authors_list_suffix">{new Date(reference.datePublished).getFullYear()}</span>
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
