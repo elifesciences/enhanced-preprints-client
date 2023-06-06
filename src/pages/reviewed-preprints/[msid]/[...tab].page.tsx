@@ -13,7 +13,6 @@ import { ArticlePage, ArticleStatusProps } from '../../../components/pages/artic
 import { contentToText } from '../../../utils/content-to-text';
 import { TimelineEvent } from '../../../components/molecules/timeline/timeline';
 import { convertTimeline } from '../../../utils/timeline-convert';
-// import { convertTimeline } from '../../../utils/timeline-convert';
 
 type PageProps = {
   metaData: MetaData
