@@ -29,13 +29,14 @@
 .tabbed-navigation {
   @include mixins.z-index(1);
 
-  display: block;
+  display: flex;
+  justify-content: center;
   position: sticky;
   top: 0;
 }
 
 .tabbed-navigation__tabs {
-  @include mixins.margin(0 -24 36);
+  @include mixins.margin(0 -24 24);
   @include mixins.padding(0, "left");
 
   align-self: flex-start;
@@ -43,11 +44,14 @@
   border-bottom: var(--border);
   border-top: var(--border);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
+  width: 100%;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(0 -48 36);
+
+    justify-content: center;
   }
 
   @media only screen and (min-width: settings.$breakpoint-medium) {
@@ -100,11 +104,11 @@
     }
   }
 
-  @media only screen and (max-width: settings.$breakpoint-small) {
+  @media only screen and (min-width: settings.$breakpoint-small) {
     &:nth-child(2) {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 52px;
+      ::after {
+        content: " and data";
+      }
     }
   }
 }
