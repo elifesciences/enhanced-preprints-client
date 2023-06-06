@@ -34,11 +34,11 @@ describe('ArticlePage', () => {
     </ArticlePage>);
 
     expect(screen.getByText('Full text')).toBeInTheDocument();
-    expect(screen.getByText('Figures and data')).toBeInTheDocument();
+    expect(screen.getByText('Figures')).toBeInTheDocument();
     expect(screen.getByText('Peer review')).toBeInTheDocument();
 
     expect(screen.getByText('Full text').parentElement?.classList.value).toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).not.toContain('tab-label--active');
+    expect(screen.getByText('Figures').parentElement?.classList.value).not.toContain('tab-label--active');
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
@@ -47,7 +47,7 @@ describe('ArticlePage', () => {
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).toContain('tab-label--active');
+    expect(screen.getByText('Figures').parentElement?.classList.value).toContain('tab-label--active');
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
@@ -56,7 +56,7 @@ describe('ArticlePage', () => {
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
-    expect(screen.getByText('Figures and data').parentElement?.classList.value).not.toContain('tab-label--active');
+    expect(screen.getByText('Figures').parentElement?.classList.value).not.toContain('tab-label--active');
     expect(screen.getByText('Peer review').parentElement?.classList.value).toContain('tab-label--active');
   });
 
