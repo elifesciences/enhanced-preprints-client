@@ -1270,6 +1270,12 @@
       "msas": [
         "Stem Cells and Regenerative Medicine"
       ]
+    },
+    "10.1101/2023.01.09.523031": {
+      "preprintDoi": "10.1101/2023.01.09.523031",
+      "msas": [
+        "Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -1363,6 +1369,7 @@
     "86933": "86933v1",
     "86940": "86940v1",
     "86943": "86943v1",
+    "86944": "86944v1",
     "86961": "86961v1",
     "86972": "86972v1",
     "86975": "86975v1",
@@ -7818,6 +7825,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-27"
+          }
+        ]
+      }
+    },
+    "86944v1": {
+      "msid": "86944",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.09.523031",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-07",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-13",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.09.523031v2",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
