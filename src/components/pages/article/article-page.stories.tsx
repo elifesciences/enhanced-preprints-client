@@ -19,7 +19,7 @@ const tabs = [
   },
   {
     id: 'figures',
-    linkElement: <LinkTo story='Article-Page-Figures-Tab'>Figures and data</LinkTo>,
+    linkElement: <LinkTo story='Article-Page-Figures-Tab'>Figures</LinkTo>,
   },
   {
     id: 'reviews',

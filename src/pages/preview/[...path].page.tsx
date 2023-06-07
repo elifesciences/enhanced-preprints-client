@@ -32,7 +32,7 @@ export const Page = (props: PageProps): JSX.Element => {
       },
       {
         id: 'figures',
-        linkElement: <Link scroll={false} href={`/preview/${id}/figures`}>Figures and data</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${id}/figures`}>Figures</Link>,
       },
     ]}>
       { childTab }
