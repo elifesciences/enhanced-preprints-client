@@ -87,36 +87,6 @@ describe('Content to Headings', () => {
         ],
       },
       {
-        id: 's2a',
-        text: [
-          'A HaloTag-LC3B processing assay to quantify autophagic flux in mammalian cells\n' +
-          '                ',
-        ],
-      },
-      {
-        id: 's2b',
-        text: [
-          'HaloTag-based reporters to monitor autophagic flux by fluorescence microscopy\n' +
-          '                ',
-        ],
-      },
-      {
-        id: 's2c',
-        text: [
-          'The HaloTag-based processing assay can be adapted to monitor selective autophagy\n' +
-          '                    pathways\n' +
-          '                ',
-        ],
-      },
-      {
-        id: 's2d',
-        text: [
-          'Bulk nonselective autophagic flux can be detected with the HaloTag-based\n' +
-          '                    processing assay\n' +
-          '                ',
-        ],
-      },
-      {
         id: 's3',
         text: [
           'Discussion',
@@ -126,54 +96,6 @@ describe('Content to Headings', () => {
         id: 's4',
         text: [
           'Materials and methods',
-        ],
-      },
-      {
-        id: 's4a',
-        text: [
-          'Cell lines and culture conditions',
-        ],
-      },
-      {
-        id: 's4b',
-        text: [
-          'Plasmids',
-        ],
-      },
-      {
-        id: 's4c',
-        text: [
-          'Stable expression in HeLa cells and MEFs by retrovirus infection',
-        ],
-      },
-      {
-        id: 's4d',
-        text: [
-          'Antibodies and reagents',
-        ],
-      },
-      {
-        id: 's4e',
-        text: [
-          'Protein extraction',
-        ],
-      },
-      {
-        id: 's4f',
-        text: [
-          'In-gel fluorescence imaging and immunoblotting',
-        ],
-      },
-      {
-        id: 's4g',
-        text: [
-          'Fluorescence imaging (live-cell)',
-        ],
-      },
-      {
-        id: 's4h',
-        text: [
-          'Flow cytometry',
         ],
       },
       {
