@@ -1322,7 +1322,7 @@
     "85654": "85654v1",
     "85760": "85760v2",
     "85786": "85786v1",
-    "85795": "85795v1",
+    "85795": "85795v2",
     "85875": "85875v1",
     "85921": "85921v1",
     "86016": "86016v1",
@@ -3338,7 +3338,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-07",
+            "link": {
+              "url": "/reviewed-preprints/85795v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-04-25",
             "eventDescription": "(this version)"
           },
@@ -7933,6 +7941,43 @@
             "date": "2022-11-10",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.07.13.499930v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "85795v2": {
+      "msid": "85795",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.02.494625",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-07",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-04-25",
+            "link": {
+              "url": "/reviewed-preprints/85795v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-14"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.06.02.494625v3",
               "text": "Go to bioRxiv"
             }
           }
