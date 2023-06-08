@@ -1,5 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../types';
@@ -18,7 +20,6 @@ type PageProps = {
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
-  tab: string,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -41,7 +42,15 @@ export const Page = (props: PageProps): JSX.Element => {
         <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
       </>),
   };
-  const { tab: tabName } = props;
+  const router = useRouter();
+  const tabName = useMemo(
+    () => {
+      const index = Array.isArray(router.query.path) ? router.query.path.length - 1 : undefined;
+      if (index !== undefined && router.query.path?.[index] && tabs[router.query.path[index]] !== undefined) return router.query.path[index];
+      return 'fulltext';
+    },
+    [router.query.path],
+  );
   const tab = tabs[tabName]();
   return (
     <>
@@ -74,19 +83,13 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  console.log('params: ', JSON.stringify(context.params));
-
-  console.log('id parts: ', (idParts as string[]).join(', '));
-
-  const tab = Array.isArray(idParts) && idParts.length > 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1]) ? idParts.pop() ?? 'fulltext' : 'fulltext';
+  if (Array.isArray(idParts) && idParts.length > 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
   const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
 
   if (id === undefined) {
     console.log('no id in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
-
-  console.log(`id: ${id}`);
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
@@ -112,7 +115,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           status: 'Published',
         },
         peerReview: version.article.peerReview,
-        tab,
       },
     };
   }
@@ -146,7 +148,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       content,
       status,
       peerReview,
-      tab,
     },
   };
 };
