@@ -1307,6 +1307,12 @@
       "msas": [
         "Plant Biology"
       ]
+    },
+    "10.1101/2023.04.19.537447": {
+      "preprintDoi": "10.1101/2023.04.19.537447",
+      "msas": [
+        "Biochemistry and Chemical Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1498,6 +1504,7 @@
     "88054": "88054v1",
     "88057": "88057v1",
     "88058": "88058v1",
+    "88084": "88084v1",
     "88088": "88088v1",
     "88132": "88132v1",
     "88135": "88135v1",
@@ -8133,6 +8140,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-04"
+          }
+        ]
+      }
+    },
+    "88084v1": {
+      "msid": "88084",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.19.537447",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-08",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-21",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.19.537447v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-19"
           }
         ]
       }
