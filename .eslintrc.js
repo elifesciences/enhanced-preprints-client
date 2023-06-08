@@ -4,7 +4,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', "no-only-tests"],
+  plugins: ['@typescript-eslint', "no-only-tests", "deprecation"],
   extends: ["airbnb/base", "airbnb-typescript/base", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:storybook/recommended", "plugin:json/recommended"],
   rules: {
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
