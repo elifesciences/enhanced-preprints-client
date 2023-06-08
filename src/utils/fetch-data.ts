@@ -1,8 +1,9 @@
 import { readFileSync } from 'fs';
 import { config } from '../config';
 import { jsonFetch } from './json-fetch';
-import { Content } from '../types/content';
-import { EnhancedArticleWithVersions, MetaData, PeerReview } from '../types';
+import {
+  Content, EnhancedArticleWithVersions, MetaData, PeerReview,
+} from '../types';
 import { ArticleSummary } from '../types/enhanced-article';
 
 type ReviewsJson = {
