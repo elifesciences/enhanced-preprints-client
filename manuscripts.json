@@ -5395,7 +5395,8 @@
             "date": "2023-03-27"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87956/v1/87956-v1.pdf"
     },
     "87672v1": {
       "msid": "87672",
@@ -5424,7 +5425,8 @@
             "date": "2023-03-14"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87672/v1/87672-v1.pdf"
     },
     "86903v1": {
       "msid": "86903",
@@ -5453,7 +5455,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/86903/v1/86903-v1.pdf"
     },
     "87192v1": {
       "msid": "87192",
@@ -5482,7 +5485,8 @@
             "date": "2023-03-15"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87192/v1/87192-v1.pdf"
     },
     "87674v1": {
       "msid": "87674",
@@ -5511,7 +5515,8 @@
             "date": "2023-03-15"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87674/v1/87674-v1.pdf"
     },
     "87178v2": {
       "msid": "87178",
@@ -5548,7 +5553,8 @@
             "date": "2023-03-06"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87178/v2/87178-v2.pdf"
     },
     "87005v1": {
       "msid": "87005",
@@ -5577,7 +5583,8 @@
             "date": "2023-03-29"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87005/v1/87005-v1.pdf"
     },
     "87523v1": {
       "msid": "87523",
@@ -5606,7 +5613,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87523/v1/87523-v1.pdf"
     },
     "87301v1": {
       "msid": "87301",
