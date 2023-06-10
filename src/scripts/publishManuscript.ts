@@ -2,7 +2,7 @@ const todayDate = () => (new Date()).toISOString().split('T')[0];
 const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const validateMsas = (msas: string[]) => {
-  const unrecognised = msas.filter((msa) => !(msa in [
+  const valid = [
     'Biochemistry and Chemical Biology',
     'Cancer Biology',
     'Cell Biology',
@@ -21,7 +21,9 @@ const validateMsas = (msas: string[]) => {
     'Plant Biology',
     'Structural Biology and Molecular Biophysics',
     'Stem Cells and Regenerative Medicine',
-  ]));
+  ];
+
+  const unrecognised = msas.filter((msa) => !valid.includes(msa));
 
   if (unrecognised.length > 0) {
     throw new Error(`msa not recognised: ${unrecognised.join(', ')}`);
