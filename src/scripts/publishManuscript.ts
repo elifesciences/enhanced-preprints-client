@@ -1,6 +1,35 @@
 const todayDate = () => (new Date()).toISOString().split('T')[0];
 const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
+const validateMsas = (msas: string[]) => {
+  const unrecognised = msas.filter((msa) => !(msa in [
+    'Biochemistry and Chemical Biology',
+    'Cancer Biology',
+    'Cell Biology',
+    'Chromosomes and Gene Expression',
+    'Computational and Systems Biology',
+    'Developmental Biology',
+    'Ecology',
+    'Epidemiology and Global Health',
+    'Evolutionary Biology',
+    'Genetics and Genomics',
+    'Immunology and Inflammation',
+    'Medicine',
+    'Microbiology and Infectious Disease',
+    'Neuroscience',
+    'Physics of Living Systems',
+    'Plant Biology',
+    'Structural Biology and Molecular Biophysics',
+    'Stem Cells and Regenerative Medicine',
+  ]));
+
+  if (unrecognised.length > 0) {
+    throw new Error(`msa not recognised: ${unrecognised.join(', ')}`);
+  }
+
+  return true;
+};
+
 type Preprint = {
   preprintDoi: string;
   msas?: string[];
@@ -51,6 +80,8 @@ const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, 
   const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate();
 
   const newMsas = (ppMsa === undefined || ppMsa.length === 0) && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
+
+  validateMsas(newMsas ?? []);
 
   const newPreprints: Preprints = {
     [ppDoi]: {
