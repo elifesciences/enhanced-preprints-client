@@ -56,6 +56,13 @@ jobs:
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
             --msa "${{ github.event.inputs.msa }}" | \
             tee manuscripts-new.json > /dev/null
+          # check the exit status of all commands in the pipeline
+          for status in "${PIPESTATUS[@]}"; do
+            if [ "$status" -ne 0 ]; then
+              echo "A command in the pipeline failed"
+              exit 1
+            fi
+          done
       - name: Replace manuscripts.json
         run: |
           mv manuscripts-new.json manuscripts.json
