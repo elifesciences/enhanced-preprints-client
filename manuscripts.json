@@ -1374,6 +1374,13 @@
       "msas": [
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2022.10.28.514230": {
+      "preprintDoi": "10.1101/2022.10.28.514230",
+      "msas": [
+        "Plant Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -1502,6 +1509,7 @@
     "87178": "87178v2",
     "87188": "87188v1",
     "87192": "87192v1",
+    "87196": "87196v1",
     "87202": "87202v1",
     "87217": "87217v1",
     "87252": "87252v1",
@@ -8665,6 +8673,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-27"
+          }
+        ]
+      }
+    },
+    "87196v1": {
+      "msid": "87196",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.10.28.514230",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-12"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-10-30",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.28.514230v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
