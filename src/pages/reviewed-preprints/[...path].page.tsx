@@ -122,7 +122,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
 
   if (manuscriptConfig === undefined) {
-    console.log('Cannot find msid configured'); // eslint-disable-line no-console
+    console.log(`Cannot find msid '${id}' configured`); // eslint-disable-line no-console
     return { notFound: true };
   }
 
