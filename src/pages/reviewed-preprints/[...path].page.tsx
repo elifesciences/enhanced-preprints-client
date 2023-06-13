@@ -12,7 +12,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
-import { convertTimeline } from '../../utils/timeline-convert';
+import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   metaData: MetaData
@@ -110,7 +110,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msidWithVersion: id,
         content: version.article.article.content,
         status: {
-          timeline: convertTimeline(version.article.timeline, 'bioRxiv', 1),
+          timeline: generateTimeline(version),
           articleType: 'Article',
           status: 'Published',
         },
