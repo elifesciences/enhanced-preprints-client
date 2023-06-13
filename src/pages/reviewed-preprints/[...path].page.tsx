@@ -15,6 +15,7 @@ import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
+  tab: 'fulltext' | 'figures' | 'reviews' | 'pdf',
   metaData: MetaData
   msidWithVersion?: string,
   status: ArticleStatusProps,
@@ -45,8 +46,9 @@ export const Page = (props: PageProps): JSX.Element => {
   const router = useRouter();
   const tabName = useMemo(
     () => {
-      const index = Array.isArray(router.query.path) ? router.query.path.length - 1 : undefined;
+      const index = (Array.isArray(router.query.path) && router.query.path.length - 1) ?? props.tab ?? undefined;
       if (index !== undefined && router.query.path?.[index] && tabs[router.query.path[index]] !== undefined) return router.query.path[index];
+      if (router.query.path === undefined && props.tab) return props.tab; // use server-side tab when not rendered client side
       return 'fulltext';
     },
     [router.query.path],
@@ -83,7 +85,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  if (Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
+  const tab = Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1]) ? idParts.pop() as 'fulltext' | 'figures' | 'reviews' | 'pdf' : 'fulltext';
   const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
 
   if (id === undefined) {
@@ -99,6 +101,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
     return {
       props: {
+        tab,
         metaData: {
           ...version.article,
           ...version.article.article,
@@ -136,6 +139,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
+      tab,
       metaData: {
         ...metaData,
         ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
