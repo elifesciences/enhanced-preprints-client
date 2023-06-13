@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  if (Array.isArray(idParts) && idParts.length > 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
+  if (Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
   const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
 
   if (id === undefined) {
