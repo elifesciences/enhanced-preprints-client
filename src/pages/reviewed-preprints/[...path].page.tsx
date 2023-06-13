@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../types';
@@ -14,8 +14,10 @@ import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
 
+type Tab = 'fulltext' | 'figures' | 'reviews' | 'pdf';
+
 type PageProps = {
-  tab: 'fulltext' | 'figures' | 'reviews' | 'pdf',
+  tab: Tab,
   metaData: MetaData
   msidWithVersion?: string,
   status: ArticleStatusProps,
@@ -44,12 +46,13 @@ export const Page = (props: PageProps): JSX.Element => {
       </>),
   };
   const router = useRouter();
-  const tabName = useMemo(
+  // use state and effect so NextJS doesn't break on initial render
+  const [tabName, setTabName] = useState<Tab>(props.tab);
+  useEffect(
     () => {
-      const index = (Array.isArray(router.query.path) && router.query.path.length - 1) ?? props.tab ?? undefined;
-      if (index !== undefined && router.query.path?.[index] && tabs[router.query.path[index]] !== undefined) return router.query.path[index];
-      if (router.query.path === undefined && props.tab) return props.tab; // use server-side tab when not rendered client side
-      return 'fulltext';
+      const index = (Array.isArray(router.query.path) && router.query.path.length - 1) ?? undefined;
+      if (index !== false && router.query.path?.[index] && tabs[router.query.path[index]] !== undefined) setTabName(router.query.path[index] as Tab);
+      else setTabName('fulltext');
     },
     [router.query.path],
   );
@@ -85,7 +88,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const tab = Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1]) ? idParts.pop() as 'fulltext' | 'figures' | 'reviews' | 'pdf' : 'fulltext';
+  const tab: Tab = Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1]) ? idParts.pop() as Tab ?? 'fulltext' : 'fulltext';
   const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
 
   if (id === undefined) {
