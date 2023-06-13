@@ -1432,6 +1432,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.03.12.532290": {
+      "preprintDoi": "10.1101/2023.03.12.532290",
+      "msas": [
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -1547,6 +1553,7 @@
     "87048": "87048v1",
     "87055": "87055v1",
     "87065": "87065v1",
+    "87083": "87083v1",
     "87092": "87092v1",
     "87094": "87094v1",
     "87099": "87099v1",
@@ -9084,6 +9091,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-28"
+          }
+        ]
+      }
+    },
+    "87083v1": {
+      "msid": "87083",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.12.532290",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-14",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.12.532290v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-12"
           }
         ]
       }
