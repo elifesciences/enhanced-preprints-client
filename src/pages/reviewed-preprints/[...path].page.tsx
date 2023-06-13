@@ -100,27 +100,29 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   // FEATURE FLAG
   if (config.automationFlag) {
-    const version = await fetchVersion(id);
+    const articleWithVersions = await fetchVersion(id);
+    const timeline = generateTimeline(articleWithVersions);
+    const status = timeline.some((event) => event.name.includes('Reviewed preprint')) ? 'Published' : 'Preview';
 
     return {
       props: {
         tab,
         metaData: {
-          ...version.article,
-          ...version.article.article,
-          authors: version.article.article.authors || [],
+          ...articleWithVersions.article,
+          ...articleWithVersions.article.article,
+          authors: articleWithVersions.article.article.authors || [],
           msas: [''],
-          version: version.article.versionIdentifier,
-          publishedYear: new Date(version.article.published).getFullYear() ?? 0,
+          version: articleWithVersions.article.versionIdentifier,
+          publishedYear: new Date(articleWithVersions.article.published).getFullYear() ?? 0,
         },
         msidWithVersion: id,
-        content: version.article.article.content,
+        content: articleWithVersions.article.article.content,
         status: {
-          timeline: generateTimeline(version),
+          timeline,
           articleType: 'Article',
-          status: 'Published',
+          status,
         },
-        peerReview: version.article.peerReview,
+        peerReview: articleWithVersions.article.peerReview,
       },
     };
   }
