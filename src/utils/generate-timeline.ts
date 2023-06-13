@@ -2,7 +2,8 @@ import { EnhancedArticleWithVersions } from '../types';
 import { TimelineEvent } from '../components/molecules/timeline/timeline';
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
-  const versions = [...Object.values(version.versions), version.article].sort((a, b) => a.published.getTime() - b.published.getTime());
+  // Extra sort here the top to ascertain the first version for getting dates
+  const versions = [...Object.values(version.versions), version.article].sort((a, b) => b.published.getTime() - a.published.getTime());
   const timeline: TimelineEvent[] = versions.length === 1 ? [{
     date: new Date(version.article.published).toDateString(),
     name: 'Reviewed preprint posted',
@@ -39,5 +40,5 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     });
   }
 
-  return timeline;
+  return timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
