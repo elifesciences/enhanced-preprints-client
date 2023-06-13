@@ -81,12 +81,6 @@ export type Participant = {
   institution: string,
 };
 
-export type Timeline = {
-  name: 'PREPRINT_PUBLISHED' | 'SENT_FOR_REVIEW' | 'VERSION_PUBLISHED',
-  date: Date | string,
-  url?: string,
-};
-
 export type EnhancedArticle = {
   id: string,
   msid: string,
@@ -102,7 +96,6 @@ export type EnhancedArticle = {
   sentForReview?: Date,
   peerReview: PeerReview,
   published: Date,
-  timeline: Timeline[]
 };
 
 export type EnhancedArticleWithVersions = {
