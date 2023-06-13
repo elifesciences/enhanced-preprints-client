@@ -1451,6 +1451,12 @@
       "msas": [
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.03.20.532888": {
+      "preprintDoi": "10.1101/2023.03.20.532888",
+      "msas": [
+        "Plant Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1668,6 +1674,7 @@
     "88183": "88183v1",
     "88189": "88189v1",
     "88205": "88205v1",
+    "88207": "88207v1",
     "88229": "88229v1",
     "88261": "88261v1",
     "88268": "88268v1",
@@ -9193,6 +9200,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-01"
+          }
+        ]
+      }
+    },
+    "88207v1": {
+      "msid": "88207",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.20.532888",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-04"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.20.532888v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
