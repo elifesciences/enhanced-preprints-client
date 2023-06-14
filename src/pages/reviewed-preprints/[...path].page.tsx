@@ -85,8 +85,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const idParts = [...context.params?.path as string[]];
 
-  if (Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
-  const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
+  if (idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
+  const id = idParts.join('/');
 
   if (id === undefined) {
     console.log('no id in path'); // eslint-disable-line no-console
@@ -134,7 +134,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    // replace with call for data
     manuscriptConfig.status,
   ]);
 
