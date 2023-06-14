@@ -3,11 +3,9 @@ import { Institution } from './institution';
 import { PeerReview } from './peer-review';
 import { Reference } from './reference';
 
-export type Doi = string;
-
 export type ArticleDocument = string;
 export type ArticleContent = {
-  doi: Doi
+  doi: string,
   document: ArticleDocument,
 };
 
