@@ -38,3 +38,9 @@ make IMAGE_REPO_PREFIX=yourdockerhubuser/enhanced-preprints- make build-storyboo
 ```
 
 These are tagged and pushed automatically with `:latest`, `:{githash}` and `:{branchname}-{githas}-{timestamp}`. The images are built for linux/amd64 and linux/arm64 platforms.
+
+# Running with a local import and server
+
+```shell
+IS_AUTOMATED=true docker compose up image-server yarn app nginx
+```
