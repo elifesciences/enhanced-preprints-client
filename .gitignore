@@ -27,3 +27,7 @@ yarn-error.log*
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# backstop
+/backstop_data/bitmaps_test/
+/backstop_data/html_report/
