@@ -6,22 +6,22 @@ import { TimelineEvent } from '../components/molecules/timeline/timeline';
 import { Heading } from './enhanced-article';
 
 export type MetaData = {
-  abstract: Content;
-  authors: Author[];
-  doi: string;
+  abstract: Content,
+  authors: Author[],
+  doi: string,
   msas: string[],
   msid: string,
   pdfUrl?: string,
   references: Reference[],
-  title: Content;
+  title: Content,
   version: string,
   publishedYear: number,
 };
 
 export type VersionedMetaData = {
-  abstract: Content;
-  authors: Author[];
-  doi: string;
+  abstract: Content,
+  authors: Author[],
+  doi: string,
   headings: Heading[],
   msas: string[],
   msid: string,
