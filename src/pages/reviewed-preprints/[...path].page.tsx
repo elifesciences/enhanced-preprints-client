@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../types';
@@ -17,7 +17,6 @@ import { generateTimeline } from '../../utils/generate-timeline';
 type Tab = 'fulltext' | 'figures' | 'reviews' | 'pdf';
 
 type PageProps = {
-  tab: Tab,
   metaData: MetaData
   msidWithVersion?: string,
   status: ArticleStatusProps,
@@ -46,13 +45,12 @@ export const Page = (props: PageProps): JSX.Element => {
       </>),
   };
   const router = useRouter();
-  // use state and effect so NextJS doesn't break on initial render
-  const [tabName, setTabName] = useState<Tab>(props.tab);
-  useEffect(
+  const tabName = useMemo(
     () => {
-      const index = (Array.isArray(router.query.path) && router.query.path.length - 1) ?? undefined;
-      if (index !== false && router.query.path?.[index] && tabs[router.query.path[index]] !== undefined) setTabName(router.query.path[index] as Tab);
-      else setTabName('fulltext');
+      if (Array.isArray(router.query.path)) {
+        return tabs[router.query.path.slice(-1)[0]] !== undefined ? router.query.path.slice(-1)[0] : 'fulltext';
+      }
+      return 'fulltext';
     },
     [router.query.path],
   );
@@ -82,13 +80,14 @@ export const Page = (props: PageProps): JSX.Element => {
 };
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
-  const idParts = context.params?.path;
-  if (idParts === undefined) {
+  if (context.params === undefined || context.params.path === undefined) {
     console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const tab: Tab = Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1]) ? idParts.pop() as Tab ?? 'fulltext' : 'fulltext';
+  const idParts = [...context.params?.path as string[]];
+
+  if (Array.isArray(idParts) && idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
   const id = Array.isArray(idParts) ? idParts.join('/') : idParts;
 
   if (id === undefined) {
@@ -106,7 +105,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
     return {
       props: {
-        tab,
         metaData: {
           ...articleWithVersions.article,
           ...articleWithVersions.article.article,
@@ -144,7 +142,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
-      tab,
       metaData: {
         ...metaData,
         ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
