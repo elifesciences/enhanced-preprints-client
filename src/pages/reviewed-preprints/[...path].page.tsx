@@ -14,8 +14,6 @@ import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
 
-type Tab = 'fulltext' | 'figures' | 'reviews' | 'pdf';
-
 type PageProps = {
   metaData: MetaData
   msidWithVersion?: string,
