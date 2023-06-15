@@ -84,4 +84,10 @@
   @include typography.body();
 
   display: block;
+
+  p {
+    img {
+      max-width: 100%;
+    }
+  }
 }
