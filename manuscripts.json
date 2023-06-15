@@ -1488,6 +1488,13 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.01.16.524306": {
+      "preprintDoi": "10.1101/2023.01.16.524306",
+      "msas": [
+        "Computational and Systems Biology",
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -1685,6 +1692,7 @@
     "87860": "87860v1",
     "87866": "87866v1",
     "87868": "87868v1",
+    "87895": "87895v1",
     "87912": "87912v1",
     "87935": "87935v1",
     "87956": "87956v1",
@@ -9507,6 +9515,35 @@
             "date": "2023-04-15",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.14.536858v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87895v1": {
+      "msid": "87895",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.16.524306",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-15",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-29"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.16.524306v1",
               "text": "Go to bioRxiv"
             }
           }
