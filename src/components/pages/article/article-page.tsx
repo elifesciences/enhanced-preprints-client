@@ -35,15 +35,15 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}#tab-content`}>Full text</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}#tab-content`}>Full text</Link>,
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</Link>,
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</Link>,
+      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</Link>,
     },
   ];
   const doi = getRppVersionDoi(props.metaData);
