@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -35,15 +34,15 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}#tab-content`}>Full text</Link>,
+      linkElement: <a href={`/reviewed-preprints/${id}#tab-content`}>Full text</a>,
     },
     {
       id: 'figures',
-      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</Link>,
+      linkElement: <a href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</a>,
     },
     {
       id: 'reviews',
-      linkElement: <Link scroll={true} prefetch={true} shallow={false} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</Link>,
+      linkElement: <a href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</a>,
     },
   ];
   const doi = getRppVersionDoi(props.metaData);
