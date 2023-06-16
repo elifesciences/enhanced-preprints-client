@@ -22,7 +22,7 @@ export const ReviewContent = ({
   <section id={id} {...sectionProps}>
     <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
     {isAssessment ? (
-      <ul className="review-content">
+      <ul className="review-content-items">
         { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
         <li className="review-content_item"><a href="https://elifesciences.org/inside-elife/db24dd46" className="review-content_links">About eLife assessments</a></li>
       </ul>
