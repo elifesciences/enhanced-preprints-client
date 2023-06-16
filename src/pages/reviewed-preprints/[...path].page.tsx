@@ -2,14 +2,17 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
-import { config } from '../../../config';
-import { getManuscript, getRppDoi } from '../../../manuscripts';
-import { Content, MetaData, PeerReview } from '../../../types';
-import { fetchContent, fetchMetadata, fetchReviews } from '../../../utils/fetch-data';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../../components/pages/article/tabs';
-import { ArticlePage, ArticleStatusProps } from '../../../components/pages/article/article-page';
-import { contentToText } from '../../../utils/content-to-text';
-import { TimelineEvent } from '../../../components/molecules/timeline/timeline';
+import { config } from '../../config';
+import { getManuscript, getRppDoi } from '../../manuscripts';
+import { Content, MetaData, PeerReview } from '../../types';
+import {
+  fetchContent, fetchMetadata, fetchReviews, fetchVersion,
+} from '../../utils/fetch-data';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
+import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
+import { contentToText } from '../../utils/content-to-text';
+import { TimelineEvent } from '../../components/molecules/timeline/timeline';
+import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   metaData: MetaData
@@ -41,8 +44,13 @@ export const Page = (props: PageProps): JSX.Element => {
   };
   const router = useRouter();
   const tabName = useMemo(
-    () => (router.query.tab?.[0] && tabs[router.query.tab[0]] !== undefined ? router.query.tab[0] : 'fulltext'),
-    [router.query.tab],
+    () => {
+      if (Array.isArray(router.query.path)) {
+        return tabs[router.query.path.slice(-1)[0]] !== undefined ? router.query.path.slice(-1)[0] : 'fulltext';
+      }
+      return 'fulltext';
+    },
+    [router.query.path],
   );
   const tab = tabs[tabName]();
   return (
@@ -69,22 +77,56 @@ export const Page = (props: PageProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-  const msid = context.params?.msid;
-  if (msid === undefined) {
-    console.log('no msid in path'); // eslint-disable-line no-console
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+  if (context.params === undefined || context.params.path === undefined) {
+    console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  if (Array.isArray(msid)) {
-    console.log('multiple ids in path'); // eslint-disable-line no-console
+  const idParts = [...context.params?.path as string[]];
+
+  if (idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
+  const id = idParts.join('/');
+
+  if (id === undefined) {
+    console.log('no id in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, msid);
+  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
+
+  // FEATURE FLAG
+  if (config.automationFlag) {
+    const articleWithVersions = await fetchVersion(id);
+    const timeline = generateTimeline(articleWithVersions);
+    const status = timeline.some((event) => event.name.includes('Reviewed preprint')) ? 'Published' : 'Preview';
+
+    return {
+      props: {
+        metaData: {
+          ...articleWithVersions.article,
+          ...articleWithVersions.article.article,
+          authors: articleWithVersions.article.article.authors || [],
+          msas: [''],
+          version: articleWithVersions.article.versionIdentifier,
+          publishedYear: new Date(articleWithVersions.article.published).getFullYear() ?? 0,
+        },
+        msidWithVersion: id,
+        content: articleWithVersions.article.article.content,
+        status: {
+          timeline,
+          articleType: 'Article',
+          status,
+        },
+        peerReview: articleWithVersions.article.peerReview,
+      },
+    };
+  }
+
+  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
 
   if (manuscriptConfig === undefined) {
-    console.log('Cannot find msid configured'); // eslint-disable-line no-console
+    console.log(`Cannot find msid '${id}' configured`); // eslint-disable-line no-console
     return { notFound: true };
   }
 
@@ -92,11 +134,8 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    // replace with call for data
     manuscriptConfig.status,
   ]);
-
-  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
   return {
     props: {
@@ -108,7 +147,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
       },
-      msidWithVersion: msid,
+      msidWithVersion: id,
       content,
       status,
       peerReview,
