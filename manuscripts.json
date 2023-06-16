@@ -1591,7 +1591,7 @@
     "86933": "86933v1",
     "86939": "86939v1",
     "86940": "86940v1",
-    "86943": "86943v1",
+    "86943": "86943v2",
     "86944": "86944v1",
     "86961": "86961v1",
     "86972": "86972v1",
@@ -4660,7 +4660,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-16",
+            "link": {
+              "url": "/reviewed-preprints/86943v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-05-09",
             "eventDescription": "(this version)"
           },
@@ -6800,7 +6808,8 @@
             "date": "2023-02-01"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/86169/v1/86169-v1.pdf"
     },
     "87559v1": {
       "msid": "87559",
@@ -6858,7 +6867,8 @@
             "date": "2023-03-17"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87651/v1/87651-v1.pdf"
     },
     "84537v2": {
       "msid": "84537",
@@ -6924,7 +6934,8 @@
             "date": "2023-03-20"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87756/v1/87756-v1.pdf"
     },
     "88317v1": {
       "msid": "88317",
@@ -6953,7 +6964,8 @@
             "date": "2023-04-10"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/88317/v1/88317-v1.pdf"
     },
     "88261v1": {
       "msid": "88261",
@@ -6982,7 +6994,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/88261/v1/88261-v1.pdf"
     },
     "87691v1": {
       "msid": "87691",
@@ -7003,7 +7016,8 @@
             "date": "2023-04-01"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87691/v1/87691-v1.pdf"
     },
     "87133v1": {
       "msid": "87133",
@@ -7032,7 +7046,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/87133/v1/87133-v1.pdf"
     },
     "88623v1": {
       "msid": "88623",
@@ -7061,7 +7076,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/88623/v1/88623-v1.pdf"
     },
     "88579v1": {
       "msid": "88579",
@@ -7206,7 +7222,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/88299/v1/88299-v1.pdf"
     },
     "87414v1": {
       "msid": "87414",
@@ -9544,6 +9561,43 @@
             "date": "2023-01-20",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.01.16.524306v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86943v2": {
+      "msid": "86943",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.25.525596",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-16",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-05-09",
+            "link": {
+              "url": "/reviewed-preprints/86943v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-13"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.25.525596v2",
               "text": "Go to bioRxiv"
             }
           }
