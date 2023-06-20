@@ -1528,6 +1528,13 @@
       "msas": [
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.02.22.529525": {
+      "preprintDoi": "10.1101/2023.02.22.529525",
+      "msas": [
+        "Developmental Biology",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -1680,6 +1687,7 @@
     "87306": "87306v1",
     "87316": "87316v1",
     "87317": "87317v1",
+    "87330": "87330v1",
     "87340": "87340v1",
     "87357": "87357v1",
     "87361": "87361v1",
@@ -9781,6 +9789,35 @@
             "date": "2023-02-18",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.18.529008v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87330v1": {
+      "msid": "87330",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.22.529525",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-20",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.22.529525v1",
               "text": "Go to bioRxiv"
             }
           }
