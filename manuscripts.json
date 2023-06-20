@@ -1495,6 +1495,13 @@
         "Computational and Systems Biology",
         "Physics of Living Systems"
       ]
+    },
+    "10.21203/rs.3.rs-1828415/v2": {
+      "preprintDoi": "10.21203/rs.3.rs-1828415/v2",
+      "msas": [
+        "Evolutionary Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -1629,6 +1636,7 @@
     "87188": "87188v1",
     "87192": "87192v1",
     "87196": "87196v1",
+    "87198": "87198v1",
     "87202": "87202v1",
     "87217": "87217v1",
     "87252": "87252v1",
@@ -9600,6 +9608,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.01.25.525596v2",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "87198v1": {
+      "msid": "87198",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.21203/rs.3.rs-1828415/v2",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-20",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to Research Square",
+            "date": "2023-04-17",
+            "link": {
+              "url": "https://www.researchsquare.com/article/rs-1828415/v2",
+              "text": "Go to Research Square"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-09"
           }
         ]
       }
