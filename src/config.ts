@@ -4,6 +4,7 @@ if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-bui
 }
 
 export const config = {
+  automationFlag: process.env.IS_AUTOMATED || false,
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,
@@ -11,4 +12,5 @@ export const config = {
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
   reviewsConfigFile: process.env.REVIEWS_CONFIG_FILE || './reviews.json',
+  twitterHandle: process.env.TWITTER_HANDLE || 'elife',
 };

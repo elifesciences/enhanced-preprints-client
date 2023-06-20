@@ -3,14 +3,17 @@
 @use "../../../sass/typography";
 
 .reference__title {
-  @include typography.body-small();
+  @include typography.body();
 
+  font-family: var(--font-family-primary);
   font-weight: bold;
 }
 
 .reference {
   @include mixins.margin(24, "bottom");
-  @include typography.body-small();
+  @include typography.body();
+
+  font-family: var(--font-family-primary);
 }
 
 .reference__label {
@@ -19,16 +22,42 @@
   }
 }
 
+.reference__authors_list {
+  display: inline;
+  list-style: none;
+  padding: 0;
+
+  &::after {
+    content: " ";
+  }
+}
+
+.reference__author {
+  display: inline;
+
+  &:not(:first-child)::before {
+    content: ", ";
+  }
+}
+
+.reference__authors_list_suffix::before {
+  content: "(";
+}
+
+.reference__authors_list_suffix::after {
+  content: ") ";
+}
+
 .reference__doi {
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
-  color: settings.$color-text-secondary;
+  color: var(--color-text-secondary);
 }
 
 .reference__doi_link {
   @include typography.body-small();
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   font-weight: normal;
 }

@@ -129,7 +129,22 @@ describe('Content to JSX', () => {
       },
     });
 
-    expect(result).toStrictEqual(<img src="https://placekitten.com/500/300"></img>);
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(<img loading="lazy" src="https://placekitten.com/500/300"></img>);
+  });
+
+  it('generates the expected html when passed a ImageObject with a class', () => {
+    const result = contentToJsx({
+      type: 'ImageObject',
+      contentUrl: 'https://placekitten.com/500/300',
+      content: [],
+      meta: {
+        inline: true,
+      },
+    });
+
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(<img loading="lazy" className="inline-image" src="https://placekitten.com/500/300"></img>);
   });
 
   it('allows an array of arrays to be generated', () => {

@@ -7,11 +7,10 @@
 }
 
 .authors-list {
-  @include mixins.margin(0);
-  @include mixins.padding(0);
-
   display: inline;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .authors-list__item {
@@ -85,15 +84,15 @@
 }
 
 .authors-link {
-  color: settings.$color-text;
+  color: var(--color-text);
   text-decoration: none;
 
   &:visited {
-    color: settings.$color-text;
+    color: var(--color-text);
   }
 
   &:hover {
-    color: settings.$color-primary-dark;
+    color: var(--color-primary-dark);
   }
 }
 

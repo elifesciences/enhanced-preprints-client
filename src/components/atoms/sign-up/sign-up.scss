@@ -6,7 +6,7 @@
   @include mixins.padding(48, "top");
   @include mixins.padding(72, "bottom");
 
-  border-top: 1px solid settings.$divider;
+  border-top: 1px solid var(--divider);
   text-align: center;
 }
 
@@ -18,13 +18,13 @@
 }
 
 .email-cta__header_text {
-  @include mixins.margin(0);
   @include mixins.padding(24, "top");
   @include mixins.padding(24, "bottom");
   @include typography.font-size-and-vertical-height(20);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  margin: 0;
 }
 
 .email-cta__privacy {
@@ -36,12 +36,12 @@
 }
 
 .email-cta__privacy_link {
-  color: settings.$color-text-secondary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
     text-decoration: underline;
   }
 }
