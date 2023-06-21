@@ -75,7 +75,7 @@
 
 .figure__caption__button {
   @include mixins.margin(48, "bottom");
-  @include mixins.margin(30, "right");
+  @include mixins.padding(25, "right");
 
   background: url("../../../images/actions/arrow-down-blue.svg") no-repeat right -4px;
   border: none;
@@ -85,5 +85,5 @@
 }
 
 .figure__caption__button.expanded {
-  background: url("../../../images/actions/arrow-up-blue.svg") no-repeat right -4px;
+  background: url("../../../images/actions/arrow-up-blue.svg") no-repeat right -2px;
 }
