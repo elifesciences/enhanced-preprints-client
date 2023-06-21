@@ -30,11 +30,11 @@
   @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
+  -webkit-box-orient: vertical;
   display: -webkit-box;
   font-family: var(--font-family-primary);
-  overflow: hidden;
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+  overflow: hidden;
 
   h1 {
     @include mixins.margin(0, "top");
