@@ -30,7 +30,11 @@
   @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
+  display: -webkit-box;
   font-family: var(--font-family-primary);
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 
   h1 {
     @include mixins.margin(0, "top");
@@ -65,9 +69,21 @@
   }
 }
 
-.prototype {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
+.figure__caption--expanded {
+  -webkit-line-clamp: none;
+}
+
+.figure__caption__button {
+  @include mixins.margin(48, "bottom");
+  @include mixins.margin(30, "right");
+
+  background: url("../../../images/actions/arrow-down-blue.svg") no-repeat right -4px;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: block;
+}
+
+.figure__caption__button.expanded {
+  background: url("../../../images/actions/arrow-up-blue.svg") no-repeat right -4px;
 }
