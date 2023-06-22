@@ -1636,6 +1636,12 @@
         "Developmental Biology",
         "Medicine"
       ]
+    },
+    "10.1101/2023.04.24.538182": {
+      "preprintDoi": "10.1101/2023.04.24.538182",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -1850,6 +1856,7 @@
     "87884": "87884v1",
     "87895": "87895v1",
     "87912": "87912v1",
+    "87922": "87922v1",
     "87935": "87935v1",
     "87956": "87956v1",
     "87958": "87958v1",
@@ -10536,6 +10543,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-21"
+          }
+        ]
+      }
+    },
+    "87922v1": {
+      "msid": "87922",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.24.538182",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-25",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.24.538182v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-21"
           }
         ]
       }
