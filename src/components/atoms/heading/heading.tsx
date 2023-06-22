@@ -5,7 +5,7 @@ import './heading.scss';
 type HeadingProps = {
   content: Content,
   headingLevel: 1 | 2 | 3 | 4 | 5 | 6,
-  id: string,
+  id?: string,
   className?: string,
 };
 

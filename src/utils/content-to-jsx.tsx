@@ -20,7 +20,7 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
   }
   switch (content.type) {
     case 'Heading':
-      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth}/>;
+      return !content.id ? <Heading key={index} content={content.content} headingLevel={content.depth}/> : <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth}/>;
     case 'Cite':
       return <Fragment key={index}>(<a href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</Fragment>;
     case 'CiteGroup':
