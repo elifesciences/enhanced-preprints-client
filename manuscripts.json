@@ -1616,6 +1616,12 @@
       "msas": [
         "Biochemistry and Chemical Biology"
       ]
+    },
+    "10.1101/2023.03.07.531554": {
+      "preprintDoi": "10.1101/2023.03.07.531554",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -1818,6 +1824,7 @@
     "87730": "87730v1",
     "87739": "87739v1",
     "87742": "87742v1",
+    "87747": "87747v1",
     "87753": "87753v1",
     "87754": "87754v1",
     "87756": "87756v1",
@@ -10426,6 +10433,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-19"
+          }
+        ]
+      }
+    },
+    "87747v1": {
+      "msid": "87747",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.07.531554",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-30"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-13",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.07.531554v2",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
