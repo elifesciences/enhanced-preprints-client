@@ -1704,6 +1704,13 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2022.07.27.501668": {
+      "preprintDoi": "10.1101/2022.07.27.501668",
+      "msas": [
+        "Immunology and Inflammation",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -1937,6 +1944,7 @@
     "88054": "88054v1",
     "88057": "88057v1",
     "88058": "88058v2",
+    "88065": "88065v1",
     "88084": "88084v1",
     "88088": "88088v1",
     "88117": "88117v1",
@@ -11035,6 +11043,35 @@
             "date": "2023-02-23",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.17.528969v3",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "88065v1": {
+      "msid": "88065",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.07.27.501668",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-23",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-11"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.07.27.501668v4",
               "text": "Go to bioRxiv"
             }
           }
