@@ -56,4 +56,26 @@ describe('Figure', () => {
 
     expect(screen.getByText('Italic Text').tagName).toBe('EM');
   });
+
+  it('should not render caption if not defined', () => {
+    const noCaption: FigureContent = {
+      ...content,
+      caption: undefined,
+    };
+
+    const { container } = render(<Figure content={noCaption}/>);
+
+    expect(container.querySelector('figcaption')).not.toBeInTheDocument();
+  });
+
+  it('should not render label if not defined', () => {
+    const noLabel: FigureContent = {
+      ...content,
+      label: undefined,
+    };
+
+    const { container } = render(<Figure content={noLabel}/>);
+
+    expect(container.querySelector('label')).not.toBeInTheDocument();
+  });
 });
