@@ -14,6 +14,21 @@ export const Figure1 = Template.bind({});
 Figure1.args = {
   content: {
     type: 'Figure',
+    id: '1',
+    content: {
+      type: 'ImageObject',
+      meta: {
+        inline: false,
+      },
+      contentUrl: 'https://placekitten.com/800/400',
+    },
+  },
+};
+
+export const Figure2 = Template.bind({});
+Figure2.args = {
+  content: {
+    type: 'Figure',
     label: 'This is a figure Component',
     caption: [
       {
