@@ -13,6 +13,11 @@ describe('Content to Text', () => {
     expect(result).toStrictEqual('onetwothree');
   });
 
+  it('can support empty strings', () => {
+    const result = contentToText(['', 'one', 'two', '', { type: 'Strong', content: 'three' }, '']);
+    expect(result).toStrictEqual('onetwothree');
+  });
+
   it('generates nothing when unsupported content types are passed', () => {
     const result = contentToText([
       {

@@ -4,8 +4,8 @@ import { FigureContent } from '../../../types';
 
 export const Figure = ({ content }: { content: FigureContent }) => (
   <figure className="figure" id={content.id}>
-    <label className="figure__label">{content.label}</label>
+    {content.label && <label className="figure__label">{content.label}</label>}
     {contentToJsx(content.content)}
-    <figcaption className="figure__caption">{contentToJsx(content.caption)}</figcaption>
+    {content.caption && <figcaption className="figure__caption">{contentToJsx(content.caption)}</figcaption>}
   </figure>
 );
