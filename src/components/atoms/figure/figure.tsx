@@ -6,6 +6,6 @@ export const Figure = ({ content }: { content: FigureContent }) => (
   <figure className="figure" id={content.id}>
     {content.label && <label className="figure__label">{content.label}</label>}
     {contentToJsx(content.content)}
-    {content.caption && <figcaption className="figure__caption">{contentToJsx(content.caption)}</figcaption>}
+    {content.caption && <figcaption className="figure__caption">{contentToJsx(content.caption, undefined, 3)}</figcaption>}
   </figure>
 );
