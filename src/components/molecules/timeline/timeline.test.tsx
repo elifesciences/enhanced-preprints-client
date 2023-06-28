@@ -12,7 +12,7 @@ describe('Timeline', () => {
         name: 'event2',
         date: '2002-02-14',
         link: {
-          text: 'Go to bioRxiv',
+          text: 'Go to Elliot',
           url: 'https://preprint.url',
         },
       },
