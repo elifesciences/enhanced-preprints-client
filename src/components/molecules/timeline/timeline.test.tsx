@@ -20,8 +20,8 @@ describe('Timeline', () => {
     listDescription='This is a timeline'
     />);
 
-    const firstEvent = screen.getByText('14 February 2002');
-    const secondEvent = screen.getByText('13 January 2001');
+    const firstEvent = screen.getByText('February 14, 2002');
+    const secondEvent = screen.getByText('January 13, 2001');
     expect(firstEvent).toBeInTheDocument();
     expect(secondEvent).toBeInTheDocument();
     expect(firstEvent.compareDocumentPosition(secondEvent)).toBe(4);
