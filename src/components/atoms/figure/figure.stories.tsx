@@ -14,7 +14,6 @@ export const Figure1 = Template.bind({});
 Figure1.args = {
   content: {
     type: 'Figure',
-    id: '1',
     content: {
       type: 'ImageObject',
       meta: {
