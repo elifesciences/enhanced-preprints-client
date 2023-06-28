@@ -22,7 +22,7 @@ describe('Content to JSX', () => {
       type: 'Heading', depth: 1, content: 'heading', id: 'h1',
     });
 
-    expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1}/>);
+    expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1} maxLevel={undefined}/>);
   });
 
   it('generates the expected html when passed a Cite (including using page fragment target)', () => {
@@ -155,7 +155,7 @@ describe('Content to JSX', () => {
     ]);
 
     // eslint-disable-next-line react/jsx-key
-    expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} id="h1" content="heading" />]]);
+    expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} maxLevel={undefined} id="h1" content="heading" />]]);
   });
 
   it('generates the expected html when passed a ListItem', () => {

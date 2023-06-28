@@ -47,15 +47,31 @@ describe('Figure', () => {
   it('renders a complex caption', () => {
     const complexContent: FigureContent = {
       ...content,
-      caption: {
-        type: 'Emphasis',
-        content: 'Italic Text',
-      },
+      caption: [
+        {
+          type: 'Heading',
+          content: 'Heading 1',
+          depth: 1,
+          id: 'h1',
+        },
+        {
+          type: 'Emphasis',
+          content: 'Italic Text',
+        },
+        {
+          type: 'Heading',
+          content: 'Heading 4',
+          depth: 4,
+          id: 'h4',
+        },
+      ],
     };
 
     render(<Figure content={complexContent}/>);
 
+    expect(screen.getByText('Heading 1').tagName).toBe('H3');
     expect(screen.getByText('Italic Text').tagName).toBe('EM');
+    expect(screen.getByText('Heading 4').tagName).toBe('H4');
   });
 
   it('should not render caption if not defined', () => {

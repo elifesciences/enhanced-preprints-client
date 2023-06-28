@@ -7,7 +7,7 @@ import { Figure } from '../components/atoms/figure/figure';
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
 
-export const contentToJsx = (content: Content, index?: number): JSXContent => {
+export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
   }
@@ -16,11 +16,11 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
   }
 
   if (Array.isArray(content)) {
-    return content.map((part, i) => contentToJsx(part, i));
+    return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
   }
   switch (content.type) {
     case 'Heading':
-      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth}/>;
+      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={maxHeadingLevel}/>;
     case 'Cite':
       return <Fragment key={index}>(<a href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</Fragment>;
     case 'CiteGroup':
