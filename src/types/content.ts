@@ -38,7 +38,7 @@ export type HeadingContent = DecoratedContent & {
 
 export type FigureContent = DecoratedContent & {
   type: 'Figure',
-  id: string,
+  id?: string,
   caption?: Content,
   label?: string,
 };
