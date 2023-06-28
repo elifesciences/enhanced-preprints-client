@@ -1816,6 +1816,12 @@
         "Evolutionary Biology",
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.01.24.525310": {
+      "preprintDoi": "10.1101/2023.01.24.525310",
+      "msas": [
+        "Cancer Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -1876,6 +1882,7 @@
     "86635": "86635v1",
     "86636": "86636v2",
     "86638": "86638v1",
+    "86655": "86655v1",
     "86663": "86663v1",
     "86668": "86668v1",
     "86669": "86669v1",
@@ -11862,6 +11869,35 @@
             "date": "2023-03-12",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.10.532048v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86655v1": {
+      "msid": "86655",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.24.525310",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-06-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-22"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-01",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.24.525310v2",
               "text": "Go to bioRxiv"
             }
           }
