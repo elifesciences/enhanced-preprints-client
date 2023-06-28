@@ -12,9 +12,10 @@ const content: FigureContent = {
 
 describe('Figure', () => {
   it('renders correctly', () => {
-    render(<Figure content={content}/>);
+    const { container } = render(<Figure content={content}/>);
 
     expect(screen.getByText('some content')).toBeInTheDocument();
+    expect(container.querySelector('#id')).toBeInTheDocument();
   });
 
   it('renders the content', () => {
@@ -77,5 +78,16 @@ describe('Figure', () => {
     const { container } = render(<Figure content={noLabel}/>);
 
     expect(container.querySelector('label')).not.toBeInTheDocument();
+  });
+
+  it('should not set id if not defined', () => {
+    const noId: FigureContent = {
+      ...content,
+      id: undefined,
+    };
+
+    const { container } = render(<Figure content={noId}/>);
+
+    expect(container.querySelector('#id')).not.toBeInTheDocument();
   });
 });
