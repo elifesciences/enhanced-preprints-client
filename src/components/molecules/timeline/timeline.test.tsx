@@ -24,6 +24,8 @@ describe('Timeline', () => {
     const secondEvent = screen.getByText('January 13, 2001');
     expect(firstEvent).toBeInTheDocument();
     expect(secondEvent).toBeInTheDocument();
+    expect(firstEvent).toHaveAttribute('dateTime', '2002-02-14');
+    expect(secondEvent).toHaveAttribute('dateTime', '2001-01-13');
     expect(firstEvent.compareDocumentPosition(secondEvent)).toBe(4);
     expect(screen.getByText('event1')).toBeInTheDocument();
     expect(screen.getByText('event2')).toBeInTheDocument();
