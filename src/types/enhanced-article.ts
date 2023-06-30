@@ -92,8 +92,8 @@ export type EnhancedArticle = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  peerReview: PeerReview,
-  published: Date,
+  peerReview?: PeerReview,
+  published?: Date,
 };
 
 export type EnhancedArticleWithVersions = {
