@@ -92,7 +92,7 @@ export type EnhancedArticle = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  peerReview?: PeerReview,
+  peerReview: PeerReview,
   published?: Date,
 };
 

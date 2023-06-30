@@ -109,14 +109,14 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           authors: articleWithVersions.article.article.authors || [],
           msas: [''],
           version: articleWithVersions.article.versionIdentifier,
-          publishedYear: new Date(articleWithVersions.article.published).getFullYear() ?? 0,
+          publishedYear: 13, // TODO
         },
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
         status: {
           timeline,
-          articleType: 'Article',
-          status,
+          articleType: 'Article', // TODO
+          status, // TODO
         },
         peerReview: articleWithVersions.article.peerReview,
       },
