@@ -1925,7 +1925,7 @@
     "86663": "86663v1",
     "86668": "86668v1",
     "86669": "86669v1",
-    "86670": "86670v1",
+    "86670": "86670v2",
     "86687": "86687v2",
     "86689": "86689v1",
     "86695": "86695v1",
@@ -4225,7 +4225,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-30",
+            "link": {
+              "url": "/reviewed-preprints/86670v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-04-25",
             "eventDescription": "(this version)"
           },
@@ -12297,6 +12305,43 @@
             "date": "2023-03-31",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.30.534978v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "86670v2": {
+      "msid": "86670",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.05.12.443782",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-06-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-04-25",
+            "link": {
+              "url": "/reviewed-preprints/86670v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-23"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.05.12.443782v2",
               "text": "Go to bioRxiv"
             }
           }
