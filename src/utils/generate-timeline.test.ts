@@ -6,21 +6,35 @@ describe('generateTimeline', () => {
     // Define the input data with one article version
     const enhancedArticle = {
       article: {
-        id: '1',
+        id: '1v1',
         published: new Date('2023-01-03'),
-        versionIdentifier: 'v1',
+        versionIdentifier: '1',
         preprintPosted: new Date('2023-01-02'),
         preprintDoi: 'doi-123',
         sentForReview: new Date('2023-01-01'),
+        article: [],
+        msid: '1',
+        doi: '10.00001/1v1',
+        preprintUrl: 'http://preprint.org/1v1',
       },
-      versions: {},
+      versions: {
+        v1: {
+          id: '1v1',
+          published: new Date('2023-01-03'),
+          versionIdentifier: '1',
+          preprintPosted: new Date('2023-01-02'),
+          preprintDoi: 'doi-123',
+          sentForReview: new Date('2023-01-01'),
+          article: [],
+        },
+      },
     };
 
     // Define the expected output
     const expectedTimeline = [
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint posted',
+        name: 'Reviewed preprint version 1',
         eventDescription: '(this version)',
       },
       {
@@ -38,7 +52,7 @@ describe('generateTimeline', () => {
     ];
 
     // Call the function
-    const timeline = generateTimeline((enhancedArticle as EnhancedArticleWithVersions));
+    const timeline = generateTimeline(enhancedArticle);
 
     // Assert the result
     expect(timeline).toEqual(expectedTimeline);
@@ -55,10 +69,7 @@ describe('generateTimeline', () => {
         preprintDoi: 'doi-123',
         sentForReview: new Date('2023-01-01'),
       },
-    };
-
-    const enhancedArticleWithVersions = {
-      article: {
+      v2: {
         id: '1v2',
         published: new Date('2023-01-04'),
         versionIdentifier: 'v2',
@@ -66,6 +77,10 @@ describe('generateTimeline', () => {
         preprintDoi: 'doi-123',
         sentForReview: new Date('2023-01-01'),
       },
+    };
+
+    const enhancedArticleWithVersions = {
+      article: versions.v2,
       versions,
     };
 
