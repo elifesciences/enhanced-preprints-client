@@ -19,7 +19,7 @@ type PageProps = {
   msidWithVersion?: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview: PeerReview,
+  peerReview?: PeerReview,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -36,10 +36,10 @@ export const Page = (props: PageProps): JSX.Element => {
   const tabs: { [key: string]: () => JSX.Element } = {
     fulltext: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>,
     figures: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
-    reviews: () => <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>,
+    reviews: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>),
     pdf: () => (<>
         <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
-        <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab>
+        {props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>}
       </>),
   };
   const router = useRouter();
