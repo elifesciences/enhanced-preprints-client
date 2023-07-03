@@ -1954,6 +1954,13 @@
       "msas": [
         "Ecology"
       ]
+    },
+    "10.1101/2023.06.02.543432": {
+      "preprintDoi": "10.1101/2023.06.02.543432",
+      "msas": [
+        "Medicine",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -2263,6 +2270,7 @@
     "88982": "88982v1",
     "88991": "88991v1",
     "88995": "88995v1",
+    "89045": "89045v1",
     "89049": "89049v1",
     "89054": "89054v1",
     "89459": "89459v1",
@@ -12887,6 +12895,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.13.532370v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "89045v1": {
+      "msid": "89045",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.02.543432",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-03",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.02.543432v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-05"
           }
         ]
       }
