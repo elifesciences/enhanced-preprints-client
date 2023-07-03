@@ -16,10 +16,10 @@ import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   metaData: MetaData
-  msidWithVersion?: string,
+  msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview?: PeerReview,
+  peerReview: PeerReview | null,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -118,7 +118,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           articleType: 'Article', // TODO
           status, // TODO
         },
-        peerReview: articleWithVersions.article.peerReview,
+        peerReview: articleWithVersions.article.peerReview ?? null,
       },
     };
   }

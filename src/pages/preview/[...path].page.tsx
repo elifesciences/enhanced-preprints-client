@@ -10,7 +10,7 @@ import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/ar
 type PageProps = {
   tab: 'fulltext' | 'figures',
   metaData: MetaData,
-  msidWithVersion?: string,
+  msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview,
@@ -23,16 +23,15 @@ export const Page = (props: PageProps): JSX.Element => {
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }
-  const id = props.msidWithVersion ?? props.metaData.msid;
   return (
     <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={props.tab} tabs={[
       {
         id: 'fulltext',
-        linkElement: <Link scroll={false} href={`/preview/${id}`}>Full text</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${props.msidWithVersion}`}>Full text</Link>,
       },
       {
         id: 'figures',
-        linkElement: <Link scroll={false} href={`/preview/${id}/figures`}>Figures</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${props.msidWithVersion}/figures`}>Figures</Link>,
       },
     ]}>
       { childTab }

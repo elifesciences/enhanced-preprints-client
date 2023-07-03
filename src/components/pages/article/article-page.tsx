@@ -22,7 +22,7 @@ export type Tab = {
 
 export type ArticlePageProps = {
   metaData: MetaData,
-  msidWithVersion?: string,
+  msidWithVersion: string,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
@@ -30,19 +30,18 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
-  const id = props.msidWithVersion ?? props.metaData.msid;
   const tabs = props.tabs ?? [
     {
       id: 'fulltext',
-      linkElement: <a href={`/reviewed-preprints/${id}#tab-content`}>Full text</a>,
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}#tab-content`}>Full text</a>,
     },
     {
       id: 'figures',
-      linkElement: <a href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures</a>,
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
     },
     {
       id: 'reviews',
-      linkElement: <a href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</a>,
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
     },
   ];
   const doi = getRppVersionDoi(props.metaData);
