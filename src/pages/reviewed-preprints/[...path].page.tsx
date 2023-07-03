@@ -19,7 +19,7 @@ type PageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview?: PeerReview,
+  peerReview: PeerReview | null,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -34,11 +34,11 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
 
 export const Page = (props: PageProps): JSX.Element => {
   const tabs: { [key: string]: () => JSX.Element } = {
-    fulltext: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>,
+    fulltext: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
     figures: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
     reviews: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>),
     pdf: () => (<>
-        <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>
+        <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>
         {props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>}
       </>),
   };
