@@ -19,7 +19,7 @@ type PageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview: PeerReview | null,
+  peerReview?: PeerReview,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
