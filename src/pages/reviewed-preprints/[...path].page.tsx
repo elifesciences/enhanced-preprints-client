@@ -9,7 +9,7 @@ import {
   fetchContent, fetchMetadata, fetchReviews, fetchVersion,
 } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
-import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
+import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
@@ -33,26 +33,57 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
 };
 
 export const Page = (props: PageProps): JSX.Element => {
-  const tabs: { [key: string]: () => JSX.Element } = {
-    fulltext: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
-    figures: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
-    reviews: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>),
-    pdf: () => (<>
+  const tabLinks = [
+    {
+      id: 'fulltext',
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}#tab-content`}>Full text</a>,
+    },
+    {
+      id: 'figures',
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
+    },
+  ];
+
+  if (props.peerReview) {
+    tabLinks.push({
+      id: 'reviews',
+      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
+    });
+  }
+
+  const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
+    fulltext: {
+      tabLinks,
+      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
+    },
+    figures: {
+      tabLinks,
+      content: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
+    },
+    reviews: {
+      tabLinks,
+      content: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>),
+    },
+    pdf: {
+      tabLinks: [],
+      content: () => (<>
         <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>
         {props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>}
       </>),
+    },
   };
   const router = useRouter();
   const tabName = useMemo(
     () => {
       if (Array.isArray(router.query.path)) {
-        return tabs[router.query.path.slice(-1)[0]] !== undefined ? router.query.path.slice(-1)[0] : 'fulltext';
+        return subPages[router.query.path.slice(-1)[0]] !== undefined ? router.query.path.slice(-1)[0] : 'fulltext';
       }
       return 'fulltext';
     },
     [router.query.path],
   );
-  const tab = tabs[tabName]();
+  const { tabLinks: tabs } = subPages[tabName];
+  const tabContent = subPages[tabName].content();
   return (
     <>
     <Head>
@@ -70,8 +101,8 @@ export const Page = (props: PageProps): JSX.Element => {
       <meta name="citation_language" content="en"/>
       { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim()} />)}
     </Head>
-    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={ tabName === 'pdf' ? [] : undefined } status={props.status} activeTab={tabName}>
-      { tab }
+    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+      { tabContent }
     </ArticlePage>
     </>
   );

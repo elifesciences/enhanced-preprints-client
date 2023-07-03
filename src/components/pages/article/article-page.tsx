@@ -26,24 +26,10 @@ export type ArticlePageProps = {
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
-  tabs?: Tab[],
+  tabs: Tab[],
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
-  const tabs = props.tabs ?? [
-    {
-      id: 'fulltext',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}#tab-content`}>Full text</a>,
-    },
-    {
-      id: 'figures',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
-    },
-    {
-      id: 'reviews',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
-    },
-  ];
   const doi = getRppVersionDoi(props.metaData);
 
   const citation: CitationData = {
@@ -73,7 +59,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       <main className="primary-section">
       <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
         <ul className="tabbed-navigation__tabs">
-          {tabs.map((tab, index) => (
+          {props.tabs.map((tab, index) => (
             <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
               {tab.linkElement}
             </li>
