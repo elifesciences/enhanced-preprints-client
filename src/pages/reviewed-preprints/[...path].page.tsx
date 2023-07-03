@@ -149,7 +149,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           articleType: 'Article', // TODO
           status, // TODO
         },
-        peerReview: articleWithVersions.article.peerReview ?? null,
+        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       },
     };
   }
