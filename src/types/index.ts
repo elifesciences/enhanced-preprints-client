@@ -1,4 +1,5 @@
-export type { ArticleStatus, TimelineEvent } from './article-status';
+export type { ArticleStatus } from './article-status';
+export type { TimelineEvent } from './article-timeline';
 export type { Author } from './author';
 export type { Content, FigureContent, HeadingContent } from './content';
 export type { Institution } from './institution';

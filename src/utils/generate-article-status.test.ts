@@ -61,94 +61,82 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 
 describe('generateStatus', () => {
   it('should generate the correct status with one article version', () => {
-    // Define the input data with one article version
-    const enhancedArticle: EnhancedArticleWithVersions = {
+    // Call the function
+    const timeline = generateStatus({
       article: version1,
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),
       },
-    };
-
-    // Define the expected output
-    const expectedTimeline = [
-      {
-        date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
-        eventDescription: '(this version)',
-      },
-      {
-        date: 'Mon Jan 02 2023',
-        name: 'Posted to bioRxiv',
-        link: {
-          url: 'https://doi.org/doi-123',
-          text: 'Go to bioRxiv',
-        },
-      },
-      {
-        date: 'Sun Jan 01 2023',
-        name: 'Sent for peer review',
-      },
-    ];
-
-    // Call the function
-    const timeline = generateStatus(enhancedArticle);
+    });
 
     // Assert the result
     expect(timeline).toEqual({
       type: 'Reviewed Preprint',
       description: 'Published from the original preprint after peer review and assessment by eLife.',
-      timeline: expectedTimeline,
+      timeline: [
+        {
+          date: 'Tue Jan 03 2023',
+          name: 'Reviewed preprint version 1',
+          eventDescription: '(this version)',
+        },
+        {
+          date: 'Mon Jan 02 2023',
+          name: 'Posted to bioRxiv',
+          link: {
+            url: 'https://doi.org/doi-123',
+            text: 'Go to bioRxiv',
+          },
+        },
+        {
+          date: 'Sun Jan 01 2023',
+          name: 'Sent for peer review',
+        },
+      ],
     });
   });
 
   it('should generate the correct timeline with two article versions', () => {
-    // Define the input data with two article versions
-    const enhancedArticle: EnhancedArticleWithVersions = {
+    // Call the function
+    const timeline = generateStatus({
       article: version2,
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),
         v2: summariseEnhancedArticleToVersionSummary(version2),
       },
-    };
-
-    // Define the expected output
-    const expectedTimeline = [
-      {
-        date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
-        eventDescription: '(this version)',
-      },
-      {
-        date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
-        link: {
-          text: 'Go to version',
-          url: '/reviewed-preprints/1v1',
-        },
-      },
-
-      {
-        date: 'Mon Jan 02 2023',
-        name: 'Posted to bioRxiv',
-        link: {
-          url: 'https://doi.org/doi-123',
-          text: 'Go to bioRxiv',
-        },
-      },
-      {
-        date: 'Sun Jan 01 2023',
-        name: 'Sent for peer review',
-      },
-    ];
-
-    // Call the function
-    const timeline = generateStatus(enhancedArticle);
+    });
 
     // Assert the result
     expect(timeline).toEqual({
       type: 'Revised Preprint',
       description: 'Revised by authors after peer review.',
-      timeline: expectedTimeline,
+      timeline: [
+        {
+          date: 'Mon Jan 09 2023',
+          name: 'Reviewed preprint version 2',
+          eventDescription: '(this version)',
+        },
+        {
+          date: 'Tue Jan 03 2023',
+          name: 'Reviewed preprint version 1',
+          link: {
+            text: 'Go to version',
+            url: '/reviewed-preprints/1v1',
+          },
+        },
+
+        {
+          date: 'Mon Jan 02 2023',
+          name: 'Posted to bioRxiv',
+          link: {
+            url: 'https://doi.org/doi-123',
+            text: 'Go to bioRxiv',
+          },
+        },
+        {
+          date: 'Sun Jan 01 2023',
+          name: 'Sent for peer review',
+        },
+      ],
     });
   });
 });
