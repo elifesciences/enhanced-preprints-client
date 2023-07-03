@@ -12,7 +12,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
-import { generateTimeline } from '../../utils/generate-timeline';
+import { generateStatus } from '../../utils/generate-article-status';
 
 type PageProps = {
   metaData: MetaData
@@ -98,8 +98,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // FEATURE FLAG
   if (config.automationFlag) {
     const articleWithVersions = await fetchVersion(id);
-    const timeline = generateTimeline(articleWithVersions);
-    const status = timeline.some((event) => event.name.includes('Reviewed preprint')) ? 'Published' : 'Preview';
+    const status = generateStatus(articleWithVersions);
 
     return {
       props: {
@@ -114,9 +113,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
         status: {
-          timeline,
-          articleType: 'Article', // TODO
-          status, // TODO
+          articleType: status.type,
+          status: status.description,
+          timeline: status.timeline,
         },
         peerReview: articleWithVersions.article.peerReview,
       },
