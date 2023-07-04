@@ -1,4 +1,3 @@
-import { EnhancedArticleWithVersions } from '../types';
 import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
 
