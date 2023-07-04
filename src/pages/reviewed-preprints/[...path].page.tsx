@@ -13,6 +13,7 @@ import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/
 import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
+import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   metaData: MetaData
@@ -99,6 +100,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   if (config.automationFlag) {
     const articleWithVersions = await fetchVersion(id);
     const status = generateStatus(articleWithVersions);
+    const timeline = generateTimeline(articleWithVersions);
 
     return {
       props: {
@@ -114,8 +116,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         content: articleWithVersions.article.article.content,
         status: {
           articleType: status.type,
-          status: status.description,
-          timeline: status.timeline,
+          status: status.type === 'Reviewed Preprint' ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
+          timeline,
         },
         peerReview: articleWithVersions.article.peerReview,
       },
