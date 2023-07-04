@@ -60,7 +60,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 
 describe('generateStatus', () => {
   it('should be a reviewed preprint if article is the same as the first version', () => {
-    const timeline = generateStatus({
+    const status = generateStatus({
       article: version1,
       versions: {
         v1: version1,
@@ -68,13 +68,13 @@ describe('generateStatus', () => {
       },
     });
 
-    expect(timeline).toMatchObject({
+    expect(status).toMatchObject({
       type: 'Reviewed Preprint',
     });
   });
 
   it('should be a revised preprint if article is not the same as the first version', () => {
-    const timeline = generateStatus({
+    const status = generateStatus({
       article: version2,
       versions: {
         v1: version1,
@@ -82,7 +82,7 @@ describe('generateStatus', () => {
       },
     });
 
-    expect(timeline).toMatchObject({
+    expect(status).toMatchObject({
       type: 'Revised Preprint',
     });
   });
@@ -93,14 +93,14 @@ describe('generateStatus', () => {
     };
     delete previewVersion.published;
 
-    const timeline = generateStatus({
+    const status = generateStatus({
       article: previewVersion,
       versions: {
         v1: previewVersion,
       },
     });
 
-    expect(timeline).toMatchObject({
+    expect(status).toMatchObject({
       isPreview: true,
     });
   });
@@ -112,27 +112,27 @@ describe('generateStatus', () => {
     previewVersion.published = new Date();
     previewVersion.published.setDate(previewVersion.published.getDate() + 1);
 
-    const timeline = generateStatus({
+    const status = generateStatus({
       article: previewVersion,
       versions: {
         v1: previewVersion,
       },
     });
 
-    expect(timeline).toMatchObject({
+    expect(status).toMatchObject({
       isPreview: true,
     });
   });
 
   it('should not be a preview if the published date is present and represents a date in the past', () => {
-    const timeline = generateStatus({
+    const status = generateStatus({
       article: version1,
       versions: {
         v1: version1,
       },
     });
 
-    expect(timeline).toMatchObject({
+    expect(status).toMatchObject({
       isPreview: false,
     });
   });
