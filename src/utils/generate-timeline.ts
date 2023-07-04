@@ -1,10 +1,12 @@
-import { EnhancedArticleWithVersions } from '../types';
-import { TimelineEvent } from '../components/molecules/timeline/timeline';
+import {
+  EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
+} from '../types';
+
+const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
+const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
-  // Extra sort here the top to ascertain the first version for getting dates
-  const versions = Object.values(version.versions).sort((a, b) => new Date(b.preprintPosted).getTime() - new Date(a.preprintPosted).getTime());
-  const timeline: TimelineEvent[] = versions.reduce<TimelineEvent[]>((events, current) => {
+  const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
       events.push(current.id === version.article.id ?
         {
@@ -23,20 +25,22 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     return events;
   }, []);
 
-  if (versions[0].preprintPosted !== undefined) {
+  const firstVersion = getFirstVersion(version);
+
+  if (firstVersion.preprintPosted !== undefined) {
     timeline.push({
-      date: new Date(versions[0].preprintPosted).toDateString(),
+      date: new Date(firstVersion.preprintPosted).toDateString(),
       name: 'Posted to bioRxiv',
       link: {
-        url: `https://doi.org/${versions[0].preprintDoi}`,
+        url: `https://doi.org/${firstVersion.preprintDoi}`,
         text: 'Go to bioRxiv',
       },
     });
   }
 
-  if (versions[0].sentForReview !== undefined) {
+  if (firstVersion.sentForReview !== undefined) {
     timeline.push({
-      date: new Date(versions[0].sentForReview).toDateString(),
+      date: new Date(firstVersion.sentForReview).toDateString(),
       name: 'Sent for peer review',
     });
   }
