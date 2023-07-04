@@ -133,6 +133,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
 
+    if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
+      console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
+      return { notFound: true };
+    }
+
     return {
       props: {
         metaData: {
