@@ -51,8 +51,8 @@ describe('Figure', () => {
         {
           type: 'Heading',
           content: 'Heading 1',
-          depth: 1,
-          id: 'h1',
+          depth: 3,
+          id: 'h3',
         },
         {
           type: 'Emphasis',
