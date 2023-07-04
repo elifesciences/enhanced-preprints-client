@@ -63,8 +63,8 @@ describe('generateStatus', () => {
     const status = generateStatus({
       article: version1,
       versions: {
-        v1: version1,
-        v2: version2,
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
       },
     });
 
@@ -77,8 +77,8 @@ describe('generateStatus', () => {
     const status = generateStatus({
       article: version2,
       versions: {
-        v1: version1,
-        v2: version2,
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
       },
     });
 
@@ -96,7 +96,7 @@ describe('generateStatus', () => {
     const status = generateStatus({
       article: previewVersion,
       versions: {
-        v1: previewVersion,
+        v1: summariseEnhancedArticleToVersionSummary(previewVersion),
       },
     });
 
@@ -115,7 +115,7 @@ describe('generateStatus', () => {
     const status = generateStatus({
       article: previewVersion,
       versions: {
-        v1: previewVersion,
+        v1: summariseEnhancedArticleToVersionSummary(previewVersion),
       },
     });
 
@@ -128,7 +128,7 @@ describe('generateStatus', () => {
     const status = generateStatus({
       article: version1,
       versions: {
-        v1: version1,
+        v1: summariseEnhancedArticleToVersionSummary(version1),
       },
     });
 
