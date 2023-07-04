@@ -25,7 +25,7 @@ type TimelineEventWithDescription = TimelineEventBasic & {
 export type TimelineEvent = TimelineEventSimple | TimelineEventWithLink | TimelineEventWithDescription;
 
 export type ArticleStatus = {
-  type: string,
-  description: string,
+  type: 'Reviewed Preprint' | 'Revised Preprint',
+  isPreview: boolean,
   timeline: TimelineEvent[],
 };

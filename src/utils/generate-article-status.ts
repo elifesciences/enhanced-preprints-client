@@ -7,18 +7,6 @@ const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: Versio
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
-const generateType = (version: EnhancedArticleWithVersions): string => {
-  const articleType = (isVersionSameAsCurrentArticle(version.article, getFirstVersion(version))) ? 'Reviewed Preprint' : 'Revised Preprint';
-  const articlePrefix = (!version.article.published) ? 'Preview ' : '';
-
-  return `${articlePrefix}${articleType}`;
-};
-
-const generateDescription = (version: EnhancedArticleWithVersions): string => (
-  (isVersionSameAsCurrentArticle(version.article, getFirstVersion(version))) ?
-    'Published from the original preprint after peer review and assessment by eLife.' :
-    'Revised by authors after peer review.');
-
 const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
@@ -63,7 +51,7 @@ const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[]
 };
 
 export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
-  type: generateType(version),
-  description: generateDescription(version),
+  type: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version)) ? 'Reviewed Preprint' : 'Revised Preprint',
+  isPreview: !version.article.published || version.article.published > (new Date()),
   timeline: generateTimeline(version),
 });

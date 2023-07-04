@@ -72,7 +72,7 @@ describe('generateStatus', () => {
     // Assert the result
     expect(timeline).toEqual({
       type: 'Reviewed Preprint',
-      description: 'Published from the original preprint after peer review and assessment by eLife.',
+      isPreview: false,
       timeline: [
         {
           date: 'Tue Jan 03 2023',
@@ -108,7 +108,7 @@ describe('generateStatus', () => {
     // Assert the result
     expect(timeline).toEqual({
       type: 'Revised Preprint',
-      description: 'Revised by authors after peer review.',
+      isPreview: false,
       timeline: [
         {
           date: 'Mon Jan 09 2023',
@@ -137,6 +137,84 @@ describe('generateStatus', () => {
           name: 'Sent for peer review',
         },
       ],
+    });
+  });
+
+  it('should be a reviewed preprint if article is the same as the first version', () => {
+    const timeline = generateStatus({
+      article: version1,
+      versions: {
+        v1: version1,
+        v2: version2,
+      },
+    });
+
+    expect(timeline).toMatchObject({
+      type: 'Reviewed Preprint',
+    });
+  });
+
+  it('should be a revised preprint if article is not the same as the first version', () => {
+    const timeline = generateStatus({
+      article: version2,
+      versions: {
+        v1: version1,
+        v2: version2,
+      },
+    });
+
+    expect(timeline).toMatchObject({
+      type: 'Revised Preprint',
+    });
+  });
+
+  it('should be a preview if the published date is empty', () => {
+    const previewVersion = {
+      ...version1,
+    };
+    delete previewVersion.published;
+
+    const timeline = generateStatus({
+      article: previewVersion,
+      versions: {
+        v1: previewVersion,
+      },
+    });
+
+    expect(timeline).toMatchObject({
+      isPreview: true,
+    });
+  });
+
+  it('should be a preview if the published date is in the future', () => {
+    const previewVersion = {
+      ...version1,
+    };
+    previewVersion.published = new Date();
+    previewVersion.published.setDate(previewVersion.published.getDate() + 1);
+
+    const timeline = generateStatus({
+      article: previewVersion,
+      versions: {
+        v1: previewVersion,
+      },
+    });
+
+    expect(timeline).toMatchObject({
+      isPreview: true,
+    });
+  });
+
+  it('should not be a preview if the published date is present and represents a date in the past', () => {
+    const timeline = generateStatus({
+      article: version1,
+      versions: {
+        v1: version1,
+      },
+    });
+
+    expect(timeline).toMatchObject({
+      isPreview: false,
     });
   });
 });
