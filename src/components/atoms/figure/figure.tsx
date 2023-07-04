@@ -9,10 +9,10 @@ export const Figure = ({ content }: { content: FigureContent }) => {
   const [expanded, setExpanded] = useState(expansionMemo ?? false);
   return (
     <>
-      <figure className="figure" id={content.id}>
-        <label className="figure__label">{content.label}</label>
+      <figure className="figure" {...(content.id && { id: content.id })}>
+        {content.label && <label className="figure__label">{content.label}</label>}
         {contentToJsx(content.content)}
-        <figcaption ref={captionRef} className={`figure__caption${expanded ? '--expanded' : ''}`}>{contentToJsx(content.caption)}</figcaption>
+        {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? '--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 3)}</figcaption>}
       </figure>
       <button className={`figure__caption__button ${expanded ? 'expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button>
     </>
