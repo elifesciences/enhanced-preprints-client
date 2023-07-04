@@ -1974,6 +1974,12 @@
       "msas": [
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2023.04.05.535698": {
+      "preprintDoi": "10.1101/2023.04.05.535698",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -2259,6 +2265,7 @@
     "88366": "88366v1",
     "88367": "88367v1",
     "88398": "88398v1",
+    "88403": "88403v1",
     "88404": "88404v1",
     "88420": "88420v1",
     "88456": "88456v1",
@@ -13042,6 +13049,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-22"
+          }
+        ]
+      }
+    },
+    "88403v1": {
+      "msid": "88403",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.05.535698",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-04",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-11"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-06",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.05.535698v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
