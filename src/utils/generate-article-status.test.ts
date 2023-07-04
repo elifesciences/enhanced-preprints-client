@@ -1,4 +1,3 @@
-import { EnhancedArticleWithVersions } from '../types';
 import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
 import { generateStatus } from './generate-article-status';
 
@@ -60,86 +59,6 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateStatus', () => {
-  it('should generate the correct status with one article version', () => {
-    // Call the function
-    const timeline = generateStatus({
-      article: version1,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-      },
-    });
-
-    // Assert the result
-    expect(timeline).toEqual({
-      type: 'Reviewed Preprint',
-      isPreview: false,
-      timeline: [
-        {
-          date: 'Tue Jan 03 2023',
-          name: 'Reviewed preprint version 1',
-          eventDescription: '(this version)',
-        },
-        {
-          date: 'Mon Jan 02 2023',
-          name: 'Posted to bioRxiv',
-          link: {
-            url: 'https://doi.org/doi-123',
-            text: 'Go to bioRxiv',
-          },
-        },
-        {
-          date: 'Sun Jan 01 2023',
-          name: 'Sent for peer review',
-        },
-      ],
-    });
-  });
-
-  it('should generate the correct timeline with two article versions', () => {
-    // Call the function
-    const timeline = generateStatus({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-      },
-    });
-
-    // Assert the result
-    expect(timeline).toEqual({
-      type: 'Revised Preprint',
-      isPreview: false,
-      timeline: [
-        {
-          date: 'Mon Jan 09 2023',
-          name: 'Reviewed preprint version 2',
-          eventDescription: '(this version)',
-        },
-        {
-          date: 'Tue Jan 03 2023',
-          name: 'Reviewed preprint version 1',
-          link: {
-            text: 'Go to version',
-            url: '/reviewed-preprints/1v1',
-          },
-        },
-
-        {
-          date: 'Mon Jan 02 2023',
-          name: 'Posted to bioRxiv',
-          link: {
-            url: 'https://doi.org/doi-123',
-            text: 'Go to bioRxiv',
-          },
-        },
-        {
-          date: 'Sun Jan 01 2023',
-          name: 'Sent for peer review',
-        },
-      ],
-    });
-  });
-
   it('should be a reviewed preprint if article is the same as the first version', () => {
     const timeline = generateStatus({
       article: version1,

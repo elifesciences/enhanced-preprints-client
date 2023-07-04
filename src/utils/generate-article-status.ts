@@ -1,5 +1,5 @@
 import {
-  EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, ArticleStatus, TimelineEvent,
+  EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, ArticleStatus,
 } from '../types';
 
 const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: VersionSummary) => version.id === article.id && version.versionIdentifier === article.versionIdentifier;
@@ -7,51 +7,7 @@ const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: Versio
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
-const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
-  const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
-    if (current.published) {
-      events.push(current.id === version.article.id ?
-        {
-          date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
-          eventDescription: '(this version)',
-        } : {
-          date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
-          link: {
-            url: `/reviewed-preprints/${current.id}`,
-            text: 'Go to version',
-          },
-        });
-    }
-    return events;
-  }, []);
-
-  const firstVersion = getFirstVersion(version);
-
-  if (firstVersion.preprintPosted !== undefined) {
-    timeline.push({
-      date: new Date(firstVersion.preprintPosted).toDateString(),
-      name: 'Posted to bioRxiv',
-      link: {
-        url: `https://doi.org/${firstVersion.preprintDoi}`,
-        text: 'Go to bioRxiv',
-      },
-    });
-  }
-
-  if (firstVersion.sentForReview !== undefined) {
-    timeline.push({
-      date: new Date(firstVersion.sentForReview).toDateString(),
-      name: 'Sent for peer review',
-    });
-  }
-
-  return timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-};
-
 export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
   type: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version)) ? 'Reviewed Preprint' : 'Revised Preprint',
   isPreview: !version.article.published || version.article.published > (new Date()),
-  timeline: generateTimeline(version),
 });
