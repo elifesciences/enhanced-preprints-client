@@ -11,25 +11,39 @@ import { contentToText } from '../../../utils/content-to-text';
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="fulltext">
+    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="figures">
+    expect(() => render(<ArticlePage msidWithVersion="12345v1"metaData={metaData} status={status} activeTab="figures" tabs={[]}>
       <ArticleFiguresTab content={content} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with reviews tab', () => {
-    expect(() => render(<ArticlePage metaData={metaData} status={status} activeTab="reviews">
+    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={[]}>
       <ArticleReviewsTab peerReview={peerReview} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with tabs with correct active label', () => {
-    render(<ArticlePage metaData={metaData} status={status} activeTab="fulltext">
+    const tabs = [
+      {
+        id: 'fulltext',
+        linkElement: <a href={'/reviewed-preprints/12345v1#tab-content'}>Full text</a>,
+      },
+      {
+        id: 'figures',
+        linkElement: <a href={'/reviewed-preprints/12345v1/figures#tab-content'}>Figures</a>,
+      },
+      {
+        id: 'reviews',
+        linkElement: <a href={'/reviewed-preprints/12345v1/reviews#tab-content'}>Peer review</a>,
+      },
+    ];
+    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={tabs}>
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
@@ -42,7 +56,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage metaData={metaData} status={status} activeTab="figures">
+    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={tabs}>
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
@@ -51,7 +65,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage metaData={metaData} status={status} activeTab="reviews">
+    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={tabs}>
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
