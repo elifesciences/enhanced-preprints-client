@@ -1,76 +1,37 @@
-import { EnhancedArticleWithVersions } from '../types';
-import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
+import { EnhancedArticle, EnhancedArticleWithVersions } from '../types';
 import { generateTimeline } from './generate-timeline';
 
-const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
-  abstract: '',
-  title: '',
-  licenses: [],
-  content: '',
-  headings: [],
-  references: [],
-};
-
-const version1: EnhancedArticle = {
-  id: '1v1',
-  versionIdentifier: '1',
-  versionDoi: '10.00001/1v1',
-
-  doi: '10.00001/1',
-  msid: '1',
-
-  preprintDoi: 'doi-123',
-  preprintUrl: 'https://doi.org/doi-123',
-  sentForReview: new Date('2023-01-01'),
-  preprintPosted: new Date('2023-01-02'),
-  published: new Date('2023-01-03'),
-
-  article: exampleArticle,
-};
-
-const version2: EnhancedArticle = {
-  id: '1v2',
-  versionIdentifier: '2',
-  versionDoi: '10.00001/1v1',
-
-  doi: '10.00001/1',
-  msid: '1',
-
-  preprintDoi: 'doi-123v2',
-  preprintUrl: 'https://doi.org/doi-123v2',
-  preprintPosted: new Date('2023-01-05'),
-  sentForReview: new Date('2023-01-06'),
-  published: new Date('2023-01-09'),
-
-  article: exampleArticle,
-};
-
-const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
-  id: article.id,
-  doi: article.doi,
-  msid: article.msid,
-  versionIdentifier: article.versionIdentifier,
-  versionDoi: article.versionDoi,
-
-  preprintDoi: article.preprintDoi,
-  preprintUrl: article.preprintUrl,
-  preprintPosted: article.preprintPosted,
-  sentForReview: article.sentForReview,
-  published: article.published,
-});
-
-describe('generateStatus', () => {
-  it('should generate the correct status with one article version', () => {
-    // Call the function
-    const timeline = generateTimeline({
-      article: version1,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
+describe('generateTimeline', () => {
+  it('should generate the correct timeline with one article version', () => {
+    // Define the input data with one article version
+    const enhancedArticle = {
+      article: {
+        id: '1v1',
+        published: new Date('2023-01-03'),
+        versionIdentifier: '1',
+        preprintPosted: new Date('2023-01-02'),
+        preprintDoi: 'doi-123',
+        sentForReview: new Date('2023-01-01'),
+        article: [],
+        msid: '1',
+        doi: '10.00001/1v1',
+        preprintUrl: 'http://preprint.org/1v1',
       },
-    });
+      versions: {
+        v1: {
+          id: '1v1',
+          published: new Date('2023-01-03'),
+          versionIdentifier: '1',
+          preprintPosted: new Date('2023-01-02'),
+          preprintDoi: 'doi-123',
+          sentForReview: new Date('2023-01-01'),
+          article: [],
+        },
+      },
+    };
 
-    // Assert the result
-    expect(timeline).toEqual([
+    // Define the expected output
+    const expectedTimeline = [
       {
         date: 'Tue Jan 03 2023',
         name: 'Reviewed preprint version 1',
@@ -88,29 +49,51 @@ describe('generateStatus', () => {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
       },
-    ]);
+    ];
+
+    // Call the function
+    const timeline = generateTimeline(enhancedArticle);
+
+    // Assert the result
+    expect(timeline).toEqual(expectedTimeline);
   });
 
   it('should generate the correct timeline with two article versions', () => {
-    // Call the function
-    const timeline = generateTimeline({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
+    // Define the input data with two article versions
+    const versions: Record<string, Partial<EnhancedArticle>> = {
+      v1: {
+        id: '1v1',
+        published: new Date('2023-01-03'),
+        versionIdentifier: 'v1',
+        preprintPosted: new Date('2023-01-02'),
+        preprintDoi: 'doi-123',
+        sentForReview: new Date('2023-01-01'),
       },
-    });
+      v2: {
+        id: '1v2',
+        published: new Date('2023-01-04'),
+        versionIdentifier: 'v2',
+        preprintPosted: new Date('2023-01-02'),
+        preprintDoi: 'doi-123',
+        sentForReview: new Date('2023-01-01'),
+      },
+    };
 
-    // Assert the result
-    expect(timeline).toEqual([
+    const enhancedArticleWithVersions = {
+      article: versions.v2,
+      versions,
+    };
+
+    // Define the expected output
+    const expectedTimeline = [
       {
-        date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
+        date: 'Wed Jan 04 2023',
+        name: 'Reviewed preprint version v2',
         eventDescription: '(this version)',
       },
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
+        name: 'Reviewed preprint version v1',
         link: {
           text: 'Go to version',
           url: '/reviewed-preprints/1v1',
@@ -129,6 +112,12 @@ describe('generateStatus', () => {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
       },
-    ]);
+    ];
+
+    // Call the function
+    const timeline = generateTimeline((enhancedArticleWithVersions as EnhancedArticleWithVersions));
+
+    // Assert the result
+    expect(timeline).toEqual(expectedTimeline);
   });
 });
