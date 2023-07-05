@@ -2037,6 +2037,12 @@
         "Cell Biology",
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.05.19.541437": {
+      "preprintDoi": "10.1101/2023.05.19.541437",
+      "msas": [
+        "Chromosomes and Gene Expression"
+      ]
     }
   },
   "manuscripts": {
@@ -2361,6 +2367,7 @@
     "89049": "89049v1",
     "89054": "89054v1",
     "89232": "89232v1",
+    "89371": "89371v1",
     "89459": "89459v1",
     "80494v1": {
       "msid": "80494",
@@ -13493,6 +13500,35 @@
             "date": "2023-03-20",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2021.04.26.441418v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89371v1": {
+      "msid": "89371",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.19.541437",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-30"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.19.541437v1",
               "text": "Go to bioRxiv"
             }
           }
