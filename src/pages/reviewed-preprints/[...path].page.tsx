@@ -12,6 +12,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
+import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
@@ -129,8 +130,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // FEATURE FLAG
   if (config.automationFlag) {
     const articleWithVersions = await fetchVersion(id);
+    const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
-    const status = timeline.some((event) => event.name.includes('Reviewed preprint')) ? 'Published' : 'Preview';
 
     return {
       props: {
@@ -145,9 +146,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
         status: {
+          articleType: status.type,
+          status: status.type === 'Reviewed Preprint' ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
           timeline,
-          articleType: 'Article', // TODO
-          status, // TODO
         },
         peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       },
