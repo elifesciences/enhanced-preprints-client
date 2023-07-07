@@ -2081,6 +2081,12 @@
         "Developmental Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.02.23.529702": {
+      "preprintDoi": "10.1101/2023.02.23.529702",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -2147,6 +2153,7 @@
     "86668": "86668v1",
     "86669": "86669v1",
     "86670": "86670v2",
+    "86678": "86678v1",
     "86687": "86687v2",
     "86689": "86689v1",
     "86695": "86695v1",
@@ -13763,6 +13770,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-24"
+          }
+        ]
+      }
+    },
+    "86678v1": {
+      "msid": "86678",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.23.529702",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-07",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.23.529702v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-23"
           }
         ]
       }
