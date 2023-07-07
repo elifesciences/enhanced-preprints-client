@@ -2087,6 +2087,13 @@
       "msas": [
         "Immunology and Inflammation"
       ]
+    },
+    "10.21203/rs.3.rs-2197876/v2": {
+      "preprintDoi": "10.21203/rs.3.rs-2197876/v2",
+      "msas": [
+        "Evolutionary Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -2135,7 +2142,7 @@
     "86169": "86169v1",
     "86191": "86191v1",
     "86194": "86194v1",
-    "86324": "86324v1",
+    "86324": "86324v2",
     "86360": "86360v1",
     "86464": "86464v1",
     "86507": "86507v1",
@@ -5201,7 +5208,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-07-07",
+            "link": {
+              "url": "/reviewed-preprints/86324v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-05-05",
             "eventDescription": "(this version)"
           },
@@ -13844,6 +13859,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-02-22"
+          }
+        ]
+      }
+    },
+    "86324v2": {
+      "msid": "86324",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.21203/rs.3.rs-2197876/v2",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-07-07",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-05-05",
+            "link": {
+              "url": "/reviewed-preprints/86324v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-20"
+          },
+          {
+            "name": "Posted to Research Square",
+            "date": "2022-10-25",
+            "link": {
+              "url": "https://www.researchsquare.com/article/rs-2197876/v1",
+              "text": "Go to Research Square"
+            }
           }
         ]
       }
