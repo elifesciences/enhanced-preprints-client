@@ -116,14 +116,6 @@ services:
       - 3000:3000
 
   ## Main app server
-  yarn:
-    build:
-      context: .
-      target: dev
-    command: yarn
-    volumes:
-      - ./:/opt/epp-client/
-      - node_modules:/opt/epp-client/node_modules
   app:
     build:
       context: .
@@ -138,9 +130,6 @@ services:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
       MANUSCRIPT_CONFIG_FILE: /opt/epp-client/data/manuscripts.json
-    depends_on:
-      yarn:
-        condition: service_completed_successfully
     ports:
       - 3001:3000
     volumes:
@@ -152,9 +141,6 @@ services:
     build:
       context: .
       target: storybook
-    depends_on:
-      yarn:
-        condition: service_completed_successfully
     ports:
       - "6006:6006"
     volumes:

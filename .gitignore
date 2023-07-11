@@ -29,8 +29,8 @@ yarn-error.log*
 /playwright/.cache/
 
 # Yarn2
-.pnp.*
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
