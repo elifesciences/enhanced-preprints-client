@@ -46,7 +46,7 @@ jobs:
       - name: Prepare manuscripts.json with manuscript version
         run: |
           cat manuscripts.json | \
-            yarn --silent publish-manuscript \
+            yarn publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
