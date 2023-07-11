@@ -4,6 +4,7 @@ FROM node:${node_version} as base
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY ./ ./
+RUN yarn install --immutable
 
 FROM base as dev
 CMD [ "yarn", "start:dev" ]
