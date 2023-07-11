@@ -72,6 +72,15 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(<strong>I am strong</strong>);
   });
 
+  it('generates the expected html when passed a NontextualAnnotation', () => {
+    const result = contentToJsx({
+      type: 'NontextualAnnotation',
+      content: 'I am underlined',
+    });
+
+    expect(result).toStrictEqual(<u>I am underlined</u>);
+  });
+
   it('generates the expected html when passed a Superscript', () => {
     const result = contentToJsx({
       type: 'Superscript',
