@@ -19,7 +19,7 @@ type PageProps = {
 export const Page = (props: PageProps): JSX.Element => {
   let childTab;
   if (props.tab === 'fulltext') {
-    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
+    childTab = <ArticleFullTextTab routePrefix='/preview/' content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }

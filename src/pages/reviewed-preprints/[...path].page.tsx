@@ -56,7 +56,7 @@ export const Page = (props: PageProps): JSX.Element => {
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
-      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab routePrefix={routePrefix} content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -69,7 +69,7 @@ export const Page = (props: PageProps): JSX.Element => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>
+        <ArticleFullTextTab routePrefix={routePrefix} content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>
         {props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>}
       </>),
     },
