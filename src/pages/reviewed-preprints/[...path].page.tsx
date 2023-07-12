@@ -18,7 +18,7 @@ import { generateTimeline } from '../../utils/generate-timeline';
 type PageProps = {
   metaData: MetaData
   msidWithVersion: string,
-  status: ArticleStatusProps & { isPreview: boolean, },
+  status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview | null,
 };

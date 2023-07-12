@@ -13,6 +13,7 @@ export type ArticleStatusProps = {
   timeline: TimelineEvent[],
   articleType: string,
   status: string,
+  isPreview: boolean,
 };
 
 export type Tab = {
