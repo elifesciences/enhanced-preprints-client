@@ -2250,6 +2250,13 @@
       "msas": [
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2023.05.11.540368": {
+      "preprintDoi": "10.1101/2023.05.11.540368",
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -2606,6 +2613,7 @@
     "89125": "89125v1",
     "89167": "89167v1",
     "89232": "89232v1",
+    "89331": "89331v1",
     "89371": "89371v1",
     "89459": "89459v1",
     "80494v1": {
@@ -15025,6 +15033,35 @@
             "date": "2023-02-10",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.10.528004v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89331v1": {
+      "msid": "89331",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.11.540368",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-17"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.11.540368v1",
               "text": "Go to bioRxiv"
             }
           }
