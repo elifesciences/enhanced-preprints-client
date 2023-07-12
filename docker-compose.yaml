@@ -134,7 +134,6 @@ services:
       - 3001:3000
     volumes:
       - ./:/opt/epp-client/
-      - node_modules:/opt/epp-client/node_modules
 
   # Storybook server
   storybook:
@@ -145,7 +144,6 @@ services:
       - "6006:6006"
     volumes:
       - ./:/opt/epp-client/
-      - node_modules:/opt/epp-client/node_modules
 
   # Expose API and client via proxy
   nginx:
@@ -174,5 +172,4 @@ services:
 
 volumes:
   data:
-  node_modules:
   minio_storage:
