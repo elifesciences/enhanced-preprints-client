@@ -16,8 +16,8 @@ describe('Content to HTML', () => {
 
   it.each([
     [
-      ['one', 'two', { type: 'Strong', content: 'three' }],
-      'onetwo<strong>three</strong>',
+      ['one', 'two', { type: 'Strong', content: { type: 'NontextualAnnotation', content: 'three' } }],
+      'onetwo<strong><u>three</u></strong>',
     ],
     [
       ['one', 'two', { type: 'Paragraph', content: ['three', { type: 'Subscript', content: 'four' }, 'five'] }],

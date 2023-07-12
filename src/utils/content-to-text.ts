@@ -15,6 +15,7 @@ export const contentToText = (content: Content): string => {
     case 'Paragraph':
     case 'Emphasis':
     case 'Strong':
+    case 'NontextualAnnotation':
     case 'Superscript':
     case 'Subscript':
       return contentToText(content.content);

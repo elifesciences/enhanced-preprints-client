@@ -33,6 +33,8 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       return <em key={index}>{contentToJsx(content.content)}</em>;
     case 'Strong':
       return <strong key={index}>{contentToJsx(content.content)}</strong>;
+    case 'NontextualAnnotation':
+      return <u key={index}>{contentToJsx(content.content)}</u>;
     case 'Superscript':
       return <sup key={index}>{contentToJsx(content.content)}</sup>;
     case 'Subscript':
