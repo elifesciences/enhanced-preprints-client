@@ -2174,6 +2174,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.03.05.531210": {
+      "preprintDoi": "10.1101/2023.03.05.531210",
+      "msas": [
+        "Ecology"
+      ]
     }
   },
   "manuscripts": {
@@ -2283,6 +2289,7 @@
     "86975": "86975v1",
     "86976": "86976v1",
     "86978": "86978v1",
+    "86988": "86988v1",
     "86990": "86990v1",
     "86996": "86996v1",
     "87005": "87005v1",
@@ -14411,6 +14418,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.05.31.543179v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "86988v1": {
+      "msid": "86988",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.05.531210",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-07",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.05.531210v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-05"
           }
         ]
       }
