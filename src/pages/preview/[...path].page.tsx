@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { config } from '../../config';
 import { Content } from '../../types/content';
 import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
-import { MetaData, PeerReview } from '../../types';
+import { MetaData } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 
@@ -13,13 +13,12 @@ type PageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview: PeerReview,
 };
 
 export const Page = (props: PageProps): JSX.Element => {
   let childTab;
   if (props.tab === 'fulltext') {
-    childTab = <ArticleFullTextTab routePrefix='/preview/' content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
+    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData}></ArticleFullTextTab>;
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }

@@ -8,7 +8,7 @@ import { AuthorInformationList } from '../../../molecules/author-information-lis
 import { Content, MetaData, PeerReview } from '../../../../types';
 import { contentToHeadings } from '../../../../utils/content-to-headings';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, routePrefix: string, }): JSX.Element => {
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, }): JSX.Element => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...contentToHeadings(props.content),
@@ -25,7 +25,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
         <Abstract content={props.metaData.abstract} />
-        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`${props.routePrefix}${props.metaData.msid}/reviews`}/> }
+        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
         <AuthorInformationList authors={props.metaData.authors}/>
