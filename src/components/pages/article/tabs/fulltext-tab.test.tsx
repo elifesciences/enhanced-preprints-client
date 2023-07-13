@@ -8,7 +8,7 @@ describe('FulltextTab', () => {
   });
 
   it('renders the evaluation summary when one is passed in', () => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
 
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincingRead the peer reviewsAbout eLife assessments');
   });
