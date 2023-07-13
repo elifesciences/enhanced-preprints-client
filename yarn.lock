@@ -6688,6 +6688,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/utils@npm:^5.10.0, @typescript-eslint/utils@npm:^5.58.0":
+  version: 5.62.0
+  resolution: "@typescript-eslint/utils@npm:5.62.0"
+  dependencies:
+    "@eslint-community/eslint-utils": ^4.2.0
+    "@types/json-schema": ^7.0.9
+    "@types/semver": ^7.3.12
+    "@typescript-eslint/scope-manager": 5.62.0
+    "@typescript-eslint/types": 5.62.0
+    "@typescript-eslint/typescript-estree": 5.62.0
+    eslint-scope: ^5.1.1
+    semver: ^7.3.7
+  peerDependencies:
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+  checksum: ee9398c8c5db6d1da09463ca7bf36ed134361e20131ea354b2da16a5fdb6df9ba70c62a388d19f6eebb421af1786dbbd79ba95ddd6ab287324fc171c3e28d931
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/utils@npm:^5.45.0":
   version: 5.59.2
   resolution: "@typescript-eslint/utils@npm:5.59.2"
@@ -6703,24 +6721,6 @@ __metadata:
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
   checksum: 483c35a592a36a5973204ce4cd11d52935c097b414d7edac2ecd15dba460b8c540b793ffc232c0f8580fef0624eb7704156ce33c66bd09a76769ed019bddd1d1
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/utils@npm:^5.58.0":
-  version: 5.62.0
-  resolution: "@typescript-eslint/utils@npm:5.62.0"
-  dependencies:
-    "@eslint-community/eslint-utils": ^4.2.0
-    "@types/json-schema": ^7.0.9
-    "@types/semver": ^7.3.12
-    "@typescript-eslint/scope-manager": 5.62.0
-    "@typescript-eslint/types": 5.62.0
-    "@typescript-eslint/typescript-estree": 5.62.0
-    eslint-scope: ^5.1.1
-    semver: ^7.3.7
-  peerDependencies:
-    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-  checksum: ee9398c8c5db6d1da09463ca7bf36ed134361e20131ea354b2da16a5fdb6df9ba70c62a388d19f6eebb421af1786dbbd79ba95ddd6ab287324fc171c3e28d931
   languageName: node
   linkType: hard
 
@@ -9937,7 +9937,7 @@ __metadata:
     stylelint: ^15.0.0
     stylelint-config-standard-scss: ^10.0.0
     stylelint-order: ^6.0.0
-    stylelint-selector-bem-pattern: ^2.1.1
+    stylelint-selector-bem-pattern: ^3.0.0
     ts-node: ^10.9.1
     typescript: ^5.0.0
     web-vitals: ^3.0.0
@@ -10392,6 +10392,24 @@ __metadata:
     jest:
       optional: true
   checksum: fc6da96131f4cbf33d15ef911ec8e600ccd71deb97d73c0ca340427cef7b01ff41a797e2e7d1e351abf97321a46ed0c0acff5ee8eeedac94961dd6dad1f718a9
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-jest@npm:^27.2.2":
+  version: 27.2.2
+  resolution: "eslint-plugin-jest@npm:27.2.2"
+  dependencies:
+    "@typescript-eslint/utils": ^5.10.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^5.0.0
+    eslint: ^7.0.0 || ^8.0.0
+    jest: "*"
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+    jest:
+      optional: true
+  checksum: 98b63252d985f5dedf36ce9587dd4a0d24daf71ca8a997258343402c0d33ddd5070502378dafd9ac7fc0ef2e0d557b5c77f18e09ad73c71a52de8061db88293f
   languageName: node
   linkType: hard
 
@@ -14350,7 +14368,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.0.2, minimatch@npm:^3.0.3, minimatch@npm:^3.0.4, minimatch@npm:^3.0.5, minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
+"minimatch@npm:^3.0.2, minimatch@npm:^3.0.4, minimatch@npm:^3.0.5, minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
   dependencies:
@@ -15532,14 +15550,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-bem-linter@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "postcss-bem-linter@npm:3.3.0"
+"postcss-bem-linter@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "postcss-bem-linter@npm:4.0.0"
   dependencies:
-    minimatch: ^3.0.3
-    postcss: ^7.0.14
+    minimatch: ^3.1.2
     postcss-resolve-nested-selector: ^0.1.1
-  checksum: f1d2e08b96ef1eab539beab3900177d88caf4e48495eaad87cac328c42dff6856e60e9312257198dbe8f9bf8502657f25cfe2f555cf700648d7648c735bb3c1b
+  peerDependencies:
+    postcss: ^8.4.21
+  checksum: 5b12e617a6858573866334232b12a660356a60d159c7ce1383a237bb53f0ff67978e86b2bd0bae21d98a505d8591cba50e9e8a3d8a35d954faabfcbdb55327a9
   languageName: node
   linkType: hard
 
@@ -16418,7 +16437,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^7.0.14, postcss@npm:^7.0.35":
+"postcss@npm:^7.0.35":
   version: 7.0.39
   resolution: "postcss@npm:7.0.39"
   dependencies:
@@ -16428,7 +16447,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.14, postcss@npm:^8.3.5, postcss@npm:^8.3.6, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.4":
+"postcss@npm:^8.2.14, postcss@npm:^8.3.5, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.24, postcss@npm:^8.4.4":
   version: 8.4.25
   resolution: "postcss@npm:8.4.25"
   dependencies:
@@ -18672,19 +18691,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-selector-bem-pattern@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "stylelint-selector-bem-pattern@npm:2.1.1"
+"stylelint-selector-bem-pattern@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stylelint-selector-bem-pattern@npm:3.0.0"
   dependencies:
+    eslint-plugin-jest: ^27.2.2
     lodash: ">=4.17.21"
-    postcss: ^8.3.6
-    postcss-bem-linter: ^3.3.0
-    stylelint: ">=13.13.1"
-  checksum: 5549b5c7a34a8db8d622d53c83046fe94a180510f189630b5eda28d7d28316c84da070217ed6c3bd16be4849189cb6b236f08b4c62c9f381efe392dd2acc856d
+    postcss: ^8.4.24
+    postcss-bem-linter: ^4.0.0
+    stylelint: ">=15.9.0"
+  checksum: 58d6ce072d84023bfde833c1fa18dae9b8c7907e5897e3b44373ecbad96e9bfb91ca6bbc219c4e2b810eede211d74f8fcd391e80dbbe682c0347ecd69c5fb86d
   languageName: node
   linkType: hard
 
-"stylelint@npm:>=13.13.1, stylelint@npm:^15.0.0":
+"stylelint@npm:>=15.9.0, stylelint@npm:^15.0.0":
   version: 15.10.1
   resolution: "stylelint@npm:15.10.1"
   dependencies:
