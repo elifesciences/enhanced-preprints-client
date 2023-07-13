@@ -2306,6 +2306,12 @@
         "Epidemiology and Global Health",
         "Medicine"
       ]
+    },
+    "2022.10.21.513016": {
+      "preprintDoi": "2022.10.21.513016",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -2536,6 +2542,7 @@
     "87730": "87730v1",
     "87739": "87739v1",
     "87742": "87742v1",
+    "87746": "87746v1",
     "87747": "87747v1",
     "87749": "87749v1",
     "87751": "87751v1",
@@ -15365,6 +15372,35 @@
             "link": {
               "url": "https://www.medrxiv.org/content/10.1101/2023.02.24.23286398v1",
               "text": "Go to medRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87746v1": {
+      "msid": "87746",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "2022.10.21.513016",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-02"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.21.513016v2",
+              "text": "Go to bioRxiv"
             }
           }
         ]
