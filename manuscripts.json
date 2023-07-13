@@ -2281,6 +2281,12 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.31234/osf.io/uk7hr": {
+      "preprintDoi": "10.31234/osf.io/uk7hr",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -2426,6 +2432,7 @@
     "87178": "87178v2",
     "87188": "87188v1",
     "87192": "87192v1",
+    "87193": "87193v1",
     "87196": "87196v1",
     "87197": "87197v1",
     "87198": "87198v1",
@@ -15221,6 +15228,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-02"
+          }
+        ]
+      }
+    },
+    "87193v1": {
+      "msid": "87193",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.31234/osf.io/uk7hr",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to PsyArXiv",
+            "date": "2023-04-25",
+            "link": {
+              "url": "https://psyarxiv.com/uk7hr/",
+              "text": "Go to PsyArXiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-30"
           }
         ]
       }
