@@ -7,7 +7,19 @@ describe('FulltextTab', () => {
     expect(() => render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
   });
 
+  it('does not render the evaluation summary', () => {
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData}/>);
+
+    expect(container.querySelector('#assessment')).toBeNull();
+  });
+
   it('renders the evaluation summary when one is passed in', () => {
+    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+
+    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincingAbout eLife assessments');
+  });
+
+  it('renders the link to read peer reviews', () => {
     const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
 
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincingRead the peer reviewsAbout eLife assessments');
