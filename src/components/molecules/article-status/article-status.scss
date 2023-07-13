@@ -140,7 +140,7 @@
     @include mixins.margin(0, "right");
   }
 
-  @media only all and (max-width: 618px) {
+  @media only all and (width <= 618px) {
     @include mixins.margin(0 0 12 0);
 
     text-align: center;
