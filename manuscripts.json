@@ -2365,6 +2365,12 @@
         "Ecology",
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2023.05.31.543167": {
+      "preprintDoi": "10.1101/2023.05.31.543167",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -2718,6 +2724,7 @@
     "88874": "88874v1",
     "88900": "88900v1",
     "88919": "88919v1",
+    "88955": "88955v1",
     "88960": "88960v1",
     "88971": "88971v1",
     "88982": "88982v1",
@@ -15680,6 +15687,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-30"
+          }
+        ]
+      }
+    },
+    "88955v1": {
+      "msid": "88955",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.31.543167",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-14"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.31.543167v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
