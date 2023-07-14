@@ -6,11 +6,12 @@ import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { Content, MetaData, PeerReview } from '../../../../types';
+import { contentToHeadings } from '../../../../utils/content-to-headings';
 
 export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview }): JSX.Element => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
-    ...props.metaData.headings,
+    ...contentToHeadings(props.content),
     { id: 'references', text: 'References' },
     { id: 'author-list', text: 'Author Information' },
   ];

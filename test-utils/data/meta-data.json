@@ -66,8 +66,6 @@
       "Bunny"
     ], "affiliations": [{ "name": "Harlem Globetrotters", "address": { "addressCountry": "New York" } }] }
   ],
-  "headings": [{ "id": "s1",
-    "text": "Introduction" }],
   "references": [
     {
       "type": "Article",

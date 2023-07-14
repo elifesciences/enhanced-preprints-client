@@ -12,8 +12,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (manuscript) {
     const [metaData, content] = await Promise.all([
-      fetchMetadata(manuscript.preprintDoi),
-      fetchContent(manuscript.preprintDoi),
+      fetchMetadata(`${msid}/v${manuscript.version}`),
+      fetchContent(`${msid}/v${manuscript.version}`),
     ]);
 
     writeResponse(

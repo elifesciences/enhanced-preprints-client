@@ -11,32 +11,6 @@
   @include typography.body-alternative();
 }
 
-.reference__authors_list {
-  display: inline;
-  list-style: none;
-  padding: 0;
-
-  &::after {
-    content: " ";
-  }
-}
-
-.reference__author {
-  display: inline;
-
-  &:not(:first-child)::before {
-    content: ", ";
-  }
-}
-
-.reference__authors_list_suffix::before {
-  content: "(";
-}
-
-.reference__authors_list_suffix::after {
-  content: ") ";
-}
-
 .reference__title {
   @include typography.author-list-text();
 

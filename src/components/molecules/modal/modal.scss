@@ -13,15 +13,15 @@
 }
 
 .modal-content {
-  @include mixins.margin(0);
   @include mixins.padding(36);
 
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 20px rgb(0 0 0 / 22%);
   display: grid;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   grid-template-columns: repeat(4, 1fr);
+  margin: 0;
   z-index: 200;
 
   @media only all and (min-width: settings.$breakpoint-small) {
@@ -38,13 +38,13 @@
   }
 
   h6 {
-    @include mixins.margin(0);
     @include mixins.padding(0 0 12);
     @include typography.font-size-and-vertical-height(16, 24);
 
     grid-column: 1/6;
     grid-row: 1;
     justify-self: start;
+    margin: 0;
   }
 }
 
@@ -64,10 +64,9 @@
 }
 
 .modal-content__title {
-  @include mixins.padding(0);
-
   grid-column: 2/4;
   grid-row: 1;
+  padding: 0;
 }
 
 .modal-content__show {
@@ -86,9 +85,9 @@
   align-self: start;
   background: url("../../../images/actions/close.svg") right 5px no-repeat;
   border: none;
-  color: settings.$color-text;
+  color: var(--color-text);
   cursor: pointer;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: bold;
   grid-row: 1;
   height: auto;

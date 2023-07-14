@@ -3,31 +3,24 @@ name: Publish Manuscript
 on:
   workflow_dispatch:
     inputs:
-      doi:
-        required: true
-        description: Preprint DOI
       msid:
         required: true
         description: Manuscript ID
-      dateReviewedPreprint:
-        description: Reviewed Preprint posted (YYYY-MM-DD)
-      datePostedToPreprintServer:
+      doi:
         required: true
+        description: Preprint DOI
+      dateReviewedPreprint:
+        description: Reviewed preprint posted (YYYY-MM-DD)
+      dateSentForPeerReview:
+        description: Sent for peer review (YYYY-MM-DD)
+      datePostedToPreprintServer:
         description: Posted to preprint server (YYYY-MM-DD)
       urlPostedOnPreprintServer:
-        required: true
         description: Posted to preprint server (url)
       preprintServer:
         description: Preprint server
-      dateSentForPeerReview:
-        required: true
-        description: Sent for peer review (YYYY-MM-DD)
       msa:
         description: Subject areas (comma separated)
-      urlPdf:
-        description: PDF location (url)
-      versionManuscript:
-        description: Manuscript version
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,24 +43,33 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Publish Manuscript
+      - name: Prepare manuscripts.json with manuscript version
         run: |
           cat manuscripts.json | \
-            yarn --silent publish-manuscript \
+            yarn publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
+            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
             --datePostedToPreprintServer "${{ github.event.inputs.datePostedToPreprintServer }}" \
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
-            --dateSentForPeerReview "${{ github.event.inputs.dateSentForPeerReview }}" \
-            --msa "${{ github.event.inputs.msa }}" \
-            --urlPdf "${{ github.event.inputs.urlPdf }}" \
-            --versionManuscript ${{ github.event.inputs.versionManuscript }} | \
-            tee manuscripts.json > /dev/null
+            --msa "${{ github.event.inputs.msa }}" | \
+            tee manuscripts-new.json > /dev/null
+          # check the exit status of all commands in the pipeline
+          status=("${PIPESTATUS[@]}")
+          for i in "${!status[@]}"; do
+            if [ "${status[$i]}" -ne 0 ]; then
+              echo "Pipeline step $i failed with status ${status[$i]}"
+              exit 1
+            fi
+          done
+      - name: Replace manuscripts.json
+        run: |
+          mv manuscripts-new.json manuscripts.json
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           draft: true
           branch: "${{ env.BRANCH_NAME }}"
@@ -89,4 +91,3 @@ jobs:
           committer_name: GitHub Actions
           committer_email: action@github.com
           message: "Publish manuscript ${{ github.event.inputs.msid }} using workflow"
-

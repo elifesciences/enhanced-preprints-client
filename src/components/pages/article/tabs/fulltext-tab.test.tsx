@@ -96,25 +96,6 @@ describe('FulltextTab', () => {
         },
       ],
     },
-    {
-      description: 'no metadata headings',
-      metaDataExample: { ...metaData, headings: [] },
-      peerReviewExample: undefined,
-      expectedJumpToLinks: [
-        {
-          href: '#abstract',
-          text: 'Abstract',
-        },
-        {
-          href: '#references',
-          text: 'References',
-        },
-        {
-          href: '#author-list',
-          text: 'Author Information',
-        },
-      ],
-    },
   ])('passes down the correct headings to jump-to-menu ($description)', ({
     metaDataExample,
     peerReviewExample,

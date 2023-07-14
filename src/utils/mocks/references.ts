@@ -12,6 +12,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Slater'], givenNames: ['NT'] },
       { type: 'Person', familyNames: ['McCrimmon'], givenNames: ['DR'] },
       { type: 'Person', familyNames: ['Raman'], givenNames: ['IM'] },
+      { type: 'Person', familyNames: ['NoGiven'], givenNames: undefined },
     ],
     datePublished: '2004-01-01T00:00:00.000Z',
     isPartOf: {
