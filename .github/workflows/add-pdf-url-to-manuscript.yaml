@@ -3,20 +3,21 @@ name: Add PDF url to manuscript
 on:
   workflow_dispatch:
     inputs:
-      doi:
+      msid:
         required: true
-        description: Preprint DOI
+        description: Manuscript ID
+      versionManuscript:
+        description: Manuscript version
       urlPdf:
-        required: true
         description: PDF location (url)
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  BRANCH_NAME: "pdfurl-${{ github.event.inputs.msid }}"
+  BRANCH_NAME: "pdfurl-${{ github.event.inputs.msid }}-v${{ github.event.inputs.versionManuscript || 1 }}"
 
 jobs:
-  publish-manuscript:
-    runs-on: ubuntu-20.04
+  add-pdf-to-manuscript:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -31,25 +32,30 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Add PDF url to manuscript
+      - name: Prepare manuscripts.json with PDF url
         run: |
           cat manuscripts.json | \
-            yarn --silent add-pdf-url-to-manuscript \
-            --doi "${{ github.event.inputs.doi }}" \
+            yarn add-pdf-url-to-manuscript \
+            --msid "${{ github.event.inputs.msid }}" \
+            --versionManuscript "${{ github.event.inputs.versionManuscript || 1 }}" \
             --urlPdf "${{ github.event.inputs.urlPdf }}" | \
-            tee manuscripts.json > /dev/null
+            tee manuscripts-new.json > /dev/null
+      - name: Replace manuscripts.json
+        run: |
+          mv manuscripts-new.json manuscripts.json
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
+          draft: true
           branch: "${{ env.BRANCH_NAME }}"
           branch-suffix: short-commit-hash
-          commit-message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
+          commit-message: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }} using workflow"
           committer: GitHub Actions <action@github.com>
-          title: "Add pdf url to manuscript ${{ github.event.inputs.doi }}"
+          title: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }}"
           body:
             |
-            DOI: ${{ github.event.inputs.doi }}
+            ID: ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }}
 
             Please review and merge.
           token: ${{ env.GITHUB_TOKEN }}
@@ -59,5 +65,4 @@ jobs:
         with:
           committer_name: GitHub Actions
           committer_email: action@github.com
-          message: "Add pdf url to manuscript ${{ github.event.inputs.doi }} using workflow"
-
+          message: "Add pdf url to manuscript ${{ github.event.inputs.msid }}v${{ github.event.inputs.versionManuscript || 1 }} using workflow"

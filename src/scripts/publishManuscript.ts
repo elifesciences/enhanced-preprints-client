@@ -1,88 +1,39 @@
-#!/usr/bin/env node
+const todayDate = () => (new Date()).toISOString().split('T')[0];
+const sortTimelines = (a: Timeline, b: Timeline) => (new Date(b.date).getTime() - new Date(a.date).getTime());
 
-import * as yargs from 'yargs';
+const validateMsas = (msas: string[]) => {
+  const valid = [
+    'Biochemistry and Chemical Biology',
+    'Cancer Biology',
+    'Cell Biology',
+    'Chromosomes and Gene Expression',
+    'Computational and Systems Biology',
+    'Developmental Biology',
+    'Ecology',
+    'Epidemiology and Global Health',
+    'Evolutionary Biology',
+    'Genetics and Genomics',
+    'Immunology and Inflammation',
+    'Medicine',
+    'Microbiology and Infectious Disease',
+    'Neuroscience',
+    'Physics of Living Systems',
+    'Plant Biology',
+    'Structural Biology and Molecular Biophysics',
+    'Stem Cells and Regenerative Medicine',
+  ];
 
-interface Args {
-  doi: string;
-  msid: string;
-  dateReviewedPreprint?: string;
-  datePostedToPreprintServer: string;
-  urlPostedOnPreprintServer: string;
-  preprintServer?: string;
-  dateSentForPeerReview: string;
-  msa?: string[];
-  urlPdf?: string;
-  versionManuscript?: number;
-}
+  const unrecognised = msas.filter((msa) => !valid.includes(msa));
 
-const args = yargs
-  .option('doi', {
-    type: 'string',
-    describe: 'Preprint DOI',
-    demandOption: true,
-  })
-  .option('msid', {
-    type: 'string',
-    describe: 'Manuscript ID',
-    demandOption: true,
-  })
-  .option('dateReviewedPreprint', {
-    type: 'string',
-    describe: 'Reviewed Preprint posted (YYYY-MM-DD)',
-  })
-  .option('datePostedToPreprintServer', {
-    type: 'string',
-    describe: 'Posted to preprint server (YYYY-MM-DD)',
-    demandOption: true,
-  })
-  .option('urlPostedOnPreprintServer', {
-    type: 'string',
-    describe: 'Posted to preprint server (url)',
-    demandOption: true,
-  })
-  .option('preprintServer', {
-    type: 'string',
-    describe: 'Preprint server',
-  })
-  .option('dateSentForPeerReview', {
-    type: 'string',
-    describe: 'Sent for peer review (YYYY-MM-DD)',
-    demandOption: true,
-  })
-  .option('msa', {
-    type: 'array',
-    describe: 'Subject areas (comma separated)',
-  })
-  .option('urlPdf', {
-    type: 'string',
-    describe: 'PDF location (url)',
-  })
-  .option('versionManuscript', {
-    type: 'number',
-    describe: 'Manuscript version',
-  })
-  .argv as Args;
+  if (unrecognised.length > 0) {
+    throw new Error(`msa not recognised: ${unrecognised.join(', ')}`);
+  }
 
-const preprintServer: string = (args.preprintServer && args.preprintServer.trim() !== '') ? args.preprintServer.trim() : 'bioRxiv';
-const msa: string[] | undefined = (args.msa && args.msa.length === 1) ? args.msa[0].split(',').map((i) => i.trim()) : args.msa;
-const dateReviewedPreprint: string = (args.dateReviewedPreprint && args.dateReviewedPreprint.trim() !== '') ? args.dateReviewedPreprint.trim() : (new Date()).toISOString().split('T')[0];
-const versionManuscript: number = args.versionManuscript ?? 1;
+  return true;
+};
 
 type Preprint = {
   preprintDoi: string;
-  status: {
-    articleType: string;
-    status: string;
-    timeline: {
-      name: string;
-      date: string;
-      link?: {
-        url: string;
-        text: string;
-      }
-    }[]
-  };
-  pdfUrl?: string;
   msas?: string[];
 };
 
@@ -90,15 +41,35 @@ type Preprints = {
   [preprintDoi: string]: Preprint;
 };
 
+type TimelineBase = {
+  name: string;
+  date: string;
+};
+
+type Timeline = TimelineBase & {
+  link: {
+    url: string;
+    text: string;
+  }
+} | TimelineBase & {
+  eventDescription: string;
+} | TimelineBase & {};
+
 type Manuscript = {
   msid: string;
-  version: string;
+  version: number;
   publishedYear: number;
   preprintDoi: string;
+  status: {
+    articleType: string;
+    status: string;
+    timeline: Timeline[];
+  };
+  pdfUrl?: string;
 };
 
 type Manuscripts = {
-  [msidVersion: string]: Manuscript;
+  [msidVersion: string]: Manuscript | string;
 };
 
 type PreprintManuscripts = {
@@ -106,62 +77,94 @@ type PreprintManuscripts = {
   manuscripts: Manuscripts,
 };
 
-const newPreprints: Preprints = {
-  [args.doi]: {
-    ...{
-      preprintDoi: args.doi,
-      status: {
-        articleType: 'Reviewed Preprint',
-        status: 'Published from the original preprint after peer review and assessment by eLife.',
-        timeline: [
-          { name: 'Reviewed Preprint posted', date: dateReviewedPreprint },
-          { name: `Posted to ${preprintServer}`, date: args.datePostedToPreprintServer, link: { url: args.urlPostedOnPreprintServer, text: `Go to ${preprintServer}` } },
-          { name: 'Sent for peer review', date: args.dateSentForPeerReview },
-        ].sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())),
-      },
-      msas: msa,
+const addManuscript = (preprintManuscripts: PreprintManuscripts, ppDoi: string, rpMsid: string, ppMsa?: string[], ppServer?: string, ppDate?: string, ppUrl?: string, rpDate?: string, prDate?: string) : PreprintManuscripts => {
+  const preprintServer: string = (ppServer && ppServer.trim() !== '') ? ppServer.trim() : 'bioRxiv';
+  const dateReviewedPreprint: string = (rpDate && rpDate.trim() !== '') ? rpDate.trim() : todayDate();
+
+  const newMsas = (ppMsa === undefined || ppMsa.length === 0) && ppDoi in preprintManuscripts.preprints ? preprintManuscripts.preprints[ppDoi].msas : ppMsa;
+
+  validateMsas(newMsas ?? []);
+
+  const newPreprints: Preprints = {
+    [ppDoi]: {
+      preprintDoi: ppDoi,
+      ...((newMsas ?? []).length > 0 ? { msas: newMsas } : {}),
     },
-    ...((args.urlPdf && args.urlPdf.trim() !== '') ? { pdfUrl: args.urlPdf.trim() } : {}),
-  },
-};
-
-const newManuscript: Manuscript = {
-  msid: args.msid,
-  version: `${versionManuscript}`,
-  publishedYear: Number(dateReviewedPreprint.split('-')[0]),
-  preprintDoi: args.doi,
-};
-
-const newManuscripts: Manuscripts = {
-  [args.msid]: newManuscript,
-  [`${args.msid}v${versionManuscript}`]: newManuscript,
-};
-
-const addManuscript = (preprintManuscripts: PreprintManuscripts | undefined, preprints: Preprints, manuscripts: Manuscripts) : void => {
-  const data: PreprintManuscripts = (preprintManuscripts !== undefined) ? preprintManuscripts : { preprints: {}, manuscripts: {} };
-  const updatedPreprints: Preprints = { ...data.preprints, ...preprints };
-  const updatedManuscripts: Manuscripts = { ...data.manuscripts, ...manuscripts };
-
-  const updatedData: PreprintManuscripts = {
-    preprints: updatedPreprints,
-    manuscripts: updatedManuscripts,
   };
 
-  process.stdout.write(`${JSON.stringify(updatedData, null, 2)}\n`);
+  const rpMsidRoot = `${rpMsid}v`;
+  const v = Object.keys(preprintManuscripts.manuscripts).filter((id) => id.startsWith(rpMsidRoot)).length + 1;
+  const allVersions: Manuscript[] = Object.keys(preprintManuscripts.manuscripts)
+    .filter((k) => k.startsWith(rpMsidRoot) && preprintManuscripts && typeof preprintManuscripts.manuscripts[k] !== undefined && typeof preprintManuscripts.manuscripts[k] !== 'string')
+    .map((k) => preprintManuscripts.manuscripts[k] as Manuscript);
+
+  const newTimeline: Timeline[] = [
+    { name: 'Reviewed preprint posted', date: dateReviewedPreprint, eventDescription: '(this version)' },
+  ];
+
+  if (ppDate && ppUrl) {
+    newTimeline.push({ name: `Posted to ${preprintServer}`, date: ppDate, link: { url: ppUrl, text: `Go to ${preprintServer}` } });
+  }
+  if (prDate) {
+    newTimeline.push({ name: 'Sent for peer review', date: prDate });
+  }
+
+  allVersions.push({
+    msid: rpMsid,
+    version: v,
+    publishedYear: Number(dateReviewedPreprint.split('-')[0]),
+    preprintDoi: ppDoi,
+    status: {
+      articleType: 'Reviewed Preprint',
+      status: v === 1 ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
+      timeline: v === 1 ? newTimeline.sort(sortTimelines) : [newTimeline[0], ...allVersions[allVersions.length - 1].status.timeline],
+    },
+  });
+
+  const currentTimeline = allVersions[allVersions.length - 1].status.timeline;
+
+  const newManuscripts: Manuscripts = {
+    [rpMsid]: `${rpMsidRoot}${v}`,
+  };
+
+  if (v > 1) {
+    const reviewedPreprintsPosted = allVersions[0].status.timeline.filter((t) => t.name.startsWith('Reviewed '));
+    reviewedPreprintsPosted.unshift(currentTimeline[0]);
+    const sortPosted = reviewedPreprintsPosted.sort(sortTimelines);
+    const prepPosted: Timeline[] = [];
+    for (let i = 0; i < sortPosted.length; i += 1) {
+      prepPosted.push({
+        name: `Reviewed preprint version ${v - i}`,
+        date: sortPosted[i].date,
+      });
+    }
+
+    const prepTimelines: Timeline[][] = allVersions
+      .map((m, i) => [
+        ...prepPosted.map((p, j) => ({ ...p, ...(v - i - 1 === j ? { eventDescription: '(this version)' } : { link: { url: `/reviewed-preprints/${rpMsidRoot}${v - j}`, text: 'Go to version' } }) })),
+        ...m.status.timeline.filter((t) => !t.name.startsWith('Reviewed ')),
+      ]);
+
+    allVersions.forEach((mv, i) => {
+      newManuscripts[`${mv.msid}v${mv.version}`] = {
+        ...mv,
+        status: {
+          ...mv.status,
+          timeline: prepTimelines[i],
+        },
+      };
+    });
+  } else {
+    // eslint-disable-next-line prefer-destructuring
+    newManuscripts[`${rpMsidRoot}${v}`] = allVersions[0];
+  }
+
+  return {
+    preprints: { ...preprintManuscripts.preprints, ...newPreprints },
+    manuscripts: { ...preprintManuscripts.manuscripts, ...newManuscripts },
+  };
 };
 
-let input = '';
-
-if (!process.stdin.isTTY) {
-  process.stdin.on('data', (chunk) => {
-    input += chunk;
-  });
-
-  process.stdin.on('end', () => {
-    addManuscript(input.length ? JSON.parse(input) : undefined, newPreprints, newManuscripts);
-  });
-} else {
-  addManuscript(undefined, newPreprints, newManuscripts);
-}
-
-export {};
+export {
+  addManuscript,
+};

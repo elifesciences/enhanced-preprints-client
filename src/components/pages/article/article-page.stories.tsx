@@ -19,7 +19,7 @@ const tabs = [
   },
   {
     id: 'figures',
-    linkElement: <LinkTo story='Article-Page-Figures-Tab'>Figures and data</LinkTo>,
+    linkElement: <LinkTo story='Article-Page-Figures-Tab'>Figures</LinkTo>,
   },
   {
     id: 'reviews',
@@ -27,26 +27,29 @@ const tabs = [
   },
 ];
 
-const FullTextTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleFullTextTab metaData={metaData} peerReview={peerReview} content={content} /></ArticlePage></DefaultLayout>;
+const FullTextTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFullTextTab metaData={metaData} peerReview={peerReview} content={content} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
 ArticlePageFullTextTab.args = {
   metaData,
   status,
   activeTab: 'fulltext',
+  tabs,
 };
 
-const FiguresTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleFiguresTab content={content} /></ArticlePage></DefaultLayout>;
+const FiguresTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={content} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFiguresTab = FiguresTemplate.bind({});
 ArticlePageFiguresTab.args = {
   metaData,
   status,
   activeTab: 'figures',
+  tabs,
 };
 
-const ReviewsTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage tabs={tabs} {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
+const ReviewsTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
 export const ArticlePageReviewsTab = ReviewsTemplate.bind({});
 ArticlePageReviewsTab.args = {
   metaData,
   status,
   activeTab: 'reviews',
+  tabs,
 };

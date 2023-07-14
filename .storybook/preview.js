@@ -16,7 +16,4 @@ export const parameters = {
       },
     ]
   },
-
 }
-
-import './fix-next-image';

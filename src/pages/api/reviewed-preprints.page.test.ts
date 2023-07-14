@@ -11,7 +11,7 @@ describe('reviewedPreprintSnippet', () => {
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
-          { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+          { name: 'Reviewed preprint posted', date: '2022-10-20' },
           { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
           { name: 'Sent for peer review', date: '2022-06-24' },
         ],
@@ -67,7 +67,6 @@ describe('reviewedPreprintSnippet', () => {
         },
       ],
       doi: 'preprintprovider/preprint1',
-      headings: [],
       msas: [],
       msid: 'msid1',
       pdfUrl: 'https://www.preprintprovider.org/content/preprint1.pdf',
@@ -111,7 +110,7 @@ describe('reviewedPreprintSnippet', () => {
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
-          { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+          { name: 'Reviewed preprint posted', date: '2022-10-20' },
           { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
           { name: 'Sent for peer review', date: '2022-06-24' },
         ],
@@ -135,6 +134,55 @@ describe('reviewedPreprintSnippet', () => {
       reviewedDate: '2022-10-20T03:00:00Z',
       versionDate: '2022-10-20T03:00:00Z',
       statusDate: '2022-10-20T03:00:00Z',
+      stage: 'published',
+      subjects: [
+        {
+          id: 'cell-biology',
+          name: 'Cell Biology',
+        },
+        {
+          id: 'physics-living-systems',
+          name: 'Physics of Living Systems',
+        },
+      ],
+    });
+  });
+
+  it('prepares a revised preprint snippet', () => {
+    const result = reviewedPreprintSnippet({
+      msid: 'msid1',
+      version: '3',
+      preprintDoi: 'preprintprovider/preprint1',
+      status: {
+        articleType: 'Reviewed Preprint',
+        status: 'Revised by authors after peer review.',
+        timeline: [
+          { name: 'Reviewed preprint version 1', date: '2022-10-20', link: { url: '/reviewed-preprints/msid1v1', text: 'Go to version' } },
+          { name: 'Reviewed preprint version 3', date: '2022-10-22' },
+          { name: 'Reviewed preprint version 2', date: '2022-10-21', link: { url: '/reviewed-preprints/msid1v2', text: 'Go to version' } },
+          { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
+          { name: 'Sent for peer review', date: '2022-06-24' },
+        ],
+      },
+      pdfUrl: 'https://www.preprintprovider.org/content/preprint1.pdf',
+      msas: [
+        'Cell Biology',
+        'Physics of Living Systems',
+      ],
+      publishedYear: 2023,
+    });
+
+    expect(result).toStrictEqual({
+      id: 'msid1',
+      doi: 'preprintprovider/preprint1',
+      pdf: 'https://www.preprintprovider.org/content/preprint1.pdf',
+      status: 'reviewed',
+      authorLine: undefined,
+      title: undefined,
+      published: '2022-10-20T03:00:00Z',
+      reviewedDate: '2022-10-20T03:00:00Z',
+      versionDate: '2022-10-22T03:00:00Z',
+      statusDate: '2022-10-22T03:00:00Z',
       stage: 'published',
       subjects: [
         {
@@ -311,7 +359,7 @@ describe('reviewedPreprintSnippet', () => {
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
-          { name: 'Reviewed Preprint posted', date: '2022-10-20' },
+          { name: 'Reviewed preprint posted', date: '2022-10-20' },
           { name: 'Posted to bioRxiv', date: '2022-06-26', link: { url: 'https://www.preprintprovider.org/content/preprint1', text: 'Go to preprintprovider' } },
           { name: 'Sent for peer review', date: '2022-06-24' },
         ],
@@ -323,7 +371,6 @@ describe('reviewedPreprintSnippet', () => {
       abstract: 'content',
       authors,
       doi: 'preprintprovider/preprint1',
-      headings: [],
       msas: [],
       msid: 'msid1',
       pdfUrl: 'https://www.preprintprovider.org/content/preprint1.pdf',

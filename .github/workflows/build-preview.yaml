@@ -24,7 +24,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and load preview image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           cache-from: type=gha
@@ -40,7 +40,7 @@ jobs:
       - name: run lint-sass
         run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn lint-sass
       - name: push preview image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           target: prod
@@ -48,7 +48,7 @@ jobs:
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
       - name: Build and push preview storybook image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           target: storybook

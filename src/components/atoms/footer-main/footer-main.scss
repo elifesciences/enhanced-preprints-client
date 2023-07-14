@@ -3,7 +3,7 @@
 @use "../../../sass/mixins";
 
 .site-footer {
-  border-top: 1px solid settings.$divider;
+  border-top: 1px solid var(--divider);
 
   @include mixins.padding(48, "top");
   @include mixins.padding(16, "bottom");
@@ -23,27 +23,27 @@
 .footer-navigation__list_item {
   @include typography.font-size-and-vertical-height(11, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
 .footer-navigation__list_link {
-  color: settings.$color-text;
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
 .site-smallprint__copyright_link {
-  color: settings.$color-text;
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -62,7 +62,7 @@
 .site-smallprint {
   @include typography.font-size-and-vertical-height(11, 24);
 
-  font-family: settings.$font-family-secondary;
+  font-family: var(--font-family-secondary);
   padding: 0 6%;
   text-align: center;
 
@@ -125,8 +125,7 @@
   }
 
   .site-smallprint {
-    @include mixins.padding(0);
-
+    padding: 0;
     text-align: left;
   }
 
@@ -179,11 +178,11 @@
 
 .social-links__list_link {
   svg path {
-    fill: settings.$color-text;
+    fill: var(--color-text);
   }
 
   &:hover svg path {
-    fill: settings.$color-primary;
+    fill: var(--color-primary);
   }
 }
 
@@ -194,7 +193,7 @@
     @include mixins.margin(0 0 60);
 
     align-items: center;
-    color: settings.$color-text;
+    color: var(--color-text);
     display: inline-flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -204,23 +203,23 @@
     width: auto;
 
     svg path {
-      fill: settings.$color-text;
+      fill: var(--color-text);
     }
 
     &:hover svg path {
-      fill: settings.$color-primary;
+      fill: var(--color-primary);
     }
 
     &:hover {
-      color: settings.$color-primary;
+      color: var(--color-primary);
     }
 
     .github-link--text {
       @include typography.font-size-and-vertical-height(11,24);
       @include mixins.margin(2 0 0 7);
 
-      color: settings.$color-text;
-      font-family: settings.$font-family-primary;
+      color: var(--color-text);
+      font-family: var(--font-family-primary);
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
