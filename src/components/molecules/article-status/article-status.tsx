@@ -82,10 +82,16 @@ const ArticleStatusDefault = ({
 
 const ArticleStatusSimple = ({
   articleType = defaultArticleType, articleStatus,
-}: ArticleStatusProps): JSX.Element => <div className="article-status">
-  <h2 className="article-status__heading">{articleType}</h2>
-  <p className="article-status__text">{articleStatus}</p>
-</div>;
+}: ArticleStatusProps): JSX.Element => {
+  // this stops React complaining about hook numbers
+  useState(false);
+  useState(false);
+
+  return (<div className="article-status">
+    <h2 className="article-status__heading">{articleType}</h2>
+    <p className="article-status__text">{articleStatus}</p>
+  </div>);
+};
 
 export const ArticleStatus = (articleStatusProps: ArticleStatusProps): JSX.Element => {
   const simpleStatus = useFeatureFlagEnabled('article-status-simple');
