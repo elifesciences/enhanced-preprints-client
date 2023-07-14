@@ -138,7 +138,7 @@ services:
       API_SERVER: http://api:3000
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
       MANUSCRIPT_CONFIG_FILE: /opt/epp-client/data/manuscripts.json
-      NEXT_PUBLIC_POSTHOG_KEY: phc_aAmt5LLH7Fj4N8GXGdqCwFqU6XvpAnnHYvB2nwyHzcw
+      NEXT_PUBLIC_POSTHOG_KEY: phc_HV9A3n7ZXHg0dUzzMDUIdO04cPfOjkqK1g9qNI9A37f
     depends_on:
       yarn:
         condition: service_completed_successfully
