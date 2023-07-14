@@ -2358,6 +2358,13 @@
         "Cancer Biology",
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.06.16.545283": {
+      "preprintDoi": "10.1101/2023.06.16.545283",
+      "msas": [
+        "Ecology",
+        "Evolutionary Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -2699,6 +2706,7 @@
     "88670": "88670v1",
     "88733": "88733v1",
     "88737": "88737v1",
+    "88744": "88744v1",
     "88772": "88772v1",
     "88782": "88782v1",
     "88795": "88795v1",
@@ -15643,6 +15651,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.11.18.517150v2",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "88744v1": {
+      "msid": "88744",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.16.545283",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.16.545283v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-30"
           }
         ]
       }
