@@ -15,5 +15,5 @@ export const config = {
   reviewsConfigFile: process.env.REVIEWS_CONFIG_FILE || './reviews.json',
   twitterHandle: process.env.TWITTER_HANDLE || 'elife',
   posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+  posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.posthog.com',
 };
