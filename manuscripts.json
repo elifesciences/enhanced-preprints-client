@@ -2530,6 +2530,12 @@
       "msas": [
         "Stem Cells and Regenerative Medicine"
       ]
+    },
+    "10.1101/2023.04.14.536843": {
+      "preprintDoi": "10.1101/2023.04.14.536843",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -2779,6 +2785,7 @@
     "87881": "87881v1",
     "87884": "87884v1",
     "87895": "87895v1",
+    "87900": "87900v1",
     "87912": "87912v1",
     "87922": "87922v1",
     "87928": "87928v1",
@@ -16903,6 +16910,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-02"
+          }
+        ]
+      }
+    },
+    "87900v1": {
+      "msid": "87900",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.14.536843",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-20",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.14.536843v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-08"
           }
         ]
       }
