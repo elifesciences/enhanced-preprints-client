@@ -2549,6 +2549,12 @@
       "msas": [
         "Epidemiology and Global Health"
       ]
+    },
+    "10.1101/2023.05.03.539131": {
+      "preprintDoi": "10.1101/2023.05.03.539131",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -2941,6 +2947,7 @@
     "89125": "89125v1",
     "89167": "89167v1",
     "89173": "89173v1",
+    "89231": "89231v1",
     "89232": "89232v1",
     "89267": "89267v1",
     "89280": "89280v1",
@@ -17029,6 +17036,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-16"
+          }
+        ]
+      }
+    },
+    "89231v1": {
+      "msid": "89231",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.03.539131",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-21",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-17"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.03.539131v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
