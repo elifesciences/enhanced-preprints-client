@@ -1,17 +1,4 @@
-// /** @type {import('ts-jest').JestConfigWithTsJest} */
-// module.exports = {
-//   preset: 'ts-jest',
-//   testEnvironment: 'jsdom',
-//   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
-//   setupFiles: ['node_modules/react-app-polyfill/jsdom.js'],
-//   setupFilesAfterEnv: ['src/setupTests.ts'],
-//   testMatch: ['src/**/__tests__/**/*.{js,jsx,ts,tsx}', 'src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
-//   moduleFileExtensions: ['web.js', 'js', 'web.ts', 'ts', 'web.tsx', 'tsx', 'json', 'web.jsx', 'jsx', 'node'],
-//   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
-//   resetMocks: true,
-// };
-
-
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({
