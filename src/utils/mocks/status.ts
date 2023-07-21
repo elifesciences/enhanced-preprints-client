@@ -5,4 +5,5 @@ export const status = {
     { name: 'Peer review done', date: '2022-01-02' },
     { name: 'Preprint posted', date: '2022-01-01' },
   ],
+  isPreview: false,
 };
