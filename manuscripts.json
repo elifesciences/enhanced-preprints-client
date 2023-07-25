@@ -2662,6 +2662,13 @@
       "msas": [
         "Stem Cells and Regenerative Medicine"
       ]
+    },
+    "10.1101/2023.03.10.23287084": {
+      "preprintDoi": "10.1101/2023.03.10.23287084",
+      "msas": [
+        "Cancer Biology",
+        "Epidemiology and Global Health"
+      ]
     }
   },
   "manuscripts": {
@@ -2914,6 +2921,7 @@
     "87880": "87880v1",
     "87881": "87881v1",
     "87884": "87884v1",
+    "87894": "87894v1",
     "87895": "87895v1",
     "87900": "87900v1",
     "87912": "87912v1",
@@ -17822,6 +17830,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-11"
+          }
+        ]
+      }
+    },
+    "87894v1": {
+      "msid": "87894",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.10.23287084",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-25",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-03-10",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.03.10.23287084v1/",
+              "text": "Go to medRxiv"
+            }
           }
         ]
       }
