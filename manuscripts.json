@@ -2689,6 +2689,13 @@
         "Evolutionary Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.03.02.530691": {
+      "preprintDoi": "10.1101/2023.03.02.530691",
+      "msas": [
+        "Cell Biology",
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -2904,6 +2911,7 @@
     "87602": "87602v1",
     "87607": "87607v1",
     "87611": "87611v1",
+    "87615": "87615v1",
     "87616": "87616v2",
     "87634": "87634v1",
     "87644": "87644v1",
@@ -17967,6 +17975,35 @@
             "date": "2023-03-03",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.02.530449v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87615v1": {
+      "msid": "87615",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.02.530691",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-26",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-24"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.02.530691v1/",
               "text": "Go to bioRxiv"
             }
           }
