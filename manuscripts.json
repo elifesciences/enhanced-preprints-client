@@ -2669,6 +2669,12 @@
         "Cancer Biology",
         "Epidemiology and Global Health"
       ]
+    },
+    "10.1101/2023.06.20.545708": {
+      "preprintDoi": "10.1101/2023.06.20.545708",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -3090,6 +3096,7 @@
     "89520": "89520v1",
     "89601": "89601v1",
     "89635": "89635v1",
+    "89755": "89755v1",
     "89812": "89812v1",
     "90025": "90025v1",
     "80494v1": {
@@ -17859,6 +17866,35 @@
               "url": "https://www.medrxiv.org/content/10.1101/2023.03.10.23287084v1/",
               "text": "Go to medRxiv"
             }
+          }
+        ]
+      }
+    },
+    "89755v1": {
+      "msid": "89755",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.20.545708",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-26",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.20.545708v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-06"
           }
         ]
       }
