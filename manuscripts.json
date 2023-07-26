@@ -2709,6 +2709,12 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.1101/2022.06.17.496614": {
+      "preprintDoi": "10.1101/2022.06.17.496614",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -3070,6 +3076,7 @@
     "88623": "88623v1",
     "88637": "88637v1",
     "88638": "88638v1",
+    "88640": "88640v1",
     "88652": "88652v1",
     "88656": "88656v1",
     "88657": "88657v1",
@@ -18079,6 +18086,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-20"
+          }
+        ]
+      }
+    },
+    "88640v1": {
+      "msid": "88640",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.06.17.496614",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-26",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-03"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.06.17.496614v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
