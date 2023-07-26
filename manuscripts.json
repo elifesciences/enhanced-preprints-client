@@ -2754,6 +2754,13 @@
         "Developmental Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2022.08.08.502889": {
+      "preprintDoi": "10.1101/2022.08.08.502889",
+      "msas": [
+        "Computational and Systems Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -3190,6 +3197,7 @@
     "89812": "89812v1",
     "89938": "89938v1",
     "90025": "90025v1",
+    "90773": "90773v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -18334,6 +18342,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.01.13.523925v2/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "90773v1": {
+      "msid": "90773",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.08.08.502889",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-26",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.08.08.502889v6/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-10"
           }
         ]
       }
