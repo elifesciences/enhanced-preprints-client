@@ -47,6 +47,7 @@ jobs:
           push: true
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - name: Build and push preview storybook image
         uses: docker/build-push-action@v4
         with:
@@ -55,6 +56,7 @@ jobs:
           push: true
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
 
   create-preview-deployment:
     runs-on: ubuntu-latest
