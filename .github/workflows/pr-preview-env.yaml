@@ -70,7 +70,8 @@ jobs:
           gh api \
             --method POST \
             /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.head_ref }}' \
+            -f ref='${{ github.event.pull_request.head.ref }}' \
+            -f sha='${{ github.event.pull_request.head.sha }}' \
             -f environment="preview-${{ github.event.number }}" \
             -f required_contexts[] \
             -F auto_merge=false \
@@ -84,7 +85,8 @@ jobs:
           gh api \
             --method POST \
             /repos/elifesciences/enhanced-preprints-client/deployments \
-            -f ref='${{ github.head_ref }}' \
+            -f ref='${{ github.event.pull_request.head.ref }}' \
+            -f sha='${{ github.event.pull_request.head.sha }}' \
             -f environment="storybook-preview-${{ github.event.number }}" \
             -f required_contexts[] \
             -F auto_merge=false \
