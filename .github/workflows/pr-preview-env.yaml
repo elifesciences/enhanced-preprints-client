@@ -1,4 +1,4 @@
-name: Preview
+name: Pull Request Preview Environment
 
 on:
   pull_request:
@@ -47,6 +47,7 @@ jobs:
           push: true
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
       - name: Build and push preview storybook image
         uses: docker/build-push-action@v4
         with:
@@ -55,23 +56,4 @@ jobs:
           push: true
           tags: |
             ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
-      - name: wait for new environment to come online before posting an Env URL
-        run: timeout 1800 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://pr-${{ github.event.number }}--epp.elifesciences.org/)" != "200" ]]; do sleep 5; done' || false
-      - name: "Update preview status with URL"
-        if: ${{ success() }}
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: success
-          context: EPP Preview
-          description: The EPP client preview environment URL
-          targetUrl: https://pr-${{ github.event.number }}--epp.elifesciences.org/
-      - name: "Update storybook preview status with URL"
-        if: ${{ success() }}
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: success
-          context: Storybook Preview
-          description: The EPP storybook preview environment URL
-          targetUrl: https://pr-${{ github.event.number }}--epp-storybook.elifesciences.org/
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
