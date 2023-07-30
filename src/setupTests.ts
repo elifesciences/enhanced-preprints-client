@@ -3,6 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'; // eslint-disable-line import/no-extraneous-dependencies
+import '@testing-library/jest-dom/extend-expect'; // eslint-disable-line import/no-extraneous-dependencies
+import { TextEncoder } from 'util';
 
-// Fix up next/image usage in tests
-import '../test-utils/fix-next-image';
+global.TextEncoder = TextEncoder;

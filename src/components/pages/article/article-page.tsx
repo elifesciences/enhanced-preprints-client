@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import Link from 'next/link';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -14,6 +13,7 @@ export type ArticleStatusProps = {
   timeline: TimelineEvent[],
   articleType: string,
   status: string,
+  isPreview: boolean,
 };
 
 export type Tab = {
@@ -23,29 +23,14 @@ export type Tab = {
 
 export type ArticlePageProps = {
   metaData: MetaData,
-  msidWithVersion?: string,
+  msidWithVersion: string,
   status: ArticleStatusProps,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
-  tabs?: Tab[],
+  tabs: Tab[],
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
-  const id = props.msidWithVersion ?? props.metaData.msid;
-  const tabs = props.tabs ?? [
-    {
-      id: 'fulltext',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}#tab-content`}>Full text</Link>,
-    },
-    {
-      id: 'figures',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/figures#tab-content`}>Figures and data</Link>,
-    },
-    {
-      id: 'reviews',
-      linkElement: <Link scroll={true} prefetch={true} shallow={true} href={`/reviewed-preprints/${id}/reviews#tab-content`}>Peer review</Link>,
-    },
-  ];
   const doi = getRppVersionDoi(props.metaData);
 
   const citation: CitationData = {
@@ -75,7 +60,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
       <main className="primary-section">
       <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
         <ul className="tabbed-navigation__tabs">
-          {tabs.map((tab, index) => (
+          {props.tabs.map((tab, index) => (
             <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
               {tab.linkElement}
             </li>

@@ -75,6 +75,11 @@
 
 .review-timeline__link {
   &::before {
+    color: var(--color-text-secondary);
     content: "\00a0\00a0•\00a0\00a0";
+  }
+
+  &:hover {
+    color: var(--color-primary);
   }
 }

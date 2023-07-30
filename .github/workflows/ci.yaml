@@ -40,11 +40,15 @@ jobs:
         run: |
           yarn playwright install
           yarn playwright install-deps
+      - name: Bring up browser test stack
+        run: docker compose -f docker-compose.browsertest.yaml up -d --wait
+      - name: Debug bring up browser test stack
+        if: failure()
+        run: docker compose logs app
       - name: Browser Tests
-        run: |
-          docker compose -f docker-compose.browsertest.yaml up -d --wait
-          yarn test:browser
-          docker compose -f docker-compose.browsertest.yaml down
+        run: yarn test:browser
+      - name: Take down browser test stack
+        run: docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
     needs: [test]
     runs-on: ubuntu-latest

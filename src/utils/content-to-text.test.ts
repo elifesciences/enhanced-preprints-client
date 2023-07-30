@@ -9,7 +9,12 @@ describe('Content to Text', () => {
   });
 
   it('returns an concatenated string if passed an array', () => {
-    const result = contentToText(['one', 'two', { type: 'Strong', content: 'three' }]);
+    const result = contentToText(['one', 'two', { type: 'Strong', content: { type: 'NontextualAnnotation', content: 'three' } }]);
+    expect(result).toStrictEqual('onetwothree');
+  });
+
+  it('can support empty strings', () => {
+    const result = contentToText(['', 'one', 'two', '', { type: 'Strong', content: 'three' }, '']);
     expect(result).toStrictEqual('onetwothree');
   });
 

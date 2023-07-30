@@ -1,11 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
 import { Authors } from './authors';
-import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 
-const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
-jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
 describe('authors', () => {
   it('should render correctly a list of authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);

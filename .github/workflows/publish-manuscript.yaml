@@ -43,10 +43,10 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Publish Manuscript
+      - name: Prepare manuscripts.json with manuscript version
         run: |
           cat manuscripts.json | \
-            yarn --silent publish-manuscript \
+            yarn publish-manuscript \
             --doi "${{ github.event.inputs.doi }}" \
             --msid "${{ github.event.inputs.msid }}" \
             --dateReviewedPreprint "${{ github.event.inputs.dateReviewedPreprint }}" \
@@ -55,10 +55,21 @@ jobs:
             --urlPostedOnPreprintServer "${{ github.event.inputs.urlPostedOnPreprintServer }}" \
             --preprintServer "${{ github.event.inputs.preprintServer }}" \
             --msa "${{ github.event.inputs.msa }}" | \
-            tee manuscripts.json > /dev/null
+            tee manuscripts-new.json > /dev/null
+          # check the exit status of all commands in the pipeline
+          status=("${PIPESTATUS[@]}")
+          for i in "${!status[@]}"; do
+            if [ "${status[$i]}" -ne 0 ]; then
+              echo "Pipeline step $i failed with status ${status[$i]}"
+              exit 1
+            fi
+          done
+      - name: Replace manuscripts.json
+        run: |
+          mv manuscripts-new.json manuscripts.json
       - name: Create Pull Request (master)
         if: github.ref == 'refs/heads/master'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           draft: true
           branch: "${{ env.BRANCH_NAME }}"

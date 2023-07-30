@@ -284,7 +284,12 @@ export const content: Content = [
               {
                 "type": "Strong",
                 "content": [
-                  "No Adaptation ="
+                  {
+                    "type": "NontextualAnnotation",
+                    "content": [
+                      "No Adaptation ="
+                    ]
+                  }
                 ]
               },
               {

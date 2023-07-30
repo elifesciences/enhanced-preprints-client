@@ -12,9 +12,10 @@ const content: FigureContent = {
 
 describe('Figure', () => {
   it('renders correctly', () => {
-    render(<Figure content={content}/>);
+    const { container } = render(<Figure content={content}/>);
 
     expect(screen.getByText('some content')).toBeInTheDocument();
+    expect(container.querySelector('#id')).toBeInTheDocument();
   });
 
   it('renders the content', () => {
@@ -46,14 +47,63 @@ describe('Figure', () => {
   it('renders a complex caption', () => {
     const complexContent: FigureContent = {
       ...content,
-      caption: {
-        type: 'Emphasis',
-        content: 'Italic Text',
-      },
+      caption: [
+        {
+          type: 'Heading',
+          content: 'Heading 1',
+          depth: 1,
+          id: 'h1',
+        },
+        {
+          type: 'Emphasis',
+          content: 'Italic Text',
+        },
+        {
+          type: 'Heading',
+          content: 'Heading 4',
+          depth: 4,
+          id: 'h4',
+        },
+      ],
     };
 
     render(<Figure content={complexContent}/>);
 
+    expect(screen.getByText('Heading 1').tagName).toBe('H3');
     expect(screen.getByText('Italic Text').tagName).toBe('EM');
+    expect(screen.getByText('Heading 4').tagName).toBe('H4');
+  });
+
+  it('should not render caption if not defined', () => {
+    const noCaption: FigureContent = {
+      ...content,
+      caption: undefined,
+    };
+
+    const { container } = render(<Figure content={noCaption}/>);
+
+    expect(container.querySelector('figcaption')).not.toBeInTheDocument();
+  });
+
+  it('should not render label if not defined', () => {
+    const noLabel: FigureContent = {
+      ...content,
+      label: undefined,
+    };
+
+    const { container } = render(<Figure content={noLabel}/>);
+
+    expect(container.querySelector('label')).not.toBeInTheDocument();
+  });
+
+  it('should not set id if not defined', () => {
+    const noId: FigureContent = {
+      ...content,
+      id: undefined,
+    };
+
+    const { container } = render(<Figure content={noId}/>);
+
+    expect(container.querySelector('#id')).not.toBeInTheDocument();
   });
 });

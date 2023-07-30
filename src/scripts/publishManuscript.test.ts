@@ -13,17 +13,27 @@ describe('addManuscript', () => {
     });
 
     it('preprints empty - with msa', () => {
-      const { preprints } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['msa one', 'msa two']);
+      const { preprints } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['Biochemistry and Chemical Biology', 'Cancer Biology']);
 
       expect(preprints).toStrictEqual({
         '10.1101/with-msa': {
           preprintDoi: '10.1101/with-msa',
           msas: [
-            'msa one',
-            'msa two',
+            'Biochemistry and Chemical Biology',
+            'Cancer Biology',
           ],
         },
       });
+    });
+
+    it('preprints empty - with invalid msa', () => {
+      expect(() => {
+        addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['foo']);
+      }).toThrow(new Error('msa not recognised: foo'));
+
+      expect(() => {
+        addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['Biochemistry and Chemical Biology', 'foo', 'Cancer Biology', 'bar']);
+      }).toThrow(new Error('msa not recognised: foo, bar'));
     });
 
     it('preprints existing - no match', () => {
@@ -69,8 +79,8 @@ describe('addManuscript', () => {
           '10.1101/existing': {
             preprintDoi: '10.1101/existing',
             msas: [
-              'msa one',
-              'msa two',
+              'Biochemistry and Chemical Biology',
+              'Cancer Biology',
             ],
           },
         },
@@ -81,8 +91,8 @@ describe('addManuscript', () => {
         '10.1101/existing': {
           preprintDoi: '10.1101/existing',
           msas: [
-            'msa one',
-            'msa two',
+            'Biochemistry and Chemical Biology',
+            'Cancer Biology',
           ],
         },
       });
@@ -94,8 +104,8 @@ describe('addManuscript', () => {
           '10.1101/existing': {
             preprintDoi: '10.1101/existing',
             msas: [
-              'msa one',
-              'msa two',
+              'Biochemistry and Chemical Biology',
+              'Cancer Biology',
             ],
           },
         },
@@ -106,8 +116,8 @@ describe('addManuscript', () => {
         '10.1101/existing': {
           preprintDoi: '10.1101/existing',
           msas: [
-            'msa one',
-            'msa two',
+            'Biochemistry and Chemical Biology',
+            'Cancer Biology',
           ],
         },
       });
@@ -119,20 +129,20 @@ describe('addManuscript', () => {
           '10.1101/existing': {
             preprintDoi: '10.1101/existing',
             msas: [
-              'msa one',
-              'msa two',
+              'Biochemistry and Chemical Biology',
+              'Cancer Biology',
             ],
           },
         },
         manuscripts: {},
-      }, '10.1101/existing', '11111', ['msa three', 'msa four']);
+      }, '10.1101/existing', '11111', ['Cell Biology', 'Chromosomes and Gene Expression']);
 
       expect(preprints).toStrictEqual({
         '10.1101/existing': {
           preprintDoi: '10.1101/existing',
           msas: [
-            'msa three',
-            'msa four',
+            'Cell Biology',
+            'Chromosomes and Gene Expression',
           ],
         },
       });
@@ -672,7 +682,7 @@ describe('addManuscript', () => {
           '10.1101/existing': {
             preprintDoi: '10.1101/existing',
             msas: [
-              'msa one',
+              'Biochemistry and Chemical Biology',
             ],
           },
         },
@@ -696,19 +706,19 @@ describe('addManuscript', () => {
             version: 1,
           },
         },
-      }, '10.1101/different', '11111', ['msa two']);
+      }, '10.1101/different', '11111', ['Cancer Biology']);
 
       expect(preprints).toStrictEqual({
         '10.1101/existing': {
           preprintDoi: '10.1101/existing',
           msas: [
-            'msa one',
+            'Biochemistry and Chemical Biology',
           ],
         },
         '10.1101/different': {
           preprintDoi: '10.1101/different',
           msas: [
-            'msa two',
+            'Cancer Biology',
           ],
         },
       });

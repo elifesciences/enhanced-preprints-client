@@ -1,38 +1,45 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { config } from '../../config';
 import { Content } from '../../types/content';
 import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
-import { MetaData, PeerReview } from '../../types';
+import { MetaData } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 
 type PageProps = {
-  tab: 'fulltext' | 'figures',
   metaData: MetaData,
-  msidWithVersion?: string,
+  msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
-  peerReview: PeerReview,
 };
 
 export const Page = (props: PageProps): JSX.Element => {
+  const router = useRouter();
+  const determineTab = () => {
+    if (Array.isArray(router.query.path)) {
+      return ['fulltext', 'figures'].includes(router.query.path.slice(-1)[0]) ? router.query.path.slice(-1)[0] : 'fulltext';
+    }
+    return 'fulltext';
+  };
+  const tab = determineTab();
+
   let childTab;
-  if (props.tab === 'fulltext') {
-    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview}></ArticleFullTextTab>;
+  if (tab === 'fulltext') {
+    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData}></ArticleFullTextTab>;
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }
-  const id = props.msidWithVersion ?? props.metaData.msid;
   return (
-    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={props.tab} tabs={[
+    <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={tab} tabs={[
       {
         id: 'fulltext',
-        linkElement: <Link scroll={false} href={`/preview/${id}`}>Full text</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${props.msidWithVersion}`}>Full text</Link>,
       },
       {
         id: 'figures',
-        linkElement: <Link scroll={false} href={`/preview/${id}/figures`}>Figures and data</Link>,
+        linkElement: <Link scroll={false} href={`/preview/${props.msidWithVersion}/figures`}>Figures</Link>,
       },
     ]}>
       { childTab }
@@ -40,31 +47,31 @@ export const Page = (props: PageProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
-  const idParts = context.params?.path;
-  if (idParts === undefined) {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+  if (context.params === undefined || context.params.path === undefined) {
+    console.log('no path'); // eslint-disable-line no-console
+    return { notFound: true };
+  }
+
+  const idParts = [...context.params?.path as string[]];
+
+  if (idParts.length >= 2 && ['fulltext', 'figures'].includes(idParts[idParts.length - 1])) idParts.pop();
+  const id = idParts.join('/');
+
+  if (id === undefined) {
     console.log('no id in path'); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const tab = Array.isArray(idParts) && idParts.length > 2 && ['fulltext', 'figures'].includes(idParts[idParts.length - 1]) ? idParts.pop() : 'fulltext';
-  const id = Array.isArray(idParts) ? idParts.join('/') : undefined;
-
-  if (id === undefined) {
-    console.log('id not found in path'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
+  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
   const [metaData, content] = await Promise.all([
     fetchMetadata(id),
     fetchContent(id),
   ]);
 
-  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
-
   return {
     props: {
-      tab,
       metaData: {
         ...metaData,
         msid: `preview-${metaData.doi}`,
@@ -81,6 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
         timeline: [
           { name: 'Preview Preprint generated', date: new Date().toDateString() },
         ],
+        isPreview: true,
       },
     },
   };
