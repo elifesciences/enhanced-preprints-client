@@ -9,26 +9,24 @@ jobs:
     steps:
     - name: debug
       run: echo "client_payload = ${{toJSON(github.event.client_payload)}}"
-    - name: Get Pull request details
+    - name: Get deployments details
       id: pr_details
       env:
         GH_TOKEN: ${{ github.token }}
-        PR_ID: ${{ github.event.client_payload.involvedObject.name }}
+        PR_ID: ${{ github.event.client_payload.github_pr }}
+        PR_SHA: ${{ github.event.client_payload.github_sha }}
+        PR_HEAD_REF: ${{ github.event.client_payload.github_head_ref }}
       run: |
-        pr_id=${PR_ID:13}
-        echo "pr_id=$pr_id" >> $GITHUB_OUTPUT
-        gh pr view --repo elifesciences/enhanced-preprints-client $pr_id --json headRefName,headRefOid > pr_details
-        cat pr_details
-        pr_branch=$( cat pr_details | jq -r .headRefName )
-        pr_ref=$( cat pr_details | jq -r .headRefOid )
-        echo "pr_branch=$pr_branch" >> $GITHUB_OUTPUT
-        echo "pr_ref=$pr_ref" >> $GITHUB_OUTPUT
-        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-$pr_id&sha=$pr_ref" > client_deployment_details
+        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=preview-${PR_ID}&sha=${PR_SHA}&ref=${PR_HEAD_REF}" > client_deployment_details
+        echo "Client Deployment found"
         cat client_deployment_details
-        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-$pr_id&sha=$pr_ref" > storybook_deployment_details
+        echo ""
+        gh api "/repos/elifesciences/enhanced-preprints-client/deployments?environment=storybook-preview-${PR_ID}&sha=${PR_SHA}&ref=${PR_HEAD_REF}" > storybook_deployment_details
+        echo "Storybook Deployment found"
         cat storybook_deployment_details
-        echo "client_deployment_status_url=$(cat client_deployment_details | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
-        echo "storybook_deployment_status_url=$(cat storybook_deployment_details | jq -r '.[].statuses_url')" >> $GITHUB_OUTPUT
+
+        echo "client_deployment_status_url=$(cat client_deployment_details | jq -r '.[].statuses_url')" | tee -a $GITHUB_OUTPUT
+        echo "storybook_deployment_status_url=$(cat storybook_deployment_details | jq -r '.[].statuses_url')" | tee -a $GITHUB_OUTPUT
     - name: Update client deployment status
       if: steps.pr_details.outputs.client_deployment_status_url != '' && (contains(github.event.client_payload.message, '/epp-client created') || contains(github.event.client_payload.message, '/epp-client configured'))
       env:
