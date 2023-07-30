@@ -7,7 +7,7 @@ on:
 jobs:
   build-preview-image:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') || contains(github.event.pull_request.labels.*.name, 'preview-template') }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
     env:
       CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
       STORYBOOK_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-storybook
