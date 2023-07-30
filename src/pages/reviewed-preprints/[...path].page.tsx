@@ -34,28 +34,29 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
 };
 
 export const Page = (props: PageProps): JSX.Element => {
+  const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
       id: 'fulltext',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}#tab-content`}>Full text</a>,
+      linkElement: <a href={`${routePrefix}${props.msidWithVersion}#tab-content`}>Full text</a>,
     },
     {
       id: 'figures',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
+      linkElement: <a href={`${routePrefix}${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
     },
   ];
 
   if (props.peerReview) {
     tabLinks.push({
       id: 'reviews',
-      linkElement: <a href={`/reviewed-preprints/${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
+      linkElement: <a href={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
     });
   }
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
-      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -68,8 +69,8 @@ export const Page = (props: PageProps): JSX.Element => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined}></ArticleFullTextTab>
-        {props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>}
+        {subPages.fulltext.content()}
+        {subPages.reviews.content()}
       </>),
     },
   };
@@ -133,6 +134,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
 
+    if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
+      console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
+      return { notFound: true };
+    }
+
     return {
       props: {
         metaData: {
@@ -149,6 +155,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           articleType: status.type,
           status: status.type === 'Reviewed Preprint' ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
           timeline,
+          isPreview: status.isPreview,
         },
         peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       },
@@ -181,7 +188,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       },
       msidWithVersion: id,
       content,
-      status,
+      status: {
+        ...status,
+        isPreview: false,
+      },
       peerReview,
     },
   };

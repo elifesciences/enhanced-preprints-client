@@ -10,6 +10,10 @@ type StrongContent = DecoratedContent & {
   type: 'Strong',
 };
 
+type NontextualAnnotationContent = DecoratedContent & {
+  type: 'NontextualAnnotation',
+};
+
 type DateContent = DecoratedContent & {
   type: 'Date',
 };
@@ -89,6 +93,7 @@ type ContentPart =
   SubscriptContent |
   ParagraphContent |
   StrongContent |
+  NontextualAnnotationContent |
   DateContent |
   LinkContent |
   CiteContent |

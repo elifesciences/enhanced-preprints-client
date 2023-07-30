@@ -32,7 +32,7 @@ describe('Content to JSX', () => {
       target: 'target',
     });
 
-    expect(result).toStrictEqual(<>(<a href={'#target'}>I am a citation</a>)</>);
+    expect(result).toStrictEqual(<><a href={'#target'}>I am a citation</a></>);
   });
 
   it('generates the expected html when passed a Link', () => {
@@ -70,6 +70,15 @@ describe('Content to JSX', () => {
     });
 
     expect(result).toStrictEqual(<strong>I am strong</strong>);
+  });
+
+  it('generates the expected html when passed a NontextualAnnotation', () => {
+    const result = contentToJsx({
+      type: 'NontextualAnnotation',
+      content: 'I am underlined',
+    });
+
+    expect(result).toStrictEqual(<u>I am underlined</u>);
   });
 
   it('generates the expected html when passed a Superscript', () => {

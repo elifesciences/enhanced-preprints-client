@@ -4,10 +4,7 @@ import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
 import { authors } from '../../../utils/mocks';
 
-const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
-jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
-
-const getName = ({ givenNames, familyNames }: Author) => `${givenNames.join()} ${familyNames.join()}`;
+const getName = ({ givenNames, familyNames }: Author) => `${givenNames && givenNames.join()} ${familyNames && familyNames.join()}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 
