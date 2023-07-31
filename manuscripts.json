@@ -2863,6 +2863,13 @@
         "Computational and Systems Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.06.23.546306": {
+      "preprintDoi": "10.1101/2023.06.23.546306",
+      "msas": [
+        "Genetics and Genomics",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -3212,6 +3219,7 @@
     "88488": "88488v1",
     "88491": "88491v1",
     "88508": "88508v1",
+    "88510": "88510v1",
     "88521": "88521v1",
     "88523": "88523v1",
     "88525": "88525v1",
@@ -19013,6 +19021,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.22.533802v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "88510v1": {
+      "msid": "88510",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.23.546306",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.23.546306v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-03"
           }
         ]
       }
