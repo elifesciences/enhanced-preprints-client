@@ -2849,6 +2849,13 @@
         "Cancer Biology",
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.05.10.23289777": {
+      "preprintDoi": "10.1101/2023.05.10.23289777",
+      "msas": [
+        "Computational and Systems Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -3143,6 +3150,7 @@
     "88138": "88138v1",
     "88143": "88143v1",
     "88144": "88144v1",
+    "88149": "88149v1",
     "88172": "88172v1",
     "88173": "88173v1",
     "88174": "88174v1",
@@ -18939,6 +18947,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-27"
+          }
+        ]
+      }
+    },
+    "88149v1": {
+      "msid": "88149",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.10.23289777",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-07-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-05-14",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.05.10.23289777v1/",
+              "text": "Go to medRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-23"
           }
         ]
       }
