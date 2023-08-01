@@ -14,7 +14,7 @@
   "scripts": {
     "build": "next build",
     "start": "next start",
-    "start:dev": "next dev",
+    "start:dev": "NODE_OPTIONS='--inspect' next dev",
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts,.json src/ browser-tests/ ./manuscripts.json",
     "lint:fix": "eslint --fix --ext .tsx,.ts src/ browser-tests/",

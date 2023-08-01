@@ -143,6 +143,7 @@ services:
         condition: service_completed_successfully
     ports:
       - 3001:3000
+      - 9229:9229
     volumes:
       - ./:/opt/epp-client/
       - node_modules:/opt/epp-client/node_modules
