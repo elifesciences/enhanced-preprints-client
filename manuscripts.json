@@ -2958,6 +2958,13 @@
       "msas": [
         "Ecology"
       ]
+    },
+    "10.1101/2023.06.06.543920": {
+      "preprintDoi": "10.1101/2023.06.06.543920",
+      "msas": [
+        "Cell Biology",
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -3307,6 +3314,7 @@
     "88456": "88456v1",
     "88459": "88459v1",
     "88463": "88463v1",
+    "88466": "88466v1",
     "88468": "88468v1",
     "88483": "88483v1",
     "88488": "88488v1",
@@ -19656,6 +19664,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-18"
+          }
+        ]
+      }
+    },
+    "88466v1": {
+      "msid": "88466",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.06.543920",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-03",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-07",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.06.543920v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-21"
           }
         ]
       }
