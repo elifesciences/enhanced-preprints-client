@@ -16,6 +16,8 @@ export type MetaData = {
   title: Content,
   version: string,
   publishedYear: number,
+  volume?: string,
+  eLocationId?: string,
 };
 
 export type VersionedMetaData = {
@@ -34,4 +36,6 @@ export type VersionedMetaData = {
   timeline: TimelineEvent[],
   status: string,
   articleType: string,
+  volume?: string,
+  eLocationId?: string,
 };

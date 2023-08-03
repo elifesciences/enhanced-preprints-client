@@ -185,6 +185,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         version: manuscriptConfig.version,
         msas: manuscriptConfig.msas,
         publishedYear: manuscriptConfig.publishedYear,
+        volume: `${manuscriptConfig.publishedYear - 2011}`,
+        eLocationId: `RP${manuscriptConfig.msid}`,
       },
       msidWithVersion: id,
       content,

@@ -4,7 +4,7 @@ import './citation.scss';
 export type CitationData = {
   authors: Author[],
   year: number,
-  volume: number,
+  volume: string,
   journal: string,
   id: string,
   title: string,
