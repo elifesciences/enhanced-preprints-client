@@ -36,9 +36,9 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const citation: CitationData = {
     authors: props.metaData.authors,
     year: props.metaData.publishedYear,
-    volume: props.metaData.volume ?? '',
+    volume: props.metaData.volume,
     journal: 'eLife',
-    eLocationId: props.metaData.eLocationId ?? '',
+    eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
     doi,
   };
