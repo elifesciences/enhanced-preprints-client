@@ -108,6 +108,8 @@ export type EnhancedArticle = {
   sentForReview?: Date,
   peerReview?: PeerReview,
   published?: Date,
+  volume?: string,
+  eLocationId?: string,
 };
 
 export type EnhancedArticleWithVersions = {
