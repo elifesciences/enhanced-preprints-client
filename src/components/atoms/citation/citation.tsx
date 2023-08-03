@@ -27,7 +27,7 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
     <span className="citation__title">{citation.title}</span>
     <span className="citation__origin">
       <i>{citation.journal}</i>
-      {citation.volume && <b>{citation.volume}</b>}{(citation.volume && citation.eLocationId) && ':'}
+      {citation.volume && <strong>{citation.volume}</strong>}{(citation.volume && citation.eLocationId) && ':'}
       {citation.eLocationId && citation.eLocationId}
     </span>
     <span className="citation__doi">
