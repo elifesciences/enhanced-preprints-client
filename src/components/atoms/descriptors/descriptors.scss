@@ -10,10 +10,10 @@
 
 .descriptors__identifiers {
   @include typography.identifiers-list-text();
+  @include mixins.margin(0);
+  @include mixins.padding(0);
 
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .descriptors__identifier {
@@ -31,8 +31,8 @@
 }
 
 .descriptors__icons {
-  margin: 0;
-  padding: 0;
+  @include mixins.margin(0);
+  @include mixins.padding(0);
 
   li {
     @include typography.identifiers-list-text();
