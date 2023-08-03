@@ -21,7 +21,7 @@ const defaultArticleType = 'Reviewed Preprint';
 const formatStringCitation = (citation: CitationData): string => {
   const authors = citation.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`, '');
 
-  return `${authors} (${citation.year}) ${citation.title} ${citation.journal} ${citation.volume}:${citation.id}\n\nhttps://doi.org/${citation.doi}`;
+  return `${authors} (${citation.year}) ${citation.title} ${citation.journal} ${citation.volume}:${citation.eLocationId}\n\nhttps://doi.org/${citation.doi}`;
 };
 
 export const ArticleStatus = ({

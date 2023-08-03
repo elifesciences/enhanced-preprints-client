@@ -39,7 +39,7 @@ describe('Citation', () => {
   it('renders the id', () => {
     render(<Citation citation={citation} />);
 
-    expect(screen.getByText(citation.id)).toBeInTheDocument();
+    expect(screen.getByText(citation.eLocationId)).toBeInTheDocument();
   });
 
   it('renders the doi url', () => {

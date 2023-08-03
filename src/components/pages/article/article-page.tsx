@@ -38,7 +38,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
     year: props.metaData.publishedYear,
     volume: props.metaData.volume ?? '',
     journal: 'eLife',
-    id: props.metaData.eLocationId ?? '',
+    eLocationId: props.metaData.eLocationId ?? '',
     title: contentToText(props.metaData.title),
     doi,
   };

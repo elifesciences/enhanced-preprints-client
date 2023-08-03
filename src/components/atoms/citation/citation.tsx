@@ -6,7 +6,7 @@ export type CitationData = {
   year: number,
   volume: string,
   journal: string,
-  id: string,
+  eLocationId: string,
   title: string,
   doi: string,
 };
@@ -28,7 +28,7 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
     <span className="citation__origin">
       <i>{citation.journal}</i>
       <b>{citation.volume}:</b>
-      {citation.id}
+      {citation.eLocationId}
     </span>
     <span className="citation__doi">
       https://doi.org/{citation.doi}
