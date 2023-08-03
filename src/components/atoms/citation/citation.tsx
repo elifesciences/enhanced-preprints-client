@@ -4,9 +4,9 @@ import './citation.scss';
 export type CitationData = {
   authors: Author[],
   year: number,
-  volume: number,
+  volume?: string,
   journal: string,
-  id: string,
+  eLocationId?: string,
   title: string,
   doi: string,
 };
@@ -27,8 +27,8 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
     <span className="citation__title">{citation.title}</span>
     <span className="citation__origin">
       <i>{citation.journal}</i>
-      <b>{citation.volume}:</b>
-      {citation.id}
+      {citation.volume && <strong>{citation.volume}</strong>}{(citation.volume && citation.eLocationId) && ':'}
+      {citation.eLocationId && citation.eLocationId}
     </span>
     <span className="citation__doi">
       https://doi.org/{citation.doi}

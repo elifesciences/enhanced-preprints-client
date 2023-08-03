@@ -18,10 +18,12 @@ type ArticleStatusProps = {
 
 const defaultArticleType = 'Reviewed Preprint';
 
-const formatStringCitation = (citation: CitationData): string => {
-  const authors = citation.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`, '');
-
-  return `${authors} (${citation.year}) ${citation.title} ${citation.journal} ${citation.volume}:${citation.id}\n\nhttps://doi.org/${citation.doi}`;
+const formatStringCitation = ({
+  authors, doi, eLocationId, journal, title, volume, year,
+}: CitationData): string => {
+  const authorsList = authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`, '');
+  const volumeAndELocationId = `${volume ?? ''}${(volume && eLocationId) ? ':' : ''}${eLocationId ?? ''}`;
+  return `${authorsList} (${year}) ${title} ${journal} ${volumeAndELocationId}\n\nhttps://doi.org/${doi}`;
 };
 
 export const ArticleStatus = ({

@@ -33,13 +33,23 @@ describe('Citation', () => {
   it('renders the volume', () => {
     render(<Citation citation={citation} />);
 
-    expect(screen.getByText(`${citation.volume}:`)).toBeInTheDocument();
+    expect(screen.getByText(citation.volume)).toBeInTheDocument();
   });
 
-  it('renders the id', () => {
+  it('renders the eLocationId', () => {
     render(<Citation citation={citation} />);
 
-    expect(screen.getByText(citation.id)).toBeInTheDocument();
+    expect(screen.getByText(citation.eLocationId, { exact: false })).toBeInTheDocument();
+  });
+
+  it('does not render the ":" when eLocationId xor volume', () => {
+    render(<Citation citation={{ ...citation, volume: undefined }} />);
+
+    expect(screen.queryByAltText(':78910')).not.toBeInTheDocument();
+
+    render(<Citation citation={{ ...citation, eLocationId: undefined }} />);
+
+    expect(screen.queryByAltText('42:')).not.toBeInTheDocument();
   });
 
   it('renders the doi url', () => {
