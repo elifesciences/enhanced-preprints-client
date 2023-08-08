@@ -93,7 +93,7 @@ export const Page = (props: PageProps): JSX.Element => {
       <meta name="citation_title" content={contentToText(props.metaData.title)}/>
       <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
       <meta name="citation_journal_title" content="eLife"/>
-      <meta name="citation_volume" content={(props.metaData.publishedYear - 2011).toString()}/>
+      <meta name="citation_volume" content={(Number(props.metaData.publishedYear) - 2011).toString()}/>
       <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
       <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
       <meta name="citation_doi" content={getRppDoi(props.metaData)}/>
@@ -147,7 +147,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           authors: articleWithVersions.article.article.authors || [],
           msas: [''],
           version: articleWithVersions.article.versionIdentifier,
-          publishedYear: 13, // TODO
+          publishedYear: '2013', // TODO
         },
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
@@ -184,8 +184,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msid: manuscriptConfig.msid,
         version: manuscriptConfig.version,
         msas: manuscriptConfig.msas,
-        publishedYear: manuscriptConfig.publishedYear,
-        volume: `${manuscriptConfig.publishedYear - 2011}`,
+        ...manuscriptConfig.publishedYear ? {
+          publishedYear: manuscriptConfig.publishedYear,
+          volume: `${Number(manuscriptConfig.publishedYear) - 2011}`,
+        } : {},
         eLocationId: `RP${manuscriptConfig.msid}`,
       },
       msidWithVersion: id,

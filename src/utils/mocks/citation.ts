@@ -2,7 +2,7 @@ import { authors } from './authors';
 
 export const citation = {
   authors,
-  year: 2023,
+  year: '2023',
   volume: '42',
   journal: 'ACME Labs',
   eLocationId: '78910',

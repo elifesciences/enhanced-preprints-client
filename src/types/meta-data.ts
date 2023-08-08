@@ -15,7 +15,7 @@ export type MetaData = {
   references: Reference[],
   title: Content,
   version: string,
-  publishedYear: number,
+  publishedYear?: string,
   volume?: string,
   eLocationId?: string,
 };
@@ -31,7 +31,7 @@ export type VersionedMetaData = {
   references: Reference[],
   title: Content;
   version: string,
-  publishedYear: number,
+  publishedYear?: string,
   peerReview: PeerReview,
   timeline: TimelineEvent[],
   status: string,

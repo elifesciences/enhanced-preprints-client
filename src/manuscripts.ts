@@ -11,7 +11,7 @@ type ManuscriptConfig = {
   msid: string,
   version: string,
   preprintDoi: string,
-  publishedYear: number,
+  publishedYear?: string,
   pdfUrl?: string,
 };
 

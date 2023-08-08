@@ -42,6 +42,17 @@ describe('Citation', () => {
     expect(screen.getByText(citation.eLocationId, { exact: false })).toBeInTheDocument();
   });
 
+  it('renders the year', () => {
+    const { container } = render(<Citation citation={{ ...citation, year: '1979' }} />);
+
+    expect(screen.getByText('1979', { exact: false })).toBeInTheDocument();
+    expect(container.querySelector('.citation__authors_list_suffix')).toBeInTheDocument();
+
+    const { container: container2 } = render(<Citation citation={{ ...citation, year: undefined }} />);
+
+    expect(container2.querySelector('.citation__authors_list_suffix')).not.toBeInTheDocument();
+  });
+
   it('does not render the ":" when eLocationId xor volume', () => {
     render(<Citation citation={{ ...citation, volume: undefined }} />);
 
@@ -50,6 +61,10 @@ describe('Citation', () => {
     render(<Citation citation={{ ...citation, eLocationId: undefined }} />);
 
     expect(screen.queryByAltText('42:')).not.toBeInTheDocument();
+
+    render(<Citation citation={citation} />);
+
+    expect(screen.queryByAltText('42:78910')).not.toBeInTheDocument();
   });
 
   it('renders the doi url', () => {
