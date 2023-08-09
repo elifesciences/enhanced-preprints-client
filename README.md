@@ -23,6 +23,12 @@ The app is still available at [`localhost:8080`](http://localhost:8080).
 
 NOTE: this does not affect storybook, which runs the same in either prod or dev
 
+## Recreating an issue experienced on production
+
+When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem. 
+
+`API_SERVER=https://prod--epp.elifesciences.org MANUSCRIPT_CONFIG_FILE=/opt/epp-client/manuscripts.json docker compose up`
+
 # Building
 
 The build system depends on docker, buildx and make. You can build the production ready docker image using the `build-prod-and-push` make target, making sure to pass a IMAGE_REPO_PREFIX var pointing to your own container repository (which will be suffixed with `client`):
