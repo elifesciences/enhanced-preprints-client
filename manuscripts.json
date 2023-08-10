@@ -3080,6 +3080,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.06.09.544290": {
+      "preprintDoi": "10.1101/2023.06.09.544290",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -3519,6 +3525,7 @@
     "89050": "89050v1",
     "89054": "89054v1",
     "89066": "89066v1",
+    "89076": "89076v1",
     "89083": "89083v1",
     "89093": "89093v1",
     "89096": "89096v1",
@@ -20649,6 +20656,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-11"
+          }
+        ]
+      }
+    },
+    "89076v1": {
+      "msid": "89076",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.09.544290",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-10",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-09",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.09.544290v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-30"
           }
         ]
       }
