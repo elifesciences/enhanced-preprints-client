@@ -16,9 +16,14 @@ export const fetchMetadata = (id: string) => jsonFetch<MetaData>(`${config.apiSe
 export const fetchContent = (id: string) => jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${id}/content`);
 export const fetchReviews = (id: string) => {
   if (reviewsJson[id]) {
-    return reviewsJson[id];
+    return Promise.resolve(reviewsJson[id]) as Promise<PeerReview>;
   }
-  return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`);
+  return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`)
+    .catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error(error);
+      return null;
+    });
 };
 
 export const fetchVersion = (id: string) => jsonFetch<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}`);
