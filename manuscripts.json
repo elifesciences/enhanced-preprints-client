@@ -3098,6 +3098,12 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.06.25.546468": {
+      "preprintDoi": "10.1101/2023.06.25.546468",
+      "msas": [
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -3572,6 +3578,7 @@
     "89478": "89478v1",
     "89489": "89489v1",
     "89520": "89520v1",
+    "89596": "89596v1",
     "89601": "89601v1",
     "89635": "89635v1",
     "89656": "89656v1",
@@ -20802,6 +20809,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.01.06.475273v2",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "89596v1": {
+      "msid": "89596",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.25.546468",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-10",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-26",
+            "link": {
+              "url": "2023-06-26",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-03"
           }
         ]
       }
