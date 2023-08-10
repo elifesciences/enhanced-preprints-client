@@ -10,7 +10,7 @@ export const Socials = ({
 }: SocialsProps): JSX.Element => {
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const twitterEncodedTitle = "In%20%40eLife%3A%20" +  encodedTitle;
+  const twitterEncodedTitle = `${encodeURIComponent('In @eLife: ')}${encodedTitle}`;
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}&url=${encodedUrl}`;
