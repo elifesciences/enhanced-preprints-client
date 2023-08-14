@@ -3193,6 +3193,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.04.08.536116": {
+      "preprintDoi": "10.1101/2023.04.08.536116",
+      "msas": [
+        "Evolutionary Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -3549,6 +3555,7 @@
     "88463": "88463v1",
     "88466": "88466v1",
     "88468": "88468v1",
+    "88480": "88480v1",
     "88483": "88483v1",
     "88488": "88488v1",
     "88491": "88491v1",
@@ -21450,6 +21457,35 @@
             "date": "2022-12-23",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.12.22.521565v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "88480v1": {
+      "msid": "88480",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.08.536116",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.08.536116v1/",
               "text": "Go to bioRxiv"
             }
           }
