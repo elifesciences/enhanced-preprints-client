@@ -9,6 +9,3 @@ export default {
 const Template: ComponentStory<typeof ErrorMessages> = () => <ErrorMessages/>;
 
 export const DefaultError = Template.bind({});
-DefaultError.args = {
-  Error: 'Sorry no reviews',
-};

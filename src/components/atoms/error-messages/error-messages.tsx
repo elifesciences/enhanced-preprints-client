@@ -6,8 +6,8 @@ export const ErrorMessages = (): JSX.Element => (
  <div className="error_container">
   <div className="error">
     <Image src={MissingImage} width="64" height="157" alt="We're on it" className="error__icon" />
-    <h2 className="error-title">We're on it</h2>
-    <p className="error-message">The info you're looking for isn't available right now, and that's on us. Please try again later and thank you for your patience while we fix this.</p>
+    <h2 className="error-title">We&apos;re on it</h2>
+    <p className="error-message">The info you&apos;re looking for isn&apos;t available right now, and that&apos;s on us. Please try again later and thank you for your patience while we fix this.</p>
   </div>
 </div>
 );
