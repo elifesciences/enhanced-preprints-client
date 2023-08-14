@@ -135,9 +135,9 @@ services:
       retries: 10
       start_period: 2s
     environment:
-      API_SERVER: http://api:3000
+      API_SERVER: ${API_SERVER:-http://api:3000}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
-      MANUSCRIPT_CONFIG_FILE: /opt/epp-client/data/manuscripts.json
+      MANUSCRIPT_CONFIG_FILE: ${MANUSCRIPT_CONFIG_FILE:-/opt/epp-client/data/manuscripts.json}
     depends_on:
       yarn:
         condition: service_completed_successfully
