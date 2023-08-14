@@ -3,12 +3,12 @@
   max-width: 450px;
   text-align: center;
 
-  h2 {
+  .error-title {
     font-size: 26px;
     font-family: var(--font-family-primary);
   }
 
-  p {
+  .error-message {
     font-family: var(--font-family-secondary);
   }
 }
