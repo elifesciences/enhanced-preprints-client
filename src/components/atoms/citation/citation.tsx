@@ -3,7 +3,7 @@ import './citation.scss';
 
 export type CitationData = {
   authors: Author[],
-  year: number,
+  year?: number,
   volume?: string,
   journal: string,
   eLocationId?: string,
@@ -23,7 +23,7 @@ export const Citation = ({ citation }: { citation: CitationData }): JSX.Element 
       ))}
     </ol>
 
-    <span className="citation__authors_list_suffix">{citation.year}</span>
+    {citation.year && <span className="citation__authors_list_suffix">{citation.year}</span>}
     <span className="citation__title">{citation.title}</span>
     <span className="citation__origin">
       <i>{citation.journal}</i>
