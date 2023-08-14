@@ -91,7 +91,7 @@ export const Page = (props: PageProps): JSX.Element => {
       <meta name="citation_title" content={contentToText(props.metaData.title)}/>
       <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
       <meta name="citation_journal_title" content="eLife"/>
-      <meta name="citation_volume" content={(props.metaData.publishedYear - 2011).toString()}/>
+      <meta name="citation_volume" content={props.metaData.volume}/>
       <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
       <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
       <meta name="citation_doi" content={getRppDoi(props.metaData)}/>
@@ -145,7 +145,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           authors: articleWithVersions.article.article.authors || [],
           msas: [''],
           version: articleWithVersions.article.versionIdentifier,
-          publishedYear: 13, // TODO
         },
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
