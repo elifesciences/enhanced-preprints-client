@@ -15,7 +15,7 @@ export type MetaData = {
   references: Reference[],
   title: Content,
   version: string,
-  publishedYear: number,
+  publishedYear?: number,
   volume?: string,
   eLocationId?: string,
 };
