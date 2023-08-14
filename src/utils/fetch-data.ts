@@ -19,7 +19,6 @@ export const fetchReviews = (id: string) => {
     return Promise.resolve(reviewsJson[id]) as Promise<PeerReview>;
   }
   return jsonFetch<PeerReview>(`${config.apiServer}/api/reviewed-preprints/${id}/reviews`)
-    .then(() => null)
     .catch((error) => {
       // eslint-disable-next-line no-console
       console.error(error);
