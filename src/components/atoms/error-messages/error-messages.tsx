@@ -9,3 +9,4 @@ export const ErrorMessages = (): JSX.Element => (
   <p className="error__message">The info you&apos;re looking for isn&apos;t available right now, and that&apos;s on us. Please try again later and thank you for your patience while we fix this.</p>
 </div>
 );
+

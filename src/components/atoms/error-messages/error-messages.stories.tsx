@@ -9,3 +9,4 @@ export default {
 const Template: ComponentStory<typeof ErrorMessages> = () => <ErrorMessages/>;
 
 export const DefaultError = Template.bind({});
+
