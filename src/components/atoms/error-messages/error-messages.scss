@@ -1,0 +1,14 @@
+.error_container {
+  margin: 0 auto;
+  max-width: 450px;
+  text-align: center;
+
+  h2 {
+    font-size: 26px;
+    font-family: var(--font-family-primary);
+  }
+
+  p {
+    font-family: var(--font-family-secondary);
+  }
+}
