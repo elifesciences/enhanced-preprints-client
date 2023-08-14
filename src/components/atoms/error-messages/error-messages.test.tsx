@@ -8,4 +8,3 @@ describe('ErrorMessages', () => {
     expect(screen.getByText("We're on it")).toBeInTheDocument();
   });
 });
-
