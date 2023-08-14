@@ -3177,6 +3177,9 @@
       "msas": [
         "Genetics and Genomics"
       ]
+    },
+    "2023.04.07.536092": {
+      "preprintDoi": "2023.04.07.536092"
     }
   },
   "manuscripts": {
@@ -3504,7 +3507,7 @@
     "88275": "88275v1",
     "88279": "88279v1",
     "88283": "88283v1",
-    "88289": "88289v1",
+    "88289": "88289v2",
     "88294": "88294v1",
     "88299": "88299v1",
     "88313": "88313v1",
@@ -9813,7 +9816,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-14",
+            "link": {
+              "url": "/reviewed-preprints/88289v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-02",
             "eventDescription": "(this version)"
           },
@@ -21331,6 +21342,43 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.05.527133v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "88289v2": {
+      "msid": "88289",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "2023.04.07.536092",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-02",
+            "link": {
+              "url": "/reviewed-preprints/88289v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.07.536092v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-07"
           }
         ]
       }
