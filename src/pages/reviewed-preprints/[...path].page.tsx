@@ -14,6 +14,7 @@ import { contentToText } from '../../utils/content-to-text';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
+import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 
 type PageProps = {
   metaData: MetaData
@@ -44,14 +45,11 @@ export const Page = (props: PageProps): JSX.Element => {
       id: 'figures',
       linkElement: <a href={`${routePrefix}${props.msidWithVersion}/figures#tab-content`}>Figures</a>,
     },
-  ];
-
-  if (props.peerReview) {
-    tabLinks.push({
+    {
       id: 'reviews',
       linkElement: <a href={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
-    });
-  }
+    },
+  ];
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
@@ -64,7 +62,7 @@ export const Page = (props: PageProps): JSX.Element => {
     },
     reviews: {
       tabLinks,
-      content: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <></>),
+      content: () => (props.peerReview ? <ArticleReviewsTab peerReview={props.peerReview}></ArticleReviewsTab> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
