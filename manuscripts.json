@@ -3238,6 +3238,13 @@
         "Developmental Biology",
         "Stem Cells and Regenerative Medicine"
       ]
+    },
+    "10.1101/2023.05.06.539681": {
+      "preprintDoi": "10.1101/2023.05.06.539681",
+      "msas": [
+        "Immunology and Inflammation",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -3702,6 +3709,7 @@
     "89167": "89167v1",
     "89173": "89173v1",
     "89176": "89176v1",
+    "89210": "89210v1",
     "89225": "89225v1",
     "89231": "89231v1",
     "89232": "89232v1",
@@ -21707,6 +21715,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-19"
+          }
+        ]
+      }
+    },
+    "89210v1": {
+      "msid": "89210",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.06.539681",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-19"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-06",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.06.539681v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
