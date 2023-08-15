@@ -3178,9 +3178,6 @@
         "Genetics and Genomics"
       ]
     },
-    "2023.04.07.536092": {
-      "preprintDoi": "2023.04.07.536092"
-    },
     "10.1101/2023.06.07.543414": {
       "preprintDoi": "10.1101/2023.06.07.543414",
       "msas": [
@@ -21441,7 +21438,7 @@
       "msid": "88289",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "2023.04.07.536092",
+      "preprintDoi": "10.1101/2023.04.07.536092",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
