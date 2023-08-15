@@ -21,7 +21,8 @@ module.exports = {
     "no-only-tests/no-only-tests": ["error", {
       "focus": ["only"]
     }],
-    "indent": ["error", 2, { "SwitchCase": 1, "ignoredNodes": ["JSXElement *"] }],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
   },
   settings: {
     react: {
