@@ -1,7 +1,9 @@
+import { expect } from '@storybook/jest';
 import {
   useState,
 } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -61,4 +63,16 @@ ModalCite.args = {
     <Citation citation={citation} />
     <Clipboard text={formatReference(references[0])} />
   </>),
+};
+ModalCite.play = async ({ canvasElement }) => {
+  // start querying the component from its root element
+  const canvas = within(canvasElement);
+
+  // Simulate interactions with the component
+  await userEvent.click(canvas.getByText('Modal Link'));
+
+  // assert DOM structure
+  await expect(
+    canvas.getByText('Cite this article'),
+  ).toBeInTheDocument();
 };
