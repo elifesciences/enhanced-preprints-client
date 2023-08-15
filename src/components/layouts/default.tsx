@@ -8,7 +8,7 @@ export const DefaultLayout = ({ children }: any): JSX.Element => (
       <div className="grid-header">
         <SiteHeader />
       </div>
-        {children}
+      {children}
     </div>
     <SiteFooter/>
   </>

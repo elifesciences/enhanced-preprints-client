@@ -14,15 +14,15 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): J
   ];
 
   return (
-  <div className="tabbed-navigation__content">
-    <JumpToMenu headings={headings} />
-    <div className="article-body-container">
-      <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
-      {peerReview.reviews.map((review, index) => (
-        <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
-      ))}
-      {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
+    <div className="tabbed-navigation__content">
+      <JumpToMenu headings={headings} />
+      <div className="article-body-container">
+        <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
+        {peerReview.reviews.map((review, index) => (
+          <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
+        ))}
+        {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
+      </div>
     </div>
-  </div>
   );
 };
