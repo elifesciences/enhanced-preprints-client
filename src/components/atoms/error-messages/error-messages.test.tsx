@@ -5,6 +5,6 @@ describe('ErrorMessages', () => {
   it('should render the ErrorMessages component', () => {
     render(<ErrorMessages/>);
 
-    expect(screen.getByText("We're on it")).toBeInTheDocument();
+    expect(screen.getByText("We're looking into it")).toBeInTheDocument();
   });
 });
