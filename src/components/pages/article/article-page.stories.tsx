@@ -6,6 +6,7 @@ import {
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { DefaultLayout } from '../../layouts/default';
+import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 
 export default {
   title: 'Pages/Article Page',
@@ -48,6 +49,15 @@ ArticlePageFiguresTab.args = {
 const ReviewsTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
 export const ArticlePageReviewsTab = ReviewsTemplate.bind({});
 ArticlePageReviewsTab.args = {
+  metaData,
+  status,
+  activeTab: 'reviews',
+  tabs,
+};
+
+const ErrorTemplate: ComponentStory<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ErrorMessages/></ArticlePage></DefaultLayout>;
+export const ArticlePageErrorTab = ErrorTemplate.bind({});
+ArticlePageErrorTab.args = {
   metaData,
   status,
   activeTab: 'reviews',

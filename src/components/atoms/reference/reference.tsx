@@ -45,4 +45,3 @@ export const Reference = ({ reference, isReferenceList = false }: { reference: R
   <li className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</li> :
   <div className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</div>
 );
-
