@@ -6,15 +6,15 @@ import { config } from '../config';
 export default function MyApp({ Component, pageProps }: any) {
   return (
     <>
-    <Head>
-      <title>Enhanced Preprints Platform</title>
-    </Head>
-    { config.cookiebotId &&
+      <Head>
+        <title>Enhanced Preprints Platform</title>
+      </Head>
+      { config.cookiebotId &&
       <Script id="Cookiebot"
         src="https://consent.cookiebot.com/uc.js"
         data-cbid={config.cookiebotId}></Script>
     }
-    { config.gtmId &&
+      { config.gtmId &&
       <Script id="GTM" dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -23,9 +23,9 @@ export default function MyApp({ Component, pageProps }: any) {
         })(window,document,'script','dataLayer','${config.gtmId}');`,
       }}></Script>
     }
-    <DefaultLayout>
-      <Component {...pageProps} />
-    </DefaultLayout>
+      <DefaultLayout>
+        <Component {...pageProps} />
+      </DefaultLayout>
     </>
   );
 }

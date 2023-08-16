@@ -17,7 +17,7 @@ describe('Timeline', () => {
         },
       },
     ]}
-    listDescription='This is a timeline'
+      listDescription='This is a timeline'
     />);
 
     const firstEvent = screen.getByText('February 14, 2002');
