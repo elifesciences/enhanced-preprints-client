@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './editors-and-reviewers.scss';
 
 type Participant = {

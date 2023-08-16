@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { JSX } from 'react';
 import './page-not-found.scss';
 import MissingImage from '../../../images/errors/404.svg';
 import { Button } from '../../atoms/button/button';

@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, JSX } from 'react';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
@@ -22,7 +22,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
       {
         orcids.length > 0 && (
           <div className="author-list__orcids">
-            ORCID iD: {orcids.map(({ value }, index) => (<Fragment key={index}>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substr(value.lastIndexOf('/') + 1)}</a></Fragment>))}
+            ORCID iD: {orcids.map(({ value }, index) => (<Fragment key={index}>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substring(value.lastIndexOf('/') + 1)}</a></Fragment>))}
           </div>
         )
       }

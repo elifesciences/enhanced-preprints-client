@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './article-flag.scss';
 
 type Props = {

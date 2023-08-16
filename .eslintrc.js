@@ -5,9 +5,10 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', "no-only-tests"],
-  extends: ["airbnb/base", "airbnb-typescript/base", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:storybook/recommended", "plugin:json/recommended", "plugin:@next/next/recommended", "plugin:@next/next/core-web-vitals"],
+  extends: ["airbnb/base", "airbnb-typescript/base", "plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:storybook/recommended", "plugin:json/recommended", "plugin:@next/next/recommended", "plugin:@next/next/core-web-vitals", "plugin:deprecation/recommended"],
   rules: {
     "eol-last": ["error", "always"],
+    "deprecation/deprecation": 1,
     "import/prefer-default-export": 0,
     "max-len": ["error", {
       "code": 240

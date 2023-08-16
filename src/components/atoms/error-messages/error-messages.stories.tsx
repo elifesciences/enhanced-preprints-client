@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { ErrorMessages } from './error-messages';
 
 export default {
   title: 'Atoms/ErrorMessages',
   component: ErrorMessages,
-} as ComponentMeta<typeof ErrorMessages>;
+} as Meta<typeof ErrorMessages>;
 
-const Template: ComponentStory<typeof ErrorMessages> = () => <ErrorMessages/>;
+const Template: StoryFn<typeof ErrorMessages> = () => <ErrorMessages/>;
 
 export const DefaultError = Template.bind({});

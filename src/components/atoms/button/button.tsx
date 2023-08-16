@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './button.scss';
 import { classNameVariant } from '../../../utils/class-name-variant';
 

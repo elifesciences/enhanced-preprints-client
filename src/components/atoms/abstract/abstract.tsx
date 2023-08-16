@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './abstract.scss';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import { Content } from '../../../types';

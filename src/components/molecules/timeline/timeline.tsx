@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, JSX } from 'react';
 import './timeline.scss';
 
 type TimelineEventBasic = {

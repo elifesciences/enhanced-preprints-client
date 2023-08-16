@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ArticleFlag } from './article-flag';
 
 export default {
   title: 'Atoms/ArticleFlag',
   component: ArticleFlag,
-} as ComponentMeta<typeof ArticleFlag>;
+} as Meta<typeof ArticleFlag>;
 
-const Template: ComponentStory<typeof ArticleFlag> = (args) => <ArticleFlag {...args} />;
+const Template: StoryFn<typeof ArticleFlag> = (args) => <ArticleFlag {...args} />;
 
 export const MSA = Template.bind({});
 MSA.args = {

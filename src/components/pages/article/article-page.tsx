@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { JSX, ReactElement } from 'react';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';

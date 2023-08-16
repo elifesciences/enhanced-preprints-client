@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { JSX } from 'react';
 import Link from 'next/link';
 import { config } from '../config';
 import { getManuscripts } from '../manuscripts';

@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import Image from 'next/image';
 import './investors.scss';
 import hhmi from '../../../images/investors/hhmi.svg';

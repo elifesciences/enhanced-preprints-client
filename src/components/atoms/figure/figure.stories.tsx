@@ -1,12 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Figure } from './figure';
 
 export default {
   title: 'Atoms/Figure',
   component: Figure,
-} as ComponentMeta<typeof Figure>;
+} as Meta<typeof Figure>;
 
-const Template: ComponentStory<typeof Figure> = (args) => (
+const Template: StoryFn<typeof Figure> = (args) => (
   <Figure {...args} />
 );
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './site-header.scss';
 import logo from '../../../../public/elife-logo.svg';
