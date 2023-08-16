@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Reference } from './reference';
 import { references } from '../../../utils/mocks';
 
 export default {
   title: 'Atoms/Reference',
   component: Reference,
-} as ComponentMeta<typeof Reference>;
+} as Meta<typeof Reference>;
 
-const Template: ComponentStory<typeof Reference> = (args) => (
+const Template: StoryFn<typeof Reference> = (args) => (
   <Reference {...args} />
 );
 

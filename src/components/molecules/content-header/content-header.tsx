@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './content-header.scss';
 import { Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';

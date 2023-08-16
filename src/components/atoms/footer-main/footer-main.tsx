@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import Image from 'next/image';
 import carbonNeutral from '../../../images/logos/carbon-neutral.svg';
 import './footer-main.scss';

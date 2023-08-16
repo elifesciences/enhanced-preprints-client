@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';

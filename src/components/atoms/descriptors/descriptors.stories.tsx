@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Descriptors } from './descriptors';
 
 export default {
   title: 'Atoms/Descriptors',
   component: Descriptors,
-} as ComponentMeta<typeof Descriptors>;
+} as Meta<typeof Descriptors>;
 
-const Template: ComponentStory<typeof Descriptors> = (args) => <Descriptors {...args} />;
+const Template: StoryFn<typeof Descriptors> = (args) => <Descriptors {...args} />;
 
 export const DescriptorsList = Template.bind({});
 DescriptorsList.args = {

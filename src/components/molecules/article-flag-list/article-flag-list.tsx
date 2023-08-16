@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { ArticleFlag } from '../../atoms/article-flag/article-flag';
 import './article-flag-list.scss';
 

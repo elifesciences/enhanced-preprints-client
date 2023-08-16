@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Author } from '../../../types';
 import './citation.scss';
 

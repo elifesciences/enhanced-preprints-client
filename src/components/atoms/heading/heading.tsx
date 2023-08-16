@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './heading.scss';

@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './sign-up.scss';
 import { Button } from '../../atoms/button/button';
 

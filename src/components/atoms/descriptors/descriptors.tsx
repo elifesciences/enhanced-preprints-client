@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './descriptors.scss';
 
 export const Descriptors = ({ doi }: { doi:string }): JSX.Element => (

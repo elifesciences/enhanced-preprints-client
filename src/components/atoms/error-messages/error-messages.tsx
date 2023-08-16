@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import './error-messages.scss';
 import Image from 'next/image';
 import MissingImage from '../../../images/errors/404.svg';

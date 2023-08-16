@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { AuthorInformationList } from './author-information-list';
 import { authors } from '../../../utils/mocks';
 
 export default {
   title: 'Molecules/AuthorInformationList',
   component: AuthorInformationList,
-} as ComponentMeta<typeof AuthorInformationList>;
+} as Meta<typeof AuthorInformationList>;
 
-const Template: ComponentStory<typeof AuthorInformationList> = (args) => (
+const Template: StoryFn<typeof AuthorInformationList> = (args) => (
   <AuthorInformationList {...args} />
 );
 

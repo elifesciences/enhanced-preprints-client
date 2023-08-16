@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './jump-to-menu.scss';

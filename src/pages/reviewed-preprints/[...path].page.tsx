@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { JSX, useMemo } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../types';

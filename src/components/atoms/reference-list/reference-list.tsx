@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Heading } from '../heading/heading';
 import './reference-list.scss';
 import { Reference as ReferenceData } from '../../../types';

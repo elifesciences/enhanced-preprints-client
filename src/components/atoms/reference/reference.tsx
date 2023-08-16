@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 

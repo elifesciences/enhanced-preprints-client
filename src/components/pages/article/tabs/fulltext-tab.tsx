@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import '../article-page.scss';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';

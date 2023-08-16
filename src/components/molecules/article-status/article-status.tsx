@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
