@@ -3326,6 +3326,13 @@
       "msas": [
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.03.17.533129": {
+      "preprintDoi": "10.1101/2023.03.17.533129",
+      "msas": [
+        "Immunology and Inflammation",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -3652,6 +3659,7 @@
     "88261": "88261v1",
     "88266": "88266v1",
     "88268": "88268v1",
+    "88271": "88271v1",
     "88273": "88273v1",
     "88275": "88275v1",
     "88279": "88279v1",
@@ -22350,6 +22358,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-02-25"
+          }
+        ]
+      }
+    },
+    "88271v1": {
+      "msid": "88271",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.17.533129",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-17",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-27"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-30",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.17.533129v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
