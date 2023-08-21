@@ -3535,7 +3535,7 @@
     "87340": "87340v1",
     "87346": "87346v1",
     "87356": "87356v1",
-    "87357": "87357v1",
+    "87357": "87357v2",
     "87361": "87361v1",
     "87368": "87368v1",
     "87369": "87369v1",
@@ -8465,7 +8465,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-21",
+            "link": {
+              "url": "/reviewed-preprints/87357v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-05-23",
             "eventDescription": "(this version)"
           },
@@ -22629,6 +22637,43 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.06.26.546542v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "87357v2": {
+      "msid": "87357",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.26.534293",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-21",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-05-23",
+            "link": {
+              "url": "/reviewed-preprints/87357v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-26",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.26.534293v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-26"
           }
         ]
       }
