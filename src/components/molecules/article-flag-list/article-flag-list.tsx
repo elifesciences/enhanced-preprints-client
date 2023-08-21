@@ -35,6 +35,10 @@ const msaNames: Record<string, string> = {
 const msaURLs: Record<string, string> = Object.fromEntries(Object.entries(msaNames).map(([name, id]) => [name, `https://elifesciences.org/subjects/${id}`]));
 
 export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
+  if (msas.length === 0) {
+    return <></>;
+  }
+
   const msasWithURLS = msas.map((msa) => ({ msa, url: msaURLs[msa] }));
 
   return (

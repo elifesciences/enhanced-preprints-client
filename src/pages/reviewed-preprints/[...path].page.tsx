@@ -143,7 +143,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           ...articleWithVersions.article,
           ...articleWithVersions.article.article,
           authors: articleWithVersions.article.article.authors || [],
-          msas: [''],
+          msas: articleWithVersions.article.subjects || [],
           version: articleWithVersions.article.versionIdentifier,
         },
         msidWithVersion: id,

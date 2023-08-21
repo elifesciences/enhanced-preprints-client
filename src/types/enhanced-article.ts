@@ -111,6 +111,7 @@ export type EnhancedArticle = {
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,
+  subjects?: string[],
 };
 
 export type EnhancedArticleWithVersions = {
