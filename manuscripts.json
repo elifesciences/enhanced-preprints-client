@@ -3401,6 +3401,13 @@
       "msas": [
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2023.03.02.530804": {
+      "preprintDoi": "10.1101/2023.03.02.530804",
+      "msas": [
+        "Ecology",
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -3911,6 +3918,7 @@
     "89596": "89596v1",
     "89601": "89601v1",
     "89635": "89635v1",
+    "89650": "89650v1",
     "89656": "89656v1",
     "89687": "89687v1",
     "89719": "89719v1",
@@ -22926,6 +22934,35 @@
             "date": "2023-06-07",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.19.537441v3/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89650v1": {
+      "msid": "89650",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.02.530804",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-21",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-19"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.02.530804v3/",
               "text": "Go to bioRxiv"
             }
           }
