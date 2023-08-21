@@ -3408,6 +3408,12 @@
         "Ecology",
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.07.26.550685": {
+      "preprintDoi": "10.1101/2023.07.26.550685",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -3529,6 +3535,7 @@
     "87016": "87016v2",
     "87022": "87022v1",
     "87026": "87026v2",
+    "87029": "87029v1",
     "87030": "87030v1",
     "87037": "87037v2",
     "87038": "87038v2",
@@ -22965,6 +22972,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.02.530804v3/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "87029v1": {
+      "msid": "87029",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.26.550685",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-21",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.26.550685v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-06"
           }
         ]
       }
