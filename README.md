@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following <https://nextjs.org/docs/migrating/from-create-react-app>
 
+## Running the tests - `yarn test`
+
+To run the tests, run `yarn test`. 
+
+## Linting Typescript - `yarn lint` or `yarn lint:fix`
+
+To identify issues with Typescript, run `yarn lint`, to attempt to automatically fix the issues run `yarn lint:fix`
+
+## Linting sass - `yarn lint-sass` or `yarn lint-sass:fix`
+
+To identify issues with sass, run `yarn lint-sass`, to attempt to automatically fix the issues run `yarn lint-sass:fix`
+
 ## Development build - `docker-compose up` or `make start-dev`
 
 To get started with a full development environment for the application, run `docker-compose up` and visit port [`localhost:8080`](http://localhost:8080). This will hot reload modules, styles and other things, but javascript is a requirement. The unproxied application server is viewable at [`localhost:3000`](http://localhost:3000).
