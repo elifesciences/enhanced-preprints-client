@@ -3432,6 +3432,12 @@
       "msas": [
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2022.05.30.493969": {
+      "preprintDoi": "10.1101/2022.05.30.493969",
+      "msas": [
+        "Evolutionary Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -3551,6 +3557,7 @@
     "87005": "87005v2",
     "87008": "87008v1",
     "87016": "87016v2",
+    "87018": "87018v1",
     "87022": "87022v1",
     "87026": "87026v2",
     "87029": "87029v1",
@@ -23109,6 +23116,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-13"
+          }
+        ]
+      }
+    },
+    "87018v1": {
+      "msid": "87018",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.05.30.493969",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-30",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.05.30.493969v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-21"
           }
         ]
       }
