@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import { JSX } from 'react';
 import Link from 'next/link';
 import { config } from '../config';
 import { getManuscripts } from '../manuscripts';
@@ -8,7 +7,7 @@ import { fetchVersions } from '../utils/fetch-data';
 type PageProps = {
   ids: string[]
 };
-export const App = ({ ids }: PageProps): JSX.Element => (
+export const App = ({ ids }: PageProps) => (
   <div className="App">
     <ul>
       {ids

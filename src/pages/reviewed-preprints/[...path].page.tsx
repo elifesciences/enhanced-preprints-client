@@ -34,7 +34,7 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-export const Page = (props: PageProps): JSX.Element => {
+export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {

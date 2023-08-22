@@ -1,9 +1,9 @@
-import { Fragment, JSX } from 'react';
+import { Fragment } from 'react';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 
-const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
+const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
 
   return (
@@ -30,7 +30,7 @@ const AuthorInformation = ({ author }: { author: Author }): JSX.Element => {
   );
 };
 
-export const AuthorInformationList = ({ authors }: { authors: Author[] }): JSX.Element => (
+export const AuthorInformationList = ({ authors }: { authors: Author[] }) => (
   <section id="author-list" className="author-list">
     <h2 id="author-information" className="author-list__title">Author information</h2>
     <ol className="author-list__authors">

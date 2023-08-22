@@ -1,5 +1,5 @@
 import {
-  JSX, useRef, MouseEvent,
+  useRef, MouseEvent,
 } from 'react';
 import './modal.scss';
 
@@ -17,7 +17,7 @@ export const Modal = ({
   open = false,
   onModalClose,
   modalLayout,
-}: Props): JSX.Element => {
+}: Props) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const clickDetectedOutsideOfModal = (event: MouseEvent<HTMLDivElement>) => contentRef.current && !contentRef.current.contains(event.target as Element);

@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import Link from 'next/link';
 import './review-content.scss';
 
@@ -11,7 +10,7 @@ const highlightTerms = (content: string): string => content.replaceAll(new RegEx
 type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string };
 export const ReviewContent = ({
   content, isAssessment = false, id = '', peerReviewUrl = undefined,
-}: Props): JSX.Element => {
+}: Props) => {
   const sectionProps: Record<string, string> = {
     className: `review-content${isAssessment ? ' review-content--assessment' : ''}`,
   };

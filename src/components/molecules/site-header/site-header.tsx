@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { JSX, useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import './site-header.scss';
 import logo from '../../../../public/elife-logo.svg';
 
-const Overlay = ({ closeOverlay }: { closeOverlay: () => void }): JSX.Element => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
+const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
-export const SiteHeader = (): JSX.Element => {
+export const SiteHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">

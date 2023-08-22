@@ -1,4 +1,4 @@
-import { JSX, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -28,7 +28,7 @@ const formatStringCitation = ({
 
 export const ArticleStatus = ({
   articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
-}: ArticleStatusProps): JSX.Element => {
+}: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
 

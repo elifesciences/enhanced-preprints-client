@@ -1,11 +1,10 @@
-import { JSX } from 'react';
 import '../article-page.scss';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 
-export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): JSX.Element => {
+export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }) => {
   const headings = [
     { id: 'editors-and-reviewers', text: 'Editors' },
     ...peerReview.reviews.map((_, index) => (
