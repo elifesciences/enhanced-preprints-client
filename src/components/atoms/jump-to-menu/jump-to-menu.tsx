@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './jump-to-menu.scss';
@@ -9,7 +9,7 @@ export type Heading = {
   text: Content,
 };
 
-export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element => {
+export const JumpToMenu = ({ headings }: { headings: Heading[] }) => {
   const [active, setActive] = useState(0);
   const [jumping, setJumping] = useState(false);
 

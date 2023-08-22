@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import './socials.scss';
 
 type SocialsProps = {
@@ -8,7 +7,7 @@ type SocialsProps = {
 
 export const Socials = ({
   doi, title,
-}: SocialsProps): JSX.Element => {
+}: SocialsProps) => {
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
   const twitterEncodedTitle = encodeURIComponent('In @eLife: ');

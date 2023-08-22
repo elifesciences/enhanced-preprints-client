@@ -1,10 +1,9 @@
-import { JSX } from 'react';
 import './article-flag.scss';
 
 type Props = {
   flagText: string, url: string
 };
 
-export const ArticleFlag = ({ flagText, url }: Props): JSX.Element => (
+export const ArticleFlag = ({ flagText, url }: Props) => (
   <a className="article-flag__link" href={url}>{flagText}</a>
 );

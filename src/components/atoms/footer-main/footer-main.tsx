@@ -1,11 +1,10 @@
-import { JSX } from 'react';
 import Image from 'next/image';
 import carbonNeutral from '../../../images/logos/carbon-neutral.svg';
 import './footer-main.scss';
 
 /* eslint-disable max-len */
 
-export const FooterMain = (): JSX.Element => (
+export const FooterMain = () => (
   <footer className="site-footer">
 
     <div className="site-footer__container">

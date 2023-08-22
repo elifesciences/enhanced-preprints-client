@@ -1,4 +1,4 @@
-import { JSX, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -30,7 +30,7 @@ export type ArticlePageProps = {
   tabs: Tab[],
 };
 
-export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
+export const ArticlePage = (props: ArticlePageProps) => {
   const doi = getRppVersionDoi(props.metaData);
 
   const citation: CitationData = {

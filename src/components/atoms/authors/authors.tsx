@@ -1,4 +1,4 @@
-import { JSX, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
@@ -6,7 +6,7 @@ import { createAuthorId } from '../../../utils/create-author-id';
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
 
-export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
+export const Authors = ({ authors }: { authors: Author[] }) => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);

@@ -1,4 +1,3 @@
-import { JSX } from 'react';
 import '../article-page.scss';
 import { Heading } from '../../../atoms/heading/heading';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
@@ -23,7 +22,7 @@ const getFigures = (content: Content): Content => {
   }
 };
 
-export const ArticleFiguresTab = ({ content }: { content: Content }): JSX.Element => (
+export const ArticleFiguresTab = ({ content }: { content: Content }) => (
   <div className="tabbed-navigation__content">
     <div className="menu-spacer"/>
     <div className="article-body-container">
