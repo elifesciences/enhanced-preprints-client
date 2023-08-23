@@ -1,7 +1,7 @@
 import {
   useState,
 } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -12,9 +12,9 @@ import { Citation } from '../../atoms/citation/citation';
 export default {
   title: 'Molecules/Modal',
   component: Modal,
-} as ComponentMeta<typeof Modal>;
+} as Meta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => {
+const Template: StoryFn<typeof Modal> = (args) => {
   const [showModal, setShowModal] = useState(false);
 
   return (

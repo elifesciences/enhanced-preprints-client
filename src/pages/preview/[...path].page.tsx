@@ -15,7 +15,7 @@ type PageProps = {
   content: Content,
 };
 
-export const Page = (props: PageProps): JSX.Element => {
+export const Page = (props: PageProps) => {
   const router = useRouter();
   const determineTab = () => {
     if (Array.isArray(router.query.path)) {

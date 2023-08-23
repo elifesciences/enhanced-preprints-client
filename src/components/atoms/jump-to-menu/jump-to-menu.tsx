@@ -9,7 +9,7 @@ export type Heading = {
   text: Content,
 };
 
-export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element => {
+export const JumpToMenu = ({ headings }: { headings: Heading[] }) => {
   const [active, setActive] = useState(0);
   const [jumping, setJumping] = useState(false);
 

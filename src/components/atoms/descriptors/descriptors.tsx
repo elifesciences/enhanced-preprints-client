@@ -1,6 +1,6 @@
 import './descriptors.scss';
 
-export const Descriptors = ({ doi }: { doi:string }): JSX.Element => (
+export const Descriptors = ({ doi }: { doi:string }) => (
   <div className="descriptors">
     <ul className="descriptors__identifiers">
       <li className="descriptors__identifier">

@@ -30,15 +30,15 @@ export type ArticlePageProps = {
   tabs: Tab[],
 };
 
-export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
+export const ArticlePage = (props: ArticlePageProps) => {
   const doi = getRppVersionDoi(props.metaData);
 
   const citation: CitationData = {
     authors: props.metaData.authors,
     year: props.metaData.publishedYear,
-    volume: props.metaData.publishedYear - 2011,
+    volume: props.metaData.volume,
     journal: 'eLife',
-    id: `RP${props.metaData.msid}`,
+    eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
     doi,
   };
@@ -58,17 +58,17 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className="primary-section">
-      <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
-        <ul className="tabbed-navigation__tabs">
-          {props.tabs.map((tab, index) => (
-            <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
-              {tab.linkElement}
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <a id="tab-content" />
-      {props.children}
+        <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
+          <ul className="tabbed-navigation__tabs">
+            {props.tabs.map((tab, index) => (
+              <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
+                {tab.linkElement}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a id="tab-content" />
+        {props.children}
       </main>
     </>
   );

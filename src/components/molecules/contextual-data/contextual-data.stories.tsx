@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ContextualData } from './contextual-data';
 
 export default {
   title: 'Molecules/ContextualData',
   component: ContextualData,
-} as ComponentMeta<typeof ContextualData>;
+} as Meta<typeof ContextualData>;
 
-const Template: ComponentStory<typeof ContextualData> = (args) => <ContextualData {...args} />;
+const Template: StoryFn<typeof ContextualData> = (args) => <ContextualData {...args} />;
 
 export const ContextualList = Template.bind({});
 ContextualList.args = {

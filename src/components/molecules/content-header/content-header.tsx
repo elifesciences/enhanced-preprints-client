@@ -19,7 +19,7 @@ export const ContentHeader = ({
   title,
   authors,
   doi,
-}: ContentHeaderProps): JSX.Element => {
+}: ContentHeaderProps) => {
   const processedInstitutions = authors
     .flatMap((author) => author.affiliations)
     .filter(filterInstitutions)

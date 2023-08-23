@@ -4,7 +4,7 @@ import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 
-export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): JSX.Element => {
+export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }) => {
   const headings = [
     { id: 'editors-and-reviewers', text: 'Editors' },
     ...peerReview.reviews.map((_, index) => (
@@ -14,15 +14,15 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }): J
   ];
 
   return (
-  <div className="tabbed-navigation__content">
-    <JumpToMenu headings={headings} />
-    <div className="article-body-container">
-      <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
-      {peerReview.reviews.map((review, index) => (
-        <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
-      ))}
-      {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
+    <div className="tabbed-navigation__content">
+      <JumpToMenu headings={headings} />
+      <div className="article-body-container">
+        <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
+        {peerReview.reviews.map((review, index) => (
+          <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
+        ))}
+        {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
+      </div>
     </div>
-  </div>
   );
 };

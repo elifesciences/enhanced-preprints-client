@@ -8,7 +8,7 @@ type ReferenceBodyProps = {
 
 const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
-export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps): JSX.Element => {
+export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
@@ -41,8 +41,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   );
 };
 
-export const Reference = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }): JSX.Element => (isReferenceList ?
+export const Reference = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }) => (isReferenceList ?
   <li className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</li> :
   <div className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</div>
 );
-

@@ -1,4 +1,3 @@
-import { config } from '../../../config';
 import './socials.scss';
 
 type SocialsProps = {
@@ -8,12 +7,13 @@ type SocialsProps = {
 
 export const Socials = ({
   doi, title,
-}: SocialsProps): JSX.Element => {
+}: SocialsProps) => {
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
+  const twitterEncodedTitle = encodeURIComponent('In @eLife: ');
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
-  const twitterUrl = `https://twitter.com/intent/tweet/?text=${encodedTitle}&url=${encodedUrl}&via=${config.twitterHandle}`;
+  const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;

@@ -56,13 +56,10 @@
   }
 }
 
-@mixin button-icon($background_image) {
+@mixin button-icon($background_image, $background_color: var(--color-button)) {
   @include mixins.padding(41, "left");
 
-  background-image: url($background_image);
-  background-position-x: 11px;
-  background-position-y: 15px;
-  background-repeat: no-repeat;
+  background: url($background_image) $background_color no-repeat 11px 15px;
   vertical-align: middle;
 
   &.button--action {

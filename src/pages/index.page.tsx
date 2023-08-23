@@ -7,7 +7,7 @@ import { fetchVersions } from '../utils/fetch-data';
 type PageProps = {
   ids: string[]
 };
-export const App = ({ ids }: PageProps): JSX.Element => (
+export const App = ({ ids }: PageProps) => (
   <div className="App">
     <ul>
       {ids

@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Abstract } from './abstract';
 import { content } from '../../../utils/mocks';
 
 export default {
   title: 'Atoms/Abstract',
   component: Abstract,
-} as ComponentMeta<typeof Abstract>;
+} as Meta<typeof Abstract>;
 
-const Template: ComponentStory<typeof Abstract> = (args) => (
+const Template: StoryFn<typeof Abstract> = (args) => (
   <Abstract {...args} />
 );
 

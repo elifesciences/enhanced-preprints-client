@@ -14,10 +14,10 @@
   "scripts": {
     "build": "next build",
     "start": "next start",
-    "start:dev": "next dev",
+    "start:dev": "NODE_OPTIONS='--inspect' next dev",
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts,.json src/ browser-tests/ ./manuscripts.json",
-    "lint:fix": "eslint --fix --ext .tsx,.ts src/ browser-tests/",
+    "lint:fix": "eslint --fix --ext .tsx,.ts,.json src/ browser-tests/ ./manuscripts.json",
     "lint-sass": "stylelint **/*.scss",
     "lint-sass:fix": "stylelint --fix **/*.scss",
     "storybook": "storybook dev -p 6006 -s public",
@@ -75,12 +75,13 @@
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "6.2.0",
-    "@typescript-eslint/parser": "6.2.0",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-deprecation": "^1.5.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
@@ -101,5 +102,5 @@
     "typescript": "^5.0.0",
     "webpack": "^5.74.0"
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.2"
 }

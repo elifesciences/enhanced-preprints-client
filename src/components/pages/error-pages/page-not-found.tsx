@@ -3,7 +3,7 @@ import './page-not-found.scss';
 import MissingImage from '../../../images/errors/404.svg';
 import { Button } from '../../atoms/button/button';
 
-export const PageNotFound = (): JSX.Element => (
+export const PageNotFound = () => (
   <main className="full-width-section">
     <div className="error-wrapper">
       <div className="error">

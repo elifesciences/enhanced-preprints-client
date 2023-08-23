@@ -6,7 +6,7 @@ import { createAuthorId } from '../../../utils/create-author-id';
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
 
-export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
+export const Authors = ({ authors }: { authors: Author[] }) => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
@@ -27,7 +27,7 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
           </li>
         ))}
       </ol>
-        {(authors.length > authorLimit && expanded !== null) &&
+      {(authors.length > authorLimit && expanded !== null) &&
         <span className="authors-list__expansion" onClick={() => setExpanded(!expanded)}>
           show{!expanded ? authorLimits.map(
           (limit, index) => <span key={index} aria-hidden="true" className={`authors-list__expansion-count authors-list__expansion-count-${limit}`}> {authors.length - limit}</span>,

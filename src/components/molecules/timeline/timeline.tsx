@@ -33,7 +33,7 @@ type TimelineProps = {
 
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-export const Timeline = ({ events, listDescription }: TimelineProps): JSX.Element => (
+export const Timeline = ({ events, listDescription }: TimelineProps) => (
   <div className="review-timeline">
     <dl className="review-timeline__list" aria-label={listDescription}>
       {

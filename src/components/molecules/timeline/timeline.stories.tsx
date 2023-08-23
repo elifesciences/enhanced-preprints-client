@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Timeline } from './timeline';
 
 export default {
   title: 'Molecules/Timeline',
   component: Timeline,
-} as ComponentMeta<typeof Timeline>;
+} as Meta<typeof Timeline>;
 
-const Template: ComponentStory<typeof Timeline> = (args) => <Timeline {...args} />;
+const Template: StoryFn<typeof Timeline> = (args) => <Timeline {...args} />;
 
 export const EventTimeline = Template.bind({});
 EventTimeline.args = {

@@ -6,7 +6,7 @@ type Participant = {
   institution: string,
 };
 
-export const EditorsAndReviewers = ({ participants }: { participants: Participant[] }): JSX.Element => (
+export const EditorsAndReviewers = ({ participants }: { participants: Participant[] }) => (
   <section className="editors-and-reviewers">
     <h2 className="editors-and-reviewers__header" id="editors-and-reviewers" data-jump-menu-target>Editors</h2>
     <ul className="editors-and-reviewers__list">

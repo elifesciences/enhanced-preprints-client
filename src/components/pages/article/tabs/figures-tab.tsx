@@ -22,7 +22,7 @@ const getFigures = (content: Content): Content => {
   }
 };
 
-export const ArticleFiguresTab = ({ content }: { content: Content }): JSX.Element => (
+export const ArticleFiguresTab = ({ content }: { content: Content }) => (
   <div className="tabbed-navigation__content">
     <div className="menu-spacer"/>
     <div className="article-body-container">

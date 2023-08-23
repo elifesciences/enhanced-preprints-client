@@ -8,7 +8,7 @@ import { AuthorInformationList } from '../../../molecules/author-information-lis
 import { Content, MetaData, PeerReview } from '../../../../types';
 import { contentToHeadings } from '../../../../utils/content-to-headings';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, }): JSX.Element => {
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, }) => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...contentToHeadings(props.content),
