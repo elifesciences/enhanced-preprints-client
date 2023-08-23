@@ -13,7 +13,7 @@ export const Figure = ({ content }: { content: FigureContent }) => {
         <figure className="figure" {...(content.id && { id: content.id })}>
           {content.label && <label className="figure__label">{content.label}</label>}
           {contentToJsx(content.content)}
-          {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 3)}</figcaption>}
+          {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 4)}</figcaption>}
         </figure>
         <button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button>
       </div>
