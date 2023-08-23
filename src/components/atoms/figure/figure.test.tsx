@@ -51,8 +51,8 @@ describe('Figure', () => {
         {
           type: 'Heading',
           content: 'Heading 1',
-          depth: 3,
-          id: 'h3',
+          depth: 4,
+          id: 'h4',
         },
         {
           type: 'Emphasis',
@@ -69,7 +69,7 @@ describe('Figure', () => {
 
     render(<Figure content={complexContent}/>);
 
-    expect(screen.getByText('Heading 1').tagName).toBe('H3');
+    expect(screen.getByText('Heading 1').tagName).toBe('H4');
     expect(screen.getByText('Italic Text').tagName).toBe('EM');
     expect(screen.getByText('Heading 4').tagName).toBe('H4');
   });
