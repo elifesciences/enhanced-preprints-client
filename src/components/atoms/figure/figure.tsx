@@ -13,10 +13,7 @@ export const Figure = ({ content }: { content: FigureContent }) => {
       const isOverflowing =
         captionRef.current.scrollHeight > captionRef.current.offsetHeight;
 
-      setShowButton(
-        isOverflowing ||
-        (expanded && captionRef.current.offsetHeight >= captionRef.current.scrollHeight)
-      );
+      setShowButton(isOverflowing || (expanded && captionRef.current.offsetHeight >= captionRef.current.scrollHeight));
 
       setExpanded(false);
     }
