@@ -70,11 +70,12 @@
 }
 
 .figure__caption--expanded {
-  -webkit-line-clamp: none;
+  -webkit-line-clamp: unset;
 }
 
 .figure__caption__button {
   @include mixins.margin(12, "bottom");
+  @include mixins.padding(0, "left");
   @include mixins.padding(25, "right");
   @include typography.font-size(12);
 

@@ -1,12 +1,41 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, useEffect } from 'react';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './figure.scss';
 import { FigureContent } from '../../../types';
 
 export const Figure = ({ content }: { content: FigureContent }) => {
   const captionRef = useRef<HTMLElement>(null);
-  const expansionMemo = useMemo(() => captionRef.current && captionRef.current.offsetHeight < captionRef.current.scrollHeight, [captionRef.current?.scrollHeight]);
-  const [expanded, setExpanded] = useState(expansionMemo ?? false);
+  const [expanded, setExpanded] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+
+  const checkOverflow = () => {
+    if (captionRef.current) {
+      const isOverflowing =
+        captionRef.current.scrollHeight > captionRef.current.offsetHeight;
+      
+      setShowButton(
+        isOverflowing ||
+        (expanded && captionRef.current.offsetHeight >= captionRef.current.scrollHeight)
+      );
+
+      setExpanded(false);
+    }
+  };
+
+  useEffect(() => {
+    checkOverflow();
+  
+    const handleResize = () => {
+      checkOverflow();
+    };
+  
+    window.addEventListener('resize', handleResize);
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [captionRef.current?.offsetHeight]);
+
   return (
     <>
       <div className="figure-container">
@@ -15,7 +44,7 @@ export const Figure = ({ content }: { content: FigureContent }) => {
           {contentToJsx(content.content)}
           {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 4)}</figcaption>}
         </figure>
-        <button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button>
+        {showButton ? <button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button> : ''}
       </div>
     </>
   );
