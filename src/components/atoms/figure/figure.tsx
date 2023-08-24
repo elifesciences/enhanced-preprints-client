@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './figure.scss';
 import { FigureContent } from '../../../types';
@@ -12,7 +12,7 @@ export const Figure = ({ content }: { content: FigureContent }) => {
     if (captionRef.current) {
       const isOverflowing =
         captionRef.current.scrollHeight > captionRef.current.offsetHeight;
-      
+
       setShowButton(
         isOverflowing ||
         (expanded && captionRef.current.offsetHeight >= captionRef.current.scrollHeight)
@@ -24,13 +24,13 @@ export const Figure = ({ content }: { content: FigureContent }) => {
 
   useEffect(() => {
     checkOverflow();
-  
+
     const handleResize = () => {
       checkOverflow();
     };
-  
+
     window.addEventListener('resize', handleResize);
-  
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
