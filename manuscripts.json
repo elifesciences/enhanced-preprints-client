@@ -3530,6 +3530,12 @@
       "msas": [
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2023.06.29.547072": {
+      "preprintDoi": "10.1101/2023.06.29.547072",
+      "msas": [
+        "Chromosomes and Gene Expression"
+      ]
     }
   },
   "manuscripts": {
@@ -4061,6 +4067,7 @@
     "89795": "89795v1",
     "89812": "89812v1",
     "89813": "89813v1",
+    "89835": "89835v1",
     "89837": "89837v1",
     "89854": "89854v1",
     "89891": "89891v1",
@@ -23804,6 +23811,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.02.535252v2/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "89835v1": {
+      "msid": "89835",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.29.547072",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-24",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-29",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.29.547072v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-14"
           }
         ]
       }
