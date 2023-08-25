@@ -3601,6 +3601,12 @@
         "Biochemistry and Chemical Biology",
         "Cancer Biology"
       ]
+    },
+    "10.1101/2023.05.31.543110": {
+      "preprintDoi": "10.1101/2023.05.31.543110",
+      "msas": [
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -4031,6 +4037,7 @@
     "88822": "88822v1",
     "88824": "88824v1",
     "88826": "88826v1",
+    "88833": "88833v1",
     "88836": "88836v1",
     "88837": "88837v1",
     "88838": "88838v1",
@@ -24325,6 +24332,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-29"
+          }
+        ]
+      }
+    },
+    "88833v1": {
+      "msid": "88833",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.31.543110",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-25",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-05",
+            "link": {
+              "url": "https://www.iorxiv.org/content/10.1101/2023.05.31.543110v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-10"
           }
         ]
       }
