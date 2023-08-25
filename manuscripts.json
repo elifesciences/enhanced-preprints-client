@@ -3805,7 +3805,7 @@
     "87527": "87527v1",
     "87528": "87528v1",
     "87529": "87529v1",
-    "87536": "87536v1",
+    "87536": "87536v2",
     "87555": "87555v1",
     "87559": "87559v1",
     "87566": "87566v1",
@@ -10238,7 +10238,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-25",
+            "link": {
+              "url": "/reviewed-preprints/87536v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-02",
             "eventDescription": "(this version)"
           },
@@ -24242,6 +24250,43 @@
             "link": {
               "url": "https://doi.org/10.48550/arXiv.2212.01191",
               "text": "Go to arXiv"
+            }
+          }
+        ]
+      }
+    },
+    "87536v2": {
+      "msid": "87536",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.15.528598",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-08-25",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-02",
+            "link": {
+              "url": "/reviewed-preprints/87536v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-27"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.15.528598v1",
+              "text": "Go to bioRxiv"
             }
           }
         ]
