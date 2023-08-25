@@ -3594,6 +3594,13 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.03.29.534690": {
+      "preprintDoi": "10.1101/2023.03.29.534690",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Cancer Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -3853,6 +3860,7 @@
     "87863": "87863v1",
     "87866": "87866v1",
     "87868": "87868v1",
+    "87873": "87873v1",
     "87880": "87880v1",
     "87881": "87881v1",
     "87884": "87884v1",
@@ -24288,6 +24296,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.15.528598v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "87873v1": {
+      "msid": "87873",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.29.534690",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-25",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-29",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.29.534690v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-29"
           }
         ]
       }
