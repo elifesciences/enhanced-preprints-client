@@ -14,7 +14,6 @@ export const Figure = ({ content }: { content: FigureContent }) => {
         captionRef.current.scrollHeight > captionRef.current.offsetHeight;
 
       setShowButton(isOverflowing || (expanded && captionRef.current.offsetHeight >= captionRef.current.scrollHeight));
-
       setExpanded(false);
     }
   };
@@ -34,15 +33,13 @@ export const Figure = ({ content }: { content: FigureContent }) => {
   }, [captionRef.current?.offsetHeight]);
 
   return (
-    <>
-      <div className="figure-container">
-        <figure className="figure" {...(content.id && { id: content.id })}>
-          {content.label && <label className="figure__label">{content.label}</label>}
-          {contentToJsx(content.content)}
-          {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 4)}</figcaption>}
-        </figure>
-        {showButton ? <button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button> : ''}
-      </div>
-    </>
+    <div className="figure-container">
+      <figure className="figure" {...(content.id && { id: content.id })}>
+        {content.label && <label className="figure__label">{content.label}</label>}
+        {contentToJsx(content.content)}
+        {content.caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{contentToJsx(content.caption, undefined, 4)}</figcaption>}
+      </figure>
+      {showButton && (<button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button>)}
+    </div>
   );
 };

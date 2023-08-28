@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Figure } from './figure';
 import { FigureContent } from '../../../types';
 
@@ -108,11 +108,89 @@ describe('Figure', () => {
   });
 
   describe('caption', () => {
-    it.todo('hides extra caption on the first render');
-    it.todo('has a show more button for long captions');
-    it.todo('has a show less button for expanded long captions');
-    it.todo('does not display the show more button for short captions');
-    it.todo('expands the caption when show more button clicked');
-    it.todo('collapses the caption when show less button clicked');
+    it('hides extra caption on the first render', () => {
+      const longCaption = 'This is a long caption that would overflow the container.';
+  
+      const testContentWithLongCaption = {
+        ...content,
+        caption: longCaption,
+      };
+  
+      const { queryByText } = render(<Figure content={testContentWithLongCaption} />);
+  
+      expect(queryByText(longCaption)).toBeNull();
+    });
+  
+    it('has a show more button for long captions', () => {
+      const longCaption = 'This is a long caption that would overflow the container.';
+  
+      const testContentWithLongCaption = {
+        ...content,
+        caption: longCaption,
+      };
+  
+      const { getByText } = render(<Figure content={testContentWithLongCaption} />);
+  
+      expect(getByText('Show more')).toBeInTheDocument();
+    });
+  
+    it('has a show less button for expanded long captions', () => {
+      const longCaption = 'This is a long caption that would overflow the container.';
+  
+      const testContentWithLongCaption = {
+        ...content,
+        caption: longCaption,
+      };
+  
+      const { getByText } = render(<Figure content={testContentWithLongCaption} />);
+      
+      fireEvent.click(getByText('Show more'));
+  
+      expect(getByText('Show less')).toBeInTheDocument();
+    });
+  
+    it('does not display the show more button for short captions', () => {
+      const shortCaption = 'Short Caption';
+  
+      const testContentWithShortCaption = {
+        ...content,
+        caption: shortCaption,
+      };
+  
+      const { queryByText } = render(<Figure content={testContentWithShortCaption} />);
+  
+      expect(queryByText('Show more')).toBeNull();
+    });
+  
+    it('expands the caption when show more button clicked', () => {
+      const longCaption = 'This is a long caption that would overflow the container.';
+  
+      const testContentWithLongCaption = {
+        ...content,
+        caption: longCaption,
+      };
+  
+      const { getByText } = render(<Figure content={testContentWithLongCaption} />);
+      
+      fireEvent.click(getByText('Show more'));
+  
+      expect(getByText(longCaption)).toBeInTheDocument();
+    });
+  
+    it('collapses the caption when show less button clicked', () => {
+      const longCaption = 'This is a long caption that would overflow the container.';
+  
+      const testContentWithLongCaption = {
+        ...content,
+        caption: longCaption,
+      };
+  
+      const { getByText, queryByText } = render(<Figure content={testContentWithLongCaption} />);
+      
+      fireEvent.click(getByText('Show more'));
+      fireEvent.click(getByText('Show less'));
+  
+      expect(queryByText(longCaption)).toBeNull();
+    });
   });
 });
