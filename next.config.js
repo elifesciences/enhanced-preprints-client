@@ -40,6 +40,10 @@ const nextConfig = {
         source: '/status',
         destination: '/api/status',
       },
+      {
+        source: '/robots.txt',
+        destination: '/api/robots'
+      }
     ],
     fallback: [
       {
