@@ -124,7 +124,7 @@ describe('Figure', () => {
         Line 5
         Line 6
       `;
-  
+
       const testContentWithLongCaption = {
         ...content,
         caption: longCaption,
