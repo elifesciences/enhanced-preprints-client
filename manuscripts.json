@@ -3657,6 +3657,12 @@
         "Genetics and Genomics",
         "Medicine"
       ]
+    },
+    "10.1101/2023.03.01.530600": {
+      "preprintDoi": "10.1101/2023.03.01.530600",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -4230,6 +4236,7 @@
     "90290": "90290v1",
     "90333": "90333v1",
     "90392": "90392v1",
+    "90466": "90466v1",
     "90510": "90510v1",
     "90600": "90600v1",
     "90627": "90627v1",
@@ -24908,6 +24915,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-12"
+          }
+        ]
+      }
+    },
+    "90466v1": {
+      "msid": "90466",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.01.530600",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-29",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-06"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.01.530600v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
