@@ -48,7 +48,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
         return '';
       }
       // eslint-disable-next-line @next/next/no-img-element
-      return <img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} key={index} src={generateImageUrl(content.contentUrl)}></img>;
+      return <picture><source media="(max-width: 767px)" srcSet={`${generateImageUrl(content.contentUrl)} 1x`} /><img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} key={index} src={generateImageUrl(content.contentUrl)} alt={content.alt} /></picture>;
     case 'ListItem':
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
