@@ -48,7 +48,9 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
         return '';
       }
       // eslint-disable-next-line @next/next/no-img-element
-      return <picture key={index}><source media="(max-width: 767px)" srcSet={`${generateImageUrl(content.contentUrl)} 1x`} /><img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} src={generateImageUrl(content.contentUrl)} alt="" /></picture>;
+      return <picture key={index}><source media="(max-width: 767px)" srcSet={`${generateImageUrl(content.contentUrl)} 1x`} />
+        <img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} src={generateImageUrl(content.contentUrl)} alt="" />
+      </picture>;
     case 'ListItem':
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
