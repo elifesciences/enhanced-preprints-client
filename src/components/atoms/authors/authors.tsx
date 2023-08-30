@@ -22,7 +22,7 @@ export const Authors = ({ authors }: { authors: Author[] }) => {
         { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
             <a href={`#${createAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
-              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')}{author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
+              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')} {author.honorificSuffix?.join(' ')}{author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
             </a>
           </li>
         ))}
