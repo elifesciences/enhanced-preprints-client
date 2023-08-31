@@ -3747,6 +3747,12 @@
         "Ecology",
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.06.23.546223": {
+      "preprintDoi": "10.1101/2023.06.23.546223",
+      "msas": [
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -4315,6 +4321,7 @@
     "89950": "89950v1",
     "89968": "89968v1",
     "89974": "89974v1",
+    "89981": "89981v1",
     "89993": "89993v1",
     "90025": "90025v1",
     "90027": "90027v1",
@@ -25688,6 +25695,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.11.532197v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "89981v1": {
+      "msid": "89981",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.23.546223",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.23.546223v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-13"
           }
         ]
       }
