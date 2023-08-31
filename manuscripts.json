@@ -1350,8 +1350,8 @@
         "Genetics and Genomics"
       ]
     },
-    "10.1101/2023.03.20.53356": {
-      "preprintDoi": "10.1101/2023.03.20.53356",
+    "10.1101/2023.03.20.533567": {
+      "preprintDoi": "10.1101/2023.03.20.533567",
       "msas": [
         "Neuroscience"
       ]
@@ -3702,9 +3702,6 @@
         "Developmental Biology"
       ]
     },
-    "10.1101/2023.03.20.533567": {
-      "preprintDoi": "10.1101/2023.03.20.533567"
-    },
     "10.1101/2023.05.12.538784": {
       "preprintDoi": "10.1101/2023.05.12.538784",
       "msas": [
@@ -3796,9 +3793,6 @@
       "msas": [
         "Cell Biology"
       ]
-    },
-    "0.1101/2023.04.14.536858": {
-      "preprintDoi": "0.1101/2023.04.14.536858"
     }
   },
   "manuscripts": {
@@ -11933,7 +11927,7 @@
       "msid": "87644",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.03.20.53356",
+      "preprintDoi": "10.1101/2023.03.20.533567",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -25996,7 +25990,7 @@
       "msid": "88656",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "0.1101/2023.04.14.536858",
+      "preprintDoi": "10.1101/2023.04.14.536858",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
