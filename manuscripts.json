@@ -3716,6 +3716,12 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.07.05.547802": {
+      "preprintDoi": "10.1101/2023.07.05.547802",
+      "msas": [
+        "Ecology"
+      ]
     }
   },
   "manuscripts": {
@@ -4278,6 +4284,7 @@
     "89938": "89938v1",
     "89947": "89947v1",
     "89950": "89950v1",
+    "89968": "89968v1",
     "89974": "89974v1",
     "89993": "89993v1",
     "90025": "90025v1",
@@ -25417,6 +25424,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-10"
+          }
+        ]
+      }
+    },
+    "89968v1": {
+      "msid": "89968",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.05.547802",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-06",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.05.547802v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-22"
           }
         ]
       }
