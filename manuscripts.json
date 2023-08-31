@@ -3722,6 +3722,12 @@
       "msas": [
         "Ecology"
       ]
+    },
+    "10.1101/2023.02.03.526956": {
+      "preprintDoi": "10.1101/2023.02.03.526956",
+      "msas": [
+        "Ecology"
+      ]
     }
   },
   "manuscripts": {
@@ -4202,6 +4208,7 @@
     "89102": "89102v1",
     "89106": "89106v1",
     "89125": "89125v1",
+    "89129": "89129v1",
     "89131": "89131v1",
     "89141": "89141v1",
     "89167": "89167v1",
@@ -25453,6 +25460,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-22"
+          }
+        ]
+      }
+    },
+    "89129v1": {
+      "msid": "89129",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.03.526956",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-08-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-30"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.03.526956v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
