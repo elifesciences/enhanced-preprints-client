@@ -61,6 +61,10 @@
       @include mixins.margin(0, "bottom");
     }
   }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--dark-mode-color);
+  }
 }
 
 .review-timeline__description,
@@ -71,12 +75,20 @@
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--dark-mode-color);
+  }
 }
 
 .review-timeline__link {
   &::before {
     color: var(--color-text-secondary);
     content: "\00a0\00a0•\00a0\00a0";
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--dark-mode-color);
+    }
   }
 
   &:hover {
