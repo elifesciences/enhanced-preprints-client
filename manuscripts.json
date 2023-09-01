@@ -3812,6 +3812,13 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.07.10.548412": {
+      "preprintDoi": "10.1101/2023.07.10.548412",
+      "msas": [
+        "Cancer Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -4275,6 +4282,7 @@
     "89002": "89002v1",
     "89004": "89004v1",
     "89015": "89015v1",
+    "89017": "89017v1",
     "89023": "89023v1",
     "89025": "89025v1",
     "89032": "89032v1",
@@ -26128,6 +26136,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-05"
+          }
+        ]
+      }
+    },
+    "89017v1": {
+      "msid": "89017",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.10.548412",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-01",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.10.548412v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-14"
           }
         ]
       }
