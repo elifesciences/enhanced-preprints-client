@@ -3890,6 +3890,13 @@
         "Computational and Systems Biology",
         "Medicine"
       ]
+    },
+    "10.1101/2023.06.12.23291280": {
+      "preprintDoi": "10.1101/2023.06.12.23291280",
+      "msas": [
+        "Genetics and Genomics",
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -4366,6 +4373,7 @@
     "89050": "89050v1",
     "89054": "89054v1",
     "89066": "89066v1",
+    "89068": "89068v1",
     "89076": "89076v1",
     "89082": "89082v1",
     "89083": "89083v1",
@@ -26657,6 +26665,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-05"
+          }
+        ]
+      }
+    },
+    "89068v1": {
+      "msid": "89068",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.12.23291280",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-01",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-06-20",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.06.12.23291280v1/",
+              "text": "Go to medRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-15"
           }
         ]
       }
