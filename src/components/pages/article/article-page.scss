@@ -28,9 +28,7 @@
 
 .tabbed-navigation {
   @include mixins.margin(0 -24 24);
-  @include mixins.padding(0 24);
   @include mixins.z-index(1);
-
 
   background-color: #fff;
   border-bottom: var(--border);
@@ -57,12 +55,13 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
-  width: 100%;
+  width: auto;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(0 -48);
 
     justify-content: center;
+    width: 100%;
   }
 
   @media only screen and (min-width: settings.$breakpoint-medium) {
