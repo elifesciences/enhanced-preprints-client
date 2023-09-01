@@ -27,35 +27,46 @@
 }
 
 .tabbed-navigation {
+  @include mixins.margin(0 -24 24);
+  @include mixins.padding(0 24);
   @include mixins.z-index(1);
 
+
+  background-color: #fff;
+  border-bottom: var(--border);
+  border-top: var(--border);
   display: flex;
   justify-content: center;
   position: sticky;
   top: 0;
+
+  @media only screen and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0 -48 36);
+  }
+
+  @media only screen and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(0 0 36);
+  }
 }
 
 .tabbed-navigation__tabs {
-  @include mixins.margin(0 -24 24);
+  @include mixins.margin(0 -24);
   @include mixins.padding(0, "left");
 
   align-self: flex-start;
-  background-color: #fff;
-  border-bottom: var(--border);
-  border-top: var(--border);
   display: flex;
   justify-content: space-between;
   list-style: none;
   width: 100%;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
-    @include mixins.margin(0 -48 36);
+    @include mixins.margin(0 -48);
 
     justify-content: center;
   }
 
   @media only screen and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(0 0 36);
+    @include mixins.margin(0);
   }
 
   @media only screen and (min-width: settings.$breakpoint-large) {
