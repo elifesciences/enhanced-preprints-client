@@ -3,7 +3,7 @@ import { Institution } from './institution';
 export type Author = {
   type?: 'Person'
   givenNames?: string[],
-  honorificSuffix?: string[],
+  honorificSuffix?: string,
   familyNames?: string[],
   affiliations?: Institution[],
   identifiers?: {
