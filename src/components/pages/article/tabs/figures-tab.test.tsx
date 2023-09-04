@@ -10,7 +10,7 @@ describe('FiguresTab', () => {
   it('renders every figure and table from the content', () => {
     const { container } = render(<ArticleFiguresTab content={content}/>);
 
-    const figures = Array.from(container.querySelectorAll('.article-body > [id]'));
+    const figures = Array.from(container.querySelectorAll('.article-body figure'));
     const ids = figures.map(({ id }) => id);
 
     expect(ids).toStrictEqual([

@@ -30,7 +30,11 @@
   @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
   font-family: var(--font-family-primary);
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 
   h1 {
     @include mixins.margin(0, "top");
@@ -63,4 +67,33 @@
       color: var(--color-primary);
     }
   }
+}
+
+.figure__caption--expanded {
+  -webkit-line-clamp: unset;
+}
+
+.figure__caption__button {
+  @include mixins.margin(12, "bottom");
+  @include mixins.padding(0, "left");
+  @include mixins.padding(25, "right");
+  @include typography.font-size(12);
+
+  background: url("../../../images/actions/arrow-down-blue.svg") no-repeat right -4px;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-primary);
+  font-weight: bold;
+}
+
+.figure__caption__button.expanded {
+  background: url("../../../images/actions/arrow-up-blue.svg") no-repeat right -2px;
+}
+
+.figure-container {
+  @include mixins.margin(48, "bottom");
+
+  border-bottom: 1px solid var(--divider);
 }
