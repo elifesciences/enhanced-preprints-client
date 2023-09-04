@@ -5,5 +5,5 @@ export const generateImageUrl = (contentUrl: string): string => (config.imageSer
 export const generateImageUrlSized = (contentUrl: string, size: number): string => {
   if (!config.imageServer) return contentUrl;
 
-  return `${config.imageServer}/2/${encodeURIComponent(contentUrl)}/full/${size},/0/default.jpg`
-}
+  return `${config.imageServer}/2/${encodeURIComponent(contentUrl)}/full/${size},/0/default.jpg`;
+};
