@@ -139,7 +139,14 @@ describe('Content to JSX', () => {
     });
 
     // eslint-disable-next-line @next/next/no-img-element
-    expect(result).toStrictEqual(<img loading="lazy" src="https://placekitten.com/500/300"></img>);
+    expect(result).toStrictEqual(
+      <picture>
+        <source media="(max-width: 479px)" srcSet="https://placekitten.com/500/300" />
+        <source media="(max-width: 767px)" srcSet="https://placekitten.com/500/300" />
+        <source media="(min-width: 768px)" srcSet="https://placekitten.com/500/300" />
+        <img loading="lazy" src="https://placekitten.com/500/300" alt="" />
+      </picture>,
+    );
   });
 
   it('generates the expected html when passed a ImageObject with a class', () => {
@@ -153,7 +160,14 @@ describe('Content to JSX', () => {
     });
 
     // eslint-disable-next-line @next/next/no-img-element
-    expect(result).toStrictEqual(<img loading="lazy" className="inline-image" src="https://placekitten.com/500/300"></img>);
+    expect(result).toStrictEqual(
+      <picture>
+        <source media="(max-width: 479px)" srcSet="https://placekitten.com/500/300" />
+        <source media="(max-width: 767px)" srcSet="https://placekitten.com/500/300" />
+        <source media="(min-width: 768px)" srcSet="https://placekitten.com/500/300" />
+        <img className="inline-image" loading="lazy" src="https://placekitten.com/500/300" alt="" />
+      </picture>,
+    );
   });
 
   it('allows an array of arrays to be generated', () => {
