@@ -3953,6 +3953,13 @@
       "msas": [
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.03.31.535028": {
+      "preprintDoi": "10.1101/2023.03.31.535028",
+      "msas": [
+        "Cell Biology",
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -4570,6 +4577,7 @@
     "90510": "90510v1",
     "90523": "90523v1",
     "90529": "90529v1",
+    "90541": "90541v1",
     "90600": "90600v1",
     "90606": "90606v1",
     "90627": "90627v1",
@@ -27396,6 +27404,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-07"
+          }
+        ]
+      }
+    },
+    "90541v1": {
+      "msid": "90541",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.31.535028",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.31.535028v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
