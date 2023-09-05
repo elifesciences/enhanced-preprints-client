@@ -14,14 +14,14 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <style>{`
           html {
-            scroll-behavior: smooth;
+            /* scroll-behavior: smooth; */
           }
           body {
             background-color: #fff;
             margin: 0;
           }
           [id] {
-            scroll-margin: 74px;
+            /* scroll-margin: 74px; */
           }
           `}
         </style>
