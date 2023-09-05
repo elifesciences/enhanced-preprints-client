@@ -21,10 +21,10 @@
 .jump-menu-navigation {
   border-left: 2px solid var(--color-button);
   margin: auto;
+  max-height: 80vh;
+  max-width: 69.625rem;
   overflow-x: hidden;
   overflow-y: auto;
-  max-width: 69.625rem;
-  max-height: 80vh;
 }
 
 .jump-menu-list {
