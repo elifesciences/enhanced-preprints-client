@@ -1,7 +1,8 @@
 import { Institution } from './institution';
 
 export type Author = {
-  type?: 'Person'
+  type?: 'Person' | 'Organization',
+  name?: string,
   givenNames?: string[],
   honorificSuffix?: string,
   familyNames?: string[],

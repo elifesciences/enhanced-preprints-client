@@ -66,4 +66,29 @@ export const references: Reference[] = [
       label: '2.',
     },
   },
+  {
+    type: 'Article',
+    id: 'c3',
+    authors: [
+      {
+        type: 'Organization',
+        name: 'the Brain Interfacing Laboratory',
+      },
+    ],
+    datePublished: '2021-01-01T00:00:00.000Z',
+    isPartOf: { type: 'Periodical', name: 'Jounal of Neurology' },
+    pageStart: 21,
+    title: 'The Theory of Everything',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.1101/123456',
+      },
+    ],
+    meta: {
+      label: '2.',
+    },
+  },
 ];

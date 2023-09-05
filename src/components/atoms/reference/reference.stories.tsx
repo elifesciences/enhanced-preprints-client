@@ -16,6 +16,11 @@ ReferenceStory.args = {
   reference: references[0],
 };
 
+export const ReferenceGroupStory = Template.bind({});
+ReferenceGroupStory.args = {
+  reference: references[2],
+};
+
 export const ReferenceIsReferenceList = Template.bind({});
 ReferenceIsReferenceList.args = {
   reference: references[0],

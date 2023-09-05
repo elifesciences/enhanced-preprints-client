@@ -6,7 +6,7 @@ type ReferenceBodyProps = {
   isReferenceList: boolean
 };
 
-const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
+const formatName = (author: Author) => `${author.type === 'Organization' ? author.name : `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`}`.trim();
 
 export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
