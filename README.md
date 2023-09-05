@@ -1,3 +1,12 @@
+# Prerequisites
+
+Before getting started, you should have nvm installed on your machine to get the latest version of node. Run the following commands:
+
+`nvm install`
+`nvm use`
+
+Then you can install the dependencies via running `yarn`
+
 # Getting Started with Enhanced Preprints Client
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following <https://nextjs.org/docs/migrating/from-create-react-app>
