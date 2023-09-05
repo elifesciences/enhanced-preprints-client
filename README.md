@@ -2,9 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following <https://nextjs.org/docs/migrating/from-create-react-app>
 
+## Prerequisites
+
+Before getting started, you should have nvm installed on your machine to get the latest version of node. Run the following commands:
+
+`nvm install`
+`nvm use`
+
+Then you can install the dependencies via running `yarn`
+
 ## Running the tests - `yarn test`
 
-To run the tests, run `yarn test`. 
+To run the tests, run `yarn test`.
 
 ## Linting Typescript - `yarn lint` or `yarn lint:fix`
 
@@ -37,7 +46,7 @@ NOTE: this does not affect storybook, which runs the same in either prod or dev
 
 ## Recreating an issue experienced on production
 
-When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem. 
+When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem.
 
 `API_SERVER=https://prod--epp.elifesciences.org MANUSCRIPT_CONFIG_FILE=/opt/epp-client/manuscripts.json docker compose up`
 
