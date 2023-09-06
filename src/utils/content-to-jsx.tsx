@@ -1,7 +1,7 @@
 import { Fragment, JSX } from 'react';
 import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
-import { generateImageUrl, generateImageUrlSized } from './generate-image-url';
+import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
