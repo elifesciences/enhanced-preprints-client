@@ -51,7 +51,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       return <picture key={index}>
         <source media="(max-width: 479px)" srcSet={generateImageUrlSized(content.contentUrl, 479)} />
         <source media="(max-width: 767px)" srcSet={generateImageUrlSized(content.contentUrl, 767)} />
-        <source media="(min-width: 768px)" srcSet={generateImageUrlSized(content.contentUrl, 1000)} />
+        <source media="(min-width: 768px)" srcSet={generateImageUrl(content.contentUrl)} />
         <img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} src={generateImageUrl(content.contentUrl)} alt="" />
       </picture>;
     case 'ListItem':
