@@ -21,7 +21,10 @@
 .jump-menu-navigation {
   border-left: 2px solid var(--color-button);
   margin: auto;
+  max-height: 80vh;
   max-width: 69.625rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .jump-menu-list {
@@ -38,7 +41,7 @@
   @include mixins.padding(20, "left");
 
   border-left: 2px solid var(--color-button);
-  min-width: 150px;
+  min-width: 145px;
 
   &:hover {
     border-left: 2px solid var(--color-primary);
@@ -52,7 +55,6 @@
 .jump-menu-list__item--active {
   border-left: 2px solid var(--color-primary);
   margin-bottom: 24px;
-  min-width: 150px;
 }
 
 .jump-menu-list__link {
