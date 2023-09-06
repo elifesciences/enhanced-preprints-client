@@ -32,6 +32,12 @@ describe('Reference', () => {
     expect(screen.queryByText('2843', { exact: false })).not.toBeInTheDocument();
   });
 
+  it('renders the name when an organisation is the author', () => {
+    render(<Reference reference={references[2]} isReferenceList={false} />);
+
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+  });
+
   describe('inside a reference list', () => {
     it('should be wrapped in an li if isReferenceList is true', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);

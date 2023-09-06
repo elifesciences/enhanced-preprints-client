@@ -19,7 +19,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
       <ol className="reference__authors_list">
         {reference.authors.map((author, index) => (
           <li key={index} className="reference__author">
-            {formatName(author)}
+            {author.type === 'Organization' ? author.name : formatName(author)}
           </li>
         ))}
       </ol>

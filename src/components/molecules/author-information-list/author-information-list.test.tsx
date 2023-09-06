@@ -15,13 +15,13 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Author information')).toBeInTheDocument();
   });
 
-  it.each(authors.map(getName))('renders each author in the list: %s', (name) => {
+  it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
     render(<AuthorInformationList authors={authors}/>);
 
     expect(screen.getByText(name)).toBeInTheDocument();
   });
 
-  it.each(authors.map(getAffiliationAndAuthor))(
+  it.each(authors.filter(({ type }) => type !== 'Organization').map(getAffiliationAndAuthor))(
     'renders the the affiliation: $affiliation for author: $name',
     ({ affiliation, name }) => {
       render(<AuthorInformationList authors={authors}/>);
@@ -29,6 +29,12 @@ describe('AuthorInformationList', () => {
       expect(screen.getByText(name).nextSibling).toHaveTextContent(affiliation);
     },
   );
+
+  it('renders organiizations correctly', () => {
+    render(<AuthorInformationList authors={authors}/>);
+
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+  });
 
   it('renders the authors ORCID\'s', () => {
     render(<AuthorInformationList authors={authors}/>);
