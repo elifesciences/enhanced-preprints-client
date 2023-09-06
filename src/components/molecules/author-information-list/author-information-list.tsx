@@ -8,8 +8,9 @@ const AuthorInformation = ({ author }: { author: Author }) => {
 
   return (
     <li className="author-list__author">
-      {/* eslint-disable-next-line max-len */}
-      <h4 id={createAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ? author.name : `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
+      <h4 id={createAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
+        author.name :
+        `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
