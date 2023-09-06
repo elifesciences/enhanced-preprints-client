@@ -1,4 +1,6 @@
-export const authors = [
+import { Author } from '../../types';
+
+export const authors: Author[] = [
   {
     givenNames: ['Steve'],
     familyNames: ['Rogers'],
@@ -28,4 +30,5 @@ export const authors = [
     identifiers: [{ type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5688' }],
   },
   { givenNames: ['Oliver'], familyNames: ['Queen'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Central City' } }] },
+  { type: 'Organization', name: 'the Brain Interfacing Laboratory' },
 ];

@@ -32,6 +32,12 @@ describe('authors', () => {
     expect(expansionElement).not.toBeInTheDocument();
   });
 
+  it('renders the name for an organization', () => {
+    render(<Authors authors={authors}/>);
+
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+  });
+
   it.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
