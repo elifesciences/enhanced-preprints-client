@@ -49,9 +49,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       }
       // eslint-disable-next-line @next/next/no-img-element
       return <picture key={index}>
-        <source media="(max-width: 479px)" srcSet={generateImageUrlSized(content.contentUrl, 479)} />
-        <source media="(max-width: 767px)" srcSet={generateImageUrlSized(content.contentUrl, 767)} />
-        <source media="(min-width: 768px)" srcSet={generateImageUrl(content.contentUrl)} />
+        <source srcSet={generateImageUrl(content.contentUrl)} />
         <img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} src={generateImageUrl(content.contentUrl)} alt="" />
       </picture>;
     case 'ListItem':
