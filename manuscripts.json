@@ -4007,6 +4007,13 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2022.08.31.506009": {
+      "preprintDoi": "10.1101/2022.08.31.506009",
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -4455,6 +4462,7 @@
     "88895": "88895v1",
     "88900": "88900v1",
     "88905": "88905v1",
+    "88916": "88916v1",
     "88919": "88919v1",
     "88936": "88936v1",
     "88939": "88939v1",
@@ -27870,6 +27878,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-03"
+          }
+        ]
+      }
+    },
+    "88916v1": {
+      "msid": "88916",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.08.31.506009",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-08",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-02",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.08.31.506009v3/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
