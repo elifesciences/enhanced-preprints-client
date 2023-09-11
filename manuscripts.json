@@ -4014,6 +4014,13 @@
         "Chromosomes and Gene Expression",
         "Developmental Biology"
       ]
+    },
+    "10.1101/2023.05.31.543071": {
+      "preprintDoi": "10.1101/2023.05.31.543071",
+      "msas": [
+        "Cell Biology",
+        "Chromosomes and Gene Expression"
+      ]
     }
   },
   "manuscripts": {
@@ -4648,6 +4655,7 @@
     "90773": "90773v1",
     "90795": "90795v1",
     "90818": "90818v1",
+    "90887": "90887v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -27952,6 +27960,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-03-08"
+          }
+        ]
+      }
+    },
+    "90887v1": {
+      "msid": "90887",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.31.543071",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-17"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-01",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.31.543071v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
