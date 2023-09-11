@@ -24,7 +24,7 @@ export const Authors = ({ authors }: { authors: Author[] }) => {
             <a href={`#${createAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
               {author.type === 'Organization' ?
                 author.name :
-                `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}
+                `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}
               {author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
             </a>
           </li>

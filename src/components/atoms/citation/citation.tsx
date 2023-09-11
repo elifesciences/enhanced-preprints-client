@@ -11,14 +11,14 @@ export type CitationData = {
   doi: string,
 };
 
-const formatName = (author: Author) => `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}`;
+const formatName = (author: Author) => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
 
 export const Citation = ({ citation }: { citation: CitationData }) => (
   <div className="citation">
     <ol className="citation__authors_list">
       {citation.authors.map((author, index) => (
         <li key={index} className="citation__author">
-          {formatName(author)}
+          {author.type === 'Organization' ? author.name : formatName(author)}
         </li>
       ))}
     </ol>
