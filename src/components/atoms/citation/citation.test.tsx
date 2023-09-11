@@ -4,7 +4,7 @@ import { authors, citation } from '../../../utils/mocks';
 import { Author } from '../../../types';
 
 describe('Citation', () => {
-  const authorNames = authors.map((author: Author) => `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}`);
+  const authorNames = authors.map((author: Author) => `${author.type === 'Organization' && author.name ? author.name : `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`}`);
 
   it.each(authorNames)('renders author: %s', (author) => {
     render(<Citation citation={citation} />);

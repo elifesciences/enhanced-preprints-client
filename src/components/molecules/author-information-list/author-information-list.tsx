@@ -10,7 +10,7 @@ const AuthorInformation = ({ author }: { author: Author }) => {
     <li className="author-list__author">
       <h4 id={createAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
-        `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
+        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
