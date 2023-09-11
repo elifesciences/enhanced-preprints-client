@@ -4086,7 +4086,7 @@
     "86695": "86695v1",
     "86699": "86699v2",
     "86700": "86700v1",
-    "86721": "86721v1",
+    "86721": "86721v2",
     "86722": "86722v1",
     "86725": "86725v1",
     "86727": "86727v1",
@@ -11190,7 +11190,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-09-11",
+            "link": {
+              "url": "/reviewed-preprints/86721v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-05",
             "eventDescription": "(this version)"
           },
@@ -27907,6 +27915,43 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.08.31.506009v3/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "86721v2": {
+      "msid": "86721",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.30.526367",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-09-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-05",
+            "link": {
+              "url": "/reviewed-preprints/86721v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-09",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.30.526367v2",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-08"
           }
         ]
       }
