@@ -4214,8 +4214,8 @@
         "Cell Biology"
       ]
     },
-    "10.48550/2301.0075": {
-      "preprintDoi": "10.48550/2301.0075",
+    "10.48550/2301.00759": {
+      "preprintDoi": "10.48550/2301.00759",
       "msas": [
         "Neuroscience",
         "Physics of Living Systems"
@@ -4828,7 +4828,7 @@
     "89908": "89908v1",
     "89911": "89911v1",
     "89918": "89918v1",
-    "89926": "89926v2",
+    "89926": "89926v1",
     "89936": "89936v1",
     "89938": "89938v1",
     "89941": "89941v1",
@@ -4872,7 +4872,6 @@
     "90387": "90387v1",
     "90392": "90392v1",
     "90400": "90400v1",
-    "90422": "90422v1",
     "90456": "90456v1",
     "90466": "90466v1",
     "90509": "90509v1",
@@ -28874,54 +28873,9 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint version 2",
-            "date": "2023-09-12",
-            "link": {
-              "url": "/reviewed-preprints/89926v2",
-              "text": "Go to version"
-            }
-          },
-          {
             "name": "Reviewed preprint version 1",
             "date": "2023-09-12",
             "eventDescription": "(this version)"
-          },
-          {
-            "name": "Sent for peer review",
-            "date": "2023-07-11"
-          },
-          {
-            "name": "Posted to bioRxiv",
-            "date": "2023-06-08",
-            "link": {
-              "url": "https://www.biorxiv.org/content/10.1101/2022.11.17.516962v3/",
-              "text": "Go to bioRxiv"
-            }
-          }
-        ]
-      }
-    },
-    "89926v2": {
-      "msid": "89926",
-      "version": 2,
-      "publishedYear": 2023,
-      "preprintDoi": "10.1101/2022.11.17.516962",
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Revised by authors after peer review.",
-        "timeline": [
-          {
-            "name": "Reviewed preprint version 2",
-            "date": "2023-09-12",
-            "eventDescription": "(this version)"
-          },
-          {
-            "name": "Reviewed preprint version 1",
-            "date": "2023-09-12",
-            "link": {
-              "url": "/reviewed-preprints/89926v1",
-              "text": "Go to version"
-            }
           },
           {
             "name": "Sent for peer review",
@@ -29480,7 +29434,7 @@
       "msid": "89337",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.48550/2301.0075",
+      "preprintDoi": "10.48550/2301.00759",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
