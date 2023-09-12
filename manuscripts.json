@@ -4189,6 +4189,12 @@
         "Computational and Systems Biology",
         "Medicine"
       ]
+    },
+    "10.1101/2023.05.10.539968": {
+      "preprintDoi": "10.1101/2023.05.10.539968",
+      "msas": [
+        "Plant Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -4717,6 +4723,7 @@
     "89330": "89330v1",
     "89331": "89331v2",
     "89338": "89338v1",
+    "89353": "89353v1",
     "89356": "89356v1",
     "89362": "89362v1",
     "89366": "89366v1",
@@ -29280,6 +29287,35 @@
             "date": "2023-02-14",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.13.528292v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89353v1": {
+      "msid": "89353",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.10.539968",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.10.539968v1/",
               "text": "Go to bioRxiv"
             }
           }
