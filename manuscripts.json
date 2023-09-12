@@ -4176,6 +4176,12 @@
         "Developmental Biology",
         "Immunology and Inflammation"
       ]
+    },
+    "10.1101/2022.02.16.480740": {
+      "preprintDoi": "10.1101/2022.02.16.480740",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -4801,6 +4807,7 @@
     "90095": "90095v1",
     "90100": "90100v1",
     "90107": "90107v1",
+    "90111": "90111v1",
     "90135": "90135v1",
     "90139": "90139v1",
     "90184": "90184v1",
@@ -29164,6 +29171,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-09"
+          }
+        ]
+      }
+    },
+    "90111v1": {
+      "msid": "90111",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.02.16.480740",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-19"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.02.16.480740v3/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
