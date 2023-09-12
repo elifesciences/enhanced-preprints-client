@@ -4838,6 +4838,7 @@
     "90254": "90254v1",
     "90278": "90278v1",
     "90290": "90290v1",
+    "90313": "90313v1",
     "90333": "90333v1",
     "90363": "90363v1",
     "90387": "90387v1",
@@ -29348,6 +29349,35 @@
             "date": "2023-07-25",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.07.21.549992v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-29"
+          }
+        ]
+      }
+    },
+    "90313v1": {
+      "msid": "90313",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.21.549992",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.25.550597v1/",
               "text": "Go to bioRxiv"
             }
           },
