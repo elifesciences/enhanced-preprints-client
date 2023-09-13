@@ -4240,6 +4240,12 @@
         "Biochemistry and Chemical Biology",
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2023.06.03.23290935": {
+      "preprintDoi": "10.1101/2023.06.03.23290935",
+      "msas": [
+        "Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -4683,6 +4689,7 @@
     "88836": "88836v1",
     "88837": "88837v1",
     "88838": "88838v1",
+    "88841": "88841v1",
     "88849": "88849v1",
     "88855": "88855v1",
     "88863": "88863v1",
@@ -29558,6 +29565,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-13"
+          }
+        ]
+      }
+    },
+    "88841v1": {
+      "msid": "88841",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.03.23290935",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-05",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.06.03.23290935v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "023-05-25"
           }
         ]
       }
