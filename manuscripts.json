@@ -4267,6 +4267,12 @@
       "msas": [
         "Plant Biology"
       ]
+    },
+    "10.1101/2023.06.14.544980": {
+      "preprintDoi": "10.1101/2023.06.14.544980",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -4909,6 +4915,7 @@
     "90217": "90217v1",
     "90230": "90230v1",
     "90254": "90254v1",
+    "90261": "90261v1",
     "90278": "90278v1",
     "90290": "90290v1",
     "90309": "90309v1",
@@ -29750,6 +29757,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-02"
+          }
+        ]
+      }
+    },
+    "90261v1": {
+      "msid": "90261",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.14.544980",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-21"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.14.544980v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
