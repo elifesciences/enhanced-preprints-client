@@ -4246,6 +4246,9 @@
       "msas": [
         "Medicine"
       ]
+    },
+    "2023.01.27.23284540": {
+      "preprintDoi": "2023.01.27.23284540"
     }
   },
   "manuscripts": {
@@ -4628,7 +4631,7 @@
     "88521": "88521v2",
     "88523": "88523v2",
     "88525": "88525v1",
-    "88538": "88538v1",
+    "88538": "88538v2",
     "88540": "88540v1",
     "88551": "88551v1",
     "88559": "88559v1",
@@ -15381,7 +15384,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-09-14",
+            "link": {
+              "url": "/reviewed-preprints/88538v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-28",
             "eventDescription": "(this version)"
           },
@@ -29594,6 +29605,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-25"
+          }
+        ]
+      }
+    },
+    "88538v2": {
+      "msid": "88538",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "2023.01.27.23284540",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-09-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-28",
+            "link": {
+              "url": "/reviewed-preprints/88538v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-22"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-01-28",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.01.27.23284540v1",
+              "text": "Go to medRxiv"
+            }
           }
         ]
       }
