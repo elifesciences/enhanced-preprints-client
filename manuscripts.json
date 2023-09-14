@@ -4247,9 +4247,6 @@
         "Medicine"
       ]
     },
-    "2023.01.27.23284540": {
-      "preprintDoi": "2023.01.27.23284540"
-    },
     "10.1101/2021.07.22.453410": {
       "preprintDoi": "10.1101/2021.07.22.453410",
       "msas": [
@@ -29657,7 +29654,7 @@
       "msid": "88538",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "2023.01.27.23284540",
+      "preprintDoi": "10.1101/2023.01.27.23284540",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
