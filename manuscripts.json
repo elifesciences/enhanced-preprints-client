@@ -4280,6 +4280,13 @@
         "Cell Biology",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.07.18.549566": {
+      "preprintDoi": "10.1101/2023.07.18.549566",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -4920,6 +4927,7 @@
     "90184": "90184v1",
     "90214": "90214v1",
     "90217": "90217v1",
+    "90221": "90221v1",
     "90230": "90230v1",
     "90254": "90254v1",
     "90261": "90261v1",
@@ -29823,6 +29831,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-30"
+          }
+        ]
+      }
+    },
+    "90221v1": {
+      "msid": "90221",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.18.549566",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-14",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.18.549566v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-19"
           }
         ]
       }
