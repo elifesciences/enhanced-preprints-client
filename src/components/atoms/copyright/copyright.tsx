@@ -1,7 +1,9 @@
 import './copyright.scss';
 
-const copyright = "https://bbc.co.uk";
+type Props = {
+  license: string
+};
 
-export const Copyright = () => {
-  return copyright;
+export const Copyright = ( { license }: Props) => {
+  return license
 };
