@@ -13,7 +13,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
     { id: 'abstract', text: 'Abstract' },
     ...contentToHeadings(props.content),
     { id: 'references', text: 'References' },
-    { id: 'author-list', text: 'Author Information' },
+    { id: 'author-list', text: 'Article and Author Information' },
   ];
 
   if (props.peerReview !== undefined) {

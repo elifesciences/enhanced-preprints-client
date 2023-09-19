@@ -1,9 +1,9 @@
 import './copyright.scss';
 
-type Props = {
+type Copyright = {
   license: string
 };
 
-export const Copyright = ( { license }: Props) => {
-  return license
+export const Copyright = ({ license }: Copyright) => {
+  return <p>{license}</p>;
 };
