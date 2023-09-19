@@ -11,9 +11,15 @@ Before getting started, you should have nvm installed on your machine to get the
 
 Then you can install the dependencies via running `yarn`
 
-## Running the tests - `yarn test`
+## Running the unit tests
 
-To run the tests, run `yarn test`.
+To run the unit tests, run `yarn test`.
+
+## Running the browser tests
+
+To run the browser tests, bring up the application with `docker compose -f docker-compose.browsertest.yaml up -d --wait`.
+
+When the application is up, run `yarn test:browser`.
 
 ## Linting Typescript - `yarn lint` or `yarn lint:fix`
 
