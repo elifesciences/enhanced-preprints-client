@@ -5,5 +5,19 @@ type Copyright = {
 };
 
 export const Copyright = ({ license }: Copyright) => {
-  return (<div>2023 A Name <p>{license}</p></div>);
+  let text;
+
+  if (license && license.includes('/by/')) {
+    text = 'by';
+  } else if (license && license.includes('/zero/')) {
+    text = 'zero';
+  } else {
+    text = 'Default Text';
+  }
+
+  return (
+    <div>
+      2023 A Name <p>{text}</p>
+    </div>
+  );
 };

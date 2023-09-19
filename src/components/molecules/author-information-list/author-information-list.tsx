@@ -4,7 +4,7 @@ import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 
-const AuthorInformation = ({ author, license }: { author: Author }) => {
+const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
 
   return (
@@ -36,7 +36,7 @@ const AuthorInformation = ({ author, license }: { author: Author }) => {
 export const AuthorInformationList = ({ authors, enhancedArticle }: { authors: Author[], enhancedArticle: EnhancedArticleWithVersions }) => (
   <section id="author-list" className="author-list">
     <h2 id="author-information" className="author-list__title">Article and author information</h2>
-    { true && (<Copyright license={enhancedArticle.article.license} />)}
+    { true && (<Copyright license={'https://creativecommons.org/licenses/by/4.0/'} />)}
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
