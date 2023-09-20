@@ -113,7 +113,6 @@ export type EnhancedArticle = {
   eLocationId?: string,
   subjects?: string[],
   pdfUrl?: string,
-  license?: string,
 };
 
 export type EnhancedArticleWithVersions = {

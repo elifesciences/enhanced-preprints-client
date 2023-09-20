@@ -4,9 +4,7 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
-import {
-  Content, MetaData, PeerReview, EnhancedArticleWithVersions,
-} from '../../types';
+import { Content, MetaData, PeerReview } from '../../types';
 import {
   fetchContent, fetchMetadata, fetchReviews, fetchVersion,
 } from '../../utils/fetch-data';
@@ -24,7 +22,6 @@ type PageProps = {
   status: ArticleStatusProps,
   content: Content,
   peerReview: PeerReview | null,
-  enhancedArticle: EnhancedArticleWithVersions | null,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -57,8 +54,7 @@ export const Page = (props: PageProps) => {
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
-      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} enhancedArticle={props.enhancedArticle ?? undefined} peerReview={props.peerReview ?? undefined}
-        peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -159,24 +155,23 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           isPreview: status.isPreview,
         },
         peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-        enhancedArticle: articleWithVersions,
       },
     };
   }
 
   const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
+  console.log(`manuscriptConfig ${JSON.stringify(manuscriptConfig)}`);
 
   if (manuscriptConfig === undefined) {
     console.log(`Cannot find msid '${id}' configured`); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const [metaData, content, peerReview, status, enhancedArticle] = await Promise.all([
+  const [metaData, content, peerReview, status] = await Promise.all([
     fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
     manuscriptConfig.status,
-    null,
   ]);
 
   return {
@@ -190,6 +185,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         publishedYear: manuscriptConfig.publishedYear,
         volume: `${manuscriptConfig.publishedYear - 2011}`,
         eLocationId: `RP${manuscriptConfig.msid}`,
+        license: manuscriptConfig.license || 'https://creativecommons.org/licenses/by/4.0/',
       },
       msidWithVersion: id,
       content,
@@ -198,7 +194,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         isPreview: false,
       },
       peerReview,
-      enhancedArticle,
     },
   };
 };

@@ -13,6 +13,7 @@ type ManuscriptConfig = {
   preprintDoi: string,
   publishedYear: number,
   pdfUrl?: string,
+  license?: string,
 };
 
 export type FullManuscriptConfig = ReviewedPreprintConfig & ManuscriptConfig;

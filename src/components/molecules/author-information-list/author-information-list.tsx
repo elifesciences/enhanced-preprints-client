@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Author, EnhancedArticleWithVersions } from '../../../types';
+import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
@@ -33,14 +33,12 @@ const AuthorInformation = ({ author }: { author: Author }) => {
   );
 };
 
-// 'https://creativecommons.org/licenses/by/4.0/';
-
-export const AuthorInformationList = ({ authors, enhancedArticle }: { authors: Author[], enhancedArticle?: EnhancedArticleWithVersions }) => (
+export const AuthorInformationList = ({ authors, license }: { authors: Author[], license?: string }) => (
   <section id="author-list" className="author-list">
     <h2 id="author-information" className="author-list__title">Article and author information</h2>
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
-    { true && (<Copyright license={enhancedArticle?.article?.license} />)}
+    { true && (<Copyright license={license} />)}
   </section>
 );
