@@ -112,6 +112,7 @@ export type EnhancedArticle = {
   volume?: string,
   eLocationId?: string,
   subjects?: string[],
+  pdfUrl?: string,
   license?: string,
 };
 
