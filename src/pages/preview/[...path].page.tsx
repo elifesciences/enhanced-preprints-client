@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { config } from '../../config';
 import { Content } from '../../types/content';
-import { fetchContent, fetchMetadata, fetchVersion } from '../../utils/fetch-data';
+import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
 import { MetaData, EnhancedArticleWithVersions } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';

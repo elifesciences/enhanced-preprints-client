@@ -5,11 +5,12 @@ import { Abstract } from '../../../atoms/abstract/abstract';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
-import { Content, MetaData, PeerReview, EnhancedArticleWithVersions } from '../../../../types';
+import {
+  Content, MetaData, PeerReview, EnhancedArticleWithVersions,
+} from '../../../../types';
 import { contentToHeadings } from '../../../../utils/content-to-headings';
-import { metaData } from '../../../../utils/mocks';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, enhancedArticle?: EnhancedArticleWithVersions}) => {
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, enhancedArticle?: EnhancedArticleWithVersions }) => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...contentToHeadings(props.content),
