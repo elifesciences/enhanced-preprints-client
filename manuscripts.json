@@ -4423,6 +4423,13 @@
         "Cell Biology",
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.05.02.538537": {
+      "preprintDoi": "10.1101/2023.05.02.538537",
+      "msas": [
+        "Computational and Systems Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -5059,6 +5066,7 @@
     "90029": "90029v1",
     "90049": "90049v1",
     "90050": "90050v1",
+    "90061": "90061v1",
     "90070": "90070v1",
     "90073": "90073v1",
     "90080": "90080v1",
@@ -31196,6 +31204,35 @@
             "date": "2023-06-16",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.19.537519v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90061v1": {
+      "msid": "90061",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.02.538537",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-20",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-28"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-02",
+            "link": {
+              "url": "2023-05-02",
               "text": "Go to bioRxiv"
             }
           }
