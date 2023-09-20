@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { config } from '../../config';
 import { Content } from '../../types/content';
-import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
-import { MetaData } from '../../types';
+import { fetchContent, fetchMetadata, fetchVersion } from '../../utils/fetch-data';
+import { MetaData, EnhancedArticleWithVersions } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 
@@ -13,6 +13,7 @@ type PageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
+  enhancedArticle: EnhancedArticleWithVersions | null,
 };
 
 export const Page = (props: PageProps) => {
@@ -27,7 +28,7 @@ export const Page = (props: PageProps) => {
 
   let childTab;
   if (tab === 'fulltext') {
-    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData}></ArticleFullTextTab>;
+    childTab = <ArticleFullTextTab content={props.content} metaData={props.metaData} enhancedArticle={props.enhancedArticle ?? undefined}></ArticleFullTextTab>;
   } else {
     childTab = <ArticleFiguresTab content={props.content}></ArticleFiguresTab>;
   }
@@ -65,9 +66,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const [metaData, content] = await Promise.all([
+  const [metaData, content, enhancedArticle] = await Promise.all([
     fetchMetadata(id),
     fetchContent(id),
+    null,
   ]);
 
   return {
@@ -90,6 +92,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         ],
         isPreview: true,
       },
+      enhancedArticle,
     },
   };
 };
