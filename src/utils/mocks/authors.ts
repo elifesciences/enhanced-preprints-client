@@ -31,5 +31,10 @@ export const authors: Author[] = [
   },
   { givenNames: ['Oliver'], familyNames: ['Queen'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Central City' } }] },
   { type: 'Organization', name: 'the Brain Interfacing Laboratory' },
-  { givenNames: ['Robert', 'John'], familyNames: ['Downey'], honorificSuffix: 'Jr.' },
+  {
+    givenNames: ['Robert', 'John'],
+    familyNames: ['Downey'],
+    honorificSuffix: 'Jr.',
+    affiliations: [{ name: 'Marvel Studios', address: { addressCountry: 'California' } }],
+  },
 ];
