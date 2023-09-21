@@ -99,7 +99,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
         <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
         <meta name="citation_language" content="en"/>
-        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim()} />)}
+        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={`${author.givenNames ? author.givenNames?.join(' ') : ''} ${author.familyNames ? author.familyNames?.join(' ') : ''}`.trim()} />)}
       </Head>
       <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
