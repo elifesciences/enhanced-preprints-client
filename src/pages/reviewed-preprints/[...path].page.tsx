@@ -37,7 +37,6 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
 };
 
 const authorMetadataString = (author: Author) => `${author.givenNames ? author.givenNames?.join(' ') : ''} ${author.familyNames ? author.familyNames?.join(' ') : ''}`.trim();
-const authorMetadataStringReversed = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
 export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
@@ -104,8 +103,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
         <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
         <meta name="citation_language" content="en"/>
-        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={
-          config.correctOrderAuthorMetadata ? authorMetadataString(author) : authorMetadataStringReversed(author)} />)}
+        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={authorMetadataString(author)} />)}
       </Head>
       <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
