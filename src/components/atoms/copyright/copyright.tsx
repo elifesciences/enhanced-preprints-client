@@ -1,10 +1,13 @@
+import { Author } from '../../../types';
 import './copyright.scss';
 
 type CopyrightProps = {
   license?: string,
+  year?: number,
+  author?: Author,
 };
 
-export const Copyright = ({ license }: CopyrightProps) => {
+export const Copyright = ({ license, year, author }: CopyrightProps) => {
   let text = 'Default Text';
   let hasCopyright = false;
 
@@ -20,11 +23,20 @@ export const Copyright = ({ license }: CopyrightProps) => {
   }
 
   const renderHTML = () => ({ __html: text });
+  let authorName: string | undefined;
+
+  if (author) {
+    if (author.type === 'Organization') {
+      authorName = author.name;
+    } else {
+      authorName = `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`;
+    }
+  }
 
   return (
     <div className="copyright">
       <h3>Copyright</h3>
-      {hasCopyright && <p>© 2023, Blanch-Lombarte et al.</p>}
+      {hasCopyright && <p>{year && `© ${year},`}{authorName && ` ${authorName} et al.`}</p>}
       <p dangerouslySetInnerHTML={renderHTML()}></p>
     </div>
   );
