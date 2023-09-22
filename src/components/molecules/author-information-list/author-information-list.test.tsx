@@ -4,7 +4,7 @@ import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
 import { authors } from '../../../utils/mocks';
 
-const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join()} ${familyNames && familyNames.join()}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
+const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 

@@ -17,6 +17,7 @@ import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
+import { formatAuthorName } from '../../utils/format-author-name';
 
 type PageProps = {
   metaData: MetaData
@@ -36,7 +37,6 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-const authorMetadataString = (author: Author) => `${author.givenNames ? author.givenNames?.join(' ') : ''} ${author.familyNames ? author.familyNames?.join(' ') : ''}`.trim();
 const authorMetadataStringReversed = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
 export const Page = (props: PageProps) => {
@@ -105,7 +105,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_fulltext_html_url" content={`https://elifesciences.org/reviewed-preprints/${props.metaData.msid}`}/>
         <meta name="citation_language" content="en"/>
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={
-          config.correctOrderAuthorMetadata ? authorMetadataString(author) : authorMetadataStringReversed(author)} />)}
+          config.correctOrderAuthorMetadata ? formatAuthorName(author) : authorMetadataStringReversed(author)} />)}
       </Head>
       <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
