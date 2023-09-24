@@ -2,9 +2,8 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { config } from '../../config';
-import { Content } from '../../types/content';
+import { Content, MetaData } from '../../types';
 import { fetchContent, fetchMetadata } from '../../utils/fetch-data';
-import { MetaData } from '../../types';
 import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 
