@@ -5,9 +5,9 @@ import { authors } from '../../../utils/mocks';
 describe('Copyright Component', () => {
   it('renders correct text for Creative Commons Attribution License', () => {
     const license = 'https://creativecommons.org/licenses/by/4.0/';
-    const year = 2023;
+    const publishedYear = 2023;
 
-    const { getByText } = render(<Copyright license={license} year={year} author={authors[0]} />);
+    const { getByText } = render(<Copyright license={license} publishedYear={publishedYear} author={authors[0]} />);
 
     const attributionText = getByText(/This article is distributed under the terms of the/);
     expect(attributionText).toBeInTheDocument();
