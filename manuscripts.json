@@ -1,12 +1,5 @@
 {
   "preprints": {
-    "89453": {
-      "preprintDoi": "89453",
-      "msas": [
-        "Cell Biology",
-        "Neuroscience"
-      ]
-    },
     "10.1101/2023.04.12.536585": {
       "preprintDoi": "10.1101/2023.04.12.536585",
       "msas": [
@@ -4454,6 +4447,13 @@
       "preprintDoi": "10.1101/2023.08.13.553136",
       "msas": [
         "Structural Biology and Molecular Biophysics"
+      ]
+    },
+    "10.1101/2022.06.16.495307": {
+      "preprintDoi": "10.1101/2022.06.16.495307",
+      "msas": [
+        "Cell Biology",
+        "Neuroscience"
       ]
     },
     "10.1101/2023.05.08.539789": {
@@ -31789,7 +31789,7 @@
       "msid": "89453",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "89453",
+      "preprintDoi": "10.1101/2022.06.16.495307",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
