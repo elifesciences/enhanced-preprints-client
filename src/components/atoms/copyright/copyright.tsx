@@ -40,7 +40,7 @@ export const Copyright = ({ license, year, author }: CopyrightProps) => {
   return (
     <div className="copyright">
       <h3>Copyright</h3>
-      {hasCopyright && <p>{`© ${year ?? new Date().getFullYear()}`}{authorName && `, ${authorName} et al.`}</p>}
+      {hasCopyright && <p>{year && `© ${year},`}{authorName && ` ${authorName} et al.`}</p>}
       <p>{copyrightText}</p>
     </div>
   );
