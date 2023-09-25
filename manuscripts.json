@@ -31766,14 +31766,6 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Posted to bioRxiv",
-            "date": "2023-09-26",
-            "link": {
-              "url": "https://www.biorxiv.org/content/10.1101/2023.05.08.539789v1/",
-              "text": "Go to bioRxiv"
-            }
-          },
-          {
             "name": "Reviewed preprint posted",
             "date": "2023-09-25",
             "eventDescription": "(this version)"
@@ -31781,6 +31773,14 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-04"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.08.539789v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
