@@ -10,7 +10,7 @@ type CopyrightProps = {
 export const Copyright = ({ license, year, author }: CopyrightProps) => {
   let copyrightText = (
     <>
-      This article is distributed under the terms of the <a href={license}>Creative Commons Attribution License</a>,which
+      This article is distributed under the terms of the <a href={license}>Creative Commons Attribution License</a>, which
       permits unrestricted use and redistribution provided that the original author and source are credited.
     </>
   );
