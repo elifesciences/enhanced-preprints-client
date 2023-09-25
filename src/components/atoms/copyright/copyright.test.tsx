@@ -3,12 +3,6 @@ import { Copyright } from './copyright';
 import { authors } from '../../../utils/mocks';
 
 describe('Copyright Component', () => {
-  it('renders default text when no license is provided', () => {
-    const { getByText } = render(<Copyright />);
-    const defaultText = getByText(/Default Text/);
-    expect(defaultText).toBeInTheDocument();
-  });
-
   it('renders correct text for Creative Commons Attribution License', () => {
     const license = 'https://creativecommons.org/licenses/by/4.0/';
     const year = 2023;

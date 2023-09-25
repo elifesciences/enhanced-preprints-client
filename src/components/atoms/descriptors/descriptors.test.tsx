@@ -20,7 +20,7 @@ describe('Descriptors', () => {
   });
 
   it('should hide the icon descriptions', () => {
-    render(<Descriptors doi={doi}/>);
+    render(<Descriptors doi={doi} license={license}/>);
 
     expect(screen.getByText('Open access')).toHaveClass('visuallyhidden');
     expect(screen.getByText('Copyright information')).toHaveClass('visuallyhidden');

@@ -13,7 +13,7 @@ export const Descriptors = ({ doi, license }: { doi: string, license?: string })
           <span className="visuallyhidden">Open access</span>
         </a>
       </li>
-      {license && 
+      {license &&
         <li>
           <a href={license} className={'descriptors__icon descriptors__icon--cc'}>
             <span className="visuallyhidden">Copyright information</span>

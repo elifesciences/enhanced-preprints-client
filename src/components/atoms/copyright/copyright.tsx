@@ -8,19 +8,26 @@ type CopyrightProps = {
 };
 
 export const Copyright = ({ license, year, author }: CopyrightProps) => {
-  let copyrightText = `This article is distributed under the terms of the <a href=${license}>Creative Commons Attribution License</a>, which 
-  permits unrestricted use and redistribution provided that the original author and source are credited.`;
+  let copyrightText = (
+    <>
+      This article is distributed under the terms of the <a href={license}>Creative Commons Attribution License</a>,which
+      permits unrestricted use and redistribution provided that the original author and source are credited.
+    </>
+  );
+
   let hasCopyright = true;
+  let authorName: string | undefined;
 
   if (license?.length && license.includes('/zero/')) {
-    copyrightText = `This is an open-access article, free of all copyright, and may be freely reproduced, distributed, transmitted, modified, 
-    built upon, or otherwise used by anyone for any lawful purpose. The work is made available under the <a href=${license}>
-    Creative Commons CC0 public domain dedication</a>.`;
+    copyrightText = (
+      <>
+        This is an open-access article, free of all copyright, and may be freely reproduced, distributed, transmitted, modified, built upon, or
+        otherwise used by anyone for any lawful purpose. The work is made available under the <a href={license}>Creative Commons CC0 public domain dedication</a>.
+      </>
+    );
+
     hasCopyright = false;
   }
-
-  const renderHTML = () => ({ __html: copyrightText });
-  let authorName: string | undefined;
 
   if (author) {
     if (author.type === 'Organization') {
@@ -34,7 +41,7 @@ export const Copyright = ({ license, year, author }: CopyrightProps) => {
     <div className="copyright">
       <h3>Copyright</h3>
       {hasCopyright && <p>{year && `© ${year},`}{authorName && ` ${authorName} et al.`}</p>}
-      <p dangerouslySetInnerHTML={renderHTML()}></p>
+      <p>{copyrightText}</p>
     </div>
   );
 };
