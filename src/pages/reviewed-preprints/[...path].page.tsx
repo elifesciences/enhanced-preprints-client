@@ -135,6 +135,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // FEATURE FLAG
   if (config.automationFlag) {
     const articleWithVersions = await fetchVersion(id);
+
+    if (!articleWithVersions) {
+      console.log(`Article version not found (${id})`); // eslint-disable-line no-console
+      return { notFound: true };
+    }
+
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
 
