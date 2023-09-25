@@ -1,6 +1,6 @@
 import './descriptors.scss';
 
-export const Descriptors = ({ doi }: { doi:string }) => (
+export const Descriptors = ({ doi, license }: { doi: string, license?: string }) => (
   <div className="descriptors">
     <ul className="descriptors__identifiers">
       <li className="descriptors__identifier">
@@ -14,7 +14,7 @@ export const Descriptors = ({ doi }: { doi:string }) => (
         </a>
       </li>
       <li>
-        <a href="https://creativecommons.org/licenses/by/4.0/" className={'descriptors__icon descriptors__icon--cc'}>
+        <a href={license ?? 'https://creativecommons.org/licenses/by/4.0/'} className={'descriptors__icon descriptors__icon--cc'}>
           <span className="visuallyhidden">Copyright information</span>
         </a>
       </li>
