@@ -33,12 +33,12 @@ const AuthorInformation = ({ author }: { author: Author }) => {
   );
 };
 
-export const AuthorInformationList = ({ authors, license, year }: { authors: Author[], license?: string, year?: number }) => (
+export const AuthorInformationList = ({ authors, license, publishedYear }: { authors: Author[], license?: string, publishedYear?: number }) => (
   <section id="author-list" className="author-list">
     <h2 id="author-information" className="author-list__title">Article and author information</h2>
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
-    { license && (<Copyright license={license} year={year} author={authors[0]} />)}
+    { license && (<Copyright license={license} publishedYear={publishedYear} author={authors[0]} />)}
   </section>
 );

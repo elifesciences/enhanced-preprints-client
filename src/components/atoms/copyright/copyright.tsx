@@ -3,11 +3,11 @@ import './copyright.scss';
 
 type CopyrightProps = {
   license?: string,
-  year?: number,
+  publishedYear?: number,
   author?: Author,
 };
 
-export const Copyright = ({ license, year, author }: CopyrightProps) => {
+export const Copyright = ({ license, publishedYear, author }: CopyrightProps) => {
   let copyrightText = (
     <>
       This article is distributed under the terms of the <a href={license}>Creative Commons Attribution License</a>, which
@@ -40,7 +40,7 @@ export const Copyright = ({ license, year, author }: CopyrightProps) => {
   return (
     <div className="copyright">
       <h3>Copyright</h3>
-      {hasCopyright && <p>{year && `© ${year},`}{authorName && ` ${authorName} et al.`}</p>}
+      {hasCopyright && <p>{publishedYear && `© ${publishedYear},`}{authorName && ` ${authorName} et al.`}</p>}
       <p>{copyrightText}</p>
     </div>
   );

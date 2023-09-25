@@ -28,7 +28,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
         { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
-        <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} year={props.metaData.publishedYear} />
+        <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
       </div>
     </div>
   );
