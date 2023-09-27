@@ -27,6 +27,6 @@ describe('ContentHeader', () => {
     expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
     expect(screen.getByText('title')).toBeInTheDocument();
     expect(screen.getByText('Copyright information').parentElement).toHaveAttribute('href');
-    expect(screen.getByText('Copyright information').parentElement?.getAttribute('href')).toStrictEqual('license');
+    expect(screen.getByText('Copyright information').parentElement?.getAttribute('href')).toStrictEqual('#copyright');
   });
 });

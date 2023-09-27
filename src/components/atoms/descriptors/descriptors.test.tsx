@@ -16,13 +16,13 @@ describe('Descriptors', () => {
 
     expect(screen.getByText(`https://doi.org/${doi}`)).toHaveAttribute('href', 'https://doi.org/10.1101/24601');
     expect(screen.getByText('Open access').parentElement).toHaveAttribute('href', 'https://en.wikipedia.org/wiki/Open_access');
-    expect(screen.getByText('Copyright information').parentElement).toHaveAttribute('href', license);
+    expect(screen.getByText('Copyright information').parentElement).toHaveAttribute('href', '#copyright');
   });
 
   it('should hide the icon descriptions', () => {
-    render(<Descriptors doi={doi} license={license}/>);
+    render(<Descriptors doi={doi}/>);
 
     expect(screen.getByText('Open access')).toHaveClass('visuallyhidden');
-    expect(screen.getByText('Copyright information')).toHaveClass('visuallyhidden');
+    expect(screen.queryByText('Copyright information')).not.toBeInTheDocument();
   });
 });
