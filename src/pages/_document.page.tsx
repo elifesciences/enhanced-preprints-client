@@ -18,7 +18,7 @@ export default function Document() {
             margin: 0;
           }
           [id] {
-            scroll-margin: 74px;
+            scroll-margin: 108px;
           }
           `}
         </style>
