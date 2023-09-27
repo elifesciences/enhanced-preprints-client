@@ -2877,8 +2877,8 @@
         "Genetics and Genomics"
       ]
     },
-    "10.1101/2023.06.26.54613": {
-      "preprintDoi": "10.1101/2023.06.26.54613",
+    "10.1101/2023.06.26.546135": {
+      "preprintDoi": "10.1101/2023.06.26.546135",
       "msas": [
         "Microbiology and Infectious Disease"
       ]
@@ -4576,9 +4576,6 @@
         "Biochemistry and Chemical Biology",
         "Structural Biology and Molecular Biophysics"
       ]
-    },
-    "10.1101/2023.06.26.546135": {
-      "preprintDoi": "10.1101/2023.06.26.546135"
     },
     "10.1101/2023.07.28.550931": {
       "preprintDoi": "10.1101/2023.07.28.550931",
@@ -21854,7 +21851,7 @@
       "msid": "89837",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.06.26.54613",
+      "preprintDoi": "10.1101/2023.06.26.546135",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
