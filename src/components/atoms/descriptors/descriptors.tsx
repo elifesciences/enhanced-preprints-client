@@ -7,18 +7,18 @@ export const Descriptors = ({ doi, license }: { doi: string, license?: string })
         <a href={`https://doi.org/${doi}`}>https://doi.org/{doi}</a>
       </li>
     </ul>
-    <ul className="descriptors__icons">
+    {license && <ul className="descriptors__icons">
       <li>
         <a href="https://en.wikipedia.org/wiki/Open_access" className={'descriptors__icon descriptors__icon--oa'}>
           <span className="visuallyhidden">Open access</span>
         </a>
       </li>
-      {license && <li>
+      <li>
         <a href='#copyright' className={'descriptors__icon descriptors__icon--cc'}>
           <span className="visuallyhidden">Copyright information</span>
         </a>
       </li>
-      }
     </ul>
+    }
   </div>
 );
