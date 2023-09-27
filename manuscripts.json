@@ -4525,6 +4525,13 @@
       "msas": [
         "Cell Biology"
       ]
+    },
+    "10.1101/2023.06.26.546598": {
+      "preprintDoi": "10.1101/2023.06.26.546598",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -5218,6 +5225,7 @@
     "90576": "90576v1",
     "90596": "90596v1",
     "90600": "90600v1",
+    "90603": "90603v1",
     "90604": "90604v1",
     "90606": "90606v1",
     "90607": "90607v1",
@@ -32440,6 +32448,35 @@
             "date": "2023-07-20",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.07.20.549860v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90603v1": {
+      "msid": "90603",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.26.546598",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-27",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-26",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.26.546598v1/",
               "text": "Go to bioRxiv"
             }
           }
