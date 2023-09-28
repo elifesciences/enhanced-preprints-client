@@ -14,7 +14,6 @@ type Config = {
   manuscriptConfigFile: string,
   reviewsConfigFile: string,
   disallowRobots: boolean,
-  correctOrderAuthorMetadata: boolean,
 };
 
 export const config: Config = {
@@ -28,5 +27,4 @@ export const config: Config = {
   manuscriptConfigFile: process.env.MANUSCRIPT_CONFIG_FILE || './manuscripts.json',
   reviewsConfigFile: process.env.REVIEWS_CONFIG_FILE || './reviews.json',
   disallowRobots: !!process.env.DISALLOW_ROBOTS,
-  correctOrderAuthorMetadata: !!process.env.NEXT_PUBLIC_CORRECT_ORDER_AUTHOR_METADATA,
 };
