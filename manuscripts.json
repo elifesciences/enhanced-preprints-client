@@ -4656,6 +4656,12 @@
       "msas": [
         "Immunology and Inflammation"
       ]
+    },
+    "10.1101/2023.02.15.527913": {
+      "preprintDoi": "10.1101/2023.02.15.527913",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -5251,6 +5257,7 @@
     "89690": "89690v1",
     "89694": "89694v1",
     "89703": "89703v1",
+    "89712": "89712v1",
     "89719": "89719v1",
     "89743": "89743v1",
     "89750": "89750v1",
@@ -33338,6 +33345,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-22"
+          }
+        ]
+      }
+    },
+    "89712v1": {
+      "msid": "89712",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.15.527913",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-19"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.15.527913v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
