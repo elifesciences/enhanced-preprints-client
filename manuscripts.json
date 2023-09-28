@@ -4708,6 +4708,12 @@
         "Cell Biology",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2022.08.30.505927": {
+      "preprintDoi": "10.1101/2022.08.30.505927",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -5311,6 +5317,7 @@
     "89762": "89762v1",
     "89780": "89780v1",
     "89792": "89792v1",
+    "89794": "89794v1",
     "89795": "89795v1",
     "89804": "89804v1",
     "89812": "89812v1",
@@ -33630,6 +33637,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-10"
+          }
+        ]
+      }
+    },
+    "89794v1": {
+      "msid": "89794",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.08.30.505927",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-09-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-08"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-31",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.08.30.505927v3/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
