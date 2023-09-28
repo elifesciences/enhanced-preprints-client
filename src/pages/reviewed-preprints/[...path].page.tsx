@@ -4,9 +4,7 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { config } from '../../config';
 import { getManuscript, getRppDoi } from '../../manuscripts';
-import {
-  Author, Content, MetaData, PeerReview,
-} from '../../types';
+import { Content, MetaData, PeerReview } from '../../types';
 import {
   fetchContent, fetchMetadata, fetchReviews, fetchVersion,
 } from '../../utils/fetch-data';
