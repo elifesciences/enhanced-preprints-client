@@ -50,9 +50,9 @@ jobs:
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
-    # needs: [test]
+    needs: [test]
     runs-on: ubuntu-latest
-    # if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v3
       - name: Set up QEMU
