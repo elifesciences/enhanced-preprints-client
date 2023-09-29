@@ -25,27 +25,31 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - name: Use bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.3
       - name: yarn install
         run: yarn
       - name: Lint
-        run: yarn lint
+        run: bun lint
       - name: Lint SASS
-        run: yarn lint-sass
+        run: bun lint-sass
       - name: Unit Test
-        run: yarn test
+        run: bun run test
       - name: Production build
-        run: yarn build
+        run: bun run build
       - name: Install operating system dependencies
         run: |
-          yarn playwright install
-          yarn playwright install-deps
+          bun run playwright install
+          bun run playwright install-deps
       - name: Bring up browser test stack
         run: docker compose -f docker-compose.browsertest.yaml up -d --wait
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
       - name: Browser Tests
-        run: yarn test:browser
+        run: bun test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
