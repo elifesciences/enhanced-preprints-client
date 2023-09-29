@@ -1,13 +1,10 @@
 ARG node_version=18.18-alpine3.17
 
-FROM node:${node_version} as builder
+FROM oven/bun:1.0.3@sha256:3d646ab41f639ec5a26b2a286ca1f8b7ce3a630429d04557f94fc9e1f7c29bc5 as builder
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
-COPY .yarnrc.yml .yarnrc.yml
-COPY .yarn/releases .yarn/releases
 COPY package.json package.json
-COPY yarn.lock yarn.lock
-RUN yarn
+RUN bun install
 
 FROM node:${node_version} as base
 RUN mkdir /opt/epp-client
