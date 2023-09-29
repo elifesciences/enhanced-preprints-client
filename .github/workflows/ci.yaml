@@ -60,10 +60,10 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Build client images
+      - name: Build storybook image
         run: |
           docker buildx build -t test:test --platform linux/amd64,linux/arm64 --target storybook .
-      - name: Build and push client image
+      - name: Build client image
         run: |
           docker buildx build -t test:test --platform linux/amd64,linux/arm64 --target prod .
   build-and-push:
