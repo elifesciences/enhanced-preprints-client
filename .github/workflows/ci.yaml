@@ -80,7 +80,7 @@ jobs:
           target: storybook
           tags: |
             ghcr.io/elifesciences/enhanced-preprints-storybook:latest
-            ghcr.io/elifesciences/enhanced-preprints-storybook:${GITHUB_SHA}
+            ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
       - name: Build and push storybook image
         uses: docker/build-push-action@v4
@@ -91,5 +91,5 @@ jobs:
           target: client
           tags: |
             ghcr.io/elifesciences/enhanced-preprints-client:latest
-            ghcr.io/elifesciences/enhanced-preprints-client:${GITHUB_SHA}
+            ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
