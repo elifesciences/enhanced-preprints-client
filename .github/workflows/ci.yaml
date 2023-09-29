@@ -88,7 +88,7 @@ jobs:
           push: false
           load: false
           platforms: linux/amd64,linux/arm64
-          target: client
+          target: prod
           tags: |
             ghcr.io/elifesciences/enhanced-preprints-client:latest
             ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
