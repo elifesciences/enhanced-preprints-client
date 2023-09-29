@@ -29,12 +29,12 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: 1.0.3
-      - name: yarn install
-        run: yarn
+      - name: bun install
+        run: bun install
       - name: Lint
-        run: bun lint
+        run: bun run lint
       - name: Lint SASS
-        run: bun lint-sass
+        run: bun run lint-sass
       - name: Unit Test
         run: bun run test
       - name: Production build
@@ -60,12 +60,12 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      - name: Build storybook image
-        run: |
-          docker buildx build -t test:test --platform linux/amd64,linux/arm64 --target storybook .
       - name: Build client image
         run: |
           docker buildx build -t test:test --platform linux/amd64,linux/arm64 --target prod .
+      - name: Build storybook image
+        run: |
+          docker buildx build -t test:test --platform linux/amd64,linux/arm64 --target storybook .
   build-and-push:
     needs: [test]
     runs-on: ubuntu-latest
