@@ -71,7 +71,7 @@ jobs:
       - name: Get sha with 8 chars long
         id: commit_sha
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-      - name: Build and push client image
+      - name: Build and push storybook image
         uses: docker/build-push-action@v4
         with:
           push: false
@@ -82,7 +82,7 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-storybook:latest
             ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push storybook image
+      - name: Build and push client image
         uses: docker/build-push-action@v4
         with:
           push: false
