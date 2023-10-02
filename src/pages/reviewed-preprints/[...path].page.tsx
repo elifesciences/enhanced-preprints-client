@@ -191,7 +191,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         publishedYear: manuscriptConfig.publishedYear,
         volume: `${manuscriptConfig.publishedYear - 2011}`,
         eLocationId: `RP${manuscriptConfig.msid}`,
-        license: manuscriptConfig.license,
+        license: manuscriptConfig.license || 'https://creativecommons.org/licenses/by/4.0/',
       },
       msidWithVersion: id,
       content,
