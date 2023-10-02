@@ -4814,6 +4814,13 @@
       "msas": [
         "Chromosomes and Gene Expression"
       ]
+    },
+    "10.1101/2023.08.03.551866": {
+      "preprintDoi": "10.1101/2023.08.03.551866",
+      "msas": [
+        "Cancer Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -5575,6 +5582,7 @@
     "91407": "91407v1",
     "91420": "91420v1",
     "91507": "91507v1",
+    "91619": "91619v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -34700,6 +34708,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-14"
+          }
+        ]
+      }
+    },
+    "91619v1": {
+      "msid": "91619",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.03.551866",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-02",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.03.551866v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
