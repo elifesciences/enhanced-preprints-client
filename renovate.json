@@ -11,7 +11,14 @@
 			"depNameTemplate": "node",
 			"datasourceTemplate": "node",
 			"versioningTemplate": "node"
-		}
+		},
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["bun_version=(?<currentValue>.*?)-alpine"],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node",
+      "versioningTemplate": "node"
+    }
 	],
   "packageRules": [
     {

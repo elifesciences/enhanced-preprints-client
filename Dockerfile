@@ -1,6 +1,7 @@
-ARG node_version=18.18-alpine3.17
+ARG node_version=18.18-alpine3.17@sha256:8cdc5ff72de424adca7217dfc9a6c4ab3f244673789243d0559a6204e0439a24
+ARG bun_version=1.0.3-alpine@sha256:26ceedecb06836a118275a0ef3d8369aafe111020929cec762b02006ddf840de
 
-FROM oven/bun:1.0.3@sha256:3d646ab41f639ec5a26b2a286ca1f8b7ce3a630429d04557f94fc9e1f7c29bc5 as builder
+FROM oven/bun:${bun_version} as builder
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY package.json package.json
