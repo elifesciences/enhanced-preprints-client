@@ -74,7 +74,7 @@ jobs:
       - name: Build and push storybook image
         uses: docker/build-push-action@v4
         with:
-          push: false
+          push: true
           load: false
           platforms: linux/amd64,linux/arm64
           target: storybook
@@ -85,7 +85,7 @@ jobs:
       - name: Build and push client image
         uses: docker/build-push-action@v4
         with:
-          push: false
+          push: true
           load: false
           platforms: linux/amd64,linux/arm64
           target: prod
