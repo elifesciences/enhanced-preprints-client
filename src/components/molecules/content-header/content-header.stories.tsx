@@ -16,4 +16,5 @@ Header.args = {
   title: 'This is a title',
   doi: 'bbc.co.uk',
   authors,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
 };

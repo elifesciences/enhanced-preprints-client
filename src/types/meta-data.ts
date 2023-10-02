@@ -18,6 +18,7 @@ export type MetaData = {
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,
+  license?: string,
 };
 
 export type VersionedMetaData = {

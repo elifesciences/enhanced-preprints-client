@@ -10,6 +10,7 @@ export type ContentHeaderProps = FlagProps & {
   authors: Author[];
   doi: string;
   title: Content;
+  license: string | undefined;
 };
 
 const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
@@ -19,6 +20,7 @@ export const ContentHeader = ({
   title,
   authors,
   doi,
+  license,
 }: ContentHeaderProps) => {
   const processedInstitutions = authors
     .flatMap((author) => author.affiliations)
@@ -36,7 +38,7 @@ export const ContentHeader = ({
       <Title title={title}/>
       <Authors authors={authors}/>
       <Institutions institutions={processedInstitutions}/>
-      <Descriptors doi={doi}/>
+      <Descriptors doi={doi} license={license} />
     </header>
   );
 };

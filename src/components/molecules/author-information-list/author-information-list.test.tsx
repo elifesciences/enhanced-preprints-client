@@ -12,7 +12,7 @@ describe('AuthorInformationList', () => {
   it('renders correctly', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Author information')).toBeInTheDocument();
+    expect(screen.getByText('Article and author information')).toBeInTheDocument();
   });
 
   it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {

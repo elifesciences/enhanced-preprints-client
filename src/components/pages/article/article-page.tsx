@@ -51,6 +51,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           msas={props.metaData.msas}
           authors={props.metaData.authors}
           title={props.metaData.title}
+          license={props.metaData.license}
         />
       </div>
       <aside className="side-section">

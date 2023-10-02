@@ -8,12 +8,12 @@ import { AuthorInformationList } from '../../../molecules/author-information-lis
 import { Content, MetaData, PeerReview } from '../../../../types';
 import { contentToHeadings } from '../../../../utils/content-to-headings';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string, }) => {
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string }) => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...contentToHeadings(props.content),
     { id: 'references', text: 'References' },
-    { id: 'author-list', text: 'Author Information' },
+    { id: 'author-list', text: 'Article and Author Information' },
   ];
 
   if (props.peerReview !== undefined) {
@@ -28,7 +28,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
         { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
-        <AuthorInformationList authors={props.metaData.authors}/>
+        <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
       </div>
     </div>
   );
