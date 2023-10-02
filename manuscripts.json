@@ -4821,12 +4821,6 @@
         "Cancer Biology",
         "Structural Biology and Molecular Biophysics"
       ]
-    },
-    "10.1101/2022.09.22.507167": {
-      "preprintDoi": "10.1101/2022.09.22.507167",
-      "msas": [
-        "Neuroscience"
-      ]
     }
   },
   "manuscripts": {
@@ -5574,7 +5568,6 @@
     "90944": "90944v1",
     "90948": "90948v1",
     "90959": "90959v1",
-    "90972": "90972v1",
     "91087": "91087v1",
     "91094": "91094v1",
     "91120": "91120v1",
@@ -34742,35 +34735,6 @@
             "date": "2023-08-03",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.08.03.551866v1/",
-              "text": "Go to bioRxiv"
-            }
-          }
-        ]
-      }
-    },
-    "90972v1": {
-      "msid": "90972",
-      "version": 1,
-      "publishedYear": 2023,
-      "preprintDoi": "10.1101/2022.09.22.507167",
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Published from the original preprint after peer review and assessment by eLife.",
-        "timeline": [
-          {
-            "name": "Reviewed preprint posted",
-            "date": "2023-10-02",
-            "eventDescription": "(this version)"
-          },
-          {
-            "name": "Sent for peer review",
-            "date": "2023-08-24"
-          },
-          {
-            "name": "Posted to bioRxiv",
-            "date": "2023-07-11",
-            "link": {
-              "url": "https://www.biorxiv.org/content/10.1101/2022.09.22.507167v2/",
               "text": "Go to bioRxiv"
             }
           }
