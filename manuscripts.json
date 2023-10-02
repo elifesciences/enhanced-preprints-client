@@ -4772,6 +4772,12 @@
         "Developmental Biology",
         "Neuroscience"
       ]
+    },
+    "10.1101/2021.10.01.462699": {
+      "preprintDoi": "10.1101/2021.10.01.462699",
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -5439,6 +5445,7 @@
     "90100": "90100v1",
     "90107": "90107v1",
     "90111": "90111v1",
+    "90133": "90133v1",
     "90135": "90135v1",
     "90139": "90139v1",
     "90148": "90148v1",
@@ -34325,6 +34332,35 @@
             "date": "2023-05-20",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.04.28.489889v3/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90133v1": {
+      "msid": "90133",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.10.01.462699",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-02",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-12"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.10.01.462699v3/",
               "text": "Go to bioRxiv"
             }
           }
