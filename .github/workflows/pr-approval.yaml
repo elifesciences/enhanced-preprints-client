@@ -1,0 +1,14 @@
+name: Pull Request approval
+
+on:
+  pull_request:
+    types: [labeled, synchronize, opened, reopened]
+
+
+jobs:
+  check-for-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fail if the label is not present
+        run: |
+          exit ${{ contains(github.event.pull_request.labels.*.name, 'preview') ? '0' : '1' }}
