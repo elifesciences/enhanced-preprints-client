@@ -15,14 +15,16 @@ jobs:
         run: echo '${{ toJSON(github.event.pull_request) }}'
       - name: Update status if related to publishing manuscripts
         uses: ouzi-dev/commit-status-updater@v2
-        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
+        # if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
+        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) }}
         with:
           name: 'Coko Approval'
           description: 'Not needed'
           status: 'success'
       - name: Update label status
         uses: ouzi-dev/commit-status-updater@v2
-        if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
+        # if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
+        if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) }}
         with:
           name: 'Coko Approval'
           description: "Label ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'is' || 'is not' }} present"
