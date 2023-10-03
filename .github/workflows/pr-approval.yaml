@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: fail if the label is not present
         run: |
-          exit ${{ contains(github.event.pull_request.labels.*.name, 'preview') ? '0' : '1' }}
+          exit ${{ contains(github.event.pull_request.labels.*.name, 'preview') && '0' || '1' }}
