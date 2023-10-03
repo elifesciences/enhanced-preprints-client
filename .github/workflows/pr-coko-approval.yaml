@@ -25,5 +25,5 @@ jobs:
         if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
         with:
           name: 'Coko Approval'
-          description: "Label is ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '' || 'not ' }}present"
+          description: "Label ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'is' || 'is not' }} present"
           status: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'pending' }}
