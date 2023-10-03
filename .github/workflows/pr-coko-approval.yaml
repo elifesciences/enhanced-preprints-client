@@ -19,11 +19,11 @@ jobs:
         with:
           name: 'Coko Approval'
           description: 'Not needed'
-          state: 'success'
+          status: 'success'
       - name: Update label status
         uses: ouzi-dev/commit-status-updater@v2
         if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
         with:
           name: 'Coko Approval'
           description: "Label is ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '' || 'not ' }}present"
-          state: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'failure' }}
+          status: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'pending' }}
