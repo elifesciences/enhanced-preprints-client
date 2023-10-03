@@ -1,4 +1,4 @@
-name: Pull Request approval
+name: Coko Pull Request approval
 
 on:
   pull_request:
