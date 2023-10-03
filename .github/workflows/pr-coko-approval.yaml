@@ -4,6 +4,8 @@ on:
   pull_request:
     types: [labeled, unlabeled, synchronize, opened, reopened]
 
+permissions:
+  statuses: write
 
 jobs:
   check-for-label:
@@ -26,6 +28,6 @@ jobs:
         with:
           authToken: ${{ env.GITHUB_TOKEN }}
           context: 'Coko Approval'
-          description: "Label is (${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '' || 'not ' }})present"
+          description: "Label is ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '' || 'not ' }}present"
           state: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'failure' }}
-          sha: ${{github.event.pull_request.head.sha || github.sha}}
+          sha: ${{ github.event.pull_request.head.sha }}
