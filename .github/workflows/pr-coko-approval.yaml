@@ -10,10 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "DEBUG: pull_request object"
-        run: echo ${{ toJSON(github.event.pull_request) }}
-      - name: auto approve Publish Workflows
-        # if: ${{ !startsWith(github.event.pull_request.title, 'Publish manuscript') }}
-        run: gh pr edit ${{ github.event.pull_request.number }}--add-label coko-approved
-      - name: fail if the label is not present
-        run: |
-          exit ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '0' || '1' }}
+        run: echo '${{ toJSON(github.event.pull_request) }}'
+      - name: Update status if related to publishing manuscripts
+        uses: Sibz/github-status-action@v1
+        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
+        with:
+          authToken: ${{ env.GITHUB_TOKEN }}
+          context: 'Coko Approval'
+          description: 'Not needed'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
+      - name: Update label status
+        uses: Sibz/github-status-action@v1
+        if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
+        with:
+          authToken: ${{ env.GITHUB_TOKEN }}
+          context: 'Coko Approval'
+          description: "Label is (${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && '' || 'not ' }})present"
+          state: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'failure' }}
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
