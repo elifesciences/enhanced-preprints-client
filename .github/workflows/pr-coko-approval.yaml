@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "DEBUG: pull_request object"
-        run: echo ${{ github.event.pull_request }}
+        run: echo ${{ toJSON(github.event.pull_request) }}
       - name: auto approve Publish Workflows
         # if: ${{ !startsWith(github.event.pull_request.title, 'Publish manuscript') }}
         run: gh pr edit ${{ github.event.pull_request.number }}--add-label coko-approved
