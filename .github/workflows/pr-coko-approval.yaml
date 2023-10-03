@@ -13,18 +13,19 @@ jobs:
     steps:
       - name: "DEBUG: pull_request object"
         run: echo '${{ toJSON(github.event.pull_request) }}'
+      - name: Is this PR one to skip?
+        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
+        run: echo "COKO_SKIP=1" >> $GITHUB_ENV
       - name: Update status if related to publishing manuscripts
         uses: ouzi-dev/commit-status-updater@v2
-        # if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
-        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) }}
+        if: ${{ env.COKO_SKIP == '1' }}
         with:
           name: 'Coko Approval'
           description: 'Not needed'
           status: 'success'
       - name: Update label status
         uses: ouzi-dev/commit-status-updater@v2
-        # if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) || github.event.pull_request.user.login != 'github-actions' }}
-        if: ${{ (!startsWith(github.event.pull_request.title, 'Publish manuscript') && !startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) }}
+        if: ${{ env.COKO_SKIP != '1' }}
         with:
           name: 'Coko Approval'
           description: "Label ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'is' || 'is not' }} present"
