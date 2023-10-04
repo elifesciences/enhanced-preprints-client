@@ -4878,9 +4878,6 @@
         "Neuroscience"
       ]
     },
-    "0.1101/2023.07.18.549552": {
-      "preprintDoi": "0.1101/2023.07.18.549552"
-    },
     "10.1101/2023.07.03.547463": {
       "preprintDoi": "10.1101/2023.07.03.547463",
       "msas": [
@@ -35475,7 +35472,7 @@
       "msid": "90230",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "0.1101/2023.07.18.549552",
+      "preprintDoi": "10.1101/2023.07.18.549552",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
