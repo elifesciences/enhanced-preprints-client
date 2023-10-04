@@ -1407,8 +1407,8 @@
         "Neuroscience"
       ]
     },
-    "2021.12.28.21268440": {
-      "preprintDoi": "2021.12.28.21268440",
+    "10.1101/2021.12.28.21268440": {
+      "preprintDoi": "10.1101/2021.12.28.21268440",
       "msas": [
         "Medicine",
         "Neuroscience"
@@ -2298,19 +2298,6 @@
       "preprintDoi": "10.48550/arXiv.2212.00741",
       "msas": [
         "Neuroscience"
-      ]
-    },
-    "2023.02.24.23286398": {
-      "preprintDoi": "2023.02.24.23286398",
-      "msas": [
-        "Epidemiology and Global Health",
-        "Medicine"
-      ]
-    },
-    "2022.10.21.513016": {
-      "preprintDoi": "2022.10.21.513016",
-      "msas": [
-        "Physics of Living Systems"
       ]
     },
     "10.1101/2023.02.24.23286398": {
@@ -13816,7 +13803,7 @@
       "msid": "88117",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "2021.12.28.21268440",
+      "preprintDoi": "10.1101/2021.12.28.21268440",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -19302,7 +19289,7 @@
       "msid": "87318",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "2023.02.24.23286398",
+      "preprintDoi": "10.1101/2023.02.24.23286398",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -19332,7 +19319,7 @@
       "msid": "87746",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "2022.10.21.513016",
+      "preprintDoi": "10.1101/2022.10.21.513016",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -29242,7 +29229,7 @@
       "msid": "88117",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "2021.12.28.21268440",
+      "preprintDoi": "10.1101/2021.12.28.21268440",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
