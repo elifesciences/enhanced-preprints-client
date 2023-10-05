@@ -4,6 +4,14 @@ import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 
+const authorMock = [
+  {
+    givenNames: ['Barry'], familyNames: ['Allen'], honorificSuffix: 'Jr.', affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }],
+  },
+  { type: 'Organization', name: 'the Brain Interfacing Laboratory' },
+  { type: 'Organization', name: 'the Brain Interfacing Laboratory' },
+];
+
 const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
 

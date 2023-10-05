@@ -10,7 +10,7 @@ type CopyrightProps = {
 export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) => {
   let copyrightText;
   let hasCopyright = false;
-  let authorName: string | undefined;
+  let authorName = '';
 
   if (license?.includes('/by/')) {
     copyrightText = (
@@ -31,18 +31,26 @@ export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) =
   }
 
   if (authors?.length) {
-    if (authors[0].type === 'Organization') {
-      authorName = authors[0].name;
-    } else if (authors.length < 3) {
+    if (authors.length < 3) {
       for (let i = 0; i < authors.length; i += 1) {
         if (i > 0) {
           authorName += ' & ';
         }
 
-        authorName += `${(authors[i].givenNames ?? []).join(' ')} ${(authors[i].familyNames ?? []).join(' ')}${authors[i].honorificSuffix ? ` ${authors[i].honorificSuffix}` : ''} `;
+        if (authors[i].type === 'Organization') {
+          authorName += authors[i].name ?? '';
+        } else {
+          authorName += `${(authors[i].givenNames ?? []).join(' ')} ${(authors[i].familyNames ?? []).join(' ')}${authors[i].honorificSuffix ? ` ${authors[i].honorificSuffix}` : ''} `;
+        }
       }
     } else {
-      authorName = `${(authors[0].familyNames ?? []).join(' ')} et al.`;
+      if (authors[0].type === 'Organization') {
+        authorName = authors[0].name ?? '';
+      } else {
+        authorName = `${(authors[0].familyNames ?? []).join(' ')}`;
+      }
+
+      authorName += ' et al.';
     }
   }
 
