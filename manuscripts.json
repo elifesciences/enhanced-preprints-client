@@ -4883,6 +4883,83 @@
       "msas": [
         "Immunology and Inflammation"
       ]
+    },
+    "10.1101/2023.05.26.542436": {
+      "preprintDoi": "10.1101/2023.05.26.542436",
+      "msas": [
+        "Stem Cells and Regenerative Medicine"
+      ]
+    },
+    "10.1101/2023.06.01.543292": {
+      "preprintDoi": "10.1101/2023.06.01.543292",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Cell Biology"
+      ]
+    },
+    "10.1101/2023.07.18.549515": {
+      "preprintDoi": "10.1101/2023.07.18.549515",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
+    },
+    "10.1101/2023.06.28.23291999": {
+      "preprintDoi": "10.1101/2023.06.28.23291999",
+      "msas": [
+        "Cancer Biology",
+        "Microbiology and Infectious Disease"
+      ]
+    },
+    "10.1101/2023.08.29.555436": {
+      "preprintDoi": "10.1101/2023.08.29.555436",
+      "msas": [
+        "Medicine"
+      ]
+    },
+    "10.1101/2023.08.03.551873": {
+      "preprintDoi": "10.1101/2023.08.03.551873",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
+    },
+    "10.1101/2023.08.29.555450": {
+      "preprintDoi": "10.1101/2023.08.29.555450",
+      "msas": [
+        "Genetics and Genomics"
+      ]
+    },
+    "10.1101/2023.07.16.547149": {
+      "preprintDoi": "10.1101/2023.07.16.547149",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
+    },
+    "10.1101/2023.05.28.542535": {
+      "preprintDoi": "10.1101/2023.05.28.542535",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
+    },
+    "10.1101/2023.06.18.545475": {
+      "preprintDoi": "10.1101/2023.06.18.545475",
+      "msas": [
+        "Evolutionary Biology",
+        "Genetics and Genomics"
+      ]
+    },
+    "10.1101/2023.08.17.551257": {
+      "preprintDoi": "10.1101/2023.08.17.551257",
+      "msas": [
+        "Cell Biology"
+      ]
+    },
+    "10.1101/2022.04.28.489897": {
+      "preprintDoi": "10.1101/2022.04.28.489897",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -4947,7 +5024,7 @@
     "86655": "86655v1",
     "86663": "86663v1",
     "86668": "86668v1",
-    "86669": "86669v1",
+    "86669": "86669v2",
     "86670": "86670v3",
     "86678": "86678v1",
     "86687": "86687v2",
@@ -5167,10 +5244,10 @@
     "87966": "87966v2",
     "87969": "87969v1",
     "87985": "87985v1",
-    "87989": "87989v1",
+    "87989": "87989v2",
     "87990": "87990v1",
     "87991": "87991v1",
-    "87993": "87993v1",
+    "87993": "87993v2",
     "88008": "88008v1",
     "88024": "88024v1",
     "88039": "88039v1",
@@ -5308,7 +5385,7 @@
     "88733": "88733v1",
     "88737": "88737v1",
     "88742": "88742v1",
-    "88744": "88744v1",
+    "88744": "88744v2",
     "88745": "88745v1",
     "88750": "88750v1",
     "88754": "88754v1",
@@ -5443,6 +5520,7 @@
     "89381": "89381v1",
     "89382": "89382v1",
     "89386": "89386v1",
+    "89395": "89395v1",
     "89424": "89424v1",
     "89444": "89444v1",
     "89453": "89453v1",
@@ -5503,6 +5581,7 @@
     "89813": "89813v1",
     "89818": "89818v1",
     "89826": "89826v1",
+    "89830": "89830v1",
     "89832": "89832v1",
     "89835": "89835v1",
     "89836": "89836v1",
@@ -5562,6 +5641,7 @@
     "90139": "90139v1",
     "90148": "90148v1",
     "90156": "90156v1",
+    "90174": "90174v1",
     "90184": "90184v1",
     "90191": "90191v1",
     "90192": "90192v1",
@@ -5583,6 +5663,7 @@
     "90327": "90327v1",
     "90333": "90333v1",
     "90363": "90363v1",
+    "90375": "90375v1",
     "90387": "90387v1",
     "90390": "90390v1",
     "90392": "90392v1",
@@ -5619,6 +5700,7 @@
     "90627": "90627v1",
     "90632": "90632v1",
     "90634": "90634v1",
+    "90636": "90636v1",
     "90648": "90648v1",
     "90656": "90656v1",
     "90674": "90674v1",
@@ -5632,6 +5714,7 @@
     "90795": "90795v1",
     "90798": "90798v1",
     "90818": "90818v1",
+    "90820": "90820v1",
     "90851": "90851v1",
     "90887": "90887v1",
     "90893": "90893v1",
@@ -5640,6 +5723,7 @@
     "90948": "90948v1",
     "90959": "90959v1",
     "90972": "90972v1",
+    "91060": "91060v1",
     "91087": "91087v1",
     "91094": "91094v1",
     "91120": "91120v1",
@@ -5648,7 +5732,10 @@
     "91185": "91185v1",
     "91194": "91194v1",
     "91199": "91199v1",
+    "91218": "91218v1",
+    "91223": "91223v1",
     "91258": "91258v1",
+    "91288": "91288v1",
     "91345": "91345v1",
     "91406": "91406v2",
     "91407": "91407v1",
@@ -5657,6 +5744,8 @@
     "91599": "91599v1",
     "91611": "91611v1",
     "91619": "91619v1",
+    "91645": "91645v1",
+    "91976": "91976v1",
     "80494v1": {
       "msid": "80494",
       "version": "1",
@@ -8184,7 +8273,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "link": {
+              "url": "/reviewed-preprints/86669v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-05-02",
             "eventDescription": "(this version)"
           },
@@ -12101,7 +12198,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "link": {
+              "url": "/reviewed-preprints/87989v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-02",
             "eventDescription": "(this version)"
           },
@@ -16066,7 +16171,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "link": {
+              "url": "/reviewed-preprints/87993v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-27",
             "eventDescription": "(this version)"
           },
@@ -19538,7 +19651,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "link": {
+              "url": "/reviewed-preprints/88744v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-07-14",
             "eventDescription": "(this version)"
           },
@@ -22279,7 +22400,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/88431/v1/88431-v1.pdf"
     },
     "88510v1": {
       "msid": "88510",
@@ -33583,7 +33705,8 @@
             "date": "2023-07-06"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/90211/v1/90211-v1.pdf"
     },
     "90199v1": {
       "msid": "90199",
@@ -33641,7 +33764,8 @@
             "date": "2023-07-04"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/90274/v1/90274-v1.pdf"
     },
     "90445v1": {
       "msid": "90445",
@@ -33976,7 +34100,8 @@
             "date": "2023-05-22"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/89382/v1/89382-v1.pdf"
     },
     "89712v1": {
       "msid": "89712",
@@ -34155,7 +34280,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/90502/v1/90502-v1.pdf"
     },
     "90851v1": {
       "msid": "90851",
@@ -34444,7 +34570,8 @@
             }
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/89629/v1/89629-v1.pdf"
     },
     "88754v1": {
       "msid": "88754",
@@ -34503,7 +34630,8 @@
             "date": "2023-07-17"
           }
         ]
-      }
+      },
+      "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/90798/v1/90798-v1.pdf"
     },
     "91345v1": {
       "msid": "91345",
@@ -35530,6 +35658,502 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.07.03.547463v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "91288v1": {
+      "msid": "91288",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.26.542436",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.26.542436v3/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-22"
+          }
+        ]
+      }
+    },
+    "91645v1": {
+      "msid": "91645",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.01.543292",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.01.543292v6/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-17"
+          }
+        ]
+      }
+    },
+    "89395v1": {
+      "msid": "89395",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.18.549515",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.18.549515v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-28"
+          }
+        ]
+      }
+    },
+    "87993v2": {
+      "msid": "87993",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.08.12.503821",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-27",
+            "link": {
+              "url": "/reviewed-preprints/87993v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.08.12.503821v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89830v1": {
+      "msid": "89830",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.28.23291999",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-29",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.06.28.23291999v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-13"
+          }
+        ]
+      }
+    },
+    "91060v1": {
+      "msid": "91060",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.29.555436",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-30",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.29.555436v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-27"
+          }
+        ]
+      }
+    },
+    "86669v2": {
+      "msid": "86669",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.24.525372",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-05-02",
+            "link": {
+              "url": "/reviewed-preprints/86669v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-01-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.01.24.525372v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "91976v1": {
+      "msid": "91976",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.03.551873",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.03.551873v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-22"
+          }
+        ]
+      }
+    },
+    "91223v1": {
+      "msid": "91223",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.29.555450",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.29.555450v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-08"
+          }
+        ]
+      }
+    },
+    "91218v1": {
+      "msid": "91218",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.16.547149",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.16.547149v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90820v1": {
+      "msid": "90820",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.28.542535",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-24"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.28.542535v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90636v1": {
+      "msid": "90636",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.18.545475",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-07"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.18.545475v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90375v1": {
+      "msid": "90375",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.17.551257",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.17.551257v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-04"
+          }
+        ]
+      }
+    },
+    "90174v1": {
+      "msid": "90174",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.04.28.489897",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-02"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.04.28.489897v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87989v2": {
+      "msid": "87989",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.20.533444",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-02",
+            "link": {
+              "url": "/reviewed-preprints/87989v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-28"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.20.533444v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "88744v2": {
+      "msid": "88744",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.16.545283",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-07-14",
+            "link": {
+              "url": "/reviewed-preprints/88744v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.16.545283v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-30"
           }
         ]
       }
