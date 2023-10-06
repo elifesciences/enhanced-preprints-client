@@ -4980,6 +4980,12 @@
         "Genetics and Genomics",
         "Medicine"
       ]
+    },
+    "10.48550/arXiv.2202.13658": {
+      "preprintDoi": "10.48550/arXiv.2202.13658",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -5176,6 +5182,7 @@
     "87434": "87434v1",
     "87442": "87442v1",
     "87445": "87445v1",
+    "87450": "87450v1",
     "87455": "87455v1",
     "87458": "87458v2",
     "87462": "87462v1",
@@ -36489,6 +36496,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-19"
+          }
+        ]
+      }
+    },
+    "87450v1": {
+      "msid": "87450",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.48550/arXiv.2202.13658",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-06",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to arXiv",
+            "date": "2023-04-27",
+            "link": {
+              "url": "https://www.arxiv.org/abs/2202.13658v3",
+              "text": "Go to arXiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-22"
           }
         ]
       }
