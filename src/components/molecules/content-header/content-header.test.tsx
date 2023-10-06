@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 import { ContentHeader } from './content-header';
 
 describe('ContentHeader', () => {
-  it('render the Content Header with all of the props passed in', () => {
+  afterEach(cleanup);
+  test('render the Content Header with all of the props passed in', () => {
     render(
       <ContentHeader
         msas={['msa1', 'msa2']}
@@ -19,11 +23,11 @@ describe('ContentHeader', () => {
         title={'title'}/>,
     );
 
-    expect(screen.getByText('msa1')).toBeInTheDocument();
-    expect(screen.getByText('msa2')).toBeInTheDocument();
-    expect(screen.getByText('Jean Gray')).toBeInTheDocument();
-    expect(screen.getByText('X-Men')).toBeInTheDocument();
-    expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
-    expect(screen.getByText('title')).toBeInTheDocument();
+    expect(screen.getByText('msa1')).toBeTruthy();
+    expect(screen.getByText('msa2')).toBeTruthy();
+    expect(screen.getByText('Jean Gray')).toBeTruthy();
+    expect(screen.getByText('X-Men')).toBeTruthy();
+    expect(screen.getByText('https://doi.org/10.1101/123456')).toBeTruthy();
+    expect(screen.getByText('title')).toBeTruthy();
   });
 });

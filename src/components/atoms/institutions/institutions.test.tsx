@@ -1,4 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Institutions } from './institutions';
 
 const institutionList = [
@@ -10,60 +13,61 @@ const institutionList = [
 ];
 
 describe('Institutions', () => {
-  it('should render correctly a list of institutions', () => {
+  afterEach(cleanup);
+  test('should render correctly a list of institutions', () => {
     render(<Institutions institutions={[institutionList[0]]}/>);
     const xMansion = screen.getByText('Charles Xavier\'s School for Gifted Youngsters');
 
-    expect(xMansion).toBeInTheDocument();
+    expect(xMansion).toBeTruthy();
   });
 
-  it('should hide institutions after the institution limit', () => {
+  test('should hide institutions after the institution limit', () => {
     render(<Institutions institutions={institutionList}/>);
     const starLabs = screen.getByText('Star Labs');
 
-    expect(starLabs).toBeInTheDocument();
-    expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
+    expect(starLabs).toBeTruthy();
+    expect(screen.queryByText('Bat Cave')).toBeNull();
   });
 
-  it('shows a clickable expansion element when over the institution limit', () => {
+  test('shows a clickable expansion element when over the institution limit', () => {
     render(<Institutions institutions={institutionList}/>);
     const expansionElement = screen.getByText('show', { exact: false });
 
-    expect(expansionElement).toBeInTheDocument();
+    expect(expansionElement).toBeTruthy();
   });
 
-  it('does not show a clickable expansion element when under the institution limit', () => {
+  test('does not show a clickable expansion element when under the institution limit', () => {
     render(<Institutions institutions={[institutionList[0]]}/>);
     const expansionElement = screen.queryByText('show', { exact: false });
 
-    expect(expansionElement).not.toBeInTheDocument();
+    expect(expansionElement).toBeNull();
   });
 
   describe('expansion behaviour', () => {
-    it('shows on click', () => {
+    test('shows on click', () => {
       render(<Institutions institutions={institutionList}/>);
-      expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
+      expect(screen.queryByText('Bat Cave')).toBeNull();
 
       const expansionElement = screen.getByText('show', { exact: false });
 
       fireEvent.click(expansionElement);
 
-      expect(screen.queryByText('Bat Cave')).toBeInTheDocument();
+      expect(screen.queryByText('Bat Cave')).toBeTruthy();
     });
 
-    it('hides on click', () => {
+    test('hides on click', () => {
       render(<Institutions institutions={institutionList}/>);
-      expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
+      expect(screen.queryByText('Bat Cave')).toBeNull();
 
       const expansionElement = screen.getByText('show', { exact: false });
       fireEvent.click(expansionElement);
 
-      expect(screen.queryByText('Bat Cave')).toBeInTheDocument();
+      expect(screen.queryByText('Bat Cave')).toBeTruthy();
 
       const contractionElement = screen.getByText('show less');
       fireEvent.click(contractionElement);
 
-      expect(screen.queryByText('Bat Cave')).not.toBeInTheDocument();
+      expect(screen.queryByText('Bat Cave')).toBeNull();
     });
   });
 });

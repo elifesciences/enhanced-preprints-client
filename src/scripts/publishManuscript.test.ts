@@ -1,8 +1,9 @@
+import { expect, test, describe, afterAll, beforeAll } from 'bun:test';
 import { addManuscript } from './publishManuscript';
 
 describe('addManuscript', () => {
   describe('preprints', () => {
-    it('preprints empty - minimal', () => {
+    test('preprints empty - minimal', () => {
       const { preprints } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/minimal', '11111');
 
       expect(preprints).toStrictEqual({
@@ -12,7 +13,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints empty - with msa', () => {
+    test('preprints empty - with msa', () => {
       const { preprints } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['Biochemistry and Chemical Biology', 'Cancer Biology']);
 
       expect(preprints).toStrictEqual({
@@ -26,7 +27,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints empty - with invalid msa', () => {
+    test('preprints empty - with invalid msa', () => {
       expect(() => {
         addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-msa', '11111', ['foo']);
       }).toThrow(new Error('msa not recognised: foo'));
@@ -36,7 +37,7 @@ describe('addManuscript', () => {
       }).toThrow(new Error('msa not recognised: foo, bar'));
     });
 
-    it('preprints existing - no match', () => {
+    test('preprints existing - no match', () => {
       const { preprints } = addManuscript({
         preprints: {
           '10.1101/existing': {
@@ -56,7 +57,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints existing - match', () => {
+    test('preprints existing - match', () => {
       const { preprints } = addManuscript({
         preprints: {
           '10.1101/existing': {
@@ -73,7 +74,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints existing - match with existing msa', () => {
+    test('preprints existing - match with existing msa', () => {
       const { preprints } = addManuscript({
         preprints: {
           '10.1101/existing': {
@@ -98,7 +99,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints existing - match with existing msa - msa empty string', () => {
+    test('preprints existing - match with existing msa - msa empty string', () => {
       const { preprints } = addManuscript({
         preprints: {
           '10.1101/existing': {
@@ -123,7 +124,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('preprints existing - match with new msa', () => {
+    test('preprints existing - match with new msa', () => {
       const { preprints } = addManuscript({
         preprints: {
           '10.1101/existing': {
@@ -159,7 +160,7 @@ describe('addManuscript', () => {
       jest.restoreAllMocks();
     });
 
-    it('manuscripts empty - minimal', () => {
+    test('manuscripts empty - minimal', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/minimal', '11111');
 
       expect(manuscripts).toStrictEqual({
@@ -184,7 +185,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - may have preprint posted - without server', () => {
+    test('manuscripts empty - may have preprint posted - without server', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-server', '11111', undefined, 'preprint server', '2022-01-01', 'https://preprint.url');
 
       expect(manuscripts['11111v1']).toStrictEqual({
@@ -214,7 +215,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - may have preprint posted - with server', () => {
+    test('manuscripts empty - may have preprint posted - with server', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/without-server', '11111', undefined, undefined, '2022-01-01', 'https://preprint.url');
 
       expect(manuscripts['11111v1']).toStrictEqual({
@@ -244,7 +245,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - may have reviewed preprint date', () => {
+    test('manuscripts empty - may have reviewed preprint date', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-reviewed-preprint-date', '11111', undefined, undefined, undefined, undefined, '2020-01-02');
 
       expect(manuscripts['11111v1']).toStrictEqual({
@@ -266,7 +267,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - may have sent for peer review date', () => {
+    test('manuscripts empty - may have sent for peer review date', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/with-peer-review-date', '11111', undefined, undefined, undefined, undefined, undefined, '2020-01-02');
 
       expect(manuscripts).toStrictEqual({
@@ -295,7 +296,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - sort timeline 1', () => {
+    test('manuscripts empty - sort timeline 1', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/sort-timeline-1', '11111', undefined, undefined, '2020-01-01', 'https://preprint.url', '2020-01-02', '2020-01-07');
 
       expect(manuscripts).toStrictEqual({
@@ -332,7 +333,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts empty - sort timeline 2', () => {
+    test('manuscripts empty - sort timeline 2', () => {
       const { manuscripts } = addManuscript({ preprints: {}, manuscripts: {} }, '10.1101/sort-timeline-2', '11111', undefined, undefined, '2020-01-01', 'https://preprint.url', '2020-01-07', '2020-01-02');
 
       expect(manuscripts).toStrictEqual({
@@ -369,7 +370,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts existing - no match - minimal', () => {
+    test('manuscripts existing - no match - minimal', () => {
       const { manuscripts } = addManuscript({
         preprints: {},
         manuscripts: {
@@ -434,7 +435,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts existing - match - minimal version 2', () => {
+    test('manuscripts existing - match - minimal version 2', () => {
       const { manuscripts } = addManuscript({
         preprints: {},
         manuscripts: {
@@ -514,7 +515,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts existing - match - minimal version 3', () => {
+    test('manuscripts existing - match - minimal version 3', () => {
       const { manuscripts } = addManuscript({
         preprints: {},
         manuscripts: {
@@ -676,7 +677,7 @@ describe('addManuscript', () => {
       });
     });
 
-    it('manuscripts existing - match - minimal version 2 - different preprint doi', () => {
+    test('manuscripts existing - match - minimal version 2 - different preprint doi', () => {
       const { preprints, manuscripts } = addManuscript({
         preprints: {
           '10.1101/existing': {

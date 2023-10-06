@@ -1,4 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
 import { Author } from '../../../types';
 import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
@@ -9,46 +12,47 @@ const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations 
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 
 describe('AuthorInformationList', () => {
-  it('renders correctly', () => {
+  afterEach(cleanup);
+  test('renders correctly', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Author information')).toBeInTheDocument();
+    expect(screen.getByText('Author information')).toBeTruthy();
   });
 
-  it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
+  test.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText(name)).toBeInTheDocument();
+    expect(screen.getByText(name)).toBeTruthy();
   });
 
-  it.each(authors.filter(({ type }) => type !== 'Organization').map(getAffiliationAndAuthor))(
+  test.each(authors.filter(({ type }) => type !== 'Organization').map(getAffiliationAndAuthor))(
     'renders the the affiliation: $affiliation for author: $name',
     ({ affiliation, name }) => {
       render(<AuthorInformationList authors={authors}/>);
 
-      expect(screen.getByText(name).nextSibling).toHaveTextContent(affiliation);
+      expect(screen.getByText(name).nextSibling?.textContent).toContain(affiliation);
     },
   );
 
-  it('renders organiizations correctly', () => {
+  test('renders organiizations correctly', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeTruthy();
   });
 
-  it('renders the authors ORCID\'s', () => {
+  test('renders the authors ORCID\'s', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Steve Rogers').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5678, 0000-0002-1234-5679');
-    expect(screen.getByText('Antony Stark').nextSibling?.nextSibling).not.toBeInTheDocument();
-    expect(screen.getByText('Natasha Romanov').nextSibling?.nextSibling).not.toBeInTheDocument();
-    expect(screen.getByText('Arthur Curry').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5688');
-    expect(screen.getByText('Oliver Queen').nextSibling?.nextSibling).not.toBeInTheDocument();
+    expect(screen.getByText('Steve Rogers').nextSibling?.nextSibling?.textContent).toContain('0000-0002-1234-5678, 0000-0002-1234-5679');
+    expect(screen.getByText('Antony Stark').nextSibling?.nextSibling).toBeNull();
+    expect(screen.getByText('Natasha Romanov').nextSibling?.nextSibling).toBeNull();
+    expect(screen.getByText('Arthur Curry').nextSibling?.nextSibling?.textContent).toContain('0000-0002-1234-5688');
+    expect(screen.getByText('Oliver Queen').nextSibling?.nextSibling).toBeNull();
   });
 
-  it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
+  test.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
     const { container } = render(<AuthorInformationList authors={authors}/>);
 
-    expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();
+    expect(container.querySelector(`[id="${id}"]`)).toBeTruthy();
   });
 });

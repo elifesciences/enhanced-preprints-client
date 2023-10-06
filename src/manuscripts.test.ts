@@ -1,7 +1,8 @@
+import { expect, test, describe } from 'bun:test';
 import { getManuscript, getManuscripts, getManuscriptsLatest } from './manuscripts';
 
 describe('getManuscripts', () => {
-  it('populates the manuscript configs from the json data file', () => {
+  test('populates the manuscript configs from the json data file', () => {
     const result = getManuscripts('./test-utils/data/example_manuscripts.json');
 
     expect(result).toStrictEqual({
@@ -58,7 +59,7 @@ describe('getManuscripts', () => {
 });
 
 describe('getManuscriptsLatest', () => {
-  it('populates the manuscript configs from the json data file with latest data', () => {
+  test('populates the manuscript configs from the json data file with latest data', () => {
     const result = getManuscriptsLatest('./test-utils/data/example_manuscripts.json');
 
     expect(result).toStrictEqual({
@@ -99,7 +100,7 @@ describe('getManuscriptsLatest', () => {
 });
 
 describe('getManuscript', () => {
-  it('retreives a single manuscript config from the json data file', () => {
+  test('retreives a single manuscript config from the json data file', () => {
     const result = getManuscript('./test-utils/data/example_manuscripts.json', 'msid1');
 
     expect(result).toStrictEqual({
@@ -120,7 +121,7 @@ describe('getManuscript', () => {
     });
   });
 
-  it('retreives an undefined when manuscript is not in config from the json data file', () => {
+  test('retreives an undefined when manuscript is not in config from the json data file', () => {
     const result = getManuscript('./test-utils/data/example_manuscripts.json', 'msid3');
 
     expect(result).toBeUndefined();

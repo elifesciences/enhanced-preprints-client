@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 import { Heading } from './heading';
 
 describe('Heading', () => {
-  it('should render all of the different heading levels with the correct tag', () => {
+  afterEach(cleanup);
+  test('should render all of the different heading levels with the correct tag', () => {
     render(
       <div>
         <Heading id={'foo1'} content='heading-1' headingLevel={1}/>
@@ -22,28 +26,28 @@ describe('Heading', () => {
     expect(screen.getByText('heading-6').tagName).toStrictEqual('H6');
   });
 
-  it('should render a string content correctly', () => {
+  test('should render a string content correctly', () => {
     render(<Heading id={'foo'} content="I am a string title" headingLevel={1}/>);
 
-    expect(screen.getByText('I am a string title')).toBeInTheDocument();
+    expect(screen.getByText('I am a string title')).toBeTruthy();
   });
 
-  it('should render a Content content correctly', () => {
+  test('should render a Content content correctly', () => {
     render(<Heading id={'foo'} content={{ content: 'I am an emphasised title', type: 'Emphasis' }} headingLevel={1}/>);
 
-    expect(screen.getByText('I am an emphasised title')).toBeInTheDocument();
+    expect(screen.getByText('I am an emphasised title')).toBeTruthy();
   });
 
-  it('includes the heading id', () => {
+  test('includes the heading id', () => {
     render(<Heading content={'heading'} headingLevel={1} id={'hd1'}/>);
 
     expect(screen.getByText('heading').id).toStrictEqual('hd1');
   });
 
-  it('should render with a custom className if passed in', () => {
+  test('should render with a custom className if passed in', () => {
     render(<Heading id={'foo'} content="foo" headingLevel={1} className="custom-class"/>);
 
-    expect(screen.getByText('foo')).toHaveClass('custom-class');
-    expect(screen.getByText('foo')).not.toHaveClass('heading-1');
+    expect(Array.from(screen.getByText('foo').classList)).toContain('custom-class');
+    expect(Array.from(screen.getByText('foo').classList)).not.toContain('heading-1');
   });
 });

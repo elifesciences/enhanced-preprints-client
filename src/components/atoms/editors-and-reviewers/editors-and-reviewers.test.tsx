@@ -1,4 +1,7 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 import { EditorsAndReviewers } from './editors-and-reviewers';
 
 const participants = [
@@ -7,16 +10,17 @@ const participants = [
 ];
 
 describe('authors', () => {
-  it('should render correctly a list of authors', () => {
+  afterEach(cleanup);
+  test('should render correctly a list of authors', () => {
     render(<EditorsAndReviewers participants={participants}/>);
     const captainAmerica = screen.getByText('Steve Rogers');
     const ironMan = screen.getByText('Antony Stark');
     const starkHq = screen.getByText('Stark Industries', { exact: false });
     const sheild = screen.getByText('Strategic Homeland', { exact: false });
 
-    expect(captainAmerica).toBeInTheDocument();
-    expect(ironMan).toBeInTheDocument();
-    expect(starkHq).toBeInTheDocument();
-    expect(sheild).toBeInTheDocument();
+    expect(captainAmerica).toBeTruthy();
+    expect(ironMan).toBeTruthy();
+    expect(starkHq).toBeTruthy();
+    expect(sheild).toBeTruthy();
   });
 });

@@ -1,12 +1,16 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 import { Button } from '../../atoms/button/button';
 
 describe('Back to homepage button', () => {
-  it('renders with the provided text', () => {
+  afterEach(cleanup);
+  test('renders with the provided text', () => {
     render(<Button text="Back to homepage" url='/' />);
 
-    expect(screen.getByText('Back to homepage')).toBeInTheDocument();
-    expect(screen.getByText('Back to homepage')).toHaveAttribute('href');
+    expect(screen.getByText('Back to homepage')).toBeTruthy();
+    expect(screen.getByText('Back to homepage').getAttribute('href')).toBeTruthy();
     expect(screen.getByText('Back to homepage').getAttribute('href')).toStrictEqual('/');
   });
 });

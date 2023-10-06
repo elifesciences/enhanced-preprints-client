@@ -1,4 +1,7 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 
 import { Heading, JumpToMenu } from './jump-to-menu';
 
@@ -10,36 +13,29 @@ const headings = [
 ] as unknown as Heading[];
 
 describe('JumpToMenu', () => {
-  it('should render all the headings passed in as a prop', () => {
+  afterEach(cleanup);
+  test('should render all the headings passed in as a prop', () => {
     render(<JumpToMenu headings={headings} />);
 
-    expect(screen.getByText('heading 1')).toBeInTheDocument();
-    expect(screen.getByText('heading 2')).toBeInTheDocument();
-    expect(screen.getByText('heading 3')).toBeInTheDocument();
+    expect(screen.getByText('heading 1')).toBeTruthy();
+    expect(screen.getByText('heading 2')).toBeTruthy();
+    expect(screen.getByText('heading 3')).toBeTruthy();
   });
 
-  it('should check if heading has an id', () => {
+  test('should check if heading has an id', () => {
     render(<JumpToMenu headings={headings} />);
 
-    expect(screen.queryByText('heading 1')).toBeInTheDocument();
-    expect(screen.queryByText('heading 2')).toBeInTheDocument();
-    expect(screen.queryByText('heading 3')).toBeInTheDocument();
-    expect(screen.queryByText('heading 4')).not.toBeInTheDocument();
+    expect(screen.queryByText('heading 1')).toBeTruthy();
+    expect(screen.queryByText('heading 2')).toBeTruthy();
+    expect(screen.queryByText('heading 3')).toBeTruthy();
+    expect(screen.queryByText('heading 4')).toBeNull();
   });
 
-  it('should highlight the specified item', () => {
+  test('should highlight the specified item', () => {
     render(<JumpToMenu headings={headings} />);
 
-    expect(screen.getByText('heading 1').parentElement).toHaveClass('jump-menu-list__item--active');
-    expect(screen.getByText('heading 2').parentElement).not.toHaveClass('jump-menu-list__item--active');
-    expect(screen.getByText('heading 3').parentElement).not.toHaveClass('jump-menu-list__item--active');
-  });
-
-  it('should highlight the specified item', () => {
-    render(<JumpToMenu headings={headings} />);
-
-    expect(screen.getByText('heading 1').parentElement).toHaveClass('jump-menu-list__item--active');
-    expect(screen.getByText('heading 2').parentElement).not.toHaveClass('jump-menu-list__item--active');
-    expect(screen.getByText('heading 3').parentElement).not.toHaveClass('jump-menu-list__item--active');
+    expect(Array.from(screen.getByText('heading 1').parentElement?.classList || [])).toContain('jump-menu-list__item--active');
+    expect(Array.from(screen.getByText('heading 2').parentElement?.classList || [])).not.toContain('jump-menu-list__item--active');
+    expect(Array.from(screen.getByText('heading 3').parentElement?.classList || [])).not.toContain('jump-menu-list__item--active');
   });
 });

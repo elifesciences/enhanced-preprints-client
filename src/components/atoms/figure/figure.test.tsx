@@ -1,4 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach, beforeEach } from 'bun:test';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Figure } from './figure';
 import { FigureContent } from '../../../types';
 
@@ -11,14 +14,15 @@ const content: FigureContent = {
 };
 
 describe('Figure', () => {
-  it('renders correctly', () => {
+  afterEach(cleanup);
+  test('renders correctly', () => {
     const { container } = render(<Figure content={content}/>);
 
-    expect(screen.getByText('some content')).toBeInTheDocument();
-    expect(container.querySelector('#id')).toBeInTheDocument();
+    expect(screen.getByText('some content')).toBeTruthy();
+    expect(container.querySelector('#id')).toBeTruthy();
   });
 
-  it('renders the content', () => {
+  test('renders the content', () => {
     const complexContent: FigureContent = {
       ...content,
       content: {
@@ -32,19 +36,19 @@ describe('Figure', () => {
     expect(screen.getByText('Bold Text').tagName).toBe('STRONG');
   });
 
-  it('renders the label', () => {
+  test('renders the label', () => {
     render(<Figure content={content}/>);
 
-    expect(screen.getByText('I am a label')).toBeInTheDocument();
+    expect(screen.getByText('I am a label')).toBeTruthy();
   });
 
-  it('renders the caption', () => {
+  test('renders the caption', () => {
     render(<Figure content={content}/>);
 
-    expect(screen.getByText('this is a figure')).toBeInTheDocument();
+    expect(screen.getByText('this is a figure')).toBeTruthy();
   });
 
-  it('renders a complex caption', () => {
+  test('renders a complex caption', () => {
     const complexContent: FigureContent = {
       ...content,
       caption: [
@@ -74,7 +78,7 @@ describe('Figure', () => {
     expect(screen.getByText('Heading 4').tagName).toBe('H4');
   });
 
-  it('should not render caption if not defined', () => {
+  test('should not render caption if not defined', () => {
     const noCaption: FigureContent = {
       ...content,
       caption: undefined,
@@ -82,10 +86,10 @@ describe('Figure', () => {
 
     const { container } = render(<Figure content={noCaption}/>);
 
-    expect(container.querySelector('figcaption')).not.toBeInTheDocument();
+    expect(container.querySelector('figcaption')).toBeNull();
   });
 
-  it('should not render label if not defined', () => {
+  test('should not render label if not defined', () => {
     const noLabel: FigureContent = {
       ...content,
       label: undefined,
@@ -93,10 +97,10 @@ describe('Figure', () => {
 
     const { container } = render(<Figure content={noLabel}/>);
 
-    expect(container.querySelector('label')).not.toBeInTheDocument();
+    expect(container.querySelector('label')).toBeNull();
   });
 
-  it('should not set id if not defined', () => {
+  test('should not set id if not defined', () => {
     const noId: FigureContent = {
       ...content,
       id: undefined,
@@ -104,7 +108,7 @@ describe('Figure', () => {
 
     const { container } = render(<Figure content={noId}/>);
 
-    expect(container.querySelector('#id')).not.toBeInTheDocument();
+    expect(container.querySelector('#id')).toBeNull();
   });
 
   describe('caption with long text', () => {
@@ -116,62 +120,62 @@ describe('Figure', () => {
         caption: longCaption,
       };
 
-      Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: 300 });
-      Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 200 });
+      // Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: 300 });
+      // Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 200 });
 
       render(<Figure content={testContentWithLongCaption} />);
     });
 
-    it('should not have the figure__caption--expanded class on the first render', () => {
-      expect(screen.getByText(longCaption, { exact: false })).not.toHaveClass('figure__caption--expanded');
+    test('should not have the figure__caption--expanded class on the first render', () => {
+      expect(Array.from(screen.getByText(longCaption, { exact: false }).classList)).not.toContain('figure__caption--expanded');
     });
 
-    it('should not have the expanded class on the first render', () => {
-      expect(screen.getByText('Show more')).not.toHaveClass('expanded');
+    test('should not have the expanded class on the first render', () => {
+      expect(Array.from(screen.getByText('Show more').classList)).not.toContain('expanded');
     });
 
-    it('should have the figure__caption--expanded class on Show more button click', () => {
+    test('should have the figure__caption--expanded class on Show more button click', () => {
       fireEvent.click(screen.getByText('Show more'));
 
-      expect(screen.getByText(longCaption, { exact: false })).toHaveClass('figure__caption--expanded');
+      expect(Array.from(screen.getByText(longCaption, { exact: false }).classList)).toContain('figure__caption--expanded');
     });
 
-    it('should have the expanded class on Show more button click', () => {
+    test('should have the expanded class on Show more button click', () => {
       fireEvent.click(screen.getByText('Show more'));
 
-      expect(screen.getByText('Show less')).toHaveClass('expanded');
+      expect(Array.from(screen.getByText('Show less').classList)).toContain('expanded');
     });
 
-    it('should not have the figure__caption--expanded class on Show less button click', () => {
-      fireEvent.click(screen.getByText('Show more'));
-      fireEvent.click(screen.getByText('Show less'));
-
-      expect(screen.getByText(longCaption, { exact: false })).not.toHaveClass('figure__caption--expanded');
-    });
-
-    it('should not have the expanded class on Show less button click', () => {
+    test('should not have the figure__caption--expanded class on Show less button click', () => {
       fireEvent.click(screen.getByText('Show more'));
       fireEvent.click(screen.getByText('Show less'));
 
-      expect(screen.getByText('Show more')).not.toHaveClass('expanded');
+      expect(Array.from(screen.getByText(longCaption, { exact: false }).classList)).not.toContain('figure__caption--expanded');
     });
 
-    it('has a Show more button for long captions', () => {
+    test('should not have the expanded class on Show less button click', () => {
+      fireEvent.click(screen.getByText('Show more'));
+      fireEvent.click(screen.getByText('Show less'));
+
+      expect(Array.from(screen.getByText('Show more').classList)).not.toContain('expanded');
+    });
+
+    test('has a Show more button for long captions', () => {
       expect(screen.queryByText('Show more')).not.toBeNull();
     });
 
-    it('has a Show less button for expanded long captions', () => {
+    test('has a Show less button for expanded long captions', () => {
       fireEvent.click(screen.getByText('Show more'));
 
       expect(screen.queryByText('Show more')).toBeNull();
       expect(screen.queryByText('Show less')).not.toBeNull();
     });
 
-    it('expands the caption when show more button clicked', () => {
+    test('expands the caption when show more button clicked', () => {
       expect(screen.queryByText(longCaption, { exact: false })).not.toBeNull();
     });
 
-    it('collapses the caption when Show less button clicked', () => {
+    test('collapses the caption when Show less button clicked', () => {
       fireEvent.click(screen.getByText('Show more'));
       fireEvent.click(screen.getByText('Show less'));
 
@@ -181,7 +185,7 @@ describe('Figure', () => {
   });
 
   describe('caption with short text', () => {
-    it('does not display the show more button for short captions', () => {
+    test('does not display the show more button for short captions', () => {
       const shortCaption = 'Short Caption';
       const testContentWithShortCaption = {
         ...content,

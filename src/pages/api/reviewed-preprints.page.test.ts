@@ -1,8 +1,13 @@
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
 import { reviewedPreprintSnippet } from './reviewed-preprints.page';
 import { Author } from '../../types/author';
+import { cleanup } from '@testing-library/react';
 
 describe('reviewedPreprintSnippet', () => {
-  it('prepares a reviewed preprint snippet with manuscript and metadata', () => {
+  afterEach(cleanup);
+  test('prepares a reviewed preprint snippet with manuscript and metadata', () => {
     const result = reviewedPreprintSnippet({
       msid: 'msid1',
       version: '1',
@@ -101,7 +106,7 @@ describe('reviewedPreprintSnippet', () => {
     });
   });
 
-  it('prepares a reviewed preprint snippet with manuscript only', () => {
+  test('prepares a reviewed preprint snippet with manuscript only', () => {
     const result = reviewedPreprintSnippet({
       msid: 'msid1',
       version: '1',
@@ -148,7 +153,7 @@ describe('reviewedPreprintSnippet', () => {
     });
   });
 
-  it('prepares a revised preprint snippet', () => {
+  test('prepares a revised preprint snippet', () => {
     const result = reviewedPreprintSnippet({
       msid: 'msid1',
       version: '3',
@@ -197,7 +202,7 @@ describe('reviewedPreprintSnippet', () => {
     });
   });
 
-  it.each([
+  test.each([
     [
       [],
       undefined,

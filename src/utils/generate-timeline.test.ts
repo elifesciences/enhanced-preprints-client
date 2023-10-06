@@ -1,3 +1,4 @@
+import { expect, test, describe } from 'bun:test';
 import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
 
@@ -59,7 +60,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateStatus', () => {
-  it('should generate the correct status with one article version', () => {
+  test('should generate the correct status with one article version', () => {
     // Call the function
     const timeline = generateTimeline({
       article: version1,
@@ -90,7 +91,7 @@ describe('generateStatus', () => {
     ]);
   });
 
-  it('should generate the correct timeline with two article versions', () => {
+  test('should generate the correct timeline with two article versions', () => {
     // Call the function
     const timeline = generateTimeline({
       article: version2,

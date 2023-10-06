@@ -1,3 +1,6 @@
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
 import {
   render, screen, cleanup, fireEvent,
 } from '@testing-library/react';
@@ -10,25 +13,26 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs
 import { contentToText } from '../../../utils/content-to-text';
 
 describe('ArticlePage', () => {
-  it('renders correctly', () => {
+  afterEach(cleanup);
+  test('renders correctly', () => {
     expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>)).not.toThrow();
   });
 
-  it('renders with figures tab', () => {
+  test('renders with figures tab', () => {
     expect(() => render(<ArticlePage msidWithVersion="12345v1"metaData={metaData} status={status} activeTab="figures" tabs={[]}>
       <ArticleFiguresTab content={content} />
     </ArticlePage>)).not.toThrow();
   });
 
-  it('renders with reviews tab', () => {
+  test('renders with reviews tab', () => {
     expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={[]}>
       <ArticleReviewsTab peerReview={peerReview} />
     </ArticlePage>)).not.toThrow();
   });
 
-  it('renders with tabs with correct active label', () => {
+  test('renders with tabs with correct active label', () => {
     const tabs = [
       {
         id: 'fulltext',
@@ -47,9 +51,9 @@ describe('ArticlePage', () => {
       <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
-    expect(screen.getByText('Full text')).toBeInTheDocument();
-    expect(screen.getByText('Figures')).toBeInTheDocument();
-    expect(screen.getByText('Peer review')).toBeInTheDocument();
+    expect(screen.getByText('Full text')).toBeTruthy();
+    expect(screen.getByText('Figures')).toBeTruthy();
+    expect(screen.getByText('Peer review')).toBeTruthy();
 
     expect(screen.getByText('Full text').parentElement?.classList.value).toContain('tab-label--active');
     expect(screen.getByText('Figures').parentElement?.classList.value).not.toContain('tab-label--active');
@@ -74,7 +78,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).toContain('tab-label--active');
   });
 
-  it('passes correct doi to status component', () => {
+  test('passes correct doi to status component', () => {
     const expectedDoi = '10.7554/eLife.123456.1';
     const encodedExpectedDoi = encodeURIComponent(expectedDoi);
     const { container } = render(
@@ -83,7 +87,7 @@ describe('ArticlePage', () => {
 
     fireEvent.click(screen.getByText('Share'));
 
-    expect(screen.getByDisplayValue(expectedDoi, { exact: false })).toBeInTheDocument();
+    expect(screen.getByDisplayValue(expectedDoi, { exact: false })).toBeTruthy();
 
     Array.from(container.getElementsByClassName('socials-sharer'))
       .map((el) => el.getAttribute('href'))

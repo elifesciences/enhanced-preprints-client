@@ -1,13 +1,17 @@
-import { render } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render } from '@testing-library/react';
 import { content } from '../../../../utils/mocks';
 import { ArticleFiguresTab } from './figures-tab';
 
 describe('FiguresTab', () => {
-  it('renders with figures tab', () => {
+  afterEach(cleanup);
+  test('renders with figures tab', () => {
     expect(() => render(<ArticleFiguresTab content={content}/>)).not.toThrow();
   });
 
-  it('renders every figure and table from the content', () => {
+  test('renders every figure and table from the content', () => {
     const { container } = render(<ArticleFiguresTab content={content}/>);
 
     const figures = Array.from(container.querySelectorAll('.article-body figure'));

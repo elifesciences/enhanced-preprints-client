@@ -1,51 +1,54 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
 import { Authors } from './authors';
 import { createAuthorId } from '../../../utils/create-author-id';
 
 describe('authors', () => {
-  it('should render correctly a list of authors', () => {
+  afterEach(cleanup);
+  test('should render correctly a list of authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);
 
-    expect(screen.getByText('Steve Rogers')).toBeInTheDocument();
+    expect(screen.getByText('Steve Rogers')).toBeTruthy();
     expect(container.querySelector('.authors-link')!.textContent).toStrictEqual('Steve Rogers');
   });
 
-  it('should hide authors after the author limit', () => {
+  test('should hide authors after the author limit', () => {
     const { container } = render(<Authors authors={authors}/>);
 
     expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
     expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(0);
   });
 
-  it('shows a clickable expansion element when over the author limit', () => {
+  test('shows a clickable expansion element when over the author limit', () => {
     render(<Authors authors={authors}/>);
-    const expansionElement = screen.getByText('show', { exact: false });
 
-    expect(expansionElement).toBeInTheDocument();
+    expect(screen.getByText('show', { exact: false })).toBeTruthy();
   });
 
-  it('does not show a clickable expansion element when under the author limit', () => {
+  test('does not show a clickable expansion element when under the author limit', () => {
     render(<Authors authors={[authors[0]]}/>);
     const expansionElement = screen.queryByText('show', { exact: false });
 
-    expect(expansionElement).not.toBeInTheDocument();
+    expect(expansionElement).toBeNull();
   });
 
-  it('renders the name for an organization', () => {
+  test('renders the name for an organization', () => {
     render(<Authors authors={authors}/>);
 
-    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeTruthy();
   });
 
-  it.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
+  test.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
-    expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();
+    expect(container.querySelector(`[href="#${id}"]`)).toBeTruthy();
   });
 
   describe('expansion behaviour', () => {
-    it('shows on click', () => {
+    test('shows on click', () => {
       const { container } = render(<Authors authors={authors}/>);
 
       expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
@@ -57,7 +60,7 @@ describe('authors', () => {
       expect(container.getElementsByClassName('authors-list--expanded')).toHaveLength(1);
     });
 
-    it('hides on click', () => {
+    test('hides on click', () => {
       const { container } = render(<Authors authors={authors}/>);
 
       expect(container.getElementsByClassName('authors--collapsible')).toHaveLength(1);
@@ -76,29 +79,29 @@ describe('authors', () => {
   });
 
   describe('corresponding author', () => {
-    it('show email icon for corresponding authors', () => {
+    test('show email icon for corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      expect(screen.getByText('Kara Zor-el')).toHaveClass('authors-email__link');
-      expect(screen.getByText('Kal El')).toHaveClass('authors-email__link');
+      expect(Array.from(screen.getByText('Kara Zor-el').classList)).toContain('authors-email__link');
+      expect(Array.from(screen.getByText('Kal El').classList)).toContain('authors-email__link');
     });
 
-    it('does not show email icon for non corresponding authors', () => {
+    test('does not show email icon for non corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      expect(screen.getByText('Steve Rogers')).not.toHaveClass('authors-email__link');
-      expect(screen.getByText('Antony Stark')).not.toHaveClass('authors-email__link');
+      expect(Array.from(screen.getByText('Steve Rogers').classList)).not.toContain('authors-email__link');
+      expect(Array.from(screen.getByText('Antony Stark').classList)).not.toContain('authors-email__link');
     });
 
-    it('shows accessibility span', () => {
+    test('shows accessibility span', () => {
       render(<Authors authors={authors}/>);
 
       const karaAccessibilityElement = screen.getByText('Kara Zor-el').firstElementChild;
       const kalAccessibilityElement = screen.getByText('Kal El').firstElementChild;
-      expect(karaAccessibilityElement).toHaveClass('visuallyhidden');
-      expect(karaAccessibilityElement).toHaveTextContent('author has email address');
-      expect(kalAccessibilityElement).toHaveClass('visuallyhidden');
-      expect(kalAccessibilityElement).toHaveTextContent('author has email address');
+      expect(Array.from(karaAccessibilityElement?.classList || [])).toContain('visuallyhidden');
+      expect(karaAccessibilityElement?.textContent).toContain('author has email address');
+      expect(Array.from(kalAccessibilityElement?.classList || [])).toContain('visuallyhidden');
+      expect(kalAccessibilityElement?.textContent).toContain('author has email address');
     });
   });
 });

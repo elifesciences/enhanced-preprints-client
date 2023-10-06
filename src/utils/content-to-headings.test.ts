@@ -1,14 +1,15 @@
+import { expect, test, describe } from 'bun:test';
 import { contentToHeadings } from './content-to-headings';
 import { content as mockContent } from './mocks';
 
 describe('Content to Headings', () => {
-  it('handles content without headings', () => {
+  test('handles content without headings', () => {
     const result = contentToHeadings('foo');
 
     expect(result).toStrictEqual([]);
   });
 
-  it('converts content to headings', () => {
+  test('converts content to headings', () => {
     const result = contentToHeadings([
       {
         type: 'Heading',
@@ -70,7 +71,7 @@ describe('Content to Headings', () => {
     ]);
   });
 
-  it('should convert complex example', () => {
+  test('should convert complex example', () => {
     const result = contentToHeadings(mockContent);
 
     expect(result).toStrictEqual([

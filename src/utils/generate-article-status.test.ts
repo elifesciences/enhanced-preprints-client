@@ -1,3 +1,4 @@
+import { expect, test, describe } from 'bun:test';
 import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
 import { generateStatus } from './generate-article-status';
 
@@ -59,7 +60,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateStatus', () => {
-  it('should be a reviewed preprint if article is the same as the first version', () => {
+  test('should be a reviewed preprint if article is the same as the first version', () => {
     const status = generateStatus({
       article: version1,
       versions: {
@@ -73,7 +74,7 @@ describe('generateStatus', () => {
     });
   });
 
-  it('should be a revised preprint if article is not the same as the first version', () => {
+  test('should be a revised preprint if article is not the same as the first version', () => {
     const status = generateStatus({
       article: version2,
       versions: {
@@ -87,7 +88,7 @@ describe('generateStatus', () => {
     });
   });
 
-  it('should be a preview if the published date is empty', () => {
+  test('should be a preview if the published date is empty', () => {
     const previewVersion = {
       ...version1,
     };
@@ -105,7 +106,7 @@ describe('generateStatus', () => {
     });
   });
 
-  it('should be a preview if the published date is in the future', () => {
+  test('should be a preview if the published date is in the future', () => {
     const previewVersion = {
       ...version1,
     };
@@ -124,7 +125,7 @@ describe('generateStatus', () => {
     });
   });
 
-  it('should not be a preview if the published date is present and represents a date in the past', () => {
+  test('should not be a preview if the published date is present and represents a date in the past', () => {
     const status = generateStatus({
       article: version1,
       versions: {

@@ -1,26 +1,30 @@
-import { render, screen } from '@testing-library/react';
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+import { expect, test, describe, afterEach } from 'bun:test';
+import { cleanup, render, screen } from '@testing-library/react';
 import { ArticleReviewsTab } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
 
 describe('ReviewsTab', () => {
-  it('renders with reviews tab', () => {
+  afterEach(cleanup);
+  test('renders with reviews tab', () => {
     expect(() => render(<ArticleReviewsTab peerReview={peerReview} />)).not.toThrow();
   });
 
-  it('renders each review in the peer review passed in', () => {
+  test('renders each review in the peer review passed in', () => {
     render(<ArticleReviewsTab peerReview={peerReview} />);
 
     peerReview.reviews
-      .forEach(({ text }) => expect(screen.getByText(text)).toBeInTheDocument());
+      .forEach(({ text }) => expect(screen.getByText(text)).toBeTruthy());
   });
 
-  it('renders the author response when it is in the peer review', () => {
+  test('renders the author response when it is in the peer review', () => {
     render(<ArticleReviewsTab peerReview={peerReview} />);
 
-    expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
+    expect(screen.getByText(peerReview.authorResponse!.text)).toBeTruthy();
   });
 
-  it.each([
+  test.each([
     {
       description: 'complete',
       peerReviewExample: peerReview,
@@ -94,7 +98,7 @@ describe('ReviewsTab', () => {
     expect(jumpLinkValues).toStrictEqual(expectedJumpToLinks);
   });
 
-  it('uses the heading ids for the hrefs in jump-to-menu', () => {
+  test('uses the heading ids for the hrefs in jump-to-menu', () => {
     const { container } = render(<ArticleReviewsTab peerReview={peerReview} />);
 
     const headings = Array.from(container.querySelectorAll('[id]'));

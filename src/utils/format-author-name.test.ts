@@ -1,3 +1,4 @@
+import { expect, test, describe } from 'bun:test';
 import { formatAuthorName } from './format-author-name';
 import { authors } from './mocks';
 
@@ -20,7 +21,7 @@ const authorNameStrings = [
 ];
 
 describe('formatAuthorName', () => {
-  it.each(authors.map((author, index) => ({ author, expected: authorNameStrings[index] })))('concatenates all names together in givenNames surnames suffix order', ({ author, expected }) => {
+  test.each(authors.map((author, index) => ({ author, expected: authorNameStrings[index] })))('concatenates all names together in givenNames surnames suffix order', ({ author, expected }) => {
     expect(formatAuthorName(author)).toStrictEqual(expected);
   });
 });
