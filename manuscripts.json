@@ -5511,7 +5511,7 @@
     "89306": "89306v1",
     "89311": "89311v1",
     "89316": "89316v1",
-    "89317": "89317v1",
+    "89317": "89317v2",
     "89319": "89319v1",
     "89321": "89321v1",
     "89330": "89330v1",
@@ -24430,7 +24430,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-06",
+            "link": {
+              "url": "/reviewed-preprints/89317v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-08-14",
             "eventDescription": "(this version)"
           },
@@ -36360,6 +36368,43 @@
             "date": "2020-08-27",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/729491v2",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89317v2": {
+      "msid": "89317",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.22.521565",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-06",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-08-14",
+            "link": {
+              "url": "/reviewed-preprints/89317v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-31"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.22.521565v1/",
               "text": "Go to bioRxiv"
             }
           }
