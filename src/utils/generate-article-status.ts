@@ -9,5 +9,5 @@ const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsC
 
 export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
   type: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version)) ? 'Reviewed Preprint' : 'Revised Preprint',
-  isPreview: !version.article.published || version.article.published > (new Date()),
+  isPreview: !version.article.published || new Date(version.article.published) > (new Date()),
 });
