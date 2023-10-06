@@ -32,22 +32,18 @@ export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) =
 
   if (authors?.length) {
     if (authors.length < 3) {
-      for (let i = 0; i < authors.length; i += 1) {
-        if (i > 0) {
-          authorName += ' & ';
-        }
-
-        if (authors[i].type === 'Organization') {
-          authorName += authors[i].name ?? '';
+      authorName = authors.map(author => {
+        if (author.type === 'Organization') {
+          return author.name ?? '';
         } else {
-          authorName += `${(authors[i].givenNames ?? []).join(' ')} ${(authors[i].familyNames ?? []).join(' ')}${authors[i].honorificSuffix ? ` ${authors[i].honorificSuffix}` : ''} `;
+          return `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''} `;
         }
-      }
+      }).join(' & ');
     } else {
       if (authors[0].type === 'Organization') {
         authorName = authors[0].name ?? '';
       } else {
-        authorName = `${(authors[0].familyNames ?? []).join(' ')}`;
+        authorName = (authors[0].familyNames ?? []).join(' ');
       }
 
       authorName += ' et al.';
