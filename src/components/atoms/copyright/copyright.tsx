@@ -32,12 +32,12 @@ export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) =
 
   if (authors?.length) {
     if (authors.length < 3) {
-      authorName = authors.map(author => {
+      authorName = authors.map((author) => {
         if (author.type === 'Organization') {
           return author.name ?? '';
-        } else {
-          return `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''} `;
         }
+
+        return `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''} `;
       }).join(' & ');
     } else {
       if (authors[0].type === 'Organization') {
