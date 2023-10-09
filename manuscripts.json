@@ -5004,6 +5004,13 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2022.03.25.22272955": {
+      "preprintDoi": "10.1101/2022.03.25.22272955",
+      "msas": [
+        "Computational and Systems Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -5640,6 +5647,7 @@
     "89871": "89871v1",
     "89873": "89873v1",
     "89874": "89874v1",
+    "89882": "89882v1",
     "89889": "89889v1",
     "89891": "89891v1",
     "89892": "89892v1",
@@ -36678,6 +36686,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-18"
+          }
+        ]
+      }
+    },
+    "89882v1": {
+      "msid": "89882",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.03.25.22272955",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-09",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-17"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-06-06",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2022.03.25.22272955v3/",
+              "text": "Go to medRxiv"
+            }
           }
         ]
       }
