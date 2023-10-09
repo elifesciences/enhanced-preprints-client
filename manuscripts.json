@@ -2549,8 +2549,8 @@
         "Computational and Systems Biology"
       ]
     },
-    "10.1101//2023.06.12.544638": {
-      "preprintDoi": "10.1101//2023.06.12.544638",
+    "10.1101/2023.06.12.544638": {
+      "preprintDoi": "10.1101/2023.06.12.544638",
       "msas": [
         "Cell Biology",
         "Developmental Biology"
@@ -5011,9 +5011,6 @@
         "Computational and Systems Biology",
         "Genetics and Genomics"
       ]
-    },
-    "10.1101/2023.06.12.544638": {
-      "preprintDoi": "10.1101/2023.06.12.544638"
     },
     "10.1101/2022.11.23.517743": {
       "preprintDoi": "10.1101/2022.11.23.517743",
@@ -21090,7 +21087,7 @@
       "msid": "89176",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101//2023.06.12.544638",
+      "preprintDoi": "10.1101/2023.06.12.544638",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
