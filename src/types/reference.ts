@@ -5,7 +5,7 @@ type PublicationType = 'PublicationVolume' | 'Periodical';
 type Publication = {
   type: PublicationType,
   name?: string,
-  volumeNumber?: number,
+  volumeNumber?: number | string,
   issueNumber?: number,
   isPartOf?: Publication,
 };
