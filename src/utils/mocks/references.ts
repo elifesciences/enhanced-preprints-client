@@ -51,7 +51,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Eghbali'], givenNames: ['M'] },
     ],
     datePublished: '2020-01-01T00:00:00.000Z',
-    isPartOf: { type: 'Periodical', name: 'Int J Mol Sci' },
+    isPartOf: { type: 'Periodical', name: 'Int J Mol Sci', volumeNumber: 'volume one' },
     pageStart: 21,
     title: 'The Role of Estrogen Receptors in Cardiovascular Disease',
     identifiers: [
