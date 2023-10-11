@@ -5179,6 +5179,12 @@
         "Microbiology and Infectious Disease",
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.08.18.55382": {
+      "preprintDoi": "10.1101/2023.08.18.55382",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -5973,6 +5979,7 @@
     "91136": "91136v1",
     "91141": "91141v1",
     "91155": "91155v1",
+    "91157": "91157v1",
     "91185": "91185v1",
     "91194": "91194v1",
     "91199": "91199v1",
@@ -38114,6 +38121,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-11"
+          }
+        ]
+      }
+    },
+    "91157v1": {
+      "msid": "91157",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.18.55382",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-18",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.18.553822v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-06"
           }
         ]
       }
