@@ -5130,6 +5130,12 @@
         "Developmental Biology",
         "Medicine"
       ]
+    },
+    "10.1101/2023.03.31.535081": {
+      "preprintDoi": "10.1101/2023.03.31.535081",
+      "msas": [
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -5739,6 +5745,7 @@
     "89687": "89687v1",
     "89690": "89690v1",
     "89694": "89694v1",
+    "89701": "89701v1",
     "89703": "89703v1",
     "89705": "89705v1",
     "89712": "89712v1",
@@ -37735,6 +37742,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-07"
+          }
+        ]
+      }
+    },
+    "89701v1": {
+      "msid": "89701",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.31.535081",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-05"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-26",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.31.535081v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
