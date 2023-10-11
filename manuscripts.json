@@ -5117,6 +5117,12 @@
         "Biochemistry and Chemical Biology",
         "Plant Biology"
       ]
+    },
+    "10.1101/2023.06.30.547215": {
+      "preprintDoi": "10.1101/2023.06.30.547215",
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -5807,6 +5813,7 @@
     "90139": "90139v1",
     "90148": "90148v1",
     "90156": "90156v1",
+    "90164": "90164v1",
     "90174": "90174v1",
     "90184": "90184v1",
     "90191": "90191v1",
@@ -37662,6 +37669,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-09"
+          }
+        ]
+      }
+    },
+    "90164v1": {
+      "msid": "90164",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.30.547215",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.30.547215v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-30"
           }
         ]
       }
