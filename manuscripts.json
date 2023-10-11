@@ -5172,6 +5172,13 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.1101/2023.08.29.555418": {
+      "preprintDoi": "10.1101/2023.08.29.555418",
+      "msas": [
+        "Microbiology and Infectious Disease",
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -5978,6 +5985,7 @@
     "91406": "91406v2",
     "91407": "91407v1",
     "91420": "91420v1",
+    "91452": "91452v1",
     "91458": "91458v1",
     "91483": "91483v1",
     "91507": "91507v1",
@@ -38077,6 +38085,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2021.11.06.467542v3/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "91452v1": {
+      "msid": "91452",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.29.555418",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-31",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.29.555418v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-11"
           }
         ]
       }
