@@ -5217,6 +5217,13 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2022.08.16.504114": {
+      "preprintDoi": "10.1101/2022.08.16.504114",
+      "msas": [
+        "Cell Biology",
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -6042,6 +6049,7 @@
     "91713": "91713v1",
     "91779": "91779v1",
     "91864": "91864v1",
+    "91903": "91903v1",
     "91976": "91976v1",
     "91980": "91980v1",
     "80494v1": {
@@ -38332,6 +38340,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-28"
+          }
+        ]
+      }
+    },
+    "91903v1": {
+      "msid": "91903",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.08.16.504114",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-12",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-22",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.08.16.504114v3/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-21"
           }
         ]
       }
