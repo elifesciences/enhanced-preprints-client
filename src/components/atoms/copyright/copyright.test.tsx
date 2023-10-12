@@ -7,7 +7,7 @@ describe('Copyright Component', () => {
     const license = 'https://creativecommons.org/licenses/by/4.0/';
     const publishedYear = 2023;
 
-    render(<Copyright license={license} publishedYear={publishedYear} author={authors[0]} />);
+    render(<Copyright license={license} publishedYear={publishedYear} authors={authors} />);
 
     const licenseText = screen.getByText(/This article is distributed under the terms of the/);
     expect(licenseText).toBeInTheDocument();
@@ -15,12 +15,9 @@ describe('Copyright Component', () => {
     const yearText = screen.getByText(/© 2023/);
     expect(yearText).toBeInTheDocument();
 
-    const authorName = `${authors[0]?.givenNames?.join(' ')} ${authors[0]?.familyNames?.join(' ')}`;
+    const authorName = `${authors[0]?.familyNames?.join(' ')} et al.`;
     const authorText = screen.getByText(new RegExp(authorName));
     expect(authorText).toBeInTheDocument();
-
-    const authorEtAlText = screen.getByText(/et al./);
-    expect(authorEtAlText).toBeInTheDocument();
   });
 
   it('renders correct text for Creative Commons CC0 public domain dedication', () => {
