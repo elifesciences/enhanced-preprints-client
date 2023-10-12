@@ -4,13 +4,13 @@ import './copyright.scss';
 type CopyrightProps = {
   license?: string,
   publishedYear?: number,
-  author?: Author,
+  authors?: Author[],
 };
 
-export const Copyright = ({ license, publishedYear, author }: CopyrightProps) => {
+export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) => {
   let copyrightText;
   let hasCopyright = false;
-  let authorName: string | undefined;
+  let authorName = '';
 
   if (license?.includes('/by/')) {
     copyrightText = (
@@ -30,11 +30,23 @@ export const Copyright = ({ license, publishedYear, author }: CopyrightProps) =>
     );
   }
 
-  if (author) {
-    if (author.type === 'Organization') {
-      authorName = author.name;
+  if (authors?.length) {
+    if (authors.length < 3) {
+      authorName = authors.map((author) => {
+        if (author.type === 'Organization') {
+          return author.name ?? '';
+        }
+
+        return `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''} `;
+      }).join(' & ');
     } else {
-      authorName = `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`;
+      if (authors[0].type === 'Organization') {
+        authorName = authors[0].name ?? '';
+      } else {
+        authorName = (authors[0].familyNames ?? []).join(' ');
+      }
+
+      authorName += ' et al.';
     }
   }
 
@@ -43,7 +55,7 @@ export const Copyright = ({ license, publishedYear, author }: CopyrightProps) =>
       {copyrightText &&
         <div id="copyright" className="copyright">
           <h2>Copyright</h2>
-          {hasCopyright && <p>{publishedYear && `© ${publishedYear},`}{authorName && ` ${authorName} et al.`}</p>}
+          {hasCopyright && <p>{publishedYear && `© ${publishedYear},`}{authorName && ` ${authorName}`}</p>}
           <p>{copyrightText}</p>
         </div>}
     </>
