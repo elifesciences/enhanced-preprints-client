@@ -1,0 +1,35 @@
+name: Coko Pull Request approval
+
+on:
+  pull_request:
+    types: [labeled, unlabeled, synchronize, opened, reopened]
+
+permissions:
+  statuses: write
+
+jobs:
+  check-for-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "DEBUG: pull_request object"
+        run: echo '${{ toJSON(github.event.pull_request) }}'
+      - name: Is this PR a publish PR needing to be skipped?
+        if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
+        run: echo "COKO_SKIP=1" >> $GITHUB_ENV
+      - name: Is this PR a renovatebot PR needing to be skipped?
+        if: ${{ github.event.pull_request.user.login == 'renovate' }}
+        run: echo "COKO_SKIP=1" >> $GITHUB_ENV
+      - name: Update status if related to publishing manuscripts
+        uses: ouzi-dev/commit-status-updater@v2
+        if: ${{ env.COKO_SKIP == '1' }}
+        with:
+          name: 'Coko Approval'
+          description: 'Not needed'
+          status: 'success'
+      - name: Update label status
+        uses: ouzi-dev/commit-status-updater@v2
+        if: ${{ env.COKO_SKIP != '1' }}
+        with:
+          name: 'Coko Approval'
+          description: "Label ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'is' || 'is not' }} present"
+          status: ${{ contains(github.event.pull_request.labels.*.name, 'coko-approved') && 'success' || 'pending' }}

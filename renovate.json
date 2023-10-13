@@ -25,7 +25,7 @@
     },
     {
       "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server", "ghcr.io/elifesciences/enhanced-preprints"],
-      "versioning": "regex:^master-(.*)-(?<minor>.*)$",
+      "versioning": "regex:^master-(.*)-(?<minor>[\\d]+)\\.(?<patch>[\\d]+)$",
       "automerge": true
     }
   ]

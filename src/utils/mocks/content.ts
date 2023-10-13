@@ -3878,5 +3878,18 @@ export const content: Content = [
       },
       ').\n            '
     ]
+  },
+  {
+    type: 'Claim',
+    content: [
+      'This is a claim'
+    ]
+  },
+  {
+    type: 'Claim',
+    claimType: 'Statement',
+    content: [
+      'This is a statement claim'
+    ]
   }
 ]
