@@ -16,6 +16,7 @@
     "start": "next start",
     "start:dev": "NODE_OPTIONS='--inspect' next dev",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint": "eslint --ext .tsx,.ts,.json src/ browser-tests/ ./manuscripts.json",
     "lint:fix": "eslint --fix --ext .tsx,.ts,.json src/ browser-tests/ ./manuscripts.json",
     "lint-sass": "stylelint **/*.scss",
