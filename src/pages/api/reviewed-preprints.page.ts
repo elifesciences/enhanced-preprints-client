@@ -36,7 +36,7 @@ type ReviewedPreprintListResponse = {
   items: ReviewedPreprintSnippet[],
 };
 
-const prepareAuthor = (author: Author) : string => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
+export const prepareAuthor = (author: Author) : string => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
 
 const prepareAuthorLine = (authors: Author[]) : undefined | string => {
   if (authors.length === 0) {
