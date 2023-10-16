@@ -14,8 +14,8 @@ jobs:
       - name: Is this PR a publish PR needing to be skipped?
         if: ${{ (startsWith(github.event.pull_request.title, 'Publish manuscript') || startsWith(github.event.pull_request.title, 'Add pdf url to manuscript')) && github.event.pull_request.user.login == 'github-actions' }}
         run: echo "COKO_SKIP=1" >> $GITHUB_ENV
-      - name: Is this PR a renovatebot PR needing to be skipped?
-        if: ${{ github.event.pull_request.user.login == 'renovate' }}
+      - name: Is this PR a dependency PR needing to be skipped?
+        if: contains(github.event.pull_request.labels.*.name, 'dependencies')
         run: echo "COKO_SKIP=1" >> $GITHUB_ENV
       - name: Update status if related to publishing manuscripts
         uses: ouzi-dev/commit-status-updater@v2
