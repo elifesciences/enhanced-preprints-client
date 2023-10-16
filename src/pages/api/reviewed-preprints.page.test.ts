@@ -65,6 +65,12 @@ describe('reviewedPreprintSnippet', () => {
             'Author 4',
           ],
         },
+        {
+          givenNames: [
+            'No family names',
+          ],
+          familyNames: [],
+        },
       ],
       doi: 'preprintprovider/preprint1',
       msas: [],
