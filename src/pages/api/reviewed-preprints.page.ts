@@ -36,7 +36,12 @@ type ReviewedPreprintListResponse = {
   items: ReviewedPreprintSnippet[],
 };
 
-export const prepareAuthor = (author: Author) : string => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
+export const prepareAuthor = (author: Author) : string => {
+  const givenNames = (author.givenNames ?? []).join(' ');
+  const familyNames = (author.familyNames ?? []).join(' ');
+
+  return `${givenNames}${familyNames ? ' ' : ''}${familyNames}`;
+};
 
 const prepareAuthorLine = (authors: Author[]) : undefined | string => {
   if (authors.length === 0) {
