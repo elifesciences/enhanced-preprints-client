@@ -5243,6 +5243,12 @@
       "msas": [
         "Epidemiology and Global Health"
       ]
+    },
+    "10.1101/2023.06.19.545295": {
+      "preprintDoi": "10.1101/2023.06.19.545295",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -5679,6 +5685,7 @@
     "88768": "88768v1",
     "88770": "88770v1",
     "88772": "88772v2",
+    "88775": "88775v1",
     "88782": "88782v1",
     "88793": "88793v1",
     "88794": "88794v1",
@@ -38809,6 +38816,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-17"
+          }
+        ]
+      }
+    },
+    "88775v1": {
+      "msid": "88775",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.19.545295",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-16",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-19",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.19.545295v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-05-25"
           }
         ]
       }
