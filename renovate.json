@@ -13,6 +13,7 @@
 			"versioningTemplate": "node"
 		}
 	],
+  "addLabels": ["dependencies"]
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
