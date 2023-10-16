@@ -36,7 +36,7 @@ test('reviewed preprints api item found', async ({ request }) => {
   expect(responseJson.doi).toBe('10.1101/123456');
   expect(responseJson.title).toBe('Tonight we take over the world!');
   expect(responseJson.indexContent).toContain('On the subject of sidekicks');
-  expect(responseJson.indexContent).toContain('Brain Pinky MouseSlowpoke RodreigezSylvester J PussycatElmer FuddYosemite SamFogghorn LeghornPepe Le PewPorky PigSpeedy GonzalesBugs Bunny');
+  expect(responseJson.indexContent).toContain('Brain, Pinky Mouse, Slowpoke Rodreigez, Sylvester J Pussycat, Elmer Fudd, Yosemite Sam, Fogghorn Leghorn, Pepe Le Pew, Porky Pig, Speedy Gonzales, Bugs Bunny');
 });
 
 test('reviewed preprints api item unknown', async ({ request }) => {

@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res,
       'application/vnd.elife.reviewed-preprint-item+json; version=1',
       200,
-      { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: `${metaData.authors.map((author) => prepareAuthor(author)).join('')} ${contentToHtml(content)}` },
+      { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: `${metaData.authors.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}` },
     );
   } else {
     console.log('Cannot find msid configured'); // eslint-disable-line no-console
