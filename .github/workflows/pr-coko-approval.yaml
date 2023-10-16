@@ -17,6 +17,9 @@ jobs:
       - name: Is this PR a dependency PR needing to be skipped?
         if: contains(github.event.pull_request.labels.*.name, 'dependencies')
         run: echo "COKO_SKIP=1" >> $GITHUB_ENV
+      - name: Has this been marked skippable by a dev?
+        if: contains(github.event.pull_request.labels.*.name, 'skip-coko-approval')
+        run: echo "COKO_SKIP=1" >> $GITHUB_ENV
       - name: Update status if related to publishing manuscripts
         uses: ouzi-dev/commit-status-updater@v2
         if: ${{ env.COKO_SKIP == '1' }}
