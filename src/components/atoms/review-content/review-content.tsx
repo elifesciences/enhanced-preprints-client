@@ -19,7 +19,7 @@ export const ReviewContent = ({
     sectionProps.id = 'assessment';
   }
 
-  doi = '10.7554/eLife.81090.sa2';
+  doi = '10.7554/eLife.81090.sa0';
 
   return (
     <section id={id} {...sectionProps}>

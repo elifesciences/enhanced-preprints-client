@@ -12,6 +12,7 @@ export const peerReview: PeerReview = {
     ],
     reviewType: ReviewType.EvaluationSummary,
     text: 'This paper is important and is very convincing',
+    doi: '10.7554/eLife.81090.sa0',
   },
   reviews: [
     {
@@ -25,6 +26,7 @@ export const peerReview: PeerReview = {
       ],
       reviewType: ReviewType.EvaluationSummary,
       text: 'Well done, Stephen.',
+      doi: '10.7554/eLife.81090.sa1',
     },
     {
       date: new Date('2022-01-03'),
@@ -37,6 +39,7 @@ export const peerReview: PeerReview = {
       ],
       reviewType: ReviewType.EvaluationSummary,
       text: 'Strange as the author, I am a scientist not a wizard.',
+      doi: '10.7554/eLife.81090.sa2',
     },
   ],
   authorResponse: {
@@ -50,5 +53,6 @@ export const peerReview: PeerReview = {
     ],
     reviewType: ReviewType.EvaluationSummary,
     text: 'I thank you for the review and take it as irrefutable proof and that I more intelligent that Tony.',
+    doi: '10.7554/eLife.81090.sa3',
   },
 };
