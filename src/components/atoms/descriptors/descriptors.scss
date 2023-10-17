@@ -27,6 +27,10 @@
     @include typography.identifiers-list-text();
 
     text-decoration: none;
+
+    .review-content--assessment & {
+      color: var(--link-decoration-secondary);
+    }
   }
 }
 
