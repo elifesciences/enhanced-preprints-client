@@ -15,6 +15,7 @@ type Evaluation = {
   reviewType: ReviewType,
   text: string,
   participants: Participant[],
+  doi?: string,
 };
 
 export type PeerReview = {

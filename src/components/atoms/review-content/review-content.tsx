@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Descriptors } from '../../atoms/descriptors/descriptors';
 import './review-content.scss';
 
 export const terms = [
@@ -7,9 +8,9 @@ export const terms = [
 
 const highlightTerms = (content: string): string => content.replaceAll(new RegExp(`([^\\w]+)(?<term>${terms.join('|')})([^\\w]+)`, 'gi'), '$1<strong class="highlighted-term">$<term></strong>$3');
 
-type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string };
+type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string, doi?: string };
 export const ReviewContent = ({
-  content, isAssessment = false, id = '', peerReviewUrl = undefined,
+  content, isAssessment = false, id = '', peerReviewUrl = undefined, doi = '',
 }: Props) => {
   const sectionProps: Record<string, string> = {
     className: `review-content${isAssessment ? ' review-content--assessment' : ''}`,
@@ -18,9 +19,12 @@ export const ReviewContent = ({
     sectionProps.id = 'assessment';
   }
 
+  doi = '10.7554/eLife.81090.sa2';
+
   return (
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
+      {doi && <Descriptors doi={doi}/>}
       {isAssessment ? (
         <ul className="review-content-items">
           { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
