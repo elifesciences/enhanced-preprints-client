@@ -5586,7 +5586,7 @@
     "87880": "87880v1",
     "87881": "87881v1",
     "87884": "87884v1",
-    "87894": "87894v1",
+    "87894": "87894v2",
     "87895": "87895v2",
     "87900": "87900v2",
     "87912": "87912v1",
@@ -21995,7 +21995,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-17",
+            "link": {
+              "url": "/reviewed-preprints/87894v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-07-25",
             "eventDescription": "(this version)"
           },
@@ -39331,6 +39339,43 @@
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2022.10.18.512689v2/",
               "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87894v2": {
+      "msid": "87894",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.10.23287084",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-17",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-07-25",
+            "link": {
+              "url": "/reviewed-preprints/87894v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-23"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-03-10",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.03.10.23287084v1/",
+              "text": "Go to medRxiv"
             }
           }
         ]
