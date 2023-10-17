@@ -17,6 +17,16 @@ Review.args = {
   With some body *emphasised*`,
 };
 
+export const ReviewAssessmentAndDoi = Template.bind({});
+ReviewAssessmentAndDoi.args = {
+  content: `# This is a review in markdown
+
+  With some body *emphasised*`,
+  isAssessment: true,
+  peerReviewUrl: '#',
+  doi: '10.7554/eLife.81090.sa0',
+};
+
 export const ReviewBlockQuote = Template.bind({});
 ReviewBlockQuote.args = {
   content: `# This is a review in markdown
