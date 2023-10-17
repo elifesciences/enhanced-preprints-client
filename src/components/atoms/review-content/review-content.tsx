@@ -10,7 +10,7 @@ const highlightTerms = (content: string): string => content.replaceAll(new RegEx
 
 type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string, doi?: string };
 export const ReviewContent = ({
-  content, isAssessment = false, id = '', peerReviewUrl = undefined, doi = '',
+  content, isAssessment = false, id = '', peerReviewUrl = undefined, doi = '10.7554/eLife.81090.sa0',
 }: Props) => {
   const sectionProps: Record<string, string> = {
     className: `review-content${isAssessment ? ' review-content--assessment' : ''}`,
@@ -18,8 +18,6 @@ export const ReviewContent = ({
   if (isAssessment) {
     sectionProps.id = 'assessment';
   }
-
-  doi = '10.7554/eLife.81090.sa0';
 
   return (
     <section id={id} {...sectionProps}>
