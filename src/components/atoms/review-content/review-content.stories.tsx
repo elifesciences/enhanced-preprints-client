@@ -10,11 +10,12 @@ const Template: StoryFn<typeof ReviewContent> = (args) => (
   <ReviewContent {...args} />
 );
 
-export const Review = Template.bind({});
-Review.args = {
+export const ReviewDoi = Template.bind({});
+ReviewDoi.args = {
   content: `# This is a review in markdown
 
   With some body *emphasised*`,
+  doi: '10.7554/eLife.81090.sa0',
 };
 
 export const ReviewAssessmentAndDoi = Template.bind({});
