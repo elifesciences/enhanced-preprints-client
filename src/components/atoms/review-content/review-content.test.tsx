@@ -68,8 +68,8 @@ describe('ArticleContent', () => {
     expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
   });
 
-  it('displays DOI link containing sa0', async () => {
-    render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa0'/>);
-    expect(screen.queryByText('.sa0', { exact: false })).toBeInTheDocument();
+  it('displays DOI link containing sa1', async () => {
+    render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa1'/>);
+    expect(screen.queryByText('.sa1', { exact: false })).toBeInTheDocument();
   });
 });
