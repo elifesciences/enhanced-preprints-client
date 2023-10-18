@@ -12,6 +12,7 @@ type Participant = {
 
 type Evaluation = {
   date: Date,
+  doi?: string,
   reviewType: ReviewType,
   text: string,
   participants: Participant[],
