@@ -13,7 +13,7 @@
 .contextual-data__item {
   @include typography.body-small();
 
-  color: settings.$color-text-secondary;
+  color: var(--color-text-secondary);
   display: inline;
 
   &::after {

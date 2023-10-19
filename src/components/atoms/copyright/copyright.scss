@@ -1,0 +1,6 @@
+@use "../../../sass/typography";
+@use "../../../sass/generated-content";
+
+.copyright {
+  @include generated-content.generated-content();
+}

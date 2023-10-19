@@ -13,16 +13,12 @@
     @include typography.body();
   }
 
-  strong {
-    @include typography.heading-2();
-  }
-
   blockquote {
     @include typography.blockquote();
-    @include mixins.margin(0);
     @include mixins.padding(16, "left");
 
-    border-left: 1px solid settings.$divider;
+    border-left: 1px solid var(--divider);
+    margin: 0;
 
     p,
     li {
@@ -32,6 +28,10 @@
     strong {
       @include typography.heading-4();
     }
+  }
+
+  p:first-of-type strong {
+    @include typography.heading-2();
   }
 }
 
@@ -45,21 +45,22 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(0);
     @include mixins.padding(24 36);
+
+    margin: 0;
   }
 
-  background-color: settings.$color-background;
+  background-color: var(--color-background);
 }
 
-.review-content_links {
-  @include mixins.padding(0);
+.review-content-items {
   @include mixins.margin(12 0 12 0);
 
   list-style: none;
+  padding: 0;
 }
 
-.review-content_links-item {
+.review-content_item {
   @include typography.body-small();
 
   display: inline;
@@ -74,6 +75,8 @@
 
   a {
     @include typography.link-text();
+
+    color: #0b70b9; // Only being used for review content component
   }
 }
 
@@ -81,4 +84,12 @@
   @include typography.body();
 
   display: block;
+
+  p img {
+    max-width: 100%;
+  }
+}
+
+.ga-review-content_links {
+  // Used to catch data for Google Analytics - Do not remove
 }

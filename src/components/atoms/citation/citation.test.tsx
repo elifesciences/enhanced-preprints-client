@@ -4,7 +4,7 @@ import { authors, citation } from '../../../utils/mocks';
 import { Author } from '../../../types';
 
 describe('Citation', () => {
-  const authorNames = authors.map((author: Author) => `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')}`);
+  const authorNames = authors.map((author: Author) => `${author.type === 'Organization' && author.name ? author.name : `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`}`);
 
   it.each(authorNames)('renders author: %s', (author) => {
     render(<Citation citation={citation} />);
@@ -33,13 +33,34 @@ describe('Citation', () => {
   it('renders the volume', () => {
     render(<Citation citation={citation} />);
 
-    expect(screen.getByText(`${citation.volume}:`)).toBeInTheDocument();
+    expect(screen.getByText(citation.volume)).toBeInTheDocument();
   });
 
-  it('renders the id', () => {
+  it('renders the eLocationId', () => {
     render(<Citation citation={citation} />);
 
-    expect(screen.getByText(citation.id)).toBeInTheDocument();
+    expect(screen.getByText(citation.eLocationId, { exact: false })).toBeInTheDocument();
+  });
+
+  it('renders the year', () => {
+    const { container } = render(<Citation citation={{ ...citation, year: undefined }} />);
+
+    expect(container.querySelector('.citation__authors_list_suffix')).not.toBeInTheDocument();
+
+    const { container: container2 } = render(<Citation citation={{ ...citation, year: 1979 }} />);
+
+    expect(screen.getByText('1979')).toBeInTheDocument();
+    expect(container2.querySelector('.citation__authors_list_suffix')).toBeInTheDocument();
+  });
+
+  it('does not render the ":" when eLocationId xor volume', () => {
+    render(<Citation citation={{ ...citation, volume: undefined }} />);
+
+    expect(screen.queryByAltText(':78910')).not.toBeInTheDocument();
+
+    render(<Citation citation={{ ...citation, eLocationId: undefined }} />);
+
+    expect(screen.queryByAltText('42:')).not.toBeInTheDocument();
   });
 
   it('renders the doi url', () => {

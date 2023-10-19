@@ -1,12 +1,7 @@
 @use "settings";
 
-@function get-rem-from-px($size_in_px) {
-  @return $size_in_px / settings.$font-size-base-in-px;
-}
-
 @mixin font-size($size_in_px) {
-  font-size: #{$size_in_px}px;
-  font-size: get-rem-from-px($size_in_px) * 1rem;
+  font-size: calc(($size_in_px / var(--base-font-size)) * 1rem);
 }
 
 @mixin font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: 24) {
@@ -18,25 +13,25 @@
 @mixin badge-text() {
   @include font-size-and-vertical-height(12, 18);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin author-list-text() {
   @include font-size-and-vertical-height(16, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin expansion-text() {
-  color: settings.$color-primary;
+  color: var(--color-primary);
   cursor: pointer;
-  font-family: settings.$font-family-primary;
+  font-family: var(--font-family-primary);
   font-weight: 400;
 
   &::before {
-    color: settings.$color-text;
+    color: var(--color-text);
     content: " ... ";
   }
 }
@@ -44,15 +39,15 @@
 @mixin affiliations-list-text() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin h1() {
   @include font-size-and-vertical-height(22, 28);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
   font-weight: 600;
 
   @media only all and (min-width: settings.$breakpoint-small) {
@@ -67,13 +62,13 @@
 @mixin identifiers-list-text() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text-secondary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
 }
 
 @mixin heading-base() {
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
   font-weight: 600;
 }
 
@@ -106,57 +101,57 @@
 @mixin body() {
   @include font-size-and-vertical-height(16, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-secondary;
+  color: var(--color-text);
+  font-family: var(--font-family-secondary);
 }
 
 @mixin body-small() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin body-alternative() {
   @include font-size-and-vertical-height(16, 24);
 
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin navigation-heading() {
   @include font-size-and-vertical-height(14, 26);
 
-  color: settings.$color-text-secondary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
   font-weight: 400;
 }
 
 @mixin navigation-heading-selected() {
   @include navigation-heading();
 
-  color: settings.$color-text;
+  color: var(--color-text);
   font-weight: 600;
 }
 
 @mixin msa-link-text() {
   @include font-size-and-vertical-height(14, 24);
 
-  color: settings.$color-primary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
   font-weight: 600;
 }
 
 @mixin link-text() {
   @include font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-primary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
 
   :visited {
-    color: settings.$color-primary;
+    color: var(--color-primary);
   }
 }
 

@@ -3,35 +3,35 @@ import './citation.scss';
 
 export type CitationData = {
   authors: Author[],
-  year: number,
-  volume: number,
+  year?: number,
+  volume?: string,
   journal: string,
-  id: string,
+  eLocationId?: string,
   title: string,
   doi: string,
 };
 
-const formatName = (author: Author) => `${author.givenNames?.join(' ')} ${author.familyNames?.join(' ')} `;
+const formatName = (author: Author) => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
 
-export const Citation = ({ citation }: { citation: CitationData }): JSX.Element => (
+export const Citation = ({ citation }: { citation: CitationData }) => (
   <div className="citation">
     <ol className="citation__authors_list">
       {citation.authors.map((author, index) => (
         <li key={index} className="citation__author">
-          {formatName(author)}
+          {author.type === 'Organization' ? author.name : formatName(author)}
         </li>
       ))}
     </ol>
 
-    <span className="citation__authors_list_suffix">{citation.year}</span>
+    {citation.year && <span className="citation__authors_list_suffix">{citation.year}</span>}
     <span className="citation__title">{citation.title}</span>
     <span className="citation__origin">
       <i>{citation.journal}</i>
-      <b>{citation.volume}:</b>
-      {citation.id}
+      {citation.volume && <strong>{citation.volume}</strong>}{(citation.volume && citation.eLocationId) && ':'}
+      {citation.eLocationId && citation.eLocationId}
     </span>
     <span className="citation__doi">
-          https://doi.org/{citation.doi}
-      </span>
+      https://doi.org/{citation.doi}
+    </span>
   </div>
 );

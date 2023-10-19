@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, JSX } from 'react';
 import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
@@ -7,7 +7,7 @@ import { Figure } from '../components/atoms/figure/figure';
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
 
-export const contentToJsx = (content: Content, index?: number): JSXContent => {
+export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
   }
@@ -16,13 +16,13 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
   }
 
   if (Array.isArray(content)) {
-    return content.map((part, i) => contentToJsx(part, i));
+    return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
   }
   switch (content.type) {
     case 'Heading':
-      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth}/>;
+      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={maxHeadingLevel}/>;
     case 'Cite':
-      return <Fragment key={index}>(<a href={`#${content.target}`}>{contentToJsx(content.content)}</a>)</Fragment>;
+      return <Fragment key={index}><a href={`#${content.target}`}>{contentToJsx(content.content)}</a></Fragment>;
     case 'CiteGroup':
       return <span key={index}>({content.items.map((citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{contentToJsx(citeContent.content)}</a>)})</span>;
     case 'Link':
@@ -33,6 +33,8 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
       return <em key={index}>{contentToJsx(content.content)}</em>;
     case 'Strong':
       return <strong key={index}>{contentToJsx(content.content)}</strong>;
+    case 'NontextualAnnotation':
+      return <u key={index}>{contentToJsx(content.content)}</u>;
     case 'Superscript':
       return <sup key={index}>{contentToJsx(content.content)}</sup>;
     case 'Subscript':
@@ -40,18 +42,29 @@ export const contentToJsx = (content: Content, index?: number): JSXContent => {
     case 'Date':
       return <time key={index}>{contentToJsx(content.content)}</time>;
     case 'Figure':
-      return (
-        <Figure key={index} content={content} />
-      );
+      return <Figure key={index} content={content} />;
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';
       }
-      return <img key={index} src={generateImageUrl(content.contentUrl)}></img>;
+      // eslint-disable-next-line @next/next/no-img-element
+      return <picture key={index}>
+        <source srcSet={generateImageUrl(content.contentUrl)} />
+        <img loading="lazy" {...(content.meta.inline ? { className: 'inline-image' } : {})} src={generateImageUrl(content.contentUrl)} alt="" />
+      </picture>;
     case 'ListItem':
       return <li key={index}>{contentToJsx(content.content)}</li>;
     case 'List':
       return content.order === 'Ascending' ? <ol key={index}>{contentToJsx(content.items)}</ol> : <ul key={index}>{contentToJsx(content.items)}</ul>;
+    case 'Claim':
+      return (
+        <section key={index}>
+          {(content.label || content.title) &&
+            <h4>{content.label && contentToJsx(content.label)} {content.title && contentToJsx(content.title)}</h4>
+          }
+          {contentToJsx(content.content)}
+        </section>
+      );
     default:
       return '';
   }

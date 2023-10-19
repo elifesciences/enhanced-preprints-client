@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Reference } from './reference';
 import { references } from '../../../utils/mocks';
 
@@ -14,15 +14,20 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Reference>;
+} as Meta<typeof Reference>;
 
-const Template: ComponentStory<typeof Reference> = (args) => (
+const Template: StoryFn<typeof Reference> = (args) => (
   <Reference {...args} />
 );
 
 export const ReferenceStory = Template.bind({});
 ReferenceStory.args = {
   reference: references[0],
+};
+
+export const ReferenceGroupStory = Template.bind({});
+ReferenceGroupStory.args = {
+  reference: references[2],
 };
 
 export const ReferenceIsReferenceList = Template.bind({});

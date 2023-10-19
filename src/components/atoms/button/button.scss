@@ -6,7 +6,7 @@
   @include mixins.padding(8 18);
   @include typography.body-small();
 
-  background-color: settings.$color-primary;
+  background-color: var(--color-primary);
   border: 0;
   border-radius: 4px;
   color: #fff;
@@ -17,13 +17,13 @@
   text-decoration: none;
 
   &:hover {
-    background-color: settings.$color-primary-dark;
+    background-color: var(--color-primary-dark);
   }
 }
 
 .button--action {
-  background-color: settings.$color-button;
-  color: settings.$color-text;
+  background-color: var(--color-button);
+  color: var(--color-text);
   font-weight: 600;
   text-transform: none;
 
@@ -33,20 +33,33 @@
 }
 
 .button--clipboard {
-  @include mixins.padding(13 18);
+  @include mixins.padding(12 18 14 18);
 
   border: none;
   margin: 0 auto;
   max-height: 48px;
+  width: 100%;
 }
 
-@mixin button-icon($background_image) {
+.button--cite-download {
+  @include mixins.padding(12 18 14 18);
+
+  background-color: var(--color-button);
+  border: none;
+  color: var(--color-text);
+  margin: 0 auto;
+  max-height: 48px;
+  width: 100%;
+
+  &:hover {
+    background-color: #d7d9de;
+  }
+}
+
+@mixin button-icon($background_image, $background_color: var(--color-button)) {
   @include mixins.padding(41, "left");
 
-  background-image: url($background_image);
-  background-position-x: 11px;
-  background-position-y: 15px;
-  background-repeat: no-repeat;
+  background: url($background_image) $background_color no-repeat 11px 15px;
   vertical-align: middle;
 
   &.button--action {

@@ -25,7 +25,8 @@
     "src/",
     "pages/",
     "browser-tests",
-    "./manuscripts.json"
+    "./manuscripts.json",
+    "next-env.d.ts"
   ],
   "exclude": [
     "node_modules"

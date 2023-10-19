@@ -8,11 +8,28 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
-    "@storybook/preset-create-react-app",
-    "storybook-dark-mode"
+    "storybook-dark-mode",
   ],
-  "framework": "@storybook/react",
-  "core": {
-    "builder": "@storybook/builder-webpack5"
+  "framework": {
+    name: "@storybook/nextjs",
+    // Add this
+    options: {}
+  },
+  "webpackFinal": async (config) => {
+    config.resolve = {
+      ...config.resolve,
+      fallback: {
+        ...(config.resolve || {}).fallback,
+        fs: false,
+        stream: false,
+        os: false,
+      },
+    };
+
+    // Return the altered config
+    return config;
+  },
+  docs: {
+    autodocs: true
   }
-}
+};

@@ -5,7 +5,7 @@ import wellcome from '../../../images/investors/wellcome.svg';
 import max from '../../../images/investors/max.svg';
 import kaw from '../../../images/investors/kaw.svg';
 
-export const Investors = (): JSX.Element => (
+export const Investors = () => (
   <ol className="investor-logos" role="list" aria-label="eLife is funded by these organisations">
     <li className="investor-logos__item" role="listitem">
       <div className="investor-logos__container">

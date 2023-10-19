@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Button, buttonIconNames, buttonVariants } from './button';
 
@@ -21,9 +21,9 @@ export default {
       control: { type: 'select', labels: { '': 'None' } },
     },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
 DefaultButton.args = {

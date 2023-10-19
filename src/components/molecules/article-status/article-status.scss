@@ -7,7 +7,7 @@
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
-  border-bottom: settings.$border;
+  border-bottom: var(--border);
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.padding(72, "right");
@@ -21,7 +21,7 @@
     @include mixins.margin(0, "top");
     @include mixins.padding(0, "right");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
     max-width: 233px;
     min-width: 100px;
   }
@@ -31,8 +31,8 @@
   @include mixins.margin(0, "top");
   @include typography.font-size-and-vertical-height(18, 22);
 
-  color: settings.$color-primary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
   font-weight: 600;
 }
 
@@ -44,7 +44,7 @@
   @include mixins.margin(36, "bottom");
   @include typography.body-small;
 
-  color: settings.$color-primary;
+  color: var(--color-primary);
   cursor: pointer;
   display: block;
   font-weight: 600;
@@ -57,11 +57,11 @@
 }
 
 .article-actions {
-  @include mixins.margin(0);
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
   list-style: none;
+  margin: 0;
 }
 
 .article-actions__list-item {
@@ -90,10 +90,10 @@
   @include mixins.padding(11 12);
   @include mixins.margin(36, "bottom");
 
-  border: 1px solid settings.$divider;
+  border: 1px solid var(--divider);
   box-sizing: border-box;
-  color: settings.$color-text;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
   grid-column: 1/13;
   grid-row: 1;
   width: 100%;
@@ -112,5 +112,42 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     grid-column: 1/10;
     grid-row: 1;
+  }
+}
+
+.cite-downloads__list {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1/13;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cite-downloads__list-item {
+  @include mixins.margin(24, "right");
+
+  display: flex;
+  height: 48px;
+  width: fit-content;
+
+  &:empty {
+    display: none;
+  }
+
+  &:last-child {
+    @include mixins.margin(0, "right");
+  }
+
+  @media only all and (width <= 618px) {
+    @include mixins.margin(0 0 12 0);
+
+    text-align: center;
+    width: 100%;
+
+    &:last-child {
+      @include mixins.margin(0, "bottom");
+    }
   }
 }

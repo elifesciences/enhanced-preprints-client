@@ -16,7 +16,8 @@ describe('ContentHeader', () => {
           },
         ]}
         doi={'10.1101/123456'}
-        title={'title'}/>,
+        title={'title'}
+        license={'license'} />,
     );
 
     expect(screen.getByText('msa1')).toBeInTheDocument();
@@ -25,5 +26,6 @@ describe('ContentHeader', () => {
     expect(screen.getByText('X-Men')).toBeInTheDocument();
     expect(screen.getByText('https://doi.org/10.1101/123456')).toBeInTheDocument();
     expect(screen.getByText('title')).toBeInTheDocument();
+    expect(screen.getByText('Copyright information')).toBeInTheDocument();
   });
 });

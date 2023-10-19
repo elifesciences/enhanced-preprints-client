@@ -9,7 +9,7 @@
     @include mixins.margin(18, "bottom");
     @include mixins.padding(12);
 
-    border: 1px solid settings.$divider;
+    border: 1px solid var(--divider);
     box-sizing: border-box;
     width: 100%;
   }
@@ -30,7 +30,11 @@
   @include mixins.margin(12, "bottom");
   @include typography.font-size-and-vertical-height(14, 24);
 
-  font-family: settings.$font-family-primary;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-family: var(--font-family-primary);
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 
   h1 {
     @include mixins.margin(0, "top");
@@ -54,13 +58,42 @@
   }
 
   a {
-    border-bottom: 1px dotted settings.$link-decoration;
-    color: settings.$link-decoration;
+    border-bottom: 1px dotted var(--link-decoration);
+    color: var(--link-decoration);
     text-decoration: none;
 
     &:hover {
-      border-bottom-color: settings.$color-primary;
-      color: settings.$color-primary;
+      border-bottom-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
+}
+
+.figure__caption--expanded {
+  -webkit-line-clamp: unset;
+}
+
+.figure__caption__button {
+  @include mixins.margin(12, "bottom");
+  @include mixins.padding(0, "left");
+  @include mixins.padding(25, "right");
+  @include typography.font-size(12);
+
+  background: url("../../../images/actions/arrow-down-blue.svg") no-repeat right -4px;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: block;
+  font-family: var(--font-family-primary);
+  font-weight: bold;
+}
+
+.figure__caption__button.expanded {
+  background: url("../../../images/actions/arrow-up-blue.svg") no-repeat right -2px;
+}
+
+.figure-container {
+  @include mixins.margin(48, "bottom");
+
+  border-bottom: 1px solid var(--divider);
 }

@@ -18,16 +18,16 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
 
-    border-bottom: settings.$border;
+    border-bottom: var(--border);
     max-width: 233px;
   }
 }
 
 .review-timeline__list {
   @include mixins.padding(0, "left");
-  @include mixins.margin(0);
 
   list-style: none;
+  margin: 0;
   padding-left: 0;
 }
 
@@ -47,8 +47,8 @@
 .review-timeline__date {
   @include typography.font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-text-secondary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
   font-weight: 600;
   margin: 0;
 
@@ -63,15 +63,23 @@
   }
 }
 
+.review-timeline__description,
 .review-timeline__link {
   @include typography.font-size-and-vertical-height(12, 24);
 
-  color: settings.$color-text-secondary;
-  font-family: settings.$font-family-primary;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+}
 
+.review-timeline__link {
   &::before {
+    color: var(--color-text-secondary);
     content: "\00a0\00a0•\00a0\00a0";
+  }
+
+  &:hover {
+    color: var(--color-primary);
   }
 }

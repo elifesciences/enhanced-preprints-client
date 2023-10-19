@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { ContentHeader } from './content-header';
 import { authors } from '../../../utils/mocks';
@@ -6,9 +6,9 @@ import { authors } from '../../../utils/mocks';
 export default {
   title: 'Molecules/ContentHeader',
   component: ContentHeader,
-} as ComponentMeta<typeof ContentHeader>;
+} as Meta<typeof ContentHeader>;
 
-const Template: ComponentStory<typeof ContentHeader> = (args) => <ContentHeader {...args} />;
+const Template: StoryFn<typeof ContentHeader> = (args) => <ContentHeader {...args} />;
 
 export const Header = Template.bind({});
 Header.args = {
@@ -16,4 +16,5 @@ Header.args = {
   title: 'This is a title',
   doi: 'bbc.co.uk',
   authors,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
 };

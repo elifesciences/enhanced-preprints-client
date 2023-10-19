@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { PageNotFound } from './page-not-found';
 import { DefaultLayout } from '../../layouts/default';
 
@@ -16,6 +16,6 @@ export default {
   },
 };
 
-const Template: ComponentStory<typeof PageNotFound> = () => <DefaultLayout><PageNotFound /></DefaultLayout>;
+const Template: StoryFn<typeof PageNotFound> = () => <DefaultLayout><PageNotFound /></DefaultLayout>;
 
 export const PageNotFoundPage = Template.bind({});

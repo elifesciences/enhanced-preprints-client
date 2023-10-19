@@ -3,6 +3,7 @@
   "extends": [
     "config:base"
   ],
+  "dependencyDashboardTitle":"Dependency Dashboard - EPP client",
   "regexManagers": [
 		{
 			"fileMatch": ["^Dockerfile$"],
@@ -12,6 +13,7 @@
 			"versioningTemplate": "node"
 		}
 	],
+  "addLabels": ["dependencies"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
@@ -24,7 +26,7 @@
     },
     {
       "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server", "ghcr.io/elifesciences/enhanced-preprints"],
-      "versioning": "regex:^master-(.*)-(?<minor>.*)$",
+      "versioning": "regex:^master-(.*)-(?<minor>[\\d]+)\\.(?<patch>[\\d]+)$",
       "automerge": true
     }
   ]

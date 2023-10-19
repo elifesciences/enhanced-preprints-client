@@ -10,9 +10,10 @@
 }
 
 .citation__authors_list {
+  @include mixins.padding(0);
+
   display: inline;
   list-style: none;
-  padding: 0;
 
   &::after {
     content: " ";
@@ -53,6 +54,6 @@
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
-  color: settings.$color-text-secondary;
+  color: var(--color-text-secondary);
   display: block;
 }

@@ -85,23 +85,24 @@
 }
 
 .authors-link {
-  color: settings.$color-text;
+  color: var(--color-text);
   text-decoration: none;
 
   &:visited {
-    color: settings.$color-text;
+    color: var(--color-text);
   }
 
   &:hover {
-    color: settings.$color-primary-dark;
+    color: var(--color-primary-dark);
   }
 }
 
 .authors-email__link {
+  @include mixins.padding(26, "right");
+
   background: url("../../../images/icons/email.svg") no-repeat right 2px;
   background-size: 22px;
   display: inline-block;
-  padding-right: 26px;
 }
 
 .authors-list__expansion {

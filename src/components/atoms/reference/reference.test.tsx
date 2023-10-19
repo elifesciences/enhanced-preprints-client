@@ -11,6 +11,7 @@ describe('Reference', () => {
     expect(screen.getByText('2004')).toBeInTheDocument();
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();
     expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.id).toStrictEqual('c1');
+    expect(screen.getByText('2843', { exact: false })).toBeInTheDocument();
   });
 
   it('should be wrapped in a div if isReferenceList is false', () => {
@@ -23,6 +24,18 @@ describe('Reference', () => {
     render(<Reference reference={references[0]} isReferenceList={false} />);
 
     expect(screen.queryByText('1.')).not.toBeInTheDocument();
+  });
+
+  it('should not render an end page if the start page is undefined', () => {
+    render(<Reference reference={{ ...references[0], pageStart: undefined }} isReferenceList={false} />);
+
+    expect(screen.queryByText('2843', { exact: false })).not.toBeInTheDocument();
+  });
+
+  it('renders the name when an organisation is the author', () => {
+    render(<Reference reference={references[2]} isReferenceList={false} />);
+
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
   });
 
   describe('inside a reference list', () => {
@@ -43,6 +56,12 @@ describe('Reference', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);
 
       expect(screen.getByText('1.')).toBeInTheDocument();
+    });
+
+    it('should render the reference name correctly if givenNames is undefined', () => {
+      render(<Reference reference={references[0]} isReferenceList={true} />);
+
+      expect(screen.getByText('NoGiven').textContent).toStrictEqual('NoGiven');
     });
   });
 });

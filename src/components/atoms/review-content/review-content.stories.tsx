@@ -1,12 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { ReviewContent } from './review-content';
 
 export default {
   title: 'Atoms/Review Content',
   component: ReviewContent,
-} as ComponentMeta<typeof ReviewContent>;
+} as Meta<typeof ReviewContent>;
 
-const Template: ComponentStory<typeof ReviewContent> = (args) => (
+const Template: StoryFn<typeof ReviewContent> = (args) => (
   <ReviewContent {...args} />
 );
 

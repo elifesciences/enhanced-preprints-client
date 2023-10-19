@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { JumpToMenu } from './jump-to-menu';
 
 export default {
   title: 'Atoms/JumpToMenu',
   component: JumpToMenu,
-} as ComponentMeta<typeof JumpToMenu>;
+} as Meta<typeof JumpToMenu>;
 
-const Template: ComponentStory<typeof JumpToMenu> = (args) => <JumpToMenu {...args} />;
+const Template: StoryFn<typeof JumpToMenu> = (args) => <JumpToMenu {...args} />;
 
 export const JumpMenu = Template.bind({});
 JumpMenu.args = {

@@ -1,12 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Title } from './title';
 
 export default {
   title: 'Atoms/Title',
   component: Title,
-} as ComponentMeta<typeof Title>;
+} as Meta<typeof Title>;
 
-const Template: ComponentStory<typeof Title> = (args) => <Title {...args} />;
+const Template: StoryFn<typeof Title> = (args) => <Title {...args} />;
 
 export const StringTitle = Template.bind({});
 StringTitle.args = {

@@ -1,10 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../config';
 import { getManuscript } from '../../../manuscripts';
-import { Content } from '../../../types/content';
-import { MetaData } from '../../../types';
 import { contentToHtml } from '../../../utils/content-to-html';
-import { jsonFetch } from '../../../utils/json-fetch';
+import { fetchContent, fetchMetadata } from '../../../utils/fetch-data';
 import { errorNotFoundRequest, reviewedPreprintSnippet, writeResponse } from '../reviewed-preprints.page';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -14,8 +12,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (manuscript) {
     const [metaData, content] = await Promise.all([
-      jsonFetch<MetaData>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/metadata`),
-      jsonFetch<Content>(`${config.apiServer}/api/reviewed-preprints/${manuscript.preprintDoi}/content`),
+      fetchMetadata(`${msid}/v${manuscript.version}`),
+      fetchContent(`${msid}/v${manuscript.version}`),
     ]);
 
     writeResponse(

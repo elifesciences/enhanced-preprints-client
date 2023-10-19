@@ -13,11 +13,10 @@
 }
 
 .institutions-list {
-  @include mixins.margin(0);
-  @include mixins.padding(0);
-
   display: none;
   list-style: none;
+  margin: 0;
+  padding: 0;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     display: inline;

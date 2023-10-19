@@ -9,7 +9,7 @@ export type Heading = {
   text: Content,
 };
 
-export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element => {
+export const JumpToMenu = ({ headings }: { headings: Heading[] }) => {
   const [active, setActive] = useState(0);
   const [jumping, setJumping] = useState(false);
 
@@ -21,8 +21,10 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element =
     }, 1000);
   };
 
+  const filteredHeadings = headings.filter((heading) => !!heading.id);
+
   useEffect(() => {
-    const headingElements = headings
+    const headingElements = filteredHeadings
       .map(({ id }) => document.getElementById(id))
       .filter((element): element is HTMLElement => element !== null);
 
@@ -56,7 +58,7 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element =
       <nav className="jump-menu-navigation">
         <ul className="jump-menu-list">
           {
-            headings.map((heading, index) => (
+            filteredHeadings.map((heading, index) => (
               <li className={`jump-menu-list__item${active === index ? ' jump-menu-list__item--active' : ''}`} key={index}>
                 <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>
               </li>

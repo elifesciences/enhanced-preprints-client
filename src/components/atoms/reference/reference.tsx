@@ -1,10 +1,15 @@
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 
-const formatName = (author: Author) => `${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`;
+type ReferenceBodyProps = {
+  reference: ReferenceData,
+  isReferenceList: boolean
+};
 
-export const ReferenceBody = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }): JSX.Element => {
-  const referenceJournal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
+const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
+
+export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
+  const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
 
@@ -14,17 +19,16 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: { referenc
       <ol className="reference__authors_list">
         {reference.authors.map((author, index) => (
           <li key={index} className="reference__author">
-            {formatName(author)}
+            {author.type === 'Organization' ? author.name : formatName(author)}
           </li>
         ))}
       </ol>
-
       <span className="reference__authors_list_suffix">{new Date(reference.datePublished).getFullYear()}</span>
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
         {referenceJournal ? <i>{referenceJournal} </i> : ''}
-        {referenceVolume ? <b>{referenceVolume}:</b> : ''}
-        {reference.pageStart}{reference.pageEnd ? `–${reference.pageEnd}` : ''}
+        {referenceVolume !== undefined ? <strong>{referenceVolume}</strong> : ''}
+        {reference.pageStart !== undefined ? `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}` : ''}
       </span>
       {doiIdentifier && <span className="reference__doi">
         {isReferenceList ?
@@ -37,8 +41,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: { referenc
   );
 };
 
-export const Reference = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }): JSX.Element => (isReferenceList ?
+export const Reference = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }) => (isReferenceList ?
   <li className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</li> :
   <div className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</div>
 );
-

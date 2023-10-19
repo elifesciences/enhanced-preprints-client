@@ -4,9 +4,9 @@
 .article-flag-list {
   @include mixins.margin(0, "top");
   @include mixins.margin(6, "bottom");
-  @include mixins.padding(0);
 
   list-style: none;
+  padding: 0;
 }
 
 .article-flag-list__item {

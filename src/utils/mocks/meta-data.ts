@@ -10,13 +10,7 @@ export const metaData = {
   msas: ['Mad Science', 'Alchemy'],
   title: 'This is a title',
   authors,
-  headings: [
-    { id: 's1', text: 'Introduction' },
-    { id: 's2', text: 'Results' },
-    { id: 's3', text: 'Discussion' },
-    { id: 's4', text: 'Materials and methods' },
-    { id: 's5', text: 'Data and material availability' },
-  ],
   references,
   publishedYear: 2022,
+  license: 'https://creativecommons.org/licenses/by/4.0/',
 };

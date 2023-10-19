@@ -5,7 +5,8 @@ type PublicationType = 'PublicationVolume' | 'Periodical';
 type Publication = {
   type: PublicationType,
   name?: string,
-  volumeNumber?: number,
+  volumeNumber?: number | string,
+  issueNumber?: number,
   isPartOf?: Publication,
 };
 
@@ -14,8 +15,8 @@ export type Reference = {
   id: string,
   title: string,
   url?: string,
-  pageEnd?: number,
-  pageStart: number,
+  pageEnd?: number | string,
+  pageStart?: number | string,
   authors: Array<Author>,
   datePublished: string,
   isPartOf?: Publication,

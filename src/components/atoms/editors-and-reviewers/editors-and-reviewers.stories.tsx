@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { EditorsAndReviewers } from './editors-and-reviewers';
 
 export default {
   title: 'Atoms/Editors And Reviewers',
   component: EditorsAndReviewers,
-} as ComponentMeta<typeof EditorsAndReviewers>;
+} as Meta<typeof EditorsAndReviewers>;
 
-const Template: ComponentStory<typeof EditorsAndReviewers> = (args) => <EditorsAndReviewers {...args} />;
+const Template: StoryFn<typeof EditorsAndReviewers> = (args) => <EditorsAndReviewers {...args} />;
 
 export const EditorsAndReviewersExample = Template.bind({});
 EditorsAndReviewersExample.args = {

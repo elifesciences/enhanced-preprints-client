@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 import './heading.scss';
@@ -5,13 +6,24 @@ import './heading.scss';
 type HeadingProps = {
   content: Content,
   headingLevel: 1 | 2 | 3 | 4 | 5 | 6,
+  maxLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   id: string,
   className?: string,
 };
 
 export const Heading = ({
-  headingLevel, content, id, className,
+  headingLevel, maxLevel, content, id, className,
 }: HeadingProps): JSX.Element => {
+  if (maxLevel && headingLevel < maxLevel) {
+    return Heading({
+      headingLevel: maxLevel,
+      maxLevel,
+      content,
+      id,
+      className,
+    });
+  }
+
   const normalisedClassName = className || `heading-${headingLevel}`;
   switch (headingLevel) {
     case 1:

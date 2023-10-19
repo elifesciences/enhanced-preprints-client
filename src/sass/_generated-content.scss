@@ -21,13 +21,13 @@
   }
 
   a {
-    border-bottom: 1px dotted settings.$link-decoration;
-    color: settings.$link-decoration;
+    border-bottom: 1px dotted var(--link-decoration);
+    color: var(--link-decoration);
     text-decoration: none;
 
     &:hover {
-      border-bottom-color: settings.$color-primary;
-      color: settings.$color-primary;
+      border-bottom-color: var(--color-primary);
+      color: var(--color-primary);
     }
   }
 
@@ -37,5 +37,10 @@
 
   img {
     max-width: 100%;
+  }
+
+  img.inline-image {
+    max-height: 1.2rem;
+    vertical-align: middle;
   }
 }

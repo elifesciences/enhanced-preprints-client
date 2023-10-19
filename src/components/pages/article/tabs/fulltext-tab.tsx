@@ -6,13 +6,14 @@ import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { Content, MetaData, PeerReview } from '../../../../types';
+import { contentToHeadings } from '../../../../utils/content-to-headings';
 
-export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview }): JSX.Element => {
+export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content, peerReview?: PeerReview, peerReviewUrl?: string }) => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
-    ...props.metaData.headings,
+    ...contentToHeadings(props.content),
     { id: 'references', text: 'References' },
-    { id: 'author-list', text: 'Author Information' },
+    { id: 'author-list', text: 'Article and Author Information' },
   ];
 
   if (props.peerReview !== undefined) {
@@ -24,10 +25,10 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
         <Abstract content={props.metaData.abstract} />
-        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={`/reviewed-preprints/${props.metaData.msid}/reviews`}/> }
+        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
-        <AuthorInformationList authors={props.metaData.authors}/>
+        <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
       </div>
     </div>
   );

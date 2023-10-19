@@ -4,10 +4,7 @@ import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
 import { authors } from '../../../utils/mocks';
 
-const createAuthorIdMock = (author: Author): string => author.familyNames.join(',') + author.givenNames.join(',');
-jest.mock('../../../utils/create-author-id', () => ({ createAuthorId: createAuthorIdMock }));
-
-const getName = ({ givenNames, familyNames }: Author) => `${givenNames.join()} ${familyNames.join()}`;
+const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 
@@ -15,16 +12,16 @@ describe('AuthorInformationList', () => {
   it('renders correctly', () => {
     render(<AuthorInformationList authors={authors}/>);
 
-    expect(screen.getByText('Author information')).toBeInTheDocument();
+    expect(screen.getByText('Article and author information')).toBeInTheDocument();
   });
 
-  it.each(authors.map(getName))('renders each author in the list: %s', (name) => {
+  it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
     render(<AuthorInformationList authors={authors}/>);
 
     expect(screen.getByText(name)).toBeInTheDocument();
   });
 
-  it.each(authors.map(getAffiliationAndAuthor))(
+  it.each(authors.filter(({ type }) => type !== 'Organization').map(getAffiliationAndAuthor))(
     'renders the the affiliation: $affiliation for author: $name',
     ({ affiliation, name }) => {
       render(<AuthorInformationList authors={authors}/>);
@@ -32,6 +29,12 @@ describe('AuthorInformationList', () => {
       expect(screen.getByText(name).nextSibling).toHaveTextContent(affiliation);
     },
   );
+
+  it('renders organiizations correctly', () => {
+    render(<AuthorInformationList authors={authors}/>);
+
+    expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+  });
 
   it('renders the authors ORCID\'s', () => {
     render(<AuthorInformationList authors={authors}/>);

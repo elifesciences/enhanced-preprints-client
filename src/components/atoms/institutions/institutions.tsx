@@ -4,7 +4,7 @@ import { Institution } from '../../../types';
 
 const institutionLimit = 3;
 
-export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
+export const Institutions = ({ institutions }: { institutions: Institution[] }) => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);

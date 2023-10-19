@@ -9,7 +9,7 @@ type ClipboardProps = {
 
 const supportsClipboardAPI = () => (!!navigator.clipboard);
 
-export const Clipboard = ({ text, buttonText = 'Copy to clipboard' }: ClipboardProps): JSX.Element => {
+export const Clipboard = ({ text, buttonText = 'Copy to clipboard' }: ClipboardProps) => {
   const [showButton, setShowButton] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -21,8 +21,6 @@ export const Clipboard = ({ text, buttonText = 'Copy to clipboard' }: ClipboardP
   };
 
   return showButton ? (
-    <div className="clipboard-container">
-      <button className={`button button--clipboard${copied ? ' copied' : ''}`} onClick={onClick}>{copied ? 'Copied' : buttonText}</button>
-    </div>
+    <button className={`button button--clipboard${copied ? ' copied' : ''}`} onClick={onClick}>{copied ? 'Copied' : buttonText}</button>
   ) : <></>;
 };

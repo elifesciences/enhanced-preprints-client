@@ -14,6 +14,12 @@ describe('ArticleFlagList', () => {
     expect(screen.getByText(msas[1])).toBeInTheDocument();
   });
 
+  it('should render no items with an empty array', () => {
+    render(<ArticleFlagList msas={[]}/>);
+
+    expect(document.querySelector('.article-flag-list')).not.toBeInTheDocument();
+  });
+
   it('should correctly pass in the msa flag', () => {
     render(<ArticleFlagList msas={msas}/>);
 

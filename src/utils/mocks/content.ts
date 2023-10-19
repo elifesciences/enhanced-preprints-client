@@ -284,7 +284,12 @@ export const content: Content = [
               {
                 "type": "Strong",
                 "content": [
-                  "No Adaptation ="
+                  {
+                    "type": "NontextualAnnotation",
+                    "content": [
+                      "No Adaptation ="
+                    ]
+                  }
                 ]
               },
               {
@@ -3872,6 +3877,19 @@ export const content: Content = [
         ]
       },
       ').\n            '
+    ]
+  },
+  {
+    type: 'Claim',
+    content: [
+      'This is a claim'
+    ]
+  },
+  {
+    type: 'Claim',
+    claimType: 'Statement',
+    content: [
+      'This is a statement claim'
     ]
   }
 ]

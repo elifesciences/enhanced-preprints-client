@@ -10,6 +10,10 @@ type StrongContent = DecoratedContent & {
   type: 'Strong',
 };
 
+type NontextualAnnotationContent = DecoratedContent & {
+  type: 'NontextualAnnotation',
+};
+
 type DateContent = DecoratedContent & {
   type: 'Date',
 };
@@ -30,7 +34,7 @@ type CiteGroupContent = {
   items: CiteContent[],
 };
 
-type HeadingContent = DecoratedContent & {
+export type HeadingContent = DecoratedContent & {
   type: 'Heading',
   id: string,
   depth: 1 | 2 | 3 | 4 | 5 | 6,
@@ -38,9 +42,9 @@ type HeadingContent = DecoratedContent & {
 
 export type FigureContent = DecoratedContent & {
   type: 'Figure',
-  id: string,
-  caption: Content,
-  label: string,
+  id?: string,
+  caption?: Content,
+  label?: string,
 };
 
 type ImageObjectContent = {
@@ -74,6 +78,13 @@ type ListContent = {
   items: Array<ListItemContent>,
 };
 
+type ClaimContent = DecoratedContent & {
+  type: 'Claim',
+  claimType?: 'Statement' | 'Theorem' | 'Lemma' | 'Proof' | 'Postulate' | 'Hypothesis' | 'Proposition' | 'Corollary',
+  label?: Content,
+  title?: Content,
+};
+
 type ContentPart =
   string |
   HeadingContent |
@@ -82,6 +93,7 @@ type ContentPart =
   SubscriptContent |
   ParagraphContent |
   StrongContent |
+  NontextualAnnotationContent |
   DateContent |
   LinkContent |
   CiteContent |
@@ -89,6 +101,7 @@ type ContentPart =
   FigureContent |
   ImageObjectContent |
   ListItemContent |
-  ListContent;
+  ListContent |
+  ClaimContent;
 
 export type Content = ContentPart | Array<Content>;

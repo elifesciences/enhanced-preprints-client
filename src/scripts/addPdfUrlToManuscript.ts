@@ -3,24 +3,33 @@
 import * as yargs from 'yargs';
 
 interface Args {
-  doi: string;
-  urlPdf: string;
+  msid: string;
+  versionManuscript?: number,
+  urlPdf?: string;
 }
 
 const args = yargs
-  .option('doi', {
+  .option('msid', {
     type: 'string',
-    describe: 'Preprint DOI',
+    describe: 'Manuscript ID',
     demandOption: true,
+  })
+  .option('versionManuscript', {
+    type: 'number',
+    describe: 'Version',
   })
   .option('urlPdf', {
     type: 'string',
     describe: 'PDF location (url)',
-    demandOption: true,
   })
   .argv as Args;
 
-type Preprint = {
+const latestVersion = (msid: string, manuscripts: Manuscripts) => Object.keys(manuscripts).filter((id) => id.startsWith(`${msid}v`)).length;
+
+type Manuscript = {
+  msid: string;
+  version: number;
+  publishedYear: number;
   preprintDoi: string;
   status: {
     articleType: string;
@@ -35,26 +44,26 @@ type Preprint = {
     }[]
   };
   pdfUrl?: string;
-  msas?: string[];
 };
 
-type Preprints = {
-  [preprintDoi: string]: Preprint;
+type Manuscripts = {
+  [msidVersion: string]: Manuscript | string;
 };
 
 type PreprintManuscripts = {
-  preprints: Preprints,
+  manuscripts: Manuscripts,
 };
 
-const addPdfUrlToManuscript = (preprintManuscripts: PreprintManuscripts, preprintDoi: string, pdfUrl: string) : void => {
-  if (!(preprintDoi in preprintManuscripts.preprints)) {
-    throw new Error(`doi not found in manuscripts.json (${preprintDoi})`);
+const addPdfUrlToManuscript = (preprintManuscripts: PreprintManuscripts, id: string, pdfUrl: string) : void => {
+  if (!(id in preprintManuscripts.manuscripts)) {
+    throw new Error(`id not found in manuscripts.json (${id})`);
   }
 
   const updatedData: PreprintManuscripts = preprintManuscripts;
 
-  updatedData.preprints[preprintDoi] = {
-    ...preprintManuscripts.preprints[preprintDoi],
+  updatedData.manuscripts[id] = {
+    // @ts-ignore
+    ...preprintManuscripts.manuscripts[id],
     ...{ pdfUrl },
   };
 
@@ -69,7 +78,10 @@ if (!process.stdin.isTTY) {
   });
 
   process.stdin.on('end', () => {
-    addPdfUrlToManuscript(JSON.parse(input), args.doi, args.urlPdf);
+    const inputJson = JSON.parse(input);
+    const v = args.versionManuscript ? args.versionManuscript : latestVersion(args.msid, inputJson.manuscripts);
+    const urlPdf = args.urlPdf ? args.urlPdf : `https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/${args.msid}/v${v}/${args.msid}-v${v}.pdf`;
+    addPdfUrlToManuscript(inputJson, `${args.msid}v${v}`, urlPdf);
   });
 }
 

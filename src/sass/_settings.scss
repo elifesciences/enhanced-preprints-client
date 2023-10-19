@@ -1,38 +1,38 @@
 // colors
 
-$color-primary: #087acc; // "Brand blue"
-$color-primary-dark: #0769b0;
+:root {
+  --color-primary: #087acc; // "Brand blue"
+  --color-primary-dark: #0769b0;
+  --color-text: #212121;
+  --color-text-secondary: #757575;
+  --color-button: #edeff4;
+  --color-background: #f7f7f7;
+  --divider: #e0e0e0;
+  --link-decoration: #212121;
 
-$color-text: #212121;
-$color-text-secondary: #757575;
+  // Borders
+  --border: 1px solid var(--divider);
 
-$color-button: #edeff4;
-$color-background: #f7f7f7;
+  // Fonts
+  --font-family-primary: noto sans, arial, helvetica, sans-serif;
+  --font-family-secondary: noto serif, serif;
 
-$divider: #e0e0e0;
+  // Layout
+  --grid-gutter: 24px;
 
-$link-decoration: #212121;
+  // Site Spacing
+  --site-spacing: 24px;
+  --site-spacing-large: 48px;
 
-$color-badge-active: #252a36;
-
-// Borders
-$border: 1px solid $divider;
-
-// Fonts
-$font-family-primary: noto sans,arial,helvetica,sans-serif;
-$font-family-secondary: noto serif,serif;
+  // Base font size
+  --base-font-size: 16;
+}
 
 // Typography
 $font-size-base-in-px: 16;
 
 // Layout
-$max-site-width: 1296px;
-$grid-column: 78px;
-$grid-gutter: 24px;
-
-// Site Spacing
-$site-spacing: 24px;
-$site-spacing-large: 48px;
+$max-site-width: 1200px;
 
 // Breakpoints
 $breakpoint-small: 480px;
@@ -42,12 +42,12 @@ $breakpoint-extra-large: 1200px;
 
 @mixin container-padding($padding: true) {
   @if $padding {
-    padding-left: $site-spacing;
-    padding-right: $site-spacing;
+    padding-left: var(--site-spacing);
+    padding-right: var(--site-spacing);
 
     @media only screen and (min-width: $breakpoint-small) {
-      padding-left: $site-spacing * 2;
-      padding-right: $site-spacing * 2;
+      padding-left: calc(var(--site-spacing) * 2);
+      padding-right: calc(var(--site-spacing) * 2);
     }
   }
 }

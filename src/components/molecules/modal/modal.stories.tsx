@@ -1,7 +1,7 @@
 import {
   useState,
 } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -12,9 +12,9 @@ import { Citation } from '../../atoms/citation/citation';
 export default {
   title: 'Molecules/Modal',
   component: Modal,
-} as ComponentMeta<typeof Modal>;
+} as Meta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => {
+const Template: StoryFn<typeof Modal> = (args) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ ModalShare.args = {
 };
 
 const formatReference = (reference: ReferenceData): string => {
-  const authors = reference.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${author.familyNames?.join(' ')} ${author.givenNames?.join(' ')}`, '');
+  const authors = reference.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${(author.familyNames ?? []).join(' ')} ${(author.givenNames ?? []).join(' ')}`, '');
   const year = new Date(reference.datePublished).getFullYear();
   const journal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');

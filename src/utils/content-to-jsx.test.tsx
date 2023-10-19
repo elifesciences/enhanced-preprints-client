@@ -22,7 +22,7 @@ describe('Content to JSX', () => {
       type: 'Heading', depth: 1, content: 'heading', id: 'h1',
     });
 
-    expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1}/>);
+    expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1} maxLevel={undefined}/>);
   });
 
   it('generates the expected html when passed a Cite (including using page fragment target)', () => {
@@ -32,7 +32,7 @@ describe('Content to JSX', () => {
       target: 'target',
     });
 
-    expect(result).toStrictEqual(<>(<a href={'#target'}>I am a citation</a>)</>);
+    expect(result).toStrictEqual(<><a href={'#target'}>I am a citation</a></>);
   });
 
   it('generates the expected html when passed a Link', () => {
@@ -70,6 +70,15 @@ describe('Content to JSX', () => {
     });
 
     expect(result).toStrictEqual(<strong>I am strong</strong>);
+  });
+
+  it('generates the expected html when passed a NontextualAnnotation', () => {
+    const result = contentToJsx({
+      type: 'NontextualAnnotation',
+      content: 'I am underlined',
+    });
+
+    expect(result).toStrictEqual(<u>I am underlined</u>);
   });
 
   it('generates the expected html when passed a Superscript', () => {
@@ -129,7 +138,32 @@ describe('Content to JSX', () => {
       },
     });
 
-    expect(result).toStrictEqual(<img src="https://placekitten.com/500/300"></img>);
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(
+      <picture>
+        <source srcSet="https://placekitten.com/500/300" />
+        <img loading="lazy" src="https://placekitten.com/500/300" alt="" />
+      </picture>,
+    );
+  });
+
+  it('generates the expected html when passed a ImageObject with a class', () => {
+    const result = contentToJsx({
+      type: 'ImageObject',
+      contentUrl: 'https://placekitten.com/500/300',
+      content: [],
+      meta: {
+        inline: true,
+      },
+    });
+
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(
+      <picture>
+        <source srcSet="https://placekitten.com/500/300" />
+        <img className="inline-image" loading="lazy" src="https://placekitten.com/500/300" alt="" />
+      </picture>,
+    );
   });
 
   it('allows an array of arrays to be generated', () => {
@@ -140,7 +174,7 @@ describe('Content to JSX', () => {
     ]);
 
     // eslint-disable-next-line react/jsx-key
-    expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} id="h1" content="heading" />]]);
+    expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} maxLevel={undefined} id="h1" content="heading" />]]);
   });
 
   it('generates the expected html when passed a ListItem', () => {

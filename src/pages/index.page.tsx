@@ -1,26 +1,31 @@
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { config } from '../config';
-import { getManuscripts, Manuscripts } from '../manuscripts';
+import { getManuscripts } from '../manuscripts';
+import { fetchVersions } from '../utils/fetch-data';
 
 type PageProps = {
-  manuscripts: Manuscripts
+  ids: string[]
 };
-export const App = ({ manuscripts }: PageProps): JSX.Element => (
+export const App = ({ ids }: PageProps) => (
   <div className="App">
     <ul>
-      {Object.keys(manuscripts)
+      {ids
         .sort()
-        .map((msid, index) => <li key={index}><Link href={`/reviewed-preprints/${msid}`}>{msid}</Link></li>)
+        .map((id, index) => <li key={index}><Link href={`/reviewed-preprints/${id}`}>{id}</Link></li>)
       }
     </ul>
   </div>
 );
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async () => ({
+export const getServerSideProps: GetServerSideProps<PageProps> = async () => (!config.automationFlag ? ({
   props: {
-    manuscripts: getManuscripts(config.manuscriptConfigFile),
+    ids: Object.keys(getManuscripts(config.manuscriptConfigFile)).sort(),
   },
-});
+}) : ({
+  props: {
+    ids: await fetchVersions().then((versions) => versions.items.map((version) => version.id)),
+  },
+}));
 
 export default App;

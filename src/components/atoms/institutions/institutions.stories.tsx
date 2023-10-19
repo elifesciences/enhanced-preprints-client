@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Institutions } from './institutions';
 
 export default {
   title: 'Atoms/Institutions',
   component: Institutions,
-} as ComponentMeta<typeof Institutions>;
+} as Meta<typeof Institutions>;
 
-const Template: ComponentStory<typeof Institutions> = (args) => <Institutions {...args} />;
+const Template: StoryFn<typeof Institutions> = (args) => <Institutions {...args} />;
 
 export const InstitutionList = Template.bind({});
 InstitutionList.args = {

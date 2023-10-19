@@ -7,6 +7,10 @@ const nextConfig = {
   rewrites: async () => ({
     beforeFiles: [
       {
+        source: '/previews/:path*',
+        destination: '/reviewed-preprints/:path*',
+      },
+      {
         source: '/:msid(\\d+v{0,1}\\d*)',
         destination: '/reviewed-preprints/:msid',
       },
@@ -19,12 +23,32 @@ const nextConfig = {
         destination: '/:path*',
       },
       {
+        // Expose path for manuscript bibtex download
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).bib',
+        destination: '/api/citations/:msid/bibtex',
+      },
+      {
+        // Expose path for manuscript ris download
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).ris',
+        destination: '/api/citations/:msid/ris',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },
       {
         source: '/status',
         destination: '/api/status',
+      },
+      {
+        source: '/robots.txt',
+        destination: '/api/robots'
+      }
+    ],
+    fallback: [
+      {
+        source: '/reviewed-preprints/:path*',
+        destination: '/reviewed-preprints/:path*/fulltext',
       },
     ]
   }),

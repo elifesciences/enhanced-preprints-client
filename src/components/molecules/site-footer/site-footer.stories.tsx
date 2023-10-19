@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { SiteFooter } from './site-footer';
 
 export default {
@@ -13,8 +13,8 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof SiteFooter>;
+} as Meta<typeof SiteFooter>;
 
-const Template: ComponentStory<typeof SiteFooter> = () => <SiteFooter ></SiteFooter>;
+const Template: StoryFn<typeof SiteFooter> = () => <SiteFooter ></SiteFooter>;
 
 export const FooterSection = Template.bind({});

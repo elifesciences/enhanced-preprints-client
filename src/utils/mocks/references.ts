@@ -12,6 +12,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Slater'], givenNames: ['NT'] },
       { type: 'Person', familyNames: ['McCrimmon'], givenNames: ['DR'] },
       { type: 'Person', familyNames: ['Raman'], givenNames: ['IM'] },
+      { type: 'Person', familyNames: ['NoGiven'], givenNames: undefined },
     ],
     datePublished: '2004-01-01T00:00:00.000Z',
     isPartOf: {
@@ -50,7 +51,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Eghbali'], givenNames: ['M'] },
     ],
     datePublished: '2020-01-01T00:00:00.000Z',
-    isPartOf: { type: 'Periodical', name: 'Int J Mol Sci' },
+    isPartOf: { type: 'Periodical', name: 'Int J Mol Sci', volumeNumber: 'volume one' },
     pageStart: 21,
     title: 'The Role of Estrogen Receptors in Cardiovascular Disease',
     identifiers: [
@@ -59,6 +60,31 @@ export const references: Reference[] = [
         name: 'doi',
         propertyID: 'https://registry.identifiers.org/registry/doi',
         value: '10.7554/eLife.16136',
+      },
+    ],
+    meta: {
+      label: '2.',
+    },
+  },
+  {
+    type: 'Article',
+    id: 'c3',
+    authors: [
+      {
+        type: 'Organization',
+        name: 'the Brain Interfacing Laboratory',
+      },
+    ],
+    datePublished: '2021-01-01T00:00:00.000Z',
+    isPartOf: { type: 'Periodical', name: 'Jounal of Neurology' },
+    pageStart: 21,
+    title: 'The Theory of Everything',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.1101/123456',
       },
     ],
     meta: {

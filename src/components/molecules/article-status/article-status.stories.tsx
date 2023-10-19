@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { citation } from '../../../utils/mocks';
 
 import { ArticleStatus } from './article-status';
@@ -6,9 +6,9 @@ import { ArticleStatus } from './article-status';
 export default {
   title: 'Molecules/ArticleStatus',
   component: ArticleStatus,
-} as ComponentMeta<typeof ArticleStatus>;
+} as Meta<typeof ArticleStatus>;
 
-const Template: ComponentStory<typeof ArticleStatus> = (args) => <ArticleStatus {...args} />;
+const Template: StoryFn<typeof ArticleStatus> = (args) => <ArticleStatus {...args} />;
 
 export const Status = Template.bind({});
 Status.args = {
@@ -17,4 +17,5 @@ Status.args = {
   doi: '10.1101/123456',
   pdfUrl: '#',
   citation,
+  msid: '12345',
 };

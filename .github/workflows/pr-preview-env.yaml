@@ -1,0 +1,64 @@
+name: Pull Request Preview Environment
+
+on:
+  pull_request:
+    types: [labeled, synchronize, opened, reopened]
+
+jobs:
+  build-preview-image:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
+    env:
+      CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
+      STORYBOOK_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-storybook
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and load preview image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: prod
+          load: true
+          tags: |
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
+      - name: run test
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn test --ci --watchAll=false
+      - name: run lint
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn lint
+      - name: run lint-sass
+        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn lint-sass
+      - name: Get current date
+        id: date
+        run: echo "date=$(date --utc +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
+      - name: push preview image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          target: prod
+          push: true
+          tags: |
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}-${{ steps.date.outputs.date }}
+      - name: Build and push preview storybook image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          target: storybook
+          push: true
+          tags: |
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
+            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}-${{ steps.date.outputs.date }}

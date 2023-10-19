@@ -6,7 +6,7 @@ import { createAuthorId } from '../../../utils/create-author-id';
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
 
-export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
+export const Authors = ({ authors }: { authors: Author[] }) => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
@@ -22,12 +22,15 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
         { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
             <a href={`#${createAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
-              {author.givenNames?.join(' ')} {author.familyNames?.join(' ')}{author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
+              {author.type === 'Organization' ?
+                author.name :
+                `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}
+              {author.emails ? <span className="visuallyhidden"> author has email address</span> : ''}
             </a>
           </li>
         ))}
       </ol>
-        {(authors.length > authorLimit && expanded !== null) &&
+      {(authors.length > authorLimit && expanded !== null) &&
         <span className="authors-list__expansion" onClick={() => setExpanded(!expanded)}>
           show{!expanded ? authorLimits.map(
           (limit, index) => <span key={index} aria-hidden="true" className={`authors-list__expansion-count authors-list__expansion-count-${limit}`}> {authors.length - limit}</span>,

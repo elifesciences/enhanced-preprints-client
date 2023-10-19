@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { DefaultLayout } from './default';
 
 export default {
@@ -14,9 +14,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof DefaultLayout>;
+} as Meta<typeof DefaultLayout>;
 
-const Template: ComponentStory<typeof DefaultLayout> = () => <DefaultLayout>Hello</DefaultLayout>;
+const Template: StoryFn<typeof DefaultLayout> = () => <DefaultLayout>Hello</DefaultLayout>;
 
 export const DefaultLayoutStory = Template.bind({});
 DefaultLayoutStory.args = {};

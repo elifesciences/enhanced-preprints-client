@@ -43,7 +43,7 @@
   @include mixins.wrapper();
 
   box-sizing: content-box;
-  font-family: settings.$font-family-secondary;
+  font-family: var(--font-family-secondary);
   text-align: center;
 
   .error__icon {

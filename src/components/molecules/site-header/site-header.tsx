@@ -4,9 +4,9 @@ import { createPortal } from 'react-dom';
 import './site-header.scss';
 import logo from '../../../../public/elife-logo.svg';
 
-const Overlay = ({ closeOverlay }: { closeOverlay: () => void }): JSX.Element => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
+const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
-export const SiteHeader = (): JSX.Element => {
+export const SiteHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">
@@ -23,58 +23,58 @@ export const SiteHeader = (): JSX.Element => {
         <span className="site-header__title">Enhanced Preprints</span>
 
         {showMenu &&
-            <>
+        <>
           <Overlay closeOverlay={() => setShowMenu(false)}/>
-              <div className="wrapper main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
-                <div className="main-menu__title">
-                  <Image
-                      src={logo}
-                      alt="eLife logo"
-                      width="80"
-                      height="30"
+          <div className="wrapper main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
+            <div className="main-menu__title">
+              <Image
+                src={logo}
+                alt="eLife logo"
+                width="80"
+                height="30"
                   />
-                  <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
-                </div>
-                <nav className="main-menu__container" role="navigation">
-                  <ul className="main-menu__list">
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/" className="main-menu__list_link">Home</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/magazine" className="main-menu__list_link">Magazine</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/community" className="main-menu__list_link">Community</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/about" className="main-menu__list_link">About</a>
-                    </li>
-                    <li className="main-menu__list_item">
-                      <a href="https://elifesciences.org/subjects" className="main-menu__list_link">Research categories</a>
-                    </li>
-                    <li className="main-menu__list_item end-of-group">
-                      <a href="https://elifesciences.org/inside-elife" className="main-menu__list_link">Inside eLife</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/search" className="main-menu__list_link">Search</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide end-of-group">
-                      <a href="https://elifesciences.org/content-alerts" className="main-menu__list_link">Subscribe to alerts</a>
-                    </li>
-                    <li className="main-menu__list_item hidden-wide">
-                      <a href="https://elifesciences.org/submit-your-research" className="main-menu__list_link">Submit your research</a>
-                    </li>
-                    <li className="main-menu__list_item">
-                      <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
-                    </li>
-                    <li className="main-menu__list_item">
-                      <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className="main-menu__list_link">Reviewer guide</a>
-                    </li>
-                  </ul>
-                  <a href="#siteHeader" className="to-top-link">Back to top</a>
-                </nav>
-              </div>
-            </>
+              <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
+            </div>
+            <nav className="main-menu__container" role="navigation">
+              <ul className="main-menu__list">
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/" className="main-menu__list_link">Home</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/magazine" className="main-menu__list_link">Magazine</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/community" className="main-menu__list_link">Community</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/about" className="main-menu__list_link">About</a>
+                </li>
+                <li className="main-menu__list_item">
+                  <a href="https://elifesciences.org/subjects" className="main-menu__list_link">Research categories</a>
+                </li>
+                <li className="main-menu__list_item end-of-group">
+                  <a href="https://elifesciences.org/inside-elife" className="main-menu__list_link">Inside eLife</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/search" className="main-menu__list_link">Search</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide end-of-group">
+                  <a href="https://elifesciences.org/content-alerts" className="main-menu__list_link">Subscribe to alerts</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/submit-your-research" className="main-menu__list_link">Submit your research</a>
+                </li>
+                <li className="main-menu__list_item">
+                  <a href="https://reviewer.elifesciences.org/author-guide/editorial-process" className="main-menu__list_link">Author guide</a>
+                </li>
+                <li className="main-menu__list_item">
+                  <a href="https://reviewer.elifesciences.org/reviewer-guide/review-process" className="main-menu__list_link">Reviewer guide</a>
+                </li>
+              </ul>
+              <a href="#siteHeader" className="to-top-link">Back to top</a>
+            </nav>
+          </div>
+        </>
         }
         <nav className="nav-primary">
           <ul className="nav-primary__list">

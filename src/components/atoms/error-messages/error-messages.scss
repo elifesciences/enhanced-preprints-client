@@ -1,0 +1,22 @@
+@use "../../../sass/mixins";
+
+.error-container {
+  margin: 0 auto;
+  max-width: 450px;
+  text-align: center;
+
+  .error__icon {
+    @include mixins.margin(72, "top");
+  }
+
+  .error__title {
+    @include mixins.margin(48, "top");
+
+    font-family: var(--font-family-primary);
+    font-size: 26px;
+  }
+
+  .error__message {
+    font-family: var(--font-family-secondary);
+  }
+}
