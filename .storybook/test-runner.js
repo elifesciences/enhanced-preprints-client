@@ -19,7 +19,7 @@ module.exports = {
       rules: storyContext.parameters?.a11y?.config?.rules,
     });
 
-    await checkA11y(page, '#root', {
+    await checkA11y(page, '#storybook-root', {
       detailedReport: true,
       detailedReportOptions: {
         html: true,
