@@ -38,6 +38,8 @@ jobs:
         run: yarn build
       - name: Start Storybook
         run: yarn storybook &
+      - name: install Playwright binaries
+        run: yarn playwright install
       - name: Storybook tests
         run: |
           yarn test:storybook
