@@ -19,9 +19,9 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }) =>
       <div className="article-body-container">
         <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
         {peerReview.reviews.map((review, index) => (
-          <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} />
+          <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} doi={review.doi} />
         ))}
-        {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} />}
+        {peerReview.authorResponse && <ReviewContent id="author-response" content={peerReview.authorResponse.text} doi={peerReview.authorResponse.doi} />}
       </div>
     </div>
   );

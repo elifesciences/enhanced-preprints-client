@@ -65,6 +65,12 @@ describe('reviewedPreprintSnippet', () => {
             'Author 4',
           ],
         },
+        {
+          givenNames: [
+            'No family names',
+          ],
+          familyNames: [],
+        },
       ],
       doi: 'preprintprovider/preprint1',
       msas: [],
@@ -81,7 +87,7 @@ describe('reviewedPreprintSnippet', () => {
       doi: 'preprintprovider/preprint1',
       pdf: 'https://www.preprintprovider.org/content/preprint1.pdf',
       status: 'reviewed',
-      authorLine: 'First Middle Last Author 1, First Middle Last Author 2 ... First Middle Last Author 4',
+      authorLine: 'First Middle Last Author 1, First Middle Last Author 2 ... No family names',
       title: 'title',
       published: '2022-10-20T03:00:00Z',
       reviewedDate: '2022-10-20T03:00:00Z',
