@@ -5386,6 +5386,12 @@
     },
     "10.1101/2022.12.31.522374)": {
       "preprintDoi": "10.1101/2022.12.31.522374)"
+    },
+    "10.1101/2023.10.06.23296647": {
+      "preprintDoi": "10.1101/2023.10.06.23296647",
+      "msas": [
+        "Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -6120,6 +6126,7 @@
     "90419": "90419v1",
     "90422": "90422v1",
     "90425": "90425v1",
+    "90437": "90437v1",
     "90440": "90440v1",
     "90445": "90445v1",
     "90451": "90451v1",
@@ -40018,6 +40025,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.12.20.521208v1",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "90437v1": {
+      "msid": "90437",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.06.23296647",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-19",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-07",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.10.06.23296647v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-03"
           }
         ]
       }
