@@ -1,7 +1,7 @@
 {
   "preprints": {
-    "89573": {
-      "preprintDoi": "89573",
+    "10.1101/2023.07.20.549893": {
+      "preprintDoi": "10.1101/2023.07.20.549893",
       "msas": [
         "Cancer Biology",
         "Genetics and Genomics"
@@ -5483,9 +5483,6 @@
         "Stem Cells and Regenerative Medicine"
       ]
     },
-    "10.1101/2023.08.29.555422": {
-      "preprintDoi": "10.1101/2023.08.29.555422"
-    },
     "10.1101/2023.09.01.555873": {
       "preprintDoi": "10.1101/2023.09.01.555873",
       "msas": [
@@ -6346,7 +6343,6 @@
     "91258": "91258v1",
     "91263": "91263v1",
     "91288": "91288v1",
-    "91289": "91289v1",
     "91306": "91306v1",
     "91329": "91329v1",
     "91345": "91345v1",
@@ -40726,7 +40722,7 @@
           },
           {
             "name": "Posted to bioRxiv",
-            "date": "2023-09-06",
+            "date": "2023-06-27",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.06.08.544277v3/",
               "text": "Go to bioRxiv"
@@ -40822,23 +40818,6 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-13"
-          }
-        ]
-      }
-    },
-    "91289v1": {
-      "msid": "91289",
-      "version": 1,
-      "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.08.29.555422",
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Published from the original preprint after peer review and assessment by eLife.",
-        "timeline": [
-          {
-            "name": "Reviewed preprint posted",
-            "date": "2023-10-23",
-            "eventDescription": "(this version)"
           }
         ]
       }
