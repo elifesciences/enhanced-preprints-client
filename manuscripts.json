@@ -5407,6 +5407,13 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.05.05.539480": {
+      "preprintDoi": "10.1101/2023.05.05.539480",
+      "msas": [
+        "Computational and Systems Biology",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -6049,6 +6056,7 @@
     "89836": "89836v1",
     "89837": "89837v2",
     "89851": "89851v1",
+    "89852": "89852v1",
     "89854": "89854v1",
     "89855": "89855v1",
     "89862": "89862v1",
@@ -40308,6 +40316,35 @@
             "date": "2023-04-12",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.20.537607v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89852v1": {
+      "msid": "89852",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.05.539480",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-23",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-27"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-05",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.05.539480v1/",
               "text": "Go to bioRxiv"
             }
           }
