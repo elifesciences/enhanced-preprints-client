@@ -1,5 +1,12 @@
 {
   "preprints": {
+    "89573": {
+      "preprintDoi": "89573",
+      "msas": [
+        "Cancer Biology",
+        "Genetics and Genomics"
+      ]
+    },
     "10.1101/2023.04.12.536585": {
       "preprintDoi": "10.1101/2023.04.12.536585",
       "msas": [
@@ -6066,6 +6073,7 @@
     "89548": "89548v1",
     "89570": "89570v1",
     "89572": "89572v1",
+    "89573": "89573v1",
     "89582": "89582v1",
     "89594": "89594v1",
     "89596": "89596v1",
@@ -40717,6 +40725,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-19"
+          }
+        ]
+      }
+    },
+    "89573v1": {
+      "msid": "89573",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "89573",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-23",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.20.549893v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-25"
           }
         ]
       }
