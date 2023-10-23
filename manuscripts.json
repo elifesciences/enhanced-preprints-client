@@ -5507,8 +5507,8 @@
         "Neuroscience"
       ]
     },
-    "2023.08.29.555422": {
-      "preprintDoi": "2023.08.29.555422",
+    "10.1101/2023.08.29.555422": {
+      "preprintDoi": "10.1101/2023.08.29.555422",
       "msas": [
         "Genetics and Genomics",
         "Immunology and Inflammation"
@@ -27673,7 +27673,7 @@
             "name": "Posted to bioRxiv",
             "date": "2023-06-05",
             "link": {
-              "url": "https://www.iorxiv.org/content/10.1101/2023.05.31.543110v1/",
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.31.543110v1/",
               "text": "Go to bioRxiv"
             }
           },
@@ -40950,7 +40950,7 @@
       "msid": "91289",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "2023.08.29.555422",
+      "preprintDoi": "10.1101/2023.08.29.555422",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
