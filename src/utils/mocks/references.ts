@@ -91,4 +91,26 @@ export const references: Reference[] = [
       label: '2.',
     },
   },
+  {
+    type: 'Article',
+    id: 'c4',
+    authors: [
+
+      { type: 'Person', familyNames: ['Given'], givenNames: ['Bugs'] },
+    ],
+    pageEnd: 2843,
+    pageStart: 2831,
+    title: 'Resurgent Na currents in four classes of neurons of the cerebellum, Part 2',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.7554/eLife.16135',
+      },
+    ],
+    meta: {
+      label: '1.',
+    },
+  },
 ];
