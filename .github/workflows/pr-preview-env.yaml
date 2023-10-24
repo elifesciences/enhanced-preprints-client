@@ -12,7 +12,7 @@ jobs:
       CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
       STORYBOOK_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-storybook
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
