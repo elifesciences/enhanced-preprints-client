@@ -12,7 +12,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
-  const year = new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getFullYear();
+  const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getFullYear() : undefined;
 
   return (
     <>
@@ -24,7 +24,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
           </li>
         ))}
       </ol>
-      <span className="reference__authors_list_suffix">{year}</span>
+      { year && <span className="reference__authors_list_suffix">{year}</span> }
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
         {referenceJournal ? <i>{referenceJournal} </i> : ''}

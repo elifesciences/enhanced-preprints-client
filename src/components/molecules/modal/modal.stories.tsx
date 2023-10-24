@@ -46,7 +46,7 @@ ModalShare.args = {
 
 const formatReference = (reference: ReferenceData): string => {
   const authors = reference.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${(author.familyNames ?? []).join(' ')} ${(author.givenNames ?? []).join(' ')}`, '');
-  const year = new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getFullYear();
+  const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getFullYear() : undefined;
   const journal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
 
