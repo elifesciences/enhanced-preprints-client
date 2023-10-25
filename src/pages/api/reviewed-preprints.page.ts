@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata } from '../../utils/fetch-data';
+import { fetchMetadata, fetchVersions } from '../../utils/fetch-data';
 import { Author, MetaData } from '../../types';
 import { getSubjects, Subject } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
@@ -116,8 +116,10 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
+  const versions = (await fetchVersions()).items;
+
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: 0,
+    total: versions.length,
     items: [],
   });
 };
