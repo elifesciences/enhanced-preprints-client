@@ -138,7 +138,6 @@ services:
       API_SERVER: ${API_SERVER:-http://api:3000}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
       MANUSCRIPT_CONFIG_FILE: ${MANUSCRIPT_CONFIG_FILE:-/opt/epp-client/data/manuscripts.json}
-      IS_AUTOMATED: yeah
     depends_on:
       yarn:
         condition: service_completed_successfully
