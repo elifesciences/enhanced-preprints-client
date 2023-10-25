@@ -5577,6 +5577,12 @@
         "Biochemistry and Chemical Biology",
         "Neuroscience"
       ]
+    },
+    "10.1101/2020.12.08.407247": {
+      "preprintDoi": "10.1101/2020.12.08.407247",
+      "msas": [
+        "Biochemistry and Chemical Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -6426,6 +6432,7 @@
     "91345": "91345v1",
     "91367": "91367v1",
     "91400": "91400v1",
+    "91405": "91405v1",
     "91406": "91406v2",
     "91407": "91407v1",
     "91420": "91420v1",
@@ -41470,6 +41477,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-25"
+          }
+        ]
+      }
+    },
+    "91405v1": {
+      "msid": "91405",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2020.12.08.407247",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-25",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-09"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-26",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2020.12.08.407247v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
