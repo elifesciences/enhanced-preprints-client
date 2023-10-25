@@ -116,7 +116,10 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 };
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  // do stuff
+  writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
+    total: 0,
+    items: [],
+  });
 };
 
 const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
