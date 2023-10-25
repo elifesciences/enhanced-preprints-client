@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { config } from '../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import {
-  ArticleSummary, Content, EnhancedArticleWithVersions, MetaData, PeerReview,
+  ArticleSummary, Content, EnhancedArticleWithVersions, MetaData, PeerReview, ReviewedPreprintSnippet,
 } from '../types';
 
 type ReviewsJson = {
@@ -27,3 +27,4 @@ export const fetchReviews = (id: string) => {
 
 export const fetchVersion = (id: string) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
+export const fetchSnippets = (quantity: number, page: number, order: 'asc' | 'desc') => jsonFetch<ReviewedPreprintSnippet[]>(`${config.apiServer}/api/preprints/snippets/${quantity}/${page}/${order}`);

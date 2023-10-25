@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata, fetchVersions } from '../../utils/fetch-data';
-import { Author, MetaData } from '../../types';
-import { getSubjects, Subject } from '../../components/molecules/article-flag-list/article-flag-list';
+import { fetchMetadata, fetchSnippets, fetchVersions } from '../../utils/fetch-data';
+import { Author, MetaData, ReviewedPreprintSnippet } from '../../types';
+import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
 
@@ -15,21 +15,6 @@ type BadRequestMessage = {
 type ReviewedPreprintItemResponse = {
   indexContent?: string,
 } & ReviewedPreprintSnippet;
-
-type ReviewedPreprintSnippet = {
-  id: string,
-  doi: string,
-  pdf?: string,
-  status: 'reviewed',
-  authorLine?: string,
-  title?: string,
-  published?: string,
-  reviewedDate?: string,
-  versionDate?: string,
-  statusDate?: string,
-  stage: 'published',
-  subjects?: Subject[],
-};
 
 type ReviewedPreprintListResponse = {
   total: number,
@@ -117,10 +102,20 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const versions = (await fetchVersions()).items;
+  const [perPage, page] = [
+    queryParam(req, 'per-page', 20),
+    queryParam(req, 'page', 1),
+  ].map((v) => {
+    const n = Number(v);
+
+    return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
+  });
+  const order = queryParam(req, 'order', 'desc');
+  const items = await fetchSnippets(perPage, page, order === 'asc' || order === 'desc' ? order : 'desc');
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
     total: versions.length,
-    items: [],
+    items,
   });
 };
 
