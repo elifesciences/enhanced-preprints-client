@@ -115,7 +115,11 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   };
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
+  // do stuff
+};
+
+const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const manuscripts = getManuscriptsLatest(config.manuscriptConfigFile);
   const allItems = Object.values(manuscripts).map((manuscript) => reviewedPreprintSnippet(manuscript));
 
@@ -164,4 +168,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     total: allItems.length,
     items,
   });
+};
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  if (config.automationFlag) {
+    return serverApi(req, res);
+  }
+
+  return manuscriptApi(req, res);
 };
