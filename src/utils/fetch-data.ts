@@ -27,4 +27,4 @@ export const fetchReviews = (id: string) => {
 
 export const fetchVersion = (id: string) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
-export const fetchSnippets = (quantity: number, page: number, order: 'asc' | 'desc') => jsonFetch<ReviewedPreprintSnippet[]>(`${config.apiServer}/api/preprints/snippets/${quantity}/${page}/${order}`);
+export const fetchSnippets = () => jsonFetch<ReviewedPreprintSnippet[]>(`${config.apiServer}/api/preprints-no-content`);

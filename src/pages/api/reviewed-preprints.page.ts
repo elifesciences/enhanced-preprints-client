@@ -102,16 +102,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const versions = (await fetchVersions()).items;
-  const [perPage, page] = [
-    queryParam(req, 'per-page', 20),
-    queryParam(req, 'page', 1),
-  ].map((v) => {
-    const n = Number(v);
-
-    return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
-  });
-  const order = queryParam(req, 'order', 'desc');
-  const items = await fetchSnippets(perPage, page, order === 'asc' || order === 'desc' ? order : 'desc');
+  const items = await fetchSnippets();
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
     total: versions.length,
