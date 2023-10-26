@@ -14,7 +14,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Raman'], givenNames: ['IM'] },
       { type: 'Person', familyNames: ['NoGiven'], givenNames: undefined },
     ],
-    datePublished: '2004-01-01T00:00:00.000Z',
+    datePublished: { type: 'Date', value: '2004' },
     isPartOf: {
       type: 'PublicationVolume',
       isPartOf: { type: 'Periodical', name: 'J. Neurophysiol' },
@@ -50,7 +50,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Umar'], givenNames: ['S'] },
       { type: 'Person', familyNames: ['Eghbali'], givenNames: ['M'] },
     ],
-    datePublished: '2020-01-01T00:00:00.000Z',
+    datePublished: { type: 'Date', value: '2020-01-01T00:00:00.000Z' },
     isPartOf: { type: 'Periodical', name: 'Int J Mol Sci', volumeNumber: 'volume one' },
     pageStart: 21,
     title: 'The Role of Estrogen Receptors in Cardiovascular Disease',
@@ -75,7 +75,7 @@ export const references: Reference[] = [
         name: 'the Brain Interfacing Laboratory',
       },
     ],
-    datePublished: '2021-01-01T00:00:00.000Z',
+    datePublished: '2021',
     isPartOf: { type: 'Periodical', name: 'Jounal of Neurology' },
     pageStart: 21,
     title: 'The Theory of Everything',
@@ -89,6 +89,28 @@ export const references: Reference[] = [
     ],
     meta: {
       label: '2.',
+    },
+  },
+  {
+    type: 'Article',
+    id: 'c4',
+    authors: [
+
+      { type: 'Person', familyNames: ['Given'], givenNames: ['Bugs'] },
+    ],
+    pageEnd: 2843,
+    pageStart: 2831,
+    title: 'Resurgent Na currents in four classes of neurons of the cerebellum, Part 2',
+    identifiers: [
+      {
+        type: 'PropertyValue',
+        name: 'doi',
+        propertyID: 'https://registry.identifiers.org/registry/doi',
+        value: '10.7554/eLife.16135',
+      },
+    ],
+    meta: {
+      label: '1.',
     },
   },
 ];

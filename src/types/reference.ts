@@ -18,7 +18,7 @@ export type Reference = {
   pageEnd?: number | string,
   pageStart?: number | string,
   authors: Array<Author>,
-  datePublished: string,
+  datePublished?: string | { type: 'Date', value: string },
   isPartOf?: Publication,
   identifiers?: {
     type: string,
