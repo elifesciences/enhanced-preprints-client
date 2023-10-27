@@ -1,7 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata, fetchSnippets, fetchVersions, fetchVersionsNoContent } from '../../utils/fetch-data';
+import {
+  fetchMetadata, fetchSnippets, fetchVersions, fetchVersionsNoContent,
+} from '../../utils/fetch-data';
 import { Author, MetaData, ReviewedPreprintSnippet } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
@@ -101,7 +103,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   };
 };
 
-const enhancedArticleNoContentToSnippet = ({ 
+const enhancedArticleNoContentToSnippet = ({
   msid,
   preprintDoi,
   pdfUrl,
@@ -115,7 +117,7 @@ const enhancedArticleNoContentToSnippet = ({
   doi: preprintDoi,
   pdf: pdfUrl,
   status: 'reviewed',
-  authorLine: prepareAuthorLine(article.authors || []), 
+  authorLine: prepareAuthorLine(article.authors || []),
   title: contentToHtml(article.title),
   published: new Date(preprintPosted).toISOString(),
   reviewedDate: new Date(sentForReview!).toISOString(),
@@ -123,7 +125,7 @@ const enhancedArticleNoContentToSnippet = ({
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
   subjects: getSubjects(subjects || []),
-})
+});
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const snippets = await fetchVersionsNoContent();
@@ -133,7 +135,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
       if (existingItem) {
         if (existingItem.published && new Date(existingItem.published) < new Date(item.published)) {
           items.set(item.msid, item);
-        } 
+        }
       } else {
         items.set(item.msid, item);
       }
