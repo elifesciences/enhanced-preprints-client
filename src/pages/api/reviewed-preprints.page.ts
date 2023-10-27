@@ -108,8 +108,6 @@ const enhancedArticleNoContentToSnippet = ({
   preprintDoi,
   pdfUrl,
   article,
-  preprintPosted,
-  sentForReview,
   published,
   subjects,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
@@ -119,8 +117,8 @@ const enhancedArticleNoContentToSnippet = ({
   status: 'reviewed',
   authorLine: prepareAuthorLine(article.authors || []),
   title: contentToHtml(article.title),
-  published: new Date(preprintPosted).toISOString(),
-  reviewedDate: new Date(sentForReview!).toISOString(),
+  published: new Date(published!).toISOString(),
+  reviewedDate: new Date(published!).toISOString(),
   versionDate: new Date(published!).toISOString(),
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
@@ -146,9 +144,41 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const latestSnippets = Array.from(latestVersions).map(enhancedArticleNoContentToSnippet);
 
+  const [perPage, page] = [
+    queryParam(req, 'per-page', 20),
+    queryParam(req, 'page', 1),
+  ].map((v) => {
+    const n = Number(v);
+
+    return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
+  });
+
+  const order = queryParam(req, 'order', 'desc');
+
+  if (page <= 0) {
+    errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
+  }
+
+  if (perPage <= 0 || perPage > 100) {
+    errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
+  }
+
+  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
+    errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
+  }
+
+  const offset = (page - 1) * perPage;
+
+  const returnedSnippets = latestSnippets.sort((a, b) => {
+    const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
+
+    return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
+  })
+  .slice(offset, offset + perPage)
+
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
     total: Object.keys(latestSnippets).length,
-    items: latestSnippets,
+    items: returnedSnippets,
   });
 };
 
