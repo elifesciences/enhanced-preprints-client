@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata, fetchSnippets, fetchVersions } from '../../utils/fetch-data';
+import { fetchMetadata, fetchSnippets, fetchVersions, fetchVersionsNoContent } from '../../utils/fetch-data';
 import { Author, MetaData, ReviewedPreprintSnippet } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
+import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -100,13 +101,52 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   };
 };
 
+const enhancedArticleNoContentToSnippet = ({ 
+  msid,
+  preprintDoi,
+  pdfUrl,
+  article,
+  preprintPosted,
+  sentForReview,
+  published,
+  subjects,
+}: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
+  id: msid,
+  doi: preprintDoi,
+  pdf: pdfUrl,
+  status: 'reviewed',
+  authorLine: prepareAuthorLine(article.authors || []), 
+  title: contentToHtml(article.title),
+  published: new Date(preprintPosted).toISOString(),
+  reviewedDate: new Date(sentForReview!).toISOString(),
+  versionDate: new Date(published!).toISOString(),
+  statusDate: new Date(published!).toISOString(),
+  stage: 'published',
+  subjects: getSubjects(subjects || []),
+})
+
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  const versions = (await fetchVersions()).items;
-  const items = await fetchSnippets();
+  const snippets = await fetchVersionsNoContent();
+  const latestVersions = snippets.reduce<Map<string, EnhancedArticleNoContent>>((items, item) => {
+    if (item.published) {
+      const existingItem = items.get(item.msid);
+      if (existingItem) {
+        if (existingItem.published && new Date(existingItem.published) < new Date(item.published)) {
+          items.set(item.msid, item);
+        } 
+      } else {
+        items.set(item.msid, item);
+      }
+    }
+    return items;
+  }, new Map<string, EnhancedArticleNoContent>())
+    .values();
+
+  const latestSnippets = Array.from(latestVersions).map(enhancedArticleNoContentToSnippet);
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: versions.length,
-    items,
+    total: Object.keys(latestSnippets).length,
+    items: latestSnippets,
   });
 };
 

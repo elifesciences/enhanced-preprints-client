@@ -1,3 +1,5 @@
+import { EnhancedArticle, ProcessedArticle } from "./enhanced-article";
+
 export type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
@@ -15,3 +17,10 @@ export type ReviewedPreprintSnippet = {
     name: string,
   }[],
 };
+
+export type VersionSummary = Omit<EnhancedArticle, 'article' | 'peerReview'>;
+
+export type EnhancedArticleNoContent = VersionSummary & {
+  article: Omit<ProcessedArticle, 'doi' | 'date' | 'content' | 'abstract'>,
+};
+

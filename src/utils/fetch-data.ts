@@ -4,6 +4,7 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import {
   ArticleSummary, Content, EnhancedArticleWithVersions, MetaData, PeerReview, ReviewedPreprintSnippet,
 } from '../types';
+import { EnhancedArticleNoContent } from '../types/reviewed-preprint-snippet';
 
 type ReviewsJson = {
   [index: string]: PeerReview;
@@ -27,4 +28,4 @@ export const fetchReviews = (id: string) => {
 
 export const fetchVersion = (id: string) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
-export const fetchSnippets = () => jsonFetch<ReviewedPreprintSnippet[]>(`${config.apiServer}/api/preprints-no-content`);
+export const fetchVersionsNoContent = () => jsonFetch<EnhancedArticleNoContent[]>(`${config.apiServer}/api/preprints-no-content`);
