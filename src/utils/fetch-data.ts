@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { config } from '../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import {
-  ArticleSummary, Content, EnhancedArticleWithVersions, MetaData, PeerReview, ReviewedPreprintSnippet,
+  ArticleSummary, Content, EnhancedArticleWithVersions, MetaData, PeerReview,
 } from '../types';
 import { EnhancedArticleNoContent } from '../types/reviewed-preprint-snippet';
 
