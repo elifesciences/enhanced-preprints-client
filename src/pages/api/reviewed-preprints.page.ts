@@ -2,7 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
 import { fetchMetadata, fetchVersionsNoContent } from '../../utils/fetch-data';
-import { Author, MetaData, ReviewedPreprintSnippet } from '../../types';
+import {
+  Author, EnhancedArticle, MetaData, ReviewedPreprintSnippet,
+} from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
@@ -13,7 +15,7 @@ type BadRequestMessage = {
   detail?: string,
 };
 
-type ReviewedPreprintItemResponse = {
+export type ReviewedPreprintItemResponse = {
   indexContent?: string,
 } & ReviewedPreprintSnippet;
 
@@ -101,7 +103,7 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   };
 };
 
-const enhancedArticleNoContentToSnippet = ({
+export const enhancedArticleNoContentToSnippet = ({
   msid,
   preprintDoi,
   pdfUrl,
@@ -121,6 +123,30 @@ const enhancedArticleNoContentToSnippet = ({
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
   subjects: getSubjects(subjects || []),
+});
+
+export const enhancedArticleToReviewedPreprintItemResponse = ({
+  msid,
+  preprintDoi,
+  pdfUrl,
+  article,
+  published,
+  subjects,
+  article: { content, authors },
+}: EnhancedArticle): ReviewedPreprintItemResponse => ({
+  id: msid,
+  doi: preprintDoi,
+  pdf: pdfUrl,
+  status: 'reviewed',
+  authorLine: prepareAuthorLine(authors || []),
+  title: contentToHtml(article.title),
+  published: new Date(published!).toISOString(),
+  reviewedDate: new Date(published!).toISOString(),
+  versionDate: new Date(published!).toISOString(),
+  statusDate: new Date(published!).toISOString(),
+  stage: 'published',
+  subjects: getSubjects(subjects || []),
+  indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
