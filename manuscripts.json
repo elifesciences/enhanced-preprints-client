@@ -5667,6 +5667,12 @@
         "Evolutionary Biology",
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.06.30.546730": {
+      "preprintDoi": "10.1101/2023.06.30.546730",
+      "msas": [
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -6433,6 +6439,7 @@
     "90574": "90574v2",
     "90575": "90575v1",
     "90576": "90576v1",
+    "90579": "90579v1",
     "90583": "90583v1",
     "90596": "90596v1",
     "90597": "90597v1",
@@ -42186,6 +42193,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-08"
+          }
+        ]
+      }
+    },
+    "90579v1": {
+      "msid": "90579",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.30.546730",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-27",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-18"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-30",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.30.546730v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
