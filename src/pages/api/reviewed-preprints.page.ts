@@ -15,7 +15,7 @@ type BadRequestMessage = {
   detail?: string,
 };
 
-export type ReviewedPreprintItemResponse = {
+type ReviewedPreprintItemResponse = {
   indexContent?: string,
 } & ReviewedPreprintSnippet;
 
