@@ -5660,6 +5660,13 @@
         "Biochemistry and Chemical Biology",
         "Stem Cells and Regenerative Medicine"
       ]
+    },
+    "10.1101/2023.08.18.553899": {
+      "preprintDoi": "10.1101/2023.08.18.553899",
+      "msas": [
+        "Evolutionary Biology",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -6439,6 +6446,7 @@
     "90632": "90632v1",
     "90634": "90634v1",
     "90636": "90636v1",
+    "90638": "90638v1",
     "90648": "90648v1",
     "90656": "90656v1",
     "90674": "90674v1",
@@ -42104,6 +42112,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-09-08"
+          }
+        ]
+      }
+    },
+    "90638v1": {
+      "msid": "90638",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.18.553899",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-27",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-21",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.18.553899v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-10"
           }
         ]
       }
