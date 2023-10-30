@@ -14,5 +14,8 @@ services:
       - ./data:/data
 
   app:
+    depends_on:
+      load-automated-data:
+        condition: service_completed_successfully
     environment:
       IS_AUTOMATED: yeah
