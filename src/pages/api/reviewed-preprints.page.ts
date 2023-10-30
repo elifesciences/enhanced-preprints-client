@@ -151,16 +151,26 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const snippets = await fetchVersionsNoContent();
+  const now = new Date();
   const latestVersions = snippets.reduce<Map<string, EnhancedArticleNoContent>>((items, item) => {
-    if (item.published) {
-      const existingItem = items.get(item.msid);
-      if (existingItem) {
-        if (existingItem.published && new Date(existingItem.published) < new Date(item.published)) {
-          items.set(item.msid, item);
-        }
-      } else {
+    if (!item.published) {
+      // only consider published items
+      return items;
+    }
+    const newItemPublishedDate = new Date(item.published);
+    if (newItemPublishedDate >= now) {
+      // only consider items already published (published date in the past)
+      return items;
+    }
+    const existingItem = items.get(item.msid);
+    if (existingItem && existingItem.published) {
+      const existingItemPublishedDate = new Date(existingItem.published);
+      // Only the latest published item should be in the output map
+      if (existingItemPublishedDate < newItemPublishedDate) {
         items.set(item.msid, item);
       }
+    } else {
+      items.set(item.msid, item);
     }
     return items;
   }, new Map<string, EnhancedArticleNoContent>())
