@@ -141,6 +141,9 @@ services:
     depends_on:
       yarn:
         condition: service_completed_successfully
+      start-import:
+        condition: service_completed_successfully
+
     ports:
       - 3001:3000
       - 9229:9229
@@ -180,8 +183,6 @@ services:
     image: curlimages/curl
     depends_on:
       api:
-        condition: service_healthy
-      app:
         condition: service_healthy
       createbucket:
         condition: service_completed_successfully
