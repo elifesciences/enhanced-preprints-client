@@ -5685,6 +5685,12 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.07.27.550771": {
+      "preprintDoi": "10.1101/2023.07.27.550771",
+      "msas": [
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -6478,6 +6484,7 @@
     "90695": "90695v1",
     "90696": "90696v1",
     "90713": "90713v1",
+    "90729": "90729v1",
     "90749": "90749v1",
     "90755": "90755v1",
     "90773": "90773v1",
@@ -42384,6 +42391,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.08.28.549404v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "90729v1": {
+      "msid": "90729",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.27.550771",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.27.550771v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-19"
           }
         ]
       }
