@@ -6374,7 +6374,7 @@
     "89926": "89926v1",
     "89936": "89936v1",
     "89938": "89938v1",
-    "89941": "89941v1",
+    "89941": "89941v2",
     "89947": "89947v1",
     "89948": "89948v1",
     "89950": "89950v1",
@@ -29446,7 +29446,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-31",
+            "link": {
+              "url": "/reviewed-preprints/89941v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-09-01",
             "eventDescription": "(this version)"
           },
@@ -42845,6 +42853,43 @@
             "name": "Reviewed preprint posted",
             "date": "2023-10-31",
             "eventDescription": "(this version)"
+          }
+        ]
+      }
+    },
+    "89941v2": {
+      "msid": "89941",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.21.545900",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-09-01",
+            "link": {
+              "url": "/reviewed-preprints/89941v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-06-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.21.545900v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-11"
           }
         ]
       }
