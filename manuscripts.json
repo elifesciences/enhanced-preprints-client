@@ -5704,6 +5704,9 @@
         "Ecology",
         "Evolutionary Biology"
       ]
+    },
+    "10.1101/2023.08.10.552629": {
+      "preprintDoi": "10.1101/2023.08.10.552629"
     }
   },
   "manuscripts": {
@@ -6605,6 +6608,7 @@
     "91976": "91976v1",
     "91979": "91979v1",
     "91980": "91980v1",
+    "92083": "92083v1",
     "92091": "92091v1",
     "92189": "92189v1",
     "92275": "92275v1",
@@ -42824,6 +42828,23 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-16"
+          }
+        ]
+      }
+    },
+    "92083v1": {
+      "msid": "92083",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.10.552629",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-31",
+            "eventDescription": "(this version)"
           }
         ]
       }
