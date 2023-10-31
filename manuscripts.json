@@ -5707,6 +5707,13 @@
     },
     "10.1101/2023.08.10.552629": {
       "preprintDoi": "10.1101/2023.08.10.552629"
+    },
+    "10.1101/2023.08.30.555476": {
+      "preprintDoi": "10.1101/2023.08.30.555476",
+      "msas": [
+        "Computational and Systems Biology",
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -6527,6 +6534,7 @@
     "90948": "90948v1",
     "90949": "90949v1",
     "90959": "90959v1",
+    "90964": "90964v1",
     "90972": "90972v1",
     "90976": "90976v1",
     "90997": "90997v1",
@@ -42980,6 +42988,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-10"
+          }
+        ]
+      }
+    },
+    "90964v1": {
+      "msid": "90964",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.30.555476",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-10-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-01",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.30.555476v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-15"
           }
         ]
       }
