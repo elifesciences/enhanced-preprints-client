@@ -12,5 +12,8 @@ module.exports = {
     "scss/at-mixin-argumentless-call-parentheses": null,
     "scss/dollar-variable-empty-line-before": null,
     "selector-class-pattern": null,
+    "max-empty-lines": 1,
+    "no-eol-whitespace": true,
+    "no-missing-eof-newline": true,
   }
 }
