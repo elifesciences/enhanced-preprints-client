@@ -5776,7 +5776,7 @@
     "86678": "86678v1",
     "86687": "86687v2",
     "86689": "86689v3",
-    "86695": "86695v1",
+    "86695": "86695v2",
     "86699": "86699v2",
     "86700": "86700v1",
     "86721": "86721v3",
@@ -10286,7 +10286,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-31",
+            "link": {
+              "url": "/reviewed-preprints/86695v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-05-11",
             "eventDescription": "(this version)"
           },
@@ -42890,6 +42898,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-11"
+          }
+        ]
+      }
+    },
+    "86695v2": {
+      "msid": "86695",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2022.12.15.519769",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-10-31",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-05-11",
+            "link": {
+              "url": "/reviewed-preprints/86695v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-20"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2022-12-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.12.15.519769v1",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
