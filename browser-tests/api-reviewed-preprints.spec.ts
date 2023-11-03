@@ -24,7 +24,7 @@ test('reviewed preprints api item found', async ({ request }) => {
   expect(response.ok()).toBeTruthy();
 
   const headers = response.headers();
-  expect(headers['content-type']).toBe('application/vnd.elife.reviewed-preprint-item+json; version=1');
+  expect(headers['content-type']).toBe('application/vnd.elife.reviewed-preprint+json; version=1');
   expect(headers['cache-control']).toBe('max-age=300, public, stale-if-error=86400, stale-while-revalidate=300');
 
   const headerVary = headers.vary.split(', ');
