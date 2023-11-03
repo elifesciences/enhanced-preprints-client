@@ -26,7 +26,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   writeResponse(
     res,
-    'application/vnd.elife.reviewed-preprint-item+json; version=1',
+    'application/vnd.elife.reviewed-preprint+json; version=1',
     200,
     enhancedArticleToReviewedPreprintItemResponse(version.article),
   );
@@ -45,7 +45,7 @@ const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
     writeResponse(
       res,
-      'application/vnd.elife.reviewed-preprint-item+json; version=1',
+      'application/vnd.elife.reviewed-preprint+json; version=1',
       200,
       { ...reviewedPreprintSnippet(manuscript, metaData), indexContent: `${metaData.authors.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}` },
     );
