@@ -6606,7 +6606,7 @@
     "89882": "89882v1",
     "89889": "89889v1",
     "89890": "89890v1",
-    "89891": "89891v1",
+    "89891": "89891v2",
     "89892": "89892v1",
     "89903": "89903v1",
     "89908": "89908v1",
@@ -25050,7 +25050,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-06",
+            "link": {
+              "url": "/reviewed-preprints/89891v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-08-08",
             "eventDescription": "(this version)"
           },
@@ -45245,6 +45253,43 @@
           {
             "name": "Sent for peer review",
             "date": "10.1101/2023.05.24.542081"
+          }
+        ]
+      }
+    },
+    "89891v2": {
+      "msid": "89891",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.17.23292782",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-06",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-08-08",
+            "link": {
+              "url": "/reviewed-preprints/89891v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-07-23",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.07.17.23292782v1/",
+              "text": "Go to medRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-18"
           }
         ]
       }
