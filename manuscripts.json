@@ -6435,7 +6435,7 @@
     "88995": "88995v1",
     "89001": "89001v1",
     "89002": "89002v1",
-    "89004": "89004v1",
+    "89004": "89004v2",
     "89015": "89015v1",
     "89017": "89017v1",
     "89023": "89023v1",
@@ -28574,7 +28574,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-06",
+            "link": {
+              "url": "/reviewed-preprints/89004v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-08-25",
             "eventDescription": "(this version)"
           },
@@ -45200,6 +45208,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-25"
+          }
+        ]
+      }
+    },
+    "89004v2": {
+      "msid": "89004",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.24.542081",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-06",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-08-25",
+            "link": {
+              "url": "/reviewed-preprints/89004v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "10.1101/2023.05.24.542081",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.24.542081v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "10.1101/2023.05.24.542081"
           }
         ]
       }
