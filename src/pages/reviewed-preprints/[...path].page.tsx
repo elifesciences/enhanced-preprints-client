@@ -129,7 +129,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   // FEATURE FLAG
   if (config.automationFlag) {
-    const articleWithVersions = await fetchVersion(id);
+    const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
     if (!articleWithVersions) {
       console.log(`Article version not found (${id})`); // eslint-disable-line no-console
@@ -138,11 +138,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
-
-    if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
-      console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
-      return { notFound: true };
-    }
 
     return {
       props: {
