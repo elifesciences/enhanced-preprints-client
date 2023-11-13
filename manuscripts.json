@@ -6132,6 +6132,13 @@
         "Biochemistry and Chemical Biology",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.02.10.527147": {
+      "preprintDoi": "10.1101/2023.02.10.527147",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -6871,6 +6878,7 @@
     "90306": "90306v1",
     "90309": "90309v1",
     "90313": "90313v1",
+    "90316": "90316v1",
     "90318": "90318v1",
     "90325": "90325v1",
     "90327": "90327v1",
@@ -47110,6 +47118,35 @@
             "date": "2023-09-04",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.09.04.556203v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90316v1": {
+      "msid": "90316",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.10.527147",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-08"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-20",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.10.527147v2/",
               "text": "Go to bioRxiv"
             }
           }
