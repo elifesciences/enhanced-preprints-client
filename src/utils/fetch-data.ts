@@ -26,6 +26,6 @@ export const fetchReviews = (id: string) => {
     });
 };
 
-export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?preview=true' : ''}`);
+export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
 export const fetchVersionsNoContent = () => jsonFetch<EnhancedArticleNoContent[]>(`${config.apiServer}/api/preprints-no-content`);
