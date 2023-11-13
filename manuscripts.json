@@ -6144,6 +6144,13 @@
       "msas": [
         "Biochemistry and Chemical Biology"
       ]
+    },
+    "10.1101/2023.09.04.556203": {
+      "preprintDoi": "10.1101/2023.09.04.556203",
+      "msas": [
+        "Biochemistry and Chemical Biology",
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -47156,7 +47163,7 @@
       "msid": "91046",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.02.20.529306",
+      "preprintDoi": "10.1101/2023.09.04.556203",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
