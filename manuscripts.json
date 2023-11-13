@@ -6118,6 +6118,13 @@
         "Computational and Systems Biology",
         "Developmental Biology"
       ]
+    },
+    "10.1101/2023.05.23.541951": {
+      "preprintDoi": "10.1101/2023.05.23.541951",
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -7008,6 +7015,7 @@
     "91345": "91345v1",
     "91357": "91357v1",
     "91367": "91367v1",
+    "91392": "91392v1",
     "91400": "91400v1",
     "91405": "91405v1",
     "91406": "91406v2",
@@ -47008,6 +47016,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-10"
+          }
+        ]
+      }
+    },
+    "91392v1": {
+      "msid": "91392",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.23.541951",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-13",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-14"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-05-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.05.23.541951v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
