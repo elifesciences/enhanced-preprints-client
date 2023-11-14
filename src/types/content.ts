@@ -85,6 +85,10 @@ type ClaimContent = DecoratedContent & {
   title?: Content,
 };
 
+type ThematicBreak = {
+  type: 'ThematicBreak',
+}
+
 type ContentPart =
   string |
   HeadingContent |
@@ -102,6 +106,7 @@ type ContentPart =
   ImageObjectContent |
   ListItemContent |
   ListContent |
-  ClaimContent;
+  ClaimContent |
+  ThematicBreak;
 
 export type Content = ContentPart | Array<Content>;
