@@ -25,7 +25,7 @@ export const ArticleFullTextTab = (props: { metaData: MetaData, content: Content
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
         <Abstract content={props.metaData.abstract} />
-        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl}/> }
+        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl} doi={props.peerReview.evaluationSummary.doi}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
         <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />

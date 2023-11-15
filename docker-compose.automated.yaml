@@ -1,0 +1,21 @@
+services:
+  load-automated-data:
+    image: curlimages/curl
+    depends_on:
+      api:
+        condition: service_healthy
+    entrypoint: sh
+    command:
+      - -c
+      - |
+        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v1/payload.json'
+        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v2/payload.json'
+    volumes:
+      - ./data:/data
+
+  app:
+    depends_on:
+      load-automated-data:
+        condition: service_completed_successfully
+    environment:
+      IS_AUTOMATED: yeah

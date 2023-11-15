@@ -59,4 +59,17 @@ describe('ArticleContent', () => {
     expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
     expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
   });
+
+  it('displays DOI link', async () => {
+    render(<ReviewContent isAssessment={true} content='This is a thorough review of the article' peerReviewUrl='#' doi='10.7554/eLife.81090.sa0'/>);
+
+    expect(screen.getByText('https://doi.org/10.7554/eLife.81090.sa0')).toBeInTheDocument();
+    expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
+    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
+  });
+
+  it('displays DOI link containing sa1', async () => {
+    render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa1'/>);
+    expect(screen.queryByText('.sa1', { exact: false })).toBeInTheDocument();
+  });
 });

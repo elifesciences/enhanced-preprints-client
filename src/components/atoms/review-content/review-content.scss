@@ -3,6 +3,12 @@
 @use "../../../sass/mixins";
 
 .review-content {
+  @include mixins.margin(36, "bottom");
+
+  &:last-child {
+    @include mixins.margin(0, "bottom");
+  }
+
   .highlighted-term {
     @include typography.body();
 
