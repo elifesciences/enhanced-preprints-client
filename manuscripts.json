@@ -6486,7 +6486,7 @@
     "87780": "87780v1",
     "87811": "87811v1",
     "87820": "87820v1",
-    "87833": "87833v1",
+    "87833": "87833v2",
     "87860": "87860v2",
     "87863": "87863v1",
     "87866": "87866v1",
@@ -16633,7 +16633,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-15",
+            "link": {
+              "url": "/reviewed-preprints/87833v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-22",
             "eventDescription": "(this version)"
           },
@@ -48314,6 +48322,43 @@
             "date": "2023-07-13",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.06.26.546470v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "87833v2": {
+      "msid": "87833",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.03.14.532631",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-15",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-22",
+            "link": {
+              "url": "/reviewed-preprints/87833v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-22"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-03-15",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.03.14.532631v1",
               "text": "Go to bioRxiv"
             }
           }
