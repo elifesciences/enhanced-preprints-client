@@ -233,7 +233,15 @@ describe('Content to JSX', () => {
       { type: 'Paragraph', content: 'paragraph content under heading 2' },
     ]);
 
-    expect(result).toStrictEqual(<><section><h1>heading</h1><p>paragraph</p></section>
-    <section><h1>heading</h1><p>paragraph</p></section></>);
+    expect(result).toStrictEqual([
+      <section>
+        <Heading id="heading1" headingLevel={1} content="Heading 1"/>
+        <p>paragraph content under heading 1</p>
+      </section>,
+      <section>
+        <Heading id="heading2" headingLevel={1} content="Heading 2"/>
+        <p>paragraph content under heading 2</p>
+      </section>
+    ]);
   });
 });
