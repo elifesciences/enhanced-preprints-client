@@ -87,7 +87,7 @@ type ClaimContent = DecoratedContent & {
 
 type ThematicBreak = {
   type: 'ThematicBreak',
-}
+};
 
 type ContentPart =
   string |

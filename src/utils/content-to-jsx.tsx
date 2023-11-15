@@ -20,16 +20,12 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
   // wrap each return in a section element
 
   if (Array.isArray(content)) {
-    const thematicBreakIndex = content.findIndex((part) => {
-      if (typeof part === 'object' && 'type' in part && part.type === 'ThematicBreak') {
-        return true;
-      }
-    });
+    const thematicBreakIndex = content.findIndex((part) => typeof part === 'object' && 'type' in part && part.type === 'ThematicBreak');
 
     if (thematicBreakIndex > 0) {
       const previousElements = content.slice(0, thematicBreakIndex);
       const nextElements = content.slice(thematicBreakIndex + 1);
-      return [<section>{contentToJsx(previousElements)}</section>, <section>{contentToJsx(nextElements)}</section>];
+      return [<section key={0}>{contentToJsx(previousElements)}</section>, <section key={1}>{contentToJsx(nextElements)}</section>];
     }
 
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));

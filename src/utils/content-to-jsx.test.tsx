@@ -227,10 +227,14 @@ describe('Content to JSX', () => {
 
   it('generates sections from thematic breaks', () => {
     render((<>{contentToJsx([
-      { type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1' },
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1',
+      },
       { type: 'Paragraph', content: 'paragraph content under heading 1' },
       { type: 'ThematicBreak' },
-      { type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2' },
+      {
+        type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2',
+      },
       { type: 'Paragraph', content: 'paragraph content under heading 2' },
     ])}</>));
 
