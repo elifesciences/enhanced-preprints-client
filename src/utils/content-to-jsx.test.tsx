@@ -242,19 +242,19 @@ describe('Content to JSX', () => {
     expect(document.querySelectorAll('section').length).toStrictEqual(2);
   });
 
-  // it('generates sections from two thematic breaks', () => {
-  //   render((<>{contentToJsx([
-  //     { type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1' },
-  //     { type: 'Paragraph', content: 'paragraph content under heading 1' },
-  //     { type: 'ThematicBreak' },
-  //     { type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2' },
-  //     { type: 'Paragraph', content: 'paragraph content under heading 2' },
-  //     { type: 'ThematicBreak' },
-  //     { type: 'Heading', id: 'heading3', depth: 1, content: 'Heading 3' },
-  //     { type: 'Paragraph', content: 'paragraph content under heading 3' },
-  //   ])}</>));
+  it('generates sections from two thematic breaks', () => {
+    render((<>{contentToJsx([
+      { type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1' },
+      { type: 'Paragraph', content: 'paragraph content under heading 1' },
+      { type: 'ThematicBreak' },
+      { type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2' },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+      { type: 'ThematicBreak' },
+      { type: 'Heading', id: 'heading3', depth: 1, content: 'Heading 3' },
+      { type: 'Paragraph', content: 'paragraph content under heading 3' },
+    ])}</>));
 
-  //   expect(screen.getByText('paragraph content under heading 1')).toBeInTheDocument();
-  //   expect(document.querySelectorAll('section').length).toStrictEqual(3);
-  // });
+    expect(screen.getByText('paragraph content under heading 1')).toBeInTheDocument();
+    expect(document.querySelectorAll('section').length).toStrictEqual(3);
+  });
 });
