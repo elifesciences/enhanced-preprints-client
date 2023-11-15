@@ -20,6 +20,12 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
   // wrap each return in a section element
 
   if (Array.isArray(content)) {
+    content.find((part)=> {
+      if (typeof part === 'object' && 'type' in part && part.type === 'ThematicBreak') {
+        console.log('found');
+      }
+    });
+
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
   }
   switch (content.type) {
