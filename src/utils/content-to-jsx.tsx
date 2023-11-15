@@ -15,6 +15,10 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
     return content;
   }
 
+  // Find thematic breaks
+  // split on thematic breaks pass each into contentToJSX()
+  // wrap each return in a section element
+
   if (Array.isArray(content)) {
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
   }
