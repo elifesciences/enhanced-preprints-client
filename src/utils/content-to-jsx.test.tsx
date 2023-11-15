@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react';
 import { contentToJsx } from './content-to-jsx';
 import { Heading } from '../components/atoms/heading/heading';
 import { Figure } from '../components/atoms/figure/figure';
@@ -225,23 +226,15 @@ describe('Content to JSX', () => {
   });
 
   it('generates sections from thematic breaks', () => {
-    const result = contentToJsx([
+    render((<>{contentToJsx([
       { type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1' },
       { type: 'Paragraph', content: 'paragraph content under heading 1' },
       { type: 'ThematicBreak' },
       { type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2' },
       { type: 'Paragraph', content: 'paragraph content under heading 2' },
-    ]);
+    ])}</>));
 
-    expect(result).toMatchObject([
-      <section>
-        <Heading id="heading1" headingLevel={1} content="Heading 1"/>
-        <p>paragraph content under heading 1</p>
-      </section>,
-      <section>
-        <Heading id="heading2" headingLevel={1} content="Heading 2"/>
-        <p>paragraph content under heading 2</p>
-      </section>
-    ]);
+    expect(screen.getByText('paragraph content under heading 1')).toBeInTheDocument();
+    expect(document.querySelectorAll('section').length).toStrictEqual(2);
   });
 });

@@ -29,7 +29,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
     if (thematicBreakIndex > 0) {
       const previousElements = content.slice(0, thematicBreakIndex);
       const nextElements = content.slice(thematicBreakIndex + 1);
-      return [<section key={index}>{contentToJsx(previousElements)}</section>, <section key={index}>{contentToJsx(nextElements)}</section>];
+      return [<section>{contentToJsx(previousElements)}</section>, <section>{contentToJsx(nextElements)}</section>];
     }
 
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
