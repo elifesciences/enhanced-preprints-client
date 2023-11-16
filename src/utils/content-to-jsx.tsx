@@ -29,14 +29,18 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       content.forEach((part) => {
         if (isThematicBreak(part)) {
           slices.push([]);
+
           return;
         }
 
         slices[slices.length - 1].push(part);
       });
 
-      const allSections = slices.map((slice, i) => <section key={i}>{contentToJsx(slice)}</section>);
-      console.log(slices);
+      const allSections = slices
+        .filter((slice) => slice.length)
+        .map((slice, i) => <section key={i}>{contentToJsx(slice)}</section>);
+
+      console.log(slices.filter((slice) => slice.length));
 
       return allSections;
     }
