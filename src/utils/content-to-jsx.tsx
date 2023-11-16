@@ -24,7 +24,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
   if (Array.isArray(content)) {
     const thematicBreakIndex = content.findIndex(isThematicBreak);
 
-    if (thematicBreakIndex > 0) {
+    if (thematicBreakIndex >= 0) {
       const slices: Content[][] = [[]];
       content.forEach((part) => {
         if (isThematicBreak(part)) {
