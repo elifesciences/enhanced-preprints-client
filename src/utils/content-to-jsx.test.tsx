@@ -238,8 +238,15 @@ describe('Content to JSX', () => {
       { type: 'Paragraph', content: 'paragraph content under heading 2' },
     ])}</>));
 
-    expect(screen.getByText('paragraph content under heading 1')).toBeInTheDocument();
-    expect(document.querySelectorAll('section').length).toStrictEqual(2);
+    const firstSectionElement = document.querySelector('section:nth-child(1)');
+    const secondSectionElement = document.querySelector('section:nth-child(2)');
+
+    expect(firstSectionElement).toBeInTheDocument();
+    expect(firstSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 1');
+    expect(firstSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 1');
+    expect(secondSectionElement).toBeInTheDocument();
+    expect(secondSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 2');
+    expect(secondSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 2');
   });
 
   it('generates sections from two thematic breaks', () => {
@@ -254,7 +261,18 @@ describe('Content to JSX', () => {
       { type: 'Paragraph', content: 'paragraph content under heading 3' },
     ])}</>));
 
-    expect(screen.getByText('paragraph content under heading 1')).toBeInTheDocument();
-    expect(document.querySelectorAll('section').length).toStrictEqual(3);
+    const firstSectionElement = document.querySelector('section:nth-child(1)');
+    const secondSectionElement = document.querySelector('section:nth-child(2)');
+    const thirdSectionElement = document.querySelector('section:nth-child(3)');
+
+    expect(firstSectionElement).toBeInTheDocument();
+    expect(firstSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 1');
+    expect(firstSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 1');
+    expect(secondSectionElement).toBeInTheDocument();
+    expect(secondSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 2');
+    expect(secondSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 2');
+    expect(thirdSectionElement).toBeInTheDocument();
+    expect(thirdSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 3');
+    expect(thirdSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 3');
   });
 });
