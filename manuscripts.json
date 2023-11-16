@@ -6245,6 +6245,12 @@
         "Cancer Biology",
         "Medicine"
       ]
+    },
+    "10.1101/2023.09.11.557196": {
+      "preprintDoi": "10.1101/2023.09.11.557196",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -7221,6 +7227,7 @@
     "92173": "92173v1",
     "92175": "92175v1",
     "92189": "92189v1",
+    "92201": "92201v1",
     "92275": "92275v1",
     "92307": "92307v1",
     "92324": "92324v1",
@@ -48848,6 +48855,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-22"
+          }
+        ]
+      }
+    },
+    "92201v1": {
+      "msid": "92201",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.09.11.557196",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-16",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-18"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-11",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.09.11.557196v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
