@@ -30,6 +30,18 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
     }
 
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
+
+    // const slices = [[]];
+    // content.forEach((part) => {
+    //.   if (isThematicBreak(part)) {
+    //      slices.push([]);
+    //      return;
+    //    }
+    //    slices[slices.length - 1].push(part);
+    // });
+  }
+
+
   }
   switch (content.type) {
     case 'Heading':
