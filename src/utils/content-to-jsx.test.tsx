@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { contentToJsx } from './content-to-jsx';
 import { Heading } from '../components/atoms/heading/heading';
 import { Figure } from '../components/atoms/figure/figure';
@@ -251,13 +251,19 @@ describe('Content to JSX', () => {
 
   it('generates sections from two thematic breaks', () => {
     render((<>{contentToJsx([
-      { type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1' },
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1',
+      },
       { type: 'Paragraph', content: 'paragraph content under heading 1' },
       { type: 'ThematicBreak' },
-      { type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2' },
+      {
+        type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2',
+      },
       { type: 'Paragraph', content: 'paragraph content under heading 2' },
       { type: 'ThematicBreak' },
-      { type: 'Heading', id: 'heading3', depth: 1, content: 'Heading 3' },
+      {
+        type: 'Heading', id: 'heading3', depth: 1, content: 'Heading 3',
+      },
       { type: 'Paragraph', content: 'paragraph content under heading 3' },
     ])}</>));
 
