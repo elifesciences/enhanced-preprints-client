@@ -40,7 +40,8 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       const allSections = slices.map((slice, i) => {
         return <section key={i}>{contentToJsx(slice)}</section>;
       })
-
+      console.log(slices);
+      
       return allSections;
     }
 

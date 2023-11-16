@@ -280,5 +280,47 @@ describe('Content to JSX', () => {
     expect(thirdSectionElement).toBeInTheDocument();
     expect(thirdSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 3');
     expect(thirdSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 3');
-  });
+  })
+  it.only('generates sections with thematic break as 1st element, last element and 2 thematic breaks in a row', () => {
+    render((<>{contentToJsx([
+      { type: 'ThematicBreak' },
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 1' },
+      { type: 'ThematicBreak' },
+      {
+        type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+      { type: 'ThematicBreak' },
+      {
+        type: 'Heading', id: 'heading3', depth: 1, content: 'Heading 3',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 3' },
+      { type: 'Paragraph', content: 'paragraph content under heading 3' },
+      { type: 'Paragraph', content: 'paragraph content under heading 3' },
+      { type: 'ThematicBreak' },
+      {
+        type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+      { type: 'ThematicBreak' },
+      { type: 'ThematicBreak' },
+    ])}</>));
+    
+    const firstSectionElement = document.querySelector('section:nth-child(1)');
+    const secondSectionElement = document.querySelector('section:nth-child(2)');
+    const thirdSectionElement = document.querySelector('section:nth-child(3)');
+
+    expect(firstSectionElement).toBeInTheDocument();
+    expect(firstSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 1');
+    expect(firstSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 1');
+    expect(secondSectionElement).toBeInTheDocument();
+    expect(secondSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 2');
+    expect(secondSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 2');
+    expect(thirdSectionElement).toBeInTheDocument();
+    expect(thirdSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 3');
+    expect(thirdSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 3');
+  })
 });
