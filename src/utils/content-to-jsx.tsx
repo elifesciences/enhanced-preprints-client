@@ -19,9 +19,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
   // split on thematic breaks pass each into contentToJSX()
   // wrap each return in a section element
 
-  const isThematicBreak = (index: Content) => {
-    return typeof index === 'object' && 'type' in index && index.type === 'ThematicBreak'
-  }
+  const isThematicBreak = (contentPart: Content) => typeof contentPart === 'object' && 'type' in contentPart && contentPart.type === 'ThematicBreak';
 
   if (Array.isArray(content)) {
     const thematicBreakIndex = content.findIndex(isThematicBreak);
@@ -37,11 +35,9 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
         slices[slices.length - 1].push(part);
       });
 
-      const allSections = slices.map((slice, i) => {
-        return <section key={i}>{contentToJsx(slice)}</section>;
-      })
+      const allSections = slices.map((slice, i) => <section key={i}>{contentToJsx(slice)}</section>);
       console.log(slices);
-      
+
       return allSections;
     }
 

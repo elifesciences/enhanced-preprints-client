@@ -280,8 +280,9 @@ describe('Content to JSX', () => {
     expect(thirdSectionElement).toBeInTheDocument();
     expect(thirdSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 3');
     expect(thirdSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 3');
-  })
-  it.only('generates sections with thematic break as 1st element, last element and 2 thematic breaks in a row', () => {
+  });
+
+  it('generates sections with thematic break as 1st element, last element and 2 thematic breaks in a row', () => {
     render((<>{contentToJsx([
       { type: 'ThematicBreak' },
       {
@@ -308,7 +309,7 @@ describe('Content to JSX', () => {
       { type: 'ThematicBreak' },
       { type: 'ThematicBreak' },
     ])}</>));
-    
+
     const firstSectionElement = document.querySelector('section:nth-child(1)');
     const secondSectionElement = document.querySelector('section:nth-child(2)');
     const thirdSectionElement = document.querySelector('section:nth-child(3)');
@@ -322,5 +323,5 @@ describe('Content to JSX', () => {
     expect(thirdSectionElement).toBeInTheDocument();
     expect(thirdSectionElement?.querySelector('h1')?.textContent).toEqual('Heading 3');
     expect(thirdSectionElement?.querySelector('p')?.textContent).toEqual('paragraph content under heading 3');
-  })
+  });
 });
