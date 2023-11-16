@@ -313,5 +313,6 @@ describe('Content to JSX', () => {
     const allSectionElements = document.querySelectorAll('section');
 
     expect(allSectionElements.length).toStrictEqual(4);
+    Array.from(allSectionElements.values()).forEach((sectionElement) => expect(sectionElement).not.toBeEmpty());
   });
 });
