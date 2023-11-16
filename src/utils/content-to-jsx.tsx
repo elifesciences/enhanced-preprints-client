@@ -19,30 +19,34 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
   // split on thematic breaks pass each into contentToJSX()
   // wrap each return in a section element
 
+  const isThematicBreak = (index: Content) => {
+    return typeof index === 'object' && 'type' in index && index.type === 'ThematicBreak'
+  }
+
   if (Array.isArray(content)) {
-    const thematicBreakIndex = content.findIndex((part) => typeof part === 'object' && 'type' in part && part.type === 'ThematicBreak');
+    const thematicBreakIndex = content.findIndex(isThematicBreak);
 
     if (thematicBreakIndex > 0) {
-      const previousElements = content.slice(thematicBreakIndex - 2, thematicBreakIndex);
-      const nextElements = content.slice(thematicBreakIndex + 1, thematicBreakIndex + 3);
-      console.log(previousElements);
-      return [<section key={0}>{contentToJsx(previousElements)}</section>, <section key={1}>{contentToJsx(nextElements)}</section>];
+      const slices: Content[][] = [[]];
+      content.forEach((part) => {
+        if (isThematicBreak(part)) {
+          slices.push([]);
+          return;
+        }
+
+        slices[slices.length - 1].push(part);
+      });
+
+      const allSections = slices.map((slice, i) => {
+        return <section key={i}>{contentToJsx(slice)}</section>;
+      })
+
+      return allSections;
     }
 
     return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
-
-    // const slices = [[]];
-    // content.forEach((part) => {
-    //.   if (isThematicBreak(part)) {
-    //      slices.push([]);
-    //      return;
-    //    }
-    //    slices[slices.length - 1].push(part);
-    // });
   }
 
-
-  }
   switch (content.type) {
     case 'Heading':
       return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={maxHeadingLevel}/>;
