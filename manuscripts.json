@@ -6251,6 +6251,12 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.10.04.560843": {
+      "preprintDoi": "10.1101/2023.10.04.560843",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -7182,6 +7188,7 @@
     "91582": "91582v1",
     "91599": "91599v1",
     "91602": "91602v1",
+    "91605": "91605v1",
     "91611": "91611v1",
     "91619": "91619v1",
     "91634": "91634v1",
@@ -48932,6 +48939,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.04.01.535040v2/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "91605v1": {
+      "msid": "91605",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.04.560843",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-17",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-06",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.04.560843v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-11"
           }
         ]
       }
