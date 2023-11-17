@@ -6318,6 +6318,12 @@
         "Chromosomes and Gene Expression",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.01.16.23284631": {
+      "preprintDoi": "10.1101/2023.01.16.23284631",
+      "msas": [
+        "Epidemiology and Global Health"
+      ]
     }
   },
   "manuscripts": {
@@ -7028,6 +7034,7 @@
     "90100": "90100v1",
     "90107": "90107v1",
     "90111": "90111v1",
+    "90132": "90132v1",
     "90133": "90133v1",
     "90135": "90135v1",
     "90136": "90136v1",
@@ -49630,6 +49637,35 @@
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.27.530320v2",
               "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "90132v1": {
+      "msid": "90132",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.01.16.23284631",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-17",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-17"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-06-12",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.01.16.23284631v2/",
+              "text": "Go to medRxiv"
             }
           }
         ]
