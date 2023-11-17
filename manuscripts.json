@@ -6287,6 +6287,12 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.02.15.23285960": {
+      "preprintDoi": "10.1101/2023.02.15.23285960",
+      "msas": [
+        "Epidemiology and Global Health"
+      ]
     }
   },
   "manuscripts": {
@@ -7005,6 +7011,7 @@
     "90156": "90156v1",
     "90158": "90158v1",
     "90164": "90164v1",
+    "90173": "90173v1",
     "90174": "90174v1",
     "90184": "90184v2",
     "90191": "90191v1",
@@ -49299,6 +49306,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-25"
+          }
+        ]
+      }
+    },
+    "90173v1": {
+      "msid": "90173",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.15.23285960",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-17",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-07"
+          },
+          {
+            "name": "Posted to medRxiv",
+            "date": "2023-06-13",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.02.15.23285960v2/",
+              "text": "Go to medRxiv"
+            }
           }
         ]
       }
