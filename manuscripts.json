@@ -6378,6 +6378,12 @@
       "msas": [
         "Cancer Biology"
       ]
+    },
+    "10.1101/2023.10.06.561279": {
+      "preprintDoi": "10.1101/2023.10.06.561279",
+      "msas": [
+        "Developmental Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -7379,6 +7385,7 @@
     "92499": "92499v1",
     "92563": "92563v1",
     "92615": "92615v1",
+    "92643": "92643v1",
     "92644": "92644v1",
     "92678": "92678v1",
     "92731": "92731v1",
@@ -50321,6 +50328,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-09-15"
+          }
+        ]
+      }
+    },
+    "92643v1": {
+      "msid": "92643",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.06.561279",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-21",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-13",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.06.561279v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-26"
           }
         ]
       }
