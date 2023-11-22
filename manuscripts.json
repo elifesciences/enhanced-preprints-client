@@ -6464,6 +6464,13 @@
       "msas": [
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.09.28.559992": {
+      "preprintDoi": "10.1101/2023.09.28.559992",
+      "msas": [
+        "Cell Biology",
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
@@ -7481,6 +7488,7 @@
     "92644": "92644v1",
     "92673": "92673v1",
     "92678": "92678v1",
+    "92679": "92679v1",
     "92731": "92731v1",
     "92746": "92746v1",
     "92819": "92819v1",
@@ -51312,6 +51320,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-14"
+          }
+        ]
+      }
+    },
+    "92679v1": {
+      "msid": "92679",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.09.28.559992",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.09.28.559992v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-19"
           }
         ]
       }
