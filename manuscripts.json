@@ -6458,6 +6458,12 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.1101/2023.09.27.559647": {
+      "preprintDoi": "10.1101/2023.09.27.559647",
+      "msas": [
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -7451,6 +7457,7 @@
     "92093": "92093v1",
     "92173": "92173v1",
     "92175": "92175v1",
+    "92180": "92180v1",
     "92189": "92189v1",
     "92195": "92195v1",
     "92201": "92201v1",
@@ -51231,6 +51238,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2022.01.26.477791v2",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "92180v1": {
+      "msid": "92180",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.09.27.559647",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-22",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.09.27.559647v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-06"
           }
         ]
       }
