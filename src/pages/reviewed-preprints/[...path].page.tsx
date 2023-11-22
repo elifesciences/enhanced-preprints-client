@@ -18,6 +18,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/format-author-name';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
+import { contentToImgInfo } from '../../utils/content-to-img-info';
 
 type PageProps = {
   metaData: MetaData
@@ -37,7 +38,7 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-export const Page = (props: PageProps) => {
+export const Page = async (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
@@ -55,6 +56,7 @@ export const Page = (props: PageProps) => {
   ];
 
   const headings = contentToHeadings(props.content);
+  const imgInfo = await contentToImgInfo(props.content);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
@@ -73,7 +75,7 @@ export const Page = (props: PageProps) => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        {contentToJsx(props.content, undefined, undefined, { 1: { width: 42, height: 84 }})}
+        {contentToJsx(props.content, undefined, undefined, imgInfo)}
         {subPages.reviews.content()}
       </>),
     },
