@@ -16,6 +16,8 @@ import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/format-author-name';
+import { contentToJsx } from '../../utils/content-to-jsx';
+import { contentToHeadings } from '../../utils/content-to-headings';
 
 type PageProps = {
   metaData: MetaData
@@ -52,10 +54,12 @@ export const Page = (props: PageProps) => {
     },
   ];
 
+  const headings = contentToHeadings(props.content);
+
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
-      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,

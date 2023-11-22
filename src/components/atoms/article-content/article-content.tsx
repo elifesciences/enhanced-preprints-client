@@ -1,7 +1,6 @@
 import './article-content.scss';
-import { contentToJsx } from '../../../utils/content-to-jsx';
-import { Content } from '../../../types';
+import { JSXContent } from '../../../utils/content-to-jsx';
 
-export const ArticleContent = ({ content }: { content: Content }) => (
-  <article className="article-body">{contentToJsx(content)}</article>
+export const ArticleContent = ({ content }: { content: Promise<JSXContent> }) => (
+  <article className="article-body">{content}</article>
 );

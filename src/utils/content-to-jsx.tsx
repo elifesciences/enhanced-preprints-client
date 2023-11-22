@@ -5,7 +5,7 @@ import { generateImageInfo, generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
-type JSXContent = JSXContentPart | Array<JSXContentPart>;
+export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 
 export const contentToJsx = async (content: Content, index?: number, maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6): Promise<JSXContent> => {
   if (typeof content === 'undefined') {
