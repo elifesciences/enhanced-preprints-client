@@ -1,7 +1,7 @@
 import { Fragment, JSX } from 'react';
 import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
-import { generateImageInfo, generateImageUrl } from './generate-image-url';
+import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
@@ -49,7 +49,12 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
       }
 
       // eslint-disable-next-line no-case-declarations
-      const imageSizes = generateImageInfo(content.contentUrl);
+      const additionalProps: Record<string, number> = {};
+      // eslint-disable-next-line no-case-declarations
+      if (imgInfo) {
+        additionalProps['data-original-width'] = imgInfo[content.contentUrl].width;
+        additionalProps['data-original-height'] = imgInfo[content.contentUrl].height;
+      }
 
       // eslint-disable-next-line @next/next/no-img-element
       return <picture key={index}>
@@ -57,8 +62,8 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
         <img loading="lazy" {...(content.meta.inline ?
           { className: 'inline-image' } : {})}
           src={generateImageUrl(content.contentUrl)} alt=""
-          data-original-width={imageSizes.width}
-          data-original-height={imageSizes.height} />
+          {...additionalProps}
+        />
       </picture>;
     case 'ListItem':
       return <li key={index}>{ contentToJsx(content.content)}</li>;

@@ -11,10 +11,10 @@ import { JSXContent } from '../../../../utils/content-to-jsx';
 type Props = {
   headings: Heading[],
   metaData: MetaData,
-  content: Promise<JSXContent>,
+  content: JSXContent,
   peerReview?: PeerReview,
   peerReviewUrl?: string
-}
+};
 
 export const ArticleFullTextTab = (props: Props) => {
   const headings = [

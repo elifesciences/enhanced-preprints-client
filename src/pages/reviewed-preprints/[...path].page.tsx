@@ -59,6 +59,7 @@ export const Page = (props: PageProps) => {
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
+      // eslint-disable-next-line max-len
       content: () => <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
@@ -72,7 +73,7 @@ export const Page = (props: PageProps) => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        {contentToJsx(props.content, null, null, { 1: { width: 42, height: 84 }})}
+        {contentToJsx(props.content, undefined, undefined, { 1: { width: 42, height: 84 }})}
         {subPages.reviews.content()}
       </>),
     },
