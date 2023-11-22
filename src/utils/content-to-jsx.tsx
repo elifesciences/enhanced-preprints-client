@@ -54,8 +54,8 @@ export const contentToJsx = async (content: Content, index?: number, maxHeadingL
       // eslint-disable-next-line @next/next/no-img-element
       return <picture key={index}>
         <source srcSet={generateImageUrl(content.contentUrl)} />
-        <img loading="lazy" {...(content.meta.inline ? 
-          { className: 'inline-image' } : {})} 
+        <img loading="lazy" {...(content.meta.inline ?
+          { className: 'inline-image' } : {})}
           src={generateImageUrl(content.contentUrl)} alt=""
           data-original-width={imageSizes.width}
           data-original-height={imageSizes.height} />

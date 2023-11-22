@@ -1,5 +1,5 @@
-import { generateImageInfo } from "./generate-image-url";
 import fetchMock from 'fetch-mock';
+import { generateImageInfo } from './generate-image-url';
 
 describe('generate image url', () => {
   afterEach(() => {
@@ -20,14 +20,13 @@ describe('generate image url', () => {
     await generateImageInfo('12345');
 
     expect(fetchMock.lastUrl()).toStrictEqual('/undefined/2/12345/info.json');
-
   });
 
   it('throws an error with the correct message when request fails', async () => {
     fetchMock.once(/.*/, 404);
 
-    await expect(async () => await generateImageInfo('bar'))
-    .rejects
-    .toThrowError('Image info fetch failed with status 404');
+    await expect(async () => generateImageInfo('bar'))
+      .rejects
+      .toThrow('Image info fetch failed with status 404');
   });
-})
+});

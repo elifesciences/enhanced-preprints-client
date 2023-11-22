@@ -13,10 +13,9 @@ export const generateImageInfo = async (contentImageId: string): Promise<{ width
   const imageInfo = await fetch(infoUrl);
   if (imageInfo.ok) {
     const imageJson = await imageInfo.json();
-    const height = imageJson['height'];
-    const width = imageJson['width'];
+    const { height } = imageJson;
+    const { width } = imageJson;
     return { height, width };
-  } else {
-    throw Error(`Image info fetch failed with status ${imageInfo.status}`)
   }
+  throw Error(`Image info fetch failed with status ${imageInfo.status}`);
 };

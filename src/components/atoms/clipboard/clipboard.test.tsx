@@ -23,12 +23,12 @@ describe('Clipboard', () => {
       const clipboardText = 'will be copied to clipboard';
       render(<Clipboard text={clipboardText}/>);
 
-      expect(writeTextMock).toBeCalledTimes(0);
+      expect(writeTextMock).toHaveBeenCalledTimes(0);
 
       fireEvent.click(screen.getByText('Copy to clipboard'));
 
-      expect(writeTextMock).toBeCalledTimes(1);
-      expect(writeTextMock).toBeCalledWith(clipboardText);
+      expect(writeTextMock).toHaveBeenCalledTimes(1);
+      expect(writeTextMock).toHaveBeenCalledWith(clipboardText);
     });
 
     it('renders the button text when passed in', () => {
