@@ -4791,8 +4791,8 @@
         "Neuroscience"
       ]
     },
-    "10.1101/2023.06.14.54490": {
-      "preprintDoi": "10.1101/2023.06.14.54490",
+    "10.1101/2023.06.14.544906": {
+      "preprintDoi": "10.1101/2023.06.14.544906",
       "msas": [
         "Immunology and Inflammation"
       ]
@@ -6397,8 +6397,8 @@
         "Evolutionary Biology"
       ]
     },
-    "10.48550/arXiv:2305.04587v2": {
-      "preprintDoi": "10.48550/arXiv:2305.04587v2",
+    "10.48550/arXiv.2305.04587": {
+      "preprintDoi": "10.48550/arXiv.2305.04587",
       "msas": [
         "Cancer Biology"
       ]
@@ -6408,9 +6408,6 @@
       "msas": [
         "Developmental Biology"
       ]
-    },
-    "10.1101/2023.06.14.544906": {
-      "preprintDoi": "10.1101/2023.06.14.544906"
     },
     "10.1101/2023.09.28.559989": {
       "preprintDoi": "10.1101/2023.09.28.559989",
@@ -37859,7 +37856,7 @@
       "msid": "89512",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.06.14.54490",
+      "preprintDoi": "10.1101/2023.06.14.544906",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
@@ -50549,7 +50546,7 @@
       "msid": "92311",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.48550/arXiv:2305.04587v2",
+      "preprintDoi": "10.48550/arXiv.2305.04587",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
