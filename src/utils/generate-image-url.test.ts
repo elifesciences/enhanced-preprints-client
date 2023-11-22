@@ -4,7 +4,8 @@ import fetchMock from 'fetch-mock';
 describe('generate image url', () => {
   afterEach(() => {
     fetchMock.resetBehavior();
-  })
+  });
+
   it('returns a valid width and height with a correct url', async () => {
     fetchMock.once(/.*/, { width: 42, height: 84 });
 
