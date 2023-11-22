@@ -72,7 +72,7 @@ export const Page = (props: PageProps) => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        {subPages.fulltext.content()}
+        {contentToJsx(props.content, null, null, { 1: { width: 42, height: 84 }})}
         {subPages.reviews.content()}
       </>),
     },
