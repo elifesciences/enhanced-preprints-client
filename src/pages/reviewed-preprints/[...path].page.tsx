@@ -22,7 +22,8 @@ import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 
 type PageProps = {
-  metaData: MetaData
+  metaData: MetaData,
+  imgInfo: Record<string, { width: number, height: number }>,
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
@@ -39,7 +40,7 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
-export const Page = async (props: PageProps) => {
+export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
@@ -57,7 +58,6 @@ export const Page = async (props: PageProps) => {
   ];
 
   const headings = contentToHeadings(props.content);
-  const imgInfo = await contentToImgInfo(props.content);
   const figures = contentToFigures(props.content);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
@@ -77,7 +77,7 @@ export const Page = async (props: PageProps) => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        {contentToJsx(props.content, undefined, undefined, imgInfo)}
+        {contentToJsx(props.content, undefined, undefined, props.imgInfo)}
         {subPages.reviews.content()}
       </>),
     },
@@ -145,6 +145,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       return { notFound: true };
     }
 
+    const imgInfo = await contentToImgInfo(articleWithVersions.article.article.content);
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
 
@@ -163,6 +164,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           msas: articleWithVersions.article.subjects || [],
           version: articleWithVersions.article.versionIdentifier,
         },
+        imgInfo,
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
         status: {
@@ -190,6 +192,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     manuscriptConfig.status,
   ]);
 
+  const imgInfo = await contentToImgInfo(content);
+
   return {
     props: {
       metaData: {
@@ -203,6 +207,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         eLocationId: `RP${manuscriptConfig.msid}`,
         license: manuscriptConfig.license || 'https://creativecommons.org/licenses/by/4.0/',
       },
+      imgInfo,
       msidWithVersion: id,
       content,
       status: {
