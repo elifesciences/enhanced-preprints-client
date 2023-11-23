@@ -16,6 +16,7 @@ import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/format-author-name';
+import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
@@ -57,6 +58,7 @@ export const Page = async (props: PageProps) => {
 
   const headings = contentToHeadings(props.content);
   const imgInfo = await contentToImgInfo(props.content);
+  const figures = contentToFigures(props.content);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
@@ -66,7 +68,7 @@ export const Page = async (props: PageProps) => {
     },
     figures: {
       tabLinks,
-      content: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
+      content: () => <ArticleFiguresTab content={contentToJsx(figures)}></ArticleFiguresTab>,
     },
     reviews: {
       tabLinks,

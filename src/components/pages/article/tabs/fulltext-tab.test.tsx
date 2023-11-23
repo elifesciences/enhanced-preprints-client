@@ -4,23 +4,23 @@ import { ArticleFullTextTab } from './fulltext-tab';
 
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {
-    expect(() => render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
+    expect(() => render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
   });
 
   it('does not render the evaluation summary', () => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData}/>);
+    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData}/>);
 
     expect(container.querySelector('#assessment')).toBeNull();
   });
 
   it('renders the evaluation summary when one is passed in', () => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>);
 
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0About eLife assessments');
   });
 
   it('renders the link to read peer reviews', () => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
+    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
 
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0Read the peer reviewsAbout eLife assessments');
   });
@@ -113,7 +113,7 @@ describe('FulltextTab', () => {
     peerReviewExample,
     expectedJumpToLinks,
   }) => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaDataExample} peerReview={peerReviewExample}/>);
+    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaDataExample} peerReview={peerReviewExample}/>);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
@@ -127,7 +127,7 @@ describe('FulltextTab', () => {
   });
 
   it('uses the heading ids for the hrefs in jump-to-menu', () => {
-    const { container } = render(<ArticleFullTextTab content={content} metaData={metaData} peerReview={peerReview}/>);
+    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>);
 
     const headings = Array.from(container.querySelectorAll('section[id], h1, .heading-1'));
     const ids = headings.map(({ id }) => id);
