@@ -6485,12 +6485,6 @@
         "Genetics and Genomics"
       ]
     },
-    "10.31234/osf.io/r49sy": {
-      "preprintDoi": "10.31234/osf.io/r49sy",
-      "msas": [
-        "Neuroscience"
-      ]
-    },
     "10.1101/2023.06.06.543875": {
       "preprintDoi": "10.1101/2023.06.06.543875",
       "msas": [
@@ -7365,7 +7359,6 @@
     "90713": "90713v1",
     "90724": "90724v1",
     "90729": "90729v1",
-    "90735": "90735v1",
     "90749": "90749v1",
     "90750": "90750v1",
     "90755": "90755v2",
@@ -51578,35 +51571,6 @@
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.05.18.541272v2/",
               "text": "Go to bioRxiv"
-            }
-          }
-        ]
-      }
-    },
-    "90735v1": {
-      "msid": "90735",
-      "version": 1,
-      "publishedYear": 2023,
-      "preprintDoi": "10.31234/osf.io/r49sy",
-      "status": {
-        "articleType": "Reviewed Preprint",
-        "status": "Published from the original preprint after peer review and assessment by eLife.",
-        "timeline": [
-          {
-            "name": "Reviewed preprint posted",
-            "date": "2023-11-23",
-            "eventDescription": "(this version)"
-          },
-          {
-            "name": "Sent for peer review",
-            "date": "2023-08-11"
-          },
-          {
-            "name": "Posted to PsyArXiv",
-            "date": "2023-07-05",
-            "link": {
-              "url": "https://www.osf.io/preprints/psyarxiv/r49sy/",
-              "text": "Go to PsyArXiv"
             }
           }
         ]
