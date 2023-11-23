@@ -179,17 +179,18 @@ describe('Content to JSX', () => {
   });
 
   it('generates the expected html with tidth and hight when image info is passed in', () => {
-    const result = contentToJsx({
-      type: 'ImageObject',
-      contentUrl: 'https://placekitten.com/500/300',
-      content: [],
-      meta: {
-        inline: true,
+    const result = contentToJsx(
+      {
+        type: 'ImageObject',
+        contentUrl: 'https://placekitten.com/500/300',
+        content: [],
+        meta: {
+          inline: true,
+        },
       },
-    },
-    undefined,
-    undefined,
-    { 'https://placekitten.com/500/300': {width: 42, height: 84}}
+      undefined,
+      undefined,
+      { 'https://placekitten.com/500/300': { width: 42, height: 84 } },
     );
 
     // eslint-disable-next-line @next/next/no-img-element
@@ -207,7 +208,6 @@ describe('Content to JSX', () => {
       </picture>,
     );
   });
-
 
   it('allows an array of arrays to be generated', () => {
     const result = contentToJsx([

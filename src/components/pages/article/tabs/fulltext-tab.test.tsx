@@ -26,48 +26,48 @@ describe('FulltextTab', () => {
   });
 
   it('passes down the correct headings to jump-to-menu no peer-review', () => {
-      const headings = [
-        {id: 's1', text: 'Introduction'},
-        {id: 's2', text: 'Results'},
-        {id: 's3', text: 'Discussion'},
-        {id: 's4', text: 'Materials and methods'},
-        {id: 's5', text: 'Data and material availability'},
-      ]; 
-      const expectedJumpToLinks = [
-        {
-          href: '#abstract',
-          text: 'Abstract',
-        },
-        {
-          href: '#s1',
-          text: 'Introduction',
-        },
-        {
-          href: '#s2',
-          text: 'Results',
-        },
-        {
-          href: '#s3',
-          text: 'Discussion',
-        },
-        {
-          href: '#s4',
-          text: 'Materials and methods',
-        },
-        {
-          href: '#s5',
-          text: 'Data and material availability',
-        },
-        {
-          href: '#references',
-          text: 'References',
-        },
-        {
-          href: '#author-list',
-          text: 'Article and Author Information',
-        },
-      ];
-    
+    const headings = [
+      { id: 's1', text: 'Introduction' },
+      { id: 's2', text: 'Results' },
+      { id: 's3', text: 'Discussion' },
+      { id: 's4', text: 'Materials and methods' },
+      { id: 's5', text: 'Data and material availability' },
+    ];
+    const expectedJumpToLinks = [
+      {
+        href: '#abstract',
+        text: 'Abstract',
+      },
+      {
+        href: '#s1',
+        text: 'Introduction',
+      },
+      {
+        href: '#s2',
+        text: 'Results',
+      },
+      {
+        href: '#s3',
+        text: 'Discussion',
+      },
+      {
+        href: '#s4',
+        text: 'Materials and methods',
+      },
+      {
+        href: '#s5',
+        text: 'Data and material availability',
+      },
+      {
+        href: '#references',
+        text: 'References',
+      },
+      {
+        href: '#author-list',
+        text: 'Article and Author Information',
+      },
+    ];
+
     const { container } = render(<ArticleFullTextTab headings={headings} content={''} metaData={metaData} />);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
@@ -82,52 +82,52 @@ describe('FulltextTab', () => {
   });
 
   it('passes down the correct headings to jump-to-menu complete', () => {
-      const headings = [
-        {id: 's1', text: 'Introduction'},
-        {id: 's2', text: 'Results'},
-        {id: 's3', text: 'Discussion'},
-        {id: 's4', text: 'Materials and methods'},
-        {id: 's5', text: 'Data and material availability'},
-      ]; 
-      const expectedJumpToLinks = [
-        {
-          href: '#abstract',
-          text: 'Abstract',
-        },
-        {
-          href: '#assessment',
-          text: 'eLife assessment',
-        },
-        {
-          href: '#s1',
-          text: 'Introduction',
-        },
-        {
-          href: '#s2',
-          text: 'Results',
-        },
-        {
-          href: '#s3',
-          text: 'Discussion',
-        },
-        {
-          href: '#s4',
-          text: 'Materials and methods',
-        },
-        {
-          href: '#s5',
-          text: 'Data and material availability',
-        },
-        {
-          href: '#references',
-          text: 'References',
-        },
-        {
-          href: '#author-list',
-          text: 'Article and Author Information',
-        },
-      ];
-    
+    const headings = [
+      { id: 's1', text: 'Introduction' },
+      { id: 's2', text: 'Results' },
+      { id: 's3', text: 'Discussion' },
+      { id: 's4', text: 'Materials and methods' },
+      { id: 's5', text: 'Data and material availability' },
+    ];
+    const expectedJumpToLinks = [
+      {
+        href: '#abstract',
+        text: 'Abstract',
+      },
+      {
+        href: '#assessment',
+        text: 'eLife assessment',
+      },
+      {
+        href: '#s1',
+        text: 'Introduction',
+      },
+      {
+        href: '#s2',
+        text: 'Results',
+      },
+      {
+        href: '#s3',
+        text: 'Discussion',
+      },
+      {
+        href: '#s4',
+        text: 'Materials and methods',
+      },
+      {
+        href: '#s5',
+        text: 'Data and material availability',
+      },
+      {
+        href: '#references',
+        text: 'References',
+      },
+      {
+        href: '#author-list',
+        text: 'Article and Author Information',
+      },
+    ];
+
     const { container } = render(<ArticleFullTextTab headings={headings} content={''} metaData={metaData} peerReview={peerReview}/>);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 

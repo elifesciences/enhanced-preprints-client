@@ -4,7 +4,7 @@ import {
 import { ArticlePage } from './article-page';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import {
-  content, metaData, peerReview, status, citation,
+  metaData, peerReview, status, citation,
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
