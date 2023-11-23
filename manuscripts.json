@@ -6509,6 +6509,12 @@
         "Biochemistry and Chemical Biology",
         "Plant Biology"
       ]
+    },
+    "10.1101/2023.10.27.23297659": {
+      "preprintDoi": "10.1101/2023.10.27.23297659",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -7538,6 +7544,7 @@
     "92819": "92819v1",
     "92829": "92829v1",
     "92889": "92889v1",
+    "92895": "92895v1",
     "92938": "92938v1",
     "92958": "92958v1",
     "92979": "92979v1",
@@ -51680,6 +51687,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-23"
+          }
+        ]
+      }
+    },
+    "92895v1": {
+      "msid": "92895",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.27.23297659",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-23",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-29",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.10.27.23297659v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-25"
           }
         ]
       }
