@@ -25,12 +25,71 @@ describe('FulltextTab', () => {
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0Read the peer reviewsAbout eLife assessments');
   });
 
-  it.each([
-    {
-      description: 'complete',
-      metaDataExample: metaData,
-      peerReviewExample: peerReview,
-      expectedJumpToLinks: [
+  it('passes down the correct headings to jump-to-menu no peer-review', () => {
+      const headings = [
+        {id: 's1', text: 'Introduction'},
+        {id: 's2', text: 'Results'},
+        {id: 's3', text: 'Discussion'},
+        {id: 's4', text: 'Materials and methods'},
+        {id: 's5', text: 'Data and material availability'},
+      ]; 
+      const expectedJumpToLinks = [
+        {
+          href: '#abstract',
+          text: 'Abstract',
+        },
+        {
+          href: '#s1',
+          text: 'Introduction',
+        },
+        {
+          href: '#s2',
+          text: 'Results',
+        },
+        {
+          href: '#s3',
+          text: 'Discussion',
+        },
+        {
+          href: '#s4',
+          text: 'Materials and methods',
+        },
+        {
+          href: '#s5',
+          text: 'Data and material availability',
+        },
+        {
+          href: '#references',
+          text: 'References',
+        },
+        {
+          href: '#author-list',
+          text: 'Article and Author Information',
+        },
+      ];
+    
+    const { container } = render(<ArticleFullTextTab headings={headings} content={''} metaData={metaData} />);
+    const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
+
+    const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
+      {
+        href: link.getAttribute('href')!,
+        text: link.textContent!,
+      }
+    ));
+
+    expect(jumpLinkValues).toStrictEqual(expectedJumpToLinks);
+  });
+
+  it('passes down the correct headings to jump-to-menu complete', () => {
+      const headings = [
+        {id: 's1', text: 'Introduction'},
+        {id: 's2', text: 'Results'},
+        {id: 's3', text: 'Discussion'},
+        {id: 's4', text: 'Materials and methods'},
+        {id: 's5', text: 'Data and material availability'},
+      ]; 
+      const expectedJumpToLinks = [
         {
           href: '#abstract',
           text: 'Abstract',
@@ -67,53 +126,9 @@ describe('FulltextTab', () => {
           href: '#author-list',
           text: 'Article and Author Information',
         },
-      ],
-    },
-    {
-      description: 'no peer review',
-      metaDataExample: metaData,
-      peerReviewExample: undefined,
-      expectedJumpToLinks: [
-        {
-          href: '#abstract',
-          text: 'Abstract',
-        },
-        {
-          href: '#s1',
-          text: 'Introduction',
-        },
-        {
-          href: '#s2',
-          text: 'Results',
-        },
-        {
-          href: '#s3',
-          text: 'Discussion',
-        },
-        {
-          href: '#s4',
-          text: 'Materials and methods',
-        },
-        {
-          href: '#s5',
-          text: 'Data and material availability',
-        },
-        {
-          href: '#references',
-          text: 'References',
-        },
-        {
-          href: '#author-list',
-          text: 'Article and Author Information',
-        },
-      ],
-    },
-  ])('passes down the correct headings to jump-to-menu ($description)', ({
-    metaDataExample,
-    peerReviewExample,
-    expectedJumpToLinks,
-  }) => {
-    const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaDataExample} peerReview={peerReviewExample}/>);
+      ];
+    
+    const { container } = render(<ArticleFullTextTab headings={headings} content={''} metaData={metaData} peerReview={peerReview}/>);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
