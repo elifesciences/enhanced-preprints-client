@@ -1,0 +1,24 @@
+@victor-Keenom 
+The latest CSS release is **CSS View Transitions Level 1**. It became a Candidate Recommendation on September 5, 2023 ⁴. Here are some of the new features that have been added to CSS recently:
+
+1. **:has() Selector**: This selector allows you to select elements (parents) that contain other elements (children) that match the selector you pass into :has() ¹.
+2. **Container Queries**: This feature allows you to query a parent element’s size and style to determine the styles which should be applied to any of its children. Media queries can only access and leverage information from the viewport, which means they can only work on a macro view of a page layout. Container queries, on the other hand, are a more precise tool that can support any number of layouts or layouts within layouts ².
+3. **Subgrid of Grid**: This feature allows you to create a grid within a grid, which makes it easier to create more complex layouts ¹.
+4. **Accent Color**: This feature allows you to specify an accent color for your website. This color can be used by the browser to style various UI elements like scrollbars, selection highlights, and more ¹.
+5. **New Viewport Units**: There are twenty new viewport units in CSS, which are a result of the joint effort of Apple, Bocoup, Google, Igalia, Microsoft, and Mozilla. You can now use units svh, lvh, dvh, svw, lvw, and dvw to have more precise control over your designs and how they behave in relation to the users’ viewports ⁵.
+6. **Overscroll Behaviour**: This feature allows you to control the behavior of the browser when the user overscrolls the page ¹.
+7. **@when/@else**: This feature allows you to write conditional CSS rules based on the value of a custom property ¹.
+8. **Cascade Layers**: This feature allows you to create multiple layers of cascading styles, which can be useful when you want to override styles in a specific context ¹.
+
+These are just a few of the new features that have been added to CSS recently. You can learn more about them by visiting the URLs provided in the references..
+
+Source: Conversation with Bing, 11/26/2023
+(1) What are the new features in the latest CSS release?. https://newsnreleases.com/2023/10/24/what-are-the-new-features-in-the-latest-css-release/.
+(2) . https://bing.com/search?q=new+features+in+latest+CSS+release.
+(3) What's new in CSS and UI: I/O 2023 Edition - Chrome Developers. https://developer.chrome.com/blog/whats-new-css-ui-2023/.
+(4) CSS latest version: what to look for in 2022 | Near Partner Blog. https://www.nearpartner.com/2022/05/css-2022/.
+(5) The best new CSS features for 2023 | InfoWorld. https://www.infoworld.com/article/3663513/the-best-new-css-features.html.
+(6) undefined. https://www.w3.org/TR/css-2023/.
+(7) undefined. https://designshack.net/articles/css/new-css-techniques/.
+(8) undefined. https://blog.logrocket.com/the-latest-features-of-css-in-2021/.
+(9) en.wikipedia.org. https://en.wikipedia.org/wiki/CSS.
