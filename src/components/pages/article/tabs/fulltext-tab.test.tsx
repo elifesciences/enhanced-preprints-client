@@ -1,10 +1,16 @@
 import { render } from '@testing-library/react';
-import { metaData, peerReview } from '../../../../utils/mocks';
+import { metaData, peerReview, content } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
+import { contentToJsx } from '../../../../utils/content-to-jsx';
 
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {
-    expect(() => render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
+    expect(() => render(<ArticleFullTextTab headings={[]} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
+  });
+
+  it('renders content in fulltext tab', () => {
+    const { container } = render(<ArticleFullTextTab headings={[]} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview}/>);
+    expect(container.querySelector('.article-body > h1')).toHaveTextContent('Introduction');
   });
 
   it('does not render the evaluation summary', () => {
