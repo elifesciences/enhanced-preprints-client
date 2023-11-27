@@ -9,7 +9,7 @@ export const generateImageUrlSized = (contentImageId: string, size: number): str
 };
 
 export const generateImageInfo = async (contentImageId: string): Promise<{ width: number, height: number }> => {
-  const infoUrl = `${config.imageServer}/2/${encodeURIComponent(contentImageId)}/info.json`;
+  const infoUrl = `${config.iiifServer}/2/${encodeURIComponent(contentImageId)}/info.json`;
   const imageInfo = await fetch(infoUrl);
   if (!imageInfo.ok) {
     throw Error(`Image info fetch failed with status ${imageInfo.status}`);
