@@ -7,11 +7,11 @@ import { Figure } from '../components/atoms/figure/figure';
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 type Options = {
-  maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6, 
+  maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>
 }
 
-export const contentToJsx = (content?: Content, index?: number, options?: Options): JSXContent => {
+export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
   }
@@ -20,33 +20,33 @@ export const contentToJsx = (content?: Content, index?: number, options?: Option
   }
 
   if (Array.isArray(content)) {
-    return content.map((part, i) => contentToJsx(part, i, options));
+    return content.map((part, i) => contentToJsx(part, options, i));
   }
   switch (content.type) {
     case 'Heading':
       return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={options?.maxHeadingLevel}/>;
     case 'Cite':
-      return <Fragment key={index}><a href={`#${content.target}`}>{ contentToJsx(content.content, undefined, options)}</a></Fragment>;
+      return <Fragment key={index}><a href={`#${content.target}`}>{ contentToJsx(content.content, options)}</a></Fragment>;
     case 'CiteGroup':
-      return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, undefined, options)}</a>)})</span>;
+      return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
-      return <a key={index} href={content.target}>{ contentToJsx(content.content, undefined, options)}</a>;
+      return <a key={index} href={content.target}>{ contentToJsx(content.content, options)}</a>;
     case 'Paragraph':
-      return <p key={index}>{ contentToJsx(content.content, undefined, options)}</p>;
+      return <p key={index}>{ contentToJsx(content.content, options)}</p>;
     case 'Emphasis':
-      return <em key={index}>{ contentToJsx(content.content, undefined, options)}</em>;
+      return <em key={index}>{ contentToJsx(content.content, options)}</em>;
     case 'Strong':
-      return <strong key={index}>{ contentToJsx(content.content, undefined, options)}</strong>;
+      return <strong key={index}>{ contentToJsx(content.content, options)}</strong>;
     case 'NontextualAnnotation':
-      return <u key={index}>{ contentToJsx(content.content, undefined, options)}</u>;
+      return <u key={index}>{ contentToJsx(content.content, options)}</u>;
     case 'Superscript':
-      return <sup key={index}>{ contentToJsx(content.content, undefined, options)}</sup>;
+      return <sup key={index}>{ contentToJsx(content.content, options)}</sup>;
     case 'Subscript':
-      return <sub key={index}>{ contentToJsx(content.content, undefined, options)}</sub>;
+      return <sub key={index}>{ contentToJsx(content.content, options)}</sub>;
     case 'Date':
-      return <time key={index}>{ contentToJsx(content.content, undefined, options)}</time>;
+      return <time key={index}>{ contentToJsx(content.content, options)}</time>;
     case 'Figure':
-      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, undefined, {...options, maxHeadingLevel: 4})} label={content.label} content={contentToJsx(content.content, undefined, options)} />;
+      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })} label={content.label} content={contentToJsx(content.content, options)} />;
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';
@@ -70,16 +70,16 @@ export const contentToJsx = (content?: Content, index?: number, options?: Option
         />
       </picture>;
     case 'ListItem':
-      return <li key={index}>{ contentToJsx(content.content, undefined, options)}</li>;
+      return <li key={index}>{ contentToJsx(content.content, options)}</li>;
     case 'List':
-      return content.order === 'Ascending' ? <ol key={index}>{ contentToJsx(content.items, undefined, options)}</ol> : <ul key={index}>{ contentToJsx(content.items, undefined, options)}</ul>;
+      return content.order === 'Ascending' ? <ol key={index}>{ contentToJsx(content.items, options)}</ol> : <ul key={index}>{ contentToJsx(content.items, options)}</ul>;
     case 'Claim':
       return (
         <section key={index}>
           {(content.label || content.title) &&
-            <h4>{content.label && contentToJsx(content.label, undefined, options)} {content.title && contentToJsx(content.title, undefined, options)}</h4>
+            <h4>{content.label && contentToJsx(content.label, options)} {content.title && contentToJsx(content.title, options)}</h4>
           }
-          { contentToJsx(content.content, undefined, options)}
+          { contentToJsx(content.content, options)}
         </section>
       );
     default:

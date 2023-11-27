@@ -76,10 +76,10 @@ export const Page = (props: PageProps) => {
     },
     pdf: {
       tabLinks: [],
-      content: () => (<>
-        {contentToJsx(props.content, undefined, {imgInfo: props.imgInfo})}
+      content: () => <>
+        <ArticleFullTextTab headings={headings} content={contentToJsx(props.content, { imgInfo: props.imgInfo })} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>
         {subPages.reviews.content()}
-      </>),
+      </>,
     },
   };
   const router = useRouter();

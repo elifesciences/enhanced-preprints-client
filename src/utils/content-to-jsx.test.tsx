@@ -174,7 +174,7 @@ describe('Content to JSX', () => {
     );
   });
 
-  it('generates the expected html with tidth and hight when image info is passed in', () => {
+  it('generates the expected html with width and height when image info is passed in', () => {
     const result = contentToJsx(
       {
         type: 'ImageObject',
@@ -184,9 +184,7 @@ describe('Content to JSX', () => {
           inline: true,
         },
       },
-      undefined,
-      undefined,
-      { 'https://placekitten.com/500/300': { width: 42, height: 84 } },
+      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 }}},
     );
 
     // eslint-disable-next-line @next/next/no-img-element
