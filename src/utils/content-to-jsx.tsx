@@ -48,8 +48,6 @@ export const contentToJsx = (content?: Content, index?: number, maxHeadingLevel?
         return '';
       }
 
-      console.log('jsx img info', imgInfo);
-
       // eslint-disable-next-line no-case-declarations
       const additionalProps: Record<string, number> = {};
       // eslint-disable-next-line no-case-declarations

@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import './figure.scss';
 
-export const Figure = ({ id, content, caption,  label}: { content: React.ReactNode, id?: string, caption?: React.ReactNode, label?: string }) => {
+export const Figure = ({
+  id, content, caption, label,
+}: { content: React.ReactNode, id?: string, caption?: React.ReactNode, label?: string }) => {
   const captionRef = useRef<HTMLElement>(null);
   const [expanded, setExpanded] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -32,7 +34,7 @@ export const Figure = ({ id, content, caption,  label}: { content: React.ReactNo
 
   return (
     <div className="figure-container">
-      <figure className="figure" {...(id && { id: id })}>
+      <figure className="figure" {...(id && { id })}>
         {label && <label className="figure__label">{label}</label>}
         {content}
         {caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{caption}</figcaption>}

@@ -16,7 +16,7 @@ const isImageObject = (content: Content): content is ImageObjectContent => {
   }
 
   return 'type' in content && content.type === 'ImageObject';
-}
+};
 
 const getImageObjects = (content: Content): ImageObjectContent[] => {
   if (typeof content === 'undefined') {

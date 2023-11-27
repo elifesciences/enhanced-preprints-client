@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Figure } from './figure';
-import { FigureContent } from '../../../types';
 import { contentToJsx } from '../../../utils/content-to-jsx';
 
 const content = {
@@ -36,7 +35,6 @@ describe('Figure', () => {
     expect(container.querySelector('figcaption')).not.toBeInTheDocument();
     expect(container.querySelector('label')).not.toBeInTheDocument();
     expect(container.querySelector('#id')).not.toBeInTheDocument();
-  
   });
 
   describe('caption with long text', () => {

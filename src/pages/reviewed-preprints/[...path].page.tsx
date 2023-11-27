@@ -146,7 +146,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     }
 
     const imgInfo = await contentToImgInfo(articleWithVersions.article.article.content);
-    console.log('IMGINFO', imgInfo);
 
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
@@ -195,7 +194,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   ]);
 
   const imgInfo = await contentToImgInfo(content);
-  console.log('IMGINFO', imgInfo);
 
   return {
     props: {
