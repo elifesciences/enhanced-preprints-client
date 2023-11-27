@@ -2,7 +2,21 @@ import { Content } from '../types';
 import { ImageObjectContent } from '../types/content';
 import { generateImageInfo } from './generate-image-url';
 
-const isImageObject = (content: Content): content is ImageObjectContent => content.type && content.type === 'ImageObject';
+const isImageObject = (content: Content): content is ImageObjectContent => {
+  if (typeof content === 'undefined') {
+    return false;
+  }
+
+  if (typeof content === 'string') {
+    return false;
+  }
+
+  if (Array.isArray(content)) {
+    return false;
+  }
+
+  return 'type' in content && content.type === 'ImageObject';
+}
 
 const getImageObjects = (content: Content): ImageObjectContent[] => {
   if (typeof content === 'undefined') {
@@ -17,7 +31,7 @@ const getImageObjects = (content: Content): ImageObjectContent[] => {
     return content.map((part) => getImageObjects(part)).flat();
   }
 
-  if (!isImageObject(content) && content.content) {
+  if (!isImageObject(content) && 'content' in content) {
     return getImageObjects(content.content);
   }
 
