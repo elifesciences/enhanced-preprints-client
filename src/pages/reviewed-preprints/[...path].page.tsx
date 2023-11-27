@@ -77,7 +77,7 @@ export const Page = (props: PageProps) => {
     pdf: {
       tabLinks: [],
       content: () => (<>
-        {contentToJsx(props.content, undefined, undefined, props.imgInfo)}
+        {contentToJsx(props.content, undefined, {imgInfo: props.imgInfo})}
         {subPages.reviews.content()}
       </>),
     },
