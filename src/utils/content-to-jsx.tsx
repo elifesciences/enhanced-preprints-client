@@ -7,7 +7,7 @@ import { Figure } from '../components/atoms/figure/figure';
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 
-export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6, imgInfo?: Record<string, { width: number, height: number }>): JSXContent => {
+export const contentToJsx = (content?: Content, index?: number, maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6, imgInfo?: Record<string, { width: number, height: number }>): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
   }
@@ -42,7 +42,7 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
     case 'Date':
       return <time key={index}>{ contentToJsx(content.content, undefined, undefined, imgInfo)}</time>;
     case 'Figure':
-      return <Figure key={index} content={content} />;
+      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, undefined, 4, imgInfo)} label={content.label} content={contentToJsx(content.content, undefined, undefined, imgInfo)} />;
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';

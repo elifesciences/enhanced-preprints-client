@@ -121,13 +121,9 @@ describe('Content to JSX', () => {
     });
 
     expect(result).toStrictEqual(
-      <Figure content={{
-        type: 'Figure',
-        content: 'I am a figure',
-        caption: 'I am a caption',
-        label: 'I am a label',
-        id: 'id',
-      }} />,
+      <Figure content="I am a figure" id='id'
+        caption='I am a caption'
+        label='I am a label' />,
     );
   });
 
