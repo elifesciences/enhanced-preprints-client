@@ -2,39 +2,34 @@ import { Content } from '../types';
 import { ImageObjectContent } from '../types/content';
 import { generateImageInfo } from './generate-image-url';
 
+const isImageObject = (content: Content): content is ImageObjectContent => content.type && content.type === 'ImageObject';
+
 const getImageObjects = (content: Content): ImageObjectContent[] => {
-  console.log("Get image objects");
-  
+  if (typeof content === 'undefined') {
+    return [];
+  }
+
   if (typeof content === 'string') {
     return [];
   }
 
-  // @ts-ignore
-  return (!Array.isArray(content) ? [content] : content).flat(Infinity).filter(filterImageObject);
+  if (Array.isArray(content)) {
+    return content.map((part) => getImageObjects(part)).flat();
+  }
+
+  if (!isImageObject(content) && content.content) {
+    return getImageObjects(content.content);
+  }
+
+  if (!isImageObject(content)) {
+    return [];
+  }
+
+  return [content];
 };
-
-export const filterImageObject = (contentPart: any): any => {
-  console.log("CONTENT", contentPart);
-  
-  if (typeof contentPart === 'string') {
-    return false;
-  }
-
-  if (Array.isArray(contentPart)) {
-    return getImageObjects(contentPart);
-  }
-
-  if (contentPart.type !== 'ImageObject' && contentPart.content) {
-    return filterImageObject(contentPart.content)
-  }
-
-  return contentPart.type === 'ImageObject';
-}
 
 export const contentToImgInfo = async (content: Content): Promise<Record<string, { width: number, height: number }>> => {
   const imageObjects = getImageObjects(content);
-  console.log(imageObjects);
-  
 
   return imageObjects
     .filter(({ contentUrl }) => contentUrl)
