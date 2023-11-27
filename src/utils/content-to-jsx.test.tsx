@@ -184,7 +184,7 @@ describe('Content to JSX', () => {
           inline: true,
         },
       },
-      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 }}},
+      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } } },
     );
 
     // eslint-disable-next-line @next/next/no-img-element

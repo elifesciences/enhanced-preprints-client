@@ -9,7 +9,7 @@ export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>
-}
+};
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
