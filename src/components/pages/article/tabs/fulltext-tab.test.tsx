@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { content, metaData, peerReview } from '../../../../utils/mocks';
+import { metaData, peerReview } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
 
 describe('FulltextTab', () => {

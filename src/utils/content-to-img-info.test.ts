@@ -11,7 +11,7 @@ describe('content to image info', () => {
 
     const result = await contentToImgInfo({ type: 'ImageObject', meta: { inline: false }, contentUrl: '/image/foo' });
 
-    expect(result).toStrictEqual({'/image/foo': { width: 42, height: 84 }});
+    expect(result).toStrictEqual({ '/image/foo': { width: 42, height: 84 } });
   });
 
   it('fetches the correct url based on content image id', async () => {
