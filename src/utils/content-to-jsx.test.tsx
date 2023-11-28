@@ -356,7 +356,7 @@ describe('Content to JSX', () => {
   });
 
   it('thematic break: removes non alphanumeric characters from ids', () => {
-    const { debug } = render((<>{contentToJsx([
+    render((<>{contentToJsx([
       {
         type: 'Heading', id: 'heading1', depth: 1, content: 'a#.12f',
       },
