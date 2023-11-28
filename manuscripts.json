@@ -6654,6 +6654,12 @@
       "msas": [
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.08.25.554786": {
+      "preprintDoi": "10.1101/2023.08.25.554786",
+      "msas": [
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -7682,6 +7688,7 @@
     "92462": "92462v1",
     "92464": "92464v1",
     "92469": "92469v1",
+    "92491": "92491v1",
     "92499": "92499v1",
     "92539": "92539v1",
     "92563": "92563v1",
@@ -52905,6 +52912,35 @@
             "date": "2023-09-01",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.08.29.555242v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "92491v1": {
+      "msid": "92491",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.25.554786",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-12"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-29",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.25.554786v2/",
               "text": "Go to bioRxiv"
             }
           }
