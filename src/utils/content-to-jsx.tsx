@@ -3,6 +3,7 @@ import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
+import { contentToText } from './content-to-text';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -34,7 +35,14 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
 
       const allSections = slices
         .filter((slice) => slice.length)
-        .map((slice, i) => <section key={i}>{contentToJsx(slice)}</section>);
+        .map((slice, i) => {
+          let sectionId = `section-${i}`;
+          if (Array.isArray(slice) && typeof slice[0] === 'object' && 'type' in slice[0] && slice[0].type === 'Heading' && slice[0].depth === 1) {
+            sectionId = contentToText(slice[0].content);
+          }
+
+          return <section key={i} id={sectionId}>{contentToJsx(slice)}</section>;
+        });
 
       return allSections;
     }
