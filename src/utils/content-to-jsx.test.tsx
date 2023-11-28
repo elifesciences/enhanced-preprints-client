@@ -354,4 +354,20 @@ describe('Content to JSX', () => {
     expect(headingId).toBeInTheDocument();
     expect(headingId?.tagName).toStrictEqual('SECTION');
   });
+
+  it('thematic break: removes non alphanumeric characters from ids', () => {
+    const { debug } = render((<>{contentToJsx([
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'a#.12f',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 1' },
+      { type: 'ThematicBreak' },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+    ])}</>));
+
+    const headingId = document.getElementById('a12f');
+
+    expect(headingId).toBeInTheDocument();
+    expect(headingId?.tagName).toStrictEqual('SECTION');
+  });
 });

@@ -38,7 +38,10 @@ export const contentToJsx = (content: Content, index?: number, maxHeadingLevel?:
         .map((slice, i) => {
           let sectionId = `section-${i}`;
           if (Array.isArray(slice) && typeof slice[0] === 'object' && 'type' in slice[0] && slice[0].type === 'Heading' && slice[0].depth === 1) {
-            sectionId = contentToText(slice[0].content).replaceAll(' ', '-').toLowerCase();
+            sectionId = contentToText(slice[0].content)
+              .replaceAll(/[^a-zA-Z0-9\s]/g, '')
+              .replaceAll(/\s/g, '-')
+              .toLowerCase();
           }
 
           return <section key={i} id={sectionId}>{contentToJsx(slice)}</section>;
