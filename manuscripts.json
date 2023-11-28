@@ -6699,8 +6699,8 @@
         "Neuroscience"
       ]
     },
-    "osf.io/r49sy": {
-      "preprintDoi": "osf.io/r49sy",
+    "10.31234/osf.io/r49sy": {
+      "preprintDoi": "10.31234/osf.io/r49sy",
       "msas": [
         "Neuroscience"
       ]
@@ -53136,7 +53136,7 @@
       "msid": "90735",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "osf.io/r49sy",
+      "preprintDoi": "10.31234/osf.io/r49sy",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
