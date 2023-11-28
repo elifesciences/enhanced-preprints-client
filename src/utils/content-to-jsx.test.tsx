@@ -315,4 +315,43 @@ describe('Content to JSX', () => {
     expect(allSectionElements.length).toStrictEqual(4);
     Array.from(allSectionElements.values(), (sectionElement) => expect(sectionElement).not.toBeEmptyDOMElement());
   });
+
+  it('the generated id is the same as heading', () => {
+    render((<>{contentToJsx([
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 1' },
+      { type: 'ThematicBreak' },
+      {
+        type: 'Heading', id: 'heading2', depth: 1, content: 'Heading 2',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+    ])}</>));
+
+    const headingIdOne = document.getElementById('heading-1');
+    const headingIdTwo = document.getElementById('heading-2');
+
+    expect(headingIdOne).toBeInTheDocument();
+    expect(headingIdOne?.tagName).toStrictEqual('SECTION');
+
+    expect(headingIdTwo).toBeInTheDocument();
+    expect(headingIdTwo?.tagName).toStrictEqual('SECTION');
+  })
+
+  it('the generated id is correct when no h1 found', () => {
+    render((<>{contentToJsx([
+      {
+        type: 'Heading', id: 'heading1', depth: 1, content: 'Heading 1',
+      },
+      { type: 'Paragraph', content: 'paragraph content under heading 1' },
+      { type: 'ThematicBreak' },
+      { type: 'Paragraph', content: 'paragraph content under heading 2' },
+    ])}</>));
+
+    const headingId = document.getElementById('section-1');
+
+    expect(headingId).toBeInTheDocument();
+    expect(headingId?.tagName).toStrictEqual('SECTION');
+  })
 });
