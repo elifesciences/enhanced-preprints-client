@@ -337,7 +337,7 @@ describe('Content to JSX', () => {
 
     expect(headingIdTwo).toBeInTheDocument();
     expect(headingIdTwo?.tagName).toStrictEqual('SECTION');
-  })
+  });
 
   it('the generated id is correct when no h1 found', () => {
     render((<>{contentToJsx([
@@ -353,5 +353,5 @@ describe('Content to JSX', () => {
 
     expect(headingId).toBeInTheDocument();
     expect(headingId?.tagName).toStrictEqual('SECTION');
-  })
+  });
 });
