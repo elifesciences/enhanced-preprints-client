@@ -77,7 +77,7 @@ describe('generateStatus', () => {
       },
       {
         date: 'Mon Jan 02 2023',
-        name: 'Posted to bioRxiv',
+        name: 'Posted to preprint server',
         link: {
           url: 'https://doi.org/doi-123',
           text: 'Go to bioRxiv',
@@ -118,7 +118,7 @@ describe('generateStatus', () => {
 
       {
         date: 'Mon Jan 02 2023',
-        name: 'Posted to bioRxiv',
+        name: 'Posted to preprint server',
         link: {
           url: 'https://doi.org/doi-123',
           text: 'Go to bioRxiv',
