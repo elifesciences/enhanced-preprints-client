@@ -23,7 +23,7 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 
 type PageProps = {
   metaData: MetaData,
-  imgInfo: Record<string, { width: number, height: number }>,
+  imgInfo?: Record<string, { width: number, height: number }>,
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
@@ -150,7 +150,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       return { notFound: true };
     }
 
-    const imgInfo = await contentToImgInfo(articleWithVersions.article.article.content);
+    const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
@@ -198,7 +198,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     manuscriptConfig.status,
   ]);
 
-  const imgInfo = await contentToImgInfo(content);
+  const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(content) : null;
 
   return {
     props: {
