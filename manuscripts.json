@@ -6737,7 +6737,7 @@
         "Evolutionary Biology"
       ]
     },
-    "rs.3.rs-1308149/v2": {
+    "10.21203/rs.3.rs-1308149/v2": {
       "preprintDoi": "rs.3.rs-1308149/v2",
       "msas": [
         "Structural Biology and Molecular Biophysics"
@@ -53503,7 +53503,7 @@
       "msid": "92632",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "rs.3.rs-1308149/v2",
+      "preprintDoi": "10.21203/rs.3.rs-1308149/v2",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
