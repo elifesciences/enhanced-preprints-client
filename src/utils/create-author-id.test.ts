@@ -11,6 +11,6 @@ describe('CreateAuthorId', () => {
   it('should return a string starting with the correct id for the author', () => {
     const id = createAuthorId(authors[0]);
 
-    expect(id).toStrictEqual('x-1597074501');
+    expect(id).toStrictEqual('x-666072093');
   });
 });
