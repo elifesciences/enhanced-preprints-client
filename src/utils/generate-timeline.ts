@@ -30,7 +30,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
   if (firstVersion.preprintPosted !== undefined) {
     timeline.push({
       date: new Date(firstVersion.preprintPosted).toDateString(),
-      name: 'Posted to bioRxiv',
+      name: 'Posted to preprint server',
       link: {
         url: `https://doi.org/${firstVersion.preprintDoi}`,
         text: 'Go to bioRxiv',
