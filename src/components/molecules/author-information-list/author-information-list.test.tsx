@@ -46,6 +46,23 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('Oliver Queen').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 
+  it('does not render other identifiers', () => {
+    render(<AuthorInformationList authors={[
+      {
+        givenNames: ['Arthur'],
+        familyNames: ['Curry'],
+        affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }],
+        identifiers: [
+          { type: 'PropertyValue', propertyID: 'foo', value: 'should not be rendered' },
+          { type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }
+        ],
+      },
+    ]}/>);
+
+    expect(screen.queryByText('should not be rendered')).not.toBeInTheDocument();
+    expect(screen.getByText('0000-0002-1234-5678')).toBeInTheDocument();
+  });
+
   it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
     const { container } = render(<AuthorInformationList authors={authors}/>);
 

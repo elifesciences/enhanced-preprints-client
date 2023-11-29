@@ -5,7 +5,7 @@ export const authors: Author[] = [
     givenNames: ['Steve'],
     familyNames: ['Rogers'],
     affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }],
-    identifiers: [{ type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }],
+    identifiers: [{ type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }],
   },
   { givenNames: ['Elliot'], familyNames: ['Kemp'], affiliations: [{ name: 'X-Force', address: { addressCountry: 'Norwich' } }] },
   { givenNames: ['Antony'], familyNames: ['Stark'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
