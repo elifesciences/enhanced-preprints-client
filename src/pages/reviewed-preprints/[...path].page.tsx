@@ -79,7 +79,7 @@ export const Page = (props: PageProps) => {
       content: () => <>
         <ArticleFullTextTab
           headings={headings}
-          content={contentToJsx(props.content, { imgInfo: props.imgInfo })}
+          content={contentToJsx(props.content, { imgInfo: props.imgInfo ?? undefined })}
           metaData={props.metaData}
           peerReview={props.peerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}/>
