@@ -54,7 +54,7 @@ describe('AuthorInformationList', () => {
         affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }],
         identifiers: [
           { type: 'PropertyValue', propertyID: 'foo', value: 'should not be rendered' },
-          { type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }
+          { type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' },
         ],
       },
     ]}/>);
