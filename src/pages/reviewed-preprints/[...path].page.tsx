@@ -23,7 +23,7 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 
 type PageProps = {
   metaData: MetaData,
-  imgInfo?: Record<string, { width: number, height: number }>,
+  imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
