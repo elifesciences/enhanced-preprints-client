@@ -154,7 +154,7 @@ describe('reviewedPreprintSnippet', () => {
     });
   });
 
-  it('prepares a revised preprint snippet', () => {
+  it('prepares a reviewed preprint snippet', () => {
     const result = reviewedPreprintSnippet({
       msid: 'msid1',
       version: '3',
