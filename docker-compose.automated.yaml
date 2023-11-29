@@ -36,8 +36,6 @@ services:
       /usr/bin/mc config host add myminio http://minio:9000 minio miniotest;
       /usr/bin/mc mb myminio/eppdata || true;
       /usr/bin/mc mirror /automationdata myminio/eppdata/automation;
-      # Set to public to host local PDFs
-      /usr/bin/mc anonymous set public myminio/eppdata;
       exit 0;
       "
     volumes:
