@@ -203,6 +203,32 @@ describe('Content to JSX', () => {
     );
   });
 
+  it('generates an image tag with out the picture and source elements', () => {
+    const result = contentToJsx(
+      {
+        type: 'ImageObject',
+        contentUrl: 'https://placekitten.com/500/300',
+        content: [],
+        meta: {
+          inline: true,
+        },
+      },
+      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } }, removePictureTag: true },
+    );
+
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(
+      <img
+        className="inline-image"
+        loading="lazy"
+        src="https://placekitten.com/500/300"
+        data-original-width={42}
+        data-original-height={84}
+        alt=""
+      />,
+    );
+  });
+
   it('allows an array of arrays to be generated', () => {
     const result = contentToJsx([
       [{

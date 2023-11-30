@@ -61,20 +61,23 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
         additionalProps['data-original-height'] = options?.imgInfo[content.contentUrl].height;
       }
 
-      const image = <img loading="lazy" {...(content.meta.inline ?
-        { className: 'inline-image' } : {})}
-        src={generateImageUrl(content.contentUrl)} alt=""
-        {...additionalProps}
-      />
+      {
+        const image = <img loading="lazy" {...(content.meta.inline ?
+          { className: 'inline-image' } : {})}
+          src={generateImageUrl(content.contentUrl)} alt=""
+          {...additionalProps}
+        />;
 
-       if (options?.removePictureTag) {
-        return image;
+        if (options?.removePictureTag) {
+          return image;
+        }
+
+        // eslint-disable-next-line @next/next/no-img-element
+        return <picture key={index}>
+          <source srcSet={generateImageUrl(content.contentUrl)} />
+          {image}
+        </picture>;
       }
-      // eslint-disable-next-line @next/next/no-img-element
-      return <picture key={index}>
-        <source srcSet={generateImageUrl(content.contentUrl)} />
-        {image}
-      </picture>;
     case 'ListItem':
       return <li key={index}>{ contentToJsx(content.content, options)}</li>;
     case 'List':
