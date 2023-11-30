@@ -6839,7 +6839,10 @@
       ]
     },
     "10.21203/rs.3.rs-1970365/v3": {
-      "preprintDoi": "10.21203/rs.3.rs-1970365/v3"
+      "preprintDoi": "10.21203/rs.3.rs-1970365/v3",
+      "msas": [
+        "Stem Cells and Regenerative Medicine"
+      ]
     }
   },
   "manuscripts": {
