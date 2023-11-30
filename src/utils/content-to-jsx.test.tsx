@@ -216,8 +216,8 @@ describe('Content to JSX', () => {
       { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } }, removePictureTag: true },
     );
 
-    // eslint-disable-next-line @next/next/no-img-element
     expect(result).toStrictEqual(
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         className="inline-image"
         loading="lazy"
