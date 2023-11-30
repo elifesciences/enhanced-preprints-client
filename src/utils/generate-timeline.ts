@@ -33,7 +33,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
       name: 'Posted to preprint server',
       link: {
         url: `https://doi.org/${firstVersion.preprintDoi}`,
-        text: 'Go to bioRxiv',
+        text: 'Go to preprint server',
       },
     });
   }
