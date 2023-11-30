@@ -29,7 +29,7 @@ const args = yargs
   })
   .option('dateReviewedPreprint', {
     type: 'string',
-    describe: `Reviewed/Revised Preprint posted (YYYY-MM-DD) (default: ${todayDate})`,
+    describe: `Reviewed Preprint posted (YYYY-MM-DD) (default: ${todayDate})`,
   })
   .option('dateSentForPeerReview', {
     type: 'string',
