@@ -6806,6 +6806,12 @@
         "Immunology and Inflammation",
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.10.06.561292": {
+      "preprintDoi": "10.1101/2023.10.06.561292",
+      "msas": [
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -7875,6 +7881,7 @@
     "92873": "92873v1",
     "92889": "92889v1",
     "92895": "92895v1",
+    "92916": "92916v1",
     "92938": "92938v1",
     "92958": "92958v1",
     "92979": "92979v1",
@@ -53888,6 +53895,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-08-11"
+          }
+        ]
+      }
+    },
+    "92916v1": {
+      "msid": "92916",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.06.561292",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-08",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.06.561292v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-28"
           }
         ]
       }
