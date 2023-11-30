@@ -6840,6 +6840,9 @@
         "Biochemistry and Chemical Biology",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.21203/rs.3.rs-1970365/v3": {
+      "preprintDoi": "10.21203/rs.3.rs-1970365/v3"
     }
   },
   "manuscripts": {
@@ -7174,7 +7177,7 @@
     "88236": "88236v2",
     "88237": "88237v1",
     "88247": "88247v1",
-    "88250": "88250v1",
+    "88250": "88250v2",
     "88251": "88251v2",
     "88253": "88253v1",
     "88256": "88256v1",
@@ -28846,7 +28849,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-30",
+            "link": {
+              "url": "/reviewed-preprints/88250v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-08-22",
             "eventDescription": "(this version)"
           },
@@ -54251,6 +54262,43 @@
             "link": {
               "url": "https://www.medrxiv.org/content/10.1101/2023.02.24.23286398v1",
               "text": "Go to medRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "88250v2": {
+      "msid": "88250",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.21203/rs.3.rs-1970365/v3",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-11-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-08-22",
+            "link": {
+              "url": "/reviewed-preprints/88250v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-04-11"
+          },
+          {
+            "name": "Posted to Research Square",
+            "date": "2023-03-29",
+            "link": {
+              "url": "https://doi.org/10.21203/rs.3.rs-1970365/v2",
+              "text": "Go to Research Square"
             }
           }
         ]
