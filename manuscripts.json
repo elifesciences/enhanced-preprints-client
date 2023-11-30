@@ -6815,6 +6815,12 @@
     },
     "10.1101/2023.05.26.54229": {
       "preprintDoi": "10.1101/2023.05.26.54229"
+    },
+    "10.1101/2023.06.05.543678": {
+      "preprintDoi": "10.1101/2023.06.05.543678",
+      "msas": [
+        "Plant Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -7536,6 +7542,7 @@
     "90156": "90156v1",
     "90158": "90158v1",
     "90164": "90164v1",
+    "90170": "90170v1",
     "90173": "90173v1",
     "90174": "90174v1",
     "90182": "90182v1",
@@ -54062,6 +54069,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.05.26.542293v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "90170v1": {
+      "msid": "90170",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.06.05.543678",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-11-30",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-05",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.06.05.543678v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-05"
           }
         ]
       }
