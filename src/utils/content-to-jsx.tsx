@@ -8,7 +8,8 @@ type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
-  imgInfo?: Record<string, { width: number, height: number }>
+  imgInfo?: Record<string, { width: number, height: number }>,
+  removePictureTag?: boolean,
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -60,14 +61,19 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
         additionalProps['data-original-height'] = options?.imgInfo[content.contentUrl].height;
       }
 
+      const image = <img loading="lazy" {...(content.meta.inline ?
+        { className: 'inline-image' } : {})}
+        src={generateImageUrl(content.contentUrl)} alt=""
+        {...additionalProps}
+      />
+
+       if (options?.removePictureTag) {
+        return image;
+      }
       // eslint-disable-next-line @next/next/no-img-element
       return <picture key={index}>
         <source srcSet={generateImageUrl(content.contentUrl)} />
-        <img loading="lazy" {...(content.meta.inline ?
-          { className: 'inline-image' } : {})}
-          src={generateImageUrl(content.contentUrl)} alt=""
-          {...additionalProps}
-        />
+        {image}
       </picture>;
     case 'ListItem':
       return <li key={index}>{ contentToJsx(content.content, options)}</li>;
