@@ -6850,6 +6850,12 @@
         "Evolutionary Biology",
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.08.25.554866": {
+      "preprintDoi": "10.1101/2023.08.25.554866",
+      "msas": [
+        "Structural Biology and Molecular Biophysics"
+      ]
     }
   },
   "manuscripts": {
@@ -7891,6 +7897,7 @@
     "92362": "92362v1",
     "92404": "92404v1",
     "92405": "92405v1",
+    "92406": "92406v1",
     "92411": "92411v1",
     "92420": "92420v1",
     "92443": "92443v1",
@@ -54425,6 +54432,35 @@
             "date": "2023-06-23",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.03.01.530600v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "92406v1": {
+      "msid": "92406",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.08.25.554866",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-01",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-14"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.08.25.554866v1/",
               "text": "Go to bioRxiv"
             }
           }
