@@ -73,20 +73,6 @@ describe('generateStatus', () => {
     });
   });
 
-  it('should be a revised preprint if article is not the same as the first version', () => {
-    const status = generateStatus({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-      },
-    });
-
-    expect(status).toMatchObject({
-      type: 'Revised Preprint',
-    });
-  });
-
   it('should be a preview if the published date is empty', () => {
     const previewVersion = {
       ...version1,

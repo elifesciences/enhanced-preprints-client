@@ -5,7 +5,7 @@ import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 
 const AuthorInformation = ({ author }: { author: Author }) => {
-  const orcids = (author.identifiers ?? []).filter(({ type }) => type === 'orcid');
+  const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
 
   return (
     <li className="author-list__author">
