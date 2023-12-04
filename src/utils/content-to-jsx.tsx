@@ -55,7 +55,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       return allSections;
     }
 
-    return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
+    return content.map((part, i) => contentToJsx(part, options, i));
   }
 
   switch (content.type) {
