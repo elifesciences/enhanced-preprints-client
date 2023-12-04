@@ -3,7 +3,7 @@ import './editors-and-reviewers.scss';
 type Participant = {
   name: string,
   role: string,
-  institution: string,
+  institution?: string,
 };
 
 const roleToFriendlyRole = (role: string) => {
@@ -25,7 +25,7 @@ export const EditorsAndReviewers = ({ participants }: { participants: Participan
         <li key={index} className="editors-and-reviewers__person">
           <div className="editors-and-reviewers__person-role">{roleToFriendlyRole(participant.role)}</div>
           <div className="editors-and-reviewers__person-name">{participant.name}</div>
-          <div className="editors-and-reviewers__person-affiliation">{participant.institution}</div>
+          { participant.institution && <div className="editors-and-reviewers__person-affiliation">{participant.institution}</div> }
         </li>
       ))}
     </ul>
