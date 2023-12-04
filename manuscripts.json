@@ -6869,6 +6869,12 @@
         "Biochemistry and Chemical Biology",
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.07.27.550898": {
+      "preprintDoi": "10.1101/2023.07.27.550898",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -7828,6 +7834,7 @@
     "91532": "91532v1",
     "91554": "91554v1",
     "91572": "91572v1",
+    "91574": "91574v1",
     "91576": "91576v1",
     "91582": "91582v1",
     "91599": "91599v1",
@@ -54685,6 +54692,35 @@
             "date": "2023-08-17",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.08.16.553641v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "91574v1": {
+      "msid": "91574",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.07.27.550898",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-04",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-31"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.07.27.550898v1/",
               "text": "Go to bioRxiv"
             }
           }
