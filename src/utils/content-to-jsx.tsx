@@ -3,6 +3,7 @@ import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
+import { contentToText } from './content-to-text';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -20,9 +21,43 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     return content;
   }
 
+  const isThematicBreak = (contentPart: Content) => typeof contentPart === 'object' && 'type' in contentPart && contentPart.type === 'ThematicBreak';
+
   if (Array.isArray(content)) {
-    return content.map((part, i) => contentToJsx(part, options, i));
+    const thematicBreakIndex = content.findIndex(isThematicBreak);
+
+    if (thematicBreakIndex >= 0) {
+      const slices: Content[][] = [[]];
+      content.forEach((part) => {
+        if (isThematicBreak(part)) {
+          slices.push([]);
+
+          return;
+        }
+
+        slices[slices.length - 1].push(part);
+      });
+
+      const allSections = slices
+        .filter((slice) => slice.length)
+        .map((slice, i) => {
+          let sectionId = `section-${i}`;
+          if (Array.isArray(slice) && typeof slice[0] === 'object' && 'type' in slice[0] && slice[0].type === 'Heading' && slice[0].depth === 1) {
+            sectionId = contentToText(slice[0].content)
+              .replaceAll(/[^a-zA-Z0-9\s]/g, '')
+              .replaceAll(/\s/g, '-')
+              .toLowerCase();
+          }
+
+          return <section key={i} id={sectionId}>{contentToJsx(slice)}</section>;
+        });
+
+      return allSections;
+    }
+
+    return content.map((part, i) => contentToJsx(part, i, maxHeadingLevel));
   }
+
   switch (content.type) {
     case 'Heading':
       return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={options?.maxHeadingLevel}/>;
