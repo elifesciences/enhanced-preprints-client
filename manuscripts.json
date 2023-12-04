@@ -6894,6 +6894,12 @@
       "msas": [
         "Microbiology and Infectious Disease"
       ]
+    },
+    "10.1101/2023.10.03.560693": {
+      "preprintDoi": "10.1101/2023.10.03.560693",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
     }
   },
   "manuscripts": {
@@ -7961,6 +7967,7 @@
     "92632": "92632v1",
     "92643": "92643v1",
     "92644": "92644v1",
+    "92645": "92645v1",
     "92673": "92673v1",
     "92674": "92674v1",
     "92678": "92678v1",
@@ -54877,6 +54884,35 @@
               "url": "https://www.biorxiv.org/content/10.1101/2023.05.10.540098v1/",
               "text": "Go to bioRxiv"
             }
+          }
+        ]
+      }
+    },
+    "92645v1": {
+      "msid": "92645",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.03.560693",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-04",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.03.560693v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-27"
           }
         ]
       }
