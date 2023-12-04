@@ -49,7 +49,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
               .toLowerCase();
           }
 
-          return <section key={i} id={sectionId}>{contentToJsx(slice)}</section>;
+          return <section key={i} id={sectionId}>{contentToJsx(slice, options)}</section>;
         });
 
       return allSections;
