@@ -47,7 +47,7 @@ export type FigureContent = DecoratedContent & {
   label?: string,
 };
 
-type ImageObjectContent = {
+export type ImageObjectContent = {
   type: 'ImageObject',
   contentUrl?: string,
   content?: Content

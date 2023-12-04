@@ -1,5 +1,6 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Figure } from './figure';
+import { contentToJsx } from '../../../utils/content-to-jsx';
 
 export default {
   title: 'Atoms/Figure',
@@ -12,7 +13,7 @@ const Template: StoryFn<typeof Figure> = (args) => (
 
 export const Figure1 = Template.bind({});
 Figure1.args = {
-  content: {
+  content: contentToJsx({
     type: 'Figure',
     content: {
       type: 'ImageObject',
@@ -21,12 +22,12 @@ Figure1.args = {
       },
       contentUrl: 'https://placekitten.com/800/400',
     },
-  },
+  }),
 };
 
 export const Figure2 = Template.bind({});
 Figure2.args = {
-  content: {
+  content: contentToJsx({
     type: 'Figure',
     label: 'This is a figure Component',
     caption: [
@@ -55,5 +56,5 @@ Figure2.args = {
       },
       contentUrl: 'https://placekitten.com/800/400',
     },
-  },
+  }),
 };

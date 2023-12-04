@@ -1,109 +1,39 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Figure } from './figure';
-import { FigureContent } from '../../../types';
+import { contentToJsx } from '../../../utils/content-to-jsx';
 
-const content: FigureContent = {
+const content = {
   caption: 'this is a figure',
   content: 'some content',
   id: 'id',
   label: 'I am a label',
-  type: 'Figure',
 };
 
 describe('Figure', () => {
   it('renders correctly', () => {
-    const { container } = render(<Figure content={content}/>);
+    const { container } = render(<Figure id={content.id} caption={contentToJsx(content.caption)} label={content.label} content={contentToJsx(content.content)} />);
 
     expect(screen.getByText('some content')).toBeInTheDocument();
     expect(container.querySelector('#id')).toBeInTheDocument();
   });
 
-  it('renders the content', () => {
-    const complexContent: FigureContent = {
-      ...content,
-      content: {
-        type: 'Strong',
-        content: 'Bold Text',
-      },
-    };
-
-    render(<Figure content={complexContent}/>);
-
-    expect(screen.getByText('Bold Text').tagName).toBe('STRONG');
-  });
-
   it('renders the label', () => {
-    render(<Figure content={content}/>);
+    render(<Figure content={contentToJsx(content.content)} label={content.label}/>);
 
     expect(screen.getByText('I am a label')).toBeInTheDocument();
   });
 
   it('renders the caption', () => {
-    render(<Figure content={content}/>);
+    render(<Figure content={contentToJsx(content.content)} caption={content.caption}/>);
 
     expect(screen.getByText('this is a figure')).toBeInTheDocument();
   });
 
-  it('renders a complex caption', () => {
-    const complexContent: FigureContent = {
-      ...content,
-      caption: [
-        {
-          type: 'Heading',
-          content: 'Heading 1',
-          depth: 4,
-          id: 'h4',
-        },
-        {
-          type: 'Emphasis',
-          content: 'Italic Text',
-        },
-        {
-          type: 'Heading',
-          content: 'Heading 4',
-          depth: 4,
-          id: 'h4',
-        },
-      ],
-    };
-
-    render(<Figure content={complexContent}/>);
-
-    expect(screen.getByText('Heading 1').tagName).toBe('H4');
-    expect(screen.getByText('Italic Text').tagName).toBe('EM');
-    expect(screen.getByText('Heading 4').tagName).toBe('H4');
-  });
-
-  it('should not render caption if not defined', () => {
-    const noCaption: FigureContent = {
-      ...content,
-      caption: undefined,
-    };
-
-    const { container } = render(<Figure content={noCaption}/>);
+  it('should not render caption, label, or ID if not defined', () => {
+    const { container } = render(<Figure content={<p>hello world!</p>}/>);
 
     expect(container.querySelector('figcaption')).not.toBeInTheDocument();
-  });
-
-  it('should not render label if not defined', () => {
-    const noLabel: FigureContent = {
-      ...content,
-      label: undefined,
-    };
-
-    const { container } = render(<Figure content={noLabel}/>);
-
     expect(container.querySelector('label')).not.toBeInTheDocument();
-  });
-
-  it('should not set id if not defined', () => {
-    const noId: FigureContent = {
-      ...content,
-      id: undefined,
-    };
-
-    const { container } = render(<Figure content={noId}/>);
-
     expect(container.querySelector('#id')).not.toBeInTheDocument();
   });
 
@@ -111,15 +41,10 @@ describe('Figure', () => {
     const longCaption = 'This is a long caption that would overflow the container.';
 
     beforeEach(() => {
-      const testContentWithLongCaption = {
-        ...content,
-        caption: longCaption,
-      };
-
       Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: 300 });
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 200 });
 
-      render(<Figure content={testContentWithLongCaption} />);
+      render(<Figure content={contentToJsx(content.content)} caption={longCaption} />);
     });
 
     it('should not have the figure__caption--expanded class on the first render', () => {
@@ -183,15 +108,10 @@ describe('Figure', () => {
   describe('caption with short text', () => {
     it('does not display the show more button for short captions', () => {
       const shortCaption = 'Short Caption';
-      const testContentWithShortCaption = {
-        ...content,
-        caption: shortCaption,
-      };
-
       Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: 200 });
       Object.defineProperty(HTMLElement.prototype, 'offsetHeight', { configurable: true, value: 300 });
 
-      render(<Figure content={testContentWithShortCaption} />);
+      render(<Figure content={contentToJsx(content.content)} caption={shortCaption} />);
 
       expect(screen.queryByText('Show more')).toBeNull();
       expect(screen.queryByText('Show less')).toBeNull();

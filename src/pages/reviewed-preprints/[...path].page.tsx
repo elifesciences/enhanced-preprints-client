@@ -16,9 +16,14 @@ import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/format-author-name';
+import { contentToFigures } from '../../utils/content-to-figures';
+import { contentToJsx } from '../../utils/content-to-jsx';
+import { contentToHeadings } from '../../utils/content-to-headings';
+import { contentToImgInfo } from '../../utils/content-to-img-info';
 
 type PageProps = {
-  metaData: MetaData
+  metaData: MetaData,
+  imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
   content: Content,
@@ -52,14 +57,18 @@ export const Page = (props: PageProps) => {
     },
   ];
 
+  const headings = contentToHeadings(props.content);
+  const figures = contentToFigures(props.content);
+
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
-      content: () => <ArticleFullTextTab content={props.content} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      // eslint-disable-next-line max-len
+      content: () => <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
-      content: () => <ArticleFiguresTab content={props.content}></ArticleFiguresTab>,
+      content: () => <ArticleFiguresTab content={contentToJsx(figures)}></ArticleFiguresTab>,
     },
     reviews: {
       tabLinks,
@@ -67,10 +76,15 @@ export const Page = (props: PageProps) => {
     },
     pdf: {
       tabLinks: [],
-      content: () => (<>
-        {subPages.fulltext.content()}
+      content: () => <>
+        <ArticleFullTextTab
+          headings={headings}
+          content={contentToJsx(props.content, { imgInfo: props.imgInfo ?? undefined, removePictureTag: true })}
+          metaData={props.metaData}
+          peerReview={props.peerReview ?? undefined}
+          peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
-      </>),
+      </>,
     },
   };
   const router = useRouter();
@@ -136,6 +150,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       return { notFound: true };
     }
 
+    const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
+
     const status = generateStatus(articleWithVersions);
     const timeline = generateTimeline(articleWithVersions);
 
@@ -154,6 +170,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           msas: articleWithVersions.article.subjects || [],
           version: articleWithVersions.article.versionIdentifier,
         },
+        imgInfo,
         msidWithVersion: id,
         content: articleWithVersions.article.article.content,
         status: {
@@ -181,6 +198,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     manuscriptConfig.status,
   ]);
 
+  const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(content) : null;
+
   return {
     props: {
       metaData: {
@@ -194,6 +213,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         eLocationId: `RP${manuscriptConfig.msid}`,
         license: manuscriptConfig.license || 'https://creativecommons.org/licenses/by/4.0/',
       },
+      imgInfo,
       msidWithVersion: id,
       content,
       status: {

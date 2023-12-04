@@ -119,13 +119,9 @@ describe('Content to JSX', () => {
     });
 
     expect(result).toStrictEqual(
-      <Figure content={{
-        type: 'Figure',
-        content: 'I am a figure',
-        caption: 'I am a caption',
-        label: 'I am a label',
-        id: 'id',
-      }} />,
+      <Figure content="I am a figure" id='id'
+        caption='I am a caption'
+        label='I am a label' />,
     );
   });
 
@@ -143,7 +139,11 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(
       <picture>
         <source srcSet="https://placekitten.com/500/300" />
-        <img loading="lazy" src="https://placekitten.com/500/300" alt="" />
+        <img
+          loading="lazy"
+          src="https://placekitten.com/500/300"
+          alt=""
+        />
       </picture>,
     );
   });
@@ -162,8 +162,68 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(
       <picture>
         <source srcSet="https://placekitten.com/500/300" />
-        <img className="inline-image" loading="lazy" src="https://placekitten.com/500/300" alt="" />
+        <img
+          className="inline-image"
+          loading="lazy"
+          src="https://placekitten.com/500/300"
+          alt=""
+        />
       </picture>,
+    );
+  });
+
+  it('generates the expected html with width and height when image info is passed in', () => {
+    const result = contentToJsx(
+      {
+        type: 'ImageObject',
+        contentUrl: 'https://placekitten.com/500/300',
+        content: [],
+        meta: {
+          inline: true,
+        },
+      },
+      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } } },
+    );
+
+    // eslint-disable-next-line @next/next/no-img-element
+    expect(result).toStrictEqual(
+      <picture>
+        <source srcSet="https://placekitten.com/500/300" />
+        <img
+          className="inline-image"
+          loading="lazy"
+          src="https://placekitten.com/500/300"
+          data-original-width={42}
+          data-original-height={84}
+          alt=""
+        />
+      </picture>,
+    );
+  });
+
+  it('generates an image tag with out the picture and source elements', () => {
+    const result = contentToJsx(
+      {
+        type: 'ImageObject',
+        contentUrl: 'https://placekitten.com/500/300',
+        content: [],
+        meta: {
+          inline: true,
+        },
+      },
+      { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } }, removePictureTag: true },
+    );
+
+    expect(result).toStrictEqual(
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        className="inline-image"
+        loading="lazy"
+        src="https://placekitten.com/500/300"
+        data-original-width={42}
+        data-original-height={84}
+        alt=""
+      />,
     );
   });
 
