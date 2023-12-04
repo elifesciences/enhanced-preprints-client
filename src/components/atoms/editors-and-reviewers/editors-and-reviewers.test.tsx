@@ -20,6 +20,15 @@ describe('Editors and Authors', () => {
     expect(sheild).toBeInTheDocument();
   });
 
+  it('should render correctly with no institutions', () => {
+    render(<EditorsAndReviewers participants={[
+      { name: 'Anonymous', role: 'editor' },
+      { name: 'Anonymous', role: 'senior-editor' },
+    ]}/>);
+
+    expect(document.querySelector('.editors-and-reviewers__person-affiliation')).not.toBeInTheDocument();
+  });
+
   it('should render the editor and senior editor roles correctly', () => {
     render(<EditorsAndReviewers participants={participants}/>);
 
