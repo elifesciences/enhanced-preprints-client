@@ -6932,6 +6932,12 @@
       "msas": [
         "Developmental Biology"
       ]
+    },
+    "10.21203/rs.3.rs-2570121/v2": {
+      "preprintDoi": "10.21203/rs.3.rs-2570121/v2",
+      "msas": [
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -7406,6 +7412,7 @@
     "88905": "88905v1",
     "88916": "88916v1",
     "88919": "88919v2",
+    "88929": "88929v1",
     "88936": "88936v2",
     "88939": "88939v2",
     "88942": "88942v1",
@@ -55185,6 +55192,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-10-05"
+          }
+        ]
+      }
+    },
+    "88929v1": {
+      "msid": "88929",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.21203/rs.3.rs-2570121/v2",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-06-02"
+          },
+          {
+            "name": "Posted to Research Square",
+            "date": "2023-04-27",
+            "link": {
+              "url": "https://www.researchsquare.com/article/rs-2570121/v2/",
+              "text": "Go to Research Square"
+            }
           }
         ]
       }
