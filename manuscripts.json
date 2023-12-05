@@ -7009,7 +7009,7 @@
     "86689": "86689v3",
     "86695": "86695v2",
     "86699": "86699v2",
-    "86700": "86700v1",
+    "86700": "86700v2",
     "86721": "86721v3",
     "86722": "86722v1",
     "86725": "86725v1",
@@ -9733,7 +9733,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-05",
+            "link": {
+              "url": "/reviewed-preprints/86700v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-04-12",
             "eventDescription": "(this version)"
           },
@@ -55221,6 +55229,43 @@
               "url": "https://www.researchsquare.com/article/rs-2570121/v2/",
               "text": "Go to Research Square"
             }
+          }
+        ]
+      }
+    },
+    "86700v2": {
+      "msid": "86700",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.22.529599",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-05",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-04-12",
+            "link": {
+              "url": "/reviewed-preprints/86700v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-02-24",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.22.529599v1",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-02-22"
           }
         ]
       }
