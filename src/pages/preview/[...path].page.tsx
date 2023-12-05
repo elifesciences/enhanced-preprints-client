@@ -8,6 +8,7 @@ import { ArticlePage, ArticleStatusProps } from '../../components/pages/article/
 import { ArticleFiguresTab, ArticleFullTextTab } from '../../components/pages/article/tabs';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
+import { contentToFigures } from '../../utils/content-to-figures';
 
 type PageProps = {
   metaData: MetaData,
@@ -31,7 +32,7 @@ export const Page = (props: PageProps) => {
   if (tab === 'fulltext') {
     childTab = <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData}></ArticleFullTextTab>;
   } else {
-    childTab = <ArticleFiguresTab content={contentToJsx(props.content)}></ArticleFiguresTab>;
+    childTab = <ArticleFiguresTab content={contentToJsx(contentToFigures(props.content))}></ArticleFiguresTab>;
   }
   return (
     <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} status={props.status} activeTab={tab} tabs={[
