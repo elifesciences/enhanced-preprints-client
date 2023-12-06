@@ -8,6 +8,7 @@ describe('reviewedPreprintSnippet', () => {
       version: '1',
       preprintDoi: 'preprintprovider/preprint1',
       status: {
+        isPreview: false,
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
@@ -113,6 +114,7 @@ describe('reviewedPreprintSnippet', () => {
       version: '1',
       preprintDoi: 'preprintprovider/preprint1',
       status: {
+        isPreview: false,
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [
@@ -160,6 +162,7 @@ describe('reviewedPreprintSnippet', () => {
       version: '3',
       preprintDoi: 'preprintprovider/preprint1',
       status: {
+        isPreview: false,
         articleType: 'Reviewed Preprint',
         status: 'Revised by authors after peer review.',
         timeline: [
@@ -362,6 +365,7 @@ describe('reviewedPreprintSnippet', () => {
       version: '1',
       preprintDoi: 'preprintprovider/preprint1',
       status: {
+        isPreview: false,
         articleType: 'Reviewed Preprint',
         status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
         timeline: [

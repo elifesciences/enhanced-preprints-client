@@ -3,7 +3,18 @@ import './editors-and-reviewers.scss';
 type Participant = {
   name: string,
   role: string,
-  institution: string,
+  institution?: string,
+};
+
+const roleToFriendlyRole = (role: string) => {
+  if (role === 'senior-editor') {
+    return 'Senior Editor';
+  }
+  if (role === 'editor') {
+    return 'Reviewing Editor';
+  }
+
+  return role;
 };
 
 export const EditorsAndReviewers = ({ participants }: { participants: Participant[] }) => (
@@ -12,9 +23,9 @@ export const EditorsAndReviewers = ({ participants }: { participants: Participan
     <ul className="editors-and-reviewers__list">
       {participants.map((participant, index) => (
         <li key={index} className="editors-and-reviewers__person">
-          <div className="editors-and-reviewers__person-role">{participant.role}</div>
+          <div className="editors-and-reviewers__person-role">{roleToFriendlyRole(participant.role)}</div>
           <div className="editors-and-reviewers__person-name">{participant.name}</div>
-          <div className="editors-and-reviewers__person-affiliation">{participant.institution}</div>
+          { participant.institution && <div className="editors-and-reviewers__person-affiliation">{participant.institution}</div> }
         </li>
       ))}
     </ul>
