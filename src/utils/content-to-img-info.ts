@@ -31,6 +31,10 @@ const getImageObjects = (content: Content): ImageObjectContent[] => {
     return content.map((part) => getImageObjects(part)).flat();
   }
 
+  if (!isImageObject(content) && 'items' in content) {
+    return getImageObjects(content.items);
+  }
+
   if (!isImageObject(content) && 'content' in content) {
     return getImageObjects(content.content);
   }
