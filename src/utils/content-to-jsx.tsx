@@ -91,7 +91,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       // eslint-disable-next-line no-case-declarations
       const additionalProps: Record<string, number> = {};
       // eslint-disable-next-line no-case-declarations
-      if (options?.imgInfo) {
+      if (options?.imgInfo && options?.imgInfo[content.contentUrl] !== undefined) {
         additionalProps['data-original-width'] = options?.imgInfo[content.contentUrl].width;
         additionalProps['data-original-height'] = options?.imgInfo[content.contentUrl].height;
       }
