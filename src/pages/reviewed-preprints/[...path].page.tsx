@@ -175,7 +175,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         content: articleWithVersions.article.article.content,
         status: {
           articleType: status.type,
-          status: status.type === 'Reviewed Preprint' ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
+          status: status.status,
           timeline,
           isPreview: status.isPreview,
         },
