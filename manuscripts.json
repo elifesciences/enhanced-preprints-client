@@ -7043,6 +7043,13 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.21203/rs.3.rs-1828415/v3": {
+      "preprintDoi": "10.21203/rs.3.rs-1828415/v3",
+      "msas": [
+        "Evolutionary Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -56171,7 +56178,7 @@
       "msid": "87198",
       "version": 2,
       "publishedYear": 2023,
-      "preprintDoi": "10.21203/rs.3.rs-1828415/v2",
+      "preprintDoi": "10.21203/rs.3.rs-1828415/v3",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Revised by authors after peer review.",
@@ -56193,7 +56200,7 @@
             "name": "Posted to Research Square",
             "date": "2023-04-17",
             "link": {
-              "url": "https://www.researchsquare.com/article/rs-1828415/v2",
+              "url": "https://doi.org/10.21203/rs.3.rs-1828415/v3",
               "text": "Go to Research Square"
             }
           },
