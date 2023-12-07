@@ -7154,7 +7154,7 @@
     "87193": "87193v2",
     "87196": "87196v1",
     "87197": "87197v2",
-    "87198": "87198v1",
+    "87198": "87198v2",
     "87202": "87202v2",
     "87211": "87211v1",
     "87217": "87217v1",
@@ -17195,7 +17195,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-07",
+            "link": {
+              "url": "/reviewed-preprints/87198v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-06-20",
             "eventDescription": "(this version)"
           },
@@ -56031,6 +56039,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-24"
+          }
+        ]
+      }
+    },
+    "87198v2": {
+      "msid": "87198",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.21203/rs.3.rs-1828415/v2",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-07",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-06-20",
+            "link": {
+              "url": "/reviewed-preprints/87198v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Posted to Research Square",
+            "date": "2023-04-17",
+            "link": {
+              "url": "https://www.researchsquare.com/article/rs-1828415/v2",
+              "text": "Go to Research Square"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-09"
           }
         ]
       }
