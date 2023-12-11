@@ -7246,7 +7246,7 @@
     "87252": "87252v1",
     "87253": "87253v1",
     "87258": "87258v1",
-    "87271": "87271v1",
+    "87271": "87271v2",
     "87281": "87281v2",
     "87283": "87283v2",
     "87288": "87288v1",
@@ -22413,7 +22413,15 @@
         "status": "Published from the original preprint after peer review and assessment by eLife.",
         "timeline": [
           {
-            "name": "Reviewed preprint posted",
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-11",
+            "link": {
+              "url": "/reviewed-preprints/87271v2",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Reviewed preprint version 1",
             "date": "2023-07-13",
             "eventDescription": "(this version)"
           },
@@ -56912,6 +56920,43 @@
           {
             "name": "Sent for peer review",
             "date": "2023-04-04"
+          }
+        ]
+      }
+    },
+    "87271v2": {
+      "msid": "87271",
+      "version": 2,
+      "publishedYear": 2023,
+      "preprintDoi": "10.31234/osf.io/mgn32",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Revised by authors after peer review.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint version 2",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Reviewed preprint version 1",
+            "date": "2023-07-13",
+            "link": {
+              "url": "/reviewed-preprints/87271v1",
+              "text": "Go to version"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-03-29"
+          },
+          {
+            "name": "Posted to PsyArXiv",
+            "date": "2023-02-28",
+            "link": {
+              "url": "https://psyarxiv.com/mgn32",
+              "text": "Go to PsyArXiv"
+            }
           }
         ]
       }
