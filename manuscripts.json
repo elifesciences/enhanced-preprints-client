@@ -7069,6 +7069,13 @@
         "Cancer Biology",
         "Cell Biology"
       ]
+    },
+    "10.48550/arXiv.2306.03218": {
+      "preprintDoi": "10.48550/arXiv.2306.03218",
+      "msas": [
+        "Cancer Biology",
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -8035,6 +8042,7 @@
     "91574": "91574v1",
     "91576": "91576v1",
     "91582": "91582v1",
+    "91597": "91597v1",
     "91598": "91598v1",
     "91599": "91599v1",
     "91602": "91602v1",
@@ -56794,6 +56802,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-09-21"
+          }
+        ]
+      }
+    },
+    "91597v1": {
+      "msid": "91597",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.48550/arXiv.2306.03218",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to arXiv",
+            "date": "2023-09-13",
+            "link": {
+              "url": "https://arxiv.org/abs/2306.03218v2",
+              "text": "Go to arXiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-11"
           }
         ]
       }
