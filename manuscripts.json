@@ -1,5 +1,11 @@
 {
   "preprints": {
+    "10.1101/2023.09.21.558851": {
+      "preprintDoi": "10.1101/2023.09.21.558851",
+      "msas": [
+        "Immunology and Inflammation"
+      ]
+    },
     "10.1101/2023.07.20.549893": {
       "preprintDoi": "10.1101/2023.07.20.549893",
       "msas": [
@@ -7050,6 +7056,19 @@
         "Evolutionary Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2021.10.19.464946": {
+      "preprintDoi": "10.1101/2021.10.19.464946",
+      "msas": [
+        "Computational and Systems Biology"
+      ]
+    },
+    "10.1101/2023.10.02.560571": {
+      "preprintDoi": "10.1101/2023.10.02.560571",
+      "msas": [
+        "Cancer Biology",
+        "Cell Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -8010,6 +8029,7 @@
     "91528": "91528v1",
     "91532": "91532v1",
     "91540": "91540v1",
+    "91547": "91547v1",
     "91554": "91554v1",
     "91572": "91572v1",
     "91574": "91574v1",
@@ -8116,6 +8136,7 @@
     "92469": "92469v1",
     "92491": "92491v1",
     "92499": "92499v1",
+    "92511": "92511v1",
     "92534": "92534v1",
     "92537": "92537v1",
     "92539": "92539v1",
@@ -8163,6 +8184,7 @@
     "93147": "93147v1",
     "93180": "93180v1",
     "93246": "93246v1",
+    "93273": "93273v1",
     "93284": "93284v1",
     "93333": "93333v1",
     "93357": "93357v1",
@@ -56685,6 +56707,93 @@
           {
             "name": "Sent for peer review",
             "date": "2023-10-09"
+          }
+        ]
+      }
+    },
+    "91547v1": {
+      "msid": "91547",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.10.19.464946",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-08-15"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-07-27",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.10.19.464946v2/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "93273v1": {
+      "msid": "93273",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "93273",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-05"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-23",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.09.21.558851v1/",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "92511v1": {
+      "msid": "92511",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.02.560571",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.02.560571v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-21"
           }
         ]
       }
