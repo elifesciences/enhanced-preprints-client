@@ -7076,6 +7076,12 @@
         "Cancer Biology",
         "Computational and Systems Biology"
       ]
+    },
+    "10.1101/2021.11.16.468866": {
+      "preprintDoi": "10.1101/2021.11.16.468866",
+      "msas": [
+        "Neuroscience"
+      ]
     }
   },
   "manuscripts": {
@@ -8066,6 +8072,7 @@
     "91711": "91711v1",
     "91713": "91713v1",
     "91716": "91716v1",
+    "91722": "91722v1",
     "91729": "91729v1",
     "91757": "91757v1",
     "91765": "91765v1",
@@ -56831,6 +56838,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-09-11"
+          }
+        ]
+      }
+    },
+    "91722v1": {
+      "msid": "91722",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2021.11.16.468866",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-11",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-10",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2021.11.16.468866v5/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-10"
           }
         ]
       }
