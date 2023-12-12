@@ -4879,8 +4879,8 @@
         "Neuroscience"
       ]
     },
-    "10.1101/2023.08.04.55197": {
-      "preprintDoi": "10.1101/2023.08.04.55197",
+    "10.1101/2023.08.04.551972": {
+      "preprintDoi": "10.1101/2023.08.04.551972",
       "msas": [
         "Neuroscience"
       ]
@@ -7113,9 +7113,6 @@
       "msas": [
         "Computational and Systems Biology"
       ]
-    },
-    "10.1101/2023.08.04.551972": {
-      "preprintDoi": "10.1101/2023.08.04.551972"
     },
     "10.1101/2023.08.03.551724": {
       "preprintDoi": "10.1101/2023.08.03.551724",
@@ -39591,7 +39588,7 @@
       "msid": "91599",
       "version": 1,
       "publishedYear": 2023,
-      "preprintDoi": "10.1101/2023.08.04.55197",
+      "preprintDoi": "10.1101/2023.08.04.551972",
       "status": {
         "articleType": "Reviewed Preprint",
         "status": "Published from the original preprint after peer review and assessment by eLife.",
