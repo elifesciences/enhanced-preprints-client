@@ -150,34 +150,6 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
 });
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  const snippets = await fetchVersionsNoContent();
-  const now = new Date();
-  const latestVersions = snippets.reduce<Map<string, EnhancedArticleNoContent>>((items, item) => {
-    if (!item.published) {
-      // only consider published items
-      return items;
-    }
-    const newItemPublishedDate = new Date(item.published);
-    if (newItemPublishedDate >= now) {
-      // only consider items already published (published date in the past)
-      return items;
-    }
-    const existingItem = items.get(item.msid);
-    if (existingItem && existingItem.published) {
-      const existingItemPublishedDate = new Date(existingItem.published);
-      // Only the latest published item should be in the output map
-      if (existingItemPublishedDate < newItemPublishedDate) {
-        items.set(item.msid, item);
-      }
-    } else {
-      items.set(item.msid, item);
-    }
-    return items;
-  }, new Map<string, EnhancedArticleNoContent>())
-    .values();
-
-  const latestSnippets = Array.from(latestVersions).map(enhancedArticleNoContentToSnippet);
-
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
     queryParam(req, 'page', 1),
@@ -187,7 +159,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
   });
 
-  const order = queryParam(req, 'order', 'desc');
+  const order = (queryParam(req, 'order') || 'desc').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -197,21 +169,21 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
   }
 
-  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
+  if (!['asc', 'desc'].includes(order)) {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  const offset = (page - 1) * perPage;
+  const results = await fetchVersionsNoContent(page, perPage, order);
 
-  const returnedSnippets = latestSnippets.sort((a, b) => {
-    const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
+  const items = Array.from(results).map(enhancedArticleNoContentToSnippet);
 
-    return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
-  }).slice(offset, offset + perPage);
+  const total = req.headers['x-total-count']
+    ? parseInt(req.headers['x-total-count'] as string, 10)
+    : Object.keys(items).length;
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: Object.keys(latestSnippets).length,
-    items: returnedSnippets,
+    total,
+    items,
   });
 };
 
