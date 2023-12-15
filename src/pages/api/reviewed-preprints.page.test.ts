@@ -1,5 +1,5 @@
 import { reviewedPreprintSnippet } from './reviewed-preprints.page';
-import { Author } from '../../types/author';
+import { Author } from '../../types';
 
 describe('reviewedPreprintSnippet', () => {
   it('prepares a reviewed preprint snippet with manuscript and metadata', () => {
