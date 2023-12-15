@@ -10,6 +10,7 @@ import {
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
 } from '../reviewed-preprints.page';
+import { VersionSummary } from '../../../types';
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
@@ -19,6 +20,8 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const version = await fetchVersion(msid);
+  const firstPublished = Object.values(version?.versions || {} as VersionSummary[])
+    .reduce((min: null | VersionSummary, v) => ((!min || (min.published && v.published && v.published < min.published)) ? v : min), null);
   if (!version || version === null) {
     errorNotFoundRequest(res);
     return;
@@ -28,7 +31,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     res,
     'application/vnd.elife.reviewed-preprint+json; version=1',
     200,
-    enhancedArticleToReviewedPreprintItemResponse(version.article),
+    enhancedArticleToReviewedPreprintItemResponse(version.article, firstPublished?.published ?? null),
   );
 };
 

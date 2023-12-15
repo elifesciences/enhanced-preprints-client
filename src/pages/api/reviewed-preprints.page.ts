@@ -134,15 +134,15 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   published,
   subjects,
   article: { content, authors },
-}: EnhancedArticle): ReviewedPreprintItemResponse => ({
+}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   id: msid,
   doi: preprintDoi,
   pdf: pdfUrl,
   status: 'reviewed',
   authorLine: prepareAuthorLine(authors || []),
   title: contentToHtml(article.title),
-  published: new Date(published!).toISOString(),
-  reviewedDate: new Date(published!).toISOString(),
+  published: new Date(firstPublished ?? published!).toISOString(),
+  reviewedDate: new Date(firstPublished ?? published!).toISOString(),
   versionDate: new Date(published!).toISOString(),
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
