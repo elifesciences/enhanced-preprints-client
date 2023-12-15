@@ -110,6 +110,7 @@ export const enhancedArticleNoContentToSnippet = ({
   article,
   published,
   subjects,
+  firstPublished,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi,
@@ -117,8 +118,8 @@ export const enhancedArticleNoContentToSnippet = ({
   status: 'reviewed',
   authorLine: prepareAuthorLine(article.authors || []),
   title: contentToHtml(article.title),
-  published: new Date(published!).toISOString(),
-  reviewedDate: new Date(published!).toISOString(),
+  published: new Date(firstPublished).toISOString(),
+  reviewedDate: new Date(firstPublished).toISOString(),
   versionDate: new Date(published!).toISOString(),
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
