@@ -175,14 +175,10 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const results = await fetchVersionsNoContent(page, perPage, order);
 
-  const items = Array.from(results).map(enhancedArticleNoContentToSnippet);
-
-  const total = req.headers['x-total-count']
-    ? parseInt(req.headers['x-total-count'] as string, 10)
-    : Object.keys(items).length;
+  const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total,
+    total: results.total,
     items,
   });
 };
