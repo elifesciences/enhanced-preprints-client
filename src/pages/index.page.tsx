@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 import { config } from '../config';
 import { getManuscripts } from '../manuscripts';
 import { fetchVersions } from '../utils/fetch-data';
@@ -17,10 +16,10 @@ export const App = ({ ids, articles, previews }: PageProps) => (
       <Heading id="articles" headingLevel={2} content="Articles:" />
       <ul>
         {ids && ids
-          .map((id, index) => <li key={index}><Link href={`/reviewed-preprints/${id}`}>{id}</Link></li>)
+          .map((id, index) => <li key={index}><a href={`/reviewed-preprints/${id}`}>{id}</a></li>)
         }
         {articles && articles
-          .map(({ id }, index) => <li key={index}><Link href={`/reviewed-preprints/${id}`}>{id}</Link></li>)
+          .map(({ id }, index) => <li key={index}><a href={`/reviewed-preprints/${id}`}>{id}</a></li>)
         }
       </ul>
 
@@ -28,7 +27,7 @@ export const App = ({ ids, articles, previews }: PageProps) => (
         <Heading id="previews" headingLevel={2} content="Previews:" />
         <ul>
           {previews
-            .map(({ id }, index) => <li key={index}><Link href={`/previews/${id}`}>{id}</Link></li>)
+            .map(({ id }, index) => <li key={index}><a href={`/previews/${id}`}>{id}</a></li>)
           }
         </ul>
       </>}
