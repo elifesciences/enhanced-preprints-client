@@ -71,7 +71,7 @@ export type ArticleSummary = {
   id: string,
   doi: string,
   title: ArticleTitle,
-  date: Date,
+  date: Date | null,
 };
 
 export type ReviewText = string;
