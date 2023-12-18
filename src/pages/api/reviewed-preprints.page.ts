@@ -9,7 +9,6 @@ import {
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
-import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
