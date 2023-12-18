@@ -7230,6 +7230,13 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "10.1101/2023.02.12.528105": {
+      "preprintDoi": "10.1101/2023.02.12.528105",
+      "msas": [
+        "Chromosomes and Gene Expression",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -8203,6 +8210,7 @@
     "91574": "91574v1",
     "91576": "91576v1",
     "91582": "91582v1",
+    "91596": "91596v1",
     "91597": "91597v1",
     "91598": "91598v1",
     "91599": "91599v2",
@@ -58358,6 +58366,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-05-10"
+          }
+        ]
+      }
+    },
+    "91596v1": {
+      "msid": "91596",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.02.12.528105",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-18",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-06",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.02.12.528105v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-04"
           }
         ]
       }
