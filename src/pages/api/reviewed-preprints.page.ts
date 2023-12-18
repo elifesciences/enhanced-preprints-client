@@ -104,28 +104,6 @@ export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?:
   };
 };
 
-export const enhancedArticleNoContentToSnippet = ({
-  msid,
-  preprintDoi,
-  pdfUrl,
-  article,
-  published,
-  subjects,
-}: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
-  id: msid,
-  doi: preprintDoi,
-  pdf: pdfUrl,
-  status: 'reviewed',
-  authorLine: prepareAuthorLine(article.authors || []),
-  title: contentToHtml(article.title),
-  published: new Date(published!).toISOString(),
-  reviewedDate: new Date(published!).toISOString(),
-  versionDate: new Date(published!).toISOString(),
-  statusDate: new Date(published!).toISOString(),
-  stage: 'published',
-  subjects: getSubjects(subjects || []),
-});
-
 export const articleSummaryToSnippet = async (summary: ArticleSummaryWithFirstPublished): Promise<ReviewedPreprintSnippet | null> => {
   const version = (await fetchVersion(summary.id));
 
