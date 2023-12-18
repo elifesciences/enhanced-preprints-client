@@ -70,6 +70,7 @@ export type ProcessedArticle = {
 export type ArticleSummary = {
   id: string,
   doi: string,
+  msid?: string,
   title: ArticleTitle,
   date: Date | null,
 };

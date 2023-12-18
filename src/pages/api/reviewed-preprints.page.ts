@@ -1,8 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata, fetchVersionsNoContent } from '../../utils/fetch-data';
+import { fetchMetadata, fetchVersion, fetchVersions } from '../../utils/fetch-data';
 import {
+  ArticleSummary,
   Author, EnhancedArticle, MetaData, ReviewedPreprintSnippet,
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
@@ -110,7 +111,6 @@ export const enhancedArticleNoContentToSnippet = ({
   article,
   published,
   subjects,
-  firstPublished,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi,
@@ -118,13 +118,38 @@ export const enhancedArticleNoContentToSnippet = ({
   status: 'reviewed',
   authorLine: prepareAuthorLine(article.authors || []),
   title: contentToHtml(article.title),
-  published: new Date(firstPublished).toISOString(),
-  reviewedDate: new Date(firstPublished).toISOString(),
+  published: new Date(published!).toISOString(),
+  reviewedDate: new Date(published!).toISOString(),
   versionDate: new Date(published!).toISOString(),
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
   subjects: getSubjects(subjects || []),
 });
+
+export const articleSummaryToSnippet = async (summary: ArticleSummaryWithFirstPublished): Promise<ReviewedPreprintSnippet | null> => {
+  const version = (await fetchVersion(summary.id));
+
+  if (!version) {
+    return null;
+  }
+
+  const { article } = version;
+
+  return {
+    id: article.msid,
+    doi: article.preprintDoi,
+    pdf: article.pdfUrl,
+    status: 'reviewed',
+    authorLine: prepareAuthorLine(article.article.authors || []),
+    title: contentToHtml(article.article.title),
+    published: new Date(summary.firstPublished).toISOString(),
+    reviewedDate: new Date(summary.firstPublished).toISOString(),
+    versionDate: new Date(article.published!).toISOString(),
+    statusDate: new Date(article.published!).toISOString(),
+    stage: 'published',
+    subjects: getSubjects(article.subjects || []),
+  };
+};
 
 export const enhancedArticleToReviewedPreprintItemResponse = ({
   msid,
@@ -134,15 +159,15 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   published,
   subjects,
   article: { content, authors },
-}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+}: EnhancedArticle): ReviewedPreprintItemResponse => ({
   id: msid,
   doi: preprintDoi,
   pdf: pdfUrl,
   status: 'reviewed',
   authorLine: prepareAuthorLine(authors || []),
   title: contentToHtml(article.title),
-  published: new Date(firstPublished ?? published!).toISOString(),
-  reviewedDate: new Date(firstPublished ?? published!).toISOString(),
+  published: new Date(published!).toISOString(),
+  reviewedDate: new Date(published!).toISOString(),
   versionDate: new Date(published!).toISOString(),
   statusDate: new Date(published!).toISOString(),
   stage: 'published',
@@ -150,7 +175,48 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
+type ArticleSummaryWithFirstPublished = ArticleSummary & {
+  firstPublished: Date,
+};
+
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
+  const summaries = (await fetchVersions()).items;
+  const now = new Date();
+  const latestVersions = Array.from(summaries.reduce<Map<string, ArticleSummaryWithFirstPublished>>((items, item) => {
+    if (!item.date || !item.msid) {
+      // only consider published items
+      return items;
+    }
+    const newItemPublishedDate = new Date(item.date);
+    if (newItemPublishedDate >= now) {
+      // only consider items already published (published date in the past)
+      return items;
+    }
+    const existingItem = items.get(item.msid);
+    if (existingItem && existingItem.date) {
+      const existingItemPublishedDate = new Date(existingItem.date);
+      // Only the latest published item should be in the output map
+      if (existingItemPublishedDate < newItemPublishedDate) {
+        items.set(item.msid, {
+          ...item,
+          firstPublished: existingItemPublishedDate,
+        });
+      } else {
+        items.set(item.msid, {
+          ...existingItem,
+          firstPublished: newItemPublishedDate,
+        });
+      }
+    } else {
+      items.set(item.msid, {
+        ...item,
+        firstPublished: item.date,
+      });
+    }
+    return items;
+  }, new Map<string, ArticleSummaryWithFirstPublished>())
+    .values());
+
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
     queryParam(req, 'page', 1),
@@ -160,7 +226,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
   });
 
-  const order = (queryParam(req, 'order') || 'desc').toString();
+  const order = queryParam(req, 'order', 'desc');
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -170,17 +236,28 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
   }
 
-  if (!['asc', 'desc'].includes(order)) {
+  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(page, perPage, order);
+  const offset = (page - 1) * perPage;
 
-  const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
+  const returnedSnippets = latestVersions.sort((a, b) => {
+    const diff = new Date(a.date ?? '2000-01-01').getTime() - new Date(b.date ?? '2000-01-01').getTime();
+
+    // sub sort by msid
+    if (diff === 0) {
+      return a.id < b.id ? 1 : -1;
+    }
+
+    return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
+  }).slice(offset, offset + perPage);
+
+  const latestSnippets = (await Promise.all(returnedSnippets.map(articleSummaryToSnippet))).filter((snippet): snippet is ReviewedPreprintSnippet => !!snippet);
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: results.total,
-    items,
+    total: latestVersions.length,
+    items: latestSnippets,
   });
 };
 
