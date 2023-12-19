@@ -7299,6 +7299,13 @@
         "Cell Biology",
         "Plant Biology"
       ]
+    },
+    "10.1101/2023.09.13.557621": {
+      "preprintDoi": "10.1101/2023.09.13.557621",
+      "msas": [
+        "Genetics and Genomics",
+        "Microbiology and Infectious Disease"
+      ]
     }
   },
   "manuscripts": {
@@ -8423,6 +8430,7 @@
     "92829": "92829v1",
     "92860": "92860v1",
     "92861": "92861v1",
+    "92863": "92863v1",
     "92873": "92873v1",
     "92882": "92882v1",
     "92889": "92889v1",
@@ -59207,6 +59215,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-02-24"
+          }
+        ]
+      }
+    },
+    "92863v1": {
+      "msid": "92863",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.09.13.557621",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-19",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-21"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-09-16",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.09.13.557621v1/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
