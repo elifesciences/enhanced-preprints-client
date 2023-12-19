@@ -7319,6 +7319,12 @@
         "Evolutionary Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.04.28.538700": {
+      "preprintDoi": "10.1101/2023.04.28.538700",
+      "msas": [
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -7961,6 +7967,7 @@
     "89776": "89776v1",
     "89780": "89780v2",
     "89781": "89781v1",
+    "89782": "89782v1",
     "89792": "89792v1",
     "89794": "89794v1",
     "89795": "89795v2",
@@ -59588,6 +59595,35 @@
             "date": "2023-02-18",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.18.529008v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "89782v1": {
+      "msid": "89782",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.04.28.538700",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-19",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-07-18"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-04-28",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.04.28.538700v1/",
               "text": "Go to bioRxiv"
             }
           }
