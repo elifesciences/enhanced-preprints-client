@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "crc-32": "^1.2.2",
-    "next": "^13.0.0",
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.54.5",
@@ -56,7 +56,7 @@
     ]
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.5",
+    "@next/eslint-plugin-next": "^14.0.0",
     "@playwright/test": "^1.29.2",
     "@storybook/addon-a11y": "^7.0.6",
     "@storybook/addon-actions": "^7.0.6",
