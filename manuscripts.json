@@ -7406,6 +7406,12 @@
         "Microbiology and Infectious Disease",
         "Structural Biology and Molecular Biophysics"
       ]
+    },
+    "10.1101/2023.10.03.560674": {
+      "preprintDoi": "10.1101/2023.10.03.560674",
+      "msas": [
+        "Computational and Systems Biology"
+      ]
     }
   },
   "manuscripts": {
@@ -8553,6 +8559,7 @@
     "92958": "92958v1",
     "92979": "92979v1",
     "92982": "92982v1",
+    "92991": "92991v1",
     "92992": "92992v1",
     "93052": "93052v1",
     "93063": "93063v1",
@@ -60473,6 +60480,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-10-09"
+          }
+        ]
+      }
+    },
+    "92991v1": {
+      "msid": "92991",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.03.560674",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-20",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-03",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.03.560674v1/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-03"
           }
         ]
       }
