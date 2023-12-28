@@ -7542,6 +7542,12 @@
       "msas": [
         "Neuroscience"
       ]
+    },
+    "0.1101/2022.10.12.511977": {
+      "preprintDoi": "0.1101/2022.10.12.511977",
+      "msas": [
+        "Physics of Living Systems"
+      ]
     }
   },
   "manuscripts": {
@@ -8695,6 +8701,7 @@
     "92895": "92895v1",
     "92909": "92909v1",
     "92916": "92916v1",
+    "92919": "92919v1",
     "92938": "92938v1",
     "92940": "92940v1",
     "92942": "92942v1",
@@ -62050,6 +62057,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-06-24"
+          }
+        ]
+      }
+    },
+    "92919v1": {
+      "msid": "92919",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "0.1101/2022.10.12.511977",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-17",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2022.10.12.511977v2/",
+              "text": "Go to bioRxiv"
+            }
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-16"
           }
         ]
       }
