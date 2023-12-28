@@ -7548,6 +7548,13 @@
       "msas": [
         "Physics of Living Systems"
       ]
+    },
+    "10.1101/2023.10.02.560529": {
+      "preprintDoi": "10.1101/2023.10.02.560529",
+      "msas": [
+        "Evolutionary Biology",
+        "Genetics and Genomics"
+      ]
     }
   },
   "manuscripts": {
@@ -8735,6 +8742,7 @@
     "93284": "93284v1",
     "93304": "93304v1",
     "93333": "93333v1",
+    "93338": "93338v1",
     "93357": "93357v1",
     "93429": "93429v1",
     "93464": "93464v1",
@@ -62174,6 +62182,35 @@
             "date": "2023-02-08",
             "link": {
               "url": "https://www.biorxiv.org/content/10.1101/2023.02.08.527629v1",
+              "text": "Go to bioRxiv"
+            }
+          }
+        ]
+      }
+    },
+    "93338v1": {
+      "msid": "93338",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.10.02.560529",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-10-25"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-10-04",
+            "link": {
+              "url": "https://www.biorxiv.org/content/10.1101/2023.10.02.560529v2/",
               "text": "Go to bioRxiv"
             }
           }
