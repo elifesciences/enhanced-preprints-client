@@ -7555,6 +7555,12 @@
         "Evolutionary Biology",
         "Genetics and Genomics"
       ]
+    },
+    "10.1101/2023.05.18.23290210": {
+      "preprintDoi": "10.1101/2023.05.18.23290210",
+      "msas": [
+        "Epidemiology and Global Health"
+      ]
     }
   },
   "manuscripts": {
@@ -8499,6 +8505,7 @@
     "91405": "91405v1",
     "91406": "91406v2",
     "91407": "91407v1",
+    "91411": "91411v1",
     "91415": "91415v1",
     "91420": "91420v1",
     "91421": "91421v1",
@@ -62303,6 +62310,35 @@
           {
             "name": "Sent for peer review",
             "date": "2023-07-10"
+          }
+        ]
+      }
+    },
+    "91411v1": {
+      "msid": "91411",
+      "version": 1,
+      "publishedYear": 2023,
+      "preprintDoi": "10.1101/2023.05.18.23290210",
+      "status": {
+        "articleType": "Reviewed Preprint",
+        "status": "Published from the original preprint after peer review and assessment by eLife.",
+        "timeline": [
+          {
+            "name": "Reviewed preprint posted",
+            "date": "2023-12-28",
+            "eventDescription": "(this version)"
+          },
+          {
+            "name": "Sent for peer review",
+            "date": "2023-09-15"
+          },
+          {
+            "name": "Posted to bioRxiv",
+            "date": "2023-08-02",
+            "link": {
+              "url": "https://www.medrxiv.org/content/10.1101/2023.05.18.23290210v2/",
+              "text": "Go to bioRxiv"
+            }
           }
         ]
       }
