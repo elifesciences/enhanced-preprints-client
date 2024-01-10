@@ -1,4 +1,4 @@
-ARG node_version=18.19-alpine3.17
+ARG node_version=20.10-alpine3.19
 
 FROM node:${node_version} as builder
 RUN mkdir /opt/epp-client

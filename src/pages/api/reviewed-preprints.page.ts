@@ -82,6 +82,16 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
 
+const toIsoStringWithoutMilliseconds = (date: Date): string => {
+  const year = date.getUTCFullYear();
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = date.getUTCDate().toString().padStart(2, '0');
+  const hours = date.getUTCHours().toString().padStart(2, '0');
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
+};
+
 export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?: MetaData) : ReviewedPreprintSnippet => {
   const dates = reviewedDates(manuscript.status.timeline);
   const reviewedDate = dates[dates.length - 1];
@@ -118,10 +128,10 @@ export const enhancedArticleNoContentToSnippet = ({
   status: 'reviewed',
   authorLine: prepareAuthorLine(article.authors || []),
   title: contentToHtml(article.title),
-  published: new Date(firstPublished).toISOString(),
-  reviewedDate: new Date(firstPublished).toISOString(),
-  versionDate: new Date(published!).toISOString(),
-  statusDate: new Date(published!).toISOString(),
+  published: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
+  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
+  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
   stage: 'published',
   subjects: getSubjects(subjects || []),
 });
@@ -141,10 +151,10 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   status: 'reviewed',
   authorLine: prepareAuthorLine(authors || []),
   title: contentToHtml(article.title),
-  published: new Date(firstPublished ?? published!).toISOString(),
-  reviewedDate: new Date(firstPublished ?? published!).toISOString(),
-  versionDate: new Date(published!).toISOString(),
-  statusDate: new Date(published!).toISOString(),
+  published: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
+  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
+  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
   stage: 'published',
   subjects: getSubjects(subjects || []),
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
