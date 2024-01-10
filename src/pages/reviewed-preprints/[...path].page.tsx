@@ -3,11 +3,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { config } from '../../config';
-import { getManuscript, getRppDoi } from '../../manuscripts';
+import { getRppDoi } from '../../manuscripts';
 import { Content, MetaData, PeerReview } from '../../types';
-import {
-  fetchContent, fetchMetadata, fetchReviews, fetchVersion,
-} from '../../utils/fetch-data';
+import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
@@ -141,86 +139,43 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  // FEATURE FLAG
-  if (config.automationFlag) {
-    const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
-    if (!articleWithVersions) {
-      console.log(`Article version not found (${id})`); // eslint-disable-line no-console
-      return { notFound: true };
-    }
-
-    const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
-
-    const status = generateStatus(articleWithVersions);
-    const timeline = generateTimeline(articleWithVersions);
-
-    // This is redundant after server has been updated
-    if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
-      console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
-      return { notFound: true };
-    }
-
-    return {
-      props: {
-        metaData: {
-          ...articleWithVersions.article,
-          ...articleWithVersions.article.article,
-          authors: articleWithVersions.article.article.authors || [],
-          msas: articleWithVersions.article.subjects || [],
-          version: articleWithVersions.article.versionIdentifier,
-        },
-        imgInfo,
-        msidWithVersion: id,
-        content: articleWithVersions.article.article.content,
-        status: {
-          articleType: status.type,
-          status: status.status,
-          timeline,
-          isPreview: status.isPreview,
-        },
-        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-      },
-    };
-  }
-
-  const manuscriptConfig = getManuscript(config.manuscriptConfigFile, id);
-
-  if (manuscriptConfig === undefined) {
-    console.log(`Cannot find msid '${id}' configured`); // eslint-disable-line no-console
+  if (!articleWithVersions) {
+    console.log(`Article version not found (${id})`); // eslint-disable-line no-console
     return { notFound: true };
   }
 
-  const [metaData, content, peerReview, status] = await Promise.all([
-    fetchMetadata(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchContent(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    fetchReviews(`${manuscriptConfig.msid}/v${manuscriptConfig.version}`),
-    manuscriptConfig.status,
-  ]);
+  const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
-  const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(content) : null;
+  const status = generateStatus(articleWithVersions);
+  const timeline = generateTimeline(articleWithVersions);
+
+  // This is redundant after server has been updated
+  if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
+    console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
+    return { notFound: true };
+  }
 
   return {
     props: {
       metaData: {
-        ...metaData,
-        ...manuscriptConfig.pdfUrl ? { pdfUrl: manuscriptConfig.pdfUrl } : {},
-        msid: manuscriptConfig.msid,
-        version: manuscriptConfig.version,
-        msas: manuscriptConfig.msas,
-        publishedYear: manuscriptConfig.publishedYear,
-        volume: `${manuscriptConfig.publishedYear - 2011}`,
-        eLocationId: `RP${manuscriptConfig.msid}`,
-        license: manuscriptConfig.license || 'https://creativecommons.org/licenses/by/4.0/',
+        ...articleWithVersions.article,
+        ...articleWithVersions.article.article,
+        authors: articleWithVersions.article.article.authors || [],
+        msas: articleWithVersions.article.subjects || [],
+        version: articleWithVersions.article.versionIdentifier,
       },
       imgInfo,
       msidWithVersion: id,
-      content,
+      content: articleWithVersions.article.article.content,
       status: {
-        ...status,
-        isPreview: false,
+        articleType: status.type,
+        status: status.status,
+        timeline,
+        isPreview: status.isPreview,
       },
-      peerReview,
+      peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
     },
   };
 };

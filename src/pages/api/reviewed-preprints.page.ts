@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata, fetchVersionsNoContent } from '../../utils/fetch-data';
+import { fetchMetadata } from '../../utils/fetch-data';
 import {
   Author, EnhancedArticle, MetaData, ReviewedPreprintSnippet,
 } from '../../types';
@@ -160,40 +160,6 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
-const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  const [perPage, page] = [
-    queryParam(req, 'per-page', 20),
-    queryParam(req, 'page', 1),
-  ].map((v) => {
-    const n = Number(v);
-
-    return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
-  });
-
-  const order = (queryParam(req, 'order') || 'desc').toString();
-
-  if (page <= 0) {
-    errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
-  }
-
-  if (perPage <= 0 || perPage > 100) {
-    errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
-  }
-
-  if (!['asc', 'desc'].includes(order)) {
-    errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
-  }
-
-  const results = await fetchVersionsNoContent(page, perPage, order);
-
-  const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
-
-  writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: results.total,
-    items,
-  });
-};
-
 const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const manuscripts = getManuscriptsLatest(config.manuscriptConfigFile);
   const allItems = Object.values(manuscripts).map((manuscript) => reviewedPreprintSnippet(manuscript));
@@ -245,10 +211,4 @@ const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (config.automationFlag) {
-    return serverApi(req, res);
-  }
-
-  return manuscriptApi(req, res);
-};
+export default async (req: NextApiRequest, res: NextApiResponse) => manuscriptApi(req, res);

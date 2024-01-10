@@ -4,7 +4,6 @@ if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-bui
 }
 
 type Config = {
-  automationFlag: boolean
   showPreviews: boolean
   apiServer?: string,
   iiifServer?: string,
@@ -18,7 +17,6 @@ type Config = {
 };
 
 export const config: Config = {
-  automationFlag: (!!process.env.IS_AUTOMATED) || false,
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
