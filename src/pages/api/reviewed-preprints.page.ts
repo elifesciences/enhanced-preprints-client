@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { config } from '../../config';
-import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata } from '../../utils/fetch-data';
+import { FullManuscriptConfig } from '../../manuscripts';
+import { fetchVersionsNoContent } from '../../utils/fetch-data';
 import {
   Author, EnhancedArticle, MetaData, ReviewedPreprintSnippet,
 } from '../../types';
@@ -160,10 +159,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
-const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
-  const manuscripts = getManuscriptsLatest(config.manuscriptConfigFile);
-  const allItems = Object.values(manuscripts).map((manuscript) => reviewedPreprintSnippet(manuscript));
-
+const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
     queryParam(req, 'page', 1),
@@ -172,7 +168,8 @@ const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
   });
-  const order = queryParam(req, 'order', 'desc');
+
+  const order = (queryParam(req, 'order') || 'desc').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -182,33 +179,18 @@ const manuscriptApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
   }
 
-  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
+  if (!['asc', 'desc'].includes(order)) {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  const offset = (page - 1) * perPage;
+  const results = await fetchVersionsNoContent(page, perPage, order);
 
-  const items = await Promise
-    .all(
-      (
-        allItems
-          .sort((a, b) => {
-            const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
-
-            return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
-          })
-          .slice(offset, offset + perPage)
-      )
-        .map(
-          async (item) => fetchMetadata(`${manuscripts[item.id].msid}/v${manuscripts[item.id].version}`)
-            .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
-        ),
-    );
+  const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: allItems.length,
+    total: results.total,
     items,
   });
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => manuscriptApi(req, res);
+export default async (req: NextApiRequest, res: NextApiResponse) => serverApi(req, res);
