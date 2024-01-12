@@ -10,13 +10,14 @@ type ButtonProps = {
   text: string,
   url?: string,
   download?: boolean,
+  rel?: string,
   onClick?: () => void,
 };
 
 export const Button = ({
-  text, iconName, url, variant, onClick, download,
+  text, iconName, url, variant, onClick, download, rel,
 }: ButtonProps) => (
-  <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url} onClick={onClick} download={download}>
+  <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url} onClick={onClick} download={download} rel={rel}>
     {text}
   </a>
 );
