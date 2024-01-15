@@ -8,76 +8,177 @@
   "version": "1",
   "pdfUrl": "#",
   "msas": [
-    "World Domination", "Pondering", "Narf!"
+    "World Domination",
+    "Pondering",
+    "Narf!"
   ],
   "title": "Tonight we take over the world!",
-  "authors":  [
-    { "givenNames": [
-      "Brain"
-    ], "familyNames": [], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] },
-    { "givenNames": [
-      "Pinky"
-    ], "familyNames": [
-      "Mouse"
-    ], "affiliations": [{ "name": "Acme Labs", "address": { "addressCountry": "New York" } }] },
-    { "givenNames": [
-      "Slowpoke"
-    ], "familyNames": [
-      "Rodreigez"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Sylvester"
-    ], "familyNames": [
-      "J Pussycat"
-    ], "affiliations": [{ "name": "Acme Investments", "address": { "addressCountry": "New York" } }] },
-    { "givenNames": [
-      "Elmer"
-    ], "familyNames": [
-      "Fudd"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Yosemite"
-    ], "familyNames": [
-      "Sam"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Fogghorn"
-    ], "familyNames": [
-      "Leghorn"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Pepe"
-    ], "familyNames": [
-      "Le Pew"
-    ], "affiliations": [{ "name": "French Foreign Legion", "address": { "addressCountry": "Paris" } }] },
-    { "givenNames": [
-      "Porky"
-    ], "familyNames": [
-      "Pig"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Speedy"
-    ], "familyNames": [
-      "Gonzales"
-    ], "affiliations": [] },
-    { "givenNames": [
-      "Bugs"
-    ], "familyNames": [
-      "Bunny"
-    ], "affiliations": [{ "name": "Harlem Globetrotters", "address": { "addressCountry": "New York" } }] }
+  "authors": [
+    {
+      "givenNames": [
+        "Brain"
+      ],
+      "familyNames": [],
+      "affiliations": [
+        {
+          "name": "Acme Labs",
+          "address": {
+            "addressCountry": "New York"
+          }
+        }
+      ]
+    },
+    {
+      "givenNames": [
+        "Pinky"
+      ],
+      "familyNames": [
+        "Mouse"
+      ],
+      "affiliations": [
+        {
+          "name": "Acme Labs",
+          "address": {
+            "addressCountry": "New York"
+          }
+        }
+      ]
+    },
+    {
+      "givenNames": [
+        "Slowpoke"
+      ],
+      "familyNames": [
+        "Rodreigez"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Sylvester"
+      ],
+      "familyNames": [
+        "J Pussycat"
+      ],
+      "affiliations": [
+        {
+          "name": "Acme Investments",
+          "address": {
+            "addressCountry": "New York"
+          }
+        }
+      ]
+    },
+    {
+      "givenNames": [
+        "Elmer"
+      ],
+      "familyNames": [
+        "Fudd"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Yosemite"
+      ],
+      "familyNames": [
+        "Sam"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Fogghorn"
+      ],
+      "familyNames": [
+        "Leghorn"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Pepe"
+      ],
+      "familyNames": [
+        "Le Pew"
+      ],
+      "affiliations": [
+        {
+          "name": "French Foreign Legion",
+          "address": {
+            "addressCountry": "Paris"
+          }
+        }
+      ]
+    },
+    {
+      "givenNames": [
+        "Porky"
+      ],
+      "familyNames": [
+        "Pig"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Speedy"
+      ],
+      "familyNames": [
+        "Gonzales"
+      ],
+      "affiliations": []
+    },
+    {
+      "givenNames": [
+        "Bugs"
+      ],
+      "familyNames": [
+        "Bunny"
+      ],
+      "affiliations": [
+        {
+          "name": "Harlem Globetrotters",
+          "address": {
+            "addressCountry": "New York"
+          }
+        }
+      ]
+    }
   ],
   "references": [
     {
       "type": "Article",
       "id": "c1",
       "authors": [
-        { "type": "Person", "familyNames": ["Coyote"], "givenNames": ["Wile", "E"] },
-        { "type": "Person", "familyNames": ["Devil"], "givenNames": ["Taz"] }
+        {
+          "type": "Person",
+          "familyNames": [
+            "Coyote"
+          ],
+          "givenNames": [
+            "Wile",
+            "E"
+          ]
+        },
+        {
+          "type": "Person",
+          "familyNames": [
+            "Devil"
+          ],
+          "givenNames": [
+            "Taz"
+          ]
+        }
       ],
       "datePublished": "2004-01-01T00:00:00.000Z",
       "isPartOf": {
         "type": "PublicationVolume",
-        "isPartOf": { "type": "Periodical", "name": "ACME Journal of Demolitions" },
+        "isPartOf": {
+          "type": "Periodical",
+          "name": "ACME Journal of Demolitions"
+        },
         "volumeNumber": 92
       },
       "pageEnd": 2843,
