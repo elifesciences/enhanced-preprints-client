@@ -6,6 +6,7 @@ test.describe('citations', () => {
     expect(response.ok()).toBeTruthy();
     const headers = response.headers();
     expect(headers['content-type']).toBe('application/x-bibtex');
+    expect(headers['content-disposition']).toBe('attachment; filename=123.bib');
     const responseBody = await response.text();
     expect(responseBody).toContain('A study of world domination by genetically enhanced mice.');
   });
@@ -15,6 +16,7 @@ test.describe('citations', () => {
     expect(response.ok()).toBeTruthy();
     const headers = response.headers();
     expect(headers['content-type']).toBe('application/x-research-info-systems');
+    expect(headers['content-disposition']).toBe('attachment; filename=123.ris');
     const responseBody = await response.text();
     expect(responseBody).toContain('A study of world domination by genetically enhanced mice.');
   });
