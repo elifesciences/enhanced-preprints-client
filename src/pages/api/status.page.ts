@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     statusItems: { summariesApi: true },
   };
 
-  const summaries = await fetch(`${config.apiServer}/api/reviewed-preprints`).then((response) => response.json()).catch((error) => error);
+  const summaries = await fetch(`${config.apiServer}/api/preprints`).then((response) => response.json()).catch((error) => error);
 
   if (summaries?.items?.length >= 0) {
     status.preprints = summaries.items.length;
