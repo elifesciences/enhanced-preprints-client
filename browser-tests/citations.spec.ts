@@ -7,7 +7,7 @@ test.describe('citations', () => {
     const headers = response.headers();
     expect(headers['content-type']).toBe('application/x-bibtex');
     const responseBody = await response.text();
-    expect(responseBody).toContain('A study of world domination by genetically enhanced mice');
+    expect(responseBody).toContain('A study of world domination by genetically enhanced mice.');
   });
 
   test('can download a ris citation', async ({ request }) => {
@@ -16,6 +16,6 @@ test.describe('citations', () => {
     const headers = response.headers();
     expect(headers['content-type']).toBe('application/x-research-info-systems');
     const responseBody = await response.text();
-    expect(responseBody).toContain('A study of world domination by genetically enhanced mice');
+    expect(responseBody).toContain('A study of world domination by genetically enhanced mice.');
   });
 });
