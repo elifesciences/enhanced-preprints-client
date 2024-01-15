@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const version = await fetchVersion(msid);
-  const filename = `${msid}.bib`;
+  const filename = `${msid}.ris`;
 
   if (!version) {
     const error = `Unable to retrieve citation ${filename}`;
