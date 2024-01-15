@@ -55,3 +55,9 @@ NOTE: this does not affect storybook, which runs the same in either prod or dev
 When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem.
 
 `API_SERVER=https://prod--epp.elifesciences.org MANUSCRIPT_CONFIG_FILE=/opt/epp-client/manuscripts.json docker compose up`
+
+# Running with a local import and server
+
+```shell
+IS_AUTOMATED=true docker compose up image-server yarn app nginx
+```

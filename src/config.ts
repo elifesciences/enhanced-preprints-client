@@ -18,7 +18,7 @@ type Config = {
 };
 
 export const config: Config = {
-  automationFlag: true,
+  automationFlag: (!!process.env.IS_AUTOMATED) || false,
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
