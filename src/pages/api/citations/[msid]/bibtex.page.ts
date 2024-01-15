@@ -1,26 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getManuscript, getRppVersionDoi } from '../../../../manuscripts';
 import { config } from '../../../../config';
+import { fetchVersion } from '../../../../utils/fetch-data';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { msid } = req.query;
+  const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
 
-  if (msid === undefined || typeof msid !== 'string') {
+  if (msid === '') {
     res.status(404).send(`Cannot find msid configured (${msid})`);
     return;
   }
 
-  const manuscript = getManuscript(config.manuscriptConfigFile, msid);
+  const version = await fetchVersion(msid);
   const filename = `${msid}.bib`;
 
-  if (manuscript === undefined) {
+  if (!version) {
     const error = `Unable to retrieve citation ${filename}`;
     console.error(error); // eslint-disable-line no-console
     res.status(503).send(error);
     return;
   }
 
-  const doi = getRppVersionDoi(manuscript);
+  const doi = version.article.preprintDoi;
   const extReq = await fetch(
     `${config.apiServer}/api/citations/${doi}/bibtex`,
   );
