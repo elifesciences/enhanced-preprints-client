@@ -23,10 +23,7 @@
     "lint-sass:fix": "stylelint --fix **/*.scss",
     "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public",
-    "test:browser": "playwright test",
-    "publish-manuscript": "ts-node src/scripts/cliPublishManuscript.ts",
-    "publish-manuscript-no-input": "echo -n '' | ts-node src/scripts/cliPublishManuscript.ts",
-    "add-pdf-url-to-manuscript": "ts-node src/scripts/addPdfUrlToManuscript.ts"
+    "test:browser": "playwright test"
   },
   "eslintConfig": {
     "extends": [
