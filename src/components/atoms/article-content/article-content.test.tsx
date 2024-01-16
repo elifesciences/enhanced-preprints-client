@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ArticleContent } from './article-content';
+import { contentToJsx } from '../../../utils/content-to-jsx';
 
 describe('ArticleContent', () => {
   it('renders with a simple string content', async () => {
@@ -10,7 +11,7 @@ describe('ArticleContent', () => {
   });
 
   it('renders with a complex content', async () => {
-    render(<ArticleContent content={{ type: 'Emphasis', content: 'I am an em' }}/>);
+    render(<ArticleContent content={contentToJsx({ type: 'Emphasis', content: 'I am an em' })}/>);
 
     expect(screen.getByText('I am an em')).toBeInTheDocument();
     expect(screen.getByText('I am an em').tagName).toStrictEqual('EM');

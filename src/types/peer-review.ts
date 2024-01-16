@@ -7,7 +7,7 @@ export enum ReviewType {
 type Participant = {
   name: string,
   role: string,
-  institution: string,
+  institution?: string,
 };
 
 type Evaluation = {

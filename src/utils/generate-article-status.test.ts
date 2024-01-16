@@ -59,7 +59,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateStatus', () => {
-  it('should be a reviewed preprint if article is the same as the first version', () => {
+  it('should has specific status text if article is the same as the first version', () => {
     const status = generateStatus({
       article: version1,
       versions: {
@@ -70,10 +70,11 @@ describe('generateStatus', () => {
 
     expect(status).toMatchObject({
       type: 'Reviewed Preprint',
+      status: 'Published from the original preprint after peer review and assessment by eLife.',
     });
   });
 
-  it('should be a revised preprint if article is not the same as the first version', () => {
+  it('should has specific status text if article is not the same as the first version', () => {
     const status = generateStatus({
       article: version2,
       versions: {
@@ -83,7 +84,8 @@ describe('generateStatus', () => {
     });
 
     expect(status).toMatchObject({
-      type: 'Revised Preprint',
+      type: 'Reviewed Preprint',
+      status: 'Revised by authors after peer review.',
     });
   });
 

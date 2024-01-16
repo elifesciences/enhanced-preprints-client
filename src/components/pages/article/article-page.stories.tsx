@@ -7,6 +7,8 @@ import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
+import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToHeadings } from '../../../utils/content-to-headings';
 
 export default {
   title: 'Pages/Article Page',
@@ -41,7 +43,10 @@ const tabs = [
   },
 ];
 
-const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFullTextTab metaData={metaData} peerReview={peerReview} content={content} /></ArticlePage></DefaultLayout>;
+const jsxContent = contentToJsx(content);
+const headings = contentToHeadings(content);
+
+const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFullTextTab headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
 ArticlePageFullTextTab.args = {
   metaData,
@@ -50,7 +55,7 @@ ArticlePageFullTextTab.args = {
   tabs,
 };
 
-const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={content} /></ArticlePage></DefaultLayout>;
+const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={jsxContent} /></ArticlePage></DefaultLayout>;
 export const ArticlePageFiguresTab = FiguresTemplate.bind({});
 ArticlePageFiguresTab.args = {
   metaData,

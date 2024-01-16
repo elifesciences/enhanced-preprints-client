@@ -15,12 +15,11 @@ export type Address = {
   addressCountry?: string,
 };
 
-export type OrcidIdentifier = {
-  type: 'orcid',
+export type Identifier = {
+  type: 'PropertyValue',
+  propertyID: 'https://registry.identifiers.org/registry/orcid',
   value: string,
 };
-
-export type Identifier = OrcidIdentifier;
 
 export type Author = {
   familyNames: string[],
@@ -64,7 +63,7 @@ export type ArticleSummary = {
   id: string,
   doi: string,
   title: ArticleTitle,
-  date: Date,
+  date: Date | null,
 };
 
 export type ReviewText = string;

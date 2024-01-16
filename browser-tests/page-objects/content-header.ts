@@ -31,7 +31,7 @@ export class ContentHeader {
     this.institutions = this.page.locator('.institutions');
     this.visibleInstitutions = this.page.locator('.institutions li:visible');
     this.institutionsExpansion = this.page.locator('.institutions-list__expansion');
-    this.doi = this.page.locator('.descriptors__identifier a'); // may need to change when we have more identifiers
+    this.doi = this.page.locator('header .descriptors__identifier a'); // may need to change when we have more identifiers
   }
 
   async toggleAuthorsExpansion(): Promise<void> {
@@ -103,6 +103,6 @@ export class ContentHeader {
   }
 
   async assertDOI(doi: string): Promise<void> {
-    await expect(this.doi).toContainText(`https://doi.org/${doi}`);
+    await expect(this.doi).toHaveText(`https://doi.org/${doi}`);
   }
 }

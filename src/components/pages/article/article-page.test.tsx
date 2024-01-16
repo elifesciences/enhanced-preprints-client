@@ -4,7 +4,7 @@ import {
 import { ArticlePage } from './article-page';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import {
-  content, metaData, peerReview, status, citation,
+  metaData, peerReview, status, citation,
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
@@ -12,13 +12,13 @@ import { contentToText } from '../../../utils/content-to-text';
 describe('ArticlePage', () => {
   it('renders correctly', () => {
     expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage msidWithVersion="12345v1"metaData={metaData} status={status} activeTab="figures" tabs={[]}>
-      <ArticleFiguresTab content={content} />
+    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
+      <ArticleFiguresTab content={''} />
     </ArticlePage>)).not.toThrow();
   });
 
@@ -44,7 +44,7 @@ describe('ArticlePage', () => {
       },
     ];
     render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={tabs}>
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text')).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe('ArticlePage', () => {
 
     cleanup();
     render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={tabs}>
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
@@ -66,7 +66,7 @@ describe('ArticlePage', () => {
 
     cleanup();
     render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={tabs}>
-      <ArticleFullTextTab content={content} peerReview={peerReview} metaData={metaData} />
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');

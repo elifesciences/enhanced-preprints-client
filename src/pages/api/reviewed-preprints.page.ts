@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { config } from '../../config';
-import { FullManuscriptConfig, getManuscriptsLatest } from '../../manuscripts';
-import { fetchMetadata } from '../../utils/fetch-data';
-import { Author, MetaData } from '../../types';
-import { getSubjects, Subject } from '../../components/molecules/article-flag-list/article-flag-list';
-import { TimelineEvent } from '../../components/molecules/timeline/timeline';
+import { fetchVersionsNoContent } from '../../utils/fetch-data';
+import {
+  Author, EnhancedArticle, ReviewedPreprintSnippet,
+} from '../../types';
+import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content-to-html';
+import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -16,27 +16,12 @@ type ReviewedPreprintItemResponse = {
   indexContent?: string,
 } & ReviewedPreprintSnippet;
 
-type ReviewedPreprintSnippet = {
-  id: string,
-  doi: string,
-  pdf?: string,
-  status: 'reviewed',
-  authorLine?: string,
-  title?: string,
-  published?: string,
-  reviewedDate?: string,
-  versionDate?: string,
-  statusDate?: string,
-  stage: 'published',
-  subjects?: Subject[],
-};
-
 type ReviewedPreprintListResponse = {
   total: number,
   items: ReviewedPreprintSnippet[],
 };
 
-export const prepareAuthor = (author: Author) : string => {
+const prepareAuthor = (author: Author) : string => {
   const givenNames = (author.givenNames ?? []).join(' ');
   const familyNames = (author.familyNames ?? []).join(' ');
 
@@ -65,8 +50,6 @@ const prepareAuthorLine = (authors: Author[]) : undefined | string => {
   return [authorLine.slice(0, 2).join(', '), authorLine.length > 2 ? authorLine[2] : null].filter((a) => a !== null).join(authors.length > 3 ? ' ... ' : ', '); // eslint-disable-line consistent-return
 };
 
-const reviewedDates = (timeline: TimelineEvent[]) : string[] => timeline.filter((t) => t.name.startsWith('Reviewed preprint ')).sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())).map((t) => `${t.date}T03:00:00Z`);
-
 export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
   res
     .writeHead(statusCode, {
@@ -94,31 +77,64 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
 
-export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?: MetaData) : ReviewedPreprintSnippet => {
-  const dates = reviewedDates(manuscript.status.timeline);
-  const reviewedDate = dates[dates.length - 1];
-  const versionDate = dates[0];
-
-  return {
-    id: manuscript.msid,
-    doi: manuscript.preprintDoi,
-    pdf: manuscript.pdfUrl,
-    status: 'reviewed',
-    authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
-    title: meta ? contentToHtml(meta.title) : undefined,
-    published: reviewedDate,
-    reviewedDate,
-    versionDate,
-    statusDate: versionDate,
-    stage: 'published',
-    subjects: getSubjects(manuscript.msas),
-  };
+const toIsoStringWithoutMilliseconds = (date: Date): string => {
+  const year = date.getUTCFullYear();
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = date.getUTCDate().toString().padStart(2, '0');
+  const hours = date.getUTCHours().toString().padStart(2, '0');
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const manuscripts = getManuscriptsLatest(config.manuscriptConfigFile);
-  const allItems = Object.values(manuscripts).map((manuscript) => reviewedPreprintSnippet(manuscript));
+const enhancedArticleNoContentToSnippet = ({
+  msid,
+  preprintDoi,
+  pdfUrl,
+  article,
+  published,
+  subjects,
+  firstPublished,
+}: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
+  id: msid,
+  doi: preprintDoi,
+  pdf: pdfUrl,
+  status: 'reviewed',
+  authorLine: prepareAuthorLine(article.authors || []),
+  title: contentToHtml(article.title),
+  published: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
+  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
+  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  stage: 'published',
+  subjects: getSubjects(subjects || []),
+});
 
+export const enhancedArticleToReviewedPreprintItemResponse = ({
+  msid,
+  preprintDoi,
+  pdfUrl,
+  article,
+  published,
+  subjects,
+  article: { content, authors },
+}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+  id: msid,
+  doi: preprintDoi,
+  pdf: pdfUrl,
+  status: 'reviewed',
+  authorLine: prepareAuthorLine(authors || []),
+  title: contentToHtml(article.title),
+  published: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
+  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
+  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
+  stage: 'published',
+  subjects: getSubjects(subjects || []),
+  indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
+});
+
+const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const [perPage, page] = [
     queryParam(req, 'per-page', 20),
     queryParam(req, 'page', 1),
@@ -127,7 +143,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     return n.toString() === parseInt(n.toString(), 10).toString() ? n : -1;
   });
-  const order = queryParam(req, 'order', 'desc');
+
+  const order = (queryParam(req, 'order') || 'desc').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -137,31 +154,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting positive integer between 1 and 100 for \'per-page\' parameter');
   }
 
-  if (typeof order !== 'string' || ['asc', 'desc'].includes(order) === false) {
+  if (!['asc', 'desc'].includes(order)) {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  const offset = (page - 1) * perPage;
+  const results = await fetchVersionsNoContent(page, perPage, order);
 
-  const items = await Promise
-    .all(
-      (
-        allItems
-          .sort((a, b) => {
-            const diff = new Date(a.statusDate ?? '2000-01-01').getTime() - new Date(b.statusDate ?? '2000-01-01').getTime();
-
-            return (order === 'asc' && diff >= 0) || (order !== 'asc' && diff < 0) ? 1 : -1;
-          })
-          .slice(offset, offset + perPage)
-      )
-        .map(
-          async (item) => fetchMetadata(`${manuscripts[item.id].msid}/v${manuscripts[item.id].version}`)
-            .then((js) => ({ ...item, title: contentToHtml(js.title), authorLine: prepareAuthorLine(js.authors) })),
-        ),
-    );
+  const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
   writeResponse(res, 'application/vnd.elife.reviewed-preprint-list+json; version=1', 200, {
-    total: allItems.length,
+    total: results.total,
     items,
   });
 };
+
+export default async (req: NextApiRequest, res: NextApiResponse) => serverApi(req, res);

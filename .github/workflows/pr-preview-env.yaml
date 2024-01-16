@@ -16,15 +16,15 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       - name: Login to GHCR
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and load preview image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           cache-from: type=gha
@@ -43,7 +43,7 @@ jobs:
         id: date
         run: echo "date=$(date --utc +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
       - name: push preview image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           target: prod
@@ -53,7 +53,7 @@ jobs:
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}-${{ steps.date.outputs.date }}
       - name: Build and push preview storybook image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           target: storybook

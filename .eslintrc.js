@@ -24,6 +24,7 @@ module.exports = {
     }],
     "react/jsx-indent": ["error", 2],
     "react/jsx-indent-props": ["error", 2],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
   },
   settings: {
     react: {
