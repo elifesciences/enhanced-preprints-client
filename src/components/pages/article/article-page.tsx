@@ -7,7 +7,6 @@ import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
-import { getRppVersionDoi } from '../../../manuscripts';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -31,7 +30,7 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const doi = getRppVersionDoi(props.metaData);
+  const { doi } = props.metaData;
 
   const citation: CitationData = {
     authors: props.metaData.authors,

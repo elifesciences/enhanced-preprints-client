@@ -1,6 +1,21 @@
 version: '3.4'
 services:
   # Dependant services
+  ## Load automated data
+  load-automated-data:
+    image: curlimages/curl
+    depends_on:
+      api:
+        condition: service_healthy
+    entrypoint: sh
+    command:
+      - -c
+      - |
+        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v1/payload.json'
+        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v2/payload.json'
+    volumes:
+      - ./data:/data
+
   ## Image Server
   image-server:
     image: ghcr.io/elifesciences/epp-image-server:master-a34dfaa2-20231003.1350
@@ -9,7 +24,7 @@ services:
       - S3SOURCE_ENDPOINT=http://minio:9000/
       - S3SOURCE_ACCESS_KEY_ID=minio
       - S3SOURCE_SECRET_KEY=miniotest
-      - S3SOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=data/
+      - S3SOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=automation/
       - S3SOURCE_BASICLOOKUPSTRATEGY_BUCKET_NAME=eppdata
     ports:
       - "8182:8182"
@@ -81,13 +96,11 @@ services:
       /bin/sh -c "
       /usr/bin/mc config host add myminio http://minio:9000 minio miniotest;
       /usr/bin/mc mb myminio/eppdata || true;
-      /usr/bin/mc mirror /data myminio/eppdata/data;
-      # Set to public to host local PDFs
-      /usr/bin/mc anonymous set public myminio/eppdata;
+      /usr/bin/mc mirror /automation-data myminio/eppdata/automation;
       exit 0;
       "
     volumes:
-      - ./data/data:/data
+      - ./data/automation:/automation-data
 
   ## EPP API
   api:
@@ -138,11 +151,10 @@ services:
       API_SERVER: ${API_SERVER:-http://api:3000}
       IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
-      MANUSCRIPT_CONFIG_FILE: ${MANUSCRIPT_CONFIG_FILE:-/opt/epp-client/data/manuscripts.json}
     depends_on:
       yarn:
         condition: service_completed_successfully
-      start-import:
+      load-automated-data:
         condition: service_completed_successfully
 
     ports:
@@ -178,16 +190,6 @@ services:
       - 8080:80
     volumes:
       - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
-
-  # Start import when api and app are available
-  start-import:
-    image: curlimages/curl
-    depends_on:
-      api:
-        condition: service_healthy
-      createbucket:
-        condition: service_completed_successfully
-    command: curl -X POST http://api:3000/import
 
 volumes:
   data:

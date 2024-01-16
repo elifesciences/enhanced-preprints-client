@@ -13,7 +13,6 @@ services:
       start_period: 2s
     environment:
       API_SERVER: http://api:3000
-      MANUSCRIPT_CONFIG_FILE: ./test-utils/data/manuscripts.json
     ports:
     - 3001:3000
     volumes:
