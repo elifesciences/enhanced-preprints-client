@@ -1,0 +1,56 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import { createMocks, createResponse } from 'node-mocks-http';
+import fetchMock from 'fetch-mock';
+import { fetchVersion } from '../../../../utils/fetch-data';
+import handler from './bibtex.page';
+
+jest.mock('../../../../utils/fetch-data', () => ({
+  fetchVersion: jest.fn(),
+}));
+
+describe('citation BibTeX handler', () => {
+  const {
+    req,
+    res,
+  }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
+    url: '/reviewed-preprints/123.bib',
+    query: { msid: '123' },
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+    fetchMock.resetBehavior();
+  });
+
+  test('returns 503 if version is not available', async () => {
+    (fetchVersion as jest.Mock).mockResolvedValueOnce(null);
+    await handler(req, res);
+
+    expect(res.statusCode).toBe(503);
+    // eslint-disable-next-line no-underscore-dangle
+    expect(res._getData()).toBe('Unable to retrieve citation 123.bib');
+  });
+
+  test('returns the citation if available', async () => {
+    fetchMock.once(/.*/, `@article{doi:10.7554/eLife.123.1,
+  author = {Brain, Pinky and Mouse, Pinky and Rodreigez, Slowpoke and J Pussycat, Sylvester and Fudd, Elmer and Sam, Yosemite and Leghorn, Fogghorn and Le Pew, Pepe and Pig, Porky and Gonzales, Speedy and Bunny, Bugs},
+  title = {Tonight we take over the world!},
+  abstract = {A study of world domination by genetically enhanced mice.},
+  year = {2022},
+  doi = {10.7554/eLife.123.1}
+}`);
+    (fetchVersion as jest.Mock).mockResolvedValueOnce({
+      article: {
+        preprintDoi: '10.1101/123456',
+      },
+    });
+    await handler(req, res);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.getHeader('Content-Type')).toBe('application/x-bibtex');
+    expect(res.getHeader('Content-Disposition')).toBe('attachment; filename=123.bib');
+    // eslint-disable-next-line no-underscore-dangle
+    expect(res._getData()).toContain('title = {Tonight we take over the world!}');
+    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/123456/bibtex');
+  });
+});

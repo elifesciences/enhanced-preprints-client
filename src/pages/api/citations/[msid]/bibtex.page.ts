@@ -5,11 +5,6 @@ import { fetchVersion } from '../../../../utils/fetch-data';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
 
-  if (msid === '') {
-    res.status(404).send(`Cannot find msid configured (${msid})`);
-    return;
-  }
-
   const version = await fetchVersion(msid);
   const filename = `${msid}.bib`;
 
