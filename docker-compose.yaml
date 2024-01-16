@@ -104,7 +104,7 @@ services:
 
   ## EPP API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-ec793a6d-20240115.1828
+    image: ghcr.io/elifesciences/enhanced-preprints:master-b0a4e261-20240116.0805
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
