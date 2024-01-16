@@ -43,10 +43,10 @@ export const ArticleStatus = ({
       </li>
       )}
       <li className="article-actions__list-item">
-        <Button text="Cite" iconName="citation" variant="action" onClick={() => setShowCiteModal(true)} />
+        <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
       </li>
       <li className="article-actions__list-item">
-        <Button text="Share" iconName="share" variant="action" onClick={() => setShowShareModal(true)} />
+        <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
       </li>
     </ul>
     <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">

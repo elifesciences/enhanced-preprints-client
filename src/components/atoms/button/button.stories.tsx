@@ -52,6 +52,7 @@ ShareButton.args = {
   iconName: 'share',
   url: '#',
   variant: 'action',
+  rel: 'nofollow',
 };
 
 export const CiteButton = Template.bind({});
@@ -60,6 +61,7 @@ CiteButton.args = {
   iconName: 'citation',
   url: '#',
   variant: 'action',
+  rel: 'nofollow',
 };
 
 export const FollowButton = Template.bind({});
