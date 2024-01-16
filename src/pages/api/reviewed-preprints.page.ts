@@ -1,11 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { FullManuscriptConfig } from '../../manuscripts';
 import { fetchVersionsNoContent } from '../../utils/fetch-data';
 import {
-  Author, EnhancedArticle, MetaData, ReviewedPreprintSnippet,
+  Author, EnhancedArticle, ReviewedPreprintSnippet,
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
-import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { contentToHtml } from '../../utils/content-to-html';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
@@ -23,7 +21,7 @@ type ReviewedPreprintListResponse = {
   items: ReviewedPreprintSnippet[],
 };
 
-export const prepareAuthor = (author: Author) : string => {
+const prepareAuthor = (author: Author) : string => {
   const givenNames = (author.givenNames ?? []).join(' ');
   const familyNames = (author.familyNames ?? []).join(' ');
 
@@ -51,8 +49,6 @@ const prepareAuthorLine = (authors: Author[]) : undefined | string => {
 
   return [authorLine.slice(0, 2).join(', '), authorLine.length > 2 ? authorLine[2] : null].filter((a) => a !== null).join(authors.length > 3 ? ' ... ' : ', '); // eslint-disable-line consistent-return
 };
-
-const reviewedDates = (timeline: TimelineEvent[]) : string[] => timeline.filter((t) => t.name.startsWith('Reviewed preprint ')).sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())).map((t) => `${t.date}T03:00:00Z`);
 
 export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
   res
@@ -91,28 +87,7 @@ const toIsoStringWithoutMilliseconds = (date: Date): string => {
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
 };
 
-export const reviewedPreprintSnippet = (manuscript: FullManuscriptConfig, meta?: MetaData) : ReviewedPreprintSnippet => {
-  const dates = reviewedDates(manuscript.status.timeline);
-  const reviewedDate = dates[dates.length - 1];
-  const versionDate = dates[0];
-
-  return {
-    id: manuscript.msid,
-    doi: manuscript.preprintDoi,
-    pdf: manuscript.pdfUrl,
-    status: 'reviewed',
-    authorLine: meta ? prepareAuthorLine(meta.authors) : undefined,
-    title: meta ? contentToHtml(meta.title) : undefined,
-    published: reviewedDate,
-    reviewedDate,
-    versionDate,
-    statusDate: versionDate,
-    stage: 'published',
-    subjects: getSubjects(manuscript.msas),
-  };
-};
-
-export const enhancedArticleNoContentToSnippet = ({
+const enhancedArticleNoContentToSnippet = ({
   msid,
   preprintDoi,
   pdfUrl,
