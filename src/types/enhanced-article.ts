@@ -15,19 +15,11 @@ export type Address = {
   addressCountry?: string,
 };
 
-// Support for this can be dropped after automation is deployed
-export type LegacyOrcidIdentifier = {
-  type: 'orcid',
-  value: string,
-};
-
-export type OrcidIdentifier = {
+export type Identifier = {
   type: 'PropertyValue',
   propertyID: 'https://registry.identifiers.org/registry/orcid',
   value: string,
 };
-
-export type Identifier = LegacyOrcidIdentifier | OrcidIdentifier;
 
 export type Author = {
   familyNames: string[],
