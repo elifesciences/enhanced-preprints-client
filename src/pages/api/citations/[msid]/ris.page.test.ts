@@ -13,8 +13,8 @@ describe('citation RIS handler', () => {
     req,
     res,
   }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
-    url: '/reviewed-preprints/123.ris',
-    query: { msid: '123' },
+    url: '/reviewed-preprints/321.ris',
+    query: { msid: '321' },
   });
 
   afterEach(() => {
@@ -28,7 +28,7 @@ describe('citation RIS handler', () => {
 
     expect(res.statusCode).toBe(503);
     // eslint-disable-next-line no-underscore-dangle
-    expect(res._getData()).toBe('Unable to retrieve citation 123.ris');
+    expect(res._getData()).toBe('Unable to retrieve citation 321.ris');
   });
 
   test('returns the citation if available', async () => {
@@ -47,19 +47,19 @@ AU  - Bunny, Bugs
 TI  - Tonight we take over the world!
 AB  - A study of world domination by genetically enhanced mice.
 PY  - 2022
-DO  - 10.7554/eLife.123.1`);
+DO  - 10.7554/eLife.321.1`);
     (fetchVersion as jest.Mock).mockResolvedValueOnce({
       article: {
-        preprintDoi: '10.1101/123456',
+        preprintDoi: '10.1101/321456',
       },
     });
     await handler(req, res);
 
     expect(res.statusCode).toBe(200);
     expect(res.getHeader('Content-Type')).toBe('application/x-research-info-systems');
-    expect(res.getHeader('Content-Disposition')).toBe('attachment; filename=123.ris');
+    expect(res.getHeader('Content-Disposition')).toBe('attachment; filename=321.ris');
     // eslint-disable-next-line no-underscore-dangle
     expect(res._getData()).toContain('TI  - Tonight we take over the world!');
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/123456/ris');
+    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/321456/ris');
   });
 });
