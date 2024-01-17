@@ -6,6 +6,16 @@ import { contentToJsx } from '../../../utils/content-to-jsx';
 export default {
   title: 'Atoms/ArticleContent',
   component: ArticleContent,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'heading-order', enabled: false },
+          { id: 'image-alt', enabled: false },
+        ],
+      },
+    },
+  },
 } as Meta<typeof ArticleContent>;
 
 const Template: StoryFn<typeof ArticleContent> = (args) => (

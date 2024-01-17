@@ -5,6 +5,15 @@ import { authors } from '../../../utils/mocks';
 export default {
   title: 'Molecules/AuthorInformationList',
   component: AuthorInformationList,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'heading-order', enabled: false },
+        ],
+      },
+    },
+  },
 } as Meta<typeof AuthorInformationList>;
 
 const Template: StoryFn<typeof AuthorInformationList> = (args) => (

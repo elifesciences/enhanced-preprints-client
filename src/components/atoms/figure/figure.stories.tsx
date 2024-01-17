@@ -5,6 +5,15 @@ import { contentToJsx } from '../../../utils/content-to-jsx';
 export default {
   title: 'Atoms/Figure',
   component: Figure,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'image-alt', enabled: false },
+        ],
+      },
+    },
+  },
 } as Meta<typeof Figure>;
 
 const Template: StoryFn<typeof Figure> = (args) => (

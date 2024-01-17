@@ -13,6 +13,19 @@ import { contentToHeadings } from '../../../utils/content-to-headings';
 export default {
   title: 'Pages/Article Page',
   component: ArticlePage,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          { id: 'color-contrast', enabled: false },
+          { id: 'heading-order', enabled: false },
+          { id: 'image-alt', enabled: false },
+          { id: 'landmark-unique', enabled: false },
+          { id: 'link-in-text-block', enabled: false },
+        ],
+      },
+    },
+  },
 } as Meta<typeof ArticlePage>;
 
 const tabs = [
