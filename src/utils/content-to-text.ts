@@ -12,6 +12,7 @@ export const contentToText = (content: Content): string => {
     return content.map((part) => contentToText(part)).join('');
   }
   switch (content.type) {
+    case 'Heading':
     case 'Paragraph':
     case 'Emphasis':
     case 'Strong':

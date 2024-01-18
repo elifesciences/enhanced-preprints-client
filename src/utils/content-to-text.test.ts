@@ -21,12 +21,6 @@ describe('Content to Text', () => {
   it('generates nothing when unsupported content types are passed', () => {
     const result = contentToText([
       {
-        type: 'Heading',
-        depth: 1,
-        content: 'heading',
-        id: 'h1',
-      },
-      {
         type: 'Cite',
         content: 'I am a citation',
         target: 'target',
@@ -99,10 +93,25 @@ describe('Content to Text', () => {
     expect(result).toStrictEqual('I am a subscript');
   });
 
+  it('generates the expected text when passed a Heading', () => {
+    const result = contentToText({
+      type: 'Heading',
+      depth: 1,
+      content: 'heading',
+      id: 'h1',
+    });
+
+    expect(result).toStrictEqual('heading');
+  });
+
   it('allows an array of arrays to be generated', () => {
     const result = contentToText([
       [{
-        type: 'Heading', depth: 1, content: 'heading', id: 'h1',
+        type: 'Figure',
+        content: 'I am a figure',
+        caption: 'I am a caption',
+        label: 'I am a label',
+        id: 'id',
       }],
     ]);
 

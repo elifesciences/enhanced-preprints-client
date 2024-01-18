@@ -1,5 +1,5 @@
 import { Fragment, JSX } from 'react';
-import { Content } from '../types';
+import { Content, FigureContent } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
@@ -11,6 +11,21 @@ type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
+  altText?: string,
+};
+
+const figureToAltText = (figure: FigureContent): string | undefined => {
+  if (figure.caption) {
+    return contentToText(figure.caption);
+  }
+  if (figure.label) {
+    return contentToText(figure.label);
+  }
+  if (figure.id) {
+    return figure.id;
+  }
+
+  return undefined;
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -81,8 +96,15 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       return <sub key={index}>{ contentToJsx(content.content, options)}</sub>;
     case 'Date':
       return <time key={index}>{ contentToJsx(content.content, options)}</time>;
-    case 'Figure':
-      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })} label={content.label} content={contentToJsx(content.content, options)} />;
+    case 'Figure': {
+      return <Figure
+        key={index}
+        id={content.id}
+        caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })}
+        label={content.label}
+        content={contentToJsx(content.content, { ...options, altText: figureToAltText(content) })}
+      />;
+    }
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';
@@ -100,7 +122,8 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
         // eslint-disable-next-line @next/next/no-img-element
         const image = <img loading="lazy" {...(content.meta.inline ?
           { className: 'inline-image' } : {})}
-          src={generateImageUrl(content.contentUrl)} alt=""
+          src={generateImageUrl(content.contentUrl)}
+          alt={ options?.altText ?? '' }
           {...additionalProps}
         />;
 
