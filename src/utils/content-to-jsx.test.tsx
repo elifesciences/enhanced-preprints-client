@@ -125,6 +125,68 @@ describe('Content to JSX', () => {
     );
   });
 
+  it('generates the expected alt when passed a Figure with a caption and an image', () => {
+    render(<>
+      {contentToJsx({
+        type: 'Figure',
+        content: {
+          type: 'ImageObject',
+          contentUrl: 'https://placekitten.com/500/300',
+          content: [],
+          meta: {
+            inline: false,
+          },
+        },
+        caption: 'I am a caption',
+      })}
+    </>);
+
+    const imgElement = document.querySelector('img');
+    expect(imgElement).toBeInTheDocument();
+    expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a caption');
+  });
+
+  it('generates the expected alt when passed a Figure with a label and an image', () => {
+    render(<>
+      {contentToJsx({
+        type: 'Figure',
+        label: 'I am a label',
+        content: {
+          type: 'ImageObject',
+          contentUrl: 'https://placekitten.com/500/300',
+          meta: {
+            inline: false,
+          },
+        },
+      })}
+    </>);
+
+    const imgElement = document.querySelector('img');
+    expect(imgElement).toBeInTheDocument();
+    expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a label');
+  });
+
+  it('generates the expected alt when passed a Figure with multiple sources of alt text and an image', () => {
+    render(<>
+      {contentToJsx({
+        type: 'Figure',
+        label: 'I am a label',
+        caption: 'I am a caption',
+        content: {
+          type: 'ImageObject',
+          contentUrl: 'https://placekitten.com/500/300',
+          meta: {
+            inline: false,
+          },
+        },
+      })}
+    </>);
+
+    const imgElement = document.querySelector('img');
+    expect(imgElement).toBeInTheDocument();
+    expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a caption');
+  });
+
   it('generates the expected html when passed a ImageObject', () => {
     const result = contentToJsx({
       type: 'ImageObject',
