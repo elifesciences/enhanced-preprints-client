@@ -21,10 +21,6 @@ const figureToAltText = (figure: FigureContent): string | undefined => {
   if (figure.label) {
     return contentToText(figure.label);
   }
-  if (figure.id) {
-    return figure.id;
-  }
-
   return undefined;
 };
 
