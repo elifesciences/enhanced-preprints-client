@@ -1,5 +1,5 @@
 import { Fragment, JSX } from 'react';
-import { Content, FigureContent } from '../types';
+import { Content } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
@@ -12,16 +12,6 @@ type Options = {
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
   altText?: string,
-};
-
-const figureToAltText = (figure: FigureContent): string | undefined => {
-  if (figure.caption) {
-    return contentToText(figure.caption);
-  }
-  if (figure.label) {
-    return contentToText(figure.label);
-  }
-  return undefined;
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -93,12 +83,13 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'Date':
       return <time key={index}>{ contentToJsx(content.content, options)}</time>;
     case 'Figure': {
+      const altText = contentToText(content.caption ?? content.label ?? undefined);
       return <Figure
         key={index}
         id={content.id}
         caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })}
         label={content.label}
-        content={contentToJsx(content.content, { ...options, altText: figureToAltText(content) })}
+        content={contentToJsx(content.content, { ...options, altText })}
       />;
     }
     case 'ImageObject':

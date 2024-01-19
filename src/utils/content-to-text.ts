@@ -1,6 +1,6 @@
 import { Content } from '../types';
 
-export const contentToText = (content: Content): string => {
+export const contentToText = (content?: Content): string => {
   if (typeof content === 'undefined') {
     return '';
   }
