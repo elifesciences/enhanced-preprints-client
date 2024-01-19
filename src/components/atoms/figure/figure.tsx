@@ -1,9 +1,18 @@
 import { useRef, useState, useEffect } from 'react';
 import './figure.scss';
 
+type Props = {
+  content: React.ReactNode,
+  id?: string,
+  caption?: React.ReactNode,
+  label?: string,
+  captionAriaHidden?: boolean,
+  labelAriaHidden?: boolean,
+};
+
 export const Figure = ({
-  id, content, caption, label,
-}: { content: React.ReactNode, id?: string, caption?: React.ReactNode, label?: string }) => {
+  id, content, caption, label, captionAriaHidden, labelAriaHidden,
+}: Props) => {
   const captionRef = useRef<HTMLElement>(null);
   const [expanded, setExpanded] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -35,9 +44,9 @@ export const Figure = ({
   return (
     <div className="figure-container">
       <figure className="figure" {...(id && { id })}>
-        {label && <label className="figure__label">{label}</label>}
+        {label && <label {...(labelAriaHidden ? { 'aria-hidden': 'true' } : {})} className="figure__label">{label}</label>}
         {content}
-        {caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{caption}</figcaption>}
+        {caption && <figcaption {...(captionAriaHidden ? { 'aria-hidden': 'true' } : {})} ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{caption}</figcaption>}
       </figure>
       {showButton && (<button className={`figure__caption__button${expanded ? ' expanded' : ''}`} onClick={() => { setExpanded(!expanded); }}>{expanded ? 'Show less' : 'Show more'}</button>)}
     </div>

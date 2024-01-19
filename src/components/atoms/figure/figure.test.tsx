@@ -23,10 +23,24 @@ describe('Figure', () => {
     expect(screen.getByText('I am a label')).toBeInTheDocument();
   });
 
+  it('renders the label with aria-hidden label', () => {
+    render(<Figure content={contentToJsx(content.content)} label={content.label} labelAriaHidden={true}/>);
+
+    expect(screen.getByText('I am a label')).toBeInTheDocument();
+    expect(screen.getByText('I am a label').getAttribute('aria-hidden')).toEqual('true');
+  });
+
   it('renders the caption', () => {
     render(<Figure content={contentToJsx(content.content)} caption={content.caption}/>);
 
     expect(screen.getByText('this is a figure')).toBeInTheDocument();
+  });
+
+  it('renders the caption with aria-hidden label', () => {
+    render(<Figure content={contentToJsx(content.content)} caption={content.caption} captionAriaHidden={true}/>);
+
+    expect(screen.getByText('this is a figure')).toBeInTheDocument();
+    expect(screen.getByText('this is a figure').getAttribute('aria-hidden')).toEqual('true');
   });
 
   it('should not render caption, label, or ID if not defined', () => {
