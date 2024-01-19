@@ -17,7 +17,6 @@ describe('Timeline', () => {
         },
       },
     ]}
-      listDescription='This is a timeline'
     />);
 
     const firstEvent = screen.getByText('February 14, 2002');
@@ -29,7 +28,7 @@ describe('Timeline', () => {
     expect(firstEvent.compareDocumentPosition(secondEvent)).toBe(4);
     expect(screen.getByText('event1')).toBeInTheDocument();
     expect(screen.getByText('event2')).toBeInTheDocument();
-    expect(screen.getByLabelText('This is a timeline')).toBeInTheDocument();
+    expect(screen.getByLabelText('Here is the article timeline')).toBeInTheDocument();
     expect(screen.getByLabelText('event2')).toBeInTheDocument();
     expect(screen.getByLabelText('event2')).toHaveAttribute('href', 'https://preprint.url');
   });
