@@ -121,7 +121,9 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(
       <Figure content="I am a figure" id='id'
         caption='I am a caption'
-        label='I am a label' />,
+        label='I am a label'
+        captionAriaHidden={true}
+        labelAriaHidden={false} />,
     );
   });
 
@@ -144,6 +146,9 @@ describe('Content to JSX', () => {
     const imgElement = document.querySelector('img');
     expect(imgElement).toBeInTheDocument();
     expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a caption');
+    const captionElement = document.querySelector('figcaption');
+    expect(captionElement).toBeInTheDocument();
+    expect(captionElement?.getAttribute('aria-hidden')).toStrictEqual('true');
   });
 
   it('generates the expected alt when passed a Figure with a label and an image', () => {
@@ -164,6 +169,9 @@ describe('Content to JSX', () => {
     const imgElement = document.querySelector('img');
     expect(imgElement).toBeInTheDocument();
     expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a label');
+    const labelElement = document.querySelector('label');
+    expect(labelElement).toBeInTheDocument();
+    expect(labelElement?.getAttribute('aria-hidden')).toStrictEqual('true');
   });
 
   it('generates the expected alt when passed a Figure with multiple sources of alt text and an image', () => {
@@ -185,6 +193,12 @@ describe('Content to JSX', () => {
     const imgElement = document.querySelector('img');
     expect(imgElement).toBeInTheDocument();
     expect(imgElement?.getAttribute('alt')).toStrictEqual('I am a caption');
+    const captionElement = document.querySelector('figcaption');
+    expect(captionElement).toBeInTheDocument();
+    expect(captionElement?.getAttribute('aria-hidden')).toStrictEqual('true');
+    const labelElement = document.querySelector('label');
+    expect(labelElement).toBeInTheDocument();
+    expect(labelElement?.getAttribute('aria-hidden')).toBeNull();
   });
 
   it('generates the expected html when passed a ImageObject', () => {

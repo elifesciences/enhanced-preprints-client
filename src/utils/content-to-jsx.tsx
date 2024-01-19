@@ -84,11 +84,15 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       return <time key={index}>{ contentToJsx(content.content, options)}</time>;
     case 'Figure': {
       const altText = contentToText(content.caption ?? content.label ?? undefined);
+      const captionAriaHidden = !!content.caption;
+      const labelAriaHidden = !content.caption && !!content.label;
       return <Figure
         key={index}
         id={content.id}
         caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })}
+        captionAriaHidden={captionAriaHidden}
         label={content.label}
+        labelAriaHidden={labelAriaHidden}
         content={contentToJsx(content.content, { ...options, altText })}
       />;
     }
