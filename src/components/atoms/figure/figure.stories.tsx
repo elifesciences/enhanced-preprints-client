@@ -53,6 +53,21 @@ Figure2.args = {
   }),
 };
 
+export const NotAccessibleFigure = Template.bind({});
+NotAccessibleFigure.args = {
+  label: 'Figure 1',
+  caption: 'This is a figure',
+  id: '1',
+  content: contentToJsx({
+    type: 'ImageObject',
+    meta: {
+      inline: false,
+    },
+    contentUrl: 'https://placekitten.com/800/400',
+  }),
+  labelAriaHidden: false,
+  captionAriaHidden: false,
+};
 export const AccessibleFigure = Template.bind({});
 AccessibleFigure.args = {
   label: 'Figure 1',
