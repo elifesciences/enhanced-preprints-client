@@ -28,14 +28,13 @@ export type TimelineEvent = TimelineEventSimple | TimelineEventWithLink | Timeli
 
 type TimelineProps = {
   events: Array<TimelineEvent>,
-  listDescription?: string,
 };
 
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-export const Timeline = ({ events, listDescription }: TimelineProps) => (
+export const Timeline = ({ events }: TimelineProps) => (
   <div className="review-timeline">
-    <dl className="review-timeline__list" aria-label={listDescription}>
+    <dl className="review-timeline__list" aria-label="Here is the article timeline">
       {
         events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((entry, index) => (
           <Fragment key={index}>
