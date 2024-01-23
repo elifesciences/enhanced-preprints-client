@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import carbonNeutral from '../../../images/logos/carbon-neutral.svg';
 import './footer-main.scss';
 
 /* eslint-disable max-len */
@@ -36,7 +34,7 @@ export const FooterMain = () => (
           Contact: <a href="mailto:enquires@sciencecolab.org">enquires@sciencecolab.org</a>
         </div>
 
-        <div className="social-links" aria-label="Social media links for eLife Sciences">
+        <div className="social-links" aria-label="Social media links for Biophysics Colab">
           <ul className="social-links__list">
             <li className="social-links__list_item">
               <a href="https://www.linkedin.com/company/elife-sciences-publications-ltd"
