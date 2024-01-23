@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import './site-header.scss';
-import logo from '../../../../public/elife-logo.svg';
+import logo from '../../../../public/biophysics-colab-logo.png';
 
 export const SiteHeader = () => (
   <div className="site-header">
@@ -9,7 +9,7 @@ export const SiteHeader = () => (
         <Image
           className="site-header__logo"
           src={logo}
-          alt="eLife logo"
+          alt="Biophysics Colab logo"
           width="80"
           height="30"
         />
