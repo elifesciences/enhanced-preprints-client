@@ -5,7 +5,7 @@ describe('SiteHeader', () => {
   it('renders the logo image with alt text', () => {
     render(<SiteHeader />);
 
-    expect(screen.getByAltText('eLife logo', { exact: false })).toBeInTheDocument();
+    expect(screen.getByAltText('Biophysics Colab logo', { exact: false })).toBeInTheDocument();
     expect(screen.getByText('Enhanced Preprints')).toBeInTheDocument();
   });
 });
