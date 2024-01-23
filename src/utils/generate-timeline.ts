@@ -8,19 +8,10 @@ const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsC
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
-      events.push(current.id === version.article.id ?
-        {
-          date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
-          eventDescription: '(this version)',
-        } : {
-          date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
-          link: {
-            url: `/reviewed-preprints/${current.id}`,
-            text: 'Go to version',
-          },
-        });
+      events.push({
+        date: new Date(current.published).toDateString(),
+        name: 'Endorsed article published',
+      });
     }
     return events;
   }, []);

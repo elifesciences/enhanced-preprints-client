@@ -35,7 +35,7 @@ export const ArticleStatus = ({
   return <div className="article-status">
     <h2 className="article-status__heading">{articleType}</h2>
     <p className="article-status__text">{articleStatus}</p>
-    <a href="https://elifesciences.org/peer-review-process" className="article-status__link">About eLife&apos;s process</a>
+    <a href="#" className="article-status__link">About Biophysics Colab&apos;s process</a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
