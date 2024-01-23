@@ -82,7 +82,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'Date':
       return <time key={index}>{ contentToJsx(content.content, options)}</time>;
     case 'Figure':
-      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 4 })} label={content.label} content={contentToJsx(content.content, options)} />;
+      return <Figure key={index} id={content.id} caption={contentToJsx(content.caption, { ...options, maxHeadingLevel: 5 })} label={content.label} content={contentToJsx(content.content, options)} />;
     case 'ImageObject':
       if (!content.contentUrl) {
         return '';

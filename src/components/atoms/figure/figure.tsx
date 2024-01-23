@@ -35,7 +35,7 @@ export const Figure = ({
   return (
     <div className="figure-container">
       <figure className="figure" {...(id && { id })}>
-        {label && <label className="figure__label">{label}</label>}
+        {label && <h4 className="figure__label">{label}</h4>}
         {content}
         {caption && <figcaption ref={captionRef} className={`figure__caption${expanded ? ' figure__caption--expanded' : ''}`}>{caption}</figcaption>}
       </figure>
