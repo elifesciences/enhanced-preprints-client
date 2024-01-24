@@ -96,7 +96,7 @@ jobs:
         message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: BUILDING
-        color: good
+        color: warning
     - if: needs.test.result != 'success' || needs.test-browsertests.result != 'success'
       name: Notify slack failure
       env:
@@ -106,7 +106,7 @@ jobs:
         message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
-        color: good
+        color: bad
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
@@ -176,4 +176,4 @@ jobs:
         message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
-        color: good
+        color: bad
