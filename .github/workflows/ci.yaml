@@ -47,11 +47,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Tests:* :large_orange_circle:"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Docker image build:* :white_circle: "
+                    "text": ":large_orange_circle: *Tests*\n:white_circle:  *Docker image build*"
                   }
                 ]
               },
@@ -153,11 +149,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Tests:* :large_green_circle:"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Docker image build:* :large_orange_circle:"
+                    "text": ":large_green_circle: *Tests*\n:large_orange_circle: *Docker image build*"
                   }
                 ]
               },
@@ -204,11 +196,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Tests:* :red_circle:"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Docker image build:* :white_circle:"
+                    "text": ":red_circle: *Tests*\n:white_circle: *Docker image build*"
                   }
                 ]
               },
@@ -306,11 +294,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Tests:* :large_green_circle:"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Docker image build:* :large_green_circle:"
+                    "text": ":large_green_circle: *Tests*\n:large_green_circle: *Docker image build*"
                   }
                 ]
               },
@@ -357,11 +341,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Tests:* :large_green_circle:"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "*Docker image build:* :red_circle:"
+                    "text": ":large_green_circle: *Tests*\n:red_circle: *Docker image build*"
                   }
                 ]
               },
