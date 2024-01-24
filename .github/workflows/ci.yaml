@@ -43,11 +43,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
                   }
                 ]
@@ -166,11 +166,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
                   }
                 ]
@@ -234,11 +234,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
                   }
                 ]
@@ -353,11 +353,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
                   }
                 ]
@@ -421,11 +421,11 @@ jobs:
                 "type": "section",
                 "fields": [
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
-                    "type": "mrkdown",
+                    "type": "mrkdwn",
                     "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
                   }
                 ]
