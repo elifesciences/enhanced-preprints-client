@@ -150,11 +150,11 @@ jobs:
                 "type": "divider"
               },
               {
-                "type": "mrkdwn",
-                "text": "*Stages:*"
-              },
-              {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -231,11 +231,11 @@ jobs:
                 "type": "divider"
               },
               {
-                "type": "mrkdwn",
-                "text": "*Stages:*"
-              },
-              {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -306,11 +306,11 @@ jobs:
                 "type": "divider"
               },
               {
-                "type": "mrkdwn",
-                "text": "*Stages:*"
-              },
-              {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -387,11 +387,11 @@ jobs:
                 "type": "divider"
               },
               {
-                "type": "mrkdwn",
-                "text": "*Stages:*"
-              },
-              {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -462,11 +462,11 @@ jobs:
                 "type": "divider"
               },
               {
-                "type": "mrkdwn",
-                "text": "*Stages:*"
-              },
-              {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
