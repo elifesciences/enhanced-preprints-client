@@ -138,16 +138,20 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
               {
                 "type": "divider"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Stages:*"
               },
               {
                 "type": "section",
@@ -161,6 +165,9 @@ jobs:
                     "text": ":white_circle: Docker image build"
                   }
                 ]
+              },
+              {
+                "type": "divider"
               },
               {
                 "type": "section",
@@ -212,16 +219,20 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
               {
                 "type": "divider"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Stages:*"
               },
               {
                 "type": "section",
@@ -235,6 +246,9 @@ jobs:
                     "text": ":large_orange_circle: Docker image build"
                   }
                 ]
+              },
+              {
+                "type": "divider"
               },
               {
                 "type": "section",
@@ -280,16 +294,20 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
               {
                 "type": "divider"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Stages:*"
               },
               {
                 "type": "section",
@@ -303,6 +321,9 @@ jobs:
                     "text": ":white_circle: Docker image build"
                   }
                 ]
+              },
+              {
+                "type": "divider"
               },
               {
                 "type": "section",
@@ -354,16 +375,20 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
               {
                 "type": "divider"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Stages:*"
               },
               {
                 "type": "section",
@@ -377,6 +402,9 @@ jobs:
                     "text": ":large_green_circle: Docker image build"
                   }
                 ]
+              },
+              {
+                "type": "divider"
               },
               {
                 "type": "section",
@@ -422,16 +450,20 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
               {
                 "type": "divider"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Stages:*"
               },
               {
                 "type": "section",
@@ -445,6 +477,9 @@ jobs:
                     "text": ":red_circle: Docker image build"
                   }
                 ]
+              },
+              {
+                "type": "divider"
               },
               {
                 "type": "section",
