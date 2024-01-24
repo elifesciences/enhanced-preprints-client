@@ -39,7 +39,6 @@ jobs:
   test-browsertests:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
       - uses: actions/checkout@v4
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
