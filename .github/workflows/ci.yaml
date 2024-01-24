@@ -81,6 +81,7 @@ jobs:
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
+      - run: exit 1
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
@@ -105,7 +106,7 @@ jobs:
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
-        status: FAILED
+        status: TESTINGFAILED
         color: bad
   build-and-push:
     needs: [test, test-browsertests]
@@ -175,5 +176,5 @@ jobs:
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
-        status: FAILED
+        status: BUILDINGFAILED
         color: bad
