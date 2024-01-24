@@ -2,38 +2,35 @@
   "id": "backstop_default",
   "viewports": [
     {
-      "label": "phone",
-      "width": 320,
-      "height": 480
-    },
-    {
       "label": "tablet",
-      "width": 1024,
-      "height": 768
+      "width": 1440,
+      "height": 900
     }
   ],
-  "onBeforeScript": "puppet/onBefore.js",
-  "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "Article Page",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "label": "Article Tab",
       "url": "http://localhost:8080/reviewed-preprints/85111",
-      "referenceUrl": "",
-      "scrollToSelector": ".site-footer",
-      "readyEvent": "",
-      "readySelector": "",
-      "delay": 0,
-      "hideSelectors": [],
-      "removeSelectors": [],
-      "hoverSelector": "",
-      "clickSelector": "",
-      "postInteractionWait": 0,
-      "selectors": [],
-      "selectorExpansion": true,
-      "expect": 0,
-      "misMatchThreshold" : 0.1,
-      "requireSameDimensions": true
+      "removeSelectors": [
+        "#CybotCookiebotDialog",
+        "picture"
+      ]
+    },
+    {
+      "label": "Figures Tab",
+      "url": "http://localhost:8080/reviewed-preprints/85111/figures",
+      "removeSelectors": [
+        "#CybotCookiebotDialog",
+        "picture"
+      ]
+    },
+    {
+      "label": "Reviews Tab",
+      "url": "http://localhost:8080/reviewed-preprints/85111/reviews",
+      "removeSelectors": [
+        "#CybotCookiebotDialog",
+        "picture"
+      ]
     }
   ],
   "paths": {
@@ -44,8 +41,10 @@
     "ci_report": "backstop_data/ci_report"
   },
   "report": ["browser"],
-  "engine": "puppeteer",
+  "engine": "playwright",
   "engineOptions": {
+    "browser": "chromium",
+    "gotoParameters": { "waitUntil": "networkidle0" },
     "args": ["--no-sandbox"]
   },
   "asyncCaptureLimit": 5,

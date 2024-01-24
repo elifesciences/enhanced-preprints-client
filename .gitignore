@@ -36,3 +36,6 @@ yarn-error.log*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+backstop_data/*
+!backstop_data/bitmaps_reference
