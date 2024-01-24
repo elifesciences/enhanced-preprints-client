@@ -17,7 +17,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
       - uses: actions/checkout@v4
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
@@ -69,6 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.ref == 'refs/heads/master'
     steps:
+      - run: exit 1
       - uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
