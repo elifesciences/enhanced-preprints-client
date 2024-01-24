@@ -24,7 +24,7 @@ jobs:
       id: slack
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
+      uses: voxmedia/github-action-slack-notify-build@v2
       with:
         channel: epp-build-status-notifications
         status: TESTING
@@ -87,7 +87,7 @@ jobs:
       name: Notify slack success
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
+      uses: voxmedia/github-action-slack-notify-build@v2
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
@@ -97,7 +97,7 @@ jobs:
       name: Notify slack failure
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
+      uses: voxmedia/github-action-slack-notify-build@v2
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
@@ -156,7 +156,7 @@ jobs:
       name: Notify slack success
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
+      uses: voxmedia/github-action-slack-notify-build@v2
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
@@ -166,7 +166,7 @@ jobs:
       name: Notify slack failure
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
+      uses: voxmedia/github-action-slack-notify-build@v2
       with:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
