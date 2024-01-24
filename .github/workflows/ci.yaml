@@ -162,7 +162,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": ":white_circle: Docker image build"
+                    "text": "${{ !needs.test.result && ':white_circle' || (needs.build-and-push.result && ':large_orange_circle' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'))}} Docker image build"
                   }
                 ]
               },
@@ -239,7 +239,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": ":large_orange_circle: Docker image build"
+                    "text": "${{ !needs.test.result && ':white_circle' || (needs.build-and-push.result && ':large_orange_circle' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'))}} Docker image build"
                   }
                 ]
               },
@@ -310,7 +310,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": ":white_circle: Docker image build"
+                    "text": "${{ !needs.test.result && ':white_circle' || (needs.build-and-push.result && ':large_orange_circle' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'))}} Docker image build"
                   }
                 ]
               },
@@ -386,7 +386,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'}} Docker image build"
+                    "text": "${{ !needs.test.result && ':white_circle' || (needs.build-and-push.result && ':large_orange_circle' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'))}} Docker image build"
                   }
                 ]
               },
