@@ -92,7 +92,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
         channel: epp-build-status-notifications
         status: BUILDING
         color: good
@@ -102,7 +102,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
         color: good
@@ -161,7 +161,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
         channel: epp-build-status-notifications
         status: SUCCESS
         color: good
@@ -171,7 +171,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
         color: good
