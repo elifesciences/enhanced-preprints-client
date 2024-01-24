@@ -138,7 +138,7 @@ jobs:
                 "text": {
                   "type": "mrkdwn",
                   "text": "${{ github.event.commits[0].message }}"
-                }
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -218,7 +218,7 @@ jobs:
                 "text": {
                   "type": "mrkdwn",
                   "text": "${{ github.event.commits[0].message }}"
-                }
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -293,7 +293,7 @@ jobs:
                 "text": {
                   "type": "mrkdwn",
                   "text": "${{ github.event.commits[0].message }}"
-                }
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -372,7 +372,7 @@ jobs:
                 "text": {
                   "type": "mrkdwn",
                   "text": "${{ github.event.commits[0].message }}"
-                }
+                },
                 "fields": [
                   {
                     "type": "mrkdwn",
