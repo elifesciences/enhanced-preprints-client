@@ -17,9 +17,17 @@ To run the unit tests, run `yarn test`.
 
 ## Running the browser tests
 
-To run the browser tests, bring up the application with `docker compose -f docker-compose.browsertest.yaml up -d --wait`.
+To run the browser tests, bring up the application with `yarn start:test-env`.
 
 When the application is up, run `yarn test:browser`.
+
+## Visual regression
+
+To run visual regression tests, use `yarn visual-regression`.
+
+If you have the `test-env` environment up with `yarn start:test-env` you can run the tests with `yarn visual-regression:test`
+
+To approve changes, use `yarn visual-regression:approve`.
 
 ## Linting Typescript - `yarn lint` or `yarn lint:fix`
 
