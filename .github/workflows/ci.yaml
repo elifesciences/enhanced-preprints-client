@@ -122,7 +122,8 @@ jobs:
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - name: Notify Slack testing completed, building started
       if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
@@ -274,7 +275,8 @@ jobs:
   notify-build-result:
     needs: [notify-start, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - name: Notify Slack build success
       if: needs.build-and-push.result == 'success'
