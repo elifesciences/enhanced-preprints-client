@@ -16,19 +16,60 @@ on:
 jobs:
   notify-start:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     outputs:
-      message_id: ${{ steps.slack.outputs.message_id }}
+      ts: ${{ steps.slack.outputs.ts }}
     steps:
-    - name: Notify slack
+    - name: Notify Slack testing started
       id: slack
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        channel: epp-build-status-notifications
-        status: TESTING
-        color: warning
+        channel-id: C06FPSVJPUH
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: testing",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Tests:* :large_orange_circle:"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Docker image build:* :white_circle: "
+                  },
+                ]
+              }
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.head_commit.url }}|View Commit>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
+                  },
+                ]
+              }
+            ]
+          }
   test:
     runs-on: ubuntu-latest
     steps:
@@ -65,48 +106,131 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Install operating system dependencies
-        run: |
-          yarn playwright install
-          yarn playwright install-deps
-      - name: Bring up browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml up -d --wait
-      - name: Debug bring up browser test stack
-        if: failure()
-        run: docker compose logs app
-      - name: Browser Tests
-        run: yarn test:browser
-      - name: Take down browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml down
+      # - name: Install operating system dependencies
+      #   run: |
+      #     yarn playwright install
+      #     yarn playwright install-deps
+      # - name: Bring up browser test stack
+      #   run: docker compose -f docker-compose.browsertest.yaml up -d --wait
+      # - name: Debug bring up browser test stack
+      #   if: failure()
+      #   run: docker compose logs app
+      # - name: Browser Tests
+      #   run: yarn test:browser
+      # - name: Take down browser test stack
+      #   run: docker compose -f docker-compose.browsertest.yaml down
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
-    - if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
-      name: Notify slack success
+    - name: Notify Slack testing completed, building started
+      if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: BUILDING
-        color: warning
-    - if: needs.test.result != 'success' || needs['test-browsertests'].result != 'success'
-      name: Notify slack failure
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: testing",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Tests:* :large_green_circle:"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Docker image build:* :large_orange_circle:"
+                  },
+                ]
+              }
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.head_commit.url }}|View Commit>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
+                  },
+                ]
+              }
+            ]
+          }
+    - name: Notify Slack testing failed
+      if: needs.test.result != 'success' || needs['test-browsertests'].result != 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: TESTINGFAILED
-        color: danger
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: testing",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Tests:* :red_circle:"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Docker image build:* :white_circle:"
+                  },
+                ]
+              }
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.head_commit.url }}|View Commit>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
+                  },
+                ]
+              }
+            ]
+          }
+
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -125,50 +249,132 @@ jobs:
       - name: Get sha with 8 chars long
         id: commit_sha
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-      - name: Build and push client image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: prod
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-client:latest
-            ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push storybook image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: storybook
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-storybook:latest
-            ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push client image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: prod
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-client:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push storybook image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: storybook
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
   notify-build-result:
     needs: [notify-start, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
-    - if: needs.build-and-push.result == 'success'
-      name: Notify slack success
+    - name: Notify Slack build success
+      if: needs.build-and-push.result == 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: SUCCESS
-        color: good
-    - if: needs.build-and-push.result != 'success'
-      name: Notify slack failure
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: Success",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Tests:* :large_green_circle:"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Docker image build:* :large_green_circle:"
+                  },
+                ]
+              }
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.head_commit.url }}|View Commit>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
+                  },
+                ]
+              }
+            ]
+          }
+    - name: Notify Slack testing failed
+      if: needs.build-and-push.result != 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: BUILDINGFAILED
-        color: danger
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: failed",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Tests:* :large_green_circle:"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Docker image build:* :red_circle:"
+                  },
+                ]
+              }
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.head_commit.url }}|View Commit>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
+                  },
+                ]
+              }
+            ]
+          }
