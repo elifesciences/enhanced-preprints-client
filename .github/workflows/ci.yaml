@@ -65,6 +65,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View Build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.patch_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -171,6 +175,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View Build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.patch_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -222,6 +230,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View Build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.patch_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -324,6 +336,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View Build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.patch_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -375,6 +391,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View Build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.patch_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
