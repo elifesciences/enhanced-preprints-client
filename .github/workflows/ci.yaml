@@ -14,8 +14,24 @@ on:
       - '*'
 
 jobs:
+  notify-start:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    outputs:
+      message_id: ${{ steps.slack.outputs.message_id }}
+    steps:
+    - name: Notify slack
+      id: slack
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        channel: epp-build-status-notifications
+        status: TESTING
+        color: warning
   test:
     runs-on: ubuntu-latest
+    needs: [notify-start]
     steps:
       - uses: actions/checkout@v4
       - name: Read .nvmrc
@@ -36,8 +52,10 @@ jobs:
         run: yarn test
       - name: Production build
         run: yarn build
+
   test-browsertests:
     runs-on: ubuntu-latest
+    needs: [notify-start]
     steps:
       - uses: actions/checkout@v4
       - name: Read .nvmrc
@@ -63,6 +81,30 @@ jobs:
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
+  notify-test-result:
+    needs: [notify-start, test, test-browsertests]
+    if: always() && github.ref == 'refs/heads/master'
+    steps:
+    - if: needs.test.result == 'success' && needs.test-browsertests.result == 'success'
+      name: Notify slack success
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        channel: epp-build-status-notifications
+        status: BUILDING
+        color: good
+    - if: needs.test.result != 'success' || needs.test-browsertests.result != 'success'
+      name: Notify slack failure
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        channel: epp-build-status-notifications
+        status: FAILED
+        color: good
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
@@ -107,3 +149,27 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-storybook:latest
             ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+  notify-result:
+    needs: [build-and-push]
+    if: always() && github.ref == 'refs/heads/master'
+    steps:
+    - if: needs.test.result == 'success' && needs.test-browsertests.result == 'success'
+      name: Notify slack success
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        channel: epp-build-status-notifications
+        status: SUCCESS
+        color: good
+    - if: needs.test.result != 'success' || needs.test-browsertests.result != 'success'
+      name: Notify slack failure
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        message_id: ${{ jobs.notify-start.outputs.slack.message_id }}
+        channel: epp-build-status-notifications
+        status: FAILED
+        color: good
