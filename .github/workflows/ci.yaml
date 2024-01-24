@@ -51,7 +51,6 @@ jobs:
         run: yarn test
       - name: Production build
         run: yarn build
-
   test-browsertests:
     runs-on: ubuntu-latest
     steps:
