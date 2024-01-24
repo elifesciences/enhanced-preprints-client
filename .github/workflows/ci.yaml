@@ -14,21 +14,6 @@ on:
       - '*'
 
 jobs:
-  notify-start:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    outputs:
-      message_id: ${{ steps.slack.outputs.message_id }}
-    steps:
-    - name: Notify slack
-      id: slack
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        channel: epp-build-status-notifications
-        status: TESTING
-        color: warning
   test:
     runs-on: ubuntu-latest
     steps:
@@ -78,31 +63,6 @@ jobs:
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
-  notify-test-result:
-    needs: [notify-start, test, test-browsertests]
-    runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
-    steps:
-    - if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
-      name: Notify slack success
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: BUILDING
-        color: warning
-    - if: needs.test.result != 'success' || needs['test-browsertests'].result != 'success'
-      name: Notify slack failure
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: TESTINGFAILED
-        color: danger
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
@@ -147,28 +107,302 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-storybook:latest
             ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-  notify-build-result:
-    needs: [notify-start, notify-test-result, build-and-push]
+
+  notify-start:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    outputs:
+      ts: ${{ steps.slack.outputs.ts }}
+    steps:
+    - name: Notify Slack testing started
+      id: slack
+      uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      with:
+        channel-id: C06FPSVJPUH
+        payload: |
+          {
+            "text": "EPP Client CI: testing... :sonic:",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: testing... :sonic:",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  }
+                ]
+              }
+            ]
+          }
+  notify-test-result:
+    needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
-    - if: needs.build-and-push.result == 'success'
-      name: Notify slack success
+    - name: Notify Slack testing completed, building started
+      if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: SUCCESS
-        color: good
-    - if: needs.build-and-push.result != 'success'
-      name: Notify slack failure
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI: building... :sonic:",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: building... :sonic:",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  }
+                ]
+              }
+            ]
+          }
+    - name: Notify Slack testing failed
+      if: needs.test.result != 'success' || needs['test-browsertests'].result != 'success'
+      uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-      uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs['notify-start'].outputs.message_id }}
-        channel: epp-build-status-notifications
-        status: BUILDINGFAILED
-        color: danger
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: failed",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  }
+                ]
+              }
+            ]
+          }
+  notify-build-result:
+    needs: [notify-start, test, test-browsertests, notify-test-result, build-and-push]
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/master'
+    steps:
+    - name: Notify Slack build final message
+      uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+      with:
+        channel-id: C06FPSVJPUH
+        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        payload: |
+          {
+            "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Stages:*"
+                },
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  }
+                ]
+              }
+            ]
+          }
