@@ -81,7 +81,6 @@ jobs:
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
-      - run: exit 1
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
@@ -107,12 +106,13 @@ jobs:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
         status: TESTINGFAILED
-        color: bad
+        color: danger
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
     # if: github.ref == 'refs/heads/master'
     steps:
+      - run: exit 1
       - uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -177,4 +177,4 @@ jobs:
         message_id: ${{ needs['notify-start'].outputs.message_id }}
         channel: epp-build-status-notifications
         status: BUILDINGFAILED
-        color: bad
+        color: danger
