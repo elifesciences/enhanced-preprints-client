@@ -93,7 +93,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: BUILDING
         color: good
@@ -103,7 +103,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
         color: good
@@ -151,7 +151,7 @@ jobs:
       #       ghcr.io/elifesciences/enhanced-preprints-storybook:latest
       #       ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
       #       ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-  notify-result:
+  notify-build-result:
     needs: [build-and-push]
     runs-on: ubuntu-latest
     # if: always() && github.ref == 'refs/heads/master'
@@ -163,7 +163,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: SUCCESS
         color: good
@@ -173,7 +173,7 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       uses: voxmedia/github-action-slack-notify-build@v1
       with:
-        message_id: ${{ needs.jobs.notify-start.outputs.slack.message_id }}
+        message_id: ${{ needs.jobs.notify-start.outputs.message_id }}
         channel: epp-build-status-notifications
         status: FAILED
         color: good
