@@ -52,9 +52,9 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Docker image build:* :white_circle: "
-                  },
+                  }
                 ]
-              }
+              },
               {
                 "type": "section",
                 "fields": [
@@ -65,7 +65,7 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
-                  },
+                  }
                 ]
               }
             ]
@@ -157,9 +157,9 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Docker image build:* :large_orange_circle:"
-                  },
+                  }
                 ]
-              }
+              },
               {
                 "type": "section",
                 "fields": [
@@ -170,7 +170,7 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
-                  },
+                  }
                 ]
               }
             ]
@@ -208,9 +208,9 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Docker image build:* :white_circle:"
-                  },
+                  }
                 ]
-              }
+              },
               {
                 "type": "section",
                 "fields": [
@@ -221,7 +221,7 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
-                  },
+                  }
                 ]
               }
             ]
@@ -309,9 +309,9 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Docker image build:* :large_green_circle:"
-                  },
+                  }
                 ]
-              }
+              },
               {
                 "type": "section",
                 "fields": [
@@ -322,7 +322,7 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
-                  },
+                  }
                 ]
               }
             ]
@@ -360,9 +360,9 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Docker image build:* :red_circle:"
-                  },
+                  }
                 ]
-              }
+              },
               {
                 "type": "section",
                 "fields": [
@@ -373,7 +373,7 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}|View Build>"
-                  },
+                  }
                 ]
               }
             ]
