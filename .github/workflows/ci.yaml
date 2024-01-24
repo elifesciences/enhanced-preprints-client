@@ -29,13 +29,13 @@ jobs:
         channel-id: C06FPSVJPUH
         payload: |
           {
-            "text": "EPP Client CI: testing... :sonic:",
+            "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): testing... :sonic:",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: testing... :sonic:",
+                  "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): testing... :sonic:",
                   "emoji": true
                 }
               },
@@ -139,13 +139,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: building... :sonic:",
+            "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): building... :sonic:",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: building... :sonic:",
+                  "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): building... :sonic:",
                   "emoji": true
                 }
               },
@@ -200,7 +200,7 @@ jobs:
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: failed",
+                  "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): failed",
                   "emoji": true
                 }
               },
@@ -300,13 +300,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: success",
+            "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): success",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: success",
+                  "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): success",
                   "emoji": true
                 }
               },
@@ -355,13 +355,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: failed",
+            "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): failed",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: failed",
+                  "text": "EPP Client CI (${{ github.event.pull_request.head.sha || github.event.head_commit.id }}): failed",
                   "emoji": true
                 }
               },
