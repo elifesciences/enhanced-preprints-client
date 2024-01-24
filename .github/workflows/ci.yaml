@@ -148,7 +148,7 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
   notify-build-result:
-    needs: [notify-start, build-and-push]
+    needs: [notify-start, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
