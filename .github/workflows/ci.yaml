@@ -135,6 +135,10 @@ jobs:
               },
               {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ github.event.commits[0].message }}"
+                }
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -142,7 +146,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
                   }
                 ]
               },
@@ -211,6 +215,10 @@ jobs:
               },
               {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ github.event.commits[0].message }}"
+                }
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -218,7 +226,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
                   }
                 ]
               },
@@ -282,6 +290,10 @@ jobs:
               },
               {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ github.event.commits[0].message }}"
+                }
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -289,7 +301,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
                   }
                 ]
               },
@@ -357,6 +369,10 @@ jobs:
               },
               {
                 "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ github.event.commits[0].message }}"
+                }
                 "fields": [
                   {
                     "type": "mrkdwn",
@@ -364,7 +380,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
+                    "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
                   }
                 ]
               },
