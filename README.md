@@ -39,6 +39,12 @@ You can also view a rudimentary mongodb GUI client at [`localhost:8081`](http://
 
 You can work with and view the component library via storybook at [`localhost:6006`](http://localhost:6006).
 
+### Set the SITE_NAME to allow for site specific overrides
+
+```bash
+SITE_NAME=elife docker compose up
+```
+
 ## Development build with local API - `SERVER_DIR="../your-directory-here" docker compose -f docker-compose.yaml -f docker-compose.localserver.yaml up`
 
 To start the application with a local version of the [`EPP API server`](https://github.com/elifesciences/enhanced-preprints-server) so you can run the application and test local changes of the API, you need to define an environment variable `SERVER_DIR` with the location of your EPP API server project, i.e. `SERVER_DIR="../enhanced-preprints-server"`, then run the above command to invoke the `.localserver` ovverides.
