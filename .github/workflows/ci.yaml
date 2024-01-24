@@ -48,7 +48,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
+                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
@@ -171,7 +171,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
+                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
@@ -239,7 +239,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
+                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
@@ -358,7 +358,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
+                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
@@ -426,7 +426,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "author*: ${{ github.event.pull_request.head.user.id || github.event.head_commit.committer.name }}"
+                    "text": "*author*: ${{ github.event.pull_request.head.user.login || github.event.head_commit.committer.name }}"
                   }
                 ]
               },
