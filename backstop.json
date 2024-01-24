@@ -10,7 +10,7 @@
   "scenarios": [
     {
       "label": "Article Tab",
-      "url": "http://localhost:8080/reviewed-preprints/85111",
+      "url": "http://app:3000/reviewed-preprints/85111",
       "removeSelectors": [
         "#CybotCookiebotDialog",
         "picture"
@@ -18,7 +18,7 @@
     },
     {
       "label": "Figures Tab",
-      "url": "http://localhost:8080/reviewed-preprints/85111/figures",
+      "url": "http://app:3000/reviewed-preprints/85111/figures",
       "removeSelectors": [
         "#CybotCookiebotDialog",
         "picture"
@@ -26,7 +26,7 @@
     },
     {
       "label": "Reviews Tab",
-      "url": "http://localhost:8080/reviewed-preprints/85111/reviews",
+      "url": "http://app:3000/reviewed-preprints/85111/reviews",
       "removeSelectors": [
         "#CybotCookiebotDialog",
         "picture"

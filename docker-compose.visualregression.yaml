@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  visualregression:
+    image: backstopjs/backstopjs:6.3.3
+    volumes: 
+      - ./:/src
+    
