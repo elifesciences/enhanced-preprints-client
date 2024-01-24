@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }: any) {
         })(window,document,'script','dataLayer','${config.gtmId}');`,
       }}></Script>
     }
-      <DefaultLayout>
+      <DefaultLayout siteName={config.siteName}>
         <Component {...pageProps} />
       </DefaultLayout>
     </>
