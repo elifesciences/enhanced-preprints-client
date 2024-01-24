@@ -68,7 +68,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ github.event.pull_request.patch_url || github.event.compare }}|View diff>"
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -178,7 +178,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ github.event.pull_request.patch_url || github.event.compare }}|View diff>"
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -233,7 +233,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ github.event.pull_request.patch_url || github.event.compare }}|View diff>"
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -339,7 +339,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ github.event.pull_request.patch_url || github.event.compare }}|View diff>"
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
@@ -394,7 +394,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ github.event.pull_request.patch_url || github.event.compare }}|View diff>"
+                    "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
                   }
                 ]
               }
