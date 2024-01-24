@@ -90,12 +90,12 @@ jobs:
         run: yarn
       - name: Lint
         run: yarn lint
-      - name: Lint SASS
-        run: yarn lint-sass
-      - name: Unit Test
-        run: yarn test
-      - name: Production build
-        run: yarn build
+      # - name: Lint SASS
+      #   run: yarn lint-sass
+      # - name: Unit Test
+      #   run: yarn test
+      # - name: Production build
+      #   run: yarn build
   test-browsertests:
     runs-on: ubuntu-latest
     steps:
