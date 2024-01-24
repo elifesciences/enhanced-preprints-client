@@ -158,7 +158,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' ? ':large_green_circle:' : ':red_circle:' }} Tests"
+                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:' }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -235,7 +235,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' ? ':large_green_circle:' : ':red_circle:' }} Tests"
+                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:' }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -306,7 +306,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' ? ':large_green_circle:' : ':red_circle:' }} Tests"
+                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:' }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -347,13 +347,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' ? 'success' : 'failed' }}",
+            "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' ? 'success' : 'failed' }}",
+                  "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
                   "emoji": true
                 }
               },
@@ -382,11 +382,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' ? ':large_green_circle:' : ':red_circle:' }} Tests"
+                    "text": "${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:' }} Tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{needs.build-and-push.result == 'success' ? ':large_green_circle:' : ':red_circle'}} Docker image build"
+                    "text": "${{needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle'}} Docker image build"
                   }
                 ]
               },
