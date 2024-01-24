@@ -138,7 +138,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
@@ -212,7 +212,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
@@ -280,7 +280,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
@@ -354,7 +354,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
@@ -422,7 +422,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
                   },
                   {
                     "type": "mrkdwn",
