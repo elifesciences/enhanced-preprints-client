@@ -29,13 +29,13 @@ jobs:
         channel-id: C06FPSVJPUH
         payload: |
           {
-            "text": "EPP Client CI - ",
+            "text": "EPP Client CI: testing... :sonic:",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: testing",
+                  "text": "EPP Client CI: testing... :sonic:",
                   "emoji": true
                 }
               },
@@ -139,13 +139,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI",
+            "text": "EPP Client CI: building... :sonic:",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: testing",
+                  "text": "EPP Client CI: building... :sonic:",
                   "emoji": true
                 }
               },
@@ -200,7 +200,7 @@ jobs:
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: testing",
+                  "text": "EPP Client CI: failed",
                   "emoji": true
                 }
               },
@@ -300,13 +300,13 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI",
+            "text": "EPP Client CI: success",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: Success",
+                  "text": "EPP Client CI: success",
                   "emoji": true
                 }
               },
@@ -355,7 +355,7 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI",
+            "text": "EPP Client CI: failed",
             "blocks": [
               {
                 "type": "header",
