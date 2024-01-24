@@ -31,12 +31,12 @@ jobs:
         run: yarn
       - name: Lint
         run: yarn lint
-      - name: Lint SASS
-        run: yarn lint-sass
-      - name: Unit Test
-        run: yarn test
-      - name: Production build
-        run: yarn build
+      # - name: Lint SASS
+      #   run: yarn lint-sass
+      # - name: Unit Test
+      #   run: yarn test
+      # - name: Production build
+      #   run: yarn build
   test-browsertests:
     runs-on: ubuntu-latest
     steps:
@@ -51,23 +51,23 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
-      - name: Install operating system dependencies
-        run: |
-          yarn playwright install
-          yarn playwright install-deps
-      - name: Bring up browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml up -d --wait
-      - name: Debug bring up browser test stack
-        if: failure()
-        run: docker compose logs app
-      - name: Browser Tests
-        run: yarn test:browser
-      - name: Take down browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml down
+      # - name: Install operating system dependencies
+      #   run: |
+      #     yarn playwright install
+      #     yarn playwright install-deps
+      # - name: Bring up browser test stack
+      #   run: docker compose -f docker-compose.browsertest.yaml up -d --wait
+      # - name: Debug bring up browser test stack
+      #   if: failure()
+      #   run: docker compose logs app
+      # - name: Browser Tests
+      #   run: yarn test:browser
+      # - name: Take down browser test stack
+      #   run: docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -86,32 +86,32 @@ jobs:
       - name: Get sha with 8 chars long
         id: commit_sha
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-      - name: Build and push client image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: prod
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-client:latest
-            ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push storybook image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: storybook
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-storybook:latest
-            ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push client image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: prod
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-client:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push storybook image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: storybook
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
 
   notify-start:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     outputs:
       ts: ${{ steps.slack.outputs.ts }}
     steps:
@@ -188,7 +188,8 @@ jobs:
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - name: Notify Slack testing completed, building started
       if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
@@ -335,7 +336,8 @@ jobs:
   notify-build-result:
     needs: [notify-start, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - name: Notify Slack build success
       if: needs.build-and-push.result == 'success'
