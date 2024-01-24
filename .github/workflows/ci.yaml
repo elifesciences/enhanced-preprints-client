@@ -158,7 +158,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -235,7 +235,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -306,7 +306,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -382,7 +382,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
