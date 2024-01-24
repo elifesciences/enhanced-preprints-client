@@ -44,7 +44,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
                     "type": "mrkdwn",
@@ -167,7 +167,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
                     "type": "mrkdwn",
@@ -235,7 +235,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
                     "type": "mrkdwn",
@@ -354,7 +354,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
                     "type": "mrkdwn",
@@ -422,7 +422,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*head commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
+                    "text": "*commit*: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}"
                   },
                   {
                     "type": "mrkdwn",
