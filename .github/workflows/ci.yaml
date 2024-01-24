@@ -83,6 +83,7 @@ jobs:
         run: docker compose -f docker-compose.browsertest.yaml down
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
+    runs-on: ubuntu-latest
     # if: always() && github.ref == 'refs/heads/master'
     if: always()
     steps:
