@@ -16,7 +16,7 @@ on:
 jobs:
   notify-start:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     outputs:
       message_id: ${{ steps.slack.outputs.message_id }}
     steps:
@@ -83,7 +83,8 @@ jobs:
         run: docker compose -f docker-compose.browsertest.yaml down
   notify-test-result:
     needs: [notify-start, test, test-browsertests]
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - if: needs.test.result == 'success' && needs.test-browsertests.result == 'success'
       name: Notify slack success
@@ -108,7 +109,7 @@ jobs:
   build-and-push:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -127,31 +128,32 @@ jobs:
       - name: Get sha with 8 chars long
         id: commit_sha
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
-      - name: Build and push client image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: prod
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-client:latest
-            ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push storybook image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: storybook
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-storybook:latest
-            ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push client image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: prod
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-client:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      # - name: Build and push storybook image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     push: true
+      #     load: false
+      #     platforms: linux/amd64,linux/arm64
+      #     target: storybook
+      #     tags: |
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:latest
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
+      #       ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
   notify-result:
     needs: [build-and-push]
-    if: always() && github.ref == 'refs/heads/master'
+    # if: always() && github.ref == 'refs/heads/master'
+    if: always()
     steps:
     - if: needs.test.result == 'success' && needs.test-browsertests.result == 'success'
       name: Notify slack success
