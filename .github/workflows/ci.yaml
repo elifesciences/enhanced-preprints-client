@@ -36,7 +36,7 @@ jobs:
         run: yarn test
       - name: Production build
         run: yarn build
-  test-browsertests:
+  test-integration:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,16 +55,18 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
       - name: Bring up browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml up -d --wait
+        run: yarn start:test-env
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
+      - name: Visual Regression Tests
+        run: yarn visual-regression:test
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
   build-and-push:
-    needs: [test, test-browsertests]
+    needs: [test, test-integration]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     outputs:
@@ -127,9 +129,9 @@ jobs:
         payload: |
           {
             "text": "EPP Client CI: ${{
-              (!needs.test.result || !needs.test-browsertests.result) &&
+              (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -144,9 +146,9 @@ jobs:
                 "text": {
                   "type": "plain_text",
                   "text": "EPP Client CI: ${{
-                    (!needs.test.result || !needs.test-browsertests.result) &&
+                    (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -187,7 +189,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -218,7 +220,7 @@ jobs:
             ]
           }
   notify-test-result:
-    needs: [notify-start, test, test-browsertests]
+    needs: [notify-start, test, test-integration]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
@@ -232,9 +234,9 @@ jobs:
         payload: |
           {
             "text": "EPP Client CI: ${{
-              (!needs.test.result || !needs.test-browsertests.result) &&
+              (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -249,9 +251,9 @@ jobs:
                 "text": {
                   "type": "plain_text",
                   "text": "EPP Client CI: ${{
-                    (!needs.test.result || !needs.test-browsertests.result) &&
+                    (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -292,7 +294,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -323,7 +325,7 @@ jobs:
             ]
           }
   notify-build-result:
-    needs: [notify-start, test, test-browsertests, notify-test-result, build-and-push]
+    needs: [notify-start, test, test-integration, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
@@ -337,9 +339,9 @@ jobs:
         payload: |
           {
             "text": "EPP Client CI: ${{
-              (!needs.test.result || !needs.test-browsertests.result) &&
+              (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -354,9 +356,9 @@ jobs:
                 "text": {
                   "type": "plain_text",
                   "text": "EPP Client CI: ${{
-                    (!needs.test.result || !needs.test-browsertests.result) &&
+                    (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -397,7 +399,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
