@@ -67,6 +67,9 @@ jobs:
     needs: [test, test-browsertests]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    outputs:
+      client_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      storybook_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -205,6 +208,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ needs.build-and-push.outputs.client_image_tag && format('https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}', needs.build-and-push.outputs.client_image_tag) || '' }}|${{ needs.build-and-push.outputs.client_image_tag && 'View image' || '' }}>"
                   }
                 ]
               }
@@ -306,6 +313,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ needs.build-and-push.outputs.client_image_tag && format('https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}', needs.build-and-push.outputs.client_image_tag) || '' }}|${{ needs.build-and-push.outputs.client_image_tag && 'View image' || '' }}>"
                   }
                 ]
               }
@@ -407,6 +418,10 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "<${{ needs.build-and-push.outputs.client_image_tag && format('https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}', needs.build-and-push.outputs.client_image_tag) || '' }}|${{ needs.build-and-push.outputs.client_image_tag && 'View image' || '' }}>"
                   }
                 ]
               }
