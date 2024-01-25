@@ -38,7 +38,7 @@ export const Timeline = ({ events }: TimelineProps) => {
   const { t } = useTranslation();
   return (
     <div className="review-timeline">
-      <dl className="review-timeline__list" aria-label={t('Here is the article timeline')}>
+      <dl className="review-timeline__list" aria-label={t('aria_label_timeline', { defaultValue: 'Here is the article timeline' })}>
         {
           events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((entry, index) => (
             <Fragment key={index}>

@@ -19,7 +19,7 @@ const resources = {
     translation: {
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
-      'Here is the article timeline': 'Here is the endorsed article timeline',
+      aria_label_timeline: 'Here is the endorsed article timeline',
       'Reviewed Preprint': 'Endorsed Article',
       'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
       'About {{publisher_short}}\'s process': 'Find out about {{publisher_short}}\'s process',
