@@ -123,13 +123,35 @@ jobs:
         channel-id: C06FPSVJPUH
         payload: |
           {
-            "text": "EPP Client CI: testing... :sonic:",
+            "text": "EPP Client CI: ${{
+              (!needs.test.result || !needs.test-browsertests.result) &&
+                'testing... :sonic:'
+              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                'tests failed'
+              || (!needs.build-and-push.result &&
+                'building... :sonic:'
+              || (needs.build-and-push.result != 'success' &&
+                'building failed'
+              || 'success'
+              )))
+            }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: testing... :sonic:",
+                  "text": "EPP Client CI: ${{
+                    (!needs.test.result || !needs.test-browsertests.result) &&
+                      'testing... :sonic:'
+                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                      'tests failed'
+                    || (!needs.build-and-push.result &&
+                      'building... :sonic:'
+                    || (needs.build-and-push.result != 'success' &&
+                      'building failed'
+                    || 'success'
+                    )))
+                  }}",
                   "emoji": true
                 }
               },
@@ -162,7 +184,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -194,7 +216,7 @@ jobs:
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack testing completed, building started
-      if: needs.test.result == 'success' && needs['test-browsertests'].result == 'success'
+      if: needs.test.result == 'success' && needs.test-browsertests.result == 'success'
       uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
@@ -203,13 +225,35 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: building... :sonic:",
+            "text": "EPP Client CI: ${{
+              (!needs.test.result || !needs.test-browsertests.result) &&
+                'testing... :sonic:'
+              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                'tests failed'
+              || (!needs.build-and-push.result &&
+                'building... :sonic:'
+              || (needs.build-and-push.result != 'success' &&
+                'building failed'
+              || 'success'
+              )))
+            }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: building... :sonic:",
+                  "text": "EPP Client CI: ${{
+                    (!needs.test.result || !needs.test-browsertests.result) &&
+                      'testing... :sonic:'
+                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                      'tests failed'
+                    || (!needs.build-and-push.result &&
+                      'building... :sonic:'
+                    || (needs.build-and-push.result != 'success' &&
+                      'building failed'
+                    || 'success'
+                    )))
+                  }}",
                   "emoji": true
                 }
               },
@@ -242,7 +286,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -269,7 +313,7 @@ jobs:
             ]
           }
     - name: Notify Slack testing failed
-      if: needs.test.result != 'success' || needs['test-browsertests'].result != 'success'
+      if: needs.test.result != 'success' || needs.test-browsertests.result != 'success'
       uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
@@ -284,7 +328,18 @@ jobs:
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: failed",
+                  "text": "EPP Client CI: ${{
+                    (!needs.test.result || !needs.test-browsertests.result) &&
+                      'testing... :sonic:'
+                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                      'tests failed'
+                    || (!needs.build-and-push.result &&
+                      'building... :sonic:'
+                    || (needs.build-and-push.result != 'success' &&
+                      'building failed'
+                    || 'success'
+                    )))
+                  }}",
                   "emoji": true
                 }
               },
@@ -317,7 +372,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -357,13 +412,35 @@ jobs:
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
-            "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
+            "text": "EPP Client CI: ${{
+              (!needs.test.result || !needs.test-browsertests.result) &&
+                'testing... :sonic:'
+              || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                'tests failed'
+              || (!needs.build-and-push.result &&
+                'building... :sonic:'
+              || (needs.build-and-push.result != 'success' &&
+                'building failed'
+              || 'success'
+              )))
+            }}",
             "blocks": [
               {
                 "type": "header",
                 "text": {
                   "type": "plain_text",
-                  "text": "EPP Client CI: ${{ needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && needs.build-and-push.result == 'success' && 'success' || 'failed' }}",
+                  "text": "EPP Client CI: ${{
+                    (!needs.test.result || !needs.test-browsertests.result) &&
+                      'testing... :sonic:'
+                    || ((needs.test.result != 'success' || needs.test-browsertests.result  != 'success') &&
+                      'tests failed'
+                    || (!needs.build-and-push.result &&
+                      'building... :sonic:'
+                    || (needs.build-and-push.result != 'success' &&
+                      'building failed'
+                    || 'success'
+                    )))
+                  }}",
                   "emoji": true
                 }
               },
@@ -396,7 +473,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs['test-browsertests'].result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-browsertests.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
                   },
                   {
                     "type": "mrkdwn",
