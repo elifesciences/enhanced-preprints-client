@@ -193,7 +193,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -210,10 +210,6 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|image tag: {0}>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
@@ -298,7 +294,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -315,10 +311,6 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|image tag: {0}>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
@@ -403,7 +395,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -420,10 +412,6 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
-                  },
-                  {
-                    "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|image tag: {0}>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
