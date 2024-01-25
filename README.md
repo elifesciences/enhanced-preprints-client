@@ -50,7 +50,7 @@ You can work with and view the component library via storybook at [`localhost:60
 ### Set the SITE_NAME to allow for site specific overrides
 
 ```bash
-SITE_NAME=elife docker compose up
+NEXT_PUBLIC_SITE_NAME=elife docker compose up
 ```
 
 ## Development build with local API - `SERVER_DIR="../your-directory-here" docker compose -f docker-compose.yaml -f docker-compose.localserver.yaml up`
