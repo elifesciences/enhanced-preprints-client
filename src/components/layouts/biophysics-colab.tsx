@@ -1,4 +1,4 @@
-import './default.scss';
+import './biophysics-colab.scss';
 import { ReactNode } from 'react';
 
 type Props = {
