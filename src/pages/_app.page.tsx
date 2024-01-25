@@ -1,7 +1,26 @@
 import Head from 'next/head';
 import Script from 'next/script';
+import { ReactNode } from 'react';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
+import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+
+const LayoutSelector = ({ children }: { children: ReactNode }) => {
+  switch (config.siteName) {
+    case 'biophysics-colab':
+      return (
+        <BiophysicsColabLayout>
+          {children}
+        </BiophysicsColabLayout>
+      );
+    default:
+      return (
+        <DefaultLayout>
+          {children}
+        </DefaultLayout>
+      );
+  }
+};
 
 export default function MyApp({ Component, pageProps }: any) {
   return (
@@ -23,9 +42,9 @@ export default function MyApp({ Component, pageProps }: any) {
         })(window,document,'script','dataLayer','${config.gtmId}');`,
       }}></Script>
     }
-      <DefaultLayout siteName={config.siteName}>
+      <LayoutSelector>
         <Component {...pageProps} />
-      </DefaultLayout>
+      </LayoutSelector>
     </>
   );
 }
