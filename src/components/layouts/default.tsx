@@ -5,12 +5,11 @@ import './default.scss';
 
 type Props = {
   children: ReactNode,
-  siteName?: string,
 };
 
-export const DefaultLayout = ({ children, siteName }: Props) => (
+export const DefaultLayout = ({ children }: Props) => (
   <>
-    <div className={`grid-container article-page${siteName ? ` article-page-${siteName}` : ''}`}>
+    <div className="grid-container article-page">
       <div className="grid-header">
         <SiteHeader />
       </div>
