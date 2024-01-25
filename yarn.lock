@@ -2047,6 +2047,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.22.5":
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 6bbebe8d27c0c2dd275d1ac197fc1a6c00e18dab68cc7aaff0adc3195b45862bae9c4cc58975629004b0213955b2ed91e99eccb3d9b39cabea246c657323d667
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.23.2":
   version: 7.23.4
   resolution: "@babel/runtime@npm:7.23.4"
@@ -5480,6 +5489,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/i18next@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "@types/i18next@npm:13.0.0"
+  dependencies:
+    i18next: "*"
+  checksum: da3e56065d593bea786c9a35e625064a2502f67cdddb8e19338016c4f8dc3952aa55ab915a6f76fdebd61d5c04bb9aff9f2603eb809deb811dab0729cce72fe4
+  languageName: node
+  linkType: hard
+
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0, @types/istanbul-lib-coverage@npm:^2.0.1":
   version: 2.0.4
   resolution: "@types/istanbul-lib-coverage@npm:2.0.4"
@@ -5667,6 +5685,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 8e3da404c980e2b2a76da3852f812ea6d8b9d0e7f5923fbaf3bfbbbfa1d59116ff91c129de8f68e9b7668a67ae34484fe9df74d5a7518cf8591ec07a0c4dad57
+  languageName: node
+  linkType: hard
+
+"@types/react-i18next@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "@types/react-i18next@npm:8.1.0"
+  dependencies:
+    react-i18next: "*"
+  checksum: 2bfbafae138d8341444e88719cd49f3a8bdd0e0331e26126f64a646a25e85047378fecdad0b10a9273f7bdbdd16a824f0446b358d58d8e15f396c881dc6af5f7
   languageName: node
   linkType: hard
 
@@ -9099,10 +9126,12 @@ __metadata:
     "@testing-library/jest-dom": ^6.0.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.0.0
+    "@types/i18next": ^13.0.0
     "@types/jest": ^29.0.0
     "@types/node": ^20.0.0
     "@types/react": ^18.2.45
     "@types/react-dom": ^18.2.18
+    "@types/react-i18next": ^8.1.0
     "@typescript-eslint/eslint-plugin": 6.19.1
     "@typescript-eslint/parser": 6.19.1
     babel-plugin-named-exports-order: ^0.0.2
@@ -9119,6 +9148,7 @@ __metadata:
     eslint-plugin-react: ^7.30.1
     eslint-plugin-storybook: ^0.6.11
     fetch-mock: ^9.11.0
+    i18next: ^23.7.19
     jest: ^29.6.1
     jest-environment-jsdom: ^29.6.1
     next: ^14.0.4
@@ -9128,6 +9158,7 @@ __metadata:
     react: ^18.2.0
     react-app-polyfill: ^3.0.0
     react-dom: ^18.2.0
+    react-i18next: ^14.0.1
     sass: ^1.54.5
     storybook: ^7.0.6
     storybook-dark-mode: ^3.0.0
@@ -11176,6 +11207,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html-parse-stringify@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "html-parse-stringify@npm:3.0.1"
+  dependencies:
+    void-elements: 3.1.0
+  checksum: 334fdebd4b5c355dba8e95284cead6f62bf865a2359da2759b039db58c805646350016d2017875718bc3c4b9bf81a0d11be5ee0cf4774a3a5a7b97cde21cfd67
+  languageName: node
+  linkType: hard
+
 "html-tags@npm:^3.1.0, html-tags@npm:^3.3.1":
   version: 3.3.1
   resolution: "html-tags@npm:3.3.1"
@@ -11301,6 +11341,15 @@ __metadata:
   dependencies:
     ms: ^2.0.0
   checksum: 9c7a74a2827f9294c009266c82031030eae811ca87b0da3dceb8d6071b9bde22c9f3daef0469c3c533cc67a97d8a167cd9fc0389350e5f415f61a79b171ded16
+  languageName: node
+  linkType: hard
+
+"i18next@npm:*, i18next@npm:^23.7.19":
+  version: 23.7.19
+  resolution: "i18next@npm:23.7.19"
+  dependencies:
+    "@babel/runtime": ^7.23.2
+  checksum: f04f29d2dea7ba0586bc94120ee68fc38c8d599c1b530df895119eaa7d57ab060571d76206f0eae06cce9306ddf093e10b0090d7a8f4546182ad3657e7f4a55d
   languageName: node
   linkType: hard
 
@@ -15414,6 +15463,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-i18next@npm:*, react-i18next@npm:^14.0.1":
+  version: 14.0.1
+  resolution: "react-i18next@npm:14.0.1"
+  dependencies:
+    "@babel/runtime": ^7.22.5
+    html-parse-stringify: ^3.0.1
+  peerDependencies:
+    i18next: ">= 23.2.3"
+    react: ">= 16.8.0"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 5ddd3bde1f31fbb1a2103148111decc09f73c993291ed943e7da58dd585e34f8104d6c0d4e6c3f2559add7298156526244d7dd58a2b3200253c512af8f5ddb9a
+  languageName: node
+  linkType: hard
+
 "react-is@npm:18.1.0":
   version: 18.1.0
   resolution: "react-is@npm:18.1.0"
@@ -18173,6 +18240,13 @@ __metadata:
   version: 1.1.2
   resolution: "vm-browserify@npm:1.1.2"
   checksum: 10a1c50aab54ff8b4c9042c15fc64aefccce8d2fb90c0640403242db0ee7fb269f9b102bdb69cfb435d7ef3180d61fd4fb004a043a12709abaf9056cfd7e039d
+  languageName: node
+  linkType: hard
+
+"void-elements@npm:3.1.0":
+  version: 3.1.0
+  resolution: "void-elements@npm:3.1.0"
+  checksum: 0390f818107fa8fce55bb0a5c3f661056001c1d5a2a48c28d582d4d847347c2ab5b7f8272314cac58acf62345126b6b09bea623a185935f6b1c3bbce0dfd7f7f
   languageName: node
   linkType: hard
 
