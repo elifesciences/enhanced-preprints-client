@@ -189,11 +189,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -294,11 +294,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -399,11 +399,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
