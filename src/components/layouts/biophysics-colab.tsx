@@ -1,5 +1,5 @@
-import './biophysics-colab.scss';
 import { ReactNode } from 'react';
+import './biophysics-colab.scss';
 
 type Props = {
   children: ReactNode,
