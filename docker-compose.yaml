@@ -148,7 +148,7 @@ services:
       retries: 10
       start_period: 2s
     environment:
-      SITE_NAME: ${SITE_NAME:-}
+      NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-}
       API_SERVER: ${API_SERVER:-http://api:3000}
       IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
