@@ -211,7 +211,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || '' }}"
+                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
@@ -316,7 +316,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || '' }}"
+                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
@@ -421,7 +421,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || '' }}"
+                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || 'no build image' }}"
                   }
                 ]
               }
