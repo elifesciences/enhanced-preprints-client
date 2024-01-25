@@ -5,27 +5,35 @@ import { config } from './config';
 const resources = {
   default: {
     translation: {
-      aria_label_timeline: 'Here is the article timeline',
-      citation_publisher: 'eLife Sciences Publications Limited',
-      citation_journal_title: 'eLife',
+      publisher_short: 'Journal',
+      publisher_long: 'Journal Publications Limited',
+    },
+  },
+  elife: {
+    translation: {
+      publisher_short: 'eLife',
+      publisher_long: 'eLife Sciences Publications Limited',
     },
   },
   biophysics_colab: {
     translation: {
-      aria_label_timeline: 'Here is the endorsed article timeline',
-      citation_publisher: 'Biophysics Colab',
-      citation_journal_title: 'Biophysics Colab',
+      publisher_short: 'Biophysics Colab',
+      publisher_long: 'Biophysics Colab',
+      'Here is the article timeline': 'Here is the endorsed article timeline',
       'Reviewed Preprint': 'Endorsed Article',
       'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
+      'About {{publisher_short}}\'s process': 'Find out about {{publisher_short}}\'s process',
     },
   },
 };
+
+const siteName = config.siteName?.replace('-', '_');
 
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: config.siteName?.replace('-', '_'),
+    lng: Object.keys(resources).includes(siteName ?? '') ? siteName : 'elife',
     fallbackLng: 'default',
     interpolation: {
       escapeValue: false,

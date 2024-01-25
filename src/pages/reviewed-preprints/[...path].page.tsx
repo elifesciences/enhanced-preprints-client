@@ -104,8 +104,8 @@ export const Page = (props: PageProps) => {
       <Head>
         <title>{contentToText(props.metaData.title)}</title>
         <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-        <meta name="citation_publisher" content={t('citation_publisher')}/>
-        <meta name="citation_journal_title" content={t('citation_journal_title')}/>
+        <meta name="citation_publisher" content={t('publisher_long')}/>
+        <meta name="citation_journal_title" content={t('publisher_short')}/>
         <meta name="citation_volume" content={props.metaData.volume}/>
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>

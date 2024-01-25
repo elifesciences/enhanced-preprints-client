@@ -1,7 +1,7 @@
 import {
   EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, ArticleStatus,
 } from '../types';
-import i18n from "../i18n";
+import i18n from '../i18n';
 
 const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: VersionSummary) => version.id === article.id && version.versionIdentifier === article.versionIdentifier;
 
