@@ -1,6 +1,7 @@
 import {
   EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
 } from '../types';
+import i18n from '../i18n';
 
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
@@ -11,11 +12,11 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
       events.push(current.id === version.article.id ?
         {
           date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
+          name: i18n.t('Reviewed preprint version {{versionIdentifier}}', { versionIdentifier: current.versionIdentifier }),
           eventDescription: '(this version)',
         } : {
           date: new Date(current.published).toDateString(),
-          name: `Reviewed preprint version ${current.versionIdentifier}`,
+          name: i18n.t('Reviewed preprint version {{versionIdentifier}}', { versionIdentifier: current.versionIdentifier }),
           link: {
             url: `/reviewed-preprints/${current.id}`,
             text: 'Go to version',

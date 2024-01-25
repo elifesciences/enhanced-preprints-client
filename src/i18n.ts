@@ -15,6 +15,8 @@ const resources = {
       aria_label_timeline: 'Here is the endorsed article timeline',
       citation_publisher: 'Biophysics Colab',
       citation_journal_title: 'Biophysics Colab',
+      'Reviewed Preprint': 'Endorsed Article',
+      'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
     },
   },
 };
