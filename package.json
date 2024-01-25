@@ -24,8 +24,9 @@
     "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public",
     "start:test-env": "docker compose -f docker-compose.browsertest.yaml up --wait",
-    "visual-regression:test": "docker compose -f docker-compose.visualregression.yaml run visualregression test", 
+    "visual-regression:test": "docker compose -f docker-compose.visualregression.yaml run visualregression test",
     "visual-regression:approve": "docker compose -f docker-compose.visualregression.yaml run visualregression approve",
+    "visual-regression:report": "yarn backstop openReport",
     "visual-regression": "yarn start:test-env && yarn visual-regression:test",
     "test:browser": "playwright test"
   },
