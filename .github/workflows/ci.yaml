@@ -211,7 +211,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ needs.build-and-push.outputs.client_image_tag && format('https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}', needs.build-and-push.outputs.client_image_tag) || '' }}|${{ needs.build-and-push.outputs.client_image_tag && 'View image' || '' }}>"
+                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || '' }}"
                   }
                 ]
               }
@@ -421,7 +421,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "<${{ needs.build-and-push.outputs.client_image_tag && format('https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}', needs.build-and-push.outputs.client_image_tag) || '' }}|${{ needs.build-and-push.outputs.client_image_tag && 'View image' || '' }}>"
+                    "text": "${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|View image>', needs.build-and-push.outputs.client_image_tag) || '' }}"
                   }
                 ]
               }
