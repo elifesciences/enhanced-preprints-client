@@ -189,7 +189,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -290,7 +294,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -391,7 +399,11 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} linting and unit tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} integration tests"
                   },
                   {
                     "type": "mrkdwn",
