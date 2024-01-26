@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -38,7 +38,7 @@ export const ArticleStatus = ({
   return <div className="article-status">
     <h2 className="article-status__heading">{articleType}</h2>
     <p className="article-status__text">{articleStatus}</p>
-    <a href="https://elifesciences.org/peer-review-process" className="article-status__link">{ t('About {{publisher_short}}\'s process', { publisher_short: t('publisher_short') }) }</a>
+    <a href="https://elifesciences.org/peer-review-process" className="article-status__link"><Trans i18nKey='About {{publisher_short}}&apos;s process' values={{ publisher_short: t('publisher_short') }} /></a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
