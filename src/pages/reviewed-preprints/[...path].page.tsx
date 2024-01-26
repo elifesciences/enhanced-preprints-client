@@ -2,6 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import { Content, MetaData, PeerReview } from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
@@ -17,6 +18,7 @@ import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
+import '../../i18n';
 
 type PageProps = {
   metaData: MetaData,
@@ -96,13 +98,14 @@ export const Page = (props: PageProps) => {
   );
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
+  const { t } = useTranslation();
   return (
     <>
       <Head>
         <title>{contentToText(props.metaData.title)}</title>
         <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-        <meta name="citation_publisher" content="eLife Sciences Publications Limited"/>
-        <meta name="citation_journal_title" content="eLife"/>
+        <meta name="citation_publisher" content={t('publisher_long')}/>
+        <meta name="citation_journal_title" content={t('publisher_short')}/>
         <meta name="citation_volume" content={props.metaData.volume}/>
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
