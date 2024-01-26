@@ -12,6 +12,7 @@ services:
       retries: 10
       start_period: 2s
     environment:
+      NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-elife}
       API_SERVER: http://api:3000
     ports:
     - 3001:3000
