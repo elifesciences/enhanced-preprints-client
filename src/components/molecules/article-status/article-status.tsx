@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
-import { useTranslation } from 'react-i18next';
 
 type ArticleStatusProps = {
   articleType?: string,

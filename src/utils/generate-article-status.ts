@@ -8,10 +8,8 @@ const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: Versio
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
-export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => {
-  return ({
-    type: i18n.t('Reviewed Preprint'),
-    status: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version)) ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
-    isPreview: !version.article.published || new Date(version.article.published) > (new Date()),
-  });
-};
+export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
+  type: i18n.t('Reviewed Preprint'),
+  status: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version)) ? 'Published from the original preprint after peer review and assessment by eLife.' : 'Revised by authors after peer review.',
+  isPreview: !version.article.published || new Date(version.article.published) > (new Date()),
+});
