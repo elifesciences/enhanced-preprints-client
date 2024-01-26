@@ -3,7 +3,6 @@
 @use "../../sass/settings";
 
 .site-biophysics-colab {
-
   .nav-primary {
     @media only all and (min-width: settings.$breakpoint-large) {
       margin-top: 16px;
@@ -11,7 +10,6 @@
   }
 
   .nav-secondary {
-
     @media only all and (min-width: settings.$breakpoint-large) {
       margin-top: 16px;
     }
