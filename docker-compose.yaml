@@ -104,7 +104,7 @@ services:
 
   ## EPP API
   api:
-    image: ghcr.io/elifesciences/enhanced-preprints:master-f8e7ebff-20240125.2128
+    image: ghcr.io/elifesciences/enhanced-preprints:master-753b1686-20240125.0103
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
       interval: 5s
@@ -170,6 +170,8 @@ services:
     build:
       context: .
       target: storybook
+    environment:
+      NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-}
     depends_on:
       yarn:
         condition: service_completed_successfully

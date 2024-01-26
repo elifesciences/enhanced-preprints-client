@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -25,6 +27,12 @@ module.exports = {
         os: false,
       },
     };
+
+    config.plugins.push(
+     new webpack.DefinePlugin({
+       'process.env.NEXT_PUBLIC_SITE_NAME': JSON.stringify(process.env.NEXT_PUBLIC_SITE_NAME),
+     })
+   );
 
     // Return the altered config
     return config;
