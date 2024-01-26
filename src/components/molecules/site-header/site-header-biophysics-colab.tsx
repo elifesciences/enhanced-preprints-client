@@ -10,8 +10,8 @@ export const SiteHeaderBiophysicsColab = () => (
           className="site-header__logo"
           src={logo}
           alt="Biophysics Colab logo"
-          width="80"
-          height="30"
+          width="104"
+          height="40"
         />
       </a>
       <span className="site-header__title">Enhanced Preprints</span>
