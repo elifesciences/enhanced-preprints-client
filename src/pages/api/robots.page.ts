@@ -8,7 +8,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   ];
 
   if (config.disallowRobots) {
-    disallowList.push('Disallow /');
+    disallowList.push('Disallow: /');
   }
   res.send(`
 # https://www.robotstxt.org/robotstxt.html
