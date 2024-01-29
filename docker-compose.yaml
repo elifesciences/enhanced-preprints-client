@@ -13,6 +13,7 @@ services:
       - |
         curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v1/payload.json'
         curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v2/payload.json'
+        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/biophysics-colab-111111/v1/payload.json'
     volumes:
       - ./data:/data
 
