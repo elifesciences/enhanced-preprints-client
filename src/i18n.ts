@@ -7,6 +7,7 @@ const resources = {
     translation: {
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
+      'Reviewed Preprint': 'Reviewed Preprint',
     },
   },
   biophysics_colab: {
@@ -14,6 +15,7 @@ const resources = {
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
       'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
+      'Reviewed Preprint': 'Endorsed article',
     },
   },
 };
