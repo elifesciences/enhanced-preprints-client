@@ -13,7 +13,7 @@ const resources = {
     translation: {
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
-      'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published'
+      'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
     },
   },
 };
