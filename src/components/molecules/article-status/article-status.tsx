@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -31,11 +32,12 @@ export const ArticleStatus = ({
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
+  const { t } = useTranslation();
 
   return <div className="article-status">
     <h2 className="article-status__heading">{articleType}</h2>
     <p className="article-status__text">{articleStatus}</p>
-    <a href="https://elifesciences.org/peer-review-process" className="article-status__link">About eLife&apos;s process</a>
+    <a href="https://elifesciences.org/peer-review-process" className="article-status__link">{ t('status_about', { defaultValue: 'About {{publisher_short}}\'s process', publisher_short: t('publisher_short') }) }</a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">

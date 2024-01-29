@@ -7,15 +7,16 @@ const resources = {
     translation: {
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
-      'Reviewed Preprint': 'Reviewed Preprint',
     },
   },
   biophysics_colab: {
     translation: {
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
-      'Reviewed preprint version {{versionIdentifier}}': 'Endorsed article published',
-      'Reviewed Preprint': 'Endorsed article',
+      timeline_version_title: 'Endorsed article published',
+      status_title: 'Endorsed article',
+      status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
+      status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
     },
   },
 };
