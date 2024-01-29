@@ -104,7 +104,7 @@
     "react-app-polyfill": "^3.0.0",
     "storybook": "^7.0.6",
     "storybook-dark-mode": "^3.0.0",
-    "stylelint": "^15.0.0",
+    "stylelint": "^16.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-order": "^6.0.0",
     "stylelint-prettier": "^4.0.2",
