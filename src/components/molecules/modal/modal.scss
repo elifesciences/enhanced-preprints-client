@@ -82,7 +82,6 @@
   @include mixins.z-index(2);
   @include typography.font-size-and-vertical-height(16, 24);
 
-  align-self: start;
   background: url("../../../images/actions/close.svg") right 5px no-repeat;
   border: none;
   color: var(--color-text);
@@ -91,7 +90,7 @@
   font-weight: bold;
   grid-row: 1;
   height: auto;
-  justify-self: end;
+  place-self: start end;
 }
 
 .downloads-container {
