@@ -30,7 +30,7 @@ module.exports = {
 
     config.plugins.push(
      new webpack.DefinePlugin({
-       'process.env.NEXT_PUBLIC_SITE_NAME': JSON.stringify(process.env.NEXT_PUBLIC_SITE_NAME),
+       'process.env.SITE_NAME': JSON.stringify(process.env.SITE_NAME),
      })
    );
 
