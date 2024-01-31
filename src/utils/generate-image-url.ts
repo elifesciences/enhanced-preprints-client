@@ -12,7 +12,7 @@ export const generateImageInfo = async (contentImageId: string): Promise<{ width
   const infoUrl = `${config.iiifServer}/2/${encodeURIComponent(contentImageId)}/info.json`;
   const imageInfo = await fetch(infoUrl);
   if (!imageInfo.ok) {
-    throw Error(`Image info fetch failed with status ${imageInfo.status}`);
+    throw Error(`Image info fetch failed with status ${imageInfo.status} (${infoUrl})`);
   }
   const imageJson = await imageInfo.json();
   const { height, width } = imageJson;
