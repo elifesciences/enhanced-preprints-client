@@ -52,6 +52,7 @@ export default function MyApp({ Component, pageProps }: any) {
         body {
           --font-family-primary: ${notoSans.style.fontFamily};
           --font-family-secondary: ${notoSerif.style.fontFamily};
+          font-family: ${notoSans.style.fontFamily};
         }
       `}</style>
       </Head>
