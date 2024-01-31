@@ -7,6 +7,7 @@ const resources = {
     translation: {
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
+      process_url: 'https://elifesciences.org/peer-review-process',
     },
   },
   biophysics_colab: {
@@ -17,6 +18,7 @@ const resources = {
       status_title: 'Endorsed article',
       status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
       status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
+      process_url: 'https://www.sciencecolab.org/biophysics-colab',
     },
   },
 };
