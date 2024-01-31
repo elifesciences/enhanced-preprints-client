@@ -31,7 +31,6 @@ const notoSerif = Noto_Serif({
   ],
   display: 'swap',
   fallback: ['serif'],
-  adjustFontFallback: false,
 });
 
 const notoSans = Noto_Sans({
@@ -42,7 +41,6 @@ const notoSans = Noto_Sans({
   ],
   display: 'swap',
   fallback: ['arial', 'helvetica', 'sans-serif'],
-  adjustFontFallback: false,
 });
 
 export default function MyApp({ Component, pageProps }: any) {
