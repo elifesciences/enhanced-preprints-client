@@ -68,4 +68,4 @@ NOTE: this does not affect storybook, which runs the same in either prod or dev
 
 When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem.
 
-`API_SERVER=https://prod--epp.elifesciences.org docker compose up`
+`API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif docker compose up`
