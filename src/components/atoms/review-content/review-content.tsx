@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { Descriptors } from '../descriptors/descriptors';
 import './review-content.scss';
+import '../../../i18n';
 
 export const terms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
