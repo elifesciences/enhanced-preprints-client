@@ -15,6 +15,7 @@ const resources = {
       status_title: 'Reviewed Preprint',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by {{publisher_short}}.',
       status_description_revised: 'Revised by authors after peer review.',
+      timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
     },
   },
   elife: {
