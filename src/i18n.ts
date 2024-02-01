@@ -6,6 +6,7 @@ const resources = {
   default: {
     translation: {
       // Placeholders:
+      twitter_handle: 'Twitter handle',
       publisher_short: 'Publisher short name',
       publisher_long: 'Publisher long name',
       process_url: '#', // link to review process
@@ -21,6 +22,7 @@ const resources = {
   },
   elife: {
     translation: {
+      twitter_handle: '@elife',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
       process_url: 'https://elifesciences.org/peer-review-process',
@@ -28,6 +30,7 @@ const resources = {
   },
   biophysics_colab: {
     translation: {
+      twitter_handle: '@BiophysicsColab',
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
       timeline_version_title: 'Endorsed article published',
