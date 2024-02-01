@@ -4,9 +4,7 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
-import {
-  Content, MetaData, PeerReview, Brand
-} from '../../types';
+import { Content, MetaData, PeerReview } from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
@@ -21,6 +19,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
+import { Brand } from '../../brand';
 
 type PageProps = {
   brand: Brand | null,
@@ -172,6 +171,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       processUrl: 'https://www.sciencecolab.org/biophysics-colab',
       publisherShort: 'Biophysics Colab',
       publisherLong: 'Biophysics Colab',
+      showElifeMenus: false,
+      logoUrl: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
     };
   } else if (id === '85111v2') {
     brand = {
@@ -181,6 +182,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       processUrl: 'https://elifesciences.org/peer-review-process',
       publisherShort: 'eLife',
       publisherLong: 'eLife Sciences Publications Limited',
+      showElifeMenus: true,
+      logoUrl: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
     };
   }
 

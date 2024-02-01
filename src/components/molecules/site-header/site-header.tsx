@@ -1,12 +1,14 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './site-header.scss';
 import logo from '../../../../public/elife-logo.svg';
+import { BrandContext } from '../../../brand';
 
 const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
 
 export const SiteHeader = () => {
+  const brand = useContext(BrandContext);
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">
@@ -14,25 +16,26 @@ export const SiteHeader = () => {
         <a href="/" className="site-header__logo_link">
           <Image
             className="site-header__logo"
-            src={logo}
-            alt="eLife logo"
+            src={brand.logoUrl}
+            alt={`${brand.publisherShort} logo`}
             width="80"
             height="30"
           />
         </a>
         <span className="site-header__title">Enhanced Preprints</span>
 
-        {showMenu &&
+        {brand.showElifeMenus && showMenu &&
         <>
           <Overlay closeOverlay={() => setShowMenu(false)}/>
           <div className="wrapper main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
             <div className="main-menu__title">
-              <Image
-                src={logo}
-                alt="eLife logo"
-                width="80"
-                height="30"
-                  />
+              {brand.logoUrl &&
+                <Image
+                  src={brand.logoUrl}
+                  alt="eLife logo"
+                  width="80"
+                  height="30"
+                />}
               <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
             </div>
             <nav className="main-menu__container" role="navigation">
@@ -78,18 +81,23 @@ export const SiteHeader = () => {
         }
         <nav className="nav-primary">
           <ul className="nav-primary__list">
-            <li className="nav-primary__item nav-primary__item--first">
-              <a href="#mainMenu" onClick={() => setShowMenu(true)}>Menu</a>
-            </li>
+            {brand.showElifeMenus && (<>
+              <li className="nav-primary__item nav-primary__item--first">
+                <a href="#mainMenu" onClick={() => setShowMenu(true)}>Menu</a>
+              </li>
+            </>)}
             <li className="nav-primary__item">
               <a href="https://elifesciences.org/">Home</a>
             </li>
-            <li className="nav-primary__item">
-              <a href="https://elifesciences.org/magazine">Magazine</a>
-            </li>
-            <li className="nav-primary__item">
-              <a href="https://elifesciences.org/community">Community</a>
-            </li>
+
+            {brand.showElifeMenus && (<>
+              <li className="nav-primary__item">
+                <a href="https://elifesciences.org/magazine">Magazine</a>
+              </li>
+              <li className="nav-primary__item">
+                <a href="https://elifesciences.org/community">Community</a>
+              </li>
+              </>)}
             <li className="nav-primary__item">
               <a href="https://elifesciences.org/about">About</a>
             </li>
@@ -101,12 +109,14 @@ export const SiteHeader = () => {
             <li className="nav-secondary__item nav-secondary__item--search">
               <a href="https://elifesciences.org/search" rel="search">Search</a>
             </li>
-            <li className="nav-secondary__item nav-secondary__item--alert">
-              <a href="https://elifesciences.org/content-alerts">Alerts</a>
-            </li>
-            <li className="nav-secondary__item">
-              <a href="https://elifesciences.org/submit-your-research" className="block-button block-button__variant-one">Submit your research</a>
-            </li>
+            {brand.showElifeMenus && (<>
+              <li className="nav-secondary__item nav-secondary__item--alert">
+                <a href="https://elifesciences.org/content-alerts">Alerts</a>
+              </li>
+              <li className="nav-secondary__item">
+                <a href="https://elifesciences.org/submit-your-research" className="block-button block-button__variant-one">Submit your research</a>
+              </li>
+            </>)}
           </ul>
         </nav>
       </div>

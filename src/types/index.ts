@@ -13,4 +13,3 @@ export type {
   ArticleSummary,
   VersionSummary,
 } from './enhanced-article';
-export type { Brand } from './brand';

@@ -1,15 +1,15 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { SiteHeader } from '../molecules/site-header/site-header';
 import { SiteFooter } from '../molecules/site-footer/site-footer';
 import './default.scss';
-import { Brand } from '../../types';
+import { BrandContext } from '../../brand';
 
 type Props = {
   children: ReactNode,
-  brand: Brand,
 };
 
-export const DefaultLayout = ({ children, brand }: Props) => {
+export const DefaultLayout = ({ children }: Props) => {
+  const brand = useContext(BrandContext);
   const brandStyles = {
     '--color-primary': brand.colors.primary,
   } as React.CSSProperties;

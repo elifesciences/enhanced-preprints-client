@@ -2,8 +2,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
-import { Brand } from '../types';
-import { defaultBrand } from '../defaultBrand';
+import { Brand, BrandContext, defaultBrand } from '../brand';
 
 export default function MyApp({ Component, pageProps }: any) {
   const brand: Brand = pageProps.brand ?? defaultBrand;
@@ -26,9 +25,11 @@ export default function MyApp({ Component, pageProps }: any) {
         })(window,document,'script','dataLayer','${config.gtmId}');`,
       }}></Script>
     }
-      <DefaultLayout brand={brand}>
-        <Component {...pageProps} />
-      </DefaultLayout>
+      <BrandContext.Provider value={brand}>
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
+      </BrandContext.Provider>
     </>
   );
 }
