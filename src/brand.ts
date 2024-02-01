@@ -8,7 +8,6 @@ export type Brand = {
   publisherLong?: string,
   processUrl?: string,
   showElifeMenus: boolean,
-  logoUrl?: string,
   logo?: {
     url: string,
     height: number,

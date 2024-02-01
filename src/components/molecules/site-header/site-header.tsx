@@ -30,12 +30,12 @@ export const SiteHeader = () => {
           <Overlay closeOverlay={() => setShowMenu(false)}/>
           <div className="wrapper main-menu--js main-menu--shown" id="mainMenu" data-behaviour="MainMenu" tabIndex={0} aria-expanded="true" data-behaviour-initialised="true">
             <div className="main-menu__title">
-              {brand.logoUrl &&
+              {brand.logo &&
                 <Image
-                  src={brand.logoUrl}
-                  alt="eLife logo"
-                  width="80"
-                  height="30"
+                  src={brand.logo.url}
+                  alt={`${brand.publisherShort} logo`}
+                  width={brand.logo.width}
+                  height={brand.logo.height}
                 />}
               <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
             </div>
