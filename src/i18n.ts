@@ -12,6 +12,9 @@ const resources = {
 
       // Defaults:
       about_assessments: 'About {{publisher_short}} assessments',
+      status_title: 'Reviewed Preprint',
+      status_description_reviewed: 'Published from the original preprint after peer review and assessment by {{publisher_short}}.',
+      status_description_revised: 'Revised by authors after peer review.',
     },
   },
   elife: {
