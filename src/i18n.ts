@@ -3,6 +3,11 @@ import { initReactI18next } from 'react-i18next';
 import { config } from './config';
 
 const resources = {
+  default: {
+    translation: {
+      about_assessments: 'About {{publisher_short}} assessments',
+    },
+  },
   elife: {
     translation: {
       publisher_short: 'eLife',
