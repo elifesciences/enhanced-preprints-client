@@ -5,6 +5,12 @@ import { config } from './config';
 const resources = {
   default: {
     translation: {
+      // Placeholders:
+      publisher_short: 'Publisher short name',
+      publisher_long: 'Publisher long name',
+      process_url: '#', // link to review process
+
+      // Defaults:
       about_assessments: 'About {{publisher_short}} assessments',
     },
   },
