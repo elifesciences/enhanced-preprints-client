@@ -1,28 +1,12 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import { ReactNode } from 'react';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
-import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
-
-const LayoutSelector = ({ children }: { children: ReactNode }) => {
-  switch (config.siteName) {
-    case 'biophysics-colab':
-      return (
-        <BiophysicsColabLayout>
-          {children}
-        </BiophysicsColabLayout>
-      );
-    default:
-      return (
-        <DefaultLayout>
-          {children}
-        </DefaultLayout>
-      );
-  }
-};
+import { Brand } from '../types';
+import { defaultBrand } from '../defaultBrand';
 
 export default function MyApp({ Component, pageProps }: any) {
+  const brand: Brand = pageProps.brand ?? defaultBrand;
   return (
     <>
       <Head>
@@ -42,9 +26,9 @@ export default function MyApp({ Component, pageProps }: any) {
         })(window,document,'script','dataLayer','${config.gtmId}');`,
       }}></Script>
     }
-      <LayoutSelector>
+      <DefaultLayout brand={brand}>
         <Component {...pageProps} />
-      </LayoutSelector>
+      </DefaultLayout>
     </>
   );
 }

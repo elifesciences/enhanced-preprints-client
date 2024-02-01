@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
-import { Content, MetaData, PeerReview } from '../../types';
+import {
+  Content, MetaData, PeerReview, Brand
+} from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
@@ -21,6 +23,7 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
 
 type PageProps = {
+  brand: Brand | null,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -159,8 +162,31 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  // branding
+  let brand: Brand | null = null;
+  if (id === 'biophysics-colab-111111v1') {
+    brand = {
+      colors: {
+        primary: '#5556A8',
+      },
+      processUrl: 'https://www.sciencecolab.org/biophysics-colab',
+      publisherShort: 'Biophysics Colab',
+      publisherLong: 'Biophysics Colab',
+    };
+  } else if (id === '85111v2') {
+    brand = {
+      colors: {
+        primary: '#087acc',
+      },
+      processUrl: 'https://elifesciences.org/peer-review-process',
+      publisherShort: 'eLife',
+      publisherLong: 'eLife Sciences Publications Limited',
+    };
+  }
+
   return {
     props: {
+      brand,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,
