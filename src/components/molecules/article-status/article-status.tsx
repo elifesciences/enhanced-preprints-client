@@ -38,7 +38,7 @@ export const ArticleStatus = ({
   return <div className="article-status">
     <h2 className="article-status__heading">{articleType}</h2>
     <p className="article-status__text">{articleStatus}</p>
-    <a href={t('process_url')} className="article-status__link">{ t('status_about', { defaultValue: 'About {{publisher_short}}\'s process', publisher_short: t('publisher_short') }) }</a>
+    <a href={t('process_url')} className="article-status__link">{ t('status_about', { publisher_short: t('publisher_short') }) }</a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
