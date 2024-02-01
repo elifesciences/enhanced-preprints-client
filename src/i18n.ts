@@ -12,6 +12,7 @@ const resources = {
       process_url: '#', // link to review process
 
       // Defaults:
+      heading_assessment: '{{publisher_short}} assessment',
       about_assessments: 'About {{publisher_short}} assessments',
       status_title: 'Reviewed Preprint',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by {{publisher_short}}.',
