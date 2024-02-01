@@ -3,6 +3,7 @@
 @use "../../sass/settings";
 
 .site-biophysics-colab {
+  --color-primary: #5556A8;
   .nav-primary {
     @media only all and (min-width: settings.$breakpoint-large) {
       margin-top: 16px;
