@@ -9,6 +9,11 @@ export type Brand = {
   processUrl?: string,
   showElifeMenus: boolean,
   logoUrl?: string,
+  logo?: {
+    url: string,
+    height: number,
+    width: number,
+  }
 };
 
 export const defaultBrand = {

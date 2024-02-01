@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './site-header.scss';
-import logo from '../../../../public/elife-logo.svg';
 import { BrandContext } from '../../../brand';
 
 const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal(<div onClick={() => closeOverlay()} className="overlay" id="overlayMainMenu"></div>, document.getElementsByTagName('BODY')[0]);
@@ -14,13 +13,15 @@ export const SiteHeader = () => {
     <div className="site-header">
       <div className="site-header-container">
         <a href="/" className="site-header__logo_link">
-          <Image
-            className="site-header__logo"
-            src={brand.logoUrl}
-            alt={`${brand.publisherShort} logo`}
-            width="80"
-            height="30"
-          />
+          { brand.logo &&
+            <Image
+              className="site-header__logo"
+              src={brand.logo.url}
+              alt={`${brand.publisherShort} logo`}
+              width={brand.logo.width}
+              height={brand.logo.height}
+            />
+          }
         </a>
         <span className="site-header__title">Enhanced Preprints</span>
 

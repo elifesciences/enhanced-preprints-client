@@ -172,7 +172,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       publisherShort: 'Biophysics Colab',
       publisherLong: 'Biophysics Colab',
       showElifeMenus: false,
-      logoUrl: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
+      logo: {
+        url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
+        width: 104,
+        height: 40,
+      },
     };
   } else if (id === '85111v2') {
     brand = {
@@ -183,7 +187,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       publisherShort: 'eLife',
       publisherLong: 'eLife Sciences Publications Limited',
       showElifeMenus: true,
-      logoUrl: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
+      logo: {
+        url: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
+        width: 80,
+        height: 30,
+      },
     };
   }
 
