@@ -2,7 +2,6 @@ import React from 'react';
 import { StaticImageData } from 'next/image';
 import logo from '../public/epp_logo.png';
 
-
 export type Brand = {
   colors: {
     primary: string,
