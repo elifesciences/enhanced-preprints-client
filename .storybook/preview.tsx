@@ -4,6 +4,22 @@ import { i18n } from '../src/i18n';
 import { I18nextProvider } from 'react-i18next';
 
 const preview: Preview = {
+  layout: 'fullscreen',
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'white',
+        value: '#fff',
+      },
+    ]
+  },
   globalTypes: {
     brand: {
       description: 'Branding for components',
@@ -51,38 +67,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-// export const parameters = {
-//   actions: { argTypesRegex: "^on[A-Z].*" },
-//   layout: 'fullscreen',
-//   controls: {
-//     matchers: {
-//       color: /(background|color)$/i,
-//       date: /Date$/,
-//     },
-//   },
-//   backgrounds: {
-//     default: 'white',
-//     values: [
-//       {
-//         name: 'white',
-//         value: '#fff',
-//       },
-//     ]
-//   },
-//   globalTypes: {
-//     theme: {
-//       description: 'Global theme for components',
-//       defaultValue: 'light',
-//       toolbar: {
-//         // The label to show for this toolbar item
-//         title: 'Theme',
-//         icon: 'circlehollow',
-//         // Array of plain string values or MenuItem shape (see below)
-//         items: ['light', 'dark'],
-//         // Change title based on selected value
-//         dynamicTitle: true,
-//       },
-//     },
-//   },
-// }
