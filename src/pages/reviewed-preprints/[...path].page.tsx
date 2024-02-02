@@ -164,7 +164,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     i18n.changeLanguage(brand.publisherShort);
   }
 
-  const status = generateStatus(articleWithVersions, brand ?? defaultBrand, i18n);
+  const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
 
   // This is redundant after server has been updated

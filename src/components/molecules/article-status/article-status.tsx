@@ -37,8 +37,8 @@ export const ArticleStatus = ({
   const brand = useContext(BrandContext);
 
   return <div className="article-status">
-    <h2 className="article-status__heading">{articleType}</h2>
-    <p className="article-status__text">{articleStatus}</p>
+    <h2 className="article-status__heading">{ t(articleType, { publisher_short: brand.publisherShort })}</h2>
+    <p className="article-status__text">{t(articleStatus, { publisher_short: brand.publisherLong })}</p>
     <a href={t('process_url')} className="article-status__link">{ t('status_about', { publisher_short: brand.publisherShort }) }</a>
     <ul className="article-actions">
       { pdfUrl && (
