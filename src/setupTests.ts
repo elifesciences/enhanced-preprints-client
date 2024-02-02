@@ -4,5 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'; // eslint-disable-line import/no-extraneous-dependencies
 import { TextEncoder } from 'util';
+import { i18n } from './i18n';
 
+i18n.setDefaultNamespace('elife');
 global.TextEncoder = TextEncoder;
