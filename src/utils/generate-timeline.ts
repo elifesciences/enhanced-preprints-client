@@ -1,4 +1,3 @@
-import { i18n } from '../i18n';
 import {
   EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
 } from '../types';
@@ -12,11 +11,13 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
       events.push(current.id === version.article.id ?
         {
           date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
+          name: 'timeline_version_title',
+          identifier: current.versionIdentifier,
           eventDescription: '(this version)',
         } : {
           date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
+          name: 'timeline_version_title',
+          identifier: current.versionIdentifier,
           link: {
             url: `/reviewed-preprints/${current.id}`,
             text: 'Go to version',
@@ -32,6 +33,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     timeline.push({
       date: new Date(firstVersion.preprintPosted).toDateString(),
       name: 'Posted to preprint server',
+      identifier: firstVersion.versionIdentifier,
       link: {
         url: `https://doi.org/${firstVersion.preprintDoi}`,
         text: 'Go to preprint server',
@@ -43,6 +45,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     timeline.push({
       date: new Date(firstVersion.sentForReview).toDateString(),
       name: 'Sent for peer review',
+      identifier: firstVersion.versionIdentifier,
     });
   }
 

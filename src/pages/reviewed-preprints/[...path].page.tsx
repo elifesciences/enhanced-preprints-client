@@ -17,7 +17,7 @@ import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
-import { Brand, BrandContext, defaultBrand } from '../../brand';
+import { Brand, BrandContext, biophysicsColabBrand, defaultBrand, elifeBrand } from '../../brand';
 import { i18n } from '../../i18n';
 
 type PageProps = {
@@ -155,53 +155,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // branding
   let brand: Brand | null = null;
   if (id === 'biophysics-colab-111111v1') {
-    brand = {
-      colors: {
-        primary: '#5556A8',
-      },
-      processUrl: 'https://www.sciencecolab.org/biophysics-colab',
-      publisherShort: 'Biophysics Colab',
-      publisherLong: 'Biophysics Colab',
-      showElifeMenus: false,
-      logo: {
-        url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
-        width: 104,
-        height: 40,
-      },
-      translation: {
-        twitter_handle: '@BiophysicsColab',
-        publisher_short: 'Biophysics Colab',
-        publisher_long: 'Biophysics Colab',
-        timeline_version_title: 'Endorsed article published',
-        status_title: 'Endorsed article',
-        status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
-        status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
-        process_url: 'https://www.sciencecolab.org/biophysics-colab',
-      },
-    };
+    brand = biophysicsColabBrand;
     i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
     i18n.changeLanguage(brand.publisherShort);
   } else if (id === '85111v2') {
-    brand = {
-      colors: {
-        primary: '#087acc',
-      },
-      processUrl: 'https://elifesciences.org/peer-review-process',
-      publisherShort: 'eLife',
-      publisherLong: 'eLife Sciences Publications Limited',
-      showElifeMenus: true,
-      logo: {
-        url: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
-        width: 80,
-        height: 30,
-      },
-      translation: {
-        twitter_handle: '@elife',
-        publisher_short: 'eLife',
-        publisher_long: 'eLife Sciences Publications Limited',
-        process_url: 'https://elifesciences.org/peer-review-process',
-      },
-    };
+    brand = elifeBrand;
     i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
     i18n.changeLanguage(brand.publisherShort);
   }
