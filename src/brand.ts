@@ -6,18 +6,23 @@ export type Brand = {
   colors: {
     primary: string,
   },
-  publisherShort?: string,
-  publisherLong?: string,
+  publisherShort: string,
+  publisherLong: string,
   processUrl?: string,
   showElifeMenus: boolean,
   logo?: {
     url: string | StaticImageData,
     height: number,
     width: number,
+  },
+  translation?: {
+    [key: string]: string,
   }
 };
 
 export const defaultBrand = {
+  publisherShort: 'EPP',
+  publisherLong: 'Enhanced Preprints Platform',
   logo: {
     url: logo,
     width: 100,

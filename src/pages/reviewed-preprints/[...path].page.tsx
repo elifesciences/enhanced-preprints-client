@@ -1,8 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { JSX, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { JSX, useContext, useMemo } from 'react';
 import { config } from '../../config';
 import { Content, MetaData, PeerReview } from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
@@ -18,8 +17,8 @@ import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
-import '../../i18n';
-import { Brand } from '../../brand';
+import { Brand, BrandContext, defaultBrand } from '../../brand';
+import { i18n } from '../../i18n';
 
 type PageProps = {
   brand: Brand | null,
@@ -100,14 +99,14 @@ export const Page = (props: PageProps) => {
   );
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  const { t } = useTranslation();
+  const brand = useContext(BrandContext);
   return (
     <>
       <Head>
         <title>{contentToText(props.metaData.title)}</title>
         <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-        <meta name="citation_publisher" content={t('publisher_long')}/>
-        <meta name="citation_journal_title" content={t('publisher_short')}/>
+        <meta name="citation_publisher" content={brand.publisherLong}/>
+        <meta name="citation_journal_title" content={brand.publisherShort}/>
         <meta name="citation_volume" content={props.metaData.volume}/>
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
@@ -152,14 +151,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
-  const status = generateStatus(articleWithVersions);
-  const timeline = generateTimeline(articleWithVersions);
-
-  // This is redundant after server has been updated
-  if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
-    console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
 
   // branding
   let brand: Brand | null = null;
@@ -177,7 +168,19 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         width: 104,
         height: 40,
       },
+      translation: {
+        twitter_handle: '@BiophysicsColab',
+        publisher_short: 'Biophysics Colab',
+        publisher_long: 'Biophysics Colab',
+        timeline_version_title: 'Endorsed article published',
+        status_title: 'Endorsed article',
+        status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
+        status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
+        process_url: 'https://www.sciencecolab.org/biophysics-colab',
+      },
     };
+    i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
+    i18n.changeLanguage(brand.publisherShort);
   } else if (id === '85111v2') {
     brand = {
       colors: {
@@ -192,7 +195,24 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         width: 80,
         height: 30,
       },
+      translation: {
+        twitter_handle: '@elife',
+        publisher_short: 'eLife',
+        publisher_long: 'eLife Sciences Publications Limited',
+        process_url: 'https://elifesciences.org/peer-review-process',
+      },
     };
+    i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
+    i18n.changeLanguage(brand.publisherShort);
+  }
+
+  const status = generateStatus(articleWithVersions, brand ?? defaultBrand, i18n);
+  const timeline = generateTimeline(articleWithVersions);
+
+  // This is redundant after server has been updated
+  if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
+    console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
+    return { notFound: true };
   }
 
   return {
