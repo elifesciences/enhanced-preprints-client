@@ -36,7 +36,7 @@ export const ArticleStatus = ({
 
   return <div className="article-status">
     <h2 className="article-status__heading">{ t(articleType) }</h2>
-    <p className="article-status__text">{articleStatus}</p>
+    <p className="article-status__text">{ t(articleStatus) }</p>
     <a href={t('process_url')} className="article-status__link">{ t('status_about') }</a>
     <ul className="article-actions">
       { pdfUrl && (

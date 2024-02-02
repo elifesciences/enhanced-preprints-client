@@ -32,6 +32,7 @@ export const ArticleFullTextTab = (props: Props) => {
 
   if (props.peerReview !== undefined) {
     headings.splice(1, 0, { id: 'assessment', text: t('heading_assessment', { publisher_short: brand.publisherShort }) });
+    headings.splice(1, 0, { id: 'assessment', text: t('heading_assessment') });
   }
 
   return (
