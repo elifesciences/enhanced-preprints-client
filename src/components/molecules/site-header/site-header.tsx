@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import './site-header.scss';
 import { BrandContext } from '../../../brand';
 
@@ -8,6 +9,7 @@ const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal
 
 export const SiteHeader = () => {
   const brand = useContext(BrandContext);
+  const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">
@@ -17,7 +19,7 @@ export const SiteHeader = () => {
             <Image
               className="site-header__logo"
               src={brand.logo.url}
-              alt={`${brand.publisherShort} logo`}
+              alt={`${t('publisher_short')} logo`}
               width={brand.logo.width}
               height={brand.logo.height}
             />
@@ -33,7 +35,7 @@ export const SiteHeader = () => {
               {brand.logo &&
                 <Image
                   src={brand.logo.url}
-                  alt={`${brand.publisherShort} logo`}
+                  alt={`${t('publisher_short')} logo`}
                   width={brand.logo.width}
                   height={brand.logo.height}
                 />}

@@ -1,4 +1,5 @@
-import { ReactElement, useContext } from 'react';
+import { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline } from '../../molecules/timeline/timeline';
@@ -7,7 +8,6 @@ import { MetaData, TimelineEvent } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
-import { BrandContext } from '../../../brand';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -31,14 +31,14 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const brand = useContext(BrandContext);
+  const { t } = useTranslation();
   const { doi } = props.metaData;
 
   const citation: CitationData = {
     authors: props.metaData.authors,
     year: props.metaData.publishedYear,
     volume: props.metaData.volume,
-    journal: brand.publisherShort,
+    journal: t('publisher_short'),
     eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
     doi,
