@@ -47,7 +47,7 @@ i18n
   .init({
     resources,
     lng: 'en',
-    defaultNS: Object.keys(resources).includes(siteName ?? '') ? siteName : 'elife',
+    defaultNS: Object.keys(resources.en).includes(siteName ?? '') ? siteName : 'elife',
     fallbackNS: 'default',
     interpolation: {
       escapeValue: false,
