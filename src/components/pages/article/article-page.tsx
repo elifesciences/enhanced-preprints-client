@@ -2,7 +2,7 @@ import { ReactElement, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
+import { Timeline } from '../../molecules/timeline/timeline';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
@@ -32,7 +32,6 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const { t } = useTranslation();
   const brand = useContext(BrandContext);
   const { doi } = props.metaData;
 
