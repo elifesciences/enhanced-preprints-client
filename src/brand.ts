@@ -15,9 +15,7 @@ export type Brand = {
     height: number,
     width: number,
   },
-  translation?: {
-    [key: string]: string,
-  }
+  translationNamespace?: string,
 };
 
 export const defaultBrand = {
@@ -50,6 +48,7 @@ export const elifeBrand = {
     width: 80,
     height: 30,
   },
+  translationNamespace: 'elife',
 };
 export const biophysicsColabBrand = {
   colors: {
@@ -64,4 +63,5 @@ export const biophysicsColabBrand = {
     width: 104,
     height: 40,
   },
+  translationNamespace: 'biophysics_colab',
 };

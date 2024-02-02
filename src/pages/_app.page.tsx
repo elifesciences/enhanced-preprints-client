@@ -8,7 +8,9 @@ import { i18n } from '../i18n';
 
 export default function MyApp({ Component, pageProps }: any) {
   const brand: Brand = pageProps.brand ?? defaultBrand;
-  i18n.setDefaultNamespace(brand.publisherShort);
+  if (brand.translationNamespace) {
+    i18n.setDefaultNamespace(brand.translationNamespace);
+  }
   return (
     <>
       <Head>
