@@ -14,7 +14,7 @@
 
 .modal-content {
   @include mixins.padding(36);
-
+  border: 0;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 0 20px rgb(0 0 0 / 22%);
