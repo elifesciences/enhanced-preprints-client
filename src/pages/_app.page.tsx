@@ -8,7 +8,6 @@ import { i18n } from '../i18n';
 
 export default function MyApp({ Component, pageProps }: any) {
   const brand: Brand = pageProps.brand ?? defaultBrand;
-  i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
   i18n.setDefaultNamespace(brand.publisherShort);
   return (
     <>

@@ -50,12 +50,6 @@ export const elifeBrand = {
     width: 80,
     height: 30,
   },
-  translation: {
-    twitter_handle: '@elife',
-    publisher_short: 'eLife',
-    publisher_long: 'eLife Sciences Publications Limited',
-    process_url: 'https://elifesciences.org/peer-review-process',
-  },
 };
 export const biophysicsColabBrand = {
   colors: {
@@ -69,15 +63,5 @@ export const biophysicsColabBrand = {
     url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
     width: 104,
     height: 40,
-  },
-  translation: {
-    twitter_handle: '@BiophysicsColab',
-    publisher_short: 'Biophysics Colab',
-    publisher_long: 'Biophysics Colab',
-    timeline_version_title: 'Endorsed article published',
-    status_title: 'Endorsed article',
-    status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
-    status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
-    process_url: 'https://www.sciencecolab.org/biophysics-colab',
   },
 };
