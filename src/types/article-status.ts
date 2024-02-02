@@ -1,5 +1,5 @@
 export type ArticleStatus = {
-  type: 'Reviewed Preprint',
+  type: 'reviewed_preprint',
   status: string,
   isPreview: boolean,
 };

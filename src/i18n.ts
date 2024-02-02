@@ -18,7 +18,7 @@ const resources = {
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About $t(publisher_short)\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
-      'Reviewed Preprint': 'Reviewed Preprint',
+      reviewed_preprint: 'Reviewed Preprint',
     },
     elife: {
       twitter_handle: '@elife',
@@ -32,7 +32,7 @@ const resources = {
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
       timeline_version_title: 'Endorsed article published',
-      'Reviewed Preprint': 'Endorsed article',
+      reviewed_preprint: 'Endorsed article',
       status_description_reviewed: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
       status_description_revised: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
       process_url: 'https://www.sciencecolab.org/biophysics-colab',
