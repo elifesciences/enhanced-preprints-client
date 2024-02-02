@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import './timeline.scss';
 import { TimelineEvent } from '../../../types';
 
-
 type TimelineProps = {
   events: Array<TimelineEvent>,
 };
