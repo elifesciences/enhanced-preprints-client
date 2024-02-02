@@ -1,4 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import './socials.scss';
+import '../../../i18n';
 
 type SocialsProps = {
   doi: string,
@@ -8,9 +10,10 @@ type SocialsProps = {
 export const Socials = ({
   doi, title,
 }: SocialsProps) => {
+  const { t } = useTranslation();
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const twitterEncodedTitle = encodeURIComponent('In @eLife: ');
+  const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;

@@ -12,11 +12,11 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
       events.push(current.id === version.article.id ?
         {
           date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { defaultValue: 'Reviewed preprint version {{versionIdentifier}}', versionIdentifier: current.versionIdentifier }),
+          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
           eventDescription: '(this version)',
         } : {
           date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { defaultValue: 'Reviewed preprint version {{versionIdentifier}}', versionIdentifier: current.versionIdentifier }),
+          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
           link: {
             url: `/reviewed-preprints/${current.id}`,
             text: 'Go to version',
