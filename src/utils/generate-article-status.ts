@@ -9,7 +9,7 @@ const orderVersionsChronologically = (versions: VersionSummary[]) => versions.so
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
-  type: i18n.t('status_title'),
+  type: 'Reviewed Preprint', 
   status: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version))
     ? i18n.t('status_description_reviewed', { publisher_short: i18n.t('publisher_short') })
     : i18n.t('status_description_revised', { publisher_short: i18n.t('publisher_short') }),

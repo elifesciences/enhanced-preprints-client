@@ -36,7 +36,7 @@ export const ArticleStatus = ({
   const { t } = useTranslation();
 
   return <div className="article-status">
-    <h2 className="article-status__heading">{articleType}</h2>
+    <h2 className="article-status__heading">{ t(articleType) }</h2>
     <p className="article-status__text">{articleStatus}</p>
     <a href={t('process_url')} className="article-status__link">{ t('status_about', { publisher_short: t('publisher_short') }) }</a>
     <ul className="article-actions">
