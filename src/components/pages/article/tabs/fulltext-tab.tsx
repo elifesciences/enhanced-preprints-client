@@ -1,6 +1,5 @@
 import '../article-page.scss';
 import { useTranslation } from 'react-i18next';
-import { useContext } from 'react';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
@@ -9,8 +8,6 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
-
-import { BrandContext } from '../../../../brand';
 
 type Props = {
   headings: Heading[],
@@ -22,7 +19,6 @@ type Props = {
 
 export const ArticleFullTextTab = (props: Props) => {
   const { t } = useTranslation();
-  const brand = useContext(BrandContext);
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...props.headings,
