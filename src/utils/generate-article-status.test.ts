@@ -70,7 +70,7 @@ describe('generateStatus', () => {
 
     expect(status).toMatchObject({
       type: 'reviewed_preprint',
-      status: 'Published from the original preprint after peer review and assessment by eLife.',
+      status: 'status_description_reviewed',
     });
   });
 
@@ -84,8 +84,8 @@ describe('generateStatus', () => {
     });
 
     expect(status).toMatchObject({
-      type: 'reviewed_preprint',
-      status: 'Revised by authors after peer review.',
+      type: 'revised_preprint',
+      status: 'status_description_revised',
     });
   });
 
