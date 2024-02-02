@@ -31,6 +31,7 @@ const resources = {
       twitter_handle: '@BiophysicsColab',
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
+      heading_assessment: 'Endorsement statement',
       timeline_version_title: 'Endorsed article published',
       reviewed_preprint: 'Endorsed article',
       status_description_reviewed: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
