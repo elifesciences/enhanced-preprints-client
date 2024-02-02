@@ -17,7 +17,7 @@ type ArticleStatusProps = {
   msid: string,
 };
 
-const defaultArticleType = 'Reviewed Preprint';
+const defaultArticleType = 'reviewed_preprint';
 
 const formatStringCitation = ({
   authors, doi, eLocationId, journal, title, volume, year,
