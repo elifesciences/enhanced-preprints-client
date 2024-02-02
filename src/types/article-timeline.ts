@@ -1,6 +1,6 @@
 type TimelineEventBasic = {
   name: string,
-  identifier: string,
+  versionIdentifier: string,
   date: string,
 };
 

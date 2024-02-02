@@ -17,7 +17,7 @@ export const Timeline = ({ events }: TimelineProps) => {
         {
           events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((entry, index) => (
             <Fragment key={index}>
-              <dt className="review-timeline__event">{t(entry.name, { version_identifier: entry.identifier })}</dt>
+              <dt className="review-timeline__event">{t(entry.name, { version_identifier: entry.versionIdentifier })}</dt>
               <dd className="review-timeline__date">
                 <time dateTime={entry.date.toString()}>{formatDate(entry.date)}</time>
                 {entry.link && <a className="review-timeline__link" href={entry.link.url} aria-label={entry.name}>{entry.link.text}</a>}

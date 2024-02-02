@@ -12,12 +12,12 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
         {
           date: new Date(current.published).toDateString(),
           name: 'timeline_version_title',
-          identifier: current.versionIdentifier,
+          versionIdentifier: current.versionIdentifier,
           eventDescription: '(this version)',
         } : {
           date: new Date(current.published).toDateString(),
           name: 'timeline_version_title',
-          identifier: current.versionIdentifier,
+          versionIdentifier: current.versionIdentifier,
           link: {
             url: `/reviewed-preprints/${current.id}`,
             text: 'Go to version',
@@ -33,7 +33,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     timeline.push({
       date: new Date(firstVersion.preprintPosted).toDateString(),
       name: 'Posted to preprint server',
-      identifier: firstVersion.versionIdentifier,
+      versionIdentifier: firstVersion.versionIdentifier,
       link: {
         url: `https://doi.org/${firstVersion.preprintDoi}`,
         text: 'Go to preprint server',
@@ -45,7 +45,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     timeline.push({
       date: new Date(firstVersion.sentForReview).toDateString(),
       name: 'Sent for peer review',
-      identifier: firstVersion.versionIdentifier,
+      versionIdentifier: firstVersion.versionIdentifier,
     });
   }
 
