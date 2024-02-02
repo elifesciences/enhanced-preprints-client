@@ -18,7 +18,7 @@ const resources = {
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About {{publisher_short}}\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
-      'Reviewed Preprint':  'Reviewed Preprint',
+      'Reviewed Preprint': 'Reviewed Preprint',
     },
     elife: {
       twitter_handle: '@elife',
