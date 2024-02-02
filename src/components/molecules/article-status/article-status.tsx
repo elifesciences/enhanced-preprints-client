@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -6,7 +6,6 @@ import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
-import { BrandContext } from '../../../brand';
 
 type ArticleStatusProps = {
   articleType?: string,
@@ -34,12 +33,11 @@ export const ArticleStatus = ({
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
   const { t } = useTranslation();
-  const brand = useContext(BrandContext);
 
   return <div className="article-status">
-    <h2 className="article-status__heading">{ t(articleType, { publisher_short: brand.publisherShort })}</h2>
-    <p className="article-status__text">{t(articleStatus, { publisher_short: brand.publisherLong })}</p>
-    <a href={t('process_url')} className="article-status__link">{ t('status_about', { publisher_short: brand.publisherShort }) }</a>
+    <h2 className="article-status__heading">{ t(articleType) }</h2>
+    <p className="article-status__text">{articleStatus}</p>
+    <a href={t('process_url')} className="article-status__link">{ t('status_about') }</a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
