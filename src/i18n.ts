@@ -12,11 +12,11 @@ const resources = {
       process_url: '#', // link to review process
 
       // Defaults:
-      heading_assessment: '{{publisher_short}} assessment',
+      heading_assessment: '$t(publisher_short) assessment',
       about_assessments: 'About $t(publisher_short) assessments',
-      status_description_reviewed: 'Published from the original preprint after peer review and assessment by {{publisher_short}}.',
+      status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
       status_description_revised: 'Revised by authors after peer review.',
-      status_about: 'About {{publisher_short}}\'s process',
+      status_about: 'About $t(publisher_short)\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
       'Reviewed Preprint': 'Reviewed Preprint',
     },
@@ -33,8 +33,8 @@ const resources = {
       publisher_long: 'Biophysics Colab',
       timeline_version_title: 'Endorsed article published',
       'Reviewed Preprint': 'Endorsed article',
-      status_description_reviewed: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
-      status_description_revised: '{{publisher_short}} have endorsed this preprint that was revised by authors after peer review.',
+      status_description_reviewed: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
+      status_description_revised: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
       process_url: 'https://www.sciencecolab.org/biophysics-colab',
     },
   },
