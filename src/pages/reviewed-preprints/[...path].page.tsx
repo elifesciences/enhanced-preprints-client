@@ -151,17 +151,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
-
   // branding
   let brand: Brand | null = null;
   if (id === 'biophysics-colab-111111v1') {
     brand = biophysicsColabBrand;
-    i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
-    i18n.changeLanguage(brand.publisherShort);
   } else if (id === '85111v2') {
     brand = elifeBrand;
-    i18n.addResourceBundle(brand.publisherShort, 'translation', brand.translation ?? {}, true, true);
-    i18n.changeLanguage(brand.publisherShort);
   }
 
   const status = generateStatus(articleWithVersions);
