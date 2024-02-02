@@ -1,5 +1,5 @@
 export const status = {
-  articleType: 'Reviewed Preprint',
+  articleType: 'reviewed_preprint',
   status: 'This Reviewed Preprint was published after peer review and assessment by eLife.',
   timeline: [
     { name: 'Peer review done', date: '2022-01-02' },

@@ -1,4 +1,5 @@
 import '../article-page.scss';
+import { useTranslation } from 'react-i18next';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
@@ -7,6 +8,7 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
+import '../../../../i18n';
 
 type Props = {
   headings: Heading[],
@@ -17,6 +19,7 @@ type Props = {
 };
 
 export const ArticleFullTextTab = (props: Props) => {
+  const { t } = useTranslation();
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...props.headings,
@@ -25,7 +28,7 @@ export const ArticleFullTextTab = (props: Props) => {
   ];
 
   if (props.peerReview !== undefined) {
-    headings.splice(1, 0, { id: 'assessment', text: 'eLife assessment' });
+    headings.splice(1, 0, { id: 'assessment', text: t('heading_assessment') });
   }
 
   return (

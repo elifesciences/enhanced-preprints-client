@@ -6,6 +6,7 @@ import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
+import '../../../i18n';
 
 type ArticleStatusProps = {
   articleType?: string,
@@ -17,7 +18,7 @@ type ArticleStatusProps = {
   msid: string,
 };
 
-const defaultArticleType = 'Reviewed Preprint';
+const defaultArticleType = 'reviewed_preprint';
 
 const formatStringCitation = ({
   authors, doi, eLocationId, journal, title, volume, year,
@@ -35,9 +36,9 @@ export const ArticleStatus = ({
   const { t } = useTranslation();
 
   return <div className="article-status">
-    <h2 className="article-status__heading">{articleType}</h2>
+    <h2 className="article-status__heading">{ t(articleType) }</h2>
     <p className="article-status__text">{articleStatus}</p>
-    <a href="https://elifesciences.org/peer-review-process" className="article-status__link">{ t('status_about', { defaultValue: 'About {{publisher_short}}\'s process', publisher_short: t('publisher_short') }) }</a>
+    <a href={t('process_url')} className="article-status__link">{ t('status_about') }</a>
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">

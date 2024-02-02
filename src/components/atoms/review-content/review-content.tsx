@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { Descriptors } from '../../atoms/descriptors/descriptors';
+import { useTranslation } from 'react-i18next';
+import { Descriptors } from '../descriptors/descriptors';
 import './review-content.scss';
+import '../../../i18n';
 
 export const terms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
@@ -12,6 +14,7 @@ type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewU
 export const ReviewContent = ({
   content, isAssessment = false, id = '', peerReviewUrl = undefined, doi = '',
 }: Props) => {
+  const { t } = useTranslation();
   const sectionProps: Record<string, string> = {
     className: `review-content${isAssessment ? ' review-content--assessment' : ''}`,
   };
@@ -26,7 +29,9 @@ export const ReviewContent = ({
       {isAssessment ? (
         <ul className="review-content-items">
           { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
-          <li className="review-content_item"><a href="https://elifesciences.org/inside-elife/db24dd46" className="ga-review-content_links">About eLife assessments</a></li>
+          <li className="review-content_item">
+            <a href={t('about_assessments_url')} className="ga-review-content_links">{t('about_assessments')}</a>
+          </li>
         </ul>
       ) : ''}
     </section>
