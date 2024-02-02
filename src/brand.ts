@@ -6,8 +6,6 @@ export type Brand = {
   colors: {
     primary: string,
   },
-  publisherShort: string,
-  publisherLong: string,
   processUrl?: string,
   showElifeMenus: boolean,
   logo?: {
@@ -19,8 +17,6 @@ export type Brand = {
 };
 
 export const defaultBrand = {
-  publisherShort: 'EPP',
-  publisherLong: 'Enhanced Preprints Platform',
   logo: {
     url: logo,
     width: 100,
@@ -40,8 +36,6 @@ export const elifeBrand = {
     primary: '#087acc',
   },
   processUrl: 'https://elifesciences.org/peer-review-process',
-  publisherShort: 'eLife',
-  publisherLong: 'eLife Sciences Publications Limited',
   showElifeMenus: true,
   logo: {
     url: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
@@ -55,8 +49,6 @@ export const biophysicsColabBrand = {
     primary: '#5556A8',
   },
   processUrl: 'https://www.sciencecolab.org/biophysics-colab',
-  publisherShort: 'Biophysics Colab',
-  publisherLong: 'Biophysics Colab',
   showElifeMenus: false,
   logo: {
     url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
