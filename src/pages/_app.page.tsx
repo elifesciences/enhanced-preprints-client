@@ -48,13 +48,17 @@ export default function MyApp({ Component, pageProps }: any) {
     <>
       <Head>
         <title>Enhanced Preprints Platform</title>
-        <style>{`
-        body {
-          --font-family-primary: ${notoSans.style.fontFamily};
-          --font-family-secondary: ${notoSerif.style.fontFamily};
-          font-family: ${notoSans.style.fontFamily};
-        }
-      `}</style>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+            }
+            body {
+              --font-family-primary: ${notoSans.style.fontFamily};
+              --font-family-secondary: ${notoSerif.style.fontFamily};
+              font-family: ${notoSans.style.fontFamily};
+            }
+          `,
+        }} />
       </Head>
       { config.cookiebotId &&
       <Script id="Cookiebot"
