@@ -5,8 +5,8 @@ import { EnhancedArticleNoContent } from '../types/reviewed-preprint-snippet';
 
 export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
-export const fetchVersionsNoContent = async (page: number, perPage: number, order: string) => {
-  const url = `${config.apiServer}/api/preprints-no-content?page=${page}&per-page=${perPage}&order=${order}`;
+export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published') => {
+  const url = `${config.apiServer}/api/preprints-no-content?page=${page}&per-page=${perPage}&order=${order}${useDate === 'published' ? '&use-date=firstPublished' : ''}`;
   return fetch(url)
     .then(async (response) => {
       if (!response.ok) {
