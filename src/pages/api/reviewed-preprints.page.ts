@@ -148,6 +148,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const order = (queryParam(req, 'order') || 'desc').toString();
   const useDate = (queryParam(req, 'use-date') || 'default').toString();
   const startDate = (queryParam(req, 'start-date') || '').toString();
+  const endDate = (queryParam(req, 'end-date') || '').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -169,7 +170,11 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting YYYY-MM-DD format for \'start-date\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate);
+  if (endDate && !moment(endDate, 'YYYY-MM-DD', true).isValid()) {
+    errorBadRequest(res, 'expecting YYYY-MM-DD format for \'end-date\' parameter');
+  }
+
+  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate, endDate);
 
   const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
