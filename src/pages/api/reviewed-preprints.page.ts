@@ -145,6 +145,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   const order = (queryParam(req, 'order') || 'desc').toString();
+  const useDate = (queryParam(req, 'use-date') || 'default').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -158,7 +159,11 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting either \'asc\' or \'desc\' for \'order\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(page, perPage, order);
+  if (!['default', 'published'].includes(useDate)) {
+    errorBadRequest(res, 'expecting either \'default\' or \'published\' for \'use-date\' parameter');
+  }
+
+  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published');
 
   const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
