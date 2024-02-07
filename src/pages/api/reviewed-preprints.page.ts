@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import moment from 'moment';
 import { fetchVersionsNoContent } from '../../utils/fetch-data';
 import {
   Author, EnhancedArticle, ReviewedPreprintSnippet,
@@ -146,6 +147,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const order = (queryParam(req, 'order') || 'desc').toString();
   const useDate = (queryParam(req, 'use-date') || 'default').toString();
+  const startDate = (queryParam(req, 'start-date') || '').toString();
 
   if (page <= 0) {
     errorBadRequest(res, 'expecting positive integer for \'page\' parameter');
@@ -163,7 +165,11 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting either \'default\' or \'published\' for \'use-date\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published');
+  if (startDate && !moment(startDate, 'YYYY-MM-DD', true).isValid()) {
+    errorBadRequest(res, 'expecting YYYY-MM-DD format for \'start-date\' parameter');
+  }
+
+  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate);
 
   const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
