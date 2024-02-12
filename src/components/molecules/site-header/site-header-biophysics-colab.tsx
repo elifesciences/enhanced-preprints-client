@@ -5,7 +5,7 @@ import logo from '../../../../public/biophysics-colab-logo.png';
 export const SiteHeaderBiophysicsColab = () => (
   <div className="site-header">
     <div className="site-header-container">
-      <a href="/" className="site-header__logo_link">
+      <a href="https://biophysicscolab.pubpub.org/" className="site-header__logo_link">
         <Image
           className="site-header__logo"
           src={logo}
@@ -19,10 +19,10 @@ export const SiteHeaderBiophysicsColab = () => (
       <nav className="nav-primary">
         <ul className="nav-primary__list">
           <li className="nav-primary__item">
-            <a href="/">Home</a>
+            <a href="https://biophysicscolab.pubpub.org/">Home</a>
           </li>
           <li className="nav-primary__item">
-            <a href="#">About</a>
+            <a href="https://biophysicscolab.pubpub.org/about">About</a>
           </li>
         </ul>
       </nav>
@@ -30,7 +30,7 @@ export const SiteHeaderBiophysicsColab = () => (
       <nav className="nav-secondary">
         <ul className="nav-secondary__list">
           <li className="nav-secondary__item nav-secondary__item--search">
-            <a href="#" rel="search">Search</a>
+            <a href="https://biophysicscolab.pubpub.org/search" rel="search">Search</a>
           </li>
         </ul>
       </nav>
