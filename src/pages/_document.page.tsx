@@ -10,6 +10,7 @@ export default function Document() {
   return (
     <Html lang="en-US">
       <Head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <style>{`
           body {
             background-color: #fff;
