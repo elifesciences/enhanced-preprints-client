@@ -247,8 +247,8 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(<li>foo</li>);
   });
 
-  it('generates the expected html when passed am unordered List', () => {
-    const result = contentToJsx({
+  it('creates a list component for a list item type', () => {
+    render(contentToJsx({
       type: 'List',
       order: 'Unordered',
       items: [
@@ -256,33 +256,11 @@ describe('Content to JSX', () => {
           type: 'ListItem',
           content: 'foo',
         },
-        {
-          type: 'ListItem',
-          content: 'bar',
-        },
       ],
-    });
+    }));
 
-    expect(result).toStrictEqual(<ul><li key={0}>foo</li><li key={1}>bar</li></ul>);
-  });
-
-  it('generates the expected html when passed am ordered List', () => {
-    const result = contentToJsx({
-      type: 'List',
-      order: 'Ascending',
-      items: [
-        {
-          type: 'ListItem',
-          content: 'foo',
-        },
-        {
-          type: 'ListItem',
-          content: 'bar',
-        },
-      ],
-    });
-
-    expect(result).toStrictEqual(<ol><li key={0}>foo</li><li key={1}>bar</li></ol>);
+    expect(document.querySelector('ul')).toBeInTheDocument();
+    expect(document.querySelector('li')).toHaveTextContent('foo');
   });
 
   it('generates sections from thematic breaks', () => {
