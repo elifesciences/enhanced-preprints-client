@@ -4,10 +4,11 @@ import { Heading } from '../components/atoms/heading/heading';
 import { generateImageUrl } from './generate-image-url';
 import { Figure } from '../components/atoms/figure/figure';
 import { contentToText } from './content-to-text';
+import { List } from '../components/atoms/list/list';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
-type Options = {
+export type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
@@ -116,7 +117,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'ListItem':
       return <li key={index}>{ contentToJsx(content.content, options)}</li>;
     case 'List':
-      return content.order === 'Ascending' ? <ol key={index}>{ contentToJsx(content.items, options)}</ol> : <ul key={index}>{ contentToJsx(content.items, options)}</ul>;
+      return <List content={content} options={options}/>;
     case 'Claim':
       return (
         <section key={index}>

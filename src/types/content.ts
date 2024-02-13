@@ -72,7 +72,7 @@ type ListItemContent = DecoratedContent & {
   type: 'ListItem',
 };
 
-type ListContent = {
+export type ListContent = {
   type: 'List',
   order: 'Unordered' | 'Ascending',
   items: Array<ListItemContent>,
