@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { List } from './list';
+import { listType } from '../../../types/content';
 
 describe('List', () => {
   it('renders with the provided item', () => {
@@ -36,5 +37,23 @@ describe('List', () => {
     }}/>);
 
     expect(document.querySelector('ol')).toBeInTheDocument();
+  });
+
+  describe('list-type specified', () => {
+    it.each(listType.map((item) => ({ type: item })))('with $type specified the class list-$type is added to the list', ({ type }) => {
+      render(<List content={{
+        type: 'List',
+        order: 'Ascending',
+        items: [
+          {
+            type: 'ListItem',
+            content: 'foo',
+          },
+        ],
+        meta: { listType: type },
+      }}/>);
+
+      expect(document.querySelector('ol')).toHaveClass(`list-${type}`);
+    });
   });
 });
