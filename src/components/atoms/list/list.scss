@@ -1,0 +1,28 @@
+.list-order {
+  list-style: lower-alpha;
+}
+
+.list-bullet {
+  list-style: disc;
+}
+
+.list-alpha-lower {
+  list-style: lower-alpha;
+}
+
+.list-alpha-upper {
+  list-style: upper-alpha;
+}
+
+.list-roman-lower {
+  list-style: lower-roman;
+}
+
+.list-roman-upper {
+  list-style: upper-roman;
+}
+
+.list-simple,
+.list-custom {
+  list-style: none;
+}
