@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFeatureIsOn } from '@growthbook/growthbook-react';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
@@ -45,6 +46,8 @@ export const ArticlePage = (props: ArticlePageProps) => {
     doi,
   };
 
+  const articleStatusVersion2FeatureFlag = useFeatureIsOn('articleStatusV2');
+
   return (
     <>
       <div className="primary-section-header">
@@ -57,7 +60,10 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
+        { articleStatusVersion2FeatureFlag ?
+          <div>New Status</div> :
+          <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
+        }
         <Timeline events={props.status.timeline}/>
       </aside>
       <main className="primary-section">

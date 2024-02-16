@@ -2527,6 +2527,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@growthbook/growthbook-react@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@growthbook/growthbook-react@npm:0.23.0"
+  dependencies:
+    "@growthbook/growthbook": "npm:^0.33.0"
+  peerDependencies:
+    react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 10c0/4bad985f84f2b0ca38a6a072b37ee96d0262b9da1e693c7bd20421967e9fc65d53971390efdce872e5669f68c599bb62e3616f7aeae57c366cc8ae4bf3ccc21c
+  languageName: node
+  linkType: hard
+
+"@growthbook/growthbook@npm:^0.33.0":
+  version: 0.33.0
+  resolution: "@growthbook/growthbook@npm:0.33.0"
+  dependencies:
+    dom-mutator: "npm:^0.6.0"
+  checksum: 10c0/b4275ced5185101b11d1744cc268ca40f8a5e42daa850bad1cbc41ee3c3ab204525b02b3697a2f5599e9353deb85f2b341edf21335b287476bef967a6d3c1f90
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -8859,6 +8879,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom-mutator@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "dom-mutator@npm:0.6.0"
+  checksum: 10c0/9400acb585f41476198cc3411616aed17800e36a833d97d51b92035028332aeff6411ca4717da40c2972c73c7dd4a856ae99dc23db889012b78613d091b5d62d
+  languageName: node
+  linkType: hard
+
 "dom-serializer@npm:^1.0.1":
   version: 1.4.1
   resolution: "dom-serializer@npm:1.4.1"
@@ -9078,6 +9105,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "enhanced-preprints-client@workspace:."
   dependencies:
+    "@growthbook/growthbook-react": "npm:^0.23.0"
     "@next/eslint-plugin-next": "npm:^14.0.0"
     "@playwright/test": "npm:^1.29.2"
     "@storybook/addon-a11y": "npm:^7.0.6"
