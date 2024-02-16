@@ -17,7 +17,7 @@ const growthbook = new GrowthBook<EPPFeatures>({
     articleStatusV2: {
       defaultValue: false,
       rules: [
-        { condition: { 'test-article-status': { $exists: true } }, force: true },
+        { condition: { 'article-status-v2': { $eq: true } }, force: true },
       ],
     },
   },
@@ -58,7 +58,7 @@ export default function MyApp({ Component, pageProps }: any) {
       siteName: config.siteName,
       browser: navigator.userAgent,
       url: router.pathname,
-      flags: Object.entries(router.query)
+      ...Object.entries(router.query) // integrate query params that starts with `flag-` as attributes for the feature flags
         .filter(([key, value]) => key.startsWith('flag-') && typeof value === 'string')
         .reduce((flags, [key, value]) => {
           const newFlags = flags;
