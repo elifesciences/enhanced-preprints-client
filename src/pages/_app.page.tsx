@@ -12,6 +12,7 @@ type EPPFeatures = {
 };
 
 const growthbook = new GrowthBook<EPPFeatures>({
+  enableDevMode: true,
   features: {
     articleStatusV2: {
       defaultValue: false,
@@ -21,6 +22,16 @@ const growthbook = new GrowthBook<EPPFeatures>({
     },
   },
 });
+
+const normaliseStringValue = (value: string): string | boolean => {
+  if (['yes', 'true'].includes(value)) {
+    return true;
+  }
+  if (['no', 'false'].includes(value)) {
+    return false;
+  }
+  return value;
+};
 
 const LayoutSelector = ({ children }: { children: ReactNode }) => {
   switch (config.siteName) {
@@ -47,7 +58,15 @@ export default function MyApp({ Component, pageProps }: any) {
       siteName: config.siteName,
       browser: navigator.userAgent,
       url: router.pathname,
-      ...router.query,
+      flags: Object.entries(router.query)
+        .filter(([key, value]) => key.startsWith('flag-') && typeof value === 'string')
+        .reduce((flags, [key, value]) => {
+          const newFlags = flags;
+          if (typeof value === 'string') {
+            newFlags[key.substring(5)] = normaliseStringValue(value);
+          }
+          return newFlags;
+        }, {} as { [key: string]: string | boolean }),
     });
   }, [router.pathname]);
   return (
