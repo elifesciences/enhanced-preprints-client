@@ -1,0 +1,10 @@
+@use "../../../sass/mixins";
+
+.related-contents {
+  list-style: none;
+  @include mixins.padding(0, 'left');
+}
+
+.related-contents__item {
+  @include mixins.margin(24, 'bottom');
+}

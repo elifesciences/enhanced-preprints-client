@@ -1,3 +1,5 @@
+import './related-contents.scss';
+
 type RelatedContent = {
   type: string,
   title: string,
