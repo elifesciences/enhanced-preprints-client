@@ -1,16 +1,16 @@
 import { StoryFn, Meta } from '@storybook/react';
 
-import { RelatedArticles } from './related-articles';
+import { RelatedContents } from './related-contents';
 
 export default {
-  title: 'Atoms/Related Articles',
-  component: RelatedArticles,
-} as Meta<typeof RelatedArticles>;
+  title: 'Atoms/Related Contents',
+  component: RelatedContents,
+} as Meta<typeof RelatedContents>;
 
-const Template: StoryFn<typeof RelatedArticles> = (args) => <RelatedArticles {...args} />;
+const Template: StoryFn<typeof RelatedContents> = (args) => <RelatedContents {...args} />;
 
-export const RelatedArticlesStory = Template.bind({});
-RelatedArticlesStory.args = {
+export const RelatedContentsStory = Template.bind({});
+RelatedContentsStory.args = {
   articles: [
     {
       type: 'Insight',

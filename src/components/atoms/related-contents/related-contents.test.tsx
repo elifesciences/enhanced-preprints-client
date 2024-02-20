@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import { RelatedArticles } from './related-articles';
+import { RelatedContents } from './related-contents';
 
 describe('Timeline', () => {
   it('renders the related articles passed in as a param', () => {
-    render(<RelatedArticles articles={[
+    render(<RelatedContents articles={[
       {
         type: 'Insight',
         title: 'Summary of this article',
