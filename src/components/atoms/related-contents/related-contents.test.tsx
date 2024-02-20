@@ -5,15 +5,16 @@ describe('Timeline', () => {
   it('renders the related articles passed in as a param', () => {
     render(<RelatedContents articles={[
       {
-        type: 'Insight',
+        type: 'insight',
         title: 'Summary of this article',
         content: 'Some impact statement content on the value of this article',
         url: 'https://elifesciences.org/articles/123456',
       },
       {
-        type: 'Podcast',
+        type: 'podcast',
         title: 'Podcast related to this article',
         url: 'https://elifesciences.org/podcast/episode123456',
+        imageUrl: 'http://placekitten.com/400/400',
       },
     ]}
     />);
@@ -28,11 +29,14 @@ describe('Timeline', () => {
     const content1 = screen.getByText('Some impact statement content on the value of this article');
     expect(content1).toBeInTheDocument();
 
-    const relatedType2 = screen.getByText('Related Podcast');
+    const relatedType2 = screen.getByText('Discussed in');
     expect(relatedType2).toBeInTheDocument();
 
     const title2 = screen.getByText('Podcast related to this article');
     expect(title2).toBeInTheDocument();
     expect(title2).toHaveAttribute('href', 'https://elifesciences.org/podcast/episode123456');
+
+    expect(document.querySelector('img')).toBeInTheDocument();
+    expect(document.querySelector('img')).toHaveAttribute('src', 'http://placekitten.com/400/400');
   });
 });

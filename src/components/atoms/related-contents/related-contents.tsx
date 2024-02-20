@@ -3,6 +3,7 @@ type RelatedContent = {
   title: string,
   url: string,
   content?: string,
+  imageUrl?: string,
 };
 
 type RelatedContentsProps = {
@@ -19,7 +20,7 @@ const types: Record<string, string> = {
 export const RelatedContents = ({ articles }: RelatedContentsProps) => (
   <ul className="related-contents">
     {articles.map(({
-      type, content, title, url,
+      type, content, title, url, imageUrl,
     }, index) => (
       <li key={`related-contents-${index}`} className="related-contents__item">
         <header>
@@ -27,6 +28,8 @@ export const RelatedContents = ({ articles }: RelatedContentsProps) => (
           <h4><a href={url}>{title}</a></h4>
         </header>
         {content && <div>{content}</div>}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {imageUrl && <img src={imageUrl} alt="related content thumbnail"/> }
       </li>
     ))}
   </ul>
