@@ -9,6 +9,13 @@ type RelatedContentsProps = {
   articles: RelatedContent[]
 };
 
+const types: Record<string, string> = {
+  collections: 'Is part of',
+  podcast: 'Discussed in',
+  'focus-issue': 'Is part of',
+  insight: 'Related Insight',
+};
+
 export const RelatedContents = ({ articles }: RelatedContentsProps) => (
   <ul className="related-contents">
     {articles.map(({
@@ -16,7 +23,7 @@ export const RelatedContents = ({ articles }: RelatedContentsProps) => (
     }, index) => (
       <li key={`related-contents-${index}`} className="related-contents__item">
         <header>
-          <div>Related {type}</div>
+          <div>{types[type]}</div>
           <h4><a href={url}>{title}</a></h4>
         </header>
         {content && <div>{content}</div>}
