@@ -7126,8 +7126,8 @@ __metadata:
   linkType: hard
 
 "backstopjs@npm:^6.3.3":
-  version: 6.3.3
-  resolution: "backstopjs@npm:6.3.3"
+  version: 6.3.7
+  resolution: "backstopjs@npm:6.3.7"
   dependencies:
     "@mirzazeyrek/node-resemble-js": "npm:^1.2.1"
     chalk: "npm:^4.1.2"
@@ -7149,7 +7149,7 @@ __metadata:
     temp: "npm:^0.9.4"
   bin:
     backstop: cli/index.js
-  checksum: 10c0/7c0213f13ce79488a5d328761f85df5cb63ab9fe609354e3808f816468624a03ba82aa4bbef3b3d4567bd19348fde59e3825ab11235bec4b3c685be01f3e99ee
+  checksum: 10c0/bda039908a9231fe386c22b65e19eff271c62374447d17794e7c7c9fe7e3567feede580e87e0cfca7e549ada017504c38d24d06012c69aa9a26bf63efc5d6d09
   languageName: node
   linkType: hard
 
