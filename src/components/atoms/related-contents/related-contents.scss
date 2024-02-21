@@ -9,3 +9,8 @@
 .related-contents__item {
   @include mixins.margin(24, "bottom");
 }
+
+.related-contents__item-title, .related-contents__item-type {
+  @include mixins.margin(0);
+  @include mixins.margin(6, "bottom");
+}

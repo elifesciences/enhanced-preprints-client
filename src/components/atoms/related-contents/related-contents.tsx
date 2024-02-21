@@ -26,8 +26,8 @@ export const RelatedContents = ({ articles }: RelatedContentsProps) => (
     }, index) => (
       <li key={`related-contents-${index}`} className="related-contents__item">
         <header>
-          <div>{types[type]}</div>
-          <h4><a href={url}>{title}</a></h4>
+          <div className="related-contents__item-type">{types[type]}</div>
+          <h4 className="related-contents__item-title"><a href={url}>{title}</a></h4>
         </header>
         {content && <div>{content}</div>}
         {/* eslint-disable-next-line @next/next/no-img-element */}
