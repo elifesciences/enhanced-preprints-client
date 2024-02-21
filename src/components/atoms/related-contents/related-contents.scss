@@ -1,4 +1,5 @@
 @use "../../../sass/mixins";
+@use "../../../sass/typography";
 
 .related-contents {
   @include mixins.padding(0, "left");
@@ -14,4 +15,16 @@
 .related-contents__item-type {
   @include mixins.margin(0);
   @include mixins.margin(6, "bottom");
+}
+
+.related-contents__item-type {
+  @include typography.related-contents-type-text();
+}
+
+.related-contents__item-link {
+  @include typography.related-contents-link-text();
+}
+
+.related-contents__item-content {
+  @include typography.body-small();
 }
