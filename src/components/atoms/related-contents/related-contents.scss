@@ -1,14 +1,36 @@
 @use "../../../sass/mixins";
+@use "../../../sass/settings";
 @use "../../../sass/typography";
 
 .related-contents {
+  @include mixins.padding(24, "bottom");
   @include mixins.padding(0, "left");
 
   list-style: none;
+  margin: 0 0 0 auto;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(24, "top");
+
+    max-width: 200px;
+    min-width: 100px;
+    width: 100%;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(0, "top");
+
+    border-bottom: var(--border);
+    max-width: 233px;
+  }
 }
 
 .related-contents__item {
   @include mixins.margin(24, "bottom");
+
+  &:last-child {
+    @include mixins.margin(0, "bottom");
+  }
 }
 
 .related-contents__item-title,

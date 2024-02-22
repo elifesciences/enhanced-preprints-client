@@ -4,11 +4,18 @@
 
 .review-timeline {
   @include mixins.padding(24, "bottom");
+  @include mixins.margin(24, "bottom");
+  @include mixins.padding(72, "right");
 
   margin: 0 0 0 auto;
 
+  &:last-child {
+    @include mixins.padding(0, "right");
+  }
+
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(24, "top");
+    @include mixins.margin(24, "bottom");
 
     max-width: 200px;
     min-width: 100px;
@@ -17,6 +24,8 @@
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
+    @include mixins.margin(24, "bottom");
+    @include mixins.padding(0, "right");
 
     border-bottom: var(--border);
     max-width: 233px;
