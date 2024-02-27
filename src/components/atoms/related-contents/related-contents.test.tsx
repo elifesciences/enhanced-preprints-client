@@ -5,13 +5,13 @@ describe('Timeline', () => {
   it('renders the related articles passed in as a param', () => {
     render(<RelatedContents articles={[
       {
-        type: 'insight',
+        type: 'Related Insight',
         title: 'Summary of this article',
         content: 'Some impact statement content on the value of this article',
         url: 'https://elifesciences.org/articles/123456',
       },
       {
-        type: 'podcast',
+        type: 'Discussed in',
         title: 'Podcast related to this article',
         url: 'https://elifesciences.org/podcast/episode123456',
         imageUrl: 'http://placekitten.com/400/400',

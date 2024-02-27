@@ -12,13 +12,6 @@ type RelatedContentsProps = {
   articles: RelatedContent[]
 };
 
-const types: Record<string, string> = {
-  collections: 'Is part of',
-  podcast: 'Discussed in',
-  'focus-issue': 'Is part of',
-  insight: 'Related Insight',
-};
-
 export const RelatedContents = ({ articles }: RelatedContentsProps) => (
   <ul className="related-contents">
     {articles.map(({
@@ -26,7 +19,7 @@ export const RelatedContents = ({ articles }: RelatedContentsProps) => (
     }, index) => (
       <li key={`related-contents-${index}`} className="related-contents__item">
         <header>
-          <div className="related-contents__item-type">{types[type]}</div>
+          <div className="related-contents__item-type">{type}</div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           {imageUrl && <img src={imageUrl} alt="related content thumbnail"/> }
           <h4 className="related-contents__item-title"><a className="related-contents__item-link" href={url}>{title}</a></h4>
