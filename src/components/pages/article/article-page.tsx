@@ -36,7 +36,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
   const { doi } = props.metaData;
   const brand = useContext(BrandContext);
 
-  const citation: CitationData = {
+  const citation: CitationData | undefined = brand.journal ? {
     authors: props.metaData.authors,
     year: props.metaData.publishedYear,
     volume: props.metaData.volume,
@@ -44,7 +44,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
     doi,
-  };
+  } : undefined;
 
   return (
     <>

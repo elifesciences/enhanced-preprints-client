@@ -14,7 +14,7 @@ type ArticleStatusProps = {
   doi: string,
   title: string,
   pdfUrl?: string,
-  citation: CitationData,
+  citation?: CitationData,
   msid: string,
 };
 
@@ -46,9 +46,11 @@ export const ArticleStatus = ({
         <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
       </li>
       )}
+      {citation && (
       <li className="article-actions__list-item">
         <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
       </li>
+      )}
       <li className="article-actions__list-item">
         <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
       </li>
@@ -62,7 +64,7 @@ export const ArticleStatus = ({
       </div>
       <Socials doi={doi} title={title} />
     </Modal>
-    <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
+    { citation && <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
       <Citation citation={citation} />
       <ol className="cite-downloads__list">
         <li className="cite-downloads__list-item">
@@ -75,6 +77,6 @@ export const ArticleStatus = ({
           <Button variant="cite-download" text="Download RIS" url={`/reviewed-preprints/${msid}.ris`} download />
         </li>
       </ol>
-    </Modal>
+    </Modal>}
   </div>;
 };

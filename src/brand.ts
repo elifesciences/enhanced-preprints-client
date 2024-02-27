@@ -6,7 +6,7 @@ export type Brand = {
   colors: {
     primary: string,
   },
-  journal: string,
+  journal?: string,
   publisher?: string,
   appUrlPrefix?: string,
   processUrl?: string,
@@ -22,7 +22,6 @@ export type Brand = {
 };
 
 export const defaultBrand = {
-  journal: 'EPP',
   publisher: 'Enhanced Preprints Platform',
   logo: {
     url: logo,
