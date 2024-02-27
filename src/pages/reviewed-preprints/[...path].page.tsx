@@ -14,6 +14,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import { Brand, biophysicsColabBrand, elifeBrand } from '../../brand';
+import { RelatedContent } from '../../components/atoms/related-contents/related-contents';
 
 type PageProps = {
   brand: Brand | null,
@@ -21,6 +22,7 @@ type PageProps = {
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  relatedContents: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
 };
@@ -84,7 +86,7 @@ export const Page = (props: PageProps) => {
   );
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  return <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+  return <ArticlePage relatedContents={props.relatedContents} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
     { tabContent }
   </ArticlePage>;
 };
@@ -133,6 +135,16 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const relatedContents: RelatedContent[] = [];
+  if (articleWithVersions.article.msid === '93646') {
+    relatedContents.push({
+      title: 'Hearing: Letting the calcium flow',
+      content: 'Two calcium-binding proteins, CaBP1 and CaBP2, cooperate to keep calcium channels in the hair cells of the inner ear open.',
+      type: 'Related Insight',
+      url: 'https://elifesciences.org/articles/96139',
+    });
+  }
+
   return {
     props: {
       brand,
@@ -152,6 +164,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
+      relatedContents,
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
     },
   };

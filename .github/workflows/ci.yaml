@@ -189,15 +189,15 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -294,15 +294,15 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -399,15 +399,15 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },

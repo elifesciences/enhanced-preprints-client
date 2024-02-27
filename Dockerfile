@@ -4,6 +4,7 @@ FROM node:${node_version} as builder
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY .yarnrc.yml .yarnrc.yml
+COPY .env.yarn .env.yarn
 COPY .yarn/releases .yarn/releases
 COPY package.json package.json
 COPY yarn.lock yarn.lock
