@@ -11,7 +11,7 @@ export type Brand = {
   appUrlPrefix?: string,
   processUrl?: string,
   assessmentsUrl?: string,
-  showElifeMenus: boolean,
+  showElifeMenus?: boolean,
   logo?: {
     url: string | StaticImageData,
     height: number,
@@ -31,7 +31,6 @@ export const defaultBrand = {
   colors: {
     primary: 'grey',
   },
-  showElifeMenus: false,
 };
 
 export const BrandContext = React.createContext<Brand>(defaultBrand);
@@ -62,7 +61,6 @@ export const biophysicsColabBrand: Brand = {
   journal: 'Biophysics Colab',
   publisher: 'Biophysics Colab',
   processUrl: 'https://www.sciencecolab.org/biophysics-colab',
-  showElifeMenus: false,
   logo: {
     url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
     width: 104,
