@@ -6,6 +6,7 @@ export type Brand = {
   colors: {
     primary: string,
   },
+  appUrlPrefix?: string,
   processUrl?: string,
   assessmentsUrl?: string,
   showElifeMenus: boolean,
@@ -36,6 +37,7 @@ export const elifeBrand = {
   colors: {
     primary: '#087acc',
   },
+  appUrlPrefix: 'https://elifesciences.org/reviewed-preprints/',
   processUrl: 'https://elifesciences.org/peer-review-process',
   assessmentsUrl: 'https://elifesciences.org/inside-elife/db24dd46',
   showElifeMenus: true,

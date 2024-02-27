@@ -7,9 +7,7 @@ const resources = {
       // Placeholders:
       twitter_handle: 'Twitter handle',
 
-
       // Defaults:
-      reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
       heading_assessment: '$t(publisher_short) assessment',
       about_assessments: 'About $t(publisher_short) assessments',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
@@ -28,7 +26,6 @@ const resources = {
       reviewed_preprint: 'Reviewed Preprint',
       revised_preprint: 'Reviewed Preprint',
       version_of_record: 'Version of Record',
-      reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',

@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }: any) {
           <meta name="citation_doi" content={pageProps.metaData.doi}/>
           <meta name="citation_publication_date" content={getPublishedDate(pageProps.status.timeline)}/>
           <meta name="citation_pdf_url" content={pageProps.metaData.pdfUrl}/>
-          <meta name="citation_fulltext_html_url" content={i18n.t('reviewed_preprints_url', { msid: pageProps.metaData.msid })}/>
+          <meta name="citation_fulltext_html_url" content={(brand.appUrlPrefix ?? '/reviewed-preprints/') + pageProps.metaData.msid }/>
           <meta name="citation_language" content="en"/>
           { pageProps.metaData.authors.map((author: Author, index: number) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
         </> : <title>Enhanced Preprints Platform</title> }
