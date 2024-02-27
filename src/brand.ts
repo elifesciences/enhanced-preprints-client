@@ -22,7 +22,7 @@ export type Brand = {
 };
 
 export const defaultBrand = {
-  shortName: 'EPP',
+  journal: 'EPP',
   publisher: 'Enhanced Preprints Platform',
   logo: {
     url: logo,

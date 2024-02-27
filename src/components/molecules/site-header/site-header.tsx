@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useTranslation } from 'react-i18next';
 import './site-header.scss';
 import { BrandContext } from '../../../brand';
 
@@ -9,7 +8,6 @@ const Overlay = ({ closeOverlay }: { closeOverlay: () => void }) => createPortal
 
 export const SiteHeader = () => {
   const brand = useContext(BrandContext);
-  const { t } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">

@@ -1,5 +1,4 @@
 import { ReactElement, useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import { Timeline } from '../../molecules/timeline/timeline';
@@ -34,7 +33,6 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const { t } = useTranslation();
   const { doi } = props.metaData;
   const brand = useContext(BrandContext);
 
