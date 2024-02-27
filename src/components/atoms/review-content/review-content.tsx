@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { Descriptors } from '../descriptors/descriptors';
 import './review-content.scss';
+import { useContext } from 'react';
+import { BrandContext } from '../../../brand';
 
 export const terms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
@@ -22,6 +24,8 @@ export const ReviewContent = ({
     sectionProps.id = 'assessment';
   }
 
+  const brand = useContext(BrandContext);
+
   return (
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
@@ -29,9 +33,7 @@ export const ReviewContent = ({
       {isAssessment ? (
         <ul className="review-content-items">
           { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
-          <li className="review-content_item">
-            <a href={t('about_assessments_url')} className="ga-review-content_links">{t('about_assessments')}</a>
-          </li>
+          { brand.assessmentsUrl && <li className="review-content_item"><a href={t('about_assessments_url')} className="ga-review-content_links">{t('about_assessments')}</a></li> }
         </ul>
       ) : ''}
     </section>

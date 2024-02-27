@@ -7,6 +7,7 @@ export type Brand = {
     primary: string,
   },
   processUrl?: string,
+  assessmentsUrl?: string,
   showElifeMenus: boolean,
   logo?: {
     url: string | StaticImageData,
@@ -36,6 +37,7 @@ export const elifeBrand = {
     primary: '#087acc',
   },
   processUrl: 'https://elifesciences.org/peer-review-process',
+  assessmentsUrl: 'https://elifesciences.org/inside-elife/db24dd46',
   showElifeMenus: true,
   logo: {
     url: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
