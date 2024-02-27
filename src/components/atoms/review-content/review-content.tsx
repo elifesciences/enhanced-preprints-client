@@ -33,7 +33,7 @@ export const ReviewContent = ({
       {isAssessment ? (
         <ul className="review-content-items">
           { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
-          { brand.assessmentsUrl && <li className="review-content_item"><a href={t('about_assessments_url')} className="ga-review-content_links">{t('about_assessments')}</a></li> }
+          { brand.assessmentsUrl && <li className="review-content_item"><a href={brand.assessmentsUrl} className="ga-review-content_links">{t('about_assessments')}</a></li> }
         </ul>
       ) : ''}
     </section>

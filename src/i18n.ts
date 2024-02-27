@@ -6,8 +6,7 @@ const resources = {
     default: {
       // Placeholders:
       twitter_handle: 'Twitter handle',
-      process_url: '#', // link to review process
-      about_assessments_url: '#', // link to about assessments
+
 
       // Defaults:
       reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
@@ -25,11 +24,10 @@ const resources = {
       twitter_handle: '@elife',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
-      process_url: 'https://elifesciences.org/peer-review-process',
+
       reviewed_preprint: 'Reviewed Preprint',
       revised_preprint: 'Reviewed Preprint',
       version_of_record: 'Version of Record',
-      about_assessments_url: 'https://elifesciences.org/inside-elife/db24dd46',
       reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
     },
     biophysics_colab: {
@@ -41,8 +39,7 @@ const resources = {
       reviewed_preprint: 'Endorsed article',
       status_description_reviewed: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
       status_description_revised: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
-      process_url: 'https://www.sciencecolab.org/biophysics-colab',
-      about_assessments_url: 'https://www.sciencecolab.org/biophysics-colab',
+
     },
   },
 };
