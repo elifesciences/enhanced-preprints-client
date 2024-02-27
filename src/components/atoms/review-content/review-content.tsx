@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
 import { Descriptors } from '../descriptors/descriptors';
 import './review-content.scss';
-import { useContext } from 'react';
 import { BrandContext } from '../../../brand';
 
 export const terms = [
