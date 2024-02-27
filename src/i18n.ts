@@ -15,6 +15,7 @@ const resources = {
       version_of_record: 'Version of record',
     },
     elife: {
+      heading_assessment: 'eLife assessment',
       about_assessments: 'About eLife assessments',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by eLife.',
       reviewed_preprint: 'Reviewed Preprint',
