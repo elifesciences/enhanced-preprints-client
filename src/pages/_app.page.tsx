@@ -30,8 +30,8 @@ export default function MyApp({ Component, pageProps }: any) {
         {pageProps.metaData ? <>
           <title>{contentToText(pageProps.metaData.title)}</title>
           <meta name="citation_title" content={contentToText(pageProps.metaData.title)}/>
-          <meta name="citation_publisher" content={i18n.t('publisher_long')}/>
-          <meta name="citation_journal_title" content={i18n.t('publisher_short')}/>
+          <meta name="citation_publisher" content={brand.publisher}/>
+          <meta name="citation_journal_title" content={brand.journal}/>
           <meta name="citation_volume" content={pageProps.metaData.volume}/>
           <meta name="citation_id" content={`RP${pageProps.metaData.msid}`}/>
           <meta name="citation_abstract" content={contentToText(pageProps.metaData.abstract)}/>

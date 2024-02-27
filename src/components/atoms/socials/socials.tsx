@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import './socials.scss';
+import { useContext } from 'react';
+import { BrandContext } from '../../../brand';
 
 type SocialsProps = {
   doi: string,
@@ -9,10 +11,11 @@ type SocialsProps = {
 export const Socials = ({
   doi, title,
 }: SocialsProps) => {
+  const brand = useContext(BrandContext);
   const { t } = useTranslation();
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
+  const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: brand.twitterHandle }));
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
@@ -28,11 +31,11 @@ export const Socials = ({
           Email
         </a>
       </li>
-      <li>
+      { brand.twitterHandle && <li>
         <a className="socials-sharer twitter" href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Twitter">
           Twitter
         </a>
-      </li>
+      </li> }
       <li>
         <a className="socials-sharer facebook" href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Facebook">
           Facebook

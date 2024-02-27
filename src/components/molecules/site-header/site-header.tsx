@@ -19,7 +19,7 @@ export const SiteHeader = () => {
             <Image
               className="site-header__logo"
               src={brand.logo.url}
-              alt={`${t('publisher_short')} logo`}
+              alt={`${brand.journal} logo`}
               width={brand.logo.width}
               height={brand.logo.height}
             />
@@ -35,7 +35,7 @@ export const SiteHeader = () => {
               {brand.logo &&
                 <Image
                   src={brand.logo.url}
-                  alt={`${t('publisher_short')} logo`}
+                  alt={`${brand.journal} logo`}
                   width={brand.logo.width}
                   height={brand.logo.height}
                 />}

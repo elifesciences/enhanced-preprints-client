@@ -6,6 +6,8 @@ export type Brand = {
   colors: {
     primary: string,
   },
+  journal: string,
+  publisher?: string,
   appUrlPrefix?: string,
   processUrl?: string,
   assessmentsUrl?: string,
@@ -15,10 +17,13 @@ export type Brand = {
     height: number,
     width: number,
   },
+  twitterHandle?: string,
   translationNamespace?: string,
 };
 
 export const defaultBrand = {
+  shortName: 'EPP',
+  publisher: 'Enhanced Preprints Platform',
   logo: {
     url: logo,
     width: 100,
@@ -33,10 +38,12 @@ export const defaultBrand = {
 export const BrandContext = React.createContext<Brand>(defaultBrand);
 
 // these should be replaced with a stored brand in server
-export const elifeBrand = {
+export const elifeBrand: Brand = {
   colors: {
     primary: '#087acc',
   },
+  journal: 'eLife',
+  publisher: 'eLife Sciences Publications Limited',
   appUrlPrefix: 'https://elifesciences.org/reviewed-preprints/',
   processUrl: 'https://elifesciences.org/peer-review-process',
   assessmentsUrl: 'https://elifesciences.org/inside-elife/db24dd46',
@@ -46,12 +53,15 @@ export const elifeBrand = {
     width: 80,
     height: 30,
   },
+  twitterHandle: '@elife',
   translationNamespace: 'elife',
 };
-export const biophysicsColabBrand = {
+export const biophysicsColabBrand: Brand = {
   colors: {
     primary: '#5556A8',
   },
+  journal: 'Biophysics Colab',
+  publisher: 'Biophysics Colab',
   processUrl: 'https://www.sciencecolab.org/biophysics-colab',
   showElifeMenus: false,
   logo: {
@@ -59,5 +69,6 @@ export const biophysicsColabBrand = {
     width: 104,
     height: 40,
   },
+  twitterHandle: '@BiophysicsColab',
   translationNamespace: 'biophysics_colab',
 };
