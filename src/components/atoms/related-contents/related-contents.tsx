@@ -1,6 +1,6 @@
 import './related-contents.scss';
 
-type RelatedContent = {
+export type RelatedContent = {
   type: string,
   title: string,
   url: string,
