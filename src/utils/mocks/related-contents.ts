@@ -1,6 +1,6 @@
 export const relatedContents = [
   {
-    type: 'insight',
+    type: 'Related Insight',
     title: 'Insight Title',
     url: 'http://bbc.co.uk',
     content: 'Insight article about this article',

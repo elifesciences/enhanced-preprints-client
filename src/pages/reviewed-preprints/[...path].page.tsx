@@ -161,6 +161,16 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const relatedContents: RelatedContent[] = [];
+  if (articleWithVersions.article.msid === '93646') {
+    relatedContents.push({
+      title: 'Hearing: Letting the calcium flow',
+      content: 'Two calcium-binding proteins, CaBP1 and CaBP2, cooperate to keep calcium channels in the hair cells of the inner ear open.',
+      type: 'Related Insight',
+      url: 'https://elifesciences.org/articles/96139',
+    });
+  }
+
   return {
     props: {
       metaData: {
@@ -179,7 +189,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
-      relatedContents: [],
+      relatedContents,
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
     },
   };
