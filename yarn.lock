@@ -9091,7 +9091,7 @@ __metadata:
     stylelint-config-standard-scss: "npm:^13.0.0"
     stylelint-order: "npm:^6.0.0"
     stylelint-prettier: "npm:^5.0.0"
-    stylelint-selector-bem-pattern: "npm:^3.0.0"
+    stylelint-selector-bem-pattern: "npm:^4.0.0"
     ts-node: "npm:^10.9.1"
     typescript: "npm:^5.0.0"
     web-vitals: "npm:^3.0.0"
@@ -17033,20 +17033,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-selector-bem-pattern@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "stylelint-selector-bem-pattern@npm:3.0.1"
+"stylelint-selector-bem-pattern@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "stylelint-selector-bem-pattern@npm:4.0.0"
   dependencies:
     eslint-plugin-jest: "npm:^27.2.2"
     lodash: "npm:>=4.17.21"
     postcss: "npm:^8.4.24"
     postcss-bem-linter: "npm:^4.0.1"
-    stylelint: "npm:>=15.9.0"
-  checksum: 10c0/55f37696cdad026e36a76e14d748cc4b384de9011ee515e4a65621bd487e253ce77cd103d779b01b39dce811342978e634f2ac8d6c198c6b24240c0828bd898f
+  peerDependencies:
+    stylelint: ^16.2.1
+  checksum: 10c0/ee6fc21131fed9aaa2e1db16758329cd8d57cf37e9ea4987684d523f5f650ece602a83daec25ee17c76287af1ff6835792ca9e5c5c172ced63d96aec00127749
   languageName: node
   linkType: hard
 
-"stylelint@npm:>=15.9.0, stylelint@npm:^16.2.0":
+"stylelint@npm:^16.2.0":
   version: 16.2.1
   resolution: "stylelint@npm:16.2.1"
   dependencies:
