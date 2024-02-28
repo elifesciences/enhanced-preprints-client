@@ -69,3 +69,16 @@ export const biophysicsColabBrand: Brand = {
   twitterHandle: '@BiophysicsColab',
   translationNamespace: 'biophysics_colab',
 };
+export const scietyBrand: Brand = {
+  colors: {
+    primary: 'rgb(206, 72, 26)',
+  },
+  journal: 'Sciety Preprints',
+  publisher: 'Sciety Preprints',
+  logo: {
+    url: 'https://sciety.org/static/images/sciety-logo-navigation-link-colour-text.svg',
+    width: 119,
+    height: 36,
+  },
+  twitterHandle: '@sciety',
+};

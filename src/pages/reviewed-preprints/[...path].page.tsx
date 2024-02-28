@@ -13,7 +13,9 @@ import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
-import { Brand, biophysicsColabBrand, elifeBrand } from '../../brand';
+import {
+  Brand, biophysicsColabBrand, elifeBrand, scietyBrand,
+} from '../../brand';
 import { RelatedContent } from '../../components/atoms/related-contents/related-contents';
 
 type PageProps = {
@@ -124,6 +126,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     brand = biophysicsColabBrand;
   } else if (id === '85111v2') {
     brand = elifeBrand;
+  } else if (id === '85111v1') {
+    brand = scietyBrand;
   }
 
   const status = generateStatus(articleWithVersions);
