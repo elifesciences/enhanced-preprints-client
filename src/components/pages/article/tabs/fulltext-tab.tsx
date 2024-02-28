@@ -8,7 +8,6 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
-import '../../../../i18n';
 
 type Props = {
   headings: Heading[],

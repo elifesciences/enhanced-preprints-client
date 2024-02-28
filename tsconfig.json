@@ -22,6 +22,7 @@
     "incremental": true
   },
   "include": [
+    ".storybook/*.tsx",
     "src/",
     "pages/",
     "browser-tests",
@@ -36,5 +37,11 @@
     "compilerOptions": {
       "module": "commonjs"
     }
+  },
+  "storybook": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+    // "jsx": "react-jsx"
   }
 }

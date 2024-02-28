@@ -72,12 +72,14 @@ describe('generateStatus', () => {
     expect(timeline).toEqual([
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
+        name: 'timeline_version_title',
+        versionIdentifier: '1',
         eventDescription: '(this version)',
       },
       {
         date: 'Mon Jan 02 2023',
         name: 'Posted to preprint server',
+        versionIdentifier: '1',
         link: {
           url: 'https://doi.org/doi-123',
           text: 'Go to preprint server',
@@ -86,6 +88,7 @@ describe('generateStatus', () => {
       {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
+        versionIdentifier: '1',
       },
     ]);
   });
@@ -104,12 +107,14 @@ describe('generateStatus', () => {
     expect(timeline).toEqual([
       {
         date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
+        name: 'timeline_version_title',
+        versionIdentifier: '2',
         eventDescription: '(this version)',
       },
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
+        name: 'timeline_version_title',
+        versionIdentifier: '1',
         link: {
           text: 'Go to version',
           url: '/reviewed-preprints/1v1',
@@ -119,6 +124,7 @@ describe('generateStatus', () => {
       {
         date: 'Mon Jan 02 2023',
         name: 'Posted to preprint server',
+        versionIdentifier: '1',
         link: {
           url: 'https://doi.org/doi-123',
           text: 'Go to preprint server',
@@ -127,6 +133,7 @@ describe('generateStatus', () => {
       {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
+        versionIdentifier: '1',
       },
     ]);
   });

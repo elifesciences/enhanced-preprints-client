@@ -1,27 +1,25 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import { Content, MetaData, PeerReview } from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
-import { contentToText } from '../../utils/content-to-text';
-import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
 import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
-import { formatAuthorName } from '../../utils/format-author-name';
 import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
-import '../../i18n';
+import {
+  Brand, biophysicsColabBrand, elifeBrand, scietyBrand,
+} from '../../brand';
 import { RelatedContent } from '../../components/atoms/related-contents/related-contents';
 
 type PageProps = {
+  brand: Brand | null,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -29,16 +27,6 @@ type PageProps = {
   relatedContents: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
-};
-
-const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
-  const publishedEvent = events.find(({ eventDescription }) => eventDescription?.length);
-  if (publishedEvent) {
-    const date = new Date(publishedEvent.date);
-    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-  }
-
-  return undefined;
 };
 
 export const Page = (props: PageProps) => {
@@ -100,29 +88,9 @@ export const Page = (props: PageProps) => {
   );
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  const { t } = useTranslation();
-  return (
-    <>
-      <Head>
-        <title>{contentToText(props.metaData.title)}</title>
-        <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-        <meta name="citation_publisher" content={t('publisher_long')}/>
-        <meta name="citation_journal_title" content={t('publisher_short')}/>
-        <meta name="citation_volume" content={props.metaData.volume}/>
-        <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
-        <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
-        <meta name="citation_doi" content={props.metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
-        <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>
-        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: props.metaData.msid })}/>
-        <meta name="citation_language" content="en"/>
-        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
-      </Head>
-      <ArticlePage relatedContents={props.relatedContents} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
-        { tabContent }
-      </ArticlePage>
-    </>
-  );
+  return <ArticlePage relatedContents={props.relatedContents} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+    { tabContent }
+  </ArticlePage>;
 };
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
@@ -152,6 +120,16 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
+  // branding
+  let brand: Brand | null = null;
+  if (id === 'biophysics-colab-111111v1') {
+    brand = biophysicsColabBrand;
+  } else if (id === '85111v2') {
+    brand = elifeBrand;
+  } else if (id === '85111v1') {
+    brand = scietyBrand;
+  }
+
   const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
 
@@ -173,6 +151,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
+      brand,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,

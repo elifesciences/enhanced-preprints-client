@@ -2,8 +2,8 @@ import { Content } from './content';
 import { Author } from './author';
 import { Reference } from './reference';
 import { PeerReview } from './peer-review';
-import { TimelineEvent } from '../components/molecules/timeline/timeline';
 import { Heading } from './enhanced-article';
+import { TimelineEvent } from './article-timeline';
 
 export type MetaData = {
   abstract: Content,
