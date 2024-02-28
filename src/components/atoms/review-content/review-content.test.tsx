@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewContent, terms } from './review-content';
+import { BrandContext, defaultBrand } from '../../../brand';
 
 describe('ArticleContent', () => {
   it('renders with a simple string content', async () => {
@@ -57,7 +58,6 @@ describe('ArticleContent', () => {
     render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
 
     expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
   });
 
   it('displays DOI link', async () => {
@@ -65,11 +65,19 @@ describe('ArticleContent', () => {
 
     expect(screen.getByText('https://doi.org/10.7554/eLife.81090.sa0')).toBeInTheDocument();
     expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
   });
 
   it('displays DOI link containing sa1', async () => {
     render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa1'/>);
     expect(screen.queryByText('.sa1', { exact: false })).toBeInTheDocument();
+  });
+
+  it('displays about assesssments URL from branding', async () => {
+    render(<BrandContext.Provider value={{ ...defaultBrand, assessmentsUrl: 'https://bbc.co.uk' }}>
+      <ReviewContent isAssessment={true} content='This is a thorough review of the article' peerReviewUrl='#' doi='10.7554/eLife.81090.sa0'/>
+    </BrandContext.Provider>);
+
+    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
+    expect(screen.getByText('About eLife assessments').getAttribute('href')).toStrictEqual('https://bbc.co.uk');
   });
 });

@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { metaData, peerReview, content } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
 import { contentToJsx } from '../../../../utils/content-to-jsx';
+import { BrandContext, defaultBrand } from '../../../../brand';
 
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {
@@ -22,11 +23,21 @@ describe('FulltextTab', () => {
   it('renders the evaluation summary when one is passed in', () => {
     const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>);
 
-    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0About eLife assessments');
+    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0');
   });
 
   it('renders the link to read peer reviews', () => {
     const { container } = render(<ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
+
+    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0Read the peer reviews');
+  });
+
+  it('renders the link to read about the assessment', () => {
+    const { container } = render(
+      <BrandContext.Provider value={{ ...defaultBrand, assessmentsUrl: 'https://bbc.co.uk' }}>
+        <ArticleFullTextTab headings={[]} content={''} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>
+      </BrandContext.Provider>,
+    );
 
     expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0Read the peer reviewsAbout eLife assessments');
   });
