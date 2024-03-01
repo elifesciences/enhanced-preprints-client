@@ -4,7 +4,12 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
-import { Content, MetaData, PeerReview } from '../../types';
+import {
+  Content,
+  MetaData,
+  PeerReview,
+  RelatedContent,
+} from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
@@ -19,7 +24,6 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
-import { RelatedContent } from '../../components/atoms/related-contents/related-contents';
 
 type PageProps = {
   metaData: MetaData,
@@ -161,16 +165,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const relatedContents: RelatedContent[] = [];
-  if (articleWithVersions.article.msid === '93646') {
-    relatedContents.push({
-      title: 'Hearing: Letting the calcium flow',
-      content: 'Régis Nouvian',
-      type: 'Related Insight',
-      url: 'https://elifesciences.org/articles/96139',
-    });
-  }
-
   return {
     props: {
       metaData: {
@@ -189,7 +183,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
-      relatedContents,
+      relatedContents: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
     },
   };
