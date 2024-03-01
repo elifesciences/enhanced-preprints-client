@@ -165,7 +165,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   if (articleWithVersions.article.msid === '93646') {
     relatedContents.push({
       title: 'Hearing: Letting the calcium flow',
-      content: 'Two calcium-binding proteins, CaBP1 and CaBP2, cooperate to keep calcium channels in the hair cells of the inner ear open.',
+      content: 'Régis Nouvian',
       type: 'Related Insight',
       url: 'https://elifesciences.org/articles/96139',
     });
