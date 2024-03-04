@@ -1,4 +1,4 @@
-export const relatedContents = [
+export const relatedContent = [
   {
     type: 'Related Insight',
     title: 'Insight Title',

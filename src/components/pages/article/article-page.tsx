@@ -27,7 +27,7 @@ export type ArticlePageProps = {
   metaData: MetaData,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  relatedContents: RelatedContent[],
+  relatedContent: RelatedContent[],
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
@@ -61,7 +61,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       <aside className="side-section">
         <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
         <Timeline events={props.status.timeline}/>
-        {props.relatedContents.length > 0 && <RelatedContents articles={props.relatedContents} />}
+        {props.relatedContent.length > 0 && <RelatedContents articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
