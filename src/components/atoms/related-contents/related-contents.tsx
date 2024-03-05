@@ -1,6 +1,6 @@
 import './related-contents.scss';
 
-export type RelatedContent = {
+export type RelatedContentData = {
   type: string,
   title: string,
   url: string,
@@ -8,11 +8,11 @@ export type RelatedContent = {
   imageUrl?: string,
 };
 
-type RelatedContentsProps = {
-  articles: RelatedContent[]
+type RelatedContentProps = {
+  articles: RelatedContentData[]
 };
 
-export const RelatedContents = ({ articles }: RelatedContentsProps) => (
+export const RelatedContent = ({ articles }: RelatedContentProps) => (
   <ul className="related-contents">
     {articles.map(({
       type, content, title, url, imageUrl,
