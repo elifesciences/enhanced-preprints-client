@@ -11,7 +11,6 @@ import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 
-
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
   articleType: string,
