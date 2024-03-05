@@ -9,7 +9,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
-import { RelatedContentData, RelatedContent } from '../../atoms/related-contents/related-contents';
+import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 
 
 export type ArticleStatusProps = {

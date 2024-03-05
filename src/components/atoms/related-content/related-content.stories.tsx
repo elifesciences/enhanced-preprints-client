@@ -1,9 +1,9 @@
 import { StoryFn, Meta } from '@storybook/react';
 
-import { RelatedContent } from './related-contents';
+import { RelatedContent } from './related-content';
 
 export default {
-  title: 'Atoms/Related Contents',
+  title: 'Atoms/Related Content',
   component: RelatedContent,
 } as Meta<typeof RelatedContent>;
 

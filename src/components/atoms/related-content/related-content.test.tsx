@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { RelatedContent } from './related-contents';
+import { RelatedContent } from './related-content';
 
 describe('Timeline', () => {
   it('renders the related articles passed in as a param', () => {

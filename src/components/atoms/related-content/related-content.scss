@@ -2,7 +2,7 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.related-contents {
+.related-content {
   @include mixins.padding(24, "bottom");
   @include mixins.padding(0, "left");
 
@@ -25,7 +25,7 @@
   }
 }
 
-.related-contents__item {
+.related-content__item {
   @include mixins.margin(24, "bottom");
 
   &:last-child {
@@ -33,20 +33,20 @@
   }
 }
 
-.related-contents__item-title,
-.related-contents__item-type {
+.related-content__item-title,
+.related-content__item-type {
   @include mixins.margin(0);
   @include mixins.margin(6, "bottom");
 }
 
-.related-contents__item-type {
-  @include typography.related-contents-type-text();
+.related-content__item-type {
+  @include typography.related-content-type-text();
 }
 
-.related-contents__item-link {
-  @include typography.related-contents-link-text();
+.related-content__item-link {
+  @include typography.related-content-link-text();
 }
 
-.related-contents__item-content {
+.related-content__item-content {
   @include typography.body-small();
 }

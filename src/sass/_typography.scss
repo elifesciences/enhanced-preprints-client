@@ -142,7 +142,7 @@
   font-weight: 600;
 }
 
-@mixin related-contents-type-text() {
+@mixin related-content-type-text() {
   @include font-size-and-vertical-height(14, 26);
 
   color: var(--color-text-secondary);
@@ -150,7 +150,7 @@
   font-weight: 400;
 }
 
-@mixin related-contents-link-text() {
+@mixin related-content-link-text() {
   @include font-size-and-vertical-height(16, 24);
 
   color: var(--color-text);
