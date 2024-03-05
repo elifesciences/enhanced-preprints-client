@@ -9143,6 +9143,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.30.1"
     eslint-plugin-storybook: "npm:^0.8.0"
     fetch-mock: "npm:^9.11.0"
+    husky: "npm:^9.0.11"
     i18next: "npm:^23.7.19"
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
@@ -11532,6 +11533,15 @@ __metadata:
   dependencies:
     ms: "npm:^2.0.0"
   checksum: 10c0/f34a2c20161d02303c2807badec2f3b49cbfbbb409abd4f95a07377ae01cfe6b59e3d15ac609cffcd8f2521f0eb37b7e1091acf65da99aa2a4f1ad63c21e7e7a
+  languageName: node
+  linkType: hard
+
+"husky@npm:^9.0.11":
+  version: 9.0.11
+  resolution: "husky@npm:9.0.11"
+  bin:
+    husky: bin.mjs
+  checksum: 10c0/2c787dcf74a837fc9a4fea7da907509d4bd9a289f4ea10ecc9d86279e4d4542b0f5f6443a619bccae19e265f2677172cc2b86aae5c932a35a330cc227d914605
   languageName: node
   linkType: hard
 
