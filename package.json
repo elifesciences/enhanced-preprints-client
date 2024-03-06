@@ -90,7 +90,7 @@
     "backstopjs": "^6.3.3",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-plugin-deprecation": "^2.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-json": "^3.1.0",
