@@ -24,7 +24,7 @@ CMD [ "yarn", "storybook" ]
 
 FROM base as prod
 RUN yarn build
-CMD [ "sh", "-c", "yarn build && yarn start" ]
+CMD [ "yarn", "start" ]
 
 FROM mcr.microsoft.com/playwright:focal as browser-tests
 WORKDIR /opt/tests
