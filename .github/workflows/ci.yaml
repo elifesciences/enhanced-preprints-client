@@ -70,7 +70,7 @@ jobs:
         if: always()
         with:
           name: visualregression-report
-          path: backstop_data/html_report
+          path: backstop_data/
   build-and-push:
     needs: [test, test-integration]
     runs-on: ubuntu-latest
