@@ -9,6 +9,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
+import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -26,6 +27,7 @@ export type ArticlePageProps = {
   metaData: MetaData,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  relatedContent: RelatedContentData[],
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
@@ -59,6 +61,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       <aside className="side-section">
         <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
         <Timeline events={props.status.timeline}/>
+        {props.relatedContent.length > 0 && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">

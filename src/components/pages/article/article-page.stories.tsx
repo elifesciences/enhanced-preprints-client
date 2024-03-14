@@ -1,7 +1,7 @@
 import LinkTo from '@storybook/addon-links/react';
 import { StoryFn, Meta } from '@storybook/react';
 import {
-  content, metaData, peerReview, status,
+  content, metaData, peerReview, relatedContent, status,
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
@@ -40,6 +40,7 @@ ArticlePageFullTextTab.args = {
   status,
   activeTab: 'fulltext',
   tabs,
+  relatedContent,
 };
 
 const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={jsxContent} /></ArticlePage></DefaultLayout>;
@@ -49,6 +50,7 @@ ArticlePageFiguresTab.args = {
   status,
   activeTab: 'figures',
   tabs,
+  relatedContent,
 };
 
 const ReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
@@ -58,6 +60,7 @@ ArticlePageReviewsTab.args = {
   status,
   activeTab: 'reviews',
   tabs,
+  relatedContent,
 };
 
 const ErrorTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ErrorMessages/></ArticlePage></DefaultLayout>;
@@ -67,4 +70,5 @@ ArticlePageErrorTab.args = {
   status,
   activeTab: 'reviews',
   tabs,
+  relatedContent,
 };

@@ -4,7 +4,12 @@ import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
-import { Content, MetaData, PeerReview } from '../../types';
+import {
+  Content,
+  MetaData,
+  PeerReview,
+  RelatedContent,
+} from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
@@ -25,6 +30,7 @@ type PageProps = {
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
 };
@@ -116,7 +122,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_language" content="en"/>
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
-      <ArticlePage metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+      <ArticlePage relatedContent={props.relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
       </ArticlePage>
     </>
@@ -177,6 +183,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
+      relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
     },
   };

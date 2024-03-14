@@ -4,26 +4,26 @@ import {
 import { ArticlePage } from './article-page';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import {
-  metaData, peerReview, status, citation,
+  metaData, peerReview, status, citation, relatedContent,
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
       <ArticleFiguresTab content={''} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with reviews tab', () => {
-    expect(() => render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={[]}>
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={[]}>
       <ArticleReviewsTab peerReview={peerReview} />
     </ArticlePage>)).not.toThrow();
   });
@@ -43,7 +43,7 @@ describe('ArticlePage', () => {
         linkElement: <a href={'/reviewed-preprints/12345v1/reviews#tab-content'}>Peer review</a>,
       },
     ];
-    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={tabs}>
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={tabs}>
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
@@ -56,7 +56,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={tabs}>
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={tabs}>
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
@@ -65,7 +65,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={tabs}>
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={tabs}>
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
     </ArticlePage>);
 
@@ -88,5 +88,15 @@ describe('ArticlePage', () => {
     Array.from(container.getElementsByClassName('socials-sharer'))
       .map((el) => el.getAttribute('href'))
       .forEach((url) => expect(url).toStrictEqual(expect.stringContaining(encodedExpectedDoi)));
+  });
+
+  it('renders related content', () => {
+    render(<ArticlePage relatedContent={relatedContent} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    </ArticlePage>);
+
+    expect(screen.getByText('Related Insight')).toBeInTheDocument();
+    expect(screen.getByText('Insight Title')).toBeInTheDocument();
+    expect(screen.getByText('Insight article about this article')).toBeInTheDocument();
   });
 });

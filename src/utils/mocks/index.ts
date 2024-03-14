@@ -5,3 +5,4 @@ export { peerReview } from './peer-review';
 export { references } from './references';
 export { status } from './status';
 export { citation } from './citation';
+export { relatedContent } from './related-content';

@@ -4,6 +4,7 @@ FROM node:${node_version} as builder
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY .yarnrc.yml .yarnrc.yml
+COPY .env.yarn .env.yarn
 COPY .yarn/releases .yarn/releases
 COPY package.json package.json
 COPY yarn.lock yarn.lock
@@ -23,7 +24,7 @@ CMD [ "yarn", "storybook" ]
 
 FROM base as prod
 RUN yarn build
-CMD [ "sh", "-c", "yarn build && yarn start" ]
+CMD [ "yarn", "start" ]
 
 FROM mcr.microsoft.com/playwright:focal as browser-tests
 WORKDIR /opt/tests
