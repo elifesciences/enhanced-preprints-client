@@ -60,11 +60,18 @@ jobs:
         if: failure()
         run: docker compose logs app
       - name: Visual Regression Tests
+        id: visualregression
         run: yarn visual-regression:test
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
         run: docker compose -f docker-compose.browsertest.yaml down
+      - name: Visual regression report upload
+        uses: actions/upload-artifact@v4
+        if: always() && steps.visualregression.outcome != 'skipped'
+        with:
+          name: visualregression-report
+          path: backstop_data/
   build-and-push:
     needs: [test, test-integration]
     runs-on: ubuntu-latest
