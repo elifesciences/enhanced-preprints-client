@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Script from 'next/script';
+import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
@@ -22,11 +23,41 @@ const LayoutSelector = ({ children }: { children: ReactNode }) => {
   }
 };
 
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: [
+    '400', '700',
+  ],
+  display: 'swap',
+  fallback: ['serif'],
+});
+
+const notoSans = Noto_Sans({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: [
+    '400', '600',
+  ],
+  display: 'swap',
+  fallback: ['arial', 'helvetica', 'sans-serif'],
+});
+
 export default function MyApp({ Component, pageProps }: any) {
   return (
     <>
       <Head>
         <title>Enhanced Preprints Platform</title>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+            }
+            body {
+              --font-family-primary: ${notoSans.style.fontFamily};
+              --font-family-secondary: ${notoSerif.style.fontFamily};
+            }
+          `,
+        }} />
       </Head>
       { config.cookiebotId &&
       <Script id="Cookiebot"
