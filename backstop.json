@@ -10,27 +10,15 @@
   "scenarios": [
     {
       "label": "Article Tab",
-      "url": "http://app:3000/reviewed-preprints/123",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/123"
     },
     {
       "label": "Figures Tab",
-      "url": "http://app:3000/reviewed-preprints/123/figures",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/123/figures"
     },
     {
       "label": "Reviews Tab",
-      "url": "http://app:3000/reviewed-preprints/123/reviews",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/123/reviews"
     }
   ],
   "paths": {
@@ -43,9 +31,8 @@
   "report": ["CI"],
   "engine": "playwright",
   "engineOptions": {
-    "browser": "chromium",
-    "gotoParameters": { "waitUntil": "networkidle0" },
-    "args": ["--no-sandbox"]
+    "browser": "firefox",
+    "gotoParameters": { "waitUntil": "networkidle0" }
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,
