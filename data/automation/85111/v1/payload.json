@@ -9282,14 +9282,14 @@
   "publishedYear": 2023,
   "relatedContent": [
     {
-        "type":"Related Insight",
+        "type":"insight",
         "title":"Insight Title",
         "url":"https://doi.org/10.7554/eLife.11111",
         "content":"Insight article about this article",
         "imageUrl":"http://placekitten.com/200/150"
       },
       {
-        "type":"Related Insight",
+        "type":"insight",
         "title":"Insight Title 2",
         "url":"https://doi.org/10.7554/eLife.22222"
     }
