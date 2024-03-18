@@ -21,6 +21,7 @@ const resources = {
       status_about: 'About $t(publisher_short)\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
       reviewed_preprint: 'Reviewed Preprint',
+      related_intro: 'Related {{type}}',
     },
     elife: {
       twitter_handle: '@elife',
