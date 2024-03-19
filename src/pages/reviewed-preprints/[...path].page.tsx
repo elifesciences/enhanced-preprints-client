@@ -107,7 +107,7 @@ export const Page = (props: PageProps) => {
   const { t } = useTranslation();
   const relatedContent = props.relatedContent.map((item) => ({
     ...item,
-    type: t('related_intro', { type: item.type }), // Consider allowing removal of dashes and uppercase first letter or alternative approach.
+    type: t('related_intro', { type: item.type.charAt(0).toUpperCase() + item.type.slice(1) }), // Consider allowing removal of dashes and uppercase first letter or alternative approach.
   }));
   return (
     <>
