@@ -105,6 +105,10 @@ export const Page = (props: PageProps) => {
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
   const { t } = useTranslation();
+  const relatedContent = props.relatedContent.map((item) => ({
+    ...item,
+    type: t('related_intro', { type: t(`related_type_${item.type}`, { defaultValue: t('related_type_default') }) }),
+  }));
   return (
     <>
       <Head>
@@ -122,7 +126,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_language" content="en"/>
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
-      <ArticlePage relatedContent={props.relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+      <ArticlePage relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
       </ArticlePage>
     </>
