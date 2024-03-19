@@ -22,6 +22,7 @@ const resources = {
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
       reviewed_preprint: 'Reviewed Preprint',
       related_intro: 'Related {{type}}',
+      related_type_default: 'content',
     },
     elife: {
       twitter_handle: '@elife',
@@ -30,6 +31,7 @@ const resources = {
       process_url: 'https://elifesciences.org/peer-review-process',
       about_assessments_url: 'https://elifesciences.org/inside-elife/db24dd46',
       reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
+      related_type_insight: 'Insight',
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',
