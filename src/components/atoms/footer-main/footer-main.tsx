@@ -142,7 +142,7 @@ export const FooterMain = () => (
         </div>
 
         <div className="site-smallprint">
-          <small>© <time>2022</time> eLife Sciences Publications Ltd. Subject to a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" className="site-smallprint__copyright_link">Creative Commons Attribution license</a>, except where otherwise noted. ISSN:&nbsp;2050-084X</small>
+          <small>© <time>{new Date().getUTCFullYear()}</time> eLife Sciences Publications Ltd. Subject to a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license" className="site-smallprint__copyright_link">Creative Commons Attribution license</a>, except where otherwise noted. ISSN:&nbsp;2050-084X</small>
         </div>
 
       </div>
