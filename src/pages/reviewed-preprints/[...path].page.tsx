@@ -39,7 +39,7 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   const publishedEvent = events.find(({ eventDescription }) => eventDescription?.length);
   if (publishedEvent) {
     const date = new Date(publishedEvent.date);
-    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
   }
 
   return undefined;
