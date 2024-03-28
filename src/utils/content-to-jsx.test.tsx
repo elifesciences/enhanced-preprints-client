@@ -46,6 +46,26 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(<a href={'target'}>I am a link</a>);
   });
 
+  it('generates the expected html when passed a Link with the removeLinkTag set to true', () => {
+    const result = contentToJsx({
+      type: 'Link',
+      content: [
+        'I am ',
+        {
+          type: 'Emphasis',
+          content: 'not',
+        },
+        ' a link',
+      ],
+      target: 'target',
+    }, {
+      removeLinkTag: true,
+    });
+
+    // eslint-disable-next-line react/jsx-key
+    expect(result).toStrictEqual(['I am ', <em>not</em>, ' a link']);
+  });
+
   it('generates the expected html when passed a Paragraph', () => {
     const result = contentToJsx({
       type: 'Paragraph',
