@@ -34,7 +34,7 @@ type PageProps = {
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
-  metrics?: Metrics,
+  metrics: Metrics | null,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -171,8 +171,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  console.log('###### wtfbnmsbdbdsacbdsamnbcdsabcndsabcndsacn dsan vcfnas v fsavnda snc dams cndsa c');
-
   return {
     props: {
       metaData: {
@@ -193,7 +191,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       },
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-      metrics: articleWithVersions.metrics,
+      metrics: articleWithVersions.metrics ?? null,
     },
   };
 };

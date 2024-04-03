@@ -29,7 +29,7 @@ export type ArticlePageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   relatedContent: RelatedContentData[],
-  metrics?: Metrics,
+  metrics?: Metrics | null,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
