@@ -6,3 +6,4 @@ export { references } from './references';
 export { status } from './status';
 export { citation } from './citation';
 export { relatedContent } from './related-content';
+export { metrics } from './metrics';
