@@ -24,6 +24,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
+import { Metrics } from '../../types/enhanced-article';
 
 type PageProps = {
   metaData: MetaData,
@@ -33,6 +34,7 @@ type PageProps = {
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
+  metrics?: Metrics,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -126,7 +128,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_language" content="en"/>
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
-      <ArticlePage relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+      <ArticlePage metrics={props.metrics} relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
         { tabContent }
       </ArticlePage>
     </>
@@ -169,6 +171,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  console.log('###### wtfbnmsbdbdsacbdsamnbcdsabcndsabcndsacn dsan vcfnas v fsavnda snc dams cndsa c');
+
   return {
     props: {
       metaData: {
@@ -189,6 +193,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       },
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+      metrics: articleWithVersions.metrics,
     },
   };
 };
