@@ -311,5 +311,10 @@
             "volume": "11",
             "pdfUrl": "https://www.preprintprovider.org/content/preprint1.pdf"
         }
+    },
+    "metrics": {
+        "views": 3,
+        "downloads": 2,
+        "citations": 1
     }
 }
