@@ -3,7 +3,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import { ContextualData } from './contextual-data';
 
 export default {
-  title: 'Molecules/ContextualData',
+  title: 'Atoms/ContextualData',
   component: ContextualData,
 } as Meta<typeof ContextualData>;
 
