@@ -25,6 +25,7 @@
     "src/",
     "pages/",
     "browser-tests",
+    "test-utils/**/*.json",
     "next-env.d.ts"
   ],
   "exclude": [
