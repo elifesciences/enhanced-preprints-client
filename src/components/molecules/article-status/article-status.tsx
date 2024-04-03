@@ -7,6 +7,7 @@ import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
+import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
 
 type ArticleStatusProps = {
   articleType?: string,
@@ -16,6 +17,7 @@ type ArticleStatusProps = {
   pdfUrl?: string,
   citation: CitationData,
   msid: string,
+  metrics?: ContextualDataProps,
 };
 
 const defaultArticleType = 'reviewed_preprint';
@@ -29,7 +31,7 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid,
+  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid, metrics,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
@@ -75,5 +77,6 @@ export const ArticleStatus = ({
         </li>
       </ol>
     </Modal>
+    {metrics && <ContextualData {...metrics} />}
   </div>;
 };

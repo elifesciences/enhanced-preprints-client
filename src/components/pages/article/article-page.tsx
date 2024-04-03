@@ -10,7 +10,7 @@ import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
-import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
+import { Metrics } from '../../../types/enhanced-article';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -29,7 +29,7 @@ export type ArticlePageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   relatedContent: RelatedContentData[],
-  metrics?: ContextualDataProps,
+  metrics?: Metrics,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
@@ -61,10 +61,18 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
+        <ArticleStatus
+          articleStatus={props.status.status}
+          doi={doi}
+          articleType={props.status.articleType}
+          pdfUrl={props.metaData.pdfUrl}
+          title={contentToText(props.metaData.title)}
+          citation={citation}
+          msid={props.metaData.msid}
+          metrics={props.metrics}
+        />
         <Timeline events={props.status.timeline}/>
         {props.relatedContent.length > 0 && <RelatedContent articles={props.relatedContent} />}
-        {props.metrics && <ContextualData {...props.metrics} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
