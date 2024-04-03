@@ -27,7 +27,7 @@
     "lint-sass:fix": "stylelint --fix **/*.scss",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "start:test-env": "docker compose -f docker-compose.browsertest.yaml up --build --wait",
+    "start:test-env": "docker compose -f docker-compose.browsertest.yaml up --wait",
     "visual-regression:test": "docker compose -f docker-compose.visualregression.yaml run visualregression test",
     "visual-regression:approve": "docker compose -f docker-compose.visualregression.yaml run visualregression approve",
     "visual-regression:report": "yarn backstop openReport",
