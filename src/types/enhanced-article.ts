@@ -116,7 +116,14 @@ export type EnhancedArticle = {
   relatedContent?: RelatedContent[],
 };
 
+export type Metrics = {
+  views: number,
+  downloads: number,
+  citations: number,
+};
+
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
+  metrics?: Metrics,
 };
