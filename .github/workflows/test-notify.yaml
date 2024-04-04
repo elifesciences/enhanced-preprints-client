@@ -23,7 +23,7 @@ jobs:
     name: Integration tests
     runs-on: ubuntu-latest
     steps:
-    - run: slower tests
+    - run: echo slower tests
     - run: sleep 10
   build-and-push:
     name: Docker image build
