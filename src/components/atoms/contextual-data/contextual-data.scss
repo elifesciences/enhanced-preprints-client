@@ -7,8 +7,8 @@
   @include mixins.margin(0, "top");
   @include mixins.padding(0, "left");
 
-  list-style: none;
   line-break: anywhere;
+  list-style: none;
 }
 
 .contextual-data__item {
@@ -16,6 +16,7 @@
 
   color: var(--color-text-secondary);
   display: inline;
+  white-space: nowrap;
 
   &::after {
     content: " • ";
@@ -24,11 +25,9 @@
   &:last-child::after {
     content: "";
   }
-
-  white-space: nowrap;
 }
 
 .contextual-data__item--highlight {
-  font-weight: bold;
   color: var(--color-text);
+  font-weight: bold;
 }
