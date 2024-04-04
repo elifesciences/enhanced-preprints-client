@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Test notification on sub workflow
 
 on:
   pull_request:
