@@ -6,9 +6,7 @@ on:
       run_id:
         required: true
         type: string
-    secrets:
-      SLACK_EPP_GITHUB_BOT_TOKEN:
-        required: true
+
 jobs:
   notify-build-result:
     runs-on: ubuntu-latest
