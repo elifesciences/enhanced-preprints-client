@@ -38,15 +38,35 @@ jobs:
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
+      commit_message: ${{ github.event.commits[0].message }}
+      commit_id: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}
+      commit_url: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+      commit_author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}
+      diff_url: ${{ github.event.pull_request.diff_url || github.event.compare }}
+      build_url: https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}
 
   test-integration-notify:
     needs: [test-integration]
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
+      commit_message: ${{ github.event.commits[0].message }}
+      commit_id: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}
+      commit_url: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+      commit_author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}
+      diff_url: ${{ github.event.pull_request.diff_url || github.event.compare }}
+      build_url: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
   build-and-push-notify:
     needs: [build-and-push]
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
+      commit_message: ${{ github.event.commits[0].message }}
+      commit_id: ${{ github.event.pull_request.head.sha || github.event.head_commit.id }}
+      commit_url: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}
+      commit_author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}
+      diff_url: ${{ github.event.pull_request.diff_url || github.event.compare }}
+      build_url: https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}
+      client_image_tag: master-something-today
+      storybook_image_tag: master-something-today

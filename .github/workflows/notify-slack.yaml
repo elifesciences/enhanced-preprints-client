@@ -6,6 +6,29 @@ on:
       run_id:
         required: true
         type: string
+      commit_message:
+        required: true
+        type: string
+      commit_id:
+        required: true
+        type: string
+      commit_url:
+        required: true
+        type: string
+      commit_author:
+        required: true
+        type: string
+      diff_url:
+        required: true
+        type: string
+      build_url:
+        required: true
+        type: string
+      client_image_tag:
+        type: string
+      storybook_image_tag:
+        type: string
+
 
 jobs:
   notify-build-result:
@@ -14,7 +37,11 @@ jobs:
       - name: debug inputs
         run: echo ${{inputs.run_id}}
       - name: debug workflow data inputs
-        run: gh run view -R ${{ github.repository }} ${{inputs.run_id}} --json jobs | jq '.jobs[]|(.name,.status)'
+        run: gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Gather JSON data
+        run: echo JOB_JSON=$(gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]' ) >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -26,95 +53,86 @@ jobs:
     #     channel-id: C06FPSVJPUH
     #     update-ts: ${{ needs['notify-start'].outputs.ts }}
     #     payload: |
-    #       {
-    #         "text": "EPP Client CI: ${{
-    #           (!needs.test.result || !needs.test-integration.result) &&
-    #             'testing... :sonic:'
-    #           || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
-    #             'tests failed'
-    #           || (!needs.build-and-push.result &&
-    #             'building... :sonic:'
-    #           || (needs.build-and-push.result != 'success' &&
-    #             'building failed'
-    #           || 'success'
-    #           )))
-    #         }}",
-    #         "blocks": [
-    #           {
-    #             "type": "header",
-    #             "text": {
-    #               "type": "plain_text",
-    #               "text": "EPP Client CI: ${{
-    #                 (!needs.test.result || !needs.test-integration.result) &&
-    #                   'testing... :sonic:'
-    #                 || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
-    #                   'tests failed'
-    #                 || (!needs.build-and-push.result &&
-    #                   'building... :sonic:'
-    #                 || (needs.build-and-push.result != 'success' &&
-    #                   'building failed'
-    #                 || 'success'
-    #                 )))
-    #               }}",
-    #               "emoji": true
-    #             }
-    #           },
-    #           {
-    #             "type": "section",
-    #             "text": {
-    #               "type": "mrkdwn",
-    #               "text": ${{ toJSON(github.event.commits[0].message) }}
-    #             },
-    #             "fields": [
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
-    #               },
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
-    #               }
-    #             ]
-    #           },
-    #           {
-    #             "type": "divider"
-    #           },
-    #           {
-    #             "type": "section",
-    #             "text": {
-    #               "type": "mrkdwn",
-    #               "text": "*Stages:*"
-    #             },
-    #             "fields": [
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
-    #               },
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
-    #               },
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
-    #               }
-    #             ]
-    #           },
-    #           {
-    #             "type": "divider"
-    #           },
-    #           {
-    #             "type": "section",
-    #             "fields": [
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
-    #               },
-    #               {
-    #                 "type": "mrkdwn",
-    #                 "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
-    #               }
-    #             ]
-    #           }
-    #         ]
-    #       }
+      - name: Debug Slack payload
+        run:  echo $payload
+        env:
+          payload: |
+            {
+              "text": "EPP Client CI: ${{
+                (!needs.test.result || !needs.test-integration.result) &&
+                  'testing... :sonic:'
+                || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+                  'tests failed'
+                || (!needs.build-and-push.result &&
+                  'building... :sonic:'
+                || (needs.build-and-push.result != 'success' &&
+                  'building failed'
+                || 'success'
+                )))
+              }}",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "EPP Client CI: ${{
+                      (!needs.test.result || !needs.test-integration.result) &&
+                        'testing... :sonic:'
+                      || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+                        'tests failed'
+                      || (!needs.build-and-push.result &&
+                        'building... :sonic:'
+                      || (needs.build-and-push.result != 'success' &&
+                        'building failed'
+                      || 'success'
+                      )))
+                    }}",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ${{ toJSON(inputs.commit_message) }}
+                  },
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "commit: <${{ inputs.commit_url }}|${{ inputs.commit_id }}>"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "author: ${{ inputs.commit_author }}"
+                    }
+                  ]
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Stages:*"
+                  },
+                  "fields": ${{ env.JOB_JSON }}
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "<${{ inputs.build_url }}|View build>"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "<${{ inputs.diff_url }}|View diff>"
+                    }
+                  ]
+                }
+              ]
+            }
