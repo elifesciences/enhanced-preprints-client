@@ -23,6 +23,7 @@ jobs:
     steps:
     - run: sleep 30
   build-and-push:
+    needs: [test, test-integration]
     runs-on: ubuntu-latest
     steps:
     - run: sleep 60
