@@ -8,6 +8,7 @@
   @include mixins.padding(0, "left");
 
   list-style: none;
+  line-break: anywhere;
 }
 
 .contextual-data__item {
@@ -23,6 +24,8 @@
   &:last-child::after {
     content: "";
   }
+
+  white-space: nowrap;
 }
 
 .contextual-data__item--highlight {
