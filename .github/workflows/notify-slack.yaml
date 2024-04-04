@@ -14,7 +14,7 @@ jobs:
       - name: debug inputs
         run: echo ${{inputs.run_id}}
       - name: debug workflow data inputs
-        run: gh run view ${{inputs.run_id}} --json jobs | jq '.jobs[]|(.name,.status)'
+        run: gh run view -R ${{ github.repository }} ${{inputs.run_id}} --json jobs | jq '.jobs[]|(.name,.status)'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
