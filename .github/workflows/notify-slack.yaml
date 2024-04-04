@@ -37,11 +37,13 @@ jobs:
       - name: debug inputs
         run: echo ${{inputs.run_id}}
       - name: debug workflow data inputs
-        run: gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]'
+        run: |
+          gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Gather JSON data
-        run: echo JOB_JSON=$(gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]' ) >> $GITHUB_ENV
+        run: |
+          echo JOB_JSON=$(gh run view -R elifesciences/enhanced-preprints-client 8556339843 --json jobs | jq '[.jobs[]|select(.name|contains("notify-build-result")|not)]|[.[]|{type: "mrkdwn", text: ((if .conclusion then (if .conclusion == "success" then ":white_check_mark:" else ":x:" end) else ":white_circle:" end)+" "+.name)}]' ) >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
