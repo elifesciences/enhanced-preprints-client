@@ -21,7 +21,7 @@ jobs:
     - uses: ./.github/workflows/notify-slack.yml
       secrets: inherit
       with:
-        run_id: ${{ GITHUB_RUN_ID }}
+        run_id: ${{ env.GITHUB_RUN_ID }}
 
   test-integration:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
     - uses: ./.github/workflows/notify-slack.yml
       secrets: inherit
       with:
-        run_id: ${{ GITHUB_RUN_ID
+        run_id: ${{ env.GITHUB_RUN_ID }}
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -39,4 +39,4 @@ jobs:
     - uses: ./.github/workflows/notify-slack.yml
       secrets: inherit
       with:
-        run_id: ${{ GITHUB_RUN_ID
+        run_id: ${{ env.GITHUB_RUN_ID }}
