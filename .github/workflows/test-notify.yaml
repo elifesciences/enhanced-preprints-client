@@ -1,0 +1,42 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: sleep 10
+    - uses: ./.github/workflows/notify-slack.yml
+      secrets: inherit
+      with:
+        run_id: ${{ GITHUB_RUN_ID }}
+
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+    - run: sleep 30
+    - uses: ./.github/workflows/notify-slack.yml
+      secrets: inherit
+      with:
+        run_id: ${{ GITHUB_RUN_ID
+
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - run: sleep 60
+    - uses: ./.github/workflows/notify-slack.yml
+      secrets: inherit
+      with:
+        run_id: ${{ GITHUB_RUN_ID

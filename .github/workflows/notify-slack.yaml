@@ -1,0 +1,123 @@
+name: Send Slack build notification
+
+on:
+  workflow_call:
+    inputs:
+      run_id:
+        required: true
+        type: string
+    secrets:
+      SLACK_EPP_GITHUB_BOT_TOKEN:
+        required: true
+jobs:
+  notify-build-result:
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/master'
+    steps:
+      - name: debug inputs
+        run: echo ${{inputs.run_id}}
+      - name: debug workflow data inputs
+        run: gh run view ${{inputs.run_id}} --json jobs | jq '.jobs[]|(.name,.status)'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Notify Slack build final message
+    #   uses: slackapi/slack-github-action@v1.25.0
+    #   env:
+    #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
+    #   with:
+    #     channel-id: C06FPSVJPUH
+    #     update-ts: ${{ needs['notify-start'].outputs.ts }}
+    #     payload: |
+    #       {
+    #         "text": "EPP Client CI: ${{
+    #           (!needs.test.result || !needs.test-integration.result) &&
+    #             'testing... :sonic:'
+    #           || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+    #             'tests failed'
+    #           || (!needs.build-and-push.result &&
+    #             'building... :sonic:'
+    #           || (needs.build-and-push.result != 'success' &&
+    #             'building failed'
+    #           || 'success'
+    #           )))
+    #         }}",
+    #         "blocks": [
+    #           {
+    #             "type": "header",
+    #             "text": {
+    #               "type": "plain_text",
+    #               "text": "EPP Client CI: ${{
+    #                 (!needs.test.result || !needs.test-integration.result) &&
+    #                   'testing... :sonic:'
+    #                 || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+    #                   'tests failed'
+    #                 || (!needs.build-and-push.result &&
+    #                   'building... :sonic:'
+    #                 || (needs.build-and-push.result != 'success' &&
+    #                   'building failed'
+    #                 || 'success'
+    #                 )))
+    #               }}",
+    #               "emoji": true
+    #             }
+    #           },
+    #           {
+    #             "type": "section",
+    #             "text": {
+    #               "type": "mrkdwn",
+    #               "text": ${{ toJSON(github.event.commits[0].message) }}
+    #             },
+    #             "fields": [
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "commit: <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|${{ github.event.pull_request.head.sha || github.event.head_commit.id }}>"
+    #               },
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "author: ${{ github.event.pull_request.head.user.login || github.event.commits[0].author.name }}"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             "type": "divider"
+    #           },
+    #           {
+    #             "type": "section",
+    #             "text": {
+    #               "type": "mrkdwn",
+    #               "text": "*Stages:*"
+    #             },
+    #             "fields": [
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
+    #               },
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
+    #               },
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+    #               }
+    #             ]
+    #           },
+    #           {
+    #             "type": "divider"
+    #           },
+    #           {
+    #             "type": "section",
+    #             "fields": [
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "<https://github.com/${{github.repository}}/actions/runs/${{ github.run_id }}|View build>"
+    #               },
+    #               {
+    #                 "type": "mrkdwn",
+    #                 "text": "<${{ github.event.pull_request.diff_url || github.event.compare }}|View diff>"
+    #               }
+    #             ]
+    #           }
+    #         ]
+    #       }
