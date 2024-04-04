@@ -19,27 +19,24 @@ jobs:
     steps:
     - run: sleep 10
     - uses: ./.github/workflows/notify-slack.yml
-      secrets:
-        SLACK_EPP_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
         run_id: ${{ env.GITHUB_RUN_ID }}
+      secrets: inherit
 
   test-integration:
     runs-on: ubuntu-latest
     steps:
     - run: sleep 30
     - uses: ./.github/workflows/notify-slack.yml
-      secrets:
-        SLACK_EPP_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
         run_id: ${{ env.GITHUB_RUN_ID }}
+      secrets: inherit
 
   build-and-push:
     runs-on: ubuntu-latest
     steps:
     - run: sleep 60
     - uses: ./.github/workflows/notify-slack.yml
-      secrets:
-        SLACK_EPP_GITHUB_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
         run_id: ${{ env.GITHUB_RUN_ID }}
+      secrets: inherit
