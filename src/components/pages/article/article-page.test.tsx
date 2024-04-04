@@ -99,4 +99,24 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Insight Title')).toBeInTheDocument();
     expect(screen.getByText('Insight article about this article')).toBeInTheDocument();
   });
+
+  it('renders metrics if present', () => {
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    </ArticlePage>);
+
+    expect(screen.queryByText('views')).not.toBeInTheDocument();
+    expect(screen.queryByText('downloads')).not.toBeInTheDocument();
+    expect(screen.queryByText('citations')).not.toBeInTheDocument();
+
+    // cleanup and rerender with metrics
+    cleanup();
+    render(<ArticlePage metrics={{ views: 2, downloads: 3, citations: 5 }} relatedContent={[]} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="figures" tabs={[]}>
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    </ArticlePage>);
+
+    expect(screen.getByText('views', { exact: false }).textContent).toStrictEqual('2 views');
+    expect(screen.getByText('downloads', { exact: false }).textContent).toStrictEqual('3 downloads');
+    expect(screen.getByText('citations', { exact: false }).textContent).toStrictEqual('5 citations');
+  });
 });
