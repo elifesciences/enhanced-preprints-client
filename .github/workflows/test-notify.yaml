@@ -21,12 +21,12 @@ jobs:
   test-integration:
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 30
+    - run: sleep 15
   build-and-push:
     needs: [test, test-integration]
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 60
+    - run: sleep 20
 
   test-notify:
     needs: [test]
