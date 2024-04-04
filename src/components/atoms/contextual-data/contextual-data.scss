@@ -17,7 +17,7 @@
   display: inline;
 
   &::after {
-    content: ", ";
+    content: " • ";
   }
 
   &:last-child::after {
@@ -27,4 +27,5 @@
 
 .contextual-data__item--highlight {
   font-weight: bold;
+  color: var(--color-text);
 }
