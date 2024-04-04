@@ -17,16 +17,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 10
+    - run: echo fast tests
   test-integration:
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 15
+    - run: slower tests
+    - run: sleep 10
   build-and-push:
     needs: [test, test-integration]
     runs-on: ubuntu-latest
     steps:
-    - run: sleep 20
+    - run: echo build image
+    - run: sleep 15
 
   test-notify:
     needs: [test]
