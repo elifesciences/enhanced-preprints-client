@@ -33,18 +33,15 @@ jobs:
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
-    secrets: inherit
 
   test-integration-notify:
     needs: [test-integration]
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
-    secrets: inherit
 
   build-and-push-notify:
     needs: [build-and-push]
     uses: ./.github/workflows/notify-slack.yaml
     with:
       run_id: ${{ github.run_id }}
-    secrets: inherit
