@@ -17,11 +17,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ${{ vars.GITHUB_RUN_ID }}
-    - run: echo ${{ env.GITHUB_RUN_ID }}
-    - run: echo ${{ toJSON(env) }}
-    - run: echo $GITHUB_RUN_ID
-    - run: echo ${{ github.run_id }}
     - run: sleep 10
   test-integration:
     runs-on: ubuntu-latest
@@ -37,19 +32,19 @@ jobs:
     needs: [test]
     uses: ./.github/workflows/notify-slack.yaml
     with:
-      run_id: ${{ vars.GITHUB_RUN_ID }}
+      run_id: ${{ github.run_id }}
     secrets: inherit
 
   test-integration-notify:
     needs: [test-integration]
     uses: ./.github/workflows/notify-slack.yaml
     with:
-      run_id: ${{ vars.GITHUB_RUN_ID }}
+      run_id: ${{ github.run_id }}
     secrets: inherit
 
   build-and-push-notify:
     needs: [build-and-push]
     uses: ./.github/workflows/notify-slack.yaml
     with:
-      run_id: ${{ vars.GITHUB_RUN_ID }}
+      run_id: ${{ github.run_id }}
     secrets: inherit
