@@ -17,7 +17,7 @@ type ArticleStatusProps = {
   pdfUrl?: string,
   citation: CitationData,
   msid: string,
-  metrics?: ContextualDataProps,
+  metrics?: ContextualDataProps | null,
 };
 
 const defaultArticleType = 'reviewed_preprint';
