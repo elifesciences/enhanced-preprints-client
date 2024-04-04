@@ -20,6 +20,7 @@ jobs:
     - run: echo ${{ vars.GITHUB_RUN_ID }}
     - run: echo ${{ env.GITHUB_RUN_ID }}
     - run: echo ${{ toJSON(env) }}
+    - run: echo $GITHUB_RUN_ID
     - run: sleep 10
   test-integration:
     runs-on: ubuntu-latest
