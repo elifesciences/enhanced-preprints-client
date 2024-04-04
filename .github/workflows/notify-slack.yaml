@@ -10,7 +10,6 @@ on:
 jobs:
   notify-build-result:
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
     steps:
       - name: debug inputs
         run: echo ${{inputs.run_id}}
