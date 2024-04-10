@@ -25,7 +25,7 @@
     "src/",
     "pages/",
     "browser-tests",
-    "test-utils/**/*.json",
+    "wiremock/**/*.json",
     "next-env.d.ts"
   ],
   "exclude": [
