@@ -33,7 +33,11 @@ const tabs = [
 const jsxContent = contentToJsx(content);
 const headings = contentToHeadings(content);
 
-const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFullTextTab headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} /></ArticlePage></DefaultLayout>;
+const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout>
+  <ArticlePage {...args}>
+    <ArticleFullTextTab metrics={null} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+  </ArticlePage>
+</DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
 ArticlePageFullTextTab.args = {
   metaData,
