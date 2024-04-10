@@ -1,0 +1,12 @@
+{
+    "scenarioName": "index",
+    "requiredScenarioState": "Started",
+    "request": {
+        "method": "GET",
+        "url": "/api/preprints-no-content"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "preprints-no-content/preprints-no-content.json"
+    }
+}
