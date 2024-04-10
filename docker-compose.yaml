@@ -1,21 +1,6 @@
 version: '3.4'
 services:
   # Dependant services
-  ## Load automated data
-  load-automated-data:
-    image: curlimages/curl
-    depends_on:
-      api:
-        condition: service_healthy
-    entrypoint: sh
-    command:
-      - -c
-      - |
-        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v1/payload.json'
-        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/85111/v2/payload.json'
-        curl -X POST -H 'content-type: application/json' http://api:3000/preprints -d'@/data/automation/biophysics-colab-111111/v1/payload.json'
-    volumes:
-      - ./data:/data
 
   ## Image Server
   image-server:
@@ -40,36 +25,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 2s
-
-  ## Database (MongoDB) server
-  mongodb:
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: testtest
-    volumes:
-      - data:/data/db
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh mongodb:27017/test -u admin -p testtest --authenticationDatabase admin --quiet
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 2s
-
-  ## Database (MongoDB) GUI
-  mongo-express:
-    image: mongo-express
-    environment:
-      - ME_CONFIG_OPTIONS_EDITORTHEME=dracula
-      - ME_CONFIG_MONGODB_SERVER=mongodb
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-      - ME_CONFIG_MONGODB_AUTH_USERNAME=admin
-      - ME_CONFIG_MONGODB_AUTH_PASSWORD=testtest
-    depends_on:
-      mongodb:
-        condition: service_healthy
-    ports:
-      - "8081:8081"
 
   ## Minio
   minio:
@@ -106,32 +61,25 @@ services:
     volumes:
       - ./data/automation:/automation-data
 
-  ## EPP API
-  api:
-    image: ghcr.io/elifesciences/enhanced-preprints-server:master-23011c4d-20240410.1053
+  ## EPP server mock
+  wiremock:
+    image: wiremock/wiremock:3.5.2-1
+    ports:
+      - 3000:3000
     healthcheck:
-      test: ["CMD-SHELL", "sh -c 'apk add curl; curl http://api:3000/'"]
+      test: curl http://wiremock:3000/__admin/health
       interval: 5s
       timeout: 5s
       retries: 10
-      start_period: 2s
-    depends_on:
-      mongodb:
-        condition: service_healthy
-      image-server:
-        condition: service_healthy
-    environment:
-      REPO_TYPE: MongoDB
-      REPO_CONNECTION: mongodb:27017
-      REPO_USERNAME: admin
-      REPO_PASSWORD: testtest
-      S3_ENDPOINT: 'http://minio:9000'
-      S3_ACCESS_KEY: minio
-      S3_SECRET_KEY: miniotest
-      S3_BUCKET: eppdata
-      ELIFE_METRICS_URL: https://prod--gateway.elifesciences.org
-    ports:
-      - 3000:3000
+      start_period: 30s
+    command:
+      - --local-response-templating
+      - --port
+      - "3000"
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/files:/home/wiremock/__files
+
 
   ## Main app server
   yarn:
@@ -154,13 +102,11 @@ services:
       start_period: 2s
     environment:
       NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-elife}
-      API_SERVER: ${API_SERVER:-http://api:3000}
+      API_SERVER: ${API_SERVER:-http://wiremock:3000}
       IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
     depends_on:
       yarn:
-        condition: service_completed_successfully
-      load-automated-data:
         condition: service_completed_successfully
 
     ports:
@@ -190,7 +136,7 @@ services:
   nginx:
     image: nginx:latest
     depends_on:
-      api:
+      wiremock:
         condition: service_healthy
       app:
         condition: service_healthy
