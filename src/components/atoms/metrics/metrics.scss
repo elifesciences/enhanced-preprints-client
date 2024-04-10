@@ -1,0 +1,5 @@
+@use "../../../sass/typography";
+
+.metrics__title {
+  @include typography.heading-2();
+}
