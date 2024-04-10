@@ -10,15 +10,15 @@
   "scenarios": [
     {
       "label": "Article Tab",
-      "url": "http://app:3000/reviewed-preprints/123"
+      "url": "http://app:3000/reviewed-preprints/85111"
     },
     {
       "label": "Figures Tab",
-      "url": "http://app:3000/reviewed-preprints/123/figures"
+      "url": "http://app:3000/reviewed-preprints/85111/figures"
     },
     {
       "label": "Reviews Tab",
-      "url": "http://app:3000/reviewed-preprints/123/reviews"
+      "url": "http://app:3000/reviewed-preprints/85111/reviews"
     }
   ],
   "paths": {
@@ -29,10 +29,11 @@
     "ci_report": "backstop_data/ci_report"
   },
   "report": ["CI"],
-  "engine": "playwright",
+  "engine": "puppeteer",
   "engineOptions": {
     "browser": "firefox",
-    "gotoParameters": { "waitUntil": "networkidle0" }
+    "gotoParameters": { "waitUntil": "networkidle0" },
+    "args": ["--no-sandbox"]
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,
