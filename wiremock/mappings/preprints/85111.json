@@ -1,12 +1,12 @@
 {
-    "scenarioName": "index",
+    "scenarioName": "85111",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints"
+        "url": "/api/preprints/85111"
     },
     "response": {
         "status": 200,
-        "bodyFileName": "preprints/index.json"
+        "bodyFileName": "preprints/85111v2.json"
     }
 }
