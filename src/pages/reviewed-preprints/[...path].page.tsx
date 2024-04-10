@@ -71,7 +71,7 @@ export const Page = (props: PageProps) => {
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={props.metrics} headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -85,6 +85,7 @@ export const Page = (props: PageProps) => {
       tabLinks: [],
       content: () => <>
         <ArticleFullTextTab
+          metrics={null}
           headings={headings}
           content={contentToJsx(props.content, { imgInfo: props.imgInfo ?? undefined, removePictureTag: true })}
           metaData={props.metaData}

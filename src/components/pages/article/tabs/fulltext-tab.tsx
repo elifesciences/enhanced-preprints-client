@@ -9,13 +9,15 @@ import { AuthorInformationList } from '../../../molecules/author-information-lis
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
 import '../../../../i18n';
+import { Metrics } from '../../../../types/enhanced-article';
 
 type Props = {
   headings: Heading[],
   metaData: MetaData,
   content: JSXContent,
   peerReview?: PeerReview,
-  peerReviewUrl?: string
+  peerReviewUrl?: string,
+  metrics: Metrics | null,
 };
 
 export const ArticleFullTextTab = (props: Props) => {
@@ -29,6 +31,9 @@ export const ArticleFullTextTab = (props: Props) => {
 
   if (props.peerReview !== undefined) {
     headings.splice(1, 0, { id: 'assessment', text: t('heading_assessment') });
+  }
+  if (props.metrics) {
+    headings.push({ id: 'metrics', text: 'Metrics' });
   }
 
   return (

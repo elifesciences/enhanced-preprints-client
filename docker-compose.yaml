@@ -129,6 +129,7 @@ services:
       S3_ACCESS_KEY: minio
       S3_SECRET_KEY: miniotest
       S3_BUCKET: eppdata
+      ELIFE_METRICS_URL: https://prod--gateway.elifesciences.org
     ports:
       - 3000:3000
 
