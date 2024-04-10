@@ -9,7 +9,8 @@ import { AuthorInformationList } from '../../../molecules/author-information-lis
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
 import '../../../../i18n';
-import { Metrics } from '../../../../types/enhanced-article';
+import { Metrics as MetricsType } from '../../../../types/enhanced-article';
+import { Metrics } from '../../../atoms/metrics/metrics';
 
 type Props = {
   headings: Heading[],
@@ -17,7 +18,7 @@ type Props = {
   content: JSXContent,
   peerReview?: PeerReview,
   peerReviewUrl?: string,
-  metrics: Metrics | null,
+  metrics: MetricsType | null,
 };
 
 export const ArticleFullTextTab = (props: Props) => {
@@ -45,6 +46,7 @@ export const ArticleFullTextTab = (props: Props) => {
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
         <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
+        { props.metrics && <Metrics metrics={props.metrics} /> }
       </div>
     </div>
   );
