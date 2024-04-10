@@ -1,0 +1,15 @@
+{
+  "scenarioName": "123",
+  "requiredScenarioState": "Started",
+  "request": {
+      "method": "GET",
+      "url": "/api/citations/10.1101/123456/ris"
+  },
+  "response": {
+      "status": 200,
+      "headers": {
+        "Content-Type": "application/x-research-info-systems"
+      },
+      "bodyFileName": "citations/10.1101/123456/123.ris"
+  }
+}
