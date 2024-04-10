@@ -28,11 +28,6 @@ services:
     image: wiremock/wiremock:3.5.2-1
     ports:
       - 3000:3000
-    depends_on:
-      mongodb:
-        condition: service_healthy
-      image-server:
-        condition: service_healthy
     healthcheck:
       test: curl http://wiremock:3000/__admin/health
       interval: 5s
@@ -45,3 +40,4 @@ services:
       - "3000"
     volumes:
       - ./wiremock/mappings:/home/wiremock/mappings
+      - ./wiremock/files:/home/wiremock/__files
