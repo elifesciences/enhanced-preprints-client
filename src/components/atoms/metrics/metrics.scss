@@ -1,8 +1,6 @@
 @use "../../../sass/typography";
 @use "../../../sass/mixins";
 
-
-
 .metrics__title {
   @include typography.heading-2();
 }
