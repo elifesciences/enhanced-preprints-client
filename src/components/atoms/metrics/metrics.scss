@@ -11,14 +11,15 @@
 }
 
 .metricsTable__group {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
 .metricsTable__label {
   @include typography.heading-4();
+
   order: 2;
   text-transform: uppercase;
 }
