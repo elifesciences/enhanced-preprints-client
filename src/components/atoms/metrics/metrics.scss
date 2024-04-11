@@ -18,15 +18,15 @@
 }
 
 .metricsTable__label {
-  @include typography.heading-4();
+  @include typography.body();
 
   order: 2;
-  text-transform: uppercase;
 }
 
 .metricsTable__value {
-  @include typography.heading-1();
+  @include typography.body();
   @include mixins.margin(0);
 
+  font-weight: bold;
   order: 1;
 }
