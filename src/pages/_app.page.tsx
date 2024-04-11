@@ -26,7 +26,7 @@ const notoSerif = Noto_Serif({
   subsets: ['latin'],
   style: ['normal', 'italic'],
   weight: [
-    '400', '700',
+    '400', '600', '700',
   ],
   display: 'swap',
   fallback: ['serif'],

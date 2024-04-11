@@ -22,7 +22,7 @@
   @include typography.body();
   @include mixins.margin(0);
 
-  font-weight: bold;
+  font-weight: 600;
   display: inline;
 
   &::before {
