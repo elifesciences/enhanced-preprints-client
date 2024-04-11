@@ -51,9 +51,9 @@ export class ContentHeader {
     await expect(this.title).toContainText(title);
   }
 
-  async assertAuthorsExists(author: string): Promise<void> {
-    const authors = await this.authors.locator('li').allInnerTexts();
-    expect(authors.map((item) => item.trim())).toContain(author);
+  async assertAuthorsExists(...author: string[]): Promise<void> {
+    const authors = this.authors.locator('li a');
+    await expect(authors).toHaveText(author);
   }
 
   async assertVisibleAuthorsCount(count: number): Promise<void> {
@@ -72,9 +72,9 @@ export class ContentHeader {
     await expect(this.authorsExpansion).toHaveText('show less');
   }
 
-  async assertInstitutionExists(institution: string): Promise<void> {
-    const institutions = await this.institutions.locator('li').allInnerTexts();
-    expect(institutions.map((item) => item.trim())).toContain(institution);
+  async assertInstitutionExists(...institution: string[]): Promise<void> {
+    const institutions = this.institutions.locator('li');
+    await expect(institutions).toHaveText(institution);
   }
 
   async assertVisibleInstitutionsCount(count: number): Promise<void> {

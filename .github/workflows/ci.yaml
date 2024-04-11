@@ -55,7 +55,7 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
       - name: Bring up browser test stack
-        run: yarn start:test-env
+        run: docker compose up --wait
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
@@ -65,7 +65,7 @@ jobs:
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml down
+        run: docker compose down
       - name: Visual regression report upload
         uses: actions/upload-artifact@v4
         if: always() && steps.visualregression.outcome != 'skipped'

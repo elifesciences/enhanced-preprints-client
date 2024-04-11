@@ -7,6 +7,6 @@
     },
     "response": {
         "status": 200,
-        "bodyFileName": "preprints-no-content/preprints-no-content.json"
+        "bodyFileName": "preprints-no-content/index.json"
     }
 }
