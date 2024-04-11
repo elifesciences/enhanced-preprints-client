@@ -45,8 +45,6 @@ The EPP API server can be viewed at [`localhost:3001`](http://localhost:3001)
 
 You can also view a rudimentary mongodb GUI client at [`localhost:8081`](http://localhost:8081)
 
-You can work with and view the component library via storybook at [`localhost:6006`](http://localhost:6006).
-
 ### Set the SITE_NAME to allow for site specific overrides
 
 ```bash
@@ -62,7 +60,9 @@ To start the application with a local version of the [`EPP API server`](https://
 To be able to see exactly what a production build will look and behave like, but using local services, we have provided an override command. You can use the command above to start the dev environment, but with the app server behaving like production would, for example without javascript and without incremental builds. This is not recommended for development, only for spot checking for differences between a prod build and dev build.
 The app is still available at [`localhost:8080`](http://localhost:8080).
 
-NOTE: this does not affect storybook, which runs the same in either prod or dev
+## Storybook
+
+You can run storybook locally using `yarn storybook`. It should auto-reload as you develop stories or components
 
 ## Recreating an issue experienced on production
 

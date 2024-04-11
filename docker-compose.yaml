@@ -116,22 +116,6 @@ services:
       - ./:/opt/epp-client/
       - node_modules:/opt/epp-client/node_modules
 
-  # Storybook server
-  storybook:
-    build:
-      context: .
-      target: storybook
-    environment:
-      NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-elife}
-    depends_on:
-      yarn:
-        condition: service_completed_successfully
-    ports:
-      - "6006:6006"
-    volumes:
-      - ./:/opt/epp-client/
-      - node_modules:/opt/epp-client/node_modules
-
   # Expose API and client via proxy
   nginx:
     image: nginx:latest
