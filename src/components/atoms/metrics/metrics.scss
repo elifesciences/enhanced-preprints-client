@@ -6,21 +6,16 @@
 }
 
 .metricsTable {
-  display: flex;
-  justify-content: space-evenly;
+
 }
 
 .metricsTable__group {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .metricsTable__label {
   @include typography.body();
+  display: inline;
 
-  order: 2;
 }
 
 .metricsTable__value {
@@ -28,5 +23,9 @@
   @include mixins.margin(0);
 
   font-weight: bold;
-  order: 1;
+  display: inline;
+  
+  &::before {
+    content: " ";
+  }
 }
