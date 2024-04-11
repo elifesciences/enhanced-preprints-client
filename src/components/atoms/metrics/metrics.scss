@@ -24,8 +24,16 @@
 
   font-weight: bold;
   display: inline;
-  
+
   &::before {
     content: " ";
+  }
+
+  &::after {
+    content: " • ";
+  }
+
+  &:last-child::after {
+    content: "";
   }
 }

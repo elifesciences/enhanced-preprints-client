@@ -4,10 +4,10 @@ import './metrics.scss';
 export const Metrics = ({ metrics }: { metrics: MetricsType }) => <section>
   <h1 id="metrics" className="metrics__title">Metrics</h1>
   <dl className="metricsTable">
-      <dt className="metricsTable__label">{metrics.views === 1 ? 'View' : 'Views'}</dt>
-      <dd className="metricsTable__value">{metrics.views}</dd>
-      <dt className="metricsTable__label">{metrics.views === 1 ? 'Download' : 'Downloads'}</dt>
-      <dd className="metricsTable__value">{metrics.downloads}</dd>
+    <dt className="metricsTable__label">{metrics.views === 1 ? 'View' : 'Views'}</dt>
+    <dd className="metricsTable__value">{metrics.views}</dd>
+    <dt className="metricsTable__label">{metrics.views === 1 ? 'Download' : 'Downloads'}</dt>
+    <dd className="metricsTable__value">{metrics.downloads}</dd>
   </dl>
   <p>Views and downloads are accumulated for all versions if this paper published by eLife.</p>
   <dl>
