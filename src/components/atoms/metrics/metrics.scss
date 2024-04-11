@@ -5,25 +5,18 @@
   @include typography.heading-2();
 }
 
-.metricsTable {
-
-}
-
-.metricsTable__group {
-}
-
 .metricsTable__label {
   @include typography.body();
-  display: inline;
 
+  display: inline;
 }
 
 .metricsTable__value {
   @include typography.body();
   @include mixins.margin(0);
 
-  font-weight: 600;
   display: inline;
+  font-weight: 600;
 
   &::before {
     content: " ";
