@@ -1,5 +1,33 @@
 @use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+
 
 .metrics__title {
   @include typography.heading-2();
+}
+
+.metricsTable {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.metricsTable__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.metricsTable__label {
+  @include typography.heading-4();
+  order: 2;
+  text-transform: uppercase;
+}
+
+.metricsTable__value {
+  @include typography.heading-1();
+  @include mixins.margin(0);
+
+  order: 1;
 }
