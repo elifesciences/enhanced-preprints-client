@@ -39,3 +39,5 @@ yarn-error.log*
 
 backstop_data/*
 !backstop_data/bitmaps_reference
+
+.env
