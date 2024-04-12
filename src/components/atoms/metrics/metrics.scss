@@ -52,4 +52,12 @@
   @include typography.body-small-alternative();
 
   margin-top: 0;
+
+  a {
+    color: var(--link-decoration);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
 }

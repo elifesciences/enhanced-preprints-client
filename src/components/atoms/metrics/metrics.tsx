@@ -23,6 +23,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.citations)}</dd>
       </div>
     </dl>
-    <p className="metricsTable__description">The citation count is determined by polling the highest count from the following sources: Crossref, PubMed Central, and Scopus</p>
+    <p className="metricsTable__description">The citation count is determined by polling the highest count from the following sources: <a href="">Crossref</a>, <a href="">PubMed Central</a>, and <a href="">Scopus</a></p>
   </section>;
 };
