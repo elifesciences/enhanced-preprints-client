@@ -112,6 +112,13 @@
   font-family: var(--font-family-primary);
 }
 
+@mixin body-small-alternative() {
+  @include font-size-and-vertical-height(14, 24);
+
+  color: var(--color-text);
+  font-family: var(--font-family-secondary);
+}
+
 @mixin body-alternative() {
   @include font-size-and-vertical-height(16, 24);
 

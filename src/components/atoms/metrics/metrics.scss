@@ -12,6 +12,7 @@
 .metricsTable__group {
   align-items: center;
   display: inline-flex;
+  margin-bottom: 4px;
 
   &::after {
     /* stylelint-disable-next-line no-irregular-whitespace */
@@ -45,4 +46,10 @@
   flex: 0 0 auto;
   font-weight: 600;
   order: 0;
+}
+
+.metricsTable__description {
+  @include typography.body-small-alternative();
+
+  margin-top: 0;
 }

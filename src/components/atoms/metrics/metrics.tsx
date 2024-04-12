@@ -16,13 +16,13 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.downloads)}</dd>
       </div>
     </dl>
-    <p>Views and downloads are aggregated across all versions of this paper as published by eLife</p>
-    <dl>
+    <p className="metricsTable__description">Views and downloads are aggregated across all versions of this paper as published by eLife</p>
+    <dl className="metricsTable">
       <div className="metricsTable__group">
         <dt className="metricsTable__label">{metrics.views === 1 ? 'citation' : 'citations'}</dt>
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.citations)}</dd>
       </div>
     </dl>
-    <p>The citation count is determined by polling the highest count from the following sources: Crossref, PubMed Central, and Scopus</p>
+    <p className="metricsTable__description">The citation count is determined by polling the highest count from the following sources: Crossref, PubMed Central, and Scopus</p>
   </section>;
 };
