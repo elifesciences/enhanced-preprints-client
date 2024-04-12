@@ -26,6 +26,18 @@ describe('JumpToMenu', () => {
     expect(screen.getByText('citations').nextSibling?.textContent).toBe('123');
   });
 
+  it('should render thousands metrics with commas', () => {
+    render(<Metrics metrics={{ views: 123456789, downloads: 456789, citations: 123 }} />);
+
+    expect(screen.getByText('views')).toBeInTheDocument();
+    expect(screen.getByText('downloads')).toBeInTheDocument();
+    expect(screen.getByText('citations')).toBeInTheDocument();
+
+    expect(screen.getByText('views').nextSibling?.textContent).toBe('123,456,789');
+    expect(screen.getByText('downloads').nextSibling?.textContent).toBe('456,789');
+    expect(screen.getByText('citations').nextSibling?.textContent).toBe('123');
+  });
+
   it('should render singular metrics with correct phrasing', () => {
     render(<Metrics metrics={{ views: 1, downloads: 1, citations: 1 }} />);
 
