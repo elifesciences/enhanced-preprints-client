@@ -5,10 +5,36 @@
   @include typography.heading-2();
 }
 
+.metricsTable {
+  display: inline;
+}
+
+.metricsTable__group {
+  align-items: center;
+  display: inline-flex;
+
+  &::after {
+    /* stylelint-disable-next-line no-irregular-whitespace */
+    content: "  •  ";
+    order: 2;
+  }
+
+  &:last-child::after {
+    content: "";
+  }
+}
+
 .metricsTable__label {
   @include typography.body();
 
   display: inline;
+  flex: 0 0 auto;
+  order: 1;
+
+  &::before {
+    /* stylelint-disable-next-line no-irregular-whitespace */
+    content: " ";
+  }
 }
 
 .metricsTable__value {
@@ -16,17 +42,7 @@
   @include mixins.margin(0);
 
   display: inline;
+  flex: 0 0 auto;
   font-weight: 600;
-
-  &::before {
-    content: " ";
-  }
-
-  &::after {
-    content: " • ";
-  }
-
-  &:last-child::after {
-    content: "";
-  }
+  order: 0;
 }
