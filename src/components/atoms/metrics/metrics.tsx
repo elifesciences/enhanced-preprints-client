@@ -4,15 +4,15 @@ import './metrics.scss';
 export const Metrics = ({ metrics }: { metrics: MetricsType }) => <section>
   <h1 id="metrics" className="metrics__title">Metrics</h1>
   <dl className="metricsTable">
-    <dt className="metricsTable__label">{metrics.views === 1 ? 'View' : 'Views'}</dt>
+    <dt className="metricsTable__label">{metrics.views === 1 ? 'view' : 'views'}</dt>
     <dd className="metricsTable__value">{metrics.views}</dd>
-    <dt className="metricsTable__label">{metrics.views === 1 ? 'Download' : 'Downloads'}</dt>
+    <dt className="metricsTable__label">{metrics.views === 1 ? 'download' : 'downloads'}</dt>
     <dd className="metricsTable__value">{metrics.downloads}</dd>
   </dl>
   <p>Views and downloads are aggregated across all versions of this paper as published by eLife</p>
   <dl>
     <div className="metricsTable__group">
-      <dt className="metricsTable__label">{metrics.views === 1 ? 'Citation' : 'Citations'}</dt>
+      <dt className="metricsTable__label">{metrics.views === 1 ? 'citation' : 'citations'}</dt>
       <dd className="metricsTable__value">{metrics.citations}</dd>
     </div>
   </dl>
