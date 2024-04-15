@@ -15,13 +15,11 @@ type RelatedContentProps = {
 export const RelatedContent = ({ articles }: RelatedContentProps) => (
   <ul className="related-content">
     {articles.map(({
-      type, content, title, url, imageUrl,
+      type, content, title, url,
     }, index) => (
       <li key={`related-content-${index}`} className="related-content__item">
         <header>
           <div className="related-content__item-type">{type}</div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          {imageUrl && <img src={imageUrl} alt="related content thumbnail"/> }
           <h4 className="related-content__item-title"><a className="related-content__item-link" href={url}>{title}</a></h4>
         </header>
         {content && <div className="related-content__item-content">{content}</div>}

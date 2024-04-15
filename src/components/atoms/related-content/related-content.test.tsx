@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { RelatedContent } from './related-content';
 
-describe('Timeline', () => {
+describe('Related Content', () => {
   it('renders the related articles passed in as a param', () => {
     render(<RelatedContent articles={[
       {
@@ -35,8 +35,5 @@ describe('Timeline', () => {
     const title2 = screen.getByText('Podcast related to this article');
     expect(title2).toBeInTheDocument();
     expect(title2).toHaveAttribute('href', 'https://elifesciences.org/podcast/episode123456');
-
-    expect(document.querySelector('img')).toBeInTheDocument();
-    expect(document.querySelector('img')).toHaveAttribute('src', 'http://placekitten.com/400/400');
   });
 });
