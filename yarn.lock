@@ -4935,6 +4935,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pluralize@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@types/pluralize@npm:0.0.33"
+  checksum: 10c0/24899caf85b79dd291a6b6e9b9f3b67b452b18d578d0ac0d531a705bf5ee0361d9386ea1f8532c64de9e22c6e9606c5497787bb5e31bd299c487980436c59785
+  languageName: node
+  linkType: hard
+
 "@types/pretty-hrtime@npm:^1.0.0":
   version: 1.0.1
   resolution: "@types/pretty-hrtime@npm:1.0.1"
@@ -8511,6 +8518,7 @@ __metadata:
     "@types/i18next": "npm:^13.0.0"
     "@types/jest": "npm:^29.0.0"
     "@types/node": "npm:^20.0.0"
+    "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:^18.2.45"
     "@types/react-dom": "npm:^18.2.18"
     "@types/react-i18next": "npm:^8.1.0"
@@ -8537,6 +8545,7 @@ __metadata:
     moment: "npm:^2.30.1"
     next: "npm:^14.0.4"
     node-mocks-http: "npm:^1.14.1"
+    pluralize: "npm:^8.0.0"
     prettier: "npm:^3.0.3"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
@@ -14305,6 +14314,13 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10c0/32d48c1f8ff881770a19c9245fb4191fc36b5e97ab5f48effa0b1cf5e83fa958f6fdd7e4268dd984aa306ac5fe9e4324510211910751fb52cebb9bae819d13ca
+  languageName: node
+  linkType: hard
+
+"pluralize@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "pluralize@npm:8.0.0"
+  checksum: 10c0/2044cfc34b2e8c88b73379ea4a36fc577db04f651c2909041b054c981cd863dd5373ebd030123ab058d194ae615d3a97cfdac653991e499d10caf592e8b3dc33
   languageName: node
   linkType: hard
 

@@ -1,3 +1,4 @@
+import pluralize from 'pluralize';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
@@ -8,15 +9,15 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
     <h1 id="metrics" className="metrics__title">Metrics</h1>
     <dl className="metricsTable">
       <div className="metricsTable__group">
-        <dt className="metricsTable__label">{metrics.views === 1 ? 'view' : 'views'}</dt>
+        <dt className="metricsTable__label">{pluralize('view', metrics.views)}</dt>
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.views)}</dd>
       </div>
       <div className="metricsTable__group">
-        <dt className="metricsTable__label">{metrics.views === 1 ? 'download' : 'downloads'}</dt>
+        <dt className="metricsTable__label">{pluralize('download', metrics.downloads)}</dt>
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.downloads)}</dd>
       </div>
       <div className="metricsTable__group">
-        <dt className="metricsTable__label">{metrics.views === 1 ? 'citation' : 'citations'}</dt>
+        <dt className="metricsTable__label">{pluralize('citation', metrics.citations)}</dt>
         <dd className="metricsTable__value">{metricsFormatter.format(metrics.citations)}</dd>
       </div>
     </dl>
