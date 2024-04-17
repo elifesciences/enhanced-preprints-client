@@ -39,9 +39,21 @@ describe('JumpToMenu', () => {
   });
 
   it('should render singular metrics with correct phrasing', () => {
-    render(<Metrics metrics={{ views: 1, downloads: 1, citations: 1 }} />);
+    const { rerender } = render(<Metrics metrics={{ views: 1, downloads: 0, citations: 0 }} />);
 
     expect(screen.getByText('view')).toBeInTheDocument();
+    expect(screen.getByText('downloads')).toBeInTheDocument();
+    expect(screen.getByText('citations')).toBeInTheDocument();
+
+    rerender(<Metrics metrics={{ views: 1, downloads: 1, citations: 0 }} />);
+
+    expect(screen.getByText('view')).toBeInTheDocument();
+    expect(screen.getByText('download')).toBeInTheDocument();
+    expect(screen.getByText('citations')).toBeInTheDocument();
+
+    rerender(<Metrics metrics={{ views: 1, downloads: 1, citations: 1 }} />);
+
+    expect(screen.getByText('views')).toBeInTheDocument();
     expect(screen.getByText('download')).toBeInTheDocument();
     expect(screen.getByText('citation')).toBeInTheDocument();
   });
