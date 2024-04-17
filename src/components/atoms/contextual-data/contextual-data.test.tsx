@@ -25,4 +25,12 @@ describe('ContextualData', () => {
     expect(screen.getByText('downloads', { exact: false }).textContent).toStrictEqual('0 downloads');
     expect(screen.getByText('views', { exact: false }).textContent).toStrictEqual('0 views');
   });
+
+  it('renders a link that points to the metrics component', () => {
+    render(<ContextualData citations={2} downloads={5000} views={12345} />);
+
+    expect(screen.getByText('citations', { exact: false })).toHaveAttribute('href', '#metrics');
+    expect(screen.getByText('downloads', { exact: false })).toHaveAttribute('href', '#metrics');
+    expect(screen.getByText('views', { exact: false })).toHaveAttribute('href', '#metrics');
+  });
 });
