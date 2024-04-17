@@ -11,7 +11,19 @@ describe('ContextualData', () => {
   });
 
   it('renders the non plural data labels', () => {
-    render(<ContextualData citations={1} downloads={1} views={1} />);
+    const { rerender } = render(<ContextualData citations={1} downloads={0} views={0} />);
+
+    expect(screen.getByText('citation', { exact: false }).textContent).toStrictEqual('1 citation');
+    expect(screen.getByText('download', { exact: false }).textContent).toStrictEqual('0 downloads');
+    expect(screen.getByText('view', { exact: false }).textContent).toStrictEqual('0 views');
+
+    rerender(<ContextualData citations={1} downloads={1} views={0} />);
+
+    expect(screen.getByText('citation', { exact: false }).textContent).toStrictEqual('1 citation');
+    expect(screen.getByText('download', { exact: false }).textContent).toStrictEqual('1 download');
+    expect(screen.getByText('views', { exact: false }).textContent).toStrictEqual('0 views');
+
+    rerender(<ContextualData citations={1} downloads={1} views={1} />);
 
     expect(screen.getByText('citation', { exact: false }).textContent).toStrictEqual('1 citation');
     expect(screen.getByText('download', { exact: false }).textContent).toStrictEqual('1 download');
