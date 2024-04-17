@@ -53,7 +53,7 @@ describe('JumpToMenu', () => {
 
     rerender(<Metrics metrics={{ views: 1, downloads: 1, citations: 1 }} />);
 
-    expect(screen.getByText('views')).toBeInTheDocument();
+    expect(screen.getByText('view')).toBeInTheDocument();
     expect(screen.getByText('download')).toBeInTheDocument();
     expect(screen.getByText('citation')).toBeInTheDocument();
   });
