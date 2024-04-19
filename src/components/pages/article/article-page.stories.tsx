@@ -35,7 +35,7 @@ const headings = contentToHeadings(content);
 
 const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout>
   <ArticlePage {...args}>
-    <ArticleFullTextTab metrics={null} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+    <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
   </ArticlePage>
 </DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
