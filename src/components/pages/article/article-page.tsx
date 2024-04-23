@@ -69,7 +69,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           title={contentToText(props.metaData.title)}
           citation={citation}
           msid={props.metaData.msid}
-          metrics={props.metrics}
+          metrics={props.activeTab !== 'pdf' ? props.metrics : null}
         />
         <Timeline events={props.status.timeline}/>
         {props.relatedContent.length > 0 && <RelatedContent articles={props.relatedContent} />}

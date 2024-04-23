@@ -119,4 +119,12 @@ describe('ArticlePage', () => {
     expect(screen.getByText('downloads', { exact: false }).textContent).toStrictEqual('3 downloads');
     expect(screen.getByText('citations', { exact: false }).textContent).toStrictEqual('5 citations');
   });
+
+  it('does not render metrics for pdf tab', () => {
+    render(<ArticlePage metrics={{ views: 2, downloads: 3, citations: 5 }} relatedContent={[]} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="pdf" tabs={[]}><div></div></ArticlePage>);
+
+    expect(screen.queryByText('views')).not.toBeInTheDocument();
+    expect(screen.queryByText('downloads')).not.toBeInTheDocument();
+    expect(screen.queryByText('citations')).not.toBeInTheDocument();
+  });
 });
