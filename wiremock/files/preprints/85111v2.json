@@ -10036,7 +10036,13 @@
     ],
     "versionDoi": "10.7554/eLife.85111.2",
     "versionIdentifier": "2",
-    "volume": "12"
+    "volume": "12",
+    "relatedContent": [{
+      "type": "insight",
+      "title": "Hearing: Letting the calcium flow",
+      "url": "https://doi.org/10.7554/eLife.96139",
+      "description": "Régis Nouvian"
+    }]
   },
   "versions": {
     "85111v1": {
