@@ -72,7 +72,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
         />
         <Timeline events={props.status.timeline}/>
-        {props.relatedContent.length > 0 && <RelatedContent articles={props.relatedContent} />}
+        {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
