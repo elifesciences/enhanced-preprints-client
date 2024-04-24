@@ -127,4 +127,12 @@ describe('ArticlePage', () => {
     expect(screen.queryByText('downloads')).not.toBeInTheDocument();
     expect(screen.queryByText('citations')).not.toBeInTheDocument();
   });
+
+  it('does not render related-content for pdf tab', () => {
+    render(<ArticlePage metrics={null} relatedContent={relatedContent} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="pdf" tabs={[]}><div></div></ArticlePage>);
+
+    expect(screen.queryByText('Related Insight')).not.toBeInTheDocument();
+    expect(screen.queryByText('Insight Title')).not.toBeInTheDocument();
+    expect(screen.queryByText('Insight article about this article')).not.toBeInTheDocument();
+  });
 });
