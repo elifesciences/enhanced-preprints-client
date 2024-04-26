@@ -108,10 +108,16 @@ export const Page = (props: PageProps) => {
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
   const { t } = useTranslation();
-  const relatedContent = props.relatedContent.map((item) => ({
-    ...item,
-    type: t('related_intro', { type: t(`related_type_${item.type}`, { defaultValue: t('related_type_default') }) }),
-  }));
+  const relatedContent = props.relatedContent.map((item) => {
+    const relatedType = t(`related_type_${item.type}`, { defaultValue: t('related_type_default') });
+    return {
+      ...item,
+      type: t(`related_intro_${item.type}`, {
+        type: relatedType,
+        defaultValue: t('related_intro', { type: relatedType }),
+      }),
+    };
+  });
   return (
     <>
       <Head>
