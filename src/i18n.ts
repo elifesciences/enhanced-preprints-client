@@ -13,6 +13,8 @@ const resources = {
       reviewed_preprint: 'Reviewed preprint',
       revised_preprint: 'Revised preprint',
       version_of_record: 'Version of record',
+      related_intro: 'Related {{type}}',
+      related_type_default: 'content',
     },
     elife: {
       heading_assessment: 'eLife assessment',
@@ -21,6 +23,27 @@ const resources = {
       reviewed_preprint: 'Reviewed Preprint',
       revised_preprint: 'Reviewed Preprint',
       version_of_record: 'Version of Record',
+      twitter_handle: '@elife',
+      publisher_short: 'eLife',
+      publisher_long: 'eLife Sciences Publications Limited',
+      process_url: 'https://elifesciences.org/peer-review-process',
+      about_assessments_url: 'https://elifesciences.org/inside-elife/db24dd46',
+      reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
+      // Remove related_intro_Collection when type is switched to collection from Collection
+      related_intro_collection: 'Part of {{type}}',
+      related_intro_Collection: 'Part of {{type}}',
+      // Remove related_intro_Podcast when type is switched to podcastChapterEpisode from Podcast
+      related_intro_podcastChapterEpisode: 'Discussed in {{type}}',
+      related_intro_Podcast: 'Discussed in {{type}}',
+      // Remove related_type_Insight when type is switched to insight from Insight
+      related_type_insight: 'Insight',
+      related_type_Insight: 'Insight',
+      // Remove related_type_Collection when type is switched to collection from Collection
+      related_type_collection: 'Collection',
+      related_type_Collection: 'Collection',
+      // Remove related_type_Podcast when type is switched to podcastChapterEpisode from Podcast
+      related_type_podcastChapterEpisode: 'Podcast',
+      related_type_Podcast: 'Podcast',
     },
     biophysics_colab: {
       heading_assessment: 'Endorsement statement',

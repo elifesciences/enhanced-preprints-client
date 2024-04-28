@@ -12,6 +12,7 @@ export type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
+  removeLinkTag?: boolean,
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -67,6 +68,10 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'CiteGroup':
       return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
+      if (options?.removeLinkTag) {
+        return contentToJsx(content.content, options);
+      }
+
       return <a key={index} href={content.target}>{ contentToJsx(content.content, options)}</a>;
     case 'Paragraph':
       return <p key={index}>{ contentToJsx(content.content, options)}</p>;

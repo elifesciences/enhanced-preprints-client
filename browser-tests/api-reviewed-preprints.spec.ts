@@ -13,14 +13,14 @@ test('reviewed preprints api listing', async ({ request }) => {
   expect(headerVary).toContain('Authorization');
 
   const responseJson = await response.json();
-  expect(responseJson.total).toBe(1);
-  expect(responseJson.items[0].id).toBe('123');
-  expect(responseJson.items[0].doi).toBe('10.1101/123456');
-  expect(responseJson.items[0].title).toBe('Tonight we take over the world!');
+  expect(responseJson.total).toBe(2);
+  expect(responseJson.items[0].id).toBe('85111');
+  expect(responseJson.items[0].doi).toBe('10.1101/2022.11.08.515698');
+  expect(responseJson.items[0].title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
 });
 
 test('reviewed preprints api item found', async ({ request }) => {
-  const response = await request.get('http://localhost:3001/api/reviewed-preprints/123');
+  const response = await request.get('http://localhost:3001/api/reviewed-preprints/85111');
   expect(response.ok()).toBeTruthy();
 
   const headers = response.headers();
@@ -32,11 +32,11 @@ test('reviewed preprints api item found', async ({ request }) => {
   expect(headerVary).toContain('Authorization');
 
   const responseJson = await response.json();
-  expect(responseJson.id).toBe('123');
-  expect(responseJson.doi).toBe('10.1101/123456');
-  expect(responseJson.title).toBe('Tonight we take over the world!');
-  expect(responseJson.indexContent).toContain('On the subject of sidekicks');
-  expect(responseJson.indexContent).toContain('Brain, Pinky Mouse, Slowpoke Rodreigez, Sylvester J Pussycat, Elmer Fudd, Yosemite Sam, Fogghorn Leghorn, Pepe Le Pew, Porky Pig, Speedy Gonzales, Bugs Bunny');
+  expect(responseJson.id).toBe('85111');
+  expect(responseJson.doi).toBe('10.1101/2022.11.08.515698');
+  expect(responseJson.title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
+  expect(responseJson.indexContent).toContain('Through experience with the world, brains learn to predict the sensory feedback');
+  expect(responseJson.indexContent).toContain('Rebecca Jordan, Georg B. Keller');
 });
 
 test('reviewed preprints api item unknown', async ({ request }) => {

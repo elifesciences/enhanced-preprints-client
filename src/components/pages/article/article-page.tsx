@@ -7,8 +7,10 @@ import { MetaData, TimelineEvent } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
-import { RelatedContent, RelatedContents } from '../../atoms/related-contents/related-contents';
 import { BrandContext } from '../../../brand';
+import '../../../i18n';
+import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
+import { Metrics } from '../../../types/enhanced-article';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -26,7 +28,8 @@ export type ArticlePageProps = {
   metaData: MetaData,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  relatedContents: RelatedContent[],
+  relatedContent: RelatedContentData[],
+  metrics?: Metrics | null,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
@@ -58,9 +61,18 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
+        <ArticleStatus
+          articleStatus={props.status.status}
+          doi={doi}
+          articleType={props.status.articleType}
+          pdfUrl={props.metaData.pdfUrl}
+          title={contentToText(props.metaData.title)}
+          citation={citation}
+          msid={props.metaData.msid}
+          metrics={props.activeTab !== 'pdf' ? props.metrics : null}
+        />
         <Timeline events={props.status.timeline}/>
-        {props.relatedContents.length > 0 && <RelatedContents articles={props.relatedContents} />}
+        {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">

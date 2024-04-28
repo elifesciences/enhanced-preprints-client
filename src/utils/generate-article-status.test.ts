@@ -112,7 +112,7 @@ describe('generateStatus', () => {
       ...version1,
     };
     previewVersion.published = new Date();
-    previewVersion.published.setDate(previewVersion.published.getDate() + 1);
+    previewVersion.published.setDate(previewVersion.published.getUTCDate() + 1);
 
     const status = generateStatus({
       article: previewVersion,

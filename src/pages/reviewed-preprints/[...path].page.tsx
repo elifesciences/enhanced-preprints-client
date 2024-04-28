@@ -1,8 +1,14 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
-import { Content, MetaData, PeerReview } from '../../types';
+import {
+  Content,
+  MetaData,
+  PeerReview,
+  RelatedContent,
+} from '../../types';
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
@@ -16,7 +22,8 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 import {
   Brand, biophysicsColabBrand, elifeBrand, scietyBrand,
 } from '../../brand';
-import { RelatedContent } from '../../components/atoms/related-contents/related-contents';
+import '../../i18n';
+import { Metrics } from '../../types/enhanced-article';
 
 type PageProps = {
   brand: Brand | null,
@@ -24,9 +31,10 @@ type PageProps = {
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  relatedContents: RelatedContent[],
+  relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
+  metrics: Metrics | null,
 };
 
 export const Page = (props: PageProps) => {
@@ -53,7 +61,7 @@ export const Page = (props: PageProps) => {
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={props.metrics} headings={headings} content={contentToJsx(props.content)} metaData={props.metaData} peerReview={props.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${props.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -67,6 +75,7 @@ export const Page = (props: PageProps) => {
       tabLinks: [],
       content: () => <>
         <ArticleFullTextTab
+          metrics={null}
           headings={headings}
           content={contentToJsx(props.content, { imgInfo: props.imgInfo ?? undefined, removePictureTag: true })}
           metaData={props.metaData}
@@ -86,9 +95,22 @@ export const Page = (props: PageProps) => {
     },
     [router.query.path],
   );
+
+  const { t } = useTranslation();
+  const relatedContent = props.relatedContent.map((item) => {
+    const relatedType = t(`related_type_${item.type}`, { defaultValue: t('related_type_default') });
+    return {
+      ...item,
+      type: t(`related_intro_${item.type}`, {
+        type: relatedType,
+        defaultValue: t('related_intro', { type: relatedType }),
+      }),
+    };
+  });
+
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  return <ArticlePage relatedContents={props.relatedContents} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+  return <ArticlePage relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
     { tabContent }
   </ArticlePage>;
 };
@@ -139,16 +161,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const relatedContents: RelatedContent[] = [];
-  if (articleWithVersions.article.msid === '93646') {
-    relatedContents.push({
-      title: 'Hearing: Letting the calcium flow',
-      content: 'Two calcium-binding proteins, CaBP1 and CaBP2, cooperate to keep calcium channels in the hair cells of the inner ear open.',
-      type: 'Related Insight',
-      url: 'https://elifesciences.org/articles/96139',
-    });
-  }
-
   return {
     props: {
       brand,
@@ -168,8 +180,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
-      relatedContents,
+      relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+      metrics: articleWithVersions.metrics ?? null,
     },
   };
 };

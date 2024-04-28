@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import { I18nextProvider } from 'react-i18next';
+import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { Brand, BrandContext, defaultBrand } from '../brand';
@@ -19,6 +20,26 @@ const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
   return undefined;
 };
 
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: [
+    '400', '600', '700',
+  ],
+  display: 'swap',
+  fallback: ['serif'],
+});
+
+const notoSans = Noto_Sans({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: [
+    '400', '600',
+  ],
+  display: 'swap',
+  fallback: ['arial', 'helvetica', 'sans-serif'],
+});
+
 export default function MyApp({ Component, pageProps }: any) {
   const brand: Brand = pageProps.brand ?? defaultBrand;
   if (brand.translationNamespace) {
@@ -27,6 +48,16 @@ export default function MyApp({ Component, pageProps }: any) {
   return (
     <>
       <Head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+            }
+            body {
+              --font-family-primary: ${notoSans.style.fontFamily};
+              --font-family-secondary: ${notoSerif.style.fontFamily};
+            }
+          `,
+        }} />
         {pageProps.metaData ? <>
           <title>{contentToText(pageProps.metaData.title)}</title>
           { brand.journal && (<>
@@ -38,7 +69,7 @@ export default function MyApp({ Component, pageProps }: any) {
             <meta name="citation_abstract" content={contentToText(pageProps.metaData.abstract)}/>
             <meta name="citation_doi" content={pageProps.metaData.doi}/>
             <meta name="citation_publication_date" content={getPublishedDate(pageProps.status.timeline)}/>
-            <meta name="citation_pdf_url" content={pageProps.metaData.pdfUrl}/>
+            {pageProps.metaData.pdfUrl && <meta name="citation_pdf_url" content={pageProps.metaData.pdfUrl}/>}
             <meta name="citation_fulltext_html_url" content={(brand.appUrlPrefix ?? '/reviewed-preprints/') + pageProps.metaData.msid }/>
           </>) }
           <meta name="citation_language" content="en"/>

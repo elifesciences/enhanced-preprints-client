@@ -14,7 +14,7 @@ export const references: Reference[] = [
       { type: 'Person', familyNames: ['Raman'], givenNames: ['IM'] },
       { type: 'Person', familyNames: ['NoGiven'], givenNames: undefined },
     ],
-    datePublished: { type: 'Date', value: '2004' },
+    datePublished: { type: 'Date', value: '1847-01-01T00:00:00.000Z' },
     isPartOf: {
       type: 'PublicationVolume',
       isPartOf: { type: 'Periodical', name: 'J. Neurophysiol' },

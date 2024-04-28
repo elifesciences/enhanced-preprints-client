@@ -8,13 +8,17 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
+import '../../../../i18n';
+import { Metrics as MetricsType } from '../../../../types/enhanced-article';
+import { Metrics } from '../../../atoms/metrics/metrics';
 
 type Props = {
   headings: Heading[],
   metaData: MetaData,
   content: JSXContent,
   peerReview?: PeerReview,
-  peerReviewUrl?: string
+  peerReviewUrl?: string,
+  metrics: MetricsType | null,
 };
 
 export const ArticleFullTextTab = (props: Props) => {
@@ -29,6 +33,9 @@ export const ArticleFullTextTab = (props: Props) => {
   if (props.peerReview !== undefined) {
     headings.splice(1, 0, { id: 'assessment', text: t('heading_assessment') });
   }
+  if (props.metrics) {
+    headings.push({ id: 'metrics', text: 'Metrics' });
+  }
 
   return (
     <div className="tabbed-navigation__content">
@@ -39,6 +46,7 @@ export const ArticleFullTextTab = (props: Props) => {
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
         <AuthorInformationList authors={props.metaData.authors} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
+        { props.metrics && <Metrics metrics={props.metrics} /> }
       </div>
     </div>
   );

@@ -10,29 +10,18 @@
   "scenarios": [
     {
       "label": "Article Tab",
-      "url": "http://app:3000/reviewed-preprints/123",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/85111"
     },
     {
       "label": "Figures Tab",
-      "url": "http://app:3000/reviewed-preprints/123/figures",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/85111/figures"
     },
     {
       "label": "Reviews Tab",
-      "url": "http://app:3000/reviewed-preprints/123/reviews",
-      "removeSelectors": [
-        "#CybotCookiebotDialog",
-        "picture"
-      ]
+      "url": "http://app:3000/reviewed-preprints/85111/reviews"
     }
   ],
+  "misMatchThreshold": 0.0,
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
@@ -41,9 +30,9 @@
     "ci_report": "backstop_data/ci_report"
   },
   "report": ["CI"],
-  "engine": "playwright",
+  "engine": "puppeteer",
   "engineOptions": {
-    "browser": "chromium",
+    "browser": "firefox",
     "gotoParameters": { "waitUntil": "networkidle0" },
     "args": ["--no-sandbox"]
   },

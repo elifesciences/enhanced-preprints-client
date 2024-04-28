@@ -2,6 +2,7 @@ import { Content } from './content';
 import { Institution } from './institution';
 import { PeerReview } from './peer-review';
 import { Reference } from './reference';
+import { RelatedContent } from './related-content';
 
 export type ArticleDocument = string;
 export type ArticleContent = {
@@ -112,9 +113,17 @@ export type EnhancedArticle = {
   eLocationId?: string,
   subjects?: string[],
   pdfUrl?: string,
+  relatedContent?: RelatedContent[],
+};
+
+export type Metrics = {
+  views: number,
+  downloads: number,
+  citations: number,
 };
 
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
+  metrics?: Metrics,
 };

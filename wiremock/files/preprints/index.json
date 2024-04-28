@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": "85111v1",
+      "doi": "10.7554/eLife.85111.1",
+      "msid": "85111",
+      "date": "2023-01-25T14:00:00.000Z",
+      "title": "The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity"
+    },
+    {
+      "id": "85111v2",
+      "doi": "10.7554/eLife.85111.2",
+      "msid": "85111",
+      "date": "2023-05-10T14:00:00.000Z",
+      "title": "The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity"
+    },
+    {
+      "id": "biophysics-colab-111111v1",
+      "doi": "xxxxxx/biophysics-colab-111111.1",
+      "msid": "biophysics-colab-111111",
+      "date": "2022-10-03T09:03:08.000Z",
+      "title": [
+        "Structure of an open K",
+        {
+          "type": "Subscript",
+          "content": [
+            "ATP"
+          ]
+        },
+        " channel reveals tandem PIP",
+        {
+          "type": "Subscript",
+          "content": [
+            "2"
+          ]
+        },
+        " binding sites mediating the Kir6.2 and SUR1 regulatory interface"
+      ]
+    }
+  ],
+  "total": 3
+}

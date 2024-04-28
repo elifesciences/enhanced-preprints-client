@@ -1,4 +1,4 @@
-ARG node_version=20.11-alpine3.19
+ARG node_version=20.12-alpine3.19
 
 FROM node:${node_version} as builder
 RUN mkdir /opt/epp-client
@@ -24,7 +24,7 @@ CMD [ "yarn", "storybook" ]
 
 FROM base as prod
 RUN yarn build
-CMD [ "sh", "-c", "yarn build && yarn start" ]
+CMD [ "yarn", "start" ]
 
 FROM mcr.microsoft.com/playwright:focal as browser-tests
 WORKDIR /opt/tests

@@ -1,0 +1,12 @@
+{
+    "scenarioName": "biophysics-colab-111111",
+    "requiredScenarioState": "Started",
+    "request": {
+        "method": "GET",
+        "url": "/api/preprints/biophysics-colab-111111"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "preprints/biophysics-colab-111111v1.json"
+    }
+}

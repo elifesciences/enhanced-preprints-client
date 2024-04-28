@@ -14,6 +14,7 @@
 		}
 	],
   "addLabels": ["dependencies"],
+  "platformAutomerge": false,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],

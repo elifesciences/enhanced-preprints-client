@@ -1,0 +1,231 @@
+[
+  {
+    "article": {
+      "title": "The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity",
+      "authors": [
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Friedrich Miescher Institute for Biomedical Research, Basel, Switzerland"
+            }
+          ],
+          "emails": [
+            "rjordan3@ed.ac.uk"
+          ],
+          "familyNames": [
+            "Jordan"
+          ],
+          "givenNames": [
+            "Rebecca"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-4871-6265"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Friedrich Miescher Institute for Biomedical Research, Basel, Switzerland"
+            },
+            {
+              "type": "Organization",
+              "name": "Faculty of Sciences, University of Basel, Basel, Switzerland"
+            }
+          ],
+          "familyNames": [
+            "Keller"
+          ],
+          "givenNames": [
+            "Georg",
+            "B."
+          ]
+        }
+      ]
+    },
+    "doi": "10.7554/eLife.85111.2",
+    "eLocationId": "RP85111",
+    "id": "85111v2",
+    "license": "http://creativecommons.org/licenses/by/4.0/",
+    "msid": "85111",
+    "pdfUrl": "https://github.com/elifesciences/enhanced-preprints-data/raw/master/data/85111/v2/85111-v2.pdf",
+    "preprintDoi": "10.1101/2022.11.08.515698",
+    "preprintPosted": "2023-03-20T00:00:00.000Z",
+    "preprintUrl": "https://www.biorxiv.org/content/10.1101/2022.11.08.515698v3",
+    "published": "2023-05-10T14:00:00.000Z",
+    "publishedYear": 2023,
+    "sentForReview": "2023-03-23T10:52:45.000Z",
+    "subjects": [
+      "Neuroscience"
+    ],
+    "versionDoi": "10.7554/eLife.85111.2",
+    "versionIdentifier": "2",
+    "volume": "12",
+    "firstPublished": "2023-01-25T14:00:00.000Z"
+  },
+  {
+    "article": {
+      "title": [
+        "Structure of an open K",
+        {
+          "type": "Subscript",
+          "content": [
+            "ATP"
+          ]
+        },
+        " channel reveals tandem PIP",
+        {
+          "type": "Subscript",
+          "content": [
+            "2"
+          ]
+        },
+        " binding sites mediating the Kir6.2 and SUR1 regulatory interface"
+      ],
+      "authors": [
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Department of Chemical Physiology and Biochemistry, School of Medicine, Oregon Health and Science University, Portland, OR 97239; Department of Medical Biochemistry, Tanta University, Tanta, Egypt"
+            }
+          ],
+          "emails": [
+            "driggerc@ohsu.edu"
+          ],
+          "familyNames": [
+            "Driggers"
+          ],
+          "givenNames": [
+            "Camden",
+            "M."
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-2105-7175"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Department of Chemical Physiology and Biochemistry, School of Medicine, Oregon Health and Science University, Portland, OR 97239; Department of Medical Biochemistry, Tanta University, Tanta, Egypt"
+            }
+          ],
+          "familyNames": [
+            "Kuo"
+          ],
+          "givenNames": [
+            "Yi-Ying"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-6876-8126"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Department of Chemical Physiology and Biochemistry, School of Medicine, Oregon Health and Science University, Portland, OR 97239; Department of Medical Biochemistry, Tanta University, Tanta, Egypt"
+            }
+          ],
+          "familyNames": [
+            "Zhu"
+          ],
+          "givenNames": [
+            "Phillip"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-9756-2637"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Department of Chemical Physiology and Biochemistry, School of Medicine, Oregon Health and Science University, Portland, OR 97239; Department of Medical Biochemistry, Tanta University, Tanta, Egypt"
+            }
+          ],
+          "familyNames": [
+            "ElSheikh"
+          ],
+          "givenNames": [
+            "Assmaa"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0001-7360-9309"
+            }
+          ]
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Department of Chemical Physiology and Biochemistry, School of Medicine, Oregon Health and Science University, Portland, OR 97239; Department of Medical Biochemistry, Tanta University, Tanta, Egypt"
+            }
+          ],
+          "emails": [
+            "shyngs@ohsu.edu"
+          ],
+          "familyNames": [
+            "Shyng"
+          ],
+          "givenNames": [
+            "Show-Ling"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-8230-8820"
+            }
+          ]
+        }
+      ]
+    },
+    "doi": "xxxxxx/biophysics-colab-111111.1",
+    "eLocationId": "RP111111",
+    "id": "biophysics-colab-111111v1",
+    "license": "http://creativecommons.org/licenses/by/4.0/",
+    "msid": "biophysics-colab-111111",
+    "preprintDoi": "10.1101/111111",
+    "preprintPosted": "2022-04-12T00:00:00.000Z",
+    "preprintUrl": "https://www.biorxiv.org/content/10.1101/111111v1",
+    "published": "2022-10-03T09:03:08.000Z",
+    "publishedYear": 2022,
+    "sentForReview": "2022-05-09T09:03:08.000Z",
+    "subjects": [
+      "Biochemistry"
+    ],
+    "versionDoi": "xxxxxx/biophysics-colab-111111.1",
+    "versionIdentifier": "1",
+    "volume": "1",
+    "firstPublished": "2022-10-03T09:03:08.000Z"
+  }
+]

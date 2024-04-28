@@ -55,16 +55,23 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
       - name: Bring up browser test stack
-        run: yarn start:test-env
+        run: docker compose up --wait
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
       - name: Visual Regression Tests
+        id: visualregression
         run: yarn visual-regression:test
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml down
+        run: docker compose down
+      - name: Visual regression report upload
+        uses: actions/upload-artifact@v4
+        if: always() && steps.visualregression.outcome != 'skipped'
+        with:
+          name: visualregression-report
+          path: backstop_data/
   build-and-push:
     needs: [test, test-integration]
     runs-on: ubuntu-latest
@@ -121,7 +128,7 @@ jobs:
     steps:
     - name: Notify Slack testing started
       id: slack
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
@@ -225,7 +232,7 @@ jobs:
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack testing results
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
@@ -330,7 +337,7 @@ jobs:
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack build final message
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:

@@ -1,7 +1,7 @@
 import LinkTo from '@storybook/addon-links/react';
 import { StoryFn, Meta } from '@storybook/react';
 import {
-  content, metaData, peerReview, relatedContents, status,
+  content, metaData, metrics, peerReview, relatedContent, status,
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
@@ -33,14 +33,19 @@ const tabs = [
 const jsxContent = contentToJsx(content);
 const headings = contentToHeadings(content);
 
-const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFullTextTab headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} /></ArticlePage></DefaultLayout>;
+const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout>
+  <ArticlePage {...args}>
+    <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+  </ArticlePage>
+</DefaultLayout>;
 export const ArticlePageFullTextTab = FullTextTemplate.bind({});
 ArticlePageFullTextTab.args = {
   metaData,
   status,
   activeTab: 'fulltext',
   tabs,
-  relatedContents,
+  relatedContent,
+  metrics,
 };
 
 const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={jsxContent} /></ArticlePage></DefaultLayout>;
@@ -50,7 +55,8 @@ ArticlePageFiguresTab.args = {
   status,
   activeTab: 'figures',
   tabs,
-  relatedContents,
+  relatedContent,
+  metrics,
 };
 
 const ReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
@@ -60,7 +66,8 @@ ArticlePageReviewsTab.args = {
   status,
   activeTab: 'reviews',
   tabs,
-  relatedContents,
+  relatedContent,
+  metrics,
 };
 
 const ErrorTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ErrorMessages/></ArticlePage></DefaultLayout>;
@@ -70,5 +77,6 @@ ArticlePageErrorTab.args = {
   status,
   activeTab: 'reviews',
   tabs,
-  relatedContents,
+  relatedContent,
+  metrics,
 };
