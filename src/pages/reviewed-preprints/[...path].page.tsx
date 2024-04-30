@@ -114,7 +114,7 @@ export const Page = (props: PageProps) => {
       ...item,
       type: t(`related_intro_${item.type}`, {
         type: relatedType,
-        defaultValue: t('related_intro', { type: relatedType }),
+        defaultValue: t('related_intro'),
       }),
     };
   });
