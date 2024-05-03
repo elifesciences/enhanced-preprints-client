@@ -46,5 +46,13 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
     });
   }
 
+  (version.events ?? []).forEach((event) => {
+    timeline.push({
+      date: new Date(event.date).toDateString(),
+      name: event.name,
+      ...(event.url ? { link: { url: event.url, text: 'Go to version' } } : {}),
+    });
+  });
+
   return timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };

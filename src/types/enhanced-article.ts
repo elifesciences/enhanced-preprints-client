@@ -122,8 +122,15 @@ export type Metrics = {
   citations: number,
 };
 
+export type Event = {
+  name: string,
+  date: Date,
+  url?: string,
+};
+
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
+  events?: Event[],
   metrics?: Metrics,
 };

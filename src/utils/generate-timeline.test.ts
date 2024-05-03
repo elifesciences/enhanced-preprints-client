@@ -130,4 +130,68 @@ describe('generateStatus', () => {
       },
     ]);
   });
+
+  it('should generate the correct timeline with additional events', () => {
+    // Call the function
+    const timeline = generateTimeline({
+      article: version2,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+      },
+      events: [
+        {
+          name: 'Timeline Event 1',
+          date: new Date('2023-01-12'),
+        },
+        {
+          name: 'Timeline Event 2',
+          date: new Date('2023-01-13'),
+          url: 'https://timeline.event/2',
+        },
+      ],
+    });
+
+    // Assert the result
+    expect(timeline).toEqual([
+      {
+        date: 'Fri Jan 13 2023',
+        name: 'Timeline Event 2',
+        link: {
+          text: 'Go to version',
+          url: 'https://timeline.event/2',
+        },
+      },
+      {
+        date: 'Thu Jan 12 2023',
+        name: 'Timeline Event 1',
+      },
+      {
+        date: 'Mon Jan 09 2023',
+        name: 'Reviewed preprint version 2',
+        eventDescription: '(this version)',
+      },
+      {
+        date: 'Tue Jan 03 2023',
+        name: 'Reviewed preprint version 1',
+        link: {
+          text: 'Go to version',
+          url: '/reviewed-preprints/1v1',
+        },
+      },
+
+      {
+        date: 'Mon Jan 02 2023',
+        name: 'Posted to preprint server',
+        link: {
+          url: 'https://doi.org/doi-123',
+          text: 'Go to preprint server',
+        },
+      },
+      {
+        date: 'Sun Jan 01 2023',
+        name: 'Sent for peer review',
+      },
+    ]);
+  });
 });
