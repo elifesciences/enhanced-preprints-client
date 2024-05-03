@@ -47,11 +47,17 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
   }
 
   (version.events ?? []).forEach((event) => {
-    timeline.push({
-      date: new Date(event.date).toDateString(),
+    const basicEvent = {
       name: event.name,
-      ...(event.url ? { link: { url: event.url, text: 'Go to version' } } : {}),
-    });
+      date: new Date(event.date).toDateString(),
+    };
+    timeline.push(event.url ? {
+      ...basicEvent,
+      link: {
+        url: event.url,
+        text: 'Go to version',
+      },
+    } : basicEvent);
   });
 
   return timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
