@@ -9360,6 +9360,13 @@
       "volume": "12"
     }
   },
+  "events": [
+    {
+      "name": "Version of Record published",
+      "date": "2023-06-07T00:00:00.000Z",
+      "url": "https://elifesciences.org/articles/85111v1"
+    }
+  ],
   "metrics": {
     "views": 8889,
     "downloads": 245,
