@@ -3,7 +3,18 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../types';
 import { EnhancedArticleNoContent } from '../types/reviewed-preprint-snippet';
 
-export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`)
+  // Hardcode a timeline event for 85111.
+  .then((version) => (version && (id === '85111' || id.startsWith('85111v')) ? {
+    ...version,
+    events: [
+      {
+        name: 'Version of Record published',
+        date: new Date('2023-06-07'),
+        url: 'https://elifesciences.org/articles/85111v1',
+      },
+    ],
+  } : version));
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
 export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
   const url = [
