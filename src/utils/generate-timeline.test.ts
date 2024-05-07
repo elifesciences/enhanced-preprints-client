@@ -68,8 +68,8 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
   published: article.published,
 });
 
-describe('generateStatus', () => {
-  it('should generate the correct status with one article version', () => {
+describe('generateTimeline', () => {
+  it('should generate the correct timeline with one article version', () => {
     // Call the function
     const timeline = generateTimeline({
       article: version1,
