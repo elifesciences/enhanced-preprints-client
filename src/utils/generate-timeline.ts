@@ -2,8 +2,10 @@ import { i18n } from '../i18n';
 import {
   EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
 } from '../types';
+import { PreprintVersionSummary } from '../types/enhanced-article';
 
-const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
+const isVersionPreprintSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
+const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isVersionPreprintSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
