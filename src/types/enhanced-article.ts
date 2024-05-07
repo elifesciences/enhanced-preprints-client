@@ -94,7 +94,7 @@ export type PreprintVersionSummary = {
   type: string,
 };
 
-type ExternalVersionSummary = {
+export type ExternalVersionSummary = {
   versionIdentifier: string,
   published?: Date,
   url: string,

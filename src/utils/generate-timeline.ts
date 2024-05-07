@@ -2,28 +2,40 @@ import { i18n } from '../i18n';
 import {
   EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
 } from '../types';
-import { PreprintVersionSummary } from '../types/enhanced-article';
+import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhanced-article';
 
 const isVersionPreprintSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
+const isExternalPreprintSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isVersionPreprintSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
-      events.push(current.id === version.article.id ?
-        {
+      if (isVersionPreprintSummary(current)) {
+        events.push(current.id === version.article.id ?
+          {
+            date: new Date(current.published).toDateString(),
+            name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
+            eventDescription: '(this version)',
+          } : {
+            date: new Date(current.published).toDateString(),
+            name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
+            link: {
+              url: `/reviewed-preprints/${current.id}`,
+              text: 'Go to version',
+            },
+          });
+      } else if (isExternalPreprintSummary(current)) {
+        events.push({
           date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
-          eventDescription: '(this version)',
-        } : {
-          date: new Date(current.published).toDateString(),
-          name: i18n.t('timeline_version_title', { versionIdentifier: current.versionIdentifier }),
+          name: 'Version of Record published',
           link: {
-            url: `/reviewed-preprints/${current.id}`,
+            url: current.url,
             text: 'Go to version',
           },
         });
+      }
     }
     return events;
   }, []);
