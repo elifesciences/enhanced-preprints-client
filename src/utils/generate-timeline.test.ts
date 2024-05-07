@@ -1,4 +1,9 @@
-import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
+import {
+  EnhancedArticle,
+  PreprintVersionSummary,
+  ProcessedArticle,
+  VersionSummary,
+} from '../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
 
 const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
@@ -23,6 +28,7 @@ const version1: EnhancedArticle = {
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
   published: new Date('2023-01-03'),
+  type: 'preprint',
 
   article: exampleArticle,
 };
@@ -40,11 +46,19 @@ const version2: EnhancedArticle = {
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
   published: new Date('2023-01-09'),
+  type: 'preprint',
 
   article: exampleArticle,
 };
 
-const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
+const version3Summary: VersionSummary = {
+  versionIdentifier: '3',
+  published: new Date('2023-02-09'),
+  url: 'https://doi.org/doi-123v3',
+  type: 'version-of-record',
+};
+
+const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): PreprintVersionSummary => ({
   id: article.id,
   doi: article.doi,
   msid: article.msid,
@@ -56,6 +70,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
   preprintPosted: article.preprintPosted,
   sentForReview: article.sentForReview,
   published: article.published,
+  type: article.type,
 });
 
 describe('generateStatus', () => {
@@ -116,6 +131,55 @@ describe('generateStatus', () => {
         },
       },
 
+      {
+        date: 'Mon Jan 02 2023',
+        name: 'Posted to preprint server',
+        link: {
+          url: 'https://doi.org/doi-123',
+          text: 'Go to preprint server',
+        },
+      },
+      {
+        date: 'Sun Jan 01 2023',
+        name: 'Sent for peer review',
+      },
+    ]);
+  });
+
+  it('should generate the correct timeline with an external version summary', () => {
+    // Call the function
+    const timeline = generateTimeline({
+      article: version2,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+        v3: version3Summary,
+      },
+    });
+
+    // Assert the result
+    expect(timeline).toEqual([
+      {
+        date: 'Thu Feb 09 2023',
+        name: 'Version of Record published',
+        link: {
+          text: 'Go to version',
+          url: 'https://doi.org/doi-123v3',
+        },
+      },
+      {
+        date: 'Mon Jan 09 2023',
+        name: 'Reviewed preprint version 2',
+        eventDescription: '(this version)',
+      },
+      {
+        date: 'Tue Jan 03 2023',
+        name: 'Reviewed preprint version 1',
+        link: {
+          text: 'Go to version',
+          url: '/reviewed-preprints/1v1',
+        },
+      },
       {
         date: 'Mon Jan 02 2023',
         name: 'Posted to preprint server',
