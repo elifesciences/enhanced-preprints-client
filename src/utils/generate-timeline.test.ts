@@ -1,6 +1,5 @@
 import {
   EnhancedArticle,
-  PreprintVersionSummary,
   ProcessedArticle,
   VersionSummary,
 } from '../types/enhanced-article';
@@ -58,7 +57,7 @@ const version3Summary: VersionSummary = {
   type: 'version-of-record',
 };
 
-const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): PreprintVersionSummary => ({
+const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
   id: article.id,
   doi: article.doi,
   msid: article.msid,

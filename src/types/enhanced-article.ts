@@ -80,7 +80,7 @@ export type Participant = {
   institution: string,
 };
 
-export type PreprintVersionSummary = {
+type PreprintVersionSummary = {
   id: string,
   msid: string,
   doi: string,
@@ -94,7 +94,7 @@ export type PreprintVersionSummary = {
   type: string,
 };
 
-export type ExternalVersionSummary = {
+type ExternalVersionSummary = {
   versionIdentifier: string,
   published?: Date,
   url: string,
