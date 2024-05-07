@@ -91,14 +91,12 @@ export type PreprintVersionSummary = {
   preprintPosted: Date,
   sentForReview?: Date,
   published?: Date,
-  type: string,
 };
 
 export type ExternalVersionSummary = {
   versionIdentifier: string,
   published?: Date,
   url: string,
-  type: string,
 };
 
 export type VersionSummary = PreprintVersionSummary | ExternalVersionSummary;

@@ -29,7 +29,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Timeline
       } else if (isExternalPreprintSummary(current)) {
         events.push({
           date: new Date(current.published).toDateString(),
-          name: 'Version of Record published',
+          name: i18n.t('external_timeline_version_title', { versionIdentifier: current.versionIdentifier }),
           link: {
             url: current.url,
             text: 'Go to version',
