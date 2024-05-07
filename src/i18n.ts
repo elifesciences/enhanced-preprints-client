@@ -20,7 +20,7 @@ const resources = {
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About $t(publisher_short)\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
-      external_timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
+      external_timeline_version_title: '$t(timeline_version_title)',
       reviewed_preprint: 'Reviewed Preprint',
       related_intro: 'Related {{type}}',
       related_type_default: 'content',
