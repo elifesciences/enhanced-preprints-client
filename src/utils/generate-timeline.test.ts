@@ -27,7 +27,6 @@ const version1: EnhancedArticle = {
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
   published: new Date('2023-01-03'),
-  type: 'preprint',
 
   article: exampleArticle,
 };
@@ -45,7 +44,6 @@ const version2: EnhancedArticle = {
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
   published: new Date('2023-01-09'),
-  type: 'preprint',
 
   article: exampleArticle,
 };
@@ -54,7 +52,6 @@ const version3Summary: VersionSummary = {
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
-  type: 'version-of-record',
 };
 
 const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
@@ -69,7 +66,6 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
   preprintPosted: article.preprintPosted,
   sentForReview: article.sentForReview,
   published: article.published,
-  type: article.type,
 });
 
 describe('generateStatus', () => {

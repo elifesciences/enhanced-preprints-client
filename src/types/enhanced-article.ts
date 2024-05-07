@@ -122,7 +122,6 @@ export type EnhancedArticle = {
   subjects?: string[],
   pdfUrl?: string,
   relatedContent?: RelatedContent[],
-  type: string,
 };
 
 export type Metrics = {
