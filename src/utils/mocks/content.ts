@@ -13,7 +13,7 @@ export const content: Content = [
   {
     type: 'Paragraph',
     content: [
-      'Autpohagy is the lysosome-based degradation system in eukaryotes essential for cellular\n                homeostasis as part of intracellular quality control and intracellular remodeling during environmental\n                adaptation (\n                ',
+      'Autophagy is the lysosome-based degradation system in eukaryotes essential for cellular\n                homeostasis as part of intracellular quality control and intracellular remodeling during environmental\n                adaptation (\n                ',
       {
         type: 'Emphasis',
         content: [
