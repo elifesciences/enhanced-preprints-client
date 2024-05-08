@@ -59,6 +59,9 @@ jobs:
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
+      - name: Visual Regression Tests
+        id: visualregression
+        run: yarn visual-regression:test
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
