@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticImageData } from 'next/image';
-import logo from '../public/epp_logo.png';
+import eppLogo from '../public/epp_logo.png';
+import asteraLogo from '../public/astera_logo.png';
 
 export type Brand = {
   colors: {
@@ -24,7 +25,7 @@ export type Brand = {
 export const defaultBrand = {
   publisher: 'Enhanced Preprints Platform',
   logo: {
-    url: logo,
+    url: eppLogo,
     width: 100,
     height: 40,
   },
@@ -81,4 +82,17 @@ export const scietyBrand: Brand = {
     height: 36,
   },
   twitterHandle: '@sciety',
+};
+export const asteraBrand: Brand = {
+  colors: {
+    primary: 'rgb(224, 173, 56)',
+  },
+  journal: 'Astera',
+  publisher: 'Astera',
+  logo: {
+    url: asteraLogo,
+    width: 142,
+    height: 40,
+  },
+  twitterHandle: '@AsteraInstitute',
 };

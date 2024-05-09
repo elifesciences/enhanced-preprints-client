@@ -20,7 +20,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import {
-  Brand, biophysicsColabBrand, elifeBrand, scietyBrand,
+  Brand, asteraBrand, biophysicsColabBrand, elifeBrand, scietyBrand,
 } from '../../brand';
 import '../../i18n';
 import { Metrics } from '../../types/enhanced-article';
@@ -150,6 +150,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     brand = elifeBrand;
   } else if (id === '85111v1') {
     brand = scietyBrand;
+  } else if (id === '80494v1') {
+    brand = asteraBrand;
   }
 
   const status = generateStatus(articleWithVersions);
