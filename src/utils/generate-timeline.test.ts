@@ -163,24 +163,27 @@ describe('generateTimeline', () => {
     expect(timeline).toEqual([
       {
         date: 'Thu Feb 09 2023',
-        name: 'Version of Record published',
+        name: 'external_timeline_version_title',
         link: {
           text: 'Go to version',
           url: 'https://doi.org/doi-123v3',
         },
+        versionIdentifier: '3',
       },
       {
         date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
+        name: 'timeline_version_title',
         eventDescription: '(this version)',
+        versionIdentifier: '2',
       },
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
+        name: 'timeline_version_title',
         link: {
           text: 'Go to version',
           url: '/reviewed-preprints/1v1',
         },
+        versionIdentifier: '1',
       },
       {
         date: 'Mon Jan 02 2023',
@@ -189,10 +192,12 @@ describe('generateTimeline', () => {
           url: 'https://doi.org/doi-123',
           text: 'Go to preprint server',
         },
+        versionIdentifier: '1',
       },
       {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
+        versionIdentifier: '1',
       },
     ]);
   });
