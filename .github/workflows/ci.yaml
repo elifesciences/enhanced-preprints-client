@@ -134,7 +134,7 @@ jobs:
 
   notify-start:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     outputs:
       ts: ${{ steps.slack.outputs.ts }}
     steps:
@@ -245,7 +245,8 @@ jobs:
   notify-test-result:
     needs: [notify-start, test, test-integration, test-visualregression]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    if: always()
+    # if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack testing results
       uses: slackapi/slack-github-action@v1.26.0
@@ -354,7 +355,8 @@ jobs:
   notify-build-result:
     needs: [notify-start, test, test-integration, test-visualregression, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
-    if: always() && github.ref == 'refs/heads/master'
+    if: always()
+    # if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack build final message
       uses: slackapi/slack-github-action@v1.26.0
