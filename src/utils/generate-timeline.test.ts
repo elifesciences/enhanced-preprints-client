@@ -1,4 +1,8 @@
-import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
+import {
+  EnhancedArticle,
+  ProcessedArticle,
+  VersionSummary,
+} from '../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
 
 const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
@@ -44,6 +48,12 @@ const version2: EnhancedArticle = {
   article: exampleArticle,
 };
 
+const version3Summary: VersionSummary = {
+  versionIdentifier: '3',
+  published: new Date('2023-02-09'),
+  url: 'https://doi.org/doi-123v3',
+};
+
 const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
   id: article.id,
   doi: article.doi,
@@ -58,8 +68,8 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
   published: article.published,
 });
 
-describe('generateStatus', () => {
-  it('should generate the correct status with one article version', () => {
+describe('generateTimeline', () => {
+  it('should generate the correct timeline with one article version', () => {
     // Call the function
     const timeline = generateTimeline({
       article: version1,
@@ -134,6 +144,55 @@ describe('generateStatus', () => {
         date: 'Sun Jan 01 2023',
         name: 'Sent for peer review',
         versionIdentifier: '1',
+      },
+    ]);
+  });
+
+  it('should generate the correct timeline with an external version summary', () => {
+    // Call the function
+    const timeline = generateTimeline({
+      article: version2,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+        v3: version3Summary,
+      },
+    });
+
+    // Assert the result
+    expect(timeline).toEqual([
+      {
+        date: 'Thu Feb 09 2023',
+        name: 'Version of Record published',
+        link: {
+          text: 'Go to version',
+          url: 'https://doi.org/doi-123v3',
+        },
+      },
+      {
+        date: 'Mon Jan 09 2023',
+        name: 'Reviewed preprint version 2',
+        eventDescription: '(this version)',
+      },
+      {
+        date: 'Tue Jan 03 2023',
+        name: 'Reviewed preprint version 1',
+        link: {
+          text: 'Go to version',
+          url: '/reviewed-preprints/1v1',
+        },
+      },
+      {
+        date: 'Mon Jan 02 2023',
+        name: 'Posted to preprint server',
+        link: {
+          url: 'https://doi.org/doi-123',
+          text: 'Go to preprint server',
+        },
+      },
+      {
+        date: 'Sun Jan 01 2023',
+        name: 'Sent for peer review',
       },
     ]);
   });

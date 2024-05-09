@@ -13,4 +13,5 @@ export type {
   EnhancedArticleWithVersions,
   ArticleSummary,
   VersionSummary,
+  PreprintVersionSummary,
 } from './enhanced-article';

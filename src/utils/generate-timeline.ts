@@ -1,28 +1,32 @@
 import {
   EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
 } from '../types';
+import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhanced-article';
 
-const orderVersionsChronologically = (versions: VersionSummary[]) => versions.sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
+const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
+const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
+const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
 const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
-      events.push(current.id === version.article.id ?
-        {
-          date: new Date(current.published).toDateString(),
-          name: 'timeline_version_title',
-          versionIdentifier: current.versionIdentifier,
-          eventDescription: '(this version)',
-        } : {
-          date: new Date(current.published).toDateString(),
-          name: 'timeline_version_title',
-          versionIdentifier: current.versionIdentifier,
-          link: {
-            url: `/reviewed-preprints/${current.id}`,
-            text: 'Go to version',
-          },
-        });
+      events.push({
+        date: new Date(current.published).toDateString(),
+        // If external version summary then prefix with external_
+        name: `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
+        versionIdentifier: current.versionIdentifier,
+        ...(isPreprintVersionSummary(current) && current.id === version.article.id ?
+          {
+            eventDescription: '(this version)',
+          } : {
+            link: {
+              url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
+              text: 'Go to version',
+            },
+          }
+        ),
+      });
     }
     return events;
   }, []);
