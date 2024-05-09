@@ -14,7 +14,7 @@ export type Brand = {
   assessmentsUrl?: string,
   showElifeMenus?: boolean,
   logo?: {
-    alignment: 'flex-end' | 'center'
+    alignment: 'flex-end' | 'center',
     url: string | StaticImageData,
     height: number,
     width: number,
@@ -23,7 +23,7 @@ export type Brand = {
   translationNamespace?: string,
 };
 
-export const defaultBrand = {
+export const defaultBrand: Brand = {
   publisher: 'Enhanced Preprints Platform',
   logo: {
     alignment: 'flex-end',
