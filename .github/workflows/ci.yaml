@@ -150,7 +150,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -167,7 +167,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -259,7 +259,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -276,7 +276,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -368,7 +368,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -385,7 +385,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != success) &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
