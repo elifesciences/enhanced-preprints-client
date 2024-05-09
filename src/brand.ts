@@ -14,6 +14,7 @@ export type Brand = {
   assessmentsUrl?: string,
   showElifeMenus?: boolean,
   logo?: {
+    alignment: 'flex-end' | 'center'
     url: string | StaticImageData,
     height: number,
     width: number,
@@ -25,6 +26,7 @@ export type Brand = {
 export const defaultBrand = {
   publisher: 'Enhanced Preprints Platform',
   logo: {
+    alignment: 'flex-end',
     url: eppLogo,
     width: 100,
     height: 40,
@@ -48,6 +50,7 @@ export const elifeBrand: Brand = {
   assessmentsUrl: 'https://elifesciences.org/inside-elife/db24dd46',
   showElifeMenus: true,
   logo: {
+    alignment: 'flex-end',
     url: 'https://sciety.org/static/images/article-page/elife-logo-sm.svg',
     width: 80,
     height: 30,
@@ -63,6 +66,7 @@ export const biophysicsColabBrand: Brand = {
   publisher: 'Biophysics Colab',
   processUrl: 'https://www.sciencecolab.org/biophysics-colab',
   logo: {
+    alignment: 'flex-end',
     url: 'https://sciety.org/static/images/home-page/biophysics-colab.png',
     width: 104,
     height: 40,
@@ -77,6 +81,7 @@ export const scietyBrand: Brand = {
   journal: 'Sciety Preprints',
   publisher: 'Sciety Preprints',
   logo: {
+    alignment: 'flex-end',
     url: 'https://sciety.org/static/images/sciety-logo-navigation-link-colour-text.svg',
     width: 119,
     height: 36,
@@ -90,6 +95,7 @@ export const asteraBrand: Brand = {
   journal: 'Astera',
   publisher: 'Astera',
   logo: {
+    alignment: 'center',
     url: asteraLogo,
     width: 142,
     height: 40,

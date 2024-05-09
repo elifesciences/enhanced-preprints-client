@@ -11,7 +11,7 @@ export const SiteHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="site-header">
-      <div className="site-header-container">
+      <div className="site-header-container" style={{ 'align-items': brand.logo?.alignment } as React.CSSProperties}>
         <a href="/" className="site-header__logo_link">
           { brand.logo &&
             <Image
