@@ -183,7 +183,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.body) }}
                 },
                 "fields": [
                   {
@@ -293,7 +293,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.body) }}
                 },
                 "fields": [
                   {
@@ -403,7 +403,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.body) }}
                 },
                 "fields": [
                   {
