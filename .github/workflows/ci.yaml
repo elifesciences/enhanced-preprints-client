@@ -72,7 +72,7 @@ jobs:
         with:
           name: visualregression-report
           path: backstop_data/
-  test-visualregression:
+  test-chromatic:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -85,7 +85,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           exitZeroOnChanges: false
   build-and-push:
-    needs: [test, test-integration, test-visualregression]
+    needs: [test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     outputs:
@@ -150,7 +150,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -167,7 +167,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -243,7 +243,7 @@ jobs:
             ]
           }
   notify-test-result:
-    needs: [notify-start, test, test-integration, test-visualregression]
+    needs: [notify-start, test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: always()
     # if: always() && github.ref == 'refs/heads/master'
@@ -260,7 +260,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -277,7 +277,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -353,7 +353,7 @@ jobs:
             ]
           }
   notify-build-result:
-    needs: [notify-start, test, test-integration, test-visualregression, notify-test-result, build-and-push]
+    needs: [notify-start, test, test-integration, test-chromatic, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
     if: always()
     # if: always() && github.ref == 'refs/heads/master'
@@ -370,7 +370,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -387,7 +387,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-visualregression.result != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
