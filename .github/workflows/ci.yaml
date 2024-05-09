@@ -216,7 +216,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.visualregression.result && ':large_orange_circle:' || (needs.visualregression.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                    "text": "${{ !needs.chromatic.result && ':large_orange_circle:' || (needs.chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -326,7 +326,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.visualregression.result && ':large_orange_circle:' || (needs.visualregression.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                    "text": "${{ !needs.chromatic.result && ':large_orange_circle:' || (needs.chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
                   },
                   {
                     "type": "mrkdwn",
@@ -436,7 +436,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.visualregression.result && ':large_orange_circle:' || (needs.visualregression.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                    "text": "${{ !needs.chromatic.result && ':large_orange_circle:' || (needs.chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
                   },
                   {
                     "type": "mrkdwn",
