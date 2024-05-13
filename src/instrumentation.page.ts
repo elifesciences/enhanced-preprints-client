@@ -1,5 +1,5 @@
 import { registerOTel } from '@vercel/otel';
 
 export function register() {
-  registerOTel({ serviceName: 'epp-client' });
+  registerOTel({ serviceName: 'epp-client', attributes: { experiments: ['otel'] } });
 }
