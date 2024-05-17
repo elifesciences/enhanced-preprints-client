@@ -1,12 +1,33 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
 .previous-version-warning {
-  background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
+  @include mixins.padding(24, "left");
+  @include typography.body-small();
+
+  background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0 var(--color-background);
   display: block;
+  font-weight: 600;
 }
 
 .previous-version-warning__text {
-  color: #000;
+  @include mixins.margin(8, "left");
 }
 
 .previous-version-warning__link {
-  color: #000;
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  border-radius: 3px;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
