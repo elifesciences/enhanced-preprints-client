@@ -21,6 +21,8 @@
 
 .previous-version-warning__text {
   @include mixins.margin(8, "left");
+
+  display: inline-block;
 }
 
 .previous-version-warning__link {
@@ -29,7 +31,6 @@
   border-radius: 3px;
   color: var(--color-primary);
   cursor: pointer;
-  display: inline-block;
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
