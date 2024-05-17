@@ -9,14 +9,22 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  container-type: inline-size;
+  container-name: warning;
 }
 
 .previous-version-warning {
   @include mixins.padding(24, "left");
   @include typography.body-small();
-
+  display: flex;
+  justify-content: center;
   background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
   font-weight: 600;
+  @container warning (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+  }
+  justify-content: center;
 }
 
 .previous-version-warning__text {
