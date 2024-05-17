@@ -2,12 +2,20 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
+.previous-version-warning-container {
+  @include mixins.padding(12);
+
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 .previous-version-warning {
   @include mixins.padding(24, "left");
   @include typography.body-small();
 
-  background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0 var(--color-background);
-  display: block;
+  background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
   font-weight: 600;
 }
 
