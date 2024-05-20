@@ -18,11 +18,11 @@
   @include typography.body-small();
 
   background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
-  display: flex;
   font-weight: 600;
   justify-content: center;
 
-  @container warning (max-width: 500px) {
+  // fixme: Why isn't settings.$breakpoint-small working?
+  @container warning (max-width: 480px) {
     display: flex;
     flex-direction: column;
   }
