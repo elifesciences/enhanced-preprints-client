@@ -21,7 +21,6 @@
   font-weight: 600;
   justify-content: center;
 
-  // fixme: Why isn't settings.$breakpoint-small working?
   @container warning (max-width: 480px) {
     display: flex;
     flex-direction: column;
