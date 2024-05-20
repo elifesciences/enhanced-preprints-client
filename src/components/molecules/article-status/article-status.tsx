@@ -8,6 +8,7 @@ import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
+import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 
 type ArticleStatusProps = {
   articleType?: string,
@@ -18,6 +19,7 @@ type ArticleStatusProps = {
   citation: CitationData,
   msid: string,
   metrics?: ContextualDataProps | null,
+  previousWarningFeature?: boolean | null,
 };
 
 const defaultArticleType = 'reviewed_preprint';
@@ -31,13 +33,14 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid, metrics,
+  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid, metrics, previousWarningFeature,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
   const { t } = useTranslation();
 
   return <div className="article-status">
+    {previousWarningFeature && <PreviousVersionWarning url="#" />}
     <h2 className="article-status__heading">{ t(articleType) }</h2>
     <p className="article-status__text">{articleStatus}</p>
     <a href={t('process_url')} className="article-status__link">{ t('status_about') }</a>

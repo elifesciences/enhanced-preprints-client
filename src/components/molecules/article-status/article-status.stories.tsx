@@ -18,4 +18,5 @@ Status.args = {
   pdfUrl: '#',
   citation,
   msid: '12345',
+  previousWarningFeature: true,
 };
