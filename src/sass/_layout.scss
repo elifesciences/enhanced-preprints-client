@@ -91,6 +91,7 @@
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
+    @include mixins.padding(10, "left");
 
     align-items: end;
     align-self: flex-start;
@@ -99,6 +100,7 @@
     grid-row: 2/4;
     justify-content: space-between;
     margin-top: 62px;
+    max-width: 250px;
     position: sticky;
     top: 125px;
   }
