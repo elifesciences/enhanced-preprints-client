@@ -1,0 +1,50 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.previous-version-warning-container {
+  @include mixins.padding(12);
+
+  background-color: var(--color-background);
+  container-name: warning;
+  container-type: inline-size;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.previous-version-warning {
+  @include mixins.padding(24, "left");
+  @include typography.body-small();
+
+  background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
+  font-weight: 600;
+  justify-content: center;
+
+  @container warning (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.previous-version-warning__text {
+  @include mixins.margin(8, "left");
+
+  display: inline-block;
+}
+
+.previous-version-warning__link {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  border-radius: 3px;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
