@@ -94,13 +94,13 @@
     @include mixins.padding(10, "left");
 
     align-items: end;
-    align-self: flex-start;
     flex-direction: column;
     grid-column: 9/13;
     grid-row: 2/4;
     justify-content: space-between;
     margin-top: 62px;
     max-width: 250px;
+    place-self: auto end;
     position: sticky;
     top: 125px;
   }
