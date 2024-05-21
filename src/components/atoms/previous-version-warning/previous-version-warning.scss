@@ -13,7 +13,11 @@
   margin: 0 auto;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    min-width: 100%;
+    width: 100%;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    width: auto;
   }
 }
 
