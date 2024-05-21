@@ -17,10 +17,10 @@
     @include mixins.margin(24, "top");
     @include mixins.margin(24, "bottom");
 
+    flex-grow: 1;
     max-width: 200px;
     min-width: 100px;
     width: min-content;
-    flex-grow: 1;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
