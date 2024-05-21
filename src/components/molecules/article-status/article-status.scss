@@ -22,7 +22,6 @@
     @include mixins.padding(0, "right");
 
     border-bottom: var(--border);
-    max-width: 233px;
     min-width: 100px;
   }
 }

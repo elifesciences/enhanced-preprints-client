@@ -21,7 +21,7 @@
     @include mixins.margin(0, "top");
 
     border-bottom: var(--border);
-    max-width: 233px;
+    max-width: 100%;
   }
 }
 
