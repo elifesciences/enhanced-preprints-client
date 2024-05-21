@@ -11,6 +11,10 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    min-width: 100%;
+  }
 }
 
 .previous-version-warning {

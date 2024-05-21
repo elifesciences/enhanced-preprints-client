@@ -13,7 +13,8 @@
     @include mixins.padding(72, "right");
 
     border-bottom: none;
-    width: 100%;
+    width: min-content;
+    flex-grow: 1;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {

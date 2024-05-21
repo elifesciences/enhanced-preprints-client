@@ -85,6 +85,7 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     align-items: start;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     grid-column: 2/12;
   }

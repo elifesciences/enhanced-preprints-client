@@ -14,7 +14,8 @@
 
     max-width: 200px;
     min-width: 100px;
-    width: 100%;
+    width: min-content;
+    flex-grow: 1;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
