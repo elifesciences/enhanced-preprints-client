@@ -7,8 +7,6 @@
   @include mixins.margin(24, "bottom");
   @include mixins.padding(72, "right");
 
-  margin: 0 0 0 auto;
-
   &:last-child {
     @include mixins.padding(0, "right");
   }
@@ -17,10 +15,9 @@
     @include mixins.margin(24, "top");
     @include mixins.margin(24, "bottom");
 
-    flex-grow: 1;
-    max-width: 200px;
+    max-width: 50%;
     min-width: 100px;
-    width: min-content;
+    width: 50%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {

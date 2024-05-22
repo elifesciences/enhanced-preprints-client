@@ -10,19 +10,17 @@
   margin: 0 0 0 auto;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(24, "top");
-
-    flex-grow: 1;
-    max-width: 200px;
-    min-width: 100px;
-    width: min-content;
+    display: none;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
-
+    
     border-bottom: var(--border);
+    display: unset;
+    flex-grow: 1;
     max-width: 100%;
+    min-width: 100px;
     width: 100%;
   }
 }
