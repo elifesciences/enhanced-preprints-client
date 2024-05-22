@@ -16,12 +16,11 @@
     @include mixins.margin(24, "bottom");
     @include mixins.padding(0, "right");
 
-    width: 50%;
+    width: calc(50% - 12px);
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
-    @include mixins.margin(24, "bottom");
     @include mixins.margin(0, "left");
 
     border-bottom: var(--border);
