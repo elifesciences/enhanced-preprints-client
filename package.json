@@ -66,6 +66,7 @@
     "@storybook/addon-essentials": "^8.0.0",
     "@storybook/addon-interactions": "^8.0.0",
     "@storybook/addon-links": "^8.0.0",
+    "@storybook/addon-viewport": "^8.1.2",
     "@storybook/cli": "^8.0.0",
     "@storybook/nextjs": "^8.0.0",
     "@storybook/node-logger": "^8.0.0",

@@ -13,6 +13,24 @@ import { contentToHeadings } from '../../../utils/content-to-headings';
 export default {
   title: 'Pages/Article Page',
   component: ArticlePage,
+  parameters: {
+    chromatic: {
+      modes: {
+        small: {
+          viewport: 'small',
+        },
+        medium: {
+          viewport: 'medium',
+        },
+        large: {
+          viewport: 'large',
+        },
+        extraLarge: {
+          viewport: 'extraLarge',
+        },
+      },
+    },
+  },
 } as Meta<typeof ArticlePage>;
 
 const tabs = [
