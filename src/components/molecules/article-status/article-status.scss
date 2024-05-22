@@ -10,8 +10,6 @@
   border-bottom: var(--border);
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.padding(72, "right");
-
     border-bottom: none;
     width: 50%;
   }
@@ -19,10 +17,8 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(24, "bottom");
     @include mixins.margin(0, "top");
-    @include mixins.padding(0, "right");
 
     border-bottom: var(--border);
-    min-width: 100px;
     width: 100%;
   }
 }
