@@ -10,10 +10,10 @@
   border-bottom: var(--border);
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(24, "right");
+    @include mixins.margin(72, "right");
 
     border-bottom: none;
-    width: calc(50% - 12px);
+    width: 50%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
