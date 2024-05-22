@@ -15,7 +15,7 @@
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
-    
+
     border-bottom: var(--border);
     display: unset;
     flex-grow: 1;
