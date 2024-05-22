@@ -11,6 +11,14 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    width: 100%;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    width: auto;
+  }
 }
 
 .previous-version-warning {

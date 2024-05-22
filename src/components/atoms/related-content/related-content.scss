@@ -10,18 +10,15 @@
   margin: 0 0 0 auto;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(24, "top");
-
-    max-width: 200px;
-    min-width: 100px;
-    width: 100%;
+    display: none;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
 
     border-bottom: var(--border);
-    max-width: 100%;
+    display: unset;
+    width: 100%;
   }
 }
 
