@@ -7,6 +7,8 @@
   @include mixins.margin(24, "bottom");
   @include mixins.padding(72, "right");
 
+  margin: 0 0 0 auto;
+
   &:last-child {
     @include mixins.padding(0, "right");
   }
