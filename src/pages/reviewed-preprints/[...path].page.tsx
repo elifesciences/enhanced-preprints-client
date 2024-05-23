@@ -24,7 +24,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
-import { Metrics } from '../../types/enhanced-article';
+import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 
 type PageProps = {
   metaData: MetaData,
@@ -35,6 +35,7 @@ type PageProps = {
   content: Content,
   peerReview: PeerReview | null,
   metrics: Metrics | null,
+  previousVersionWarningUrl: string | null,
 };
 
 const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
@@ -136,7 +137,7 @@ export const Page = (props: PageProps) => {
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
-        previousVersionWarningUrl={props.metaData.msid === '85111' ? 'https://elifesciences.org/articles/85111' : undefined}
+        previousVersionWarningUrl={props.previousVersionWarningUrl}
         metrics={props.metrics} relatedContent={relatedContent}
         metaData={props.metaData} msidWithVersion={props.msidWithVersion}
         tabs={tabs} status={props.status}
@@ -173,6 +174,16 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const latestVersion = Object.values(articleWithVersions.versions) // get the versions in an array
+    .filter((ver) => ver.published !== undefined) // get only the versions that have been published
+    .sort((a, b) => new Date(a.published!).getTime() - new Date(b.published!).getTime()) // sort them by published date
+    .reverse()[0]; // reverse the array so the latest is the first entry and return it
+
+  let previousVersionWarningUrl = null;
+  if (latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
+    previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
+  }
+
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
   const status = generateStatus(articleWithVersions);
@@ -205,6 +216,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
+      previousVersionWarningUrl,
     },
   };
 };
