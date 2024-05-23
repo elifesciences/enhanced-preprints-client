@@ -63,7 +63,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        {props.previousWarningFeature && <PreviousVersionWarning url="#" />}
+        {props.previousWarningFeature && <PreviousVersionWarning url="https://elifesciences.org/articles/85111" />}
         <ArticleStatus
           articleStatus={props.status.status}
           doi={doi}
