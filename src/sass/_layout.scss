@@ -98,11 +98,11 @@
     grid-column: 9/13;
     grid-row: 2/4;
     justify-content: space-between;
-    margin-top: 62px;
+    margin-top: 52px;
     max-width: 250px;
     place-self: flex-start end;
     position: sticky;
-    top: 125px;
+    top: 115px;
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {

@@ -17,7 +17,10 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    width: auto;
+    @include mixins.margin(-10, "left");
+    @include mixins.margin(26, "bottom");
+
+    width: 236px;
   }
 }
 
@@ -32,6 +35,10 @@
   @container warning (max-width: 480px) {
     display: flex;
     flex-direction: column;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    width: 100%;
   }
 }
 
