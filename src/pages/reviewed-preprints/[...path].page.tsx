@@ -135,7 +135,13 @@ export const Page = (props: PageProps) => {
         <meta name="citation_language" content="en"/>
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
-      <ArticlePage previousWarningFeature={(props.metaData.msid === '85111')} metrics={props.metrics} relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+      <ArticlePage
+        previousWarningFeature={(props.metaData.msid === '85111')}
+        metrics={props.metrics} relatedContent={relatedContent}
+        metaData={props.metaData} msidWithVersion={props.msidWithVersion}
+        tabs={tabs} status={props.status}
+        activeTab={tabName}
+      >
         { tabContent }
       </ArticlePage>
     </>
