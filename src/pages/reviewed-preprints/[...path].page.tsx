@@ -25,6 +25,7 @@ import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
+import { getLatestVersion } from '../../utils/get-latest-version';
 
 type PageProps = {
   metaData: MetaData,
@@ -174,10 +175,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const latestVersion = Object.values(articleWithVersions.versions) // get the versions in an array
-    .filter((ver) => ver.published !== undefined) // get only the versions that have been published
-    .sort((a, b) => new Date(a.published!).getTime() - new Date(b.published!).getTime()) // sort them by published date
-    .reverse()[0]; // reverse the array so the latest is the first entry and return it
+  const latestVersion = getLatestVersion(articleWithVersions);
 
   let previousVersionWarningUrl = null;
   if (latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
