@@ -34,7 +34,7 @@ export type ArticlePageProps = {
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
-  previousWarningFeature?: boolean | null,
+  previousVersionWarningUrl?: string,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -63,7 +63,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        {props.previousWarningFeature && <PreviousVersionWarning url="https://elifesciences.org/articles/85111" />}
+        {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
         <ArticleStatus
           articleStatus={props.status.status}
           doi={doi}

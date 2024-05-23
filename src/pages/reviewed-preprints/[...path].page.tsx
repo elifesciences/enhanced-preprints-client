@@ -136,7 +136,7 @@ export const Page = (props: PageProps) => {
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
-        previousWarningFeature={(props.metaData.msid === '85111')}
+        previousVersionWarningUrl={props.metaData.msid === '85111' ? 'https://elifesciences.org/articles/85111' : undefined}
         metrics={props.metrics} relatedContent={relatedContent}
         metaData={props.metaData} msidWithVersion={props.msidWithVersion}
         tabs={tabs} status={props.status}
