@@ -64,7 +64,7 @@ ArticlePageFullTextTab.args = {
   tabs,
   relatedContent,
   metrics,
-  previousWarningFeature: true,
+  previousVersionWarningUrl: '#',
 };
 
 const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={jsxContent} /></ArticlePage></DefaultLayout>;
