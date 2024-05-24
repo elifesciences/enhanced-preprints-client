@@ -90,14 +90,14 @@ export type PreprintVersionSummary = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  published?: Date,
+  published: Date | null,
 };
 
 export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
 
 export type ExternalVersionSummary = {
   versionIdentifier: string,
-  published?: Date,
+  published: Date | null,
   url: string,
 };
 
@@ -117,7 +117,7 @@ export type EnhancedArticle = {
   preprintPosted: Date,
   sentForReview?: Date,
   peerReview?: PeerReview,
-  published?: Date,
+  published: Date | null,
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,

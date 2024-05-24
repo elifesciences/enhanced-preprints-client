@@ -178,7 +178,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const latestVersion = getLatestVersion(articleWithVersions);
 
   let previousVersionWarningUrl = null;
-  if (latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
+  if (latestVersion && latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
     previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
   }
 
