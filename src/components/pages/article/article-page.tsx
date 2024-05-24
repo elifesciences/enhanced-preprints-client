@@ -34,7 +34,7 @@ export type ArticlePageProps = {
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
-  previousVersionWarningUrl?: string,
+  previousVersionWarningUrl: string | null,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
