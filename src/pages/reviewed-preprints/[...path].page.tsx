@@ -179,7 +179,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   let previousVersionWarningUrl = null;
   if (latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
-    previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
+    previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `/reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
   }
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
