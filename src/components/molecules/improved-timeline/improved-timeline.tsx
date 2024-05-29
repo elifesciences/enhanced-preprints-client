@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 
 type ImprovedTimelineItem = {
-  name: string,
   version: number,
   date: string,
 };
@@ -19,7 +18,7 @@ export const ImprovedTimeline = ({ items }: ImprovedTimelineProps) => (
         const typeClass = `improved-review-timeline__${item.version > 1 ? 'revised' : 'reviewed'}`;
         return (
           <Fragment key={index}>
-            <dt className={`improved-review-timeline__event ${typeClass}`}>{item.name}</dt>
+            <dt className={`improved-review-timeline__event ${typeClass}`}>Reviewed preprint</dt>
             <dd className={`improved-review-timeline__detail ${typeClass}`}>
               <span className="improved-review-timeline__version">{`v${item.version}`}</span>
               <time className="improved-review-timeline__date" dateTime={item.date.toString()}>{formatDate(item.date)}</time>
