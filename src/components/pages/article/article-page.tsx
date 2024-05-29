@@ -35,6 +35,7 @@ export type ArticlePageProps = {
   activeTab: string,
   tabs: Tab[],
   previousVersionWarningUrl: string | null,
+  improvedTimelineFeature?: boolean,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -73,6 +74,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           citation={citation}
           msid={props.metaData.msid}
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
+          improvedTimelineFeature={props.improvedTimelineFeature}
         />
         <Timeline events={props.status.timeline}/>
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
