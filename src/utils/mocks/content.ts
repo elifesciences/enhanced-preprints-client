@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { Content } from '../../types';
+import placeholderImg from './placeholder.png';
 
 export const content: Content = [
   {
@@ -1086,7 +1087,7 @@ export const content: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
+        contentUrl: placeholderImg.src,
         meta: {
           inline: false
         }
@@ -1823,7 +1824,7 @@ export const content: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
+        contentUrl: placeholderImg.src,
         meta: {
           inline: false
         }
@@ -2502,7 +2503,7 @@ export const content: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
+        contentUrl: placeholderImg.src,
         meta: {
           inline: false
         }
@@ -3121,7 +3122,7 @@ export const content: Content = [
     content: [
       {
         type: 'ImageObject',
-        contentUrl: 'https://via.placeholder.com/500x300/087ACC/FFFFFF?text=figure+image',
+        contentUrl: placeholderImg.src,
         meta: {
           inline: false
         }
