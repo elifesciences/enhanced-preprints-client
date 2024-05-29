@@ -2,86 +2,76 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.improved-review-timeline__event {
-  @include typography.font-size-and-vertical-height(16, 24);
-  @include mixins.padding(26, "left");
+.improved-review-timeline {
+  &__event,
+  &__detail {
+    @include typography.font-size-and-vertical-height(16, 24);
+    @include mixins.padding(26, "left");
 
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  position: relative;
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    position: relative;
 
-  &::before {
-    background-color: var(--border-timeline);
+    &::before {
+      background-color: var(--border-timeline);
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 8px;
+    }
+
+    &.improved-review-timeline__revised::before {
+      background-color: var(--border-timeline-revised);
+    }
+  }
+
+  &__event::before {
     border-radius: 6px 6px 0 0;
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 8px;
   }
 
-  &.improved-review-timeline__revised::before {
-    background-color: var(--border-timeline-revised);
-  }
-}
+  &__detail {
+    @include mixins.margin(0);
 
-.improved-review-timeline__detail {
-  @include mixins.margin(0);
-  @include mixins.padding(26, "left");
-
-  position: relative;
-
-  &::before {
-    background-color: var(--border-timeline);
-    border-radius: 0 0 6px 6px;
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 8px;
+    &::before {
+      border-radius: 0 0 6px 6px;
+    }
   }
 
-  &.improved-review-timeline__revised::before {
-    background-color: var(--border-timeline-revised);
+  &__version,
+  &__date {
+    @include typography.font-size-and-vertical-height(14, 24);
+
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
   }
-}
 
-.improved-review-timeline__version {
-  @include typography.font-size-and-vertical-height(14, 24);
-
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-
-  &::after {
+  &__version::after {
     content: " • ";
   }
-}
 
-.improved-review-timeline__date {
-  @include typography.font-size-and-vertical-height(14, 24);
+  &__date {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
 
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-  font-weight: 400;
-}
+  &__link {
+    @include mixins.padding(3, "bottom");
+    @include mixins.padding(3, "top");
+    @include typography.font-size-and-vertical-height(14, 20);
 
-.improved-review-timeline__link {
-  @include mixins.padding(3, "bottom");
-  @include mixins.padding(3, "top");
-  @include typography.font-size-and-vertical-height(14, 20);
+    clear: left;
+    color: var(--link-timeline);
+    display: block;
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-decoration: none;
 
-  clear: left;
-  color: var(--link-timeline);
-  display: block;
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  text-decoration: none;
-
-  .improved-review-timeline__revised & {
-    color: var(--link-timeline-revised);
+    .improved-review-timeline__revised & {
+      color: var(--link-timeline-revised);
+    }
   }
 }
