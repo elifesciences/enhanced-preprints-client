@@ -11,6 +11,7 @@ import { BrandContext } from '../../../brand';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
+import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -33,6 +34,7 @@ export type ArticlePageProps = {
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
+  previousVersionWarningUrl: string | null,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -61,6 +63,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
+        {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
         <ArticleStatus
           articleStatus={props.status.status}
           doi={doi}

@@ -15,3 +15,4 @@ export type {
   VersionSummary,
   PreprintVersionSummary,
 } from './enhanced-article';
+export { isPreprintVersionSummary } from './enhanced-article';

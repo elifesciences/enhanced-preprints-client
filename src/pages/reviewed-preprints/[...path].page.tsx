@@ -23,7 +23,8 @@ import {
   Brand, asteraBrand, biophysicsColabBrand, elifeBrand, scietyBrand,
 } from '../../brand';
 import '../../i18n';
-import { Metrics } from '../../types/enhanced-article';
+import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
+import { getLatestVersion } from '../../utils/get-latest-version';
 
 type PageProps = {
   brand: Brand | null,
@@ -35,6 +36,7 @@ type PageProps = {
   content: Content,
   peerReview: PeerReview | null,
   metrics: Metrics | null,
+  previousVersionWarningUrl: string | null,
 };
 
 export const Page = (props: PageProps) => {
@@ -110,7 +112,7 @@ export const Page = (props: PageProps) => {
 
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  return <ArticlePage relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+  return <ArticlePage previousVersionWarningUrl={props.previousVersionWarningUrl} relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
     { tabContent }
   </ArticlePage>;
 };
@@ -138,6 +140,13 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
     return { notFound: true };
+  }
+
+  const latestVersion = getLatestVersion(articleWithVersions);
+
+  let previousVersionWarningUrl = null;
+  if (latestVersion && latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
+    previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `/reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
   }
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
@@ -185,6 +194,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
+      previousVersionWarningUrl,
     },
   };
 };

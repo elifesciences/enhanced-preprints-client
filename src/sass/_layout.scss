@@ -85,22 +85,24 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     align-items: start;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     grid-column: 2/12;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
+    @include mixins.padding(10, "left");
 
     align-items: end;
-    align-self: flex-start;
     flex-direction: column;
     grid-column: 9/13;
     grid-row: 2/4;
     justify-content: space-between;
-    margin-top: 62px;
+    margin-top: 52px;
+    max-width: 250px;
+    place-self: flex-start end;
     position: sticky;
-    top: 125px;
+    top: 115px;
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {

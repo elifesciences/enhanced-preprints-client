@@ -1,8 +1,8 @@
 import {
-  EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, PreprintVersionSummary, ArticleStatus,
+  EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, ArticleStatus,
+  isPreprintVersionSummary,
 } from '../types';
 
-const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
 const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: VersionSummary) => isPreprintVersionSummary(version) && version.id === article.id && version.versionIdentifier === article.versionIdentifier;
 
 const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());

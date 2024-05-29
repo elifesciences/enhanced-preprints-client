@@ -16,19 +16,17 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(24, "top");
     @include mixins.margin(24, "bottom");
+    @include mixins.padding(0, "right");
 
-    max-width: 200px;
-    min-width: 100px;
-    width: 100%;
+    width: calc(50% - 72px);
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "top");
-    @include mixins.margin(24, "bottom");
-    @include mixins.padding(0, "right");
+    @include mixins.margin(0, "left");
 
     border-bottom: var(--border);
-    max-width: 233px;
+    width: 100%;
   }
 }
 
