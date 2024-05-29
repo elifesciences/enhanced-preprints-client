@@ -87,6 +87,12 @@
     font-family: var(--font-family-primary);
     font-weight: 600;
     text-decoration: none;
+    width: max-content;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
     .improved-review-timeline__revised & {
       color: var(--link-timeline-revised);
