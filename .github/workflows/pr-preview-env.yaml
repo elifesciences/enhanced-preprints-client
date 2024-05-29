@@ -28,13 +28,13 @@ jobs:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          target: prod
+          target: dev
           platforms: linux/amd64,linux/arm64
       - name: Load preview image
         uses: docker/build-push-action@v5
         with:
           context: .
-          target: prod
+          target: dev
           platforms: linux/amd64
           load: true
           tags: |
