@@ -4,9 +4,11 @@ import { ArticleStatus } from './article-status';
 
 describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
-    render(<ArticleStatus articleType="cookie recipe" articleStatus="delicious" pdfUrl='#' doi='www.google.com' title='I am a title' citation={citation} msid="12345"/>);
+    render(<ArticleStatus timeline={{ events: [{version: 2, date: '2024-05-29'}] }} pdfUrl='#' doi='www.google.com' title='I am a title' citation={citation} msid="12345"/>);
 
-    expect(screen.getByText('cookie recipe')).toBeInTheDocument();
-    expect(screen.getByText('delicious')).toBeInTheDocument();
+    expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
+    expect(screen.getByText('v2')).toBeInTheDocument();
+    expect(screen.getByText('May 29, 2024')).toBeInTheDocument();
+    expect(screen.getByText('Revised by authors')).toBeInTheDocument();
   });
 });
