@@ -4,26 +4,48 @@
 
 .improved-review-timeline__event {
   @include typography.font-size-and-vertical-height(16, 24);
-  @include mixins.padding(18, "left");
+  @include mixins.padding(26, "left");
 
-  border-left: 8px solid var(--border-timeline);
   color: var(--color-text);
   font-family: var(--font-family-primary);
   font-weight: 600;
+  position: relative;
 
-  &.improved-review-timeline__revised {
-    border-left-color: var(--border-timeline-revised); // Adjust the variable as needed
+  &::before {
+    background-color: var(--border-timeline);
+    border-radius: 6px 6px 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8px;
+  }
+
+  &.improved-review-timeline__revised::before {
+    background-color: var(--border-timeline-revised);
   }
 }
 
 .improved-review-timeline__detail {
   @include mixins.margin(0);
-  @include mixins.padding(18, "left");
+  @include mixins.padding(26, "left");
 
-  border-left: 8px solid var(--border-timeline);
+  position: relative;
 
-  &.improved-review-timeline__revised {
-    border-left-color: var(--border-timeline-revised); // Adjust the variable as needed
+  &::before {
+    background-color: var(--border-timeline);
+    border-radius: 0 0 6px 6px;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8px;
+  }
+
+  &.improved-review-timeline__revised::before {
+    background-color: var(--border-timeline-revised);
   }
 }
 
