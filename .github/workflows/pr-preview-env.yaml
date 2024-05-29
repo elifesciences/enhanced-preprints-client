@@ -42,7 +42,7 @@ jobs:
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
       - name: run image
-        run: docker run --rm -d ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} --name "test_preview" -p 3000:3000
+        run: docker run --rm -d --name "test_preview" -p 3000:3000 ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
       - name: test /status endpoint
         run: curl --retry-connrefused --retry 5 http://localhost:3000/status
       - name: clean up running image
