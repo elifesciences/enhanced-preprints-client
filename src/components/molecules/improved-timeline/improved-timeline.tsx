@@ -23,7 +23,7 @@ export const ImprovedTimeline = ({ items }: ImprovedTimelineProps) => (
             <dd className={`improved-review-timeline__detail ${typeClass}`}>
               <span className="improved-review-timeline__version">{`v${item.version}`}</span>
               <time className="improved-review-timeline__date" dateTime={item.date.toString()}>{formatDate(item.date)}</time>
-              <span className="improved-review-timeline__description">{item.version > 1 ? 'Revised by authors' : 'Not revised'}</span>
+              <a className="improved-review-timeline__link" href="https://elifesciences.org/peer-review-process">{item.version > 1 ? 'Revised by authors' : 'Not revised'}</a>
             </dd>
           </Fragment>
         );
