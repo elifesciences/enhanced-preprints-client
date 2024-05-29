@@ -10,7 +10,7 @@ const Template: StoryFn<typeof ImprovedTimeline> = (args) => <ImprovedTimeline {
 
 export const EventTimeline = Template.bind({});
 EventTimeline.args = {
-  items: [
+  events: [
     {
       date: '2023-03-18',
       version: 1,
@@ -20,7 +20,7 @@ EventTimeline.args = {
 
 export const EventTimelineRevised = Template.bind({});
 EventTimelineRevised.args = {
-  items: [
+  events: [
     {
       date: '2023-03-18',
       version: 2,

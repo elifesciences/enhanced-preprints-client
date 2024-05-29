@@ -50,7 +50,7 @@ export const ArticleStatus = ({
     }
     {
       improvedTimelineFeature &&
-      <ImprovedTimeline items={[{ version: 1, date: '2024-05-29' }]}/>
+      <ImprovedTimeline events={[{ version: 1, date: '2024-05-29' }]}/>
     }
     <ul className="article-actions">
       { pdfUrl && (
