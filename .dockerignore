@@ -31,10 +31,6 @@ test-results/**
 # Storybook
 .storybook/**
 
-# dev/example data
-data/
-wiremock/
-
 # Dev tooling
 Makefile
 .husky/**
