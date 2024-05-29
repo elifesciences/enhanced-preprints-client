@@ -43,12 +43,13 @@ export const ArticleStatus = ({
     {
     !improvedTimelineFeature &&
       <>
-        <h2 className="article-status__heading">{ t(articleType) }</h2>
+        <h2 className="article-status__heading">{t(articleType)}</h2>
         <p className="article-status__text">{articleStatus}</p>
+        <a href={t('process_url')} className="article-status__link">{t('status_about')}</a>
       </>
     }
     {
-    improvedTimelineFeature &&
+      improvedTimelineFeature &&
       <ImprovedTimeline items={[{ version: 1, date: '2024-05-29' }]}/>
     }
     <ul className="article-actions">
