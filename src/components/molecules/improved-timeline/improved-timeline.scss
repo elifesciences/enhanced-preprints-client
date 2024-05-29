@@ -1,0 +1,51 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.improved-review-timeline__event {
+  @include typography.font-size-and-vertical-height(16, 24);
+  @include mixins.padding(18, "left");
+
+  border-left: 8px solid;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
+
+.improved-review-timeline__detail {
+  @include mixins.margin(0);
+  @include mixins.padding(18, "left");
+
+  border-left: 8px solid;
+}
+
+.improved-review-timeline__version {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+
+  &::after {
+    content: " • ";
+  }
+}
+
+.improved-review-timeline__date {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+}
+
+.improved-review-timeline__description {
+  @include mixins.padding(3, "bottom");
+  @include mixins.padding(3, "top");
+  @include typography.font-size-and-vertical-height(14, 20);
+
+  clear: left;
+  display: block;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
