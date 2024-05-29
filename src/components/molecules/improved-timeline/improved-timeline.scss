@@ -4,7 +4,10 @@
 
 .improved-review-timeline__event {
   @include typography.font-size-and-vertical-height(16, 24);
+  @include mixins.padding(18, "left");
 
+  border-left: 8px solid;
+  border-top-left-radius: 6px;
   color: var(--color-text);
   font-family: var(--font-family-primary);
   font-weight: 600;
@@ -12,6 +15,10 @@
 
 .improved-review-timeline__detail {
   @include mixins.margin(0);
+  @include mixins.padding(18, "left");
+
+  border-bottom-left-radius: 6px;
+  border-left: 8px solid;   
 }
 
 .improved-review-timeline__version {
