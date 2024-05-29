@@ -56,7 +56,6 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.54.5",
     "@next/eslint-plugin-next": "^14.0.0",
     "@playwright/test": "^1.29.2",
     "@storybook/addon-a11y": "^8.0.0",
@@ -101,6 +100,7 @@
     "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
     "react-app-polyfill": "^3.0.0",
+    "sass": "^1.54.5",
     "storybook": "^8.0.0",
     "storybook-dark-mode": "^4.0.0",
     "stylelint": "^16.2.0",
