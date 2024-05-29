@@ -10,7 +10,6 @@ jobs:
     if: ${{ contains(github.event.pull_request.labels.*.name, 'preview') }}
     env:
       CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
-      STORYBOOK_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-storybook
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -30,6 +29,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: prod
+          platforms: linux/amd64,linux/arm64
           load: true
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
@@ -46,6 +46,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           target: prod
           platforms: linux/amd64,linux/arm64
           push: true
@@ -53,14 +55,3 @@ jobs:
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push preview storybook image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          target: storybook
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}
-            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}
-            ${{ env.STORYBOOK_IMAGE_REPO }}:preview-${{ github.event.number }}-${{ github.event.pull_request.head.sha }}-${{ steps.date.outputs.date }}
