@@ -26,6 +26,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           target: dev
           platforms: linux/amd64
           load: true
