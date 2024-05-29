@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import './improved-timeline.scss';
 
 type ImprovedTimelineItem = {
   version: number,

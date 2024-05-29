@@ -1,0 +1,11 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.improved-review-timeline__event {
+  @include typography.font-size-and-vertical-height(16, 24);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
