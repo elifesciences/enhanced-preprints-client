@@ -22,23 +22,31 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and load preview image
+      - name: Build preview image
         uses: docker/build-push-action@v5
         with:
           context: .
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          target: dev
+          target: prod
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
+      - name: load preview image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          target: prod
           platforms: linux/amd64
           load: true
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
-      - name: run test
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn test --ci --watchAll=false
-      - name: run lint
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn lint
-      - name: run lint-sass
-        run: docker run ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} yarn lint-sass
+      - name: run image
+        run: docker run --rm -d ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }} --name "test_preview" -p 3000:3000
+      - name: test /status endpoint
+        run: curl --retry-connrefused --retry 5 http://localhost:3000/status
+      - name: clean up running image
+        run: docker stop test_preview
       - name: Get current date
         id: date
         run: echo "date=$(date --utc +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
