@@ -41,15 +41,15 @@ export const ArticleStatus = ({
 
   return <div className="article-status">
     {
-    !improvedTimelineFeature &&  
+    !improvedTimelineFeature &&
       <>
-          <h2 className="article-status__heading">{ t(articleType) }</h2>
-          <p className="article-status__text">{articleStatus}</p>
+        <h2 className="article-status__heading">{ t(articleType) }</h2>
+        <p className="article-status__text">{articleStatus}</p>
       </>
     }
     {
-    improvedTimelineFeature &&  
-      <ImprovedTimeline items={[{version: 1, date: "2024-05-29"}]}/>
+    improvedTimelineFeature &&
+      <ImprovedTimeline items={[{ version: 1, date: '2024-05-29' }]}/>
     }
     <ul className="article-actions">
       { pdfUrl && (
