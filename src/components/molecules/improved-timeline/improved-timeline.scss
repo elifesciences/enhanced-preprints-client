@@ -33,3 +33,14 @@
   font-family: var(--font-family-primary);
   font-weight: 400;
 }
+
+.improved-review-timeline__description {
+  @include mixins.padding(3, "bottom");
+  @include mixins.padding(3, "top");
+  @include typography.font-size-and-vertical-height(14, 20);
+
+  clear: left;
+  display: block;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
