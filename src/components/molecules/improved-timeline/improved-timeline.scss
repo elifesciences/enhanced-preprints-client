@@ -25,3 +25,11 @@
     content: " • ";
   }
 }
+
+.improved-review-timeline__date {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+}
