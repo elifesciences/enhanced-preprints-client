@@ -5,7 +5,6 @@
 .improved-review-timeline {
   &__event,
   &__detail {
-    @include typography.font-size-and-vertical-height(16, 24);
     @include mixins.padding(26, "left");
 
     color: var(--color-text);
@@ -26,6 +25,10 @@
     &.improved-review-timeline__revised::before {
       background-color: var(--border-timeline-revised);
     }
+  }
+
+  &__event {
+    @include typography.font-size-and-vertical-height(16, 24);
   }
 
   &__event::before {
