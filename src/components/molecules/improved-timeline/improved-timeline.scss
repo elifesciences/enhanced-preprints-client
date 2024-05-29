@@ -9,3 +9,19 @@
   font-family: var(--font-family-primary);
   font-weight: 600;
 }
+
+.improved-review-timeline__detail {
+  @include mixins.margin(0);
+}
+
+.improved-review-timeline__version {
+  @include typography.font-size-and-vertical-height(14, 24);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+
+  &::after {
+    content: " • ";
+  }
+}
