@@ -19,7 +19,7 @@
   &__detail {
     @include mixins.padding(26, "left");
 
-    color: var(--color-text);
+    color: var(--color-text-secondary);
     font-family: var(--font-family-primary);
     font-weight: 600;
     position: relative;
@@ -34,11 +34,18 @@
       width: 8px;
     }
 
-    &.improved-review-timeline__reviewed::before {
+    &.improved-review-timeline__event {
+      &--reviewed,
+      &--revised {
+        color: var(--color-text);
+      }
+    }
+
+    &.improved-review-timeline__event--reviewed::before {
       background-color: var(--border-timeline-reviewed);
     }
 
-    &.improved-review-timeline__revised::before {
+    &.improved-review-timeline__event--revised::before {
       background-color: var(--border-timeline-revised);
     }
   }
@@ -48,6 +55,22 @@
 
     &:not(:first-child) {
       @include mixins.margin(18, "top");
+    }
+
+    &-link {
+      color: var(--color-text-secondary);
+      font-family: var(--font-family-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .improved-review-timeline__event--reviewed &,
+      .improved-review-timeline__event--revised & {
+        color: var(--color-text);
+      }
     }
   }
 
@@ -67,7 +90,6 @@
   &__date {
     @include typography.font-size-and-vertical-height(14, 24);
 
-    color: var(--color-text);
     font-family: var(--font-family-primary);
     font-weight: 600;
   }
@@ -102,11 +124,11 @@
       text-underline-offset: 3px;
     }
 
-    .improved-review-timeline__reviewed & {
+    .improved-review-timeline__event--reviewed & {
       color: var(--link-timeline-reviewed);
     }
 
-    .improved-review-timeline__revised & {
+    .improved-review-timeline__event--revised & {
       color: var(--link-timeline-revised);
     }
   }
