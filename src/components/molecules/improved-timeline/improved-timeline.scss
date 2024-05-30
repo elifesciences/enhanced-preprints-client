@@ -57,10 +57,8 @@
 
   &__version,
   &__date {
-    @include typography.font-size-and-vertical-height(14, 24);
+    @include typography.body-small();
 
-    color: var(--color-text);
-    font-family: var(--font-family-primary);
     font-weight: 600;
   }
 
