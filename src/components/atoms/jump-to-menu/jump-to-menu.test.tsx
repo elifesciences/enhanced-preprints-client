@@ -42,4 +42,27 @@ describe('JumpToMenu', () => {
     expect(screen.getByText('heading 2').parentElement).not.toHaveClass('jump-menu-list__item--active');
     expect(screen.getByText('heading 3').parentElement).not.toHaveClass('jump-menu-list__item--active');
   });
+
+  it('should display content of Link but not wrap in <a> tags', () => {
+    const headingsWithLinks = [
+      {
+        id: 's1',
+        text: [
+          'heading with ',
+          {
+            type: 'Link',
+            target: '#fig2',
+            content: [
+              'link',
+            ],
+          },
+        ],
+      },
+    ] as unknown as Heading[];
+
+    const { container } = render(<JumpToMenu headings={headingsWithLinks} />);
+
+    expect(container.querySelectorAll('.jump-menu-list__link a')).toHaveLength(0);
+    expect(container).toHaveTextContent('heading with link');
+  });
 });

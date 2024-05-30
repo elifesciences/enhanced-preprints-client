@@ -53,7 +53,7 @@ const nextConfig = {
     ]
   }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
-  assetPrefix: process.env.ASSET_PREFIX ?? '',
+  assetPrefix: '/reviewed-preprints',
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
 

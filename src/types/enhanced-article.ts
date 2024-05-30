@@ -2,6 +2,7 @@ import { Content } from './content';
 import { Institution } from './institution';
 import { PeerReview } from './peer-review';
 import { Reference } from './reference';
+import { RelatedContent } from './related-content';
 
 export type ArticleDocument = string;
 export type ArticleContent = {
@@ -79,7 +80,7 @@ export type Participant = {
   institution: string,
 };
 
-export type VersionSummary = {
+export type PreprintVersionSummary = {
   id: string,
   msid: string,
   doi: string,
@@ -89,8 +90,18 @@ export type VersionSummary = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  published?: Date,
+  published: Date | null,
 };
+
+export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
+
+export type ExternalVersionSummary = {
+  versionIdentifier: string,
+  published: Date | null,
+  url: string,
+};
+
+export type VersionSummary = PreprintVersionSummary | ExternalVersionSummary;
 
 export type EnhancedArticle = {
   id: string,
@@ -106,15 +117,23 @@ export type EnhancedArticle = {
   preprintPosted: Date,
   sentForReview?: Date,
   peerReview?: PeerReview,
-  published?: Date,
+  published: Date | null,
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,
   subjects?: string[],
   pdfUrl?: string,
+  relatedContent?: RelatedContent[],
+};
+
+export type Metrics = {
+  views: number,
+  downloads: number,
+  citations: number,
 };
 
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
+  metrics?: Metrics,
 };

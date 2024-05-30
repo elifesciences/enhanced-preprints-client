@@ -14,7 +14,7 @@ export const fetchVersionsNoContent = async (page: number, perPage: number, orde
       `order=${order}`,
       useDate === 'published' ? 'use-date=firstPublished' : '',
       startDate ? `start-date=${startDate}` : '',
-      endDate ? `end-date=${new Date(new Date().setDate(new Date(endDate).getDate() + 1)).toISOString().split('T')[0]}` : '',
+      endDate ? `end-date=${new Date(new Date().setDate(new Date(endDate).getUTCDate() + 1)).toISOString().split('T')[0]}` : '',
     ].filter((q) => q).join('&'),
   ].join('');
   return fetch(url)

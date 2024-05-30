@@ -1,22 +1,26 @@
 // colors
 
 :root {
+  --border-timeline: #f29524;
+  --border-timeline-revised: #42aea4;
   --color-primary: #087acc; // "Brand blue"
   --color-primary-dark: #0769b0;
   --color-text: #212121;
   --color-text-secondary: #757575;
   --color-button: #edeff4;
-  --color-background: #f7f7f7;
+  --color-background: #f8f9fb;
   --divider: #e0e0e0;
   --link-decoration: #212121;
   --link-decoration-secondary: #6d6d6d;
+  --link-timeline: #d04310;
+  --link-timeline-revised: #207b74;
 
   // Borders
   --border: 1px solid var(--divider);
 
   // Fonts
-  --font-family-primary: noto sans, arial, helvetica, sans-serif;
-  --font-family-secondary: noto serif, serif;
+  --font-family-primary: arial, helvetica, sans-serif;
+  --font-family-secondary: serif;
 
   // Layout
   --grid-gutter: 24px;

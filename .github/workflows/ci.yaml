@@ -55,18 +55,28 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
       - name: Bring up browser test stack
-        run: yarn start:test-env
+        run: docker compose up --wait
       - name: Debug bring up browser test stack
         if: failure()
         run: docker compose logs app
-      - name: Visual Regression Tests
-        run: yarn visual-regression:test
       - name: Browser Tests
         run: yarn test:browser
       - name: Take down browser test stack
-        run: docker compose -f docker-compose.browsertest.yaml down
+        run: docker compose down
+  test-chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: yarn
+      - uses: chromaui/action@v11
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          exitZeroOnChanges: false
   build-and-push:
-    needs: [test, test-integration]
+    needs: [test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     outputs:
@@ -115,13 +125,13 @@ jobs:
 
   notify-start:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: always() && github.ref == 'refs/heads/master'
     outputs:
       ts: ${{ steps.slack.outputs.ts }}
     steps:
     - name: Notify Slack testing started
       id: slack
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
@@ -131,7 +141,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -148,7 +158,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -164,7 +174,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.title) }}
                 },
                 "fields": [
                   {
@@ -189,15 +199,19 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ !needs.test-chromatic.result && ':large_orange_circle:' || (needs.test-chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -220,12 +234,12 @@ jobs:
             ]
           }
   notify-test-result:
-    needs: [notify-start, test, test-integration]
+    needs: [notify-start, test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack testing results
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
@@ -236,7 +250,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -253,7 +267,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -269,7 +283,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.title) }}
                 },
                 "fields": [
                   {
@@ -294,15 +308,19 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ !needs.test-chromatic.result && ':large_orange_circle:' || (needs.test-chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },
@@ -325,12 +343,12 @@ jobs:
             ]
           }
   notify-build-result:
-    needs: [notify-start, test, test-integration, notify-test-result, build-and-push]
+    needs: [notify-start, test, test-integration, test-chromatic, notify-test-result, build-and-push]
     runs-on: ubuntu-latest
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack build final message
-      uses: slackapi/slack-github-action@v1.25.0
+      uses: slackapi/slack-github-action@v1.26.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
@@ -341,7 +359,7 @@ jobs:
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
-              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+              || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                 'tests failed'
               || (!needs.build-and-push.result &&
                 'building... :sonic:'
@@ -358,7 +376,7 @@ jobs:
                   "text": "EPP Client CI: ${{
                     (!needs.test.result || !needs.test-integration.result) &&
                       'testing... :sonic:'
-                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success') &&
+                    || ((needs.test.result != 'success' || needs.test-integration.result  != 'success' || needs.test-chromatic.result != 'success') &&
                       'tests failed'
                     || (!needs.build-and-push.result &&
                       'building... :sonic:'
@@ -374,7 +392,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.commits[0].message) }}
+                  "text": ${{ toJSON(github.event.commits[0].message || github.event.pull_request.title) }}
                 },
                 "fields": [
                   {
@@ -399,15 +417,19 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Linting and unit tests"
+                    "text": "${{ !needs.test.result && ':large_orange_circle:' || (needs.test.result == 'success' && ':white_check_mark:' || ':x:') }} Linting and unit tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':large_green_circle:' || ':red_circle:') }} Integration tests"
+                    "text": "${{ !needs.test-integration.result && ':large_orange_circle:' || (needs.test-integration.result == 'success' && ':white_check_mark:' || ':x:') }} Integration tests"
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':large_green_circle:' || ':red_circle:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
+                    "text": "${{ !needs.test-chromatic.result && ':large_orange_circle:' || (needs.test-chromatic.result == 'success' && ':white_check_mark:' || ':x:') }} Visual regression tests"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "${{ (!needs.test.result || needs.test.result != 'success') && ':white_circle:' || (!needs.build-and-push.result && ':large_orange_circle:' || (needs.build-and-push.result == 'success' && ':white_check_mark:' || ':x:'))}} Docker image build ${{ needs.build-and-push.outputs.client_image_tag && format('<https://github.com/elifesciences/enhanced-preprints-client/pkgs/container/enhanced-preprints-client/{0}|({0})>', needs.build-and-push.outputs.client_image_tag) }}"
                   }
                 ]
               },

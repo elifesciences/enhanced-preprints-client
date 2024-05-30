@@ -5129,7 +5129,7 @@
         ],
         "datePublished": {
           "type": "Date",
-          "value": "1981-01-01T00:00:00.000Z"
+          "value": "1847-01-01T00:00:00.000Z"
         },
         "identifiers": [
           {
@@ -9280,6 +9280,20 @@
   "preprintUrl": "https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2",
   "published": "2023-01-25T14:00:00.000Z",
   "publishedYear": 2023,
+  "relatedContent": [
+    {
+        "type":"insight",
+        "title":"Insight Title",
+        "url":"https://doi.org/10.7554/eLife.11111",
+        "content":"Insight article about this article",
+        "imageUrl":"http://placekitten.com/200/150"
+      },
+      {
+        "type":"insight",
+        "title":"Insight Title 2",
+        "url":"https://doi.org/10.7554/eLife.22222"
+    }
+  ],
   "sentForReview": "2022-11-29T14:20:30.000Z",
   "subjects": [
     "Neuroscience"

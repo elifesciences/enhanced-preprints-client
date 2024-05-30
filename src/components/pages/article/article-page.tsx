@@ -9,6 +9,9 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
+import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
+import { Metrics } from '../../../types/enhanced-article';
+import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -26,9 +29,13 @@ export type ArticlePageProps = {
   metaData: MetaData,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  relatedContent: RelatedContentData[],
+  metrics?: Metrics | null,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
+  previousVersionWarningUrl: string | null,
+  improvedTimelineFeature?: boolean,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -57,8 +64,20 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        <ArticleStatus articleStatus={props.status.status} doi={doi} articleType={props.status.articleType} pdfUrl={props.metaData.pdfUrl} title={contentToText(props.metaData.title)} citation={citation} msid={props.metaData.msid}/>
+        {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
+        <ArticleStatus
+          articleStatus={props.status.status}
+          doi={doi}
+          articleType={props.status.articleType}
+          pdfUrl={props.metaData.pdfUrl}
+          title={contentToText(props.metaData.title)}
+          citation={citation}
+          msid={props.metaData.msid}
+          metrics={props.activeTab !== 'pdf' ? props.metrics : null}
+          improvedTimelineFeature={props.improvedTimelineFeature}
+        />
         <Timeline events={props.status.timeline}/>
+        {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">

@@ -1,6 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { citation } from '../../../utils/mocks';
-
+import { citation, metrics } from '../../../utils/mocks';
 import { ArticleStatus } from './article-status';
 
 export default {
@@ -18,4 +17,5 @@ Status.args = {
   pdfUrl: '#',
   citation,
   msid: '12345',
+  metrics,
 };

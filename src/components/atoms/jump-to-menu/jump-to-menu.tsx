@@ -60,7 +60,7 @@ export const JumpToMenu = ({ headings }: { headings: Heading[] }) => {
           {
             filteredHeadings.map((heading, index) => (
               <li className={`jump-menu-list__item${active === index ? ' jump-menu-list__item--active' : ''}`} key={index}>
-                <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text)}</a>
+                <a onClick={() => linkClickHandler(index)} className="jump-menu-list__link" href={`#${heading.id}`}>{contentToJsx(heading.text, { removeLinkTag: true })}</a>
               </li>
             ))
           }

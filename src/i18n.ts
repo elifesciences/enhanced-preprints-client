@@ -20,7 +20,10 @@ const resources = {
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About $t(publisher_short)\'s process',
       timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
+      external_timeline_version_title: '$t(timeline_version_title)',
       reviewed_preprint: 'Reviewed Preprint',
+      related_intro: 'Related {{type}}',
+      related_type_default: 'content',
     },
     elife: {
       twitter_handle: '@elife',
@@ -29,6 +32,12 @@ const resources = {
       process_url: 'https://elifesciences.org/peer-review-process',
       about_assessments_url: 'https://elifesciences.org/inside-elife/db24dd46',
       reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
+      related_intro_collection: 'Part of {{type}}',
+      related_intro_podcastChapterEpisode: 'Discussed in {{type}}',
+      related_type_insight: 'Insight',
+      related_type_collection: 'Collection',
+      related_type_podcastChapterEpisode: 'Podcast',
+      external_timeline_version_title: 'Version of Record published',
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',

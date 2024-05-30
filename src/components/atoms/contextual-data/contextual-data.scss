@@ -1,0 +1,46 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.contextual-data {
+  @include mixins.margin(24, "bottom");
+  @include mixins.margin(0, "top");
+  @include mixins.padding(0, "left");
+
+  line-break: anywhere;
+  list-style: none;
+}
+
+.contextual-data__item {
+  @include typography.body-small();
+
+  color: var(--color-text-secondary);
+  display: inline;
+  white-space: nowrap;
+
+  &::after {
+    content: " • ";
+  }
+
+  &:last-child::after {
+    content: "";
+  }
+}
+
+.contextual-data__item--highlight {
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+.contextual-data__item--link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary);
+
+    .contextual-data__item--highlight {
+      color: var(--color-primary);
+    }
+  }
+}
