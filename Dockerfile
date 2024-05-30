@@ -6,7 +6,7 @@ WORKDIR /opt/epp-client
 COPY ./ ./
 RUN yarn
 
-FROM build as production_build
+FROM --platform=$BUILDPLATFORM build as production_build
 RUN yarn build
 
 FROM --platform=$TARGETPLATFORM node:${node_version} as platform_deps
