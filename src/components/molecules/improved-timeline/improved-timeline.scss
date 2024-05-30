@@ -45,6 +45,10 @@
 
   &__event {
     @include typography.font-size-and-vertical-height(16, 24);
+
+    &:not(:first-child) {
+      @include mixins.margin(18, "top");
+    }
   }
 
   &__event::before {
