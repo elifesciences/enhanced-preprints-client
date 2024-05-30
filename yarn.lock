@@ -10075,7 +10075,6 @@ __metadata:
     stylelint-selector-bem-pattern: "npm:^4.0.0"
     ts-node: "npm:^10.9.1"
     typescript: "npm:^5.0.0"
-    web-vitals: "npm:^4.0.0"
     webpack: "npm:^5.74.0"
     yargs: "npm:^17.6.2"
   languageName: unknown
@@ -19040,13 +19039,6 @@ __metadata:
   dependencies:
     defaults: "npm:^1.0.3"
   checksum: 10c0/5b61ca583a95e2dd85d7078400190efd452e05751a64accb8c06ce4db65d7e0b0cde9917d705e826a2e05cc2548f61efde115ffa374c3e436d04be45c889e5b4
-  languageName: node
-  linkType: hard
-
-"web-vitals@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "web-vitals@npm:4.0.1"
-  checksum: 10c0/5ebcc2b3b2616ba133f5696e4029b2fc2147b03e850d554bdabe900f4fc00eea812be66e6e7809ecbdbfe1f46581238ca74d0c2390ba83881a3ba1e09d33a407
   languageName: node
   linkType: hard
 
