@@ -10,7 +10,7 @@
   container-type: inline-size;
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: 14px auto 0;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     width: 100%;
