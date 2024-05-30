@@ -10,7 +10,7 @@
   container-type: inline-size;
   display: flex;
   justify-content: center;
-  margin: 14px auto 0;
+  margin: 0 auto;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     width: 100%;
@@ -19,6 +19,7 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(-10, "left");
     @include mixins.margin(26, "bottom");
+    @include mixins.margin(14, "top");
 
     width: 236px;
   }
