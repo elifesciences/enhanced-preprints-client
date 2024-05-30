@@ -5,7 +5,7 @@ describe('ImprovedTimeline', () => {
   it('renders a single timeline item', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('13/01/2001');
-    render(<ImprovedTimeline items={[
+    render(<ImprovedTimeline events={[
       { version: 1, date: '2001-01-13' },
     ]}
     />);
@@ -21,7 +21,7 @@ describe('ImprovedTimeline', () => {
   it('renders a single revised timeline item', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('14/02/2002');
-    render(<ImprovedTimeline items={[
+    render(<ImprovedTimeline events={[
       { version: 2, date: '2002-02-14' },
     ]}
     />);

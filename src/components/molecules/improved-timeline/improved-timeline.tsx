@@ -1,33 +1,38 @@
 import { Fragment } from 'react';
+import '../../../i18n';
 import './improved-timeline.scss';
+import { useTranslation } from 'react-i18next';
 
-type ImprovedTimelineItem = {
+type ImprovedTimelineEvent = {
   version: number,
   date: string,
 };
 
 type ImprovedTimelineProps = {
-  items: Array<ImprovedTimelineItem>,
+  events: Array<ImprovedTimelineEvent>,
 };
 
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-export const ImprovedTimeline = ({ items }: ImprovedTimelineProps) => (
-  <dl className="improved-review-timeline">
-    {
-      items.map((item, index) => {
-        const typeClass = `improved-review-timeline__${item.version > 1 ? 'revised' : 'reviewed'}`;
-        return (
-          <Fragment key={index}>
-            <dt className={`improved-review-timeline__event ${typeClass}`}>Reviewed Preprint</dt>
-            <dd className={`improved-review-timeline__detail ${typeClass}`}>
-              <span className="improved-review-timeline__version">{`v${item.version}`}</span>
-              <time className="improved-review-timeline__date" dateTime={item.date.toString()}>{formatDate(item.date)}</time>
-              <a className="improved-review-timeline__link" href="https://elifesciences.org/peer-review-process">{item.version > 1 ? 'Revised by authors' : 'Not revised'}</a>
-            </dd>
-          </Fragment>
-        );
-      })
-    }
-  </dl>
-);
+export const ImprovedTimeline = ({ events }: ImprovedTimelineProps) => {
+  const { t } = useTranslation();
+  return (
+    <dl className="improved-review-timeline">
+      {
+        events.map((event, index) => {
+          const typeClass = `improved-review-timeline__${event.version > 1 ? 'revised' : 'reviewed'}`;
+          return (
+            <Fragment key={index}>
+              <dt className={`improved-review-timeline__event ${typeClass}`}>Reviewed Preprint</dt>
+              <dd className={`improved-review-timeline__detail ${typeClass}`}>
+                <span className="improved-review-timeline__version">{`v${event.version}`}</span>
+                <time className="improved-review-timeline__date" dateTime={event.date.toString()}>{formatDate(event.date)}</time>
+                <a className="improved-review-timeline__link" href={t('process_url')}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>
+              </dd>
+            </Fragment>
+          );
+        })
+      }
+    </dl>
+  );
+};
