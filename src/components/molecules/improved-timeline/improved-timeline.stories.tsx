@@ -14,6 +14,7 @@ EventTimeline.args = {
     {
       date: '2023-03-18',
       version: 1,
+      versionIndicator: 'v1',
     },
   ],
 };
@@ -22,8 +23,26 @@ export const EventTimelineRevised = Template.bind({});
 EventTimelineRevised.args = {
   events: [
     {
-      date: '2023-03-18',
+      date: '2023-03-19',
       version: 2,
+      versionIndicator: 'v2',
+    },
+  ],
+};
+
+export const EventTimelineRevisedWithPrevious = Template.bind({});
+EventTimelineRevisedWithPrevious.args = {
+  current: 2,
+  events: [
+    {
+      date: '2023-03-19',
+      version: 2,
+      versionIndicator: 'v2',
+    },
+    {
+      date: '2023-03-18',
+      version: 1,
+      versionIndicator: 'v1',
     },
   ],
 };

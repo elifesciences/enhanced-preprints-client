@@ -34,6 +34,10 @@
       width: 8px;
     }
 
+    &.improved-review-timeline__reviewed::before {
+      background-color: var(--border-timeline-reviewed);
+    }
+
     &.improved-review-timeline__revised::before {
       background-color: var(--border-timeline-revised);
     }
@@ -82,7 +86,7 @@
     @include typography.font-size-and-vertical-height(14, 20);
 
     clear: left;
-    color: var(--link-timeline);
+    color: var(--color-text-secondary);
     display: block;
     font-family: var(--font-family-primary);
     font-weight: 600;
@@ -92,6 +96,10 @@
     &:hover {
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    .improved-review-timeline__reviewed & {
+      color: var(--link-timeline-reviewed);
     }
 
     .improved-review-timeline__revised & {
