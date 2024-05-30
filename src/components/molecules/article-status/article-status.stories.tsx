@@ -18,6 +18,11 @@ Status.args = {
   msid: '12345',
   metrics,
   timeline: {
-    events: [],
+    events: [
+      {
+        version: 1,
+        date: '2024-05-30',
+      },
+    ],
   },
 };
