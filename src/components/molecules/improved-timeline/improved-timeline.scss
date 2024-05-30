@@ -3,6 +3,18 @@
 @use "../../../sass/typography";
 
 .improved-review-timeline {
+  @include mixins.margin(36, "bottom");
+  @include mixins.margin(36, "top");
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(12, "top");
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(48, "bottom");
+    @include mixins.margin(6, "left");
+  }
+
   &__event,
   &__detail {
     @include mixins.padding(26, "left");
@@ -53,6 +65,9 @@
   }
 
   &__version::after {
+    @include mixins.margin(5, "left");
+    @include mixins.margin(5, "right");
+
     content: " • ";
   }
 
@@ -72,6 +87,12 @@
     font-family: var(--font-family-primary);
     font-weight: 600;
     text-decoration: none;
+    width: max-content;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
     .improved-review-timeline__revised & {
       color: var(--link-timeline-revised);

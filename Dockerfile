@@ -1,4 +1,4 @@
-ARG node_version=20.13-alpine3.19
+ARG node_version=20.14-alpine3.19
 
 FROM --platform=$BUILDPLATFORM node:${node_version} as build
 RUN mkdir /opt/epp-client
