@@ -3,12 +3,12 @@ import '../../../i18n';
 import './improved-timeline.scss';
 import { useTranslation } from 'react-i18next';
 
-type ImprovedTimelineEvent = {
+export type ImprovedTimelineEvent = {
   version: number,
   date: string,
 };
 
-type ImprovedTimelineProps = {
+export type ImprovedTimelineProps = {
   events: Array<ImprovedTimelineEvent>,
 };
 

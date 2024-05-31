@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -8,21 +7,17 @@ import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
-import { ImprovedTimeline } from '../improved-timeline/improved-timeline';
+import { ImprovedTimeline, ImprovedTimelineProps } from '../improved-timeline/improved-timeline';
 
 type ArticleStatusProps = {
-  articleType?: string,
-  articleStatus: string,
   doi: string,
   title: string,
   pdfUrl?: string,
   citation: CitationData,
   msid: string,
   metrics?: ContextualDataProps | null,
-  improvedTimelineFeature?: boolean,
+  timeline: ImprovedTimelineProps,
 };
-
-const defaultArticleType = 'reviewed_preprint';
 
 const formatStringCitation = ({
   authors, doi, eLocationId, journal, title, volume, year,
@@ -33,25 +28,13 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid, metrics, improvedTimelineFeature,
+  doi, title, pdfUrl, citation, msid, metrics, timeline,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
-  const { t } = useTranslation();
 
   return <div className="article-status">
-    {
-    !improvedTimelineFeature &&
-      <>
-        <h2 className="article-status__heading">{t(articleType)}</h2>
-        <p className="article-status__text">{articleStatus}</p>
-        <a href={t('process_url')} className="article-status__link">{t('status_about')}</a>
-      </>
-    }
-    {
-      improvedTimelineFeature &&
-      <ImprovedTimeline events={[{ version: 1, date: '2024-05-29' }]}/>
-    }
+    <ImprovedTimeline {...timeline} />
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">

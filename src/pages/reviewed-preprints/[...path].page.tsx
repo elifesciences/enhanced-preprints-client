@@ -26,12 +26,16 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 import { getLatestVersion } from '../../utils/get-latest-version';
+import {
+  ImprovedTimelineEvent,
+} from '../../components/molecules/improved-timeline/improved-timeline';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  timeline: ImprovedTimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -139,9 +143,13 @@ export const Page = (props: PageProps) => {
       </Head>
       <ArticlePage
         previousVersionWarningUrl={props.previousVersionWarningUrl}
-        metrics={props.metrics} relatedContent={relatedContent}
-        metaData={props.metaData} msidWithVersion={props.msidWithVersion}
-        tabs={tabs} status={props.status}
+        metrics={props.metrics}
+        relatedContent={relatedContent}
+        metaData={props.metaData}
+        msidWithVersion={props.msidWithVersion}
+        tabs={tabs}
+        status={props.status}
+        timeline={props.timeline}
         activeTab={tabName}
       >
         { tabContent }
@@ -211,6 +219,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
+      timeline: [
+        {
+          version: +articleWithVersions.article.versionIdentifier,
+          date: (articleWithVersions.article.published ?? new Date()).toString(),
+        },
+      ],
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
