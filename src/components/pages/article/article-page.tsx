@@ -12,6 +12,7 @@ import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
+import { ImprovedTimelineEvent } from '../../molecules/improved-timeline/improved-timeline';
 
 export type ArticleStatusProps = {
   timeline: TimelineEvent[],
@@ -35,7 +36,7 @@ export type ArticlePageProps = {
   activeTab: string,
   tabs: Tab[],
   previousVersionWarningUrl: string | null,
-  improvedTimelineFeature?: boolean,
+  timeline: ImprovedTimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -66,15 +67,13 @@ export const ArticlePage = (props: ArticlePageProps) => {
       <aside className="side-section">
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
         <ArticleStatus
-          articleStatus={props.status.status}
           doi={doi}
-          articleType={props.status.articleType}
           pdfUrl={props.metaData.pdfUrl}
           title={contentToText(props.metaData.title)}
           citation={citation}
           msid={props.metaData.msid}
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
-          improvedTimelineFeature={props.improvedTimelineFeature}
+          timeline={{ events: props.timeline }}
         />
         <Timeline events={props.status.timeline}/>
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
