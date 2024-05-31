@@ -14,8 +14,10 @@ export const generateImprovedTimeline = (version: EnhancedArticleWithVersions): 
         name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         version: +current.versionIdentifier,
-        versionIndicator: `v${current.versionIdentifier}`,
         date: new Date(current.published).toDateString(),
+        ...(isPreprintVersionSummary(current) ? {
+          versionIndicator: `v${current.versionIdentifier}`,
+        } : {}),
       });
     }
     return events;
