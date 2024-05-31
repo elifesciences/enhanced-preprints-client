@@ -75,13 +75,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           msid={props.metaData.msid}
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
           timeline={{ events: props.timeline, current: +props.metaData.version }}
-          {
-            ...((props.improvedTimelineMultipleFeature) ? {
-              improvedTimelineMultipleFeature: true,
-            } : {})
-          }
         />
-        {!props.improvedTimelineMultipleFeature && <Timeline events={props.status.timeline}/>}
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">
