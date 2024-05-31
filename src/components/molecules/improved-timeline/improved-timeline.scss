@@ -18,7 +18,6 @@
   &__event,
   &__detail {
     @include mixins.padding(26, "left");
-    @include mixins.margin(4, "left");
 
     color: var(--color-text);
     font-family: var(--font-family-primary);
@@ -69,7 +68,6 @@
 
   &__detail {
     @include mixins.margin(0);
-    @include mixins.margin(4, "left");
 
     &::before {
       border-radius: 0 0 6px 6px;
@@ -126,7 +124,6 @@
   &__expansion {
     @include typography.body-small();
     @include mixins.margin(18, "top");
-    @include mixins.margin(4, "left");
     @include mixins.padding(26, "left");
 
     background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 3px 10px;
