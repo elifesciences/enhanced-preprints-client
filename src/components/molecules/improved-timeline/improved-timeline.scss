@@ -34,13 +34,32 @@
       width: 8px;
     }
 
-    &.improved-review-timeline__revised::before {
+    &.improved-review-timeline__event--reviewed::before {
+      background-color: var(--border-timeline-reviewed);
+    }
+
+    &.improved-review-timeline__event--revised::before {
       background-color: var(--border-timeline-revised);
     }
   }
 
   &__event {
     @include typography.font-size-and-vertical-height(16, 24);
+
+    &:not(:first-child) {
+      @include mixins.margin(18, "top");
+    }
+
+    &-link {
+      color: var(--color-text);
+      font-family: var(--font-family-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
   }
 
   &__event::before {
@@ -59,6 +78,7 @@
   &__date {
     @include typography.body-small();
 
+    font-family: var(--font-family-primary);
     font-weight: 600;
   }
 
@@ -80,7 +100,7 @@
     @include typography.font-size-and-vertical-height(14, 20);
 
     clear: left;
-    color: var(--link-timeline);
+    color: var(--color-text);
     display: block;
     font-family: var(--font-family-primary);
     font-weight: 600;
@@ -92,8 +112,32 @@
       text-underline-offset: 3px;
     }
 
-    .improved-review-timeline__revised & {
+    .improved-review-timeline__event--reviewed & {
+      color: var(--link-timeline-reviewed);
+    }
+
+    .improved-review-timeline__event--revised & {
       color: var(--link-timeline-revised);
+    }
+  }
+
+  &__expansion {
+    @include typography.body-small();
+    @include mixins.margin(18, "top");
+    @include mixins.padding(26, "left");
+
+    background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 0 10px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &.improved-review-timeline__expansion--expanded {
+      background-image: url("../../../images/icons/arrowup-triangle.svg");
     }
   }
 }
