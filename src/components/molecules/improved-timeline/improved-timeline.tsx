@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 type ImprovedTimelineEvent = {
   name?: string,
-  url?: string,
+  url: string,
   version: number,
   versionIndicator?: string,
   date: string,
@@ -28,7 +28,7 @@ export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => 
           return (
             <Fragment key={index}>
               <dt className={`improved-review-timeline__event${typeClass}`}>
-                {event.url ? (
+                {(current && current !== event.version) && event.url ? (
                   <a href={event.url} className="improved-review-timeline__event-link">
                     {event.name ?? 'Reviewed Preprint'}
                   </a>
