@@ -221,7 +221,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       },
       timeline: [
         {
+          url: '#',
           version: +articleWithVersions.article.versionIdentifier,
+          versionIndicator: `v${articleWithVersions.article.versionIdentifier}`,
           date: (articleWithVersions.article.published ?? new Date()).toString(),
         },
       ],
