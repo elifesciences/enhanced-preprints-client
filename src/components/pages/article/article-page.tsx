@@ -37,6 +37,7 @@ export type ArticlePageProps = {
   tabs: Tab[],
   previousVersionWarningUrl: string | null,
   timeline: ImprovedTimelineEvent[],
+  improvedTimelineMultipleFeature?: true,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -74,8 +75,13 @@ export const ArticlePage = (props: ArticlePageProps) => {
           msid={props.metaData.msid}
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
           timeline={{ events: props.timeline }}
+          {
+            ...((props.improvedTimelineMultipleFeature) ? {
+              improvedTimelineMultipleFeature: true,
+            } : {})
+          }
         />
-        <Timeline events={props.status.timeline}/>
+        {!props.improvedTimelineMultipleFeature && <Timeline events={props.status.timeline}/>}
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">

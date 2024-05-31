@@ -17,6 +17,7 @@ type ArticleStatusProps = {
   msid: string,
   metrics?: ContextualDataProps | null,
   timeline: ImprovedTimelineProps,
+  improvedTimelineMultipleFeature?: true,
 };
 
 const formatStringCitation = ({
@@ -28,13 +29,33 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  doi, title, pdfUrl, citation, msid, metrics, timeline,
+  doi, title, pdfUrl, citation, msid, metrics, timeline, improvedTimelineMultipleFeature,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
 
   return <div className="article-status">
-    <ImprovedTimeline {...timeline} />
+    {improvedTimelineMultipleFeature && <ImprovedTimeline current={2} events={[
+      {
+        name: 'Version of Record',
+        url: '#',
+        date: '2023-03-20',
+        version: 3,
+      },
+      {
+        url: '#',
+        date: '2023-03-19',
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: '2023-03-18',
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ]} />}
+    {!improvedTimelineMultipleFeature && <ImprovedTimeline {...timeline} />}
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
