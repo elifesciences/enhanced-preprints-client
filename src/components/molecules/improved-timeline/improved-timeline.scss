@@ -133,3 +133,17 @@
     }
   }
 }
+
+.improved-review-timeline__show-link {
+  @include typography.body-small();
+  @include mixins.margin(18, "top");
+
+  background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat left;
+  display: block;
+  padding-left: 26px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}

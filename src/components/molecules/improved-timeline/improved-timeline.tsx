@@ -45,6 +45,7 @@ export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => 
           );
         })
       }
+      {events.length > 1 && <a href="#" className='improved-review-timeline__show-link'>Show all versions</a>}
     </dl>
   );
 };
