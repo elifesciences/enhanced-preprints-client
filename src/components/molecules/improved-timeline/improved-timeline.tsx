@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import '../../../i18n';
 import './improved-timeline.scss';
 import { useTranslation } from 'react-i18next';
@@ -19,11 +19,16 @@ type ImprovedTimelineProps = {
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
 export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => {
+  const [expanded, setExpanded] = useState<boolean | null>(null);
+
+  useEffect(() => setExpanded(false), []);
+  const displayEvents = events.filter((event, index) => expanded || (current && event.version === current) || (!current && index === 0));
+  const expansionText = expanded ? 'Hide all versions' : 'Show all versions';
   const { t } = useTranslation();
   return (
     <dl className="improved-review-timeline">
       {
-        events.map((event, index) => {
+        displayEvents.map((event, index) => {
           const typeClass = (events.length === 1 || (current && current === event.version)) ? (` improved-review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
           return (
             <Fragment key={index}>
@@ -45,7 +50,7 @@ export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => 
           );
         })
       }
-      {events.length > 1 && <a href="#" className='improved-review-timeline__show-link'>Show all versions</a>}
+      {(events.length > 1 && expanded !== null) && <span className={`improved-review-timeline__expansion${expanded ? ' improved-review-timeline__expansion--expanded' : ''}`} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
     </dl>
   );
 };

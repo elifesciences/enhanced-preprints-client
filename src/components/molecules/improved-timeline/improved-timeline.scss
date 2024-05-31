@@ -134,18 +134,25 @@
       color: var(--link-timeline-revised);
     }
   }
-}
 
-.improved-review-timeline__show-link {
-  @include typography.body-small();
-  @include mixins.margin(18, "top");
+  &__expansion {
+    @include typography.body-small();
+    @include mixins.margin(18, "top");
+    @include mixins.margin(4, "left");
+    @include mixins.padding(26, "left");
 
-  background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat left;
-  display: block;
-  padding-left: 26px;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 3px 10px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &.improved-review-timeline__expansion--expanded {
+      background-image: url("../../../images/icons/arrowup-triangle.svg");
+    }
   }
 }
