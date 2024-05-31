@@ -47,6 +47,7 @@ WORKDIR /opt/epp-client
 COPY --from=production_deps /opt/epp-client/node_modules /opt/epp-client/node_modules
 COPY --from=production_deps /opt/epp-client/package.json /opt/epp-client/package.json
 COPY --from=production_build /opt/epp-client/.next /opt/epp-client/.next
+COPY --from=production_build /opt/epp-client/next.config.js /opt/epp-client/next.config.js
 CMD [ "./node_modules/.bin/next", "start" ]
 
 FROM mcr.microsoft.com/playwright:focal as browser-tests
