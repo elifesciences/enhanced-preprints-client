@@ -29,6 +29,7 @@ import { getLatestVersion } from '../../utils/get-latest-version';
 import {
   ImprovedTimelineEvent,
 } from '../../components/molecules/improved-timeline/improved-timeline';
+import { generateImprovedTimeline } from '../../utils/generate-improved-timeline';
 
 type PageProps = {
   metaData: MetaData,
@@ -151,6 +152,7 @@ export const Page = (props: PageProps) => {
         status={props.status}
         timeline={props.timeline}
         activeTab={tabName}
+        improvedTimelineMultipleFeature={true}
       >
         { tabContent }
       </ArticlePage>
@@ -194,6 +196,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
+  const improvedTimeline = generateImprovedTimeline(articleWithVersions);
 
   // This is redundant after server has been updated
   if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
@@ -219,14 +222,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
-      timeline: [
-        {
-          url: '#',
-          version: +articleWithVersions.article.versionIdentifier,
-          versionIndicator: `v${articleWithVersions.article.versionIdentifier}`,
-          date: (articleWithVersions.article.published ?? new Date()).toString(),
-        },
-      ],
+      timeline: improvedTimeline,
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,

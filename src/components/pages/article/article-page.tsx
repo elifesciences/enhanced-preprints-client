@@ -74,7 +74,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           citation={citation}
           msid={props.metaData.msid}
           metrics={props.activeTab !== 'pdf' ? props.metrics : null}
-          timeline={{ events: props.timeline }}
+          timeline={{ events: props.timeline, current: +props.metaData.version }}
           {
             ...((props.improvedTimelineMultipleFeature) ? {
               improvedTimelineMultipleFeature: true,
