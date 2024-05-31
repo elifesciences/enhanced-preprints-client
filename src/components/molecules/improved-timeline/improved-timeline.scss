@@ -20,7 +20,7 @@
     @include mixins.padding(26, "left");
     @include mixins.margin(4, "left");
 
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     font-family: var(--font-family-primary);
     font-weight: 600;
     position: relative;
@@ -33,13 +33,6 @@
       position: absolute;
       top: 0;
       width: 8px;
-    }
-
-    &.improved-review-timeline__event {
-      &--reviewed,
-      &--revised {
-        color: var(--color-text);
-      }
     }
 
     &.improved-review-timeline__event--reviewed::before {
@@ -59,18 +52,13 @@
     }
 
     &-link {
-      color: var(--color-text-secondary);
+      color: var(--color-text);
       font-family: var(--font-family-primary);
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
         text-underline-offset: 3px;
-      }
-
-      .improved-review-timeline__event--reviewed &,
-      .improved-review-timeline__event--revised & {
-        color: var(--color-text);
       }
     }
   }
@@ -114,7 +102,7 @@
     @include typography.font-size-and-vertical-height(14, 20);
 
     clear: left;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     display: block;
     font-family: var(--font-family-primary);
     font-weight: 600;
