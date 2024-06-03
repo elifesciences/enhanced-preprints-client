@@ -18,7 +18,7 @@ type ArticleStatusProps = {
   pdfUrl?: string,
   citation: CitationData,
   msid: string,
-  metrics?: ContextualDataProps | null,
+  metrics?: ContextualDataProps,
   improvedTimelineFeature?: boolean,
 };
 
