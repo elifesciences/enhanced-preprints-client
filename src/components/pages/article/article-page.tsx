@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
@@ -15,7 +14,6 @@ import { PreviousVersionWarning } from '../../atoms/previous-version-warning/pre
 import { ImprovedTimelineEvent } from '../../molecules/improved-timeline/improved-timeline';
 
 export type ArticleStatusProps = {
-  timeline: TimelineEvent[],
   articleType: string,
   status: string,
   isPreview: boolean,
@@ -37,7 +35,6 @@ export type ArticlePageProps = {
   tabs: Tab[],
   previousVersionWarningUrl?: string,
   timeline: ImprovedTimelineEvent[],
-  improvedTimelineMultipleFeature?: true,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -74,14 +71,8 @@ export const ArticlePage = (props: ArticlePageProps) => {
           citation={citation}
           msid={props.metaData.msid}
           {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
-          timeline={{ events: props.timeline }}
-          {
-            ...((props.improvedTimelineMultipleFeature) ? {
-              improvedTimelineMultipleFeature: true,
-            } : {})
-          }
+          timeline={{ events: props.timeline, current: +props.metaData.version }}
         />
-        {!props.improvedTimelineMultipleFeature && <Timeline events={props.status.timeline}/>}
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">

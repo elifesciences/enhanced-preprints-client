@@ -14,9 +14,7 @@ import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
-import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
-import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/format-author-name';
 import { contentToFigures } from '../../utils/content-to-figures';
@@ -30,6 +28,7 @@ import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
   ImprovedTimelineEvent,
 } from '../../components/molecules/improved-timeline/improved-timeline';
+import { generateImprovedTimeline } from '../../utils/generate-improved-timeline';
 
 type PageProps = {
   metaData: MetaData,
@@ -44,8 +43,9 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
-const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
-  const publishedEvent = events.find(({ eventDescription }) => eventDescription?.length);
+const getPublishedDate = (events: ImprovedTimelineEvent[], currentVersion: number): string | undefined => {
+  const publishedEvent = events.find(({ version }) => version === currentVersion);
+
   if (publishedEvent) {
     const date = new Date(publishedEvent.date);
     return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
@@ -136,7 +136,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
         <meta name="citation_doi" content={props.metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
+        <meta name="citation_publication_date" content={getPublishedDate(props.timeline, +props.metaData.version)}/>
         {props.metaData.pdfUrl && <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: props.metaData.msid })}/>
         <meta name="citation_language" content="en"/>
@@ -194,7 +194,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
   const status = generateStatus(articleWithVersions);
-  const timeline = generateTimeline(articleWithVersions);
+  const improvedTimeline = generateImprovedTimeline(articleWithVersions);
 
   // This is redundant after server has been updated
   if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
@@ -217,17 +217,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       status: {
         articleType: status.type,
         status: status.status,
-        timeline,
         isPreview: status.isPreview,
       },
-      timeline: [
-        {
-          url: '#',
-          version: +articleWithVersions.article.versionIdentifier,
-          versionIndicator: `v${articleWithVersions.article.versionIdentifier}`,
-          date: (articleWithVersions.article.published ?? new Date()).toString(),
-        },
-      ],
+      timeline: improvedTimeline,
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,

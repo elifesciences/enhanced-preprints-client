@@ -19,11 +19,11 @@ const resources = {
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About $t(publisher_short)\'s process',
-      timeline_version_title: 'Reviewed preprint version {{versionIdentifier}}',
-      external_timeline_version_title: '$t(timeline_version_title)',
       reviewed_preprint: 'Reviewed Preprint',
       related_intro: 'Related {{type}}',
       related_type_default: 'content',
+      timeline_version_title: '$t(reviewed_preprint)',
+      external_timeline_version_title: '$t(timeline_version_title)',
     },
     elife: {
       twitter_handle: '@elife',
@@ -37,7 +37,7 @@ const resources = {
       related_type_insight: 'Insight',
       related_type_collection: 'Collection',
       related_type_podcastChapterEpisode: 'Podcast',
-      external_timeline_version_title: 'Version of Record published',
+      external_timeline_version_title: 'Version of Record',
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',
