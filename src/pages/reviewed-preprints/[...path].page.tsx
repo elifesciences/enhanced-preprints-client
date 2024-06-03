@@ -42,6 +42,17 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
+const getPublishedDate = (events: ImprovedTimelineEvent[], currentVersion: number): string | undefined => {
+  const publishedEvent = events.find(({ version }) => version === currentVersion);
+
+  if (publishedEvent) {
+    const date = new Date(publishedEvent.date);
+    return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
+  }
+
+  return undefined;
+};
+
 export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
@@ -124,8 +135,7 @@ export const Page = (props: PageProps) => {
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
         <meta name="citation_doi" content={props.metaData.doi}/>
-        {/* @todo: Set date below dynamically without using timeline */}
-        <meta name="citation_publication_date" content={'2024/06/03'}/>
+        <meta name="citation_publication_date" content={getPublishedDate(props.timeline, +props.metaData.version)}/>
         {props.metaData.pdfUrl && <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: props.metaData.msid })}/>
         <meta name="citation_language" content="en"/>
