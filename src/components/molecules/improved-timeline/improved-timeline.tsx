@@ -22,7 +22,7 @@ export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => 
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
-  const displayEvents = events.filter((event, index) => expanded || (current && event.version === current) || (!current && index === 0));
+  const displayEvents = expanded !== false ? events : events.filter((event, index) => (current && event.version === current) || (!current && index === 0));
   const expansionText = `${expanded ? 'Hide' : 'Show'} ${events.length > 1 && events[0].version === current ? `previous version${events.length > 2 ? 's' : ''}` : 'all versions'}`;
   const { t } = useTranslation();
   return (
