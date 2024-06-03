@@ -152,7 +152,6 @@ export const Page = (props: PageProps) => {
         status={props.status}
         timeline={props.timeline}
         activeTab={tabName}
-        improvedTimelineMultipleFeature={true}
       >
         { tabContent }
       </ArticlePage>

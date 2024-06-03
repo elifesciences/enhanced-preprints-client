@@ -37,7 +37,6 @@ export type ArticlePageProps = {
   tabs: Tab[],
   previousVersionWarningUrl: string | null,
   timeline: ImprovedTimelineEvent[],
-  improvedTimelineMultipleFeature?: true,
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
