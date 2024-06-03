@@ -11,7 +11,7 @@ import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
-import { ImprovedTimelineEvent } from '../../molecules/improved-timeline/improved-timeline';
+import { ImprovedTimelineEvent } from '../../molecules/timeline/timeline';
 
 export type ArticleStatusProps = {
   articleType: string,

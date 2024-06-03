@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import '../../../i18n';
-import './improved-timeline.scss';
+import './timeline.scss';
 import { useTranslation } from 'react-i18next';
 
 export type ImprovedTimelineEvent = {

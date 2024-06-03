@@ -27,7 +27,7 @@ import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
   ImprovedTimelineEvent,
-} from '../../components/molecules/improved-timeline/improved-timeline';
+} from '../../components/molecules/timeline/timeline';
 import { generateImprovedTimeline } from '../../utils/generate-improved-timeline';
 
 type PageProps = {

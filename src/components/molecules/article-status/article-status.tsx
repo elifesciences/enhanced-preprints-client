@@ -7,7 +7,7 @@ import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
-import { ImprovedTimeline, ImprovedTimelineProps } from '../improved-timeline/improved-timeline';
+import { ImprovedTimeline, ImprovedTimelineProps } from '../timeline/timeline';
 
 type ArticleStatusProps = {
   doi: string,

@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { ImprovedTimeline } from './improved-timeline';
+import { ImprovedTimeline } from './timeline';
 
 export default {
   title: 'Molecules/ImprovedTimeline',

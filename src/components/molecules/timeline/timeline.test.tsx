@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { ImprovedTimeline } from './improved-timeline';
+import { ImprovedTimeline } from './timeline';
 
 describe('ImprovedTimeline', () => {
   it('renders a single timeline item', () => {
