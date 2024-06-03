@@ -19,17 +19,18 @@ export type ImprovedTimelineProps = {
 const formatDate = (date: string): string => new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
 export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => {
+  const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
-  const displayEvents = expanded !== false ? events : events.filter((event, index) => (current && event.version === current) || (!current && index === 0));
-  const expansionText = `${expanded ? 'Hide' : 'Show'} ${events.length > 1 && events[0].version === current ? `previous version${events.length > 2 ? 's' : ''}` : 'all versions'}`;
+  const displayEvents = expanded !== false ? sortedEvents : sortedEvents.filter((event, index) => (current && event.version === current) || (!current && index === 0));
+  const expansionText = `${expanded ? 'Hide' : 'Show'} ${sortedEvents.length > 1 && sortedEvents[0].version === current ? `previous version${sortedEvents.length > 2 ? 's' : ''}` : 'all versions'}`;
   const { t } = useTranslation();
   return (
     <dl className="improved-review-timeline">
       {
         displayEvents.map((event, index) => {
-          const typeClass = (events.length === 1 || (current && current === event.version)) ? (` improved-review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
+          const typeClass = (sortedEvents.length === 1 || (current && current === event.version)) ? (` improved-review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
           return (
             <Fragment key={index}>
               <dt className={`improved-review-timeline__event${typeClass}`}>
@@ -50,7 +51,8 @@ export const ImprovedTimeline = ({ current, events }: ImprovedTimelineProps) => 
           );
         })
       }
-      {(events.length > 1 && expanded !== null) && <span className={`improved-review-timeline__expansion${expanded ? ' improved-review-timeline__expansion--expanded' : ''}`} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
+      {(sortedEvents.length > 1 && expanded !== null) &&
+      <span className={`improved-review-timeline__expansion${expanded ? ' improved-review-timeline__expansion--expanded' : ''}`} onClick={() => setExpanded(!expanded)}>{expansionText}</span>}
     </dl>
   );
 };

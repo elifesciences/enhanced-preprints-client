@@ -202,4 +202,36 @@ describe('ImprovedTimeline', () => {
       });
     });
   });
+
+  describe('sorting', () => {
+    const entries = [
+      {
+        url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+      },
+      {
+        url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+      },
+      {
+        url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
+      },
+    ];
+
+    it('should display the correct entry regardless of input order', () => {
+      render(<ImprovedTimeline current={3} events={entries}/>);
+
+      expect(screen.getByText('March 26, 2003')).toBeInTheDocument();
+    });
+
+    it('should display the entries in the correct order when expanded', () => {
+      render(<ImprovedTimeline current={3} events={entries}/>);
+
+      fireEvent.click(document.getElementsByClassName('improved-review-timeline__expansion')[0]);
+
+      const dates = Array.from(document.querySelectorAll('.improved-review-timeline__date')).map((node) => node.innerHTML);
+
+      expect(dates[0]).toStrictEqual('March 26, 2003');
+      expect(dates[1]).toStrictEqual('February 23, 2002');
+      expect(dates[2]).toStrictEqual('January 13, 2001');
+    });
+  });
 });
