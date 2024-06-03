@@ -14,9 +14,7 @@ import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import { contentToText } from '../../utils/content-to-text';
-import { TimelineEvent } from '../../components/molecules/timeline/timeline';
 import { generateStatus } from '../../utils/generate-article-status';
-import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/format-author-name';
 import { contentToFigures } from '../../utils/content-to-figures';
@@ -42,16 +40,6 @@ type PageProps = {
   peerReview: PeerReview | null,
   metrics: Metrics | null,
   previousVersionWarningUrl: string | null,
-};
-
-const getPublishedDate = (events: TimelineEvent[]): string | undefined => {
-  const publishedEvent = events.find(({ eventDescription }) => eventDescription?.length);
-  if (publishedEvent) {
-    const date = new Date(publishedEvent.date);
-    return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
-  }
-
-  return undefined;
 };
 
 export const Page = (props: PageProps) => {
@@ -136,7 +124,8 @@ export const Page = (props: PageProps) => {
         <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
         <meta name="citation_doi" content={props.metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(props.status.timeline)}/>
+        {/* @todo: Set date below dynamically without using timeline */}
+        <meta name="citation_publication_date" content={'2024/06/03'}/>
         {props.metaData.pdfUrl && <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: props.metaData.msid })}/>
         <meta name="citation_language" content="en"/>
@@ -194,7 +183,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
   const status = generateStatus(articleWithVersions);
-  const timeline = generateTimeline(articleWithVersions);
   const improvedTimeline = generateImprovedTimeline(articleWithVersions);
 
   // This is redundant after server has been updated
@@ -218,7 +206,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       status: {
         articleType: status.type,
         status: status.status,
-        timeline,
         isPreview: status.isPreview,
       },
       timeline: improvedTimeline,

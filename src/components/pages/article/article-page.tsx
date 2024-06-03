@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { TimelineEvent } from '../../molecules/timeline/timeline';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
@@ -15,7 +14,6 @@ import { PreviousVersionWarning } from '../../atoms/previous-version-warning/pre
 import { ImprovedTimelineEvent } from '../../molecules/improved-timeline/improved-timeline';
 
 export type ArticleStatusProps = {
-  timeline: TimelineEvent[],
   articleType: string,
   status: string,
   isPreview: boolean,
