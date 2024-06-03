@@ -144,7 +144,7 @@ export const Page = (props: PageProps) => {
       </Head>
       <ArticlePage
         previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
-        metrics={makeNullableOptional(props.metrics)} relatedContent={relatedContent}
+        metrics={makeNullableOptional(props.metrics)}
         relatedContent={relatedContent}
         metaData={props.metaData}
         msidWithVersion={props.msidWithVersion}
