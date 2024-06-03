@@ -5831,11 +5831,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^20.0.0, @types/node@npm:^20.10.6":
-  version: 20.12.13
-  resolution: "@types/node@npm:20.12.13"
+  version: 20.14.0
+  resolution: "@types/node@npm:20.14.0"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/2ac92bb631dbddfb560eb3ba4eedbb1c688044a0130bc1ef032f5c0f20148ac7c9aa3c5aaa5a9787b6c4c6299847d754b96ee8c9def951481ba6628c46b683f5
+  checksum: 10c0/29ccc7592e9ca6b81d00f3a6673241d08e9042d801b10adfd9ebcbbf326208e0a0133a8d146158db18d02a68b85d9ce1fd94e6e1e5be0da263129bf6e42eb22d
   languageName: node
   linkType: hard
 
@@ -15106,7 +15106,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-fallback@npm:prettier@^3, prettier@npm:^3.0.3, prettier@npm:^3.1.1":
+"prettier-fallback@npm:prettier@^3":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -15121,6 +15121,15 @@ __metadata:
   dependencies:
     fast-diff: "npm:^1.1.2"
   checksum: 10c0/81e0027d731b7b3697ccd2129470ed9913ecb111e4ec175a12f0fcfab0096516373bf0af2fef132af50cafb0a905b74ff57996d615f59512bb9ac7378fcc64ab
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.0.3, prettier@npm:^3.1.1":
+  version: 3.3.0
+  resolution: "prettier@npm:3.3.0"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/d033c356320aa2e468bf29c931b094ac730d2f4defd5eb2989d8589313dec901d2fc866e3788f3d161e420b142ea4ec3dda535dbe0169ef4d0026397a68ba9cf
   languageName: node
   linkType: hard
 

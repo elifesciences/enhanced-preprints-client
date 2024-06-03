@@ -27,12 +27,16 @@ import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
+import {
+  ImprovedTimelineEvent,
+} from '../../components/molecules/improved-timeline/improved-timeline';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  timeline: ImprovedTimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -141,8 +145,12 @@ export const Page = (props: PageProps) => {
       <ArticlePage
         previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
         metrics={makeNullableOptional(props.metrics)} relatedContent={relatedContent}
-        metaData={props.metaData} msidWithVersion={props.msidWithVersion}
-        tabs={tabs} status={props.status}
+        relatedContent={relatedContent}
+        metaData={props.metaData}
+        msidWithVersion={props.msidWithVersion}
+        tabs={tabs}
+        status={props.status}
+        timeline={props.timeline}
         activeTab={tabName}
       >
         { tabContent }
@@ -212,6 +220,14 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         timeline,
         isPreview: status.isPreview,
       },
+      timeline: [
+        {
+          url: '#',
+          version: +articleWithVersions.article.versionIdentifier,
+          versionIndicator: `v${articleWithVersions.article.versionIdentifier}`,
+          date: (articleWithVersions.article.published ?? new Date()).toString(),
+        },
+      ],
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
