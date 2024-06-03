@@ -29,11 +29,11 @@ export type ArticlePageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   relatedContent: RelatedContentData[],
-  metrics?: Metrics | null,
+  metrics?: Metrics,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
-  previousVersionWarningUrl: string | null,
+  previousVersionWarningUrl?: string,
   timeline: ImprovedTimelineEvent[],
 };
 
@@ -70,7 +70,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           title={contentToText(props.metaData.title)}
           citation={citation}
           msid={props.metaData.msid}
-          metrics={props.activeTab !== 'pdf' ? props.metrics : null}
+          {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
           timeline={{ events: props.timeline, current: +props.metaData.version }}
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}

@@ -24,6 +24,7 @@ import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 import { getLatestVersion } from '../../utils/get-latest-version';
+import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
   ImprovedTimelineEvent,
 } from '../../components/molecules/improved-timeline/improved-timeline';
@@ -142,8 +143,8 @@ export const Page = (props: PageProps) => {
         { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
-        previousVersionWarningUrl={props.previousVersionWarningUrl}
-        metrics={props.metrics}
+        previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
+        metrics={makeNullableOptional(props.metrics)}
         relatedContent={relatedContent}
         metaData={props.metaData}
         msidWithVersion={props.msidWithVersion}
