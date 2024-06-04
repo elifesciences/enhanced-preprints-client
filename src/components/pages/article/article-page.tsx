@@ -11,7 +11,7 @@ import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
-import { ImprovedTimelineEvent } from '../../molecules/timeline/timeline';
+import { TimelineEvent } from '../../molecules/timeline/timeline';
 
 export type ArticleStatusProps = {
   articleType: string,
@@ -34,7 +34,7 @@ export type ArticlePageProps = {
   activeTab: string,
   tabs: Tab[],
   previousVersionWarningUrl?: string,
-  timeline: ImprovedTimelineEvent[],
+  timeline: TimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {

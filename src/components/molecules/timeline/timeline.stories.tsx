@@ -1,12 +1,12 @@
 import { StoryFn, Meta } from '@storybook/react';
-import { ImprovedTimeline } from './timeline';
+import { Timeline } from './timeline';
 
 export default {
-  title: 'Molecules/ImprovedTimeline',
-  component: ImprovedTimeline,
-} as Meta<typeof ImprovedTimeline>;
+  title: 'Molecules/Timeline',
+  component: Timeline,
+} as Meta<typeof Timeline>;
 
-const Template: StoryFn<typeof ImprovedTimeline> = (args) => <ImprovedTimeline {...args} />;
+const Template: StoryFn<typeof Timeline> = (args) => <Timeline {...args} />;
 
 export const EventTimeline = Template.bind({});
 EventTimeline.args = {

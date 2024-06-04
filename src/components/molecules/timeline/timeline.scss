@@ -2,7 +2,7 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.improved-review-timeline {
+.review-timeline {
   @include mixins.margin(36, "bottom");
   @include mixins.margin(36, "top");
 
@@ -34,11 +34,11 @@
       width: 8px;
     }
 
-    &.improved-review-timeline__event--reviewed::before {
+    &.review-timeline__event--reviewed::before {
       background-color: var(--border-timeline-reviewed);
     }
 
-    &.improved-review-timeline__event--revised::before {
+    &.review-timeline__event--revised::before {
       background-color: var(--border-timeline-revised);
     }
   }
@@ -112,11 +112,11 @@
       text-underline-offset: 3px;
     }
 
-    .improved-review-timeline__event--reviewed & {
+    .review-timeline__event--reviewed & {
       color: var(--link-timeline-reviewed);
     }
 
-    .improved-review-timeline__event--revised & {
+    .review-timeline__event--revised & {
       color: var(--link-timeline-revised);
     }
   }
@@ -136,7 +136,7 @@
       text-underline-offset: 3px;
     }
 
-    &.improved-review-timeline__expansion--expanded {
+    &.review-timeline__expansion--expanded {
       background-image: url("../../../images/icons/arrowup-triangle.svg");
     }
   }

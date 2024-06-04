@@ -7,7 +7,7 @@ import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
-import { ImprovedTimeline, ImprovedTimelineProps } from '../timeline/timeline';
+import { Timeline, TimelineProps } from '../timeline/timeline';
 
 type ArticleStatusProps = {
   doi: string,
@@ -16,7 +16,7 @@ type ArticleStatusProps = {
   citation: CitationData,
   msid: string,
   metrics?: ContextualDataProps,
-  timeline: ImprovedTimelineProps,
+  timeline: TimelineProps,
 };
 
 const formatStringCitation = ({
@@ -34,7 +34,7 @@ export const ArticleStatus = ({
   const [showCiteModal, setShowCiteModal] = useState(false);
 
   return <div className="article-status">
-    <ImprovedTimeline {...timeline} />
+    <Timeline {...timeline} />
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
