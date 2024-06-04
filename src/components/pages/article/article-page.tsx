@@ -1,5 +1,4 @@
-import { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
+import { ReactElement, useContext } from 'react';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
@@ -7,6 +6,7 @@ import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
+import { BrandContext } from '../../../brand';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
@@ -38,18 +38,18 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const { t } = useTranslation();
   const { doi } = props.metaData;
+  const brand = useContext(BrandContext);
 
-  const citation: CitationData = {
+  const citation: CitationData | undefined = brand.journal ? {
     authors: props.metaData.authors,
     year: props.metaData.publishedYear,
     volume: props.metaData.volume,
-    journal: t('publisher_short'),
+    journal: brand.journal,
     eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
     doi,
-  };
+  } : undefined;
 
   return (
     <>

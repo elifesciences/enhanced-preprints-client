@@ -1,10 +1,16 @@
+<<<<<<< HEAD
+import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+=======
 import { useState } from 'react';
+>>>>>>> master
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
+import { BrandContext } from '../../../brand';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
 import { Timeline, TimelineProps } from '../timeline/timeline';
@@ -13,7 +19,7 @@ type ArticleStatusProps = {
   doi: string,
   title: string,
   pdfUrl?: string,
-  citation: CitationData,
+  citation?: CitationData,
   msid: string,
   metrics?: ContextualDataProps,
   timeline: TimelineProps,
@@ -32,7 +38,6 @@ export const ArticleStatus = ({
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
-
   return <div className="article-status">
     <Timeline {...timeline} />
     <ul className="article-actions">
@@ -41,9 +46,11 @@ export const ArticleStatus = ({
         <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
       </li>
       )}
+      {citation && (
       <li className="article-actions__list-item">
         <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
       </li>
+      )}
       <li className="article-actions__list-item">
         <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
       </li>
@@ -57,7 +64,7 @@ export const ArticleStatus = ({
       </div>
       <Socials doi={doi} title={title} />
     </Modal>
-    <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
+    { citation && <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
       <Citation citation={citation} />
       <ol className="cite-downloads__list">
         <li className="cite-downloads__list-item">
@@ -70,7 +77,7 @@ export const ArticleStatus = ({
           <Button variant="cite-download" text="Download RIS" url={`/reviewed-preprints/${msid}.ris`} download />
         </li>
       </ol>
-    </Modal>
+    </Modal>}
     {metrics && <ContextualData {...metrics} />}
   </div>;
 };

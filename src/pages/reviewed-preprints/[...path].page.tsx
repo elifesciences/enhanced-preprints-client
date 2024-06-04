@@ -1,5 +1,4 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,14 +12,19 @@ import {
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
+<<<<<<< HEAD
+=======
 import { contentToText } from '../../utils/content-to-text';
+>>>>>>> master
 import { generateStatus } from '../../utils/generate-article-status';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
-import { formatAuthorName } from '../../utils/format-author-name';
 import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
+import {
+  Brand, asteraBrand, biophysicsColabBrand, elifeBrand, scietyBrand,
+} from '../../brand';
 import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 import { getLatestVersion } from '../../utils/get-latest-version';
@@ -31,6 +35,7 @@ import {
 import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
+  brand: Brand | null,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -43,6 +48,8 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
+<<<<<<< HEAD
+=======
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
 
@@ -54,6 +61,7 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
+>>>>>>> master
 export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
@@ -112,8 +120,7 @@ export const Page = (props: PageProps) => {
     },
     [router.query.path],
   );
-  const { tabLinks: tabs } = subPages[tabName];
-  const tabContent = subPages[tabName].content();
+
   const { t } = useTranslation();
   const relatedContent = props.relatedContent.map((item) => {
     const relatedType = t(`related_type_${item.type}`, { defaultValue: t('related_type_default') });
@@ -125,38 +132,21 @@ export const Page = (props: PageProps) => {
       }),
     };
   });
-  return (
-    <>
-      <Head>
-        <title>{contentToText(props.metaData.title)}</title>
-        <meta name="citation_title" content={contentToText(props.metaData.title)}/>
-        <meta name="citation_publisher" content={t('publisher_long')}/>
-        <meta name="citation_journal_title" content={t('publisher_short')}/>
-        <meta name="citation_volume" content={props.metaData.volume}/>
-        <meta name="citation_id" content={`RP${props.metaData.msid}`}/>
-        <meta name="citation_abstract" content={contentToText(props.metaData.abstract)}/>
-        <meta name="citation_doi" content={props.metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(props.timeline, +props.metaData.version)}/>
-        {props.metaData.pdfUrl && <meta name="citation_pdf_url" content={props.metaData.pdfUrl}/>}
-        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: props.metaData.msid })}/>
-        <meta name="citation_language" content="en"/>
-        { props.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
-      </Head>
-      <ArticlePage
-        previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
-        metrics={makeNullableOptional(props.metrics)}
-        relatedContent={relatedContent}
-        metaData={props.metaData}
-        msidWithVersion={props.msidWithVersion}
-        tabs={tabs}
-        status={props.status}
-        timeline={props.timeline}
-        activeTab={tabName}
-      >
-        { tabContent }
-      </ArticlePage>
-    </>
-  );
+
+  const { tabLinks: tabs } = subPages[tabName];
+  const tabContent = subPages[tabName].content();
+  return <ArticlePage
+    previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
+    metrics={makeNullableOptional(props.metrics)}
+    relatedContent={relatedContent}
+    metaData={props.metaData}
+    msidWithVersion={props.msidWithVersion}
+    tabs={tabs}
+    status={props.status}
+    timeline={props.timeline}
+    activeTab={tabName}>
+    { tabContent }
+  </ArticlePage>;
 };
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
@@ -193,6 +183,18 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
+  // branding
+  let brand: Brand | null = null;
+  if (id === 'biophysics-colab-111111v1') {
+    brand = biophysicsColabBrand;
+  } else if (id === '85111v2') {
+    brand = elifeBrand;
+  } else if (id === '85111v1') {
+    brand = scietyBrand;
+  } else if (id === '80494v1') {
+    brand = asteraBrand;
+  }
+
   const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
 
@@ -204,6 +206,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
+      brand,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,

@@ -4,7 +4,6 @@ if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-bui
 }
 
 type Config = {
-  siteName?: string,
   showPreviews: boolean
   apiServer?: string,
   iiifServer?: string,
@@ -16,7 +15,6 @@ type Config = {
 };
 
 export const config: Config = {
-  siteName: process.env.NEXT_PUBLIC_SITE_NAME,
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,

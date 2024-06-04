@@ -73,6 +73,16 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sciety.org',
+        port: '',
+        pathname: '/static/**',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig
