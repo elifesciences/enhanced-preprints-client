@@ -1,6 +1,6 @@
 import { EnhancedArticle, VersionSummary } from '../types';
 import { ProcessedArticle } from '../types/enhanced-article';
-import { generateImprovedTimeline } from './generate-improved-timeline';
+import { generateTimeline } from './generate-timeline';
 
 const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
   abstract: '',
@@ -65,9 +65,9 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
   published: article.published,
 });
 
-describe('generateImprovedTimeline', () => {
+describe('generateTimeline', () => {
   it('should generate the correct timeline with one version', () => {
-    const timeline = generateImprovedTimeline({
+    const timeline = generateTimeline({
       article: version1,
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),
@@ -86,7 +86,7 @@ describe('generateImprovedTimeline', () => {
   });
 
   it('should generate the correct timeline with two article versions', () => {
-    const timeline = generateImprovedTimeline({
+    const timeline = generateTimeline({
       article: version2,
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),
@@ -113,7 +113,7 @@ describe('generateImprovedTimeline', () => {
   });
 
   it('should generate the correct timeline with an external version summary', () => {
-    const timeline = generateImprovedTimeline({
+    const timeline = generateTimeline({
       article: version2,
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),

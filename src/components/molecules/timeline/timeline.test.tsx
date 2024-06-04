@@ -1,11 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { ImprovedTimeline } from './timeline';
+import { Timeline } from './timeline';
 
-describe('ImprovedTimeline', () => {
+describe('Timeline', () => {
   it('renders a single timeline item', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('13/01/2001');
-    render(<ImprovedTimeline events={[
+    render(<Timeline events={[
       {
         url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
       },
@@ -23,7 +23,7 @@ describe('ImprovedTimeline', () => {
   it('renders a single revised timeline item', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('14/02/2002');
-    render(<ImprovedTimeline events={[
+    render(<Timeline events={[
       {
         url: '#', version: 2, date: '2002-02-14', versionIndicator: 'v2',
       },
@@ -40,18 +40,18 @@ describe('ImprovedTimeline', () => {
 
   describe('collabsable behaviours', () => {
     it('should not show the expand text when there is only one entry', () => {
-      render(<ImprovedTimeline events={[
+      render(<Timeline events={[
         {
           url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
         },
       ]}
       />);
 
-      expect(document.querySelector('.improved-review-timeline__expansion')).not.toBeInTheDocument();
+      expect(document.querySelector('.review-timeline__expansion')).not.toBeInTheDocument();
     });
 
     it('should show the expand text when there is more than one entry', () => {
-      render(<ImprovedTimeline events={[
+      render(<Timeline events={[
         {
           url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
         },
@@ -61,11 +61,11 @@ describe('ImprovedTimeline', () => {
       ]}
       />);
 
-      expect(document.querySelector('.improved-review-timeline__expansion')).toBeInTheDocument();
+      expect(document.querySelector('.review-timeline__expansion')).toBeInTheDocument();
     });
 
     it('should expand when the text is clicked', () => {
-      render(<ImprovedTimeline current={2} events={[
+      render(<Timeline current={2} events={[
         {
           url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
         },
@@ -83,7 +83,7 @@ describe('ImprovedTimeline', () => {
     });
 
     it('should collapse when the text is clicked', () => {
-      render(<ImprovedTimeline current={2} events={[
+      render(<Timeline current={2} events={[
         {
           url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
         },
@@ -104,7 +104,7 @@ describe('ImprovedTimeline', () => {
 
     describe('collapsed', () => {
       it('should show the text "Show all versions" when there are more than one entries and the latest is not the current', () => {
-        render(<ImprovedTimeline current={1} events={[
+        render(<Timeline current={1} events={[
           {
             url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
           },
@@ -118,7 +118,7 @@ describe('ImprovedTimeline', () => {
       });
 
       it('should show the text "Show previous version" when there are two entries and the latest is the current', () => {
-        render(<ImprovedTimeline current={2} events={[
+        render(<Timeline current={2} events={[
           {
             url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
           },
@@ -132,7 +132,7 @@ describe('ImprovedTimeline', () => {
       });
 
       it('should show the text "Show previous versions" when there are more than two entries and the latest is the current', () => {
-        render(<ImprovedTimeline current={3} events={[
+        render(<Timeline current={3} events={[
           {
             url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
           },
@@ -151,7 +151,7 @@ describe('ImprovedTimeline', () => {
 
     describe('expanded', () => {
       it('should show the text "Hide all versions" when there are more than one entries and the latest is not the current', () => {
-        render(<ImprovedTimeline current={1} events={[
+        render(<Timeline current={1} events={[
           {
             url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
           },
@@ -167,7 +167,7 @@ describe('ImprovedTimeline', () => {
       });
 
       it('should show the text "Hide previous version" when there are two entries and the latest is the current', () => {
-        render(<ImprovedTimeline current={2} events={[
+        render(<Timeline current={2} events={[
           {
             url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
           },
@@ -183,7 +183,7 @@ describe('ImprovedTimeline', () => {
       });
 
       it('should show the text "Hide previous versions" when there are more than two entries and the latest is the current', () => {
-        render(<ImprovedTimeline current={3} events={[
+        render(<Timeline current={3} events={[
           {
             url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
           },
@@ -217,17 +217,17 @@ describe('ImprovedTimeline', () => {
     ];
 
     it('should display the correct entry regardless of input order', () => {
-      render(<ImprovedTimeline current={3} events={entries}/>);
+      render(<Timeline current={3} events={entries}/>);
 
       expect(screen.getByText('March 26, 2003')).toBeInTheDocument();
     });
 
     it('should display the entries in the correct order when expanded', () => {
-      render(<ImprovedTimeline current={3} events={entries}/>);
+      render(<Timeline current={3} events={entries}/>);
 
-      fireEvent.click(document.getElementsByClassName('improved-review-timeline__expansion')[0]);
+      fireEvent.click(document.getElementsByClassName('review-timeline__expansion')[0]);
 
-      const dates = Array.from(document.querySelectorAll('.improved-review-timeline__date')).map((node) => node.innerHTML);
+      const dates = Array.from(document.querySelectorAll('.review-timeline__date')).map((node) => node.innerHTML);
 
       expect(dates[0]).toStrictEqual('March 26, 2003');
       expect(dates[1]).toStrictEqual('February 23, 2002');

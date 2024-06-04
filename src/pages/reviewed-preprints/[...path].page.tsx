@@ -26,16 +26,16 @@ import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article'
 import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
-  ImprovedTimelineEvent,
+  TimelineEvent,
 } from '../../components/molecules/timeline/timeline';
-import { generateImprovedTimeline } from '../../utils/generate-improved-timeline';
+import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  timeline: ImprovedTimelineEvent[],
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -43,7 +43,7 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
-const getPublishedDate = (events: ImprovedTimelineEvent[], currentVersion: number): string | undefined => {
+const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
 
   if (publishedEvent) {
@@ -194,7 +194,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
   const status = generateStatus(articleWithVersions);
-  const improvedTimeline = generateImprovedTimeline(articleWithVersions);
+  const timeline = generateTimeline(articleWithVersions);
 
   // This is redundant after server has been updated
   if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
@@ -219,7 +219,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         status: status.status,
         isPreview: status.isPreview,
       },
-      timeline: improvedTimeline,
+      timeline,
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
