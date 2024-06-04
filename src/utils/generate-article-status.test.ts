@@ -92,8 +92,8 @@ describe('generateStatus', () => {
   it('should be a preview if the published date is empty', () => {
     const previewVersion = {
       ...version1,
+      published: null,
     };
-    delete previewVersion.published;
 
     const status = generateStatus({
       article: previewVersion,

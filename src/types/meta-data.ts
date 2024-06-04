@@ -34,7 +34,6 @@ export type VersionedMetaData = {
   version: string,
   publishedYear: number,
   peerReview: PeerReview,
-  timeline: TimelineEvent[],
   status: string,
   articleType: string,
   volume?: string,

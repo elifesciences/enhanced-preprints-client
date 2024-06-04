@@ -4,26 +4,26 @@ import {
 import { ArticlePage } from './article-page';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import {
-  metaData, peerReview, status, citation, relatedContent,
+  metaData, peerReview, status, timeline, citation, relatedContent,
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content-to-text';
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={[]}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="fulltext" tabs={[]} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleFiguresTab content={''} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with reviews tab', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={[]}>
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="reviews" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleReviewsTab peerReview={peerReview} />
     </ArticlePage>)).not.toThrow();
   });
@@ -43,8 +43,8 @@ describe('ArticlePage', () => {
         linkElement: <a href={'/reviewed-preprints/12345v1/reviews#tab-content'}>Peer review</a>,
       },
     ];
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="fulltext" tabs={tabs}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="fulltext" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text')).toBeInTheDocument();
@@ -56,8 +56,8 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={tabs}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="figures" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
@@ -65,8 +65,8 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="reviews" tabs={tabs}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="reviews" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
     expect(screen.getByText('Full text').parentElement?.classList.value).not.toContain('tab-label--active');
@@ -78,7 +78,7 @@ describe('ArticlePage', () => {
     const expectedDoi = '10.7554/eLife.123456.1';
     const encodedExpectedDoi = encodeURIComponent(expectedDoi);
     const { container } = render(
-      <ArticleStatus articleStatus={status.status} doi={expectedDoi} articleType={status.articleType} pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} msid="12345"/>,
+      <ArticleStatus doi={expectedDoi} pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} timeline={{ events: timeline }} msid="12345"/>,
     );
 
     fireEvent.click(screen.getByText('Share'));
@@ -91,8 +91,8 @@ describe('ArticlePage', () => {
   });
 
   it('renders related content', () => {
-    render(<ArticlePage relatedContent={relatedContent} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    render(<ArticlePage relatedContent={relatedContent} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
     expect(screen.getByText('Related Insight')).toBeInTheDocument();
@@ -101,8 +101,8 @@ describe('ArticlePage', () => {
   });
 
   it('renders metrics if present', () => {
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} activeTab="figures" tabs={[]}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
     expect(screen.queryByText('views')).not.toBeInTheDocument();
@@ -111,9 +111,21 @@ describe('ArticlePage', () => {
 
     // cleanup and rerender with metrics
     cleanup();
-    render(<ArticlePage metrics={{ views: 2, downloads: 3, citations: 5 }} relatedContent={[]} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="figures" tabs={[]}>
-      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} />
-    </ArticlePage>);
+    render(
+      <ArticlePage
+        metrics={{ views: 2, downloads: 3, citations: 5 }}
+        relatedContent={[]}
+        msidWithVersion="12345v1"
+        metaData={{ ...metaData, authors: [] }}
+        status={status}
+        timeline={timeline}
+        activeTab="figures"
+        tabs={[]}
+        previousVersionWarningUrl={null}
+      >
+        <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
+      </ArticlePage>,
+    );
 
     expect(screen.getByText('views', { exact: false }).textContent).toStrictEqual('2 views');
     expect(screen.getByText('downloads', { exact: false }).textContent).toStrictEqual('3 downloads');
@@ -121,7 +133,21 @@ describe('ArticlePage', () => {
   });
 
   it('does not render metrics for pdf tab', () => {
-    render(<ArticlePage metrics={{ views: 2, downloads: 3, citations: 5 }} relatedContent={[]} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="pdf" tabs={[]}><div></div></ArticlePage>);
+    render(
+      <ArticlePage
+        metrics={{ views: 2, downloads: 3, citations: 5 }}
+        relatedContent={[]}
+        msidWithVersion="12345v1"
+        metaData={{ ...metaData, authors: [] }}
+        status={status}
+        timeline={timeline}
+        activeTab="pdf"
+        tabs={[]}
+        previousVersionWarningUrl="http://latest.version"
+      >
+        <div></div>
+      </ArticlePage>,
+    );
 
     expect(screen.queryByText('views')).not.toBeInTheDocument();
     expect(screen.queryByText('downloads')).not.toBeInTheDocument();
@@ -129,7 +155,21 @@ describe('ArticlePage', () => {
   });
 
   it('does not render related-content for pdf tab', () => {
-    render(<ArticlePage metrics={null} relatedContent={relatedContent} msidWithVersion="12345v1" metaData={{ ...metaData, authors: [] }} status={status} activeTab="pdf" tabs={[]}><div></div></ArticlePage>);
+    render(
+      <ArticlePage
+        metrics={null}
+        relatedContent={relatedContent}
+        msidWithVersion="12345v1"
+        metaData={{ ...metaData, authors: [] }}
+        status={status}
+        timeline={timeline}
+        activeTab="pdf"
+        tabs={[]}
+        previousVersionWarningUrl="http://latest.version"
+      >
+        <div></div>
+      </ArticlePage>,
+    );
 
     expect(screen.queryByText('Related Insight')).not.toBeInTheDocument();
     expect(screen.queryByText('Insight Title')).not.toBeInTheDocument();

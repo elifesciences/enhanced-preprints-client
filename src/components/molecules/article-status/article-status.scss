@@ -26,35 +26,6 @@
   }
 }
 
-.article-status__heading {
-  @include mixins.margin(0, "top");
-  @include typography.font-size-and-vertical-height(18, 22);
-
-  color: var(--color-primary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-}
-
-.article-status__text {
-  @include typography.body-small;
-}
-
-.article-status__link {
-  @include mixins.margin(36, "bottom");
-  @include typography.body-small;
-
-  color: var(--color-primary);
-  cursor: pointer;
-  display: block;
-  font-weight: 600;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-}
-
 .article-actions {
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");

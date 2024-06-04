@@ -12,8 +12,11 @@ import {
 import { fetchVersion } from '../../utils/fetch-data';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
+<<<<<<< HEAD
+=======
+import { contentToText } from '../../utils/content-to-text';
+>>>>>>> master
 import { generateStatus } from '../../utils/generate-article-status';
-import { generateTimeline } from '../../utils/generate-timeline';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { contentToFigures } from '../../utils/content-to-figures';
 import { contentToJsx } from '../../utils/content-to-jsx';
@@ -25,6 +28,11 @@ import {
 import '../../i18n';
 import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
 import { getLatestVersion } from '../../utils/get-latest-version';
+import { makeNullableOptional } from '../../utils/make-nullable-optional';
+import {
+  TimelineEvent,
+} from '../../components/molecules/timeline/timeline';
+import { generateTimeline } from '../../utils/generate-timeline';
 
 type PageProps = {
   brand: Brand | null,
@@ -32,6 +40,7 @@ type PageProps = {
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -39,6 +48,20 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
+<<<<<<< HEAD
+=======
+const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
+  const publishedEvent = events.find(({ version }) => version === currentVersion);
+
+  if (publishedEvent) {
+    const date = new Date(publishedEvent.date);
+    return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
+  }
+
+  return undefined;
+};
+
+>>>>>>> master
 export const Page = (props: PageProps) => {
   const routePrefix = props.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
@@ -112,7 +135,16 @@ export const Page = (props: PageProps) => {
 
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  return <ArticlePage previousVersionWarningUrl={props.previousVersionWarningUrl} relatedContent={relatedContent} metaData={props.metaData} msidWithVersion={props.msidWithVersion} tabs={tabs} status={props.status} activeTab={tabName}>
+  return <ArticlePage
+    previousVersionWarningUrl={makeNullableOptional(props.previousVersionWarningUrl)}
+    metrics={makeNullableOptional(props.metrics)}
+    relatedContent={relatedContent}
+    metaData={props.metaData}
+    msidWithVersion={props.msidWithVersion}
+    tabs={tabs}
+    status={props.status}
+    timeline={props.timeline}
+    activeTab={tabName}>
     { tabContent }
   </ArticlePage>;
 };
@@ -188,9 +220,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       status: {
         articleType: status.type,
         status: status.status,
-        timeline,
         isPreview: status.isPreview,
       },
+      timeline,
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,

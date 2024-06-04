@@ -1,8 +1,41 @@
-node_modules/**
-.yarn/cache/**
-.yarn/install-state.gz
-docker-compose.yaml
-Dockerfile
-Makefile
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# git/github
+.git
 .github/**
-data/
+
+# node/yarn
+node_modules/**
+.yarn/**
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# docker
+docker-compose*.yaml
+Dockerfile
+
+# Next
+.next/**
+playwright-report/**
+test-results/**
+
+# Storybook
+.storybook/**
+
+# Dev tooling
+Makefile
+.husky/**
+.nvmrc
+.swc/**
+.vscode/**
+coverage/**
+build/**

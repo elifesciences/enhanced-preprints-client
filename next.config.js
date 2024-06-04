@@ -2,6 +2,9 @@ var path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    instrumentationHook: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   rewrites: async () => ({

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+=======
+import { useState } from 'react';
+>>>>>>> master
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -9,19 +13,17 @@ import { Citation, CitationData } from '../../atoms/citation/citation';
 import { BrandContext } from '../../../brand';
 import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
+import { Timeline, TimelineProps } from '../timeline/timeline';
 
 type ArticleStatusProps = {
-  articleType?: string,
-  articleStatus: string,
   doi: string,
   title: string,
   pdfUrl?: string,
   citation?: CitationData,
   msid: string,
-  metrics?: ContextualDataProps | null,
+  metrics?: ContextualDataProps,
+  timeline: TimelineProps,
 };
-
-const defaultArticleType = 'reviewed_preprint';
 
 const formatStringCitation = ({
   authors, doi, eLocationId, journal, title, volume, year,
@@ -32,17 +34,12 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  articleType = defaultArticleType, articleStatus, doi, title, pdfUrl, citation, msid, metrics,
+  doi, title, pdfUrl, citation, msid, metrics, timeline,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
-  const { t } = useTranslation();
-  const brand = useContext(BrandContext);
-
   return <div className="article-status">
-    <h2 className="article-status__heading">{ t(articleType) }</h2>
-    <p className="article-status__text">{ t(articleStatus) }</p>
-    { brand.processUrl && <a href={brand.processUrl} className="article-status__link">{ t('status_about') }</a> }
+    <Timeline {...timeline} />
     <ul className="article-actions">
       { pdfUrl && (
       <li className="article-actions__list-item">
