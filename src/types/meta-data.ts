@@ -2,7 +2,6 @@ import { Content } from './content';
 import { Author } from './author';
 import { Reference } from './reference';
 import { PeerReview } from './peer-review';
-import { TimelineEvent } from '../components/molecules/timeline/timeline';
 import { Heading } from './enhanced-article';
 
 export type MetaData = {
@@ -34,7 +33,6 @@ export type VersionedMetaData = {
   version: string,
   publishedYear: number,
   peerReview: PeerReview,
-  timeline: TimelineEvent[],
   status: string,
   articleType: string,
   volume?: string,

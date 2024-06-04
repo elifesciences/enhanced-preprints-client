@@ -1,5 +1,4 @@
 import { StoryFn, Meta } from '@storybook/react';
-
 import { Timeline } from './timeline';
 
 export default {
@@ -12,62 +11,67 @@ const Template: StoryFn<typeof Timeline> = (args) => <Timeline {...args} />;
 export const EventTimeline = Template.bind({});
 EventTimeline.args = {
   events: [
-    { name: 'event 1', date: '1999-01-01' },
-    { name: 'event 2', date: '2000-02-02' },
-    { name: 'event 3', date: '2001-03-03' },
-  ],
-};
-export const EventTimelineWithLinks = Template.bind({});
-EventTimelineWithLinks.args = {
-  events: [
     {
-      name: 'event 1',
-      date: '1999-01-01',
-      link: {
-        text: 'Go to bioRxiv',
-        url: 'https://preprint.url',
-      },
-    },
-    {
-      name: 'event 2',
-      date: '2000-02-02',
-    },
-    {
-      name: 'event 3',
-      date: '2001-03-03',
+      date: '2023-03-18',
+      version: 1,
+      versionIndicator: 'v1',
+      url: '#',
     },
   ],
 };
-export const EventTimelineWithDescriptions = Template.bind({});
-EventTimelineWithDescriptions.args = {
+
+export const EventTimelineRevised = Template.bind({});
+EventTimelineRevised.args = {
   events: [
     {
-      name: 'event 1',
-      date: '1999-01-01',
-      eventDescription: '(this version)',
-    },
-    {
-      name: 'event 2',
-      date: '2000-02-02',
-    },
-    {
-      name: 'event 3',
-      date: '2001-03-03',
+      date: '2023-03-19',
+      version: 2,
+      versionIndicator: 'v2',
+      url: '#',
     },
   ],
 };
-export const EventTimelineUnordered = Template.bind({});
-EventTimelineUnordered.args = {
+
+export const EventTimelineRevisedWithPrevious = Template.bind({});
+EventTimelineRevisedWithPrevious.args = {
+  current: 2,
   events: [
-    { name: 'event 1', date: '1999-01-01' },
-    { name: 'event 3', date: '2001-03-03' },
-    { name: 'event 2', date: '2000-02-02' },
+    {
+      url: '#',
+      date: '2023-03-19',
+      version: 2,
+      versionIndicator: 'v2',
+    },
+    {
+      url: '#',
+      date: '2023-03-18',
+      version: 1,
+      versionIndicator: 'v1',
+    },
   ],
 };
-export const EventTimelineISO8601 = Template.bind({});
-EventTimelineISO8601.args = {
+
+export const EventTimelineRevisedWithSubsequent = Template.bind({});
+EventTimelineRevisedWithSubsequent.args = {
+  current: 2,
   events: [
-    { name: 'event 1', date: '2022-12-31T23:59:59Z' },
-    { name: 'event 2', date: '2023-01-01T00:00:00Z' },
+    {
+      name: 'Version of Record',
+      url: '#',
+      date: '2023-03-20',
+      version: 3,
+    },
+    {
+      url: '#',
+      date: '2023-03-19',
+      version: 2,
+      versionIndicator: 'v2',
+    },
+    {
+      url: '#',
+      date: '2023-03-18',
+      version: 1,
+      versionIndicator: 'v1',
+    },
   ],
 };

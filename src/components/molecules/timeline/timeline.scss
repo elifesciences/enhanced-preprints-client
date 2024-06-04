@@ -3,90 +3,141 @@
 @use "../../../sass/typography";
 
 .review-timeline {
-  @include mixins.padding(24, "bottom");
-  @include mixins.margin(24, "bottom");
-  @include mixins.padding(72, "right");
-
-  margin: 0 0 0 auto;
-
-  &:last-child {
-    @include mixins.padding(0, "right");
-  }
+  @include mixins.margin(36, "bottom");
+  @include mixins.margin(36, "top");
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(24, "top");
-    @include mixins.margin(24, "bottom");
-    @include mixins.padding(0, "right");
-
-    width: calc(50% - 72px);
+    @include mixins.margin(12, "top");
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(0, "top");
-    @include mixins.margin(0, "left");
-
-    border-bottom: var(--border);
-    width: 100%;
+    @include mixins.margin(48, "bottom");
+    @include mixins.margin(6, "left");
   }
-}
 
-.review-timeline__list {
-  @include mixins.padding(0, "left");
+  &__event,
+  &__detail {
+    @include mixins.padding(26, "left");
 
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
-}
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    position: relative;
 
-.review-timeline__event {
-  @include typography.body-small();
+    &::before {
+      background-color: var(--border-timeline);
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 8px;
+    }
 
-  font-weight: 600;
-  margin: 0;
+    &.review-timeline__event--reviewed::before {
+      background-color: var(--border-timeline-reviewed);
+    }
 
-  @include mixins.margin(8, "bottom");
-
-  @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(0, "bottom");
-  }
-}
-
-.review-timeline__date {
-  @include typography.font-size-and-vertical-height(12, 24);
-
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  margin: 0;
-
-  @include mixins.margin(8, "bottom");
-
-  @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(16, "bottom");
-
-    &:last-child {
-      @include mixins.margin(0, "bottom");
+    &.review-timeline__event--revised::before {
+      background-color: var(--border-timeline-revised);
     }
   }
-}
 
-.review-timeline__description,
-.review-timeline__link {
-  @include typography.font-size-and-vertical-height(12, 24);
+  &__event {
+    @include typography.font-size-and-vertical-height(16, 24);
 
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  text-decoration: none;
-}
+    &:not(:first-child) {
+      @include mixins.margin(18, "top");
+    }
 
-.review-timeline__link {
-  &::before {
-    color: var(--color-text-secondary);
-    content: "\00a0\00a0•\00a0\00a0";
+    &-link {
+      color: var(--color-text);
+      font-family: var(--font-family-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
   }
 
-  &:hover {
-    color: var(--color-primary);
+  &__event::before {
+    border-radius: 6px 6px 0 0;
+  }
+
+  &__detail {
+    @include mixins.margin(0);
+
+    &::before {
+      border-radius: 0 0 6px 6px;
+    }
+  }
+
+  &__version,
+  &__date {
+    @include typography.body-small();
+
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+  }
+
+  &__version::after {
+    @include mixins.margin(5, "left");
+    @include mixins.margin(5, "right");
+
+    content: " • ";
+  }
+
+  &__date {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+
+  &__link {
+    @include mixins.padding(3, "bottom");
+    @include mixins.padding(3, "top");
+    @include typography.font-size-and-vertical-height(14, 20);
+
+    clear: left;
+    color: var(--color-text);
+    display: block;
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-decoration: none;
+    width: max-content;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .review-timeline__event--reviewed & {
+      color: var(--link-timeline-reviewed);
+    }
+
+    .review-timeline__event--revised & {
+      color: var(--link-timeline-revised);
+    }
+  }
+
+  &__expansion {
+    @include typography.body-small();
+    @include mixins.margin(18, "top");
+    @include mixins.padding(26, "left");
+
+    background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 0 10px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &.review-timeline__expansion--expanded {
+      background-image: url("../../../images/icons/arrowup-triangle.svg");
+    }
   }
 }

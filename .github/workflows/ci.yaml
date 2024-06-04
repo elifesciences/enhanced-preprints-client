@@ -81,7 +81,6 @@ jobs:
     if: github.ref == 'refs/heads/master'
     outputs:
       client_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      storybook_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up QEMU
@@ -111,17 +110,6 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-client:latest
             ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Build and push storybook image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          load: false
-          platforms: linux/amd64,linux/arm64
-          target: storybook
-          tags: |
-            ghcr.io/elifesciences/enhanced-preprints-storybook:latest
-            ghcr.io/elifesciences/enhanced-preprints-storybook:${{ github.sha }}
-            ghcr.io/elifesciences/enhanced-preprints-storybook:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
 
   notify-start:
     runs-on: ubuntu-latest

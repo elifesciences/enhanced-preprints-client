@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
-import { Timeline, TimelineEvent } from '../../molecules/timeline/timeline';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
@@ -12,9 +11,9 @@ import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { Metrics } from '../../../types/enhanced-article';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
+import { TimelineEvent } from '../../molecules/timeline/timeline';
 
 export type ArticleStatusProps = {
-  timeline: TimelineEvent[],
   articleType: string,
   status: string,
   isPreview: boolean,
@@ -30,12 +29,12 @@ export type ArticlePageProps = {
   msidWithVersion: string,
   status: ArticleStatusProps,
   relatedContent: RelatedContentData[],
-  metrics?: Metrics | null,
+  metrics?: Metrics,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
-  previousVersionWarningUrl: string | null,
-  improvedTimelineFeature?: boolean,
+  previousVersionWarningUrl?: string,
+  timeline: TimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -66,17 +65,14 @@ export const ArticlePage = (props: ArticlePageProps) => {
       <aside className="side-section">
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
         <ArticleStatus
-          articleStatus={props.status.status}
           doi={doi}
-          articleType={props.status.articleType}
           pdfUrl={props.metaData.pdfUrl}
           title={contentToText(props.metaData.title)}
           citation={citation}
           msid={props.metaData.msid}
-          metrics={props.activeTab !== 'pdf' ? props.metrics : null}
-          improvedTimelineFeature={props.improvedTimelineFeature}
+          {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
+          timeline={{ events: props.timeline, current: +props.metaData.version }}
         />
-        <Timeline events={props.status.timeline}/>
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
       <main className="primary-section">

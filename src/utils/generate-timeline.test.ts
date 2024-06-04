@@ -1,8 +1,5 @@
-import {
-  EnhancedArticle,
-  ProcessedArticle,
-  VersionSummary,
-} from '../types/enhanced-article';
+import { EnhancedArticle, VersionSummary } from '../types';
+import { ProcessedArticle } from '../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
 
 const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
@@ -69,8 +66,7 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateTimeline', () => {
-  it('should generate the correct timeline with one article version', () => {
-    // Call the function
+  it('should generate the correct timeline with one version', () => {
     const timeline = generateTimeline({
       article: version1,
       versions: {
@@ -78,30 +74,18 @@ describe('generateTimeline', () => {
       },
     });
 
-    // Assert the result
     expect(timeline).toEqual([
       {
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
-        eventDescription: '(this version)',
-      },
-      {
-        date: 'Mon Jan 02 2023',
-        name: 'Posted to preprint server',
-        link: {
-          url: 'https://doi.org/doi-123',
-          text: 'Go to preprint server',
-        },
-      },
-      {
-        date: 'Sun Jan 01 2023',
-        name: 'Sent for peer review',
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        versionIndicator: 'v1',
       },
     ]);
   });
 
   it('should generate the correct timeline with two article versions', () => {
-    // Call the function
     const timeline = generateTimeline({
       article: version2,
       versions: {
@@ -110,39 +94,25 @@ describe('generateTimeline', () => {
       },
     });
 
-    // Assert the result
     expect(timeline).toEqual([
       {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
         date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
-        eventDescription: '(this version)',
+        versionIndicator: 'v2',
       },
       {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
-        link: {
-          text: 'Go to version',
-          url: '/reviewed-preprints/1v1',
-        },
-      },
-
-      {
-        date: 'Mon Jan 02 2023',
-        name: 'Posted to preprint server',
-        link: {
-          url: 'https://doi.org/doi-123',
-          text: 'Go to preprint server',
-        },
-      },
-      {
-        date: 'Sun Jan 01 2023',
-        name: 'Sent for peer review',
+        versionIndicator: 'v1',
       },
     ]);
   });
 
   it('should generate the correct timeline with an external version summary', () => {
-    // Call the function
     const timeline = generateTimeline({
       article: version2,
       versions: {
@@ -152,40 +122,26 @@ describe('generateTimeline', () => {
       },
     });
 
-    // Assert the result
     expect(timeline).toEqual([
       {
+        name: 'Version of Record',
+        url: 'https://doi.org/doi-123v3',
+        version: 3,
         date: 'Thu Feb 09 2023',
-        name: 'Version of Record published',
-        link: {
-          text: 'Go to version',
-          url: 'https://doi.org/doi-123v3',
-        },
       },
       {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
         date: 'Mon Jan 09 2023',
-        name: 'Reviewed preprint version 2',
-        eventDescription: '(this version)',
+        versionIndicator: 'v2',
       },
       {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
         date: 'Tue Jan 03 2023',
-        name: 'Reviewed preprint version 1',
-        link: {
-          text: 'Go to version',
-          url: '/reviewed-preprints/1v1',
-        },
-      },
-      {
-        date: 'Mon Jan 02 2023',
-        name: 'Posted to preprint server',
-        link: {
-          url: 'https://doi.org/doi-123',
-          text: 'Go to preprint server',
-        },
-      },
-      {
-        date: 'Sun Jan 01 2023',
-        name: 'Sent for peer review',
+        versionIndicator: 'v1',
       },
     ]);
   });
