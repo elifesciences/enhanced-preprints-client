@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
-import { Author } from '../../../types';
+import { Author, VersionHistoryItem } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
+import { VersionHistory } from '../../atoms/version-history/version-history';
 
 const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
@@ -33,12 +34,18 @@ const AuthorInformation = ({ author }: { author: Author }) => {
   );
 };
 
-export const AuthorInformationList = ({ authors, license, publishedYear }: { authors: Author[], license?: string, publishedYear?: number }) => (
+export const AuthorInformationList = ({
+  authors,
+  license,
+  publishedYear,
+  versions,
+}: { authors: Author[], versions?: VersionHistoryItem[], license?: string, publishedYear?: number }) => (
   <section id="author-list" className="author-list">
     <h2 id="author-information" className="author-list__title">Article and author information</h2>
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
-    { license && (<Copyright license={license} publishedYear={publishedYear} authors={authors} />)}
+    { versions && versions.length && <VersionHistory versions={versions} /> }
+    { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
   </section>
 );
