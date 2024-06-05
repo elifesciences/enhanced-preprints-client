@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
 import { AuthorInformationList } from './author-information-list';
 import { createAuthorId } from '../../../utils/create-author-id';
-import { authors } from '../../../utils/mocks';
+import { authors, versionHistory } from '../../../utils/mocks';
 
 const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
@@ -10,7 +10,7 @@ const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), af
 
 describe('AuthorInformationList', () => {
   it('renders correctly', () => {
-    render(<AuthorInformationList authors={authors} versions={[]}/>);
+    render(<AuthorInformationList authors={authors} versions={versionHistory}/>);
 
     expect(screen.getByText('Article and author information')).toBeInTheDocument();
   });
@@ -30,7 +30,7 @@ describe('AuthorInformationList', () => {
     },
   );
 
-  it('renders organiizations correctly', () => {
+  it('renders organizations correctly', () => {
     render(<AuthorInformationList authors={authors} versions={[]}/>);
 
     expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
@@ -67,5 +67,17 @@ describe('AuthorInformationList', () => {
     const { container } = render(<AuthorInformationList authors={authors} versions={[]}/>);
 
     expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();
+  });
+
+  it('renders version history', () => {
+    render(<AuthorInformationList authors={[]} versions={versionHistory}/>);
+
+    expect(screen.getByText('Version history')).toBeInTheDocument();
+  });
+
+  it('does not renders version history if no versions', () => {
+    render(<AuthorInformationList authors={[]} versions={[]}/>);
+
+    expect(screen.queryByText('Version history')).not.toBeInTheDocument();
   });
 });

@@ -2,10 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { VersionHistory } from './version-history';
 
 describe('Version History', () => {
-  it('should render the verison history', () => {
+  it('should render the version history', () => {
     render(<VersionHistory versions={[]}/>);
 
-    expect(screen.getByText('Versions')).toBeInTheDocument();
+    expect(screen.getByText('Version history')).toBeInTheDocument();
   });
 
   it('displays the correct label', () => {
