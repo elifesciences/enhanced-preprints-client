@@ -14,4 +14,5 @@ const Template: StoryFn<typeof AuthorInformationList> = (args) => (
 export const Authors = Template.bind({});
 Authors.args = {
   authors,
+  versions: [],
 };
