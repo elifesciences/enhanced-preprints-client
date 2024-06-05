@@ -21,7 +21,7 @@ describe('Version History', () => {
     expect(screen.getByText('Label', { exact: false })).toBeInTheDocument();
   });
 
-  it.failing('displays the date in the correct format', () => {
+  it('displays the date in the correct format', () => {
     const versions = [
       {
         label: 'Label',

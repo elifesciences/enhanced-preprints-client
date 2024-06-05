@@ -1,3 +1,4 @@
+import { formatDate } from '../../../utils/format-date';
 import './version-history.scss';
 
 type Props = {
@@ -14,7 +15,7 @@ export const VersionHistory = ({ versions }: Props) => (
     <ul>
       {versions.map(({ label, date, url }, index) => (
         <li key={index}>
-          { url ? (<a href={url}>{label}</a>) : label}: <time dateTime={date.toString()}>{date.toString()}</time>
+          { url ? (<a href={url}>{label}</a>) : label}: <time dateTime={date.toString()}>{formatDate(date)}</time>
         </li>
       ))}
     </ul>
