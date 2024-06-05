@@ -1,16 +1,23 @@
 import './version-history.scss';
 
-export const VersionHistory = () => (
+type Props = {
+  versions: {
+    label: string,
+    date: Date,
+    link?: {
+      url: string,
+      label: string,
+    },
+  }[]
+};
+
+export const VersionHistory = ({ versions }: Props) => (
   <section className="version-history">
     <h3>Versions</h3>
     <ul>
       <li>
         <span>Preprint posted: </span>
         <a href="https://doi.org/10.1101/2022.11.08.515698"><time>November 22, 2022</time> (view preprint)</a>
-      </li>
-      <li>
-        <span>Recieved: </span>
-        <time>November 23, 2022</time>
       </li>
       <li>
         <span>Sent for peer review: </span>
