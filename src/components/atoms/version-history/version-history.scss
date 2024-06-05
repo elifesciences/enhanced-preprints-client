@@ -1,3 +1,5 @@
-@use "../../../sass/mixins";
-@use "../../../sass/settings";
-@use "../../../sass/typography";
+@use "../../../sass/generated-content";
+
+.version-history {
+  @include generated-content.generated-content();
+}
