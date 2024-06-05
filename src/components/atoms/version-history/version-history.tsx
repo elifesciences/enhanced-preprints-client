@@ -1,12 +1,9 @@
 import { formatDate } from '../../../utils/format-date';
 import './version-history.scss';
+import { VersionHistoryItem } from '../../../types';
 
 type Props = {
-  versions: {
-    label: string,
-    date: Date,
-    url?: string,
-  }[]
+  versions: VersionHistoryItem[]
 };
 
 export const VersionHistory = ({ versions }: Props) => (
