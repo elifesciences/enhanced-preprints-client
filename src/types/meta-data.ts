@@ -3,6 +3,7 @@ import { Author } from './author';
 import { Reference } from './reference';
 import { PeerReview } from './peer-review';
 import { Heading } from './enhanced-article';
+import { VersionHistoryItem } from './version-history-item';
 
 export type MetaData = {
   abstract: Content,
@@ -18,6 +19,7 @@ export type MetaData = {
   volume?: string,
   eLocationId?: string,
   license?: string,
+  versionHistory: VersionHistoryItem[],
 };
 
 export type VersionedMetaData = {

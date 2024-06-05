@@ -29,6 +29,7 @@ import {
   TimelineEvent,
 } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
+import { generateVersionHistory } from '../../utils/generate-version-history';
 
 type PageProps = {
   metaData: MetaData,
@@ -195,6 +196,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
+  const versionHistory = generateVersionHistory(articleWithVersions);
 
   // This is redundant after server has been updated
   if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
@@ -210,6 +212,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         authors: articleWithVersions.article.article.authors || [],
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
+        versionHistory,
       },
       imgInfo,
       msidWithVersion: id,

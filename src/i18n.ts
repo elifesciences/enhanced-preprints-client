@@ -24,6 +24,8 @@ const resources = {
       related_type_default: 'content',
       timeline_version_title: '$t(reviewed_preprint)',
       external_timeline_version_title: '$t(timeline_version_title)',
+      history_version_title: '$t(reviewed_preprint) version {{version}}',
+      external_history_version_title: '$t(history_version_title)',
     },
     elife: {
       twitter_handle: '@elife',
@@ -38,6 +40,7 @@ const resources = {
       related_type_collection: 'Collection',
       related_type_podcastChapterEpisode: 'Podcast',
       external_timeline_version_title: 'Version of Record',
+      external_history_version_title: 'Version of Record published',
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',
