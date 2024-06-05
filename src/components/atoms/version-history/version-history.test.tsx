@@ -21,7 +21,19 @@ describe('Version History', () => {
     expect(screen.getByText('Label')).toBeInTheDocument();
   });
 
-  it.todo('displays the date in the correct format');
+  it.failing('displays the date in the correct format', () => {
+    const versions = [
+      {
+        label: 'Label',
+        date: new Date('2024-06-05'),
+      },
+    ];
+
+    render(<VersionHistory versions={versions}/>);
+
+    expect(screen.getByText('June 5, 2024')).toBeInTheDocument();
+  });
+
   it.todo('has the correct link url when set');
   it.todo('has the correct link label when set');
   it.todo('displays the versions in the expected order');
