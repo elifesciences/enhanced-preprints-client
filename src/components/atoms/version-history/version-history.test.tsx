@@ -8,9 +8,19 @@ describe('Version History', () => {
     expect(screen.getByText('Versions')).toBeInTheDocument();
   });
 
-  it.todo('displays the correct label for a preprint');
-  it.todo('displays the correct label for a vor');
-  it.todo('displays the correct label for peer review');
+  it.failing('displays the correct label', () => {
+    const versions = [
+      {
+        label: 'Label',
+        date: new Date(),
+      },
+    ];
+
+    render(<VersionHistory versions={versions}/>);
+
+    expect(screen.getByText('Label')).toBeInTheDocument();
+  });
+
   it.todo('displays the date in the correct format');
   it.todo('has the correct link url when set');
   it.todo('has the correct link label when set');
