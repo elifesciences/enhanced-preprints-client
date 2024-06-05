@@ -45,7 +45,7 @@ export const AuthorInformationList = ({
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
-    { versions.length && <VersionHistory versions={versions} /> }
+    { versions.length > 0 && <VersionHistory versions={versions} /> }
     { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
   </section>
 );
