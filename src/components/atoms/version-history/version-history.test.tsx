@@ -44,7 +44,7 @@ describe('Version History', () => {
     ];
 
     render(<VersionHistory versions={versions}/>);
-    expect(document.querySelector('A')).toHaveAttribute('href', 'www.elifesciences.org');
+    expect(document.querySelector('a')).toHaveAttribute('href', 'www.elifesciences.org');
   });
 
   it('displays the versions in the expected order', () => {
@@ -60,7 +60,7 @@ describe('Version History', () => {
     ];
 
     render(<VersionHistory versions={versions}/>);
-    const dates = Array.from(document.querySelectorAll('TIME')).map((node) => node.innerHTML);
+    const dates = Array.from(document.querySelectorAll('time')).map((node) => node.innerHTML);
 
     expect(dates[0]).toStrictEqual('June 5, 2023');
     expect(dates[1]).toStrictEqual('June 5, 2024');
