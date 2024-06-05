@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { AuthorInformationList } from './author-information-list';
-import { authors } from '../../../utils/mocks';
+import { authors, versionHistory } from '../../../utils/mocks';
 
 export default {
   title: 'Molecules/AuthorInformationList',
@@ -14,5 +14,5 @@ const Template: StoryFn<typeof AuthorInformationList> = (args) => (
 export const Authors = Template.bind({});
 Authors.args = {
   authors,
-  versions: [],
+  versions: versionHistory,
 };

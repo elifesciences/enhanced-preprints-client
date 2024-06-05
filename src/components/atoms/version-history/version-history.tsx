@@ -8,7 +8,7 @@ type Props = {
 
 export const VersionHistory = ({ versions }: Props) => (
   <section className="version-history">
-    <h3>Versions</h3>
+    <h2>Version history</h2>
     <ul>
       {versions.sort((a, b) => a.date.getTime() - b.date.getTime()).map(({ label, date, url }, index) => (
         <li key={index}>
