@@ -34,7 +34,21 @@ describe('Version History', () => {
     expect(screen.getByText('June 5, 2024')).toBeInTheDocument();
   });
 
-  it.todo('has the correct link url when set');
+  it.failing('has the correct link url when set', () => {
+    const versions = [
+      {
+        label: 'Label',
+        date: new Date(),
+        link: {
+          url: 'www.elifesciences.org',
+          label: 'Label',
+        },
+      },
+    ];
+
+    render(<VersionHistory versions={versions}/>);
+    expect(document.querySelector('A')).toHaveAttribute('href', 'www.elifesciences.org');
+  });
   it.todo('has the correct link label when set');
   it.todo('displays the versions in the expected order');
 });
