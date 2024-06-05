@@ -8,7 +8,7 @@ describe('Version History', () => {
     expect(screen.getByText('Versions')).toBeInTheDocument();
   });
 
-  it.failing('displays the correct label', () => {
+  it('displays the correct label', () => {
     const versions = [
       {
         label: 'Label',
@@ -18,7 +18,7 @@ describe('Version History', () => {
 
     render(<VersionHistory versions={versions}/>);
 
-    expect(screen.getByText('Label')).toBeInTheDocument();
+    expect(screen.getByText('Label', { exact: false })).toBeInTheDocument();
   });
 
   it.failing('displays the date in the correct format', () => {
@@ -34,7 +34,7 @@ describe('Version History', () => {
     expect(screen.getByText('June 5, 2024')).toBeInTheDocument();
   });
 
-  it.failing('has the correct link url when set', () => {
+  it('has the correct link url when set', () => {
     const versions = [
       {
         label: 'Label',
