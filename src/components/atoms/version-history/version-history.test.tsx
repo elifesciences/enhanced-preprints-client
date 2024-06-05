@@ -39,10 +39,7 @@ describe('Version History', () => {
       {
         label: 'Label',
         date: new Date(),
-        link: {
-          url: 'www.elifesciences.org',
-          label: 'Label',
-        },
+        url: 'www.elifesciences.org',
       },
     ];
 
