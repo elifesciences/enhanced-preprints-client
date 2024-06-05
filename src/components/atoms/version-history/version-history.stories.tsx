@@ -29,12 +29,12 @@ const Template: StoryFn<typeof VersionHistory> = () => <VersionHistory versions=
   {
     label: 'Version of Record published',
     date: new Date('2023-06-07'),
-    url: 'https://elifesciences.org/articles/85111',
+    url: 'https://elifesciences.org/articles/85111v1',
   },
   {
     label: 'Version of Record updated',
     date: new Date('2023-06-15'),
-    url: 'https://elifesciences.org/articles/85111',
+    url: 'https://elifesciences.org/articles/85111v2',
   },
 ]}/>;
 
