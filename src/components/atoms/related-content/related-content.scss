@@ -3,21 +3,18 @@
 @use "../../../sass/typography";
 
 .related-content {
-  @include mixins.padding(24, "bottom");
-  @include mixins.padding(0, "left");
-
-  list-style: none;
-  margin: 0 0 0 auto;
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    display: none;
-  }
+  display: none;
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(0, "top");
+    @include mixins.padding(24, "bottom");
+    @include mixins.padding(0, "left");
+    @include mixins.padding(24, "top");
 
     border-bottom: var(--border);
+    border-top: var(--border);
     display: unset;
+    list-style: none;
+    margin: 0 0 0 auto;
     width: 100%;
   }
 }

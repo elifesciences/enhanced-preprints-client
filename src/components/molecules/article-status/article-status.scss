@@ -3,25 +3,19 @@
 @use "../../../sass/typography";
 
 .article-status {
-  @include mixins.margin(24, "bottom");
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
-
-  border-bottom: var(--border);
 
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(72, "right");
 
-    border-bottom: none;
     width: 50%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(24, "bottom");
     @include mixins.margin(10, "top");
     @include mixins.margin(0, "right");
 
-    border-bottom: var(--border);
     width: 100%;
   }
 }
