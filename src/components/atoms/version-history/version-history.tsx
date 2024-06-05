@@ -13,7 +13,7 @@ export const VersionHistory = ({ versions }: Props) => (
   <section className="version-history">
     <h3>Versions</h3>
     <ul>
-      {versions.map(({ label, date, url }, index) => (
+      {versions.sort((a, b) => a.date.getTime() - b.date.getTime()).map(({ label, date, url }, index) => (
         <li key={index}>
           { url ? (<a href={url}>{label}</a>) : label}: <time dateTime={date.toString()}>{formatDate(date)}</time>
         </li>

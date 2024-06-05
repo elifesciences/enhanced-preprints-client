@@ -47,7 +47,7 @@ describe('Version History', () => {
     expect(document.querySelector('A')).toHaveAttribute('href', 'www.elifesciences.org');
   });
 
-  it.failing('displays the versions in the expected order', () => {
+  it('displays the versions in the expected order', () => {
     const versions = [
       {
         label: 'Label',
