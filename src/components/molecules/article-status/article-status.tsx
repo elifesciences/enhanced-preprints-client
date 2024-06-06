@@ -35,19 +35,22 @@ export const ArticleStatus = ({
 
   return <div className="article-status">
     <Timeline {...timeline} />
-    <ul className="article-actions">
-      { pdfUrl && (
-      <li className="article-actions__list-item">
-        <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
-      </li>
-      )}
-      <li className="article-actions__list-item">
-        <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
-      </li>
-      <li className="article-actions__list-item">
-        <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
-      </li>
-    </ul>
+    <div>
+      <ul className="article-actions">
+        { pdfUrl && (
+        <li className="article-actions__list-item">
+          <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
+        </li>
+        )}
+        <li className="article-actions__list-item">
+          <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
+        </li>
+        <li className="article-actions__list-item">
+          <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
+        </li>
+      </ul>
+      {metrics && <ContextualData {...metrics} />}
+    </div>
     <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
       <div className="form-item">
         <input readOnly={true} type="input" className="text-field text-field--clipboard" value={`https://doi.org/${doi}`} />
@@ -71,6 +74,5 @@ export const ArticleStatus = ({
         </li>
       </ol>
     </Modal>
-    {metrics && <ContextualData {...metrics} />}
   </div>;
 };

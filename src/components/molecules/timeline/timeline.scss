@@ -6,6 +6,8 @@
   @include mixins.margin(36, "bottom");
   @include mixins.margin(36, "top");
 
+  min-width: 181px;
+
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(12, "top");
   }

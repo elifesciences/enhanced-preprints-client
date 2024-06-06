@@ -6,16 +6,20 @@
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
+  display: flex;
+  flex-direction: column;
+
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(72, "right");
 
-    width: 50%;
+    flex-direction: row;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(10, "top");
     @include mixins.margin(0, "right");
 
+    flex-direction: column;
     width: 100%;
   }
 }
@@ -113,5 +117,18 @@
     &:last-child {
       @include mixins.margin(0, "bottom");
     }
+  }
+}
+
+.status-layout-container {
+  display: flex;
+  flex-direction: column;
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    flex-direction: row;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    flex-direction: column;
   }
 }
