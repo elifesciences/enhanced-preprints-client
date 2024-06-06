@@ -6,16 +6,16 @@
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
+  display: grid;
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(72, "right");
-
-    width: 50%;
+    grid-template-columns: 1fr 1fr;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(10, "top");
     @include mixins.margin(0, "right");
 
+    grid-template-columns: 1fr;
     width: 100%;
   }
 }
@@ -114,4 +114,8 @@
       @include mixins.margin(0, "bottom");
     }
   }
+}
+
+.article-actions-container {
+  width: 100%;
 }
