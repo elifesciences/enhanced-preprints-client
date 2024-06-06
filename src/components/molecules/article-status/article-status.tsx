@@ -37,19 +37,19 @@ export const ArticleStatus = ({
     <Timeline {...timeline} />
     <div className='article-actions-container'>
       <ul className="article-actions">
-          { pdfUrl && (
+        { pdfUrl && (
           <li className="article-actions__list-item">
             <Button text="Download" iconName="download" variant="action" url={pdfUrl}/>
           </li>
-          )}
-          <li className="article-actions__list-item">
-            <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
-          </li>
-          <li className="article-actions__list-item">
-            <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
-          </li>
-        </ul>
-        {metrics && <ContextualData {...metrics} />}
+        )}
+        <li className="article-actions__list-item">
+          <Button text="Cite" iconName="citation" variant="action" rel="nofollow" onClick={() => setShowCiteModal(true)} />
+        </li>
+        <li className="article-actions__list-item">
+          <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
+        </li>
+      </ul>
+      {metrics && <ContextualData {...metrics} />}
     </div>
     <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
       <div className="form-item">
