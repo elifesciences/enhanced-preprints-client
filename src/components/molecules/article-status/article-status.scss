@@ -6,9 +6,8 @@
   @include mixins.margin(24, "top");
   @include mixins.padding(24, "bottom");
 
-  display: grid;
-
   @media only all and (min-width: settings.$breakpoint-medium) {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
   }
