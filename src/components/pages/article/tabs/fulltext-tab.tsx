@@ -45,7 +45,7 @@ export const ArticleFullTextTab = (props: Props) => {
         { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl} doi={props.peerReview.evaluationSummary.doi}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
-        <AuthorInformationList authors={props.metaData.authors} versions={[]} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
+        <AuthorInformationList authors={props.metaData.authors} versions={props.metaData.versionHistory} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
         { props.metrics && <Metrics metrics={props.metrics} /> }
       </div>
     </div>

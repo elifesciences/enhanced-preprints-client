@@ -12,7 +12,7 @@ describe('Version History', () => {
     const versions = [
       {
         label: 'Label',
-        date: new Date(),
+        date: '2024-06-05',
       },
     ];
 
@@ -25,7 +25,7 @@ describe('Version History', () => {
     const versions = [
       {
         label: 'Label',
-        date: new Date('2024-06-05'),
+        date: '2024-06-05',
       },
     ];
 
@@ -38,7 +38,7 @@ describe('Version History', () => {
     const versions = [
       {
         label: 'Label',
-        date: new Date(),
+        date: '2024-06-05',
         url: 'www.elifesciences.org',
       },
     ];
@@ -51,11 +51,11 @@ describe('Version History', () => {
     const versions = [
       {
         label: 'Label',
-        date: new Date('2024-06-05'),
+        date: '2024-06-05',
       },
       {
         label: 'Label',
-        date: new Date('2023-06-05'),
+        date: '2023-06-05',
       },
     ];
 
