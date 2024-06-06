@@ -25,7 +25,7 @@
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
-  @media only all and (settings.$breakpoint-medium <= width < settings.$breakpoint-large) {
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -39,7 +39,7 @@
   @include mixins.margin(12, "bottom");
   @include mixins.margin(12, "right");
 
-  @media only all and (settings.$breakpoint-medium <= width < settings.$breakpoint-large) {
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
     @include mixins.margin(0, "right");
     @include mixins.margin(12, "left");
   }
@@ -129,7 +129,7 @@
 }
 
 .article-actions-container {
-  @media only all and (min-width: settings.$breakpoint-medium) and (width < settings.$breakpoint-large) {
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
     align-items: flex-end;
     display: flex;
     flex-direction: column;
