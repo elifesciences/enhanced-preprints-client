@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const VersionHistory = ({ versions }: Props) => (
-  <section className="version-history">
+  <div id="version-history" className="version-history">
     <h2>Version history</h2>
     <ul>
       {versions.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()).map(({ label, date, url }, index) => (
@@ -16,5 +16,5 @@ export const VersionHistory = ({ versions }: Props) => (
         </li>
       ))}
     </ul>
-  </section>
+  </div>
 );
