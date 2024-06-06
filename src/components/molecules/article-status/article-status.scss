@@ -9,6 +9,7 @@
   display: grid;
   @media only all and (min-width: settings.$breakpoint-medium) {
     grid-template-columns: 1fr 1fr;
+    width: 100%
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
@@ -24,6 +25,12 @@
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
   list-style: none;
   margin: 0;
 }
@@ -31,6 +38,11 @@
 .article-actions__list-item {
   @include mixins.margin(12, "bottom");
   @include mixins.margin(12, "right");
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(0, "right");
+    @include mixins.margin(12, "left");
+  }
 
   display: inline-block;
 
@@ -117,5 +129,10 @@
 }
 
 .article-actions-container {
-  width: 100%;
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
