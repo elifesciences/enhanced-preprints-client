@@ -1,6 +1,6 @@
 import { i18n } from '../i18n';
 import {
-  EnhancedArticleWithVersions, VersionSummary, VersionHistoryItem,
+  EnhancedArticleWithVersions, VersionHistoryItem,
 } from '../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
 
