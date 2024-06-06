@@ -14,6 +14,7 @@ export type {
   ArticleSummary,
   VersionSummary,
   PreprintVersionSummary,
+  ExternalVersionSummary,
+  Metrics,
 } from './enhanced-article';
-export { isPreprintVersionSummary } from './enhanced-article';
 export type { VersionHistoryItem } from './version-history-item';

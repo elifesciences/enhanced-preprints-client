@@ -93,8 +93,6 @@ export type PreprintVersionSummary = {
   published: Date | null,
 };
 
-export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
-
 export type ExternalVersionSummary = {
   versionIdentifier: string,
   published: Date | null,
