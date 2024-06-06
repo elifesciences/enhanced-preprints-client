@@ -6,6 +6,8 @@ import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhance
 
 const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
 const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
+const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
+const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
@@ -20,6 +22,23 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
     }
     return versions;
   }, []);
+
+  const firstVersion = getFirstVersion(version);
+
+  if (firstVersion.preprintPosted !== undefined) {
+    history.push({
+      date: new Date(firstVersion.preprintPosted).toDateString(),
+      label: 'Preprint posted',
+      url: `https://doi.org/${firstVersion.preprintDoi}`,
+    });
+  }
+
+  if (firstVersion.sentForReview !== undefined) {
+    history.push({
+      date: new Date(firstVersion.sentForReview).toDateString(),
+      label: 'Sent for peer review',
+    });
+  }
 
   return history.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 };
