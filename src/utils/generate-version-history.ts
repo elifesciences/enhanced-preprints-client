@@ -2,10 +2,7 @@ import { i18n } from '../i18n';
 import {
   EnhancedArticleWithVersions, VersionSummary, VersionHistoryItem,
 } from '../types';
-import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhanced-article';
-
-const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
-const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
+import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
