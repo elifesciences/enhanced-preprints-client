@@ -1,5 +1,5 @@
 export type VersionHistoryItem = {
   label: string,
-  date: Date,
+  date: string,
   url?: string,
 };

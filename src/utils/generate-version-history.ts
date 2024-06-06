@@ -15,7 +15,7 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
           version: +current.versionIdentifier,
         }),
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
-        date: new Date(current.published),
+        date: new Date(current.published).toDateString(),
       });
     }
     return versions;
