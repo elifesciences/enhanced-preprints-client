@@ -130,6 +130,8 @@
 
 .article-actions-container {
   @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
+    @include mixins.margin(12, "top");
+
     align-items: flex-end;
     display: flex;
     flex-direction: column;
