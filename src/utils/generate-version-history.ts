@@ -6,8 +6,8 @@ import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhance
 
 const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
 const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
-const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
-const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
+const getFirstVersion = (version: EnhancedArticleWithVersions) => Object.values(version.versions).filter(isPreprintVersionSummary)
+  .reduce((mostRecent, current) => (!mostRecent || new Date(current.preprintPosted).getTime() < new Date(mostRecent.preprintPosted).getTime() ? current : mostRecent));
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
