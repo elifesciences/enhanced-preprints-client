@@ -7,22 +7,28 @@
   @include mixins.padding(24, "bottom");
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(72, "right");
-
-    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(10, "top");
     @include mixins.margin(0, "right");
 
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 }
 
 .article-actions {
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
+
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 
   list-style: none;
   margin: 0;
@@ -31,6 +37,11 @@
 .article-actions__list-item {
   @include mixins.margin(12, "bottom");
   @include mixins.margin(12, "right");
+
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
+    @include mixins.margin(0, "right");
+    @include mixins.margin(12, "left");
+  }
 
   display: inline-block;
 
@@ -113,5 +124,16 @@
     &:last-child {
       @include mixins.margin(0, "bottom");
     }
+  }
+}
+
+.article-actions-container {
+  @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
+    @include mixins.margin(12, "top");
+
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }

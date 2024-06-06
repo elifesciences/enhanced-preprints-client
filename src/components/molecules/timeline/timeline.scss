@@ -13,6 +13,7 @@
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(48, "bottom");
     @include mixins.margin(6, "left");
+    @include mixins.margin(12, "top");
   }
 
   &__event,
