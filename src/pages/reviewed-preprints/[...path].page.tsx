@@ -7,6 +7,7 @@ import { config } from '../../config';
 import {
   Content,
   MetaData,
+  Metrics,
   PeerReview,
   RelatedContent,
 } from '../../types';
@@ -22,7 +23,7 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
-import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
+import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {

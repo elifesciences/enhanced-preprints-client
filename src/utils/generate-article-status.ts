@@ -1,8 +1,11 @@
 import { i18n } from '../i18n';
 import {
-  EnhancedArticle, EnhancedArticleWithVersions, VersionSummary, ArticleStatus,
-  isPreprintVersionSummary,
+  EnhancedArticle,
+  EnhancedArticleWithVersions,
+  VersionSummary,
+  ArticleStatus,
 } from '../types';
+import { isPreprintVersionSummary } from './type-guards';
 
 const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: VersionSummary) => isPreprintVersionSummary(version) && version.id === article.id && version.versionIdentifier === article.versionIdentifier;
 
