@@ -135,8 +135,18 @@ export const FooterMain = () => (
 
           <address className="address">
             eLife Sciences Publications, Ltd<br />
-            Westbrook Centre, Milton Road<br />
-            Cambridge CB4 1YG<br />
+            {(new Date()) > (new Date('2024-06-24')) ? (
+              <>
+                95 Regent Street<br />
+                Cambridge CB2 1AW<br />
+              </>
+            ) : (
+              <>
+                {/* Reminder: Remove this block after 24 June 2024 */}
+                Westbrook Centre, Milton Road<br />
+                Cambridge CB4 1YG<br />
+              </>
+            )}
             UK
           </address>
         </div>
