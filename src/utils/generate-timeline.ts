@@ -1,11 +1,8 @@
 import { i18n } from '../i18n';
 import {
-  EnhancedArticleWithVersions, VersionSummary, TimelineEvent,
+  EnhancedArticleWithVersions, TimelineEvent,
 } from '../types';
-import { ExternalVersionSummary, PreprintVersionSummary } from '../types/enhanced-article';
-
-const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
-const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
+import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {

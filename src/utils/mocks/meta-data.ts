@@ -1,5 +1,6 @@
 import { references } from './references';
 import { authors } from './authors';
+import { versionHistory } from './version-history';
 
 export const metaData = {
   doi: '10.1101/2022.04.13.488149',
@@ -13,4 +14,5 @@ export const metaData = {
   references,
   publishedYear: 2022,
   license: 'https://creativecommons.org/licenses/by/4.0/',
+  versionHistory,
 };

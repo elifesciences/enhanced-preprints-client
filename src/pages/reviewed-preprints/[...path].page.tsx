@@ -7,6 +7,7 @@ import { config } from '../../config';
 import {
   Content,
   MetaData,
+  Metrics,
   PeerReview,
   RelatedContent,
 } from '../../types';
@@ -22,13 +23,14 @@ import { contentToJsx } from '../../utils/content-to-jsx';
 import { contentToHeadings } from '../../utils/content-to-headings';
 import { contentToImgInfo } from '../../utils/content-to-img-info';
 import '../../i18n';
-import { Metrics, isPreprintVersionSummary } from '../../types/enhanced-article';
+import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
   TimelineEvent,
 } from '../../components/molecules/timeline/timeline';
 import { generateTimeline } from '../../utils/generate-timeline';
+import { generateVersionHistory } from '../../utils/generate-version-history';
 
 type PageProps = {
   metaData: MetaData,
@@ -195,6 +197,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
+  const versionHistory = generateVersionHistory(articleWithVersions);
 
   // This is redundant after server has been updated
   if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
@@ -210,6 +213,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         authors: articleWithVersions.article.article.authors || [],
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
+        versionHistory,
       },
       imgInfo,
       msidWithVersion: id,
