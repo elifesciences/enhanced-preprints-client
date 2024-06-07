@@ -12,7 +12,7 @@ export const ArticleAndAuthorInformation = ({
 }: { authors: Author[], versions: VersionHistoryItem[], license?: string, publishedYear?: number }) => (
   <section>
     <h1 id="article-and-author-information" className="article-and-author-information__title">Article and author information</h1>
-    <AuthorList authors={authors} />
+    { authors.length > 0 && <AuthorList authors={authors} /> }
     { versions.length > 0 && <VersionHistory versions={versions} /> }
     { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
   </section>

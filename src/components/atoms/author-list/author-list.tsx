@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import './author-list.scss';
 import { Author } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
 
@@ -34,7 +35,7 @@ const AuthorInformation = ({ author }: { author: Author }) => {
 export const AuthorList = ({
   authors,
 }: { authors: Author[] }) => (
-  <ol className="author-list__authors">
+  <ol className="author-list">
     {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
   </ol>
 );
