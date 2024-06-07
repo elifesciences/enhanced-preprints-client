@@ -1,4 +1,4 @@
-import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../utils/content';
 import { Content } from '../../../types';
 import './title.scss';
 

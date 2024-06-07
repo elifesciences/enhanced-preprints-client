@@ -1,4 +1,4 @@
-import { EnhancedArticleWithVersions } from '../types';
+import { EnhancedArticleWithVersions } from '../../types';
 
 export const getLatestVersion = (articleWithVersions: EnhancedArticleWithVersions) => {
   const publishedDesc = Object.values(articleWithVersions.versions) // get the versions in an array

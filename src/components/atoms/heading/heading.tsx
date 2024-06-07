@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { Content } from '../../../types';
-import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../utils/content';
 import './heading.scss';
 
 type HeadingProps = {

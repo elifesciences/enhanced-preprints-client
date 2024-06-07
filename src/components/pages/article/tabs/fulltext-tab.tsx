@@ -7,7 +7,7 @@ import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
 import { MetaData, PeerReview } from '../../../../types';
-import { JSXContent } from '../../../../utils/content-to-jsx';
+import { JSXContent } from '../../../../utils/content';
 import '../../../../i18n';
 import { Metrics as MetricsType } from '../../../../types/enhanced-article';
 import { Metrics } from '../../../atoms/metrics/metrics';

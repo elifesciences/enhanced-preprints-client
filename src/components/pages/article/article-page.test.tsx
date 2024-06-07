@@ -7,7 +7,7 @@ import {
   metaData, peerReview, status, timeline, citation, relatedContent,
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
-import { contentToText } from '../../../utils/content-to-text';
+import { contentToText } from '../../../utils/content/content-to-text';
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {

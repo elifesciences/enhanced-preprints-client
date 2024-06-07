@@ -11,26 +11,21 @@ import {
   PeerReview,
   RelatedContent,
 } from '../../types';
-import { fetchVersion } from '../../utils/fetch-data';
+import { fetchVersion, getLatestVersion } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
-import { contentToText } from '../../utils/content-to-text';
-import { generateStatus } from '../../utils/generate-article-status';
+import {
+  contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
+} from '../../utils/content';
+import { generateStatus, generateTimeline, generateVersionHistory } from '../../utils/generators';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
-import { formatAuthorName } from '../../utils/format-author-name';
-import { contentToFigures } from '../../utils/content-to-figures';
-import { contentToJsx } from '../../utils/content-to-jsx';
-import { contentToHeadings } from '../../utils/content-to-headings';
-import { contentToImgInfo } from '../../utils/content-to-img-info';
+import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
-import { getLatestVersion } from '../../utils/get-latest-version';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import {
   TimelineEvent,
 } from '../../components/molecules/timeline/timeline';
-import { generateTimeline } from '../../utils/generate-timeline';
-import { generateVersionHistory } from '../../utils/generate-version-history';
 
 type PageProps = {
   metaData: MetaData,

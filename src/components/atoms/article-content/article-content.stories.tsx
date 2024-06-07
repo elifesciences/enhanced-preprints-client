@@ -1,7 +1,7 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { ArticleContent } from './article-content';
 import { content } from '../../../utils/mocks';
-import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../utils/content';
 
 export default {
   title: 'Atoms/ArticleContent',
