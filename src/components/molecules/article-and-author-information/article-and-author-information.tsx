@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Author, VersionHistoryItem } from '../../../types';
 import { createAuthorId } from '../../../utils/create-author-id';
-import './author-information-list.scss';
+import './article-and-author-information.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 import { VersionHistory } from '../../atoms/version-history/version-history';
 
@@ -34,7 +34,7 @@ const AuthorInformation = ({ author }: { author: Author }) => {
   );
 };
 
-export const AuthorInformationList = ({
+export const ArticleAndAuthorInformation = ({
   authors,
   license,
   publishedYear,

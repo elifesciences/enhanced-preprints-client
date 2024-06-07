@@ -5,7 +5,7 @@ import { Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
-import { AuthorInformationList } from '../../../molecules/author-information-list/author-information-list';
+import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content-to-jsx';
 import '../../../../i18n';
@@ -45,7 +45,7 @@ export const ArticleFullTextTab = (props: Props) => {
         { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl} doi={props.peerReview.evaluationSummary.doi}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
-        <AuthorInformationList authors={props.metaData.authors} versions={props.metaData.versionHistory} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
+        <ArticleAndAuthorInformation authors={props.metaData.authors} versions={props.metaData.versionHistory} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
         { props.metrics && <Metrics metrics={props.metrics} /> }
       </div>
     </div>

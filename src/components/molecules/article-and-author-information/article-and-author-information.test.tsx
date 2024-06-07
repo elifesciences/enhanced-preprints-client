@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
-import { AuthorInformationList } from './author-information-list';
+import { ArticleAndAuthorInformation } from './article-and-author-information';
 import { createAuthorId } from '../../../utils/create-author-id';
 import { authors, versionHistory } from '../../../utils/mocks';
 
@@ -8,15 +8,15 @@ const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${giv
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 
-describe('AuthorInformationList', () => {
+describe('ArticleAndAuthorInformation', () => {
   it('renders correctly', () => {
-    render(<AuthorInformationList authors={authors} versions={versionHistory}/>);
+    render(<ArticleAndAuthorInformation authors={authors} versions={versionHistory}/>);
 
     expect(screen.getByText('Article and author information')).toBeInTheDocument();
   });
 
   it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
-    render(<AuthorInformationList authors={authors} versions={[]}/>);
+    render(<ArticleAndAuthorInformation authors={authors} versions={[]}/>);
 
     expect(screen.getByText(name)).toBeInTheDocument();
   });
@@ -24,20 +24,20 @@ describe('AuthorInformationList', () => {
   it.each(authors.filter(({ type }) => type !== 'Organization').map(getAffiliationAndAuthor))(
     'renders the the affiliation: $affiliation for author: $name',
     ({ affiliation, name }) => {
-      render(<AuthorInformationList authors={authors} versions={[]}/>);
+      render(<ArticleAndAuthorInformation authors={authors} versions={[]}/>);
 
       expect(screen.getByText(name).nextSibling).toHaveTextContent(affiliation);
     },
   );
 
   it('renders organizations correctly', () => {
-    render(<AuthorInformationList authors={authors} versions={[]}/>);
+    render(<ArticleAndAuthorInformation authors={authors} versions={[]}/>);
 
     expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
   });
 
   it('renders the authors ORCID\'s', () => {
-    render(<AuthorInformationList authors={authors} versions={[]}/>);
+    render(<ArticleAndAuthorInformation authors={authors} versions={[]}/>);
 
     expect(screen.getByText('Steve Rogers').nextSibling?.nextSibling).toHaveTextContent('0000-0002-1234-5678, 0000-0002-1234-5679');
     expect(screen.getByText('Antony Stark').nextSibling?.nextSibling).not.toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('AuthorInformationList', () => {
   });
 
   it('does not render other identifiers', () => {
-    render(<AuthorInformationList authors={[
+    render(<ArticleAndAuthorInformation authors={[
       {
         givenNames: ['Arthur'],
         familyNames: ['Curry'],
@@ -64,19 +64,19 @@ describe('AuthorInformationList', () => {
   });
 
   it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
-    const { container } = render(<AuthorInformationList authors={authors} versions={[]}/>);
+    const { container } = render(<ArticleAndAuthorInformation authors={authors} versions={[]}/>);
 
     expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();
   });
 
   it('renders version history', () => {
-    render(<AuthorInformationList authors={[]} versions={versionHistory}/>);
+    render(<ArticleAndAuthorInformation authors={[]} versions={versionHistory}/>);
 
     expect(screen.getByText('Version history')).toBeInTheDocument();
   });
 
   it('does not renders version history if no versions', () => {
-    render(<AuthorInformationList authors={[]} versions={[]}/>);
+    render(<ArticleAndAuthorInformation authors={[]} versions={[]}/>);
 
     expect(screen.queryByText('Version history')).not.toBeInTheDocument();
   });
