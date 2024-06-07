@@ -1,0 +1,49 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.author-list__authors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.author-list__author {
+  @include mixins.margin(36, "bottom");
+}
+
+.author-list__email {
+  @include mixins.margin(24, "bottom");
+  @include typography.body();
+
+  .author-list__email--heading {
+    @include typography.font-size-and-vertical-height(16, 24);
+
+    display: inline;
+  }
+}
+
+.author-list__author_name {
+  @include mixins.padding(12, "bottom");
+  @include typography.heading-3();
+
+  margin: 0;
+}
+
+.author-list__affiliations {
+  @include mixins.margin(24, "bottom");
+  @include typography.body();
+}
+
+.author-list__orcids {
+  @include typography.body();
+}
+
+.author-list__orcids_link {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
