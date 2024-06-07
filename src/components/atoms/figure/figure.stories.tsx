@@ -1,6 +1,6 @@
 import { StoryFn, Meta } from '@storybook/react';
 import { Figure } from './figure';
-import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../utils/content';
 
 export default {
   title: 'Atoms/Figure',

@@ -1,8 +1,8 @@
-import { i18n } from '../i18n';
+import { i18n } from '../../i18n';
 import {
   EnhancedArticleWithVersions, TimelineEvent,
-} from '../types';
-import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
+} from '../../types';
+import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
   const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {

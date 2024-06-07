@@ -1,5 +1,5 @@
 import './abstract.scss';
-import { contentToJsx } from '../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../utils/content';
 import { Content } from '../../../types';
 
 export const Abstract = ({ content }: { content: Content }) => (

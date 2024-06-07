@@ -1,4 +1,4 @@
-import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../types/enhanced-article';
+import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../../types/enhanced-article';
 import { generateStatus } from './generate-article-status';
 
 const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {

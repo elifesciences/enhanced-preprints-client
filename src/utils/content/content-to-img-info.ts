@@ -1,6 +1,6 @@
-import { Content } from '../types';
-import { ImageObjectContent } from '../types/content';
-import { generateImageInfo } from './generate-image-url';
+import { Content } from '../../types';
+import { ImageObjectContent } from '../../types/content';
+import { generateImageInfo } from '../generators';
 
 const isImageObject = (content: Content): content is ImageObjectContent => {
   if (typeof content === 'undefined') {

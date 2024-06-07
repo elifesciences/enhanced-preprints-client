@@ -1,5 +1,5 @@
 import { formatAuthorName } from './format-author-name';
-import { authors } from './mocks';
+import { authors } from '../mocks';
 
 const authorNameStrings = [
   'Steve Rogers',

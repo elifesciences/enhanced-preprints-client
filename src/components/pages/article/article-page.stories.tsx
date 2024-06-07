@@ -7,8 +7,7 @@ import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
-import { contentToJsx } from '../../../utils/content-to-jsx';
-import { contentToHeadings } from '../../../utils/content-to-headings';
+import { contentToHeadings, contentToJsx } from '../../../utils/content';
 
 export default {
   title: 'Pages/Article Page',

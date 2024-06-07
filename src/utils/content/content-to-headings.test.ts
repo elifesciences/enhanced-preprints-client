@@ -1,5 +1,5 @@
 import { contentToHeadings } from './content-to-headings';
-import { content as mockContent } from './mocks';
+import { content as mockContent } from '../mocks';
 
 describe('Content to Headings', () => {
   it('handles content without headings', () => {

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { fetchVersion } from '../../../utils/fetch-data';
+import { fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
   writeResponse,

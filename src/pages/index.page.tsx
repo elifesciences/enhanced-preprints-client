@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-import { fetchVersions } from '../utils/fetch-data';
-import { ArticleSummary } from '../types/enhanced-article';
+import { fetchVersions } from '../utils/data-fetch';
+import { ArticleSummary } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 
 type PageProps = {
