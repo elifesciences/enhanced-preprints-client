@@ -27,7 +27,7 @@ export const ArticleFullTextTab = (props: Props) => {
     { id: 'abstract', text: 'Abstract' },
     ...props.headings,
     { id: 'references', text: 'References' },
-    { id: 'author-list', text: 'Article and Author Information' },
+    { id: 'article-and-author-information', text: 'Article and Author Information' },
   ];
 
   if (props.peerReview !== undefined) {

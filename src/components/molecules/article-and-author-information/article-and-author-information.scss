@@ -2,7 +2,7 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.author-list__title {
+.article-and-author-information__title {
   @include mixins.padding(21, "bottom");
   @include typography.heading-2();
 

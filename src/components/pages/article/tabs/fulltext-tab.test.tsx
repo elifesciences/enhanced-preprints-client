@@ -69,7 +69,7 @@ describe('FulltextTab', () => {
         text: 'References',
       },
       {
-        href: '#author-list',
+        href: '#article-and-author-information',
         text: 'Article and Author Information',
       },
     ];
@@ -129,7 +129,7 @@ describe('FulltextTab', () => {
         text: 'References',
       },
       {
-        href: '#author-list',
+        href: '#article-and-author-information',
         text: 'Article and Author Information',
       },
     ];

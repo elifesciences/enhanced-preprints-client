@@ -40,8 +40,8 @@ export const ArticleAndAuthorInformation = ({
   publishedYear,
   versions,
 }: { authors: Author[], versions: VersionHistoryItem[], license?: string, publishedYear?: number }) => (
-  <section id="author-list" className="author-list">
-    <h2 id="author-information" className="author-list__title">Article and author information</h2>
+  <section>
+    <h1 id="article-and-author-information" className="article-and-author-information__title">Article and author information</h1>
     <ol className="author-list__authors">
       {authors.map((author, index) => <AuthorInformation author={author} key={index}/>)}
     </ol>
