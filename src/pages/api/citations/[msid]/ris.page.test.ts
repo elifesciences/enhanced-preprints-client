@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createMocks, createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
-import { fetchVersion } from '../../../../utils/fetch-data';
+import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './ris.page';
 
-jest.mock('../../../../utils/fetch-data', () => ({
+jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
 

@@ -1,4 +1,4 @@
-import { formatDate } from '../../../utils/format-date';
+import { formatDate } from '../../../utils/formatters';
 import './version-history.scss';
 import { VersionHistoryItem } from '../../../types';
 

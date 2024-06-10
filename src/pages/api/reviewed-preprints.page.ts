@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import moment from 'moment';
-import { fetchVersionsNoContent } from '../../utils/fetch-data';
+import { fetchVersionsNoContent } from '../../utils/data-fetch';
 import {
   Author, EnhancedArticle, ReviewedPreprintSnippet,
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
-import { contentToHtml } from '../../utils/content-to-html';
+import { contentToHtml } from '../../utils/content';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
 type BadRequestMessage = {

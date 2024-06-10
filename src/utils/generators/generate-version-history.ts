@@ -1,8 +1,8 @@
-import { i18n } from '../i18n';
+import { i18n } from '../../i18n';
 import {
   EnhancedArticleWithVersions, VersionHistoryItem,
-} from '../types';
-import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
+} from '../../types';
+import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {

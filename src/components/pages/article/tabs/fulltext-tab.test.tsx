@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { metaData, peerReview, content } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
-import { contentToJsx } from '../../../../utils/content-to-jsx';
+import { contentToJsx } from '../../../../utils/content';
 
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {

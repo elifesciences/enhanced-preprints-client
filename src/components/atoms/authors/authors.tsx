@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './authors.scss';
 import { Author } from '../../../types';
-import { createAuthorId } from '../../../utils/create-author-id';
+import { generateAuthorId } from '../../../utils/generators';
 
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
@@ -21,7 +21,7 @@ export const Authors = ({ authors }: { authors: Author[] }) => {
       <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
         { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
-            <a href={`#${createAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
+            <a href={`#${generateAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
               {author.type === 'Organization' ?
                 author.name :
                 `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}

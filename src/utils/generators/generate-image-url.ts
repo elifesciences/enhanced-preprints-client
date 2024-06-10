@@ -1,4 +1,4 @@
-import { config } from '../config';
+import { config } from '../../config';
 
 export const generateImageUrl = (contentImageId: string): string => (config.imageServer ? `${config.imageServer}/2/${encodeURIComponent(contentImageId)}/full/max/0/default.jpg` : contentImageId);
 

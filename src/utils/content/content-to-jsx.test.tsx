@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { contentToJsx } from './content-to-jsx';
-import { Heading } from '../components/atoms/heading/heading';
-import { Figure } from '../components/atoms/figure/figure';
+import { Heading } from '../../components/atoms/heading/heading';
+import { Figure } from '../../components/atoms/figure/figure';
 
 describe('Content to JSX', () => {
   it('returns the string unchanged if passed a simple string', () => {

@@ -5,7 +5,7 @@ import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
 import { MetaData } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
-import { contentToText } from '../../../utils/content-to-text';
+import { contentToText } from '../../../utils/content/content-to-text';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';

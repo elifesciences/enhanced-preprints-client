@@ -1,10 +1,10 @@
 import { Fragment, JSX } from 'react';
-import { Content } from '../types';
-import { Heading } from '../components/atoms/heading/heading';
-import { generateImageUrl } from './generate-image-url';
-import { Figure } from '../components/atoms/figure/figure';
+import { Content } from '../../types';
+import { Heading } from '../../components/atoms/heading/heading';
+import { generateImageUrl } from '../generators';
+import { Figure } from '../../components/atoms/figure/figure';
 import { contentToText } from './content-to-text';
-import { List } from '../components/atoms/list/list';
+import { List } from '../../components/atoms/list/list';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;

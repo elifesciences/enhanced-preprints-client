@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../../config';
-import { fetchVersion } from '../../../../utils/fetch-data';
+import { fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';

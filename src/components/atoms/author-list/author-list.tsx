@@ -1,14 +1,14 @@
 import { Fragment } from 'react';
-import './author-list.scss';
 import { Author } from '../../../types';
-import { createAuthorId } from '../../../utils/create-author-id';
+import { generateAuthorId } from '../../../utils/generators';
+import './author-list.scss';
 
 const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
 
   return (
     <li className="author-list__author">
-      <h4 id={createAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
+      <h4 id={generateAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
         `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
       {

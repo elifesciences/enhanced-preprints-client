@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { authors } from '../../../utils/mocks';
 import { Authors } from './authors';
-import { createAuthorId } from '../../../utils/create-author-id';
+import { generateAuthorId } from '../../../utils/generators';
 
 describe('authors', () => {
   it('should render correctly a list of authors', () => {
@@ -38,7 +38,7 @@ describe('authors', () => {
     expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
   });
 
-  it.each(authors.map(createAuthorId))('should contain a link with the author id', (id) => {
+  it.each(authors.map(generateAuthorId))('should contain a link with the author id', (id) => {
     const { container } = render(<Authors authors={authors}/>);
 
     expect(container.querySelector(`[href="#${id}"]`)).toBeInTheDocument();

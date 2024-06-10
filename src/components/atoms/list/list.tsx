@@ -1,5 +1,5 @@
 import { ListContent } from '../../../types/content';
-import { contentToJsx, Options } from '../../../utils/content-to-jsx';
+import { contentToJsx, Options } from '../../../utils/content';
 import './list.scss';
 
 export const List = ({ content, options }: { content: ListContent, options?: Options }) => {

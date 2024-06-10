@@ -1,6 +1,6 @@
-import { EnhancedArticleWithVersions } from '../types';
+import { EnhancedArticleWithVersions } from '../../types';
 import { getLatestVersion } from './get-latest-version';
-import { mock85111 } from './mocks/enhanced-article-with-versions';
+import { mock85111 } from '../mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {
   it('single version', () => {
