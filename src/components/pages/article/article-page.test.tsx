@@ -121,7 +121,6 @@ describe('ArticlePage', () => {
         timeline={timeline}
         activeTab="figures"
         tabs={[]}
-        previousVersionWarningUrl={null}
       >
         <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
       </ArticlePage>,
@@ -157,7 +156,6 @@ describe('ArticlePage', () => {
   it('does not render related-content for pdf tab', () => {
     render(
       <ArticlePage
-        metrics={null}
         relatedContent={relatedContent}
         msidWithVersion="12345v1"
         metaData={{ ...metaData, authors: [] }}
