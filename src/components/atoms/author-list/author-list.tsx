@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
-import './author-information-list.scss';
+import './author-list.scss';
 
 const AuthorInformation = ({ author }: { author: Author }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
