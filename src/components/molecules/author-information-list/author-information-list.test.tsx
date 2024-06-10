@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
 import { AuthorInformationList } from './author-information-list';
-import { createAuthorId } from '../../../utils/create-author-id';
+import { generateAuthorId } from '../../../utils/generators';
 import { authors, versionHistory } from '../../../utils/mocks';
 
 const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
@@ -63,7 +63,7 @@ describe('AuthorInformationList', () => {
     expect(screen.getByText('0000-0002-1234-5678')).toBeInTheDocument();
   });
 
-  it.each(authors.map(createAuthorId))('should contain an id with the author id', (id) => {
+  it.each(authors.map(generateAuthorId))('should contain an id with the author id', (id) => {
     const { container } = render(<AuthorInformationList authors={authors} versions={[]}/>);
 
     expect(container.querySelector(`[id="${id}"]`)).toBeInTheDocument();

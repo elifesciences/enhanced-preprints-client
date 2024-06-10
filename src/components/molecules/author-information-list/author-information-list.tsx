@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Author, VersionHistoryItem } from '../../../types';
-import { createAuthorId } from '../../../utils/create-author-id';
+import { generateAuthorId } from '../../../utils/generators';
 import './author-information-list.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 import { VersionHistory } from '../../atoms/version-history/version-history';
@@ -10,7 +10,7 @@ const AuthorInformation = ({ author }: { author: Author }) => {
 
   return (
     <li className="author-list__author">
-      <h4 id={createAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
+      <h4 id={generateAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
         `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
       {
