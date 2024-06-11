@@ -24,20 +24,22 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { DatesToStrings } from '../../utils/type-converters';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  timeline: SerialisedTimelineEvent[],
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
   metrics: Metrics | null,
   previousVersionWarningUrl: string | null,
 };
+
+type SerialisablePageProps = DatesToStrings<PageProps>;
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
@@ -50,7 +52,7 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = (props: PageProps): (Omit<PageProps, 'timeline'> & { timeline: TimelineEvent[] }) => {
+const stringsToDates = (props: SerialisablePageProps): PageProps => {
   const timeline = props.timeline.map((event) => ({ ...event, date: new Date(event.date) }));
   return {
     ...props,
@@ -58,7 +60,7 @@ const stringsToDates = (props: PageProps): (Omit<PageProps, 'timeline'> & { time
   };
 };
 
-export const Page = (props: PageProps) => {
+export const Page = (props: SerialisablePageProps) => {
   const processedProps = stringsToDates(props);
   const routePrefix = processedProps.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
@@ -164,7 +166,7 @@ export const Page = (props: PageProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<SerialisablePageProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
