@@ -107,10 +107,10 @@ describe('Timeline', () => {
     it('should notify screen readers of expansion', () => {
       render(<Timeline current={2} events={[
         {
-          url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+          url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
         },
         {
-          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+          url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
         },
       ]}
       />);
