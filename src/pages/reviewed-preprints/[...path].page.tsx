@@ -24,7 +24,7 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { DatesToStrings } from '../../utils/type-converters';
+import { DatesToStrings, stringToDate } from '../../utils/type-converters';
 
 type PageProps = {
   metaData: MetaData,
@@ -53,9 +53,26 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 };
 
 const stringsToDates = (props: SerialisablePageProps): PageProps => {
-  const timeline = props.timeline.map((event) => ({ ...event, date: new Date(event.date) }));
+  const timeline = props.timeline.map((event) => ({
+    ...event,
+    date: stringToDate(event.date),
+  }));
+
+  const peerReview: PeerReview | null = props.peerReview ? {
+    evaluationSummary: {
+      ...props.peerReview.evaluationSummary,
+      date: stringToDate(props.peerReview.evaluationSummary.date),
+    },
+    reviews: props.peerReview.reviews.map((review) => ({ ...review, date: stringToDate(review.date) })),
+    authorResponse: props.peerReview.authorResponse ? {
+      ...props.peerReview.authorResponse,
+      date: stringToDate(props.peerReview.authorResponse.date),
+    } : undefined,
+  } : null;
+
   return {
     ...props,
+    peerReview,
     timeline,
   };
 };
