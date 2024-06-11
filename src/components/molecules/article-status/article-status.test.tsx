@@ -6,7 +6,7 @@ describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
     render(<ArticleStatus timeline={{
       events: [{
-        version: 2, date: '2024-05-29', versionIndicator: 'v2', url: '#',
+        version: 2, date: new Date('2024-05-29'), versionIndicator: 'v2', url: '#',
       }],
     }} pdfUrl='#' doi='www.google.com' title='I am a title' citation={citation} msid="12345"/>);
 

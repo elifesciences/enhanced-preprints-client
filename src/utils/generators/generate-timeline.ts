@@ -1,11 +1,12 @@
 import { i18n } from '../../i18n';
 import {
-  EnhancedArticleWithVersions, TimelineEvent,
+  EnhancedArticleWithVersions,
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
+import { SerialisedTimelineEvent } from '../../types/article-timeline';
 
-export const generateTimeline = (version: EnhancedArticleWithVersions): TimelineEvent[] => {
-  const timeline: TimelineEvent[] = Object.values(version.versions).reduce<TimelineEvent[]>((events, current) => {
+export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
+  const timeline: SerialisedTimelineEvent[] = Object.values(version.versions).reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       events.push({
         name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
