@@ -128,6 +128,7 @@
     @include mixins.padding(26, "left");
 
     background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 0 10px;
+    border: 0;
     cursor: pointer;
     display: block;
     text-decoration: none;

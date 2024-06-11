@@ -38,7 +38,9 @@ describe('Timeline', () => {
     expect(screen.getByText('Revised by authors')).toBeInTheDocument();
   });
 
-  describe('collabsable behaviours', () => {
+  describe('collapsable behaviours', () => {
+    const getVisibleDtElements = () => Array.from(document.querySelectorAll('dt')).filter((dt) => dt.style.display !== 'none');
+
     it('should not show the expand text when there is only one entry', () => {
       render(<Timeline events={[
         {
@@ -75,11 +77,11 @@ describe('Timeline', () => {
       ]}
       />);
 
-      expect(document.querySelectorAll('dt')).toHaveLength(1);
+      expect(getVisibleDtElements()).toHaveLength(1);
 
       fireEvent.click(screen.getByText('Show previous version'));
 
-      expect(document.querySelectorAll('dt')).toHaveLength(2);
+      expect(getVisibleDtElements()).toHaveLength(2);
     });
 
     it('should collapse when the text is clicked', () => {
@@ -95,11 +97,35 @@ describe('Timeline', () => {
 
       fireEvent.click(screen.getByText('Show previous version'));
 
-      expect(document.querySelectorAll('dt')).toHaveLength(2);
+      expect(getVisibleDtElements()).toHaveLength(2);
 
       fireEvent.click(screen.getByText('Hide previous version'));
 
-      expect(document.querySelectorAll('dt')).toHaveLength(1);
+      expect(getVisibleDtElements()).toHaveLength(1);
+    });
+
+    it('should notify screen readers of expansion', () => {
+      render(<Timeline current={2} events={[
+        {
+          url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+        },
+        {
+          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+        },
+      ]}
+      />);
+
+      const expandButton = document.querySelector('.review-timeline__expansion');
+
+      expect(expandButton).toHaveAttribute('aria-expanded', 'false');
+
+      fireEvent.click(screen.getByText('Show previous version'));
+
+      expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+
+      fireEvent.click(screen.getByText('Hide previous version'));
+
+      expect(expandButton).toHaveAttribute('aria-expanded', 'false');
     });
 
     describe('collapsed', () => {
