@@ -125,13 +125,12 @@
   &__expansion {
     @include typography.body-small();
     @include mixins.margin(18, "top");
-    @include mixins.padding(26, "left");
+    @include mixins.padding(0 0 0 26);
 
     background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 0 10px;
     border: 0;
     cursor: pointer;
     display: block;
-    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
