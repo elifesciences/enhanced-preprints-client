@@ -3,5 +3,5 @@ export type TimelineEvent = {
   url: string,
   version: number,
   versionIndicator?: string,
-  date: string,
+  date: Date,
 };

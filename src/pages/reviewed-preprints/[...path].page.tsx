@@ -10,6 +10,7 @@ import {
   Metrics,
   PeerReview,
   RelatedContent,
+  TimelineEvent,
 } from '../../types';
 import { fetchVersion, getLatestVersion } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
@@ -23,16 +24,13 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import {
-  TimelineEvent,
-} from '../../components/molecules/timeline/timeline';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  timeline: TimelineEvent[],
+  timeline: (Omit<TimelineEvent, 'date'> & { date: string })[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
