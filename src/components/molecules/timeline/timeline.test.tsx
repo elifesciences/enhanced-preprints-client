@@ -7,14 +7,14 @@ describe('Timeline', () => {
       .mockReturnValueOnce('13/01/2001');
     render(<Timeline events={[
       {
-        url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+        url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
       },
     ]}
     />);
 
     const firstItem = screen.getByText('January 13, 2001');
     expect(firstItem).toBeInTheDocument();
-    expect(firstItem).toHaveAttribute('dateTime', '2001-01-13');
+    expect(firstItem).toHaveAttribute('dateTime', '2001-01-13T00:00:00.000Z');
     expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
     expect(screen.getByText('v1')).toBeInTheDocument();
     expect(screen.getByText('Not revised')).toBeInTheDocument();
@@ -25,14 +25,14 @@ describe('Timeline', () => {
       .mockReturnValueOnce('14/02/2002');
     render(<Timeline events={[
       {
-        url: '#', version: 2, date: '2002-02-14', versionIndicator: 'v2',
+        url: '#', version: 2, date: new Date('2002-02-14'), versionIndicator: 'v2',
       },
     ]}
     />);
 
     const firstItem = screen.getByText('February 14, 2002');
     expect(firstItem).toBeInTheDocument();
-    expect(firstItem).toHaveAttribute('dateTime', '2002-02-14');
+    expect(firstItem).toHaveAttribute('dateTime', '2002-02-14T00:00:00.000Z');
     expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
     expect(screen.getByText('v2')).toBeInTheDocument();
     expect(screen.getByText('Revised by authors')).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('Timeline', () => {
     it('should not show the expand text when there is only one entry', () => {
       render(<Timeline events={[
         {
-          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+          url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
         },
       ]}
       />);
@@ -53,10 +53,10 @@ describe('Timeline', () => {
     it('should show the expand text when there is more than one entry', () => {
       render(<Timeline events={[
         {
-          url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+          url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
         },
         {
-          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+          url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
         },
       ]}
       />);
@@ -67,10 +67,10 @@ describe('Timeline', () => {
     it('should expand when the text is clicked', () => {
       render(<Timeline current={2} events={[
         {
-          url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+          url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
         },
         {
-          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+          url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
         },
       ]}
       />);
@@ -85,10 +85,10 @@ describe('Timeline', () => {
     it('should collapse when the text is clicked', () => {
       render(<Timeline current={2} events={[
         {
-          url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+          url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
         },
         {
-          url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+          url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
         },
       ]}
       />);
@@ -106,10 +106,10 @@ describe('Timeline', () => {
       it('should show the text "Show all versions" when there are more than one entries and the latest is not the current', () => {
         render(<Timeline current={1} events={[
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -120,10 +120,10 @@ describe('Timeline', () => {
       it('should show the text "Show previous version" when there are two entries and the latest is the current', () => {
         render(<Timeline current={2} events={[
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -134,13 +134,13 @@ describe('Timeline', () => {
       it('should show the text "Show previous versions" when there are more than two entries and the latest is the current', () => {
         render(<Timeline current={3} events={[
           {
-            url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
+            url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
           },
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -153,10 +153,10 @@ describe('Timeline', () => {
       it('should show the text "Hide all versions" when there are more than one entries and the latest is not the current', () => {
         render(<Timeline current={1} events={[
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -169,10 +169,10 @@ describe('Timeline', () => {
       it('should show the text "Hide previous version" when there are two entries and the latest is the current', () => {
         render(<Timeline current={2} events={[
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -185,13 +185,13 @@ describe('Timeline', () => {
       it('should show the text "Hide previous versions" when there are more than two entries and the latest is the current', () => {
         render(<Timeline current={3} events={[
           {
-            url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
+            url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
           },
           {
-            url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+            url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
           },
           {
-            url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+            url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
           },
         ]}
         />);
@@ -206,13 +206,13 @@ describe('Timeline', () => {
   describe('sorting', () => {
     const entries = [
       {
-        url: '#', version: 2, date: '2002-02-23', versionIndicator: 'v2',
+        url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
       },
       {
-        url: '#', version: 1, date: '2001-01-13', versionIndicator: 'v1',
+        url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
       },
       {
-        url: '#', version: 3, date: '2003-03-26', versionIndicator: 'v3',
+        url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
       },
     ];
 

@@ -3,14 +3,7 @@ import '../../../i18n';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
 import { formatDate } from '../../../utils/formatters';
-
-export type TimelineEvent = {
-  name?: string,
-  url: string,
-  version: number,
-  versionIndicator?: string,
-  date: string,
-};
+import { TimelineEvent } from '../../../types';
 
 export type TimelineProps = {
   current?: number;
@@ -43,7 +36,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
               </dt>
               <dd className={`review-timeline__detail${typeClass}`}>
                 {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
-                <time className="review-timeline__date" dateTime={event.date.toString()}>{formatDate(new Date(event.date))}</time>
+                <time className="review-timeline__date" dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
                 {typeClass && <a className="review-timeline__link" href={t('process_url')}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
               </dd>
             </Fragment>
