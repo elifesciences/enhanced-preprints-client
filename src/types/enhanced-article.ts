@@ -90,12 +90,12 @@ export type PreprintVersionSummary = {
   preprintUrl: string,
   preprintPosted: Date,
   sentForReview?: Date,
-  published: Date | null,
+  published: string | null,
 };
 
 export type ExternalVersionSummary = {
   versionIdentifier: string,
-  published: Date | null,
+  published: string | null,
   url: string,
 };
 
@@ -115,7 +115,7 @@ export type EnhancedArticle = {
   preprintPosted: Date,
   sentForReview?: Date,
   peerReview?: PeerReview,
-  published: Date | null,
+  published: string | null,
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,

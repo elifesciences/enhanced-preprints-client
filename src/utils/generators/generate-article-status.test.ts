@@ -22,7 +22,7 @@ const version1: EnhancedArticle = {
   preprintUrl: 'https://doi.org/doi-123',
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
-  published: new Date('2023-01-03'),
+  published: '2023-01-03',
 
   article: exampleArticle,
 };
@@ -39,7 +39,7 @@ const version2: EnhancedArticle = {
   preprintUrl: 'https://doi.org/doi-123v2',
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
-  published: new Date('2023-01-09'),
+  published: '2023-01-09',
 
   article: exampleArticle,
 };
@@ -111,8 +111,7 @@ describe('generateStatus', () => {
     const previewVersion = {
       ...version1,
     };
-    previewVersion.published = new Date();
-    previewVersion.published.setDate(previewVersion.published.getUTCDate() + 1);
+    previewVersion.published = new Date(new Date().setDate(new Date().getDate() + 1)).toUTCString();
 
     const status = generateStatus({
       article: previewVersion,

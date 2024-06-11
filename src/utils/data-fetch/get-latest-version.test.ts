@@ -118,7 +118,7 @@ describe('getLatestVersion', () => {
         '85111v3': {
           ...mock85111.versions['85111v3'],
           // Tomorrow, tomorrow, I love ya, tomorrow
-          published: new Date(new Date().setDate(new Date().getDate() + 1)),
+          published: new Date(new Date().setDate(new Date().getDate() + 1)).toUTCString(),
         },
       },
     };

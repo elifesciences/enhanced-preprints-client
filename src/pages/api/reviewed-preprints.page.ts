@@ -119,7 +119,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   published,
   subjects,
   article: { content, authors },
-}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+}: EnhancedArticle, firstPublished: string | null): ReviewedPreprintItemResponse => ({
   id: msid,
   doi: preprintDoi,
   pdf: pdfUrl,

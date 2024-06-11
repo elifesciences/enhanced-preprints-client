@@ -23,7 +23,7 @@ const version1: EnhancedArticle = {
   preprintUrl: 'https://doi.org/doi-123',
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
-  published: new Date('2023-01-03'),
+  published: '2023-01-03',
 
   article: exampleArticle,
 };
@@ -40,14 +40,14 @@ const version2: EnhancedArticle = {
   preprintUrl: 'https://doi.org/doi-123v2',
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
-  published: new Date('2023-01-09'),
+  published: '2023-01-09',
 
   article: exampleArticle,
 };
 
 const version3Summary: VersionSummary = {
   versionIdentifier: '3',
-  published: new Date('2023-02-09'),
+  published: '2023-02-09',
   url: 'https://doi.org/doi-123v3',
 };
 
