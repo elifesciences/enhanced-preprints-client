@@ -22,7 +22,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
       {
         sortedEvents.map((event, index) => {
           const typeClass = (sortedEvents.length === 1 || (current && current === event.version)) ? (` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
-          const hidden = (current && current !== event.version && !expanded);
+          const hidden = (current && current !== event.version && expanded === false);
           const eventName = event.name ?? 'Reviewed Preprint';
           return (
             <Fragment key={index}>
