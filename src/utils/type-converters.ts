@@ -6,5 +6,3 @@ export type DatesToStrings<T> = T extends Date
     : T extends object
       ? { [K in keyof T]: DatesToStrings<T[K]> }
       : T;
-
-export const stringToDate = (value: string): Date => new Date(value);

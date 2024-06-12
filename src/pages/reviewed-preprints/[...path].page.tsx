@@ -24,7 +24,7 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { DatesToStrings, stringToDate } from '../../utils/type-converters';
+import { DatesToStrings } from '../../utils/type-converters';
 import { Evaluation } from '../../types/peer-review';
 
 type PageProps = {
@@ -44,7 +44,7 @@ type SerialisedPageProps = DatesToStrings<PageProps>;
 
 const stringsToDatesInEvalauation = (evaluation: DatesToStrings<Evaluation>): Evaluation => ({
   ...evaluation,
-  date: stringToDate(evaluation.date),
+  date: new Date(evaluation.date),
 });
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
@@ -61,7 +61,7 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 const stringsToDates = (props: SerialisedPageProps): PageProps => {
   const timeline = props.timeline.map((event) => ({
     ...event,
-    date: stringToDate(event.date),
+    date: new Date(event.date),
   }));
 
   const peerReview: PeerReview | null = props.peerReview ? {
