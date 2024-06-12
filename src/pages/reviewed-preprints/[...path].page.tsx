@@ -25,6 +25,7 @@ import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { DatesToStrings, stringToDate } from '../../utils/type-converters';
+import { Evaluation } from '../../types/peer-review';
 
 type PageProps = {
   metaData: MetaData,
@@ -40,6 +41,11 @@ type PageProps = {
 };
 
 type SerialisedPageProps = DatesToStrings<PageProps>;
+
+const stringsToDatesInEvalauation = (evaluation: DatesToStrings<Evaluation>): Evaluation => ({
+  ...evaluation,
+  date: stringToDate(evaluation.date),
+});
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
@@ -59,15 +65,9 @@ const stringsToDates = (props: SerialisedPageProps): PageProps => {
   }));
 
   const peerReview: PeerReview | null = props.peerReview ? {
-    evaluationSummary: {
-      ...props.peerReview.evaluationSummary,
-      date: stringToDate(props.peerReview.evaluationSummary.date),
-    },
-    reviews: props.peerReview.reviews.map((review) => ({ ...review, date: stringToDate(review.date) })),
-    authorResponse: props.peerReview.authorResponse ? {
-      ...props.peerReview.authorResponse,
-      date: stringToDate(props.peerReview.authorResponse.date),
-    } : undefined,
+    evaluationSummary: stringsToDatesInEvalauation(props.peerReview.evaluationSummary),
+    reviews: props.peerReview.reviews.map(stringsToDatesInEvalauation),
+    authorResponse: props.peerReview.authorResponse ? stringsToDatesInEvalauation(props.peerReview.authorResponse) : undefined,
   } : null;
 
   return {
