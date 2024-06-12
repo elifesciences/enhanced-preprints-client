@@ -41,6 +41,11 @@ const resources = {
       related_type_podcastChapterEpisode: 'Podcast',
       external_timeline_version_title: 'Version of Record',
       external_history_version_title: 'Version of Record published',
+      review_process_reviewed: '<strong>Not revised:</strong> This Reviewed Preprint includes the authors’ original preprint (without revision), an eLife assessment, public reviews, and a response from the authors (if available).',
+      review_process_revised: (
+        '<strong>Revised:</strong> This Reviewed Preprint has been revised by the authors in response to the previous round of peer review; '
+        + 'the eLife assessment and the public reviews have been updated where necessary by the editors and peer reviewers.'
+      ),
     },
     biophysics_colab: {
       twitter_handle: '@BiophysicsColab',

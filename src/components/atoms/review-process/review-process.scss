@@ -15,21 +15,17 @@
 .review-process__link {
   @include typography.font-size-and-vertical-height(14, 20);
 
-  color: var(--color-text);
+  color: var(--link-reviewed);
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+
+  .review-process--revised & {
+    color: var(--link-revised);
+  }
 
   &:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-}
-
-.link-reviewed {
-  color: var(--link-reviewed);
-}
-
-.link-revised {
-  color: var(--link-revised);
 }

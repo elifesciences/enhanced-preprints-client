@@ -6,6 +6,14 @@ export default {
   component: ReviewProcess,
 } as Meta<typeof ReviewProcess>;
 
-const Template: StoryFn<typeof ReviewProcess> = () => <ReviewProcess />;
+const Template: StoryFn<typeof ReviewProcess> = (args) => <ReviewProcess {...args} />;
 
 export const NotRevisedReviewProcess = Template.bind({});
+NotRevisedReviewProcess.args = {
+  current: 1,
+};
+
+export const RevisedReviewProcess = Template.bind({});
+RevisedReviewProcess.args = {
+  current: 2,
+};
