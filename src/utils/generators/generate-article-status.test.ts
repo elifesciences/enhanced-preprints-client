@@ -110,9 +110,8 @@ describe('generateStatus', () => {
   it('should be a preview if the published date is in the future', () => {
     const previewVersion = {
       ...version1,
+      published: new Date(new Date().setDate(new Date().getDate() + 1)),
     };
-    previewVersion.published = new Date();
-    previewVersion.published.setDate(previewVersion.published.getUTCDate() + 1);
 
     const status = generateStatus({
       article: previewVersion,

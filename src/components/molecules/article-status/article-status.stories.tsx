@@ -23,7 +23,7 @@ Status.args = {
         url: '#',
         version: 1,
         versionIndicator: 'v1',
-        date: '2024-05-30',
+        date: new Date('2024-05-30'),
       },
     ],
   },

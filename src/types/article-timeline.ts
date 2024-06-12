@@ -3,5 +3,7 @@ export type TimelineEvent = {
   url: string,
   version: number,
   versionIndicator?: string,
-  date: string,
+  date: Date,
 };
+
+export type SerialisedTimelineEvent = (Omit<TimelineEvent, 'date'> & { date: string });
