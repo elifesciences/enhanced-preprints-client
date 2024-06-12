@@ -12,6 +12,14 @@
   position: relative;
 }
 
+.review-process__body::before {
+  border-radius: 6px 6px 0 0;
+}
+
+.review-process__link::before {
+  border-radius: 0 0 6px 6px;
+}
+
 .review-process__body,
 .review-process__link {
   @include mixins.padding(26, "left");
@@ -24,14 +32,6 @@
     position: absolute;
     top: 0;
     width: 8px;
-
-    .review-process__body & {
-      border-radius: 6px 6px 0 0; // doesn't appear to be working
-    }
-
-    .review-process__link & {
-      border-radius: 0 0 6px 6px; // doesn't appear to be working
-    }
 
     .review-process--revised & {
       background-color: var(--border-timeline-revised);
