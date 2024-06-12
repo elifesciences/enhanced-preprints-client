@@ -250,7 +250,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
       previousVersionWarningUrl,
-    },
+    } as unknown as PageProps,
   };
 };
 
