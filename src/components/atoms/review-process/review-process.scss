@@ -1,0 +1,27 @@
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+@use "../../../sass/settings";
+
+.review-process__header {
+  @include typography.heading-2();
+
+  margin: 0;
+}
+
+.review-process__body {
+  @include typography.body-alternative();
+}
+
+.review-process__link {
+  @include typography.font-size-and-vertical-height(14, 20);
+
+  color: #d04310;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
