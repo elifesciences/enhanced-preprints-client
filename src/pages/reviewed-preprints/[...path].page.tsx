@@ -39,7 +39,7 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
 };
 
-type SerialisablePageProps = DatesToStrings<PageProps>;
+type SerialisedPageProps = DatesToStrings<PageProps>;
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
@@ -52,7 +52,7 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = (props: SerialisablePageProps): PageProps => {
+const stringsToDates = (props: SerialisedPageProps): PageProps => {
   const timeline = props.timeline.map((event) => ({
     ...event,
     date: stringToDate(event.date),
@@ -77,7 +77,7 @@ const stringsToDates = (props: SerialisablePageProps): PageProps => {
   };
 };
 
-export const Page = (props: SerialisablePageProps) => {
+export const Page = (props: SerialisedPageProps) => {
   const processedProps = stringsToDates(props);
   const routePrefix = processedProps.status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
