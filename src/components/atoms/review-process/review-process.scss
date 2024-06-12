@@ -15,7 +15,7 @@
 .review-process__link {
   @include typography.font-size-and-vertical-height(14, 20);
 
-  color: #d04310;
+  color: var(--color-text);
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
@@ -24,4 +24,12 @@
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+}
+
+.link-reviewed {
+  color: var(--link-reviewed);
+}
+
+.link-revised {
+  color: var(--link-revised);
 }
