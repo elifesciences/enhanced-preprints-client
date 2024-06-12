@@ -42,7 +42,7 @@ type PageProps = {
 
 type SerialisedPageProps = DatesToStrings<PageProps>;
 
-const stringsToDatesInEvalauation = (evaluation: DatesToStrings<Evaluation>): Evaluation => ({
+const stringsToDatesInEvaluation = (evaluation: DatesToStrings<Evaluation>): Evaluation => ({
   ...evaluation,
   date: new Date(evaluation.date),
 });
@@ -65,9 +65,9 @@ const stringsToDates = (props: SerialisedPageProps): PageProps => {
   }));
 
   const peerReview: PeerReview | null = props.peerReview ? {
-    evaluationSummary: stringsToDatesInEvalauation(props.peerReview.evaluationSummary),
-    reviews: props.peerReview.reviews.map(stringsToDatesInEvalauation),
-    authorResponse: props.peerReview.authorResponse ? stringsToDatesInEvalauation(props.peerReview.authorResponse) : undefined,
+    evaluationSummary: stringsToDatesInEvaluation(props.peerReview.evaluationSummary),
+    reviews: props.peerReview.reviews.map(stringsToDatesInEvaluation),
+    authorResponse: props.peerReview.authorResponse ? stringsToDatesInEvaluation(props.peerReview.authorResponse) : undefined,
   } : null;
 
   return {
