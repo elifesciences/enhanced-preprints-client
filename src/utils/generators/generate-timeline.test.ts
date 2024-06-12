@@ -76,7 +76,7 @@ describe('generateTimeline', () => {
 
     expect(timeline).toEqual([
       {
-        date: 'Tue Jan 03 2023',
+        date: new Date('Tue Jan 03 2023'),
         name: 'Reviewed Preprint',
         url: '/reviewed-preprints/1v1',
         version: 1,
@@ -99,14 +99,14 @@ describe('generateTimeline', () => {
         name: 'Reviewed Preprint',
         url: '/reviewed-preprints/1v2',
         version: 2,
-        date: 'Mon Jan 09 2023',
+        date: new Date('Mon Jan 09 2023'),
         versionIndicator: 'v2',
       },
       {
         name: 'Reviewed Preprint',
         url: '/reviewed-preprints/1v1',
         version: 1,
-        date: 'Tue Jan 03 2023',
+        date: new Date('Tue Jan 03 2023'),
         versionIndicator: 'v1',
       },
     ]);
@@ -127,20 +127,20 @@ describe('generateTimeline', () => {
         name: 'Version of Record',
         url: 'https://doi.org/doi-123v3',
         version: 3,
-        date: 'Thu Feb 09 2023',
+        date: new Date('Thu Feb 09 2023'),
       },
       {
         name: 'Reviewed Preprint',
         url: '/reviewed-preprints/1v2',
         version: 2,
-        date: 'Mon Jan 09 2023',
+        date: new Date('Mon Jan 09 2023'),
         versionIndicator: 'v2',
       },
       {
         name: 'Reviewed Preprint',
         url: '/reviewed-preprints/1v1',
         version: 1,
-        date: 'Tue Jan 03 2023',
+        date: new Date('Tue Jan 03 2023'),
         versionIndicator: 'v1',
       },
     ]);
