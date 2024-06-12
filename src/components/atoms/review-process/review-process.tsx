@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 import parse from 'html-react-parser';
 
 type ReviewProcessProps = {
-  current: number;
+  current?: number;
 };
 
 export const ReviewProcess = ({ current }: ReviewProcessProps) => {
   const { t } = useTranslation();
-  const type = current > 1 ? 'revised' : 'reviewed';
+  const type = current && current > 1 ? 'revised' : 'reviewed';
   return (
     <section className={`review-process review-process--${type}`}>
       <h2 className="review-process__header" id="review-process">Peer review process</h2>

@@ -5,7 +5,6 @@ describe('Review Process', () => {
   it('renders review process', () => {
     render(<ReviewProcess />);
 
-    const firstItem = screen.getByText('Peer review process');
-    expect(firstItem).toBeInTheDocument();
+    expect(screen.getByText('Peer review process')).toBeInTheDocument();
   });
 });
