@@ -8,6 +8,37 @@
   margin: 0;
 }
 
+.review-process__container {
+  position: relative;
+}
+
+.review-process__body,
+.review-process__link {
+  @include mixins.padding(26, "left");
+
+  &::before {
+    background-color: var(--border-timeline-reviewed);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8px;
+
+    .review-process__body & {
+      border-radius: 6px 6px 0 0; // doesn't appear to be working
+    }
+
+    .review-process__link & {
+      border-radius: 0 0 6px 6px; // doesn't appear to be working
+    }
+
+    .review-process--revised & {
+      background-color: var(--border-timeline-revised);
+    }
+  }
+}
+
 .review-process__body {
   @include typography.body-alternative();
 }
@@ -20,12 +51,12 @@
   font-weight: 600;
   text-decoration: none;
 
-  .review-process--revised & {
-    color: var(--link-revised);
-  }
-
   &:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  .review-process--revised & {
+    color: var(--link-revised);
   }
 }
