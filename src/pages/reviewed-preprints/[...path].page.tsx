@@ -50,40 +50,50 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = (props: PageProps): (Omit<PageProps, 'timeline'> & { timeline: TimelineEvent[] }) => {
-  const timeline = props.timeline.map((event) => ({ ...event, date: new Date(event.date) }));
+const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): { processedTimeline: TimelineEvent[] } => {
+  const processedTimeline = timeline.map((event) => ({ ...event, date: new Date(event.date) }));
   return {
-    ...props,
-    timeline,
+    processedTimeline,
   };
 };
 
-export const Page = (props: PageProps) => {
-  const processedProps = stringsToDates(props);
-  const routePrefix = processedProps.status.isPreview ? '/previews/' : '/reviewed-preprints/';
+export const Page = ({
+  metaData,
+  imgInfo,
+  msidWithVersion,
+  status,
+  timeline,
+  relatedContent,
+  content,
+  peerReview,
+  metrics,
+  previousVersionWarningUrl,
+}: PageProps) => {
+  const { processedTimeline } = stringsToDates({ timeline });
+  const routePrefix = status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
       id: 'fulltext',
-      linkElement: <a href={`${routePrefix}${processedProps.msidWithVersion}#tab-content`}>Full text</a>,
+      linkElement: <a href={`${routePrefix}${msidWithVersion}#tab-content`}>Full text</a>,
     },
     {
       id: 'figures',
-      linkElement: <a href={`${routePrefix}${processedProps.msidWithVersion}/figures#tab-content`}>Figures</a>,
+      linkElement: <a href={`${routePrefix}${msidWithVersion}/figures#tab-content`}>Figures</a>,
     },
     {
       id: 'reviews',
-      linkElement: <a href={`${routePrefix}${processedProps.msidWithVersion}/reviews#tab-content`}>Peer review</a>,
+      linkElement: <a href={`${routePrefix}${msidWithVersion}/reviews#tab-content`}>Peer review</a>,
     },
   ];
 
-  const headings = contentToHeadings(processedProps.content);
-  const figures = contentToFigures(processedProps.content);
+  const headings = contentToHeadings(content);
+  const figures = contentToFigures(content);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={processedProps.metrics} headings={headings} content={contentToJsx(processedProps.content)} metaData={processedProps.metaData} peerReview={processedProps.peerReview ?? undefined} peerReviewUrl={`${routePrefix}${processedProps.msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -91,7 +101,7 @@ export const Page = (props: PageProps) => {
     },
     reviews: {
       tabLinks,
-      content: () => (processedProps.peerReview ? <ArticleReviewsTab peerReview={processedProps.peerReview}></ArticleReviewsTab> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview}></ArticleReviewsTab> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -99,10 +109,10 @@ export const Page = (props: PageProps) => {
         <ArticleFullTextTab
           metrics={null}
           headings={headings}
-          content={contentToJsx(processedProps.content, { imgInfo: processedProps.imgInfo ?? undefined, removePictureTag: true })}
-          metaData={processedProps.metaData}
-          peerReview={processedProps.peerReview ?? undefined}
-          peerReviewUrl={`${routePrefix}${processedProps.msidWithVersion}/reviews#tab-content`}/>
+          content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
+          metaData={metaData}
+          peerReview={peerReview ?? undefined}
+          peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
       </>,
     },
@@ -120,7 +130,7 @@ export const Page = (props: PageProps) => {
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
   const { t } = useTranslation();
-  const relatedContent = processedProps.relatedContent.map((item) => {
+  const processedRelatedContent = relatedContent.map((item) => {
     const relatedType = t(`related_type_${item.type}`, { defaultValue: t('related_type_default') });
     return {
       ...item,
@@ -133,29 +143,29 @@ export const Page = (props: PageProps) => {
   return (
     <>
       <Head>
-        <title>{contentToText(processedProps.metaData.title)}</title>
-        <meta name="citation_title" content={contentToText(processedProps.metaData.title)}/>
+        <title>{contentToText(metaData.title)}</title>
+        <meta name="citation_title" content={contentToText(metaData.title)}/>
         <meta name="citation_publisher" content={t('publisher_long')}/>
         <meta name="citation_journal_title" content={t('publisher_short')}/>
-        <meta name="citation_volume" content={processedProps.metaData.volume}/>
-        <meta name="citation_id" content={`RP${processedProps.metaData.msid}`}/>
-        <meta name="citation_abstract" content={contentToText(processedProps.metaData.abstract)}/>
-        <meta name="citation_doi" content={processedProps.metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedProps.timeline, +processedProps.metaData.version)}/>
-        {processedProps.metaData.pdfUrl && <meta name="citation_pdf_url" content={processedProps.metaData.pdfUrl}/>}
-        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: processedProps.metaData.msid })}/>
+        <meta name="citation_volume" content={metaData.volume}/>
+        <meta name="citation_id" content={`RP${metaData.msid}`}/>
+        <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
+        <meta name="citation_doi" content={metaData.doi}/>
+        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
+        {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
+        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
         <meta name="citation_language" content="en"/>
-        { processedProps.metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
+        { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
-        previousVersionWarningUrl={makeNullableOptional(processedProps.previousVersionWarningUrl)}
-        metrics={makeNullableOptional(processedProps.metrics)}
-        relatedContent={relatedContent}
-        metaData={processedProps.metaData}
-        msidWithVersion={processedProps.msidWithVersion}
+        previousVersionWarningUrl={makeNullableOptional(previousVersionWarningUrl)}
+        metrics={makeNullableOptional(metrics)}
+        relatedContent={processedRelatedContent}
+        metaData={metaData}
+        msidWithVersion={msidWithVersion}
         tabs={tabs}
-        status={processedProps.status}
-        timeline={processedProps.timeline}
+        status={status}
+        timeline={processedTimeline}
         activeTab={tabName}
       >
         { tabContent }
