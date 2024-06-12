@@ -5,5 +5,3 @@ export type TimelineEvent = {
   versionIndicator?: string,
   date: Date,
 };
-
-export type SerialisedTimelineEvent = (Omit<TimelineEvent, 'date'> & { date: string });

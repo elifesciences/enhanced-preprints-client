@@ -183,7 +183,7 @@ export const Page = (props: SerialisablePageProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<SerialisablePageProps> = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
