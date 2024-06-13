@@ -2,7 +2,7 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
-.review-timeline {
+.review-timeline-container {
   @include mixins.margin(36, "bottom");
   @include mixins.margin(36, "top");
 
@@ -15,6 +15,10 @@
     @include mixins.margin(6, "left");
     @include mixins.margin(12, "top");
   }
+}
+
+.review-timeline {
+  @include mixins.margin(0);
 
   &__event,
   &__detail {
