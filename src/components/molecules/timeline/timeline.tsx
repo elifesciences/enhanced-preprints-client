@@ -47,11 +47,11 @@ export const Timeline = ({ current, events }: TimelineProps) => {
             );
           })
         }
-        {(sortedEvents.length > 1 && expanded !== null) &&
-        <button aria-controls="review-timeline" aria-expanded={expanded}
-          className={`review-timeline__expansion${expanded ? ' review-timeline__expansion--expanded' : ''}`}
-          onClick={() => setExpanded(!expanded)}>{expansionText}</button>}
       </dl>
+      {(sortedEvents.length > 1 && expanded !== null) &&
+      <button aria-controls="review-timeline" aria-expanded={expanded}
+        className={`review-timeline__expansion${expanded ? ' review-timeline__expansion--expanded' : ''}`}
+        onClick={() => setExpanded(!expanded)}>{expansionText}</button>}
     </div>
   );
 };
