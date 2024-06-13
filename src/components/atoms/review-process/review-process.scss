@@ -12,20 +12,17 @@
   position: relative;
 }
 
-.review-process__body::before {
-  border-radius: 6px 6px 0 0;
-}
-
-.review-process__link::before {
-  border-radius: 0 0 6px 6px;
-}
-
 .review-process__body,
 .review-process__link {
   @include mixins.padding(26, "left");
+}
+
+.review-process__body {
+  @include typography.body-alternative();
 
   &::before {
     background-color: var(--border-timeline-reviewed);
+    border-radius: 6px;
     content: "";
     height: 100%;
     left: 0;
@@ -37,10 +34,6 @@
       background-color: var(--border-timeline-revised);
     }
   }
-}
-
-.review-process__body {
-  @include typography.body-alternative();
 }
 
 .review-process__link {
