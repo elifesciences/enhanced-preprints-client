@@ -116,11 +116,11 @@
     }
 
     .review-timeline__event--reviewed & {
-      color: var(--link-timeline-reviewed);
+      color: var(--link-reviewed);
     }
 
     .review-timeline__event--revised & {
-      color: var(--link-timeline-revised);
+      color: var(--link-revised);
     }
   }
 

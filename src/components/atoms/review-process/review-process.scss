@@ -1,0 +1,59 @@
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+@use "../../../sass/settings";
+
+.review-process__header {
+  @include mixins.margin(0 0 18 0);
+  @include typography.heading-2();
+}
+
+.review-process__container {
+  @include mixins.padding(3, "bottom");
+
+  position: relative;
+}
+
+.review-process__body,
+.review-process__link {
+  @include mixins.padding(27, "left");
+}
+
+.review-process__body {
+  @include mixins.margin(12, "bottom");
+  @include mixins.margin(0, "top");
+  @include typography.body-alternative();
+
+  &::before {
+    background-color: var(--border-timeline-reviewed);
+    border-radius: 10px;
+    content: "";
+    height: 100%;
+    left: 3px;
+    position: absolute;
+    top: 0;
+    width: 6px;
+
+    .review-process--revised & {
+      background-color: var(--border-timeline-revised);
+    }
+  }
+}
+
+.review-process__link {
+  @include typography.font-size-and-vertical-height(14, 20);
+
+  color: var(--link-reviewed);
+  display: block;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .review-process--revised & {
+    color: var(--link-revised);
+  }
+}
