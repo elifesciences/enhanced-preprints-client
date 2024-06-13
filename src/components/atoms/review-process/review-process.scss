@@ -43,6 +43,7 @@
   @include typography.font-size-and-vertical-height(14, 20);
 
   color: var(--link-reviewed);
+  display: block;
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
