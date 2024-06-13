@@ -3,32 +3,35 @@
 @use "../../../sass/settings";
 
 .review-process__header {
+  @include mixins.margin(0 0 18 0);
   @include typography.heading-2();
-
-  margin: 0;
 }
 
 .review-process__container {
+  @include mixins.padding(3, "bottom");
+
   position: relative;
 }
 
 .review-process__body,
 .review-process__link {
-  @include mixins.padding(26, "left");
+  @include mixins.padding(27, "left");
 }
 
 .review-process__body {
+  @include mixins.margin(12, "bottom");
+  @include mixins.margin(0, "top");
   @include typography.body-alternative();
 
   &::before {
     background-color: var(--border-timeline-reviewed);
-    border-radius: 6px;
+    border-radius: 10px;
     content: "";
     height: 100%;
-    left: 0;
+    left: 3px;
     position: absolute;
     top: 0;
-    width: 8px;
+    width: 6px;
 
     .review-process--revised & {
       background-color: var(--border-timeline-revised);
