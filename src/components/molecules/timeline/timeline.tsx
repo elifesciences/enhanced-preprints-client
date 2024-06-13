@@ -38,7 +38,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
               <dd className={`review-timeline__detail${typeClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                 {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
                 <time className="review-timeline__date" dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
-                {typeClass && <a className="review-timeline__link" href={t('reviewed_preprints_peer_review_url', { msid: 'wtf' })}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
+                {typeClass && <a className="review-timeline__link" href={`${event.url}/reviews#tab-content`}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
               </dd>
             </Fragment>
           );
