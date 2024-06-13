@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import '../../../i18n';
 import './timeline.scss';
-import { useTranslation } from 'react-i18next';
 import { formatDate } from '../../../utils/formatters';
 import { TimelineEvent } from '../../../types';
 
@@ -16,7 +15,6 @@ export const Timeline = ({ current, events }: TimelineProps) => {
 
   useEffect(() => setExpanded(false), []);
   const expansionText = `${expanded ? 'Hide' : 'Show'} ${sortedEvents.length > 1 && sortedEvents[0].version === current ? `previous version${sortedEvents.length > 2 ? 's' : ''}` : 'all versions'}`;
-  const { t } = useTranslation();
   return (
     <dl className={`review-timeline${expanded !== false ? ' review-timeline--expanded' : ''}`} id="review-timeline">
       {
