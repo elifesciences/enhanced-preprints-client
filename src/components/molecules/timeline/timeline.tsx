@@ -39,7 +39,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                   <time className="review-timeline__date"
                     dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
                   {typeClass && <a className="review-timeline__link"
-                    href={`${event.url}/reviews#tab-content`}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
+                    href={`${event.url}/reviews#review-process`}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
                 </dd>
               </Fragment>
             );
