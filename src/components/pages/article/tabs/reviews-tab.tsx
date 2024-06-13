@@ -3,8 +3,9 @@ import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editor
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
-export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }) => {
+export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: PeerReview, currentVersion?: number, }) => {
   const headings = [
     { id: 'editors-and-reviewers', text: 'Editors' },
     ...peerReview.reviews.map((_, index) => (
@@ -17,6 +18,7 @@ export const ArticleReviewsTab = ({ peerReview }: { peerReview: PeerReview }) =>
     <div className="tabbed-navigation__content">
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
+        {currentVersion !== undefined && <ReviewProcess current={currentVersion} />}
         <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} />
         {peerReview.reviews.map((review, index) => (
           <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} doi={review.doi} />

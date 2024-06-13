@@ -79,9 +79,24 @@ ArticlePageFiguresTab.args = {
   timeline,
 };
 
-const ReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} /></ArticlePage></DefaultLayout>;
-export const ArticlePageReviewsTab = ReviewsTemplate.bind({});
-ArticlePageReviewsTab.args = {
+const ReviewedReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} currentVersion={1} /></ArticlePage></DefaultLayout>;
+export const ArticlePageReviewedReviewsTab = ReviewedReviewsTemplate.bind({});
+ArticlePageReviewedReviewsTab.args = {
+  metaData: {
+    ...metaData,
+    version: '1',
+  },
+  status,
+  activeTab: 'reviews',
+  tabs,
+  relatedContent,
+  metrics,
+  timeline,
+};
+
+const RevisedReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} currentVersion={2} /></ArticlePage></DefaultLayout>;
+export const ArticlePageRevisedReviewsTab = RevisedReviewsTemplate.bind({});
+ArticlePageRevisedReviewsTab.args = {
   metaData,
   status,
   activeTab: 'reviews',
