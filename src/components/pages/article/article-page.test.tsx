@@ -24,7 +24,7 @@ describe('ArticlePage', () => {
 
   it('renders with reviews tab', () => {
     expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} status={status} timeline={timeline} activeTab="reviews" tabs={[]} previousVersionWarningUrl="http://latest.version">
-      <ArticleReviewsTab peerReview={peerReview} />
+      <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
     </ArticlePage>)).not.toThrow();
   });
 

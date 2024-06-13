@@ -14,6 +14,7 @@ const resources = {
 
       // Defaults:
       reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
+      reviewed_preprints_peer_review_url: '$t(reviewed_preprints_url)/reviews#tab-content',
       heading_assessment: '$t(publisher_short) assessment',
       about_assessments: 'About $t(publisher_short) assessments',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
