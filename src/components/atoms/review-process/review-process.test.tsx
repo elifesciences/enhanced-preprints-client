@@ -7,4 +7,16 @@ describe('Review Process', () => {
 
     expect(screen.getByText('Peer review process')).toBeInTheDocument();
   });
+
+  it('shows the not revised description when version is 1', () => {
+    render(<ReviewProcess current={1} />);
+
+    expect(screen.getByText('Not revised:')).toBeInTheDocument();
+  });
+
+  it('shows the revised description when version is above 1', () => {
+    render(<ReviewProcess current={2} />);
+
+    expect(screen.getByText('Revised:')).toBeInTheDocument();
+  });
 });
