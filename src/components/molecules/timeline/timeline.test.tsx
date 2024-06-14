@@ -17,7 +17,7 @@ describe('Timeline', () => {
     expect(firstItem).toHaveAttribute('dateTime', '2001-01-13T00:00:00.000Z');
     expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
     expect(screen.getByText('v1')).toBeInTheDocument();
-    expect(screen.getByText('Not revised')).toBeInTheDocument();
+    expect(screen.getByText('Not revised')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
   it('renders a single revised timeline item', () => {
@@ -35,7 +35,7 @@ describe('Timeline', () => {
     expect(firstItem).toHaveAttribute('dateTime', '2002-02-14T00:00:00.000Z');
     expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
     expect(screen.getByText('v2')).toBeInTheDocument();
-    expect(screen.getByText('Revised by authors')).toBeInTheDocument();
+    expect(screen.getByText('Revised by authors')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
   describe('collapsable behaviours', () => {
