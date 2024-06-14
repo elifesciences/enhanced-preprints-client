@@ -3,7 +3,6 @@
 
 .editors-and-reviewers {
   @include mixins.margin(36, "bottom");
-  @include mixins.padding(18, "top");
 }
 
 .editors-and-reviewers__header {
