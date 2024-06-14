@@ -13,8 +13,7 @@ export const stringsToDates = <T extends object>(input: DatesToStrings<T>): T =>
   for (const [key, val] of Object.entries(output as T)) {
     if (typeof val === 'string' && !Number.isNaN(new Date(val).getTime())) {
       output[key] = new Date(val);
-    } else if (Array.isArray(output)) {
-      // @ts-ignore
+    } else if (Array.isArray(output[key])) {
       output[key] = val.map(stringsToDates);
     } else if (typeof val === 'object') {
       output[key] = stringsToDates(val);
