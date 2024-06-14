@@ -2,9 +2,10 @@ import { i18n } from '../../i18n';
 import {
   EnhancedArticleWithVersions, VersionHistoryItem,
 } from '../../types';
+import { DatesToStrings } from '../type-converters';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 
-export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
+export const generateVersionHistory = (version: DatesToStrings<EnhancedArticleWithVersions>): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
     if (current.published) {
       versions.push({

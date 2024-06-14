@@ -5,14 +5,16 @@ import {
   VersionSummary,
   ArticleStatus,
 } from '../../types';
+import { DatesToStrings } from '../type-converters';
 import { isPreprintVersionSummary } from '../type-guards';
 
-const isVersionSameAsCurrentArticle = (article: EnhancedArticle, version: VersionSummary) => isPreprintVersionSummary(version) && version.id === article.id && version.versionIdentifier === article.versionIdentifier;
+const isVersionSameAsCurrentArticle =
+  (article: DatesToStrings<EnhancedArticle>, version: DatesToStrings<VersionSummary>) => isPreprintVersionSummary(version) && version.id === article.id && version.versionIdentifier === article.versionIdentifier;
 
-const orderVersionsChronologically = (versions: VersionSummary[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
-const getFirstVersion = (version: EnhancedArticleWithVersions) => orderVersionsChronologically(Object.values(version.versions))[0];
+const orderVersionsChronologically = (versions: DatesToStrings<VersionSummary>[]) => versions.filter(isPreprintVersionSummary).sort((a, b) => new Date(a.preprintPosted).getTime() - new Date(b.preprintPosted).getTime());
+const getFirstVersion = (version: DatesToStrings<EnhancedArticleWithVersions>) => orderVersionsChronologically(Object.values(version.versions))[0];
 
-export const generateStatus = (version: EnhancedArticleWithVersions): ArticleStatus => ({
+export const generateStatus = (version: DatesToStrings<EnhancedArticleWithVersions>): ArticleStatus => ({
   type: 'reviewed_preprint',
   status: isVersionSameAsCurrentArticle(version.article, getFirstVersion(version))
     ? i18n.t('status_description_reviewed')

@@ -4,8 +4,9 @@ import {
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { DatesToStrings } from '../type-converters';
 
-export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
+export const generateTimeline = (version: DatesToStrings<EnhancedArticleWithVersions>): SerialisedTimelineEvent[] => {
   const timeline: SerialisedTimelineEvent[] = Object.values(version.versions).reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       events.push({

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import {
   Content,
+  EnhancedArticleWithVersions,
   MetaData,
   Metrics,
   PeerReview,
@@ -24,14 +25,15 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { DatesToStrings, stringsToDates as stringsToDates2 } from '../../utils/type-converters';
+import { Evaluation } from '../../types/peer-review';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  timeline: SerialisedTimelineEvent[],
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -50,10 +52,19 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): { processedTimeline: TimelineEvent[] } => {
+const stringsToDates = ({ timeline, peerReview }: { timeline: DatesToStrings<TimelineEvent>[], peerReview?: DatesToStrings<PeerReview> }): { processedTimeline: TimelineEvent[], processedPeerReview?: PeerReview } => {
   const processedTimeline = timeline.map((event) => ({ ...event, date: new Date(event.date) }));
+  const processEvaluation = ({ date, ...rest }: DatesToStrings<Evaluation>): Evaluation => ({ ...rest, date: new Date(date) });
+
+  const processedPeerReview = peerReview ? {
+    reviews: peerReview?.reviews.map(processEvaluation),
+    evaluationSummary: processEvaluation(peerReview?.evaluationSummary),
+    authorResponse: peerReview.authorResponse ? processEvaluation(peerReview?.authorResponse) : undefined,
+  } : undefined;
+
   return {
     processedTimeline,
+    processedPeerReview,
   };
 };
 
@@ -68,8 +79,8 @@ export const Page = ({
   peerReview,
   metrics,
   previousVersionWarningUrl,
-}: PageProps) => {
-  const { processedTimeline } = stringsToDates({ timeline });
+}: DatesToStrings<PageProps>) => {
+  const { processedTimeline, processedPeerReview } = stringsToDates({ timeline, peerReview: makeNullableOptional(peerReview) });
   const routePrefix = status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
@@ -93,7 +104,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={processedPeerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -101,7 +112,7 @@ export const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview}></ArticleReviewsTab> : <ErrorMessages/>),
+      content: () => (processedPeerReview ? <ArticleReviewsTab peerReview={processedPeerReview}></ArticleReviewsTab> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -111,7 +122,7 @@ export const Page = ({
           headings={headings}
           content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
           metaData={metaData}
-          peerReview={peerReview ?? undefined}
+          peerReview={processedPeerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
       </>,
@@ -174,7 +185,7 @@ export const Page = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<DatesToStrings<PageProps>> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
@@ -193,6 +204,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
   const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const foo = stringsToDates2<EnhancedArticleWithVersions>(articleWithVersions);
 
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
