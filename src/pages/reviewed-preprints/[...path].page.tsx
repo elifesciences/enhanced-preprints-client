@@ -25,8 +25,7 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { DatesToStrings, stringsToDates as stringsToDates2 } from '../../utils/type-converters';
-import { Evaluation } from '../../types/peer-review';
+import { DatesToStrings, stringsToDates } from '../../utils/type-converters';
 
 type PageProps = {
   metaData: MetaData,
@@ -52,35 +51,19 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = ({ timeline, peerReview }: { timeline: DatesToStrings<TimelineEvent>[], peerReview?: DatesToStrings<PeerReview> }): { processedTimeline: TimelineEvent[], processedPeerReview?: PeerReview } => {
-  const processedTimeline = timeline.map((event) => ({ ...event, date: new Date(event.date) }));
-  const processEvaluation = ({ date, ...rest }: DatesToStrings<Evaluation>): Evaluation => ({ ...rest, date: new Date(date) });
-
-  const processedPeerReview = peerReview ? {
-    reviews: peerReview?.reviews.map(processEvaluation),
-    evaluationSummary: processEvaluation(peerReview?.evaluationSummary),
-    authorResponse: peerReview.authorResponse ? processEvaluation(peerReview?.authorResponse) : undefined,
-  } : undefined;
-
-  return {
-    processedTimeline,
-    processedPeerReview,
-  };
-};
-
-export const Page = ({
-  metaData,
-  imgInfo,
-  msidWithVersion,
-  status,
-  timeline,
-  relatedContent,
-  content,
-  peerReview,
-  metrics,
-  previousVersionWarningUrl,
-}: DatesToStrings<PageProps>) => {
-  const { processedTimeline, processedPeerReview } = stringsToDates({ timeline, peerReview: makeNullableOptional(peerReview) });
+export const Page = (props: DatesToStrings<PageProps>) => {
+  const {
+    metaData,
+    imgInfo,
+    msidWithVersion,
+    status,
+    timeline,
+    relatedContent,
+    content,
+    peerReview,
+    metrics,
+    previousVersionWarningUrl,
+  } = stringsToDates<PageProps>(props);
   const routePrefix = status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
@@ -104,7 +87,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={processedPeerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -112,7 +95,7 @@ export const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (processedPeerReview ? <ArticleReviewsTab peerReview={processedPeerReview}></ArticleReviewsTab> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview}></ArticleReviewsTab> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -122,7 +105,7 @@ export const Page = ({
           headings={headings}
           content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
           metaData={metaData}
-          peerReview={processedPeerReview ?? undefined}
+          peerReview={peerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
       </>,
@@ -162,7 +145,7 @@ export const Page = ({
         <meta name="citation_id" content={`RP${metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
         <meta name="citation_doi" content={metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
+        <meta name="citation_publication_date" content={getPublishedDate(timeline, +metaData.version)}/>
         {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
         <meta name="citation_language" content="en"/>
@@ -176,7 +159,7 @@ export const Page = ({
         msidWithVersion={msidWithVersion}
         tabs={tabs}
         status={status}
-        timeline={processedTimeline}
+        timeline={timeline}
         activeTab={tabName}
       >
         { tabContent }
@@ -185,7 +168,7 @@ export const Page = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<DatesToStrings<PageProps>> = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path'); // eslint-disable-line no-console
     return { notFound: true };
@@ -203,13 +186,14 @@ export const getServerSideProps: GetServerSideProps<DatesToStrings<PageProps>> =
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
-  const foo = stringsToDates2<EnhancedArticleWithVersions>(articleWithVersions);
+  const versionData = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
-  if (!articleWithVersions) {
+  if (!versionData) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
     return { notFound: true };
   }
+
+  const articleWithVersions = stringsToDates<EnhancedArticleWithVersions>(versionData);
 
   const latestVersion = getLatestVersion(articleWithVersions);
 
