@@ -20,6 +20,17 @@ describe('Timeline', () => {
     expect(screen.getByText('Not revised')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
+  it('has an appropriate aria-label', () => {
+    render(<Timeline events={[
+      {
+        url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
+      },
+    ]}
+    />);
+
+    expect(document.querySelector('#review-timeline')).toHaveAttribute('aria-label', 'Version history');
+  });
+
   it('renders a single revised timeline item', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('14/02/2002');
