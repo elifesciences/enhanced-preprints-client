@@ -10,7 +10,7 @@ type Participant = {
   institution?: string,
 };
 
-type Evaluation = {
+export type Evaluation = {
   date: Date,
   doi?: string,
   reviewType: ReviewType,

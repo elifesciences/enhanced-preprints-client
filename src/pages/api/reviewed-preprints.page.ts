@@ -7,6 +7,7 @@ import {
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
+import { DatesToStrings } from '../../utils/type-converters';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -119,7 +120,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   published,
   subjects,
   article: { content, authors },
-}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+}: DatesToStrings<EnhancedArticle>, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   id: msid,
   doi: preprintDoi,
   pdf: pdfUrl,

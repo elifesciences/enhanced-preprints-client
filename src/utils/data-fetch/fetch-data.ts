@@ -2,8 +2,9 @@ import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
+import { DatesToStrings } from '../type-converters';
 
-export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<DatesToStrings<EnhancedArticleWithVersions>>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
 export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
   const url = [

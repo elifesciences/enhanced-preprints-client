@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import {
   Content,
+  EnhancedArticleWithVersions,
   MetaData,
   Metrics,
   PeerReview,
@@ -24,14 +25,14 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { DatesToStrings, stringsToDates } from '../../utils/type-converters';
 
 type PageProps = {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   status: ArticleStatusProps,
-  timeline: SerialisedTimelineEvent[],
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -50,26 +51,19 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): { processedTimeline: TimelineEvent[] } => {
-  const processedTimeline = timeline.map((event) => ({ ...event, date: new Date(event.date) }));
-  return {
-    processedTimeline,
-  };
-};
-
-export const Page = ({
-  metaData,
-  imgInfo,
-  msidWithVersion,
-  status,
-  timeline,
-  relatedContent,
-  content,
-  peerReview,
-  metrics,
-  previousVersionWarningUrl,
-}: PageProps) => {
-  const { processedTimeline } = stringsToDates({ timeline });
+export const Page = (props: DatesToStrings<PageProps>) => {
+  const {
+    metaData,
+    imgInfo,
+    msidWithVersion,
+    status,
+    timeline,
+    relatedContent,
+    content,
+    peerReview,
+    metrics,
+    previousVersionWarningUrl,
+  } = stringsToDates<PageProps>(props);
   const routePrefix = status.isPreview ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
@@ -151,7 +145,7 @@ export const Page = ({
         <meta name="citation_id" content={`RP${metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
         <meta name="citation_doi" content={metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
+        <meta name="citation_publication_date" content={getPublishedDate(timeline, +metaData.version)}/>
         {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
         <meta name="citation_language" content="en"/>
@@ -165,7 +159,7 @@ export const Page = ({
         msidWithVersion={msidWithVersion}
         tabs={tabs}
         status={status}
-        timeline={processedTimeline}
+        timeline={timeline}
         activeTab={tabName}
       >
         { tabContent }
@@ -192,12 +186,14 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const versionData = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
-  if (!articleWithVersions) {
+  if (!versionData) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
     return { notFound: true };
   }
+
+  const articleWithVersions = stringsToDates<EnhancedArticleWithVersions>(versionData);
 
   const latestVersion = getLatestVersion(articleWithVersions);
 
