@@ -17,6 +17,18 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
           versionIndicator: `v${current.versionIdentifier}`,
         } : {}),
       });
+      if (isExternalVersionSummary(current) && current.corrections) {
+        current.corrections.forEach(correction => {
+          events.push(
+            {
+              name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
+              url: correction.content,
+              version: +current.versionIdentifier,
+              date: new Date(correction.date).toDateString(),
+            }
+          )
+        })
+      }
     }
     return events;
   }, []);
