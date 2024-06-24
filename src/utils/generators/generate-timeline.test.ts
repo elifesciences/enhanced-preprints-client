@@ -156,10 +156,10 @@ describe('generateTimeline', () => {
           ...version3Summary,
           corrections: [
             {
-              date: new Date('2023-02-10'), 
+              date: new Date('2023-02-10'),
               content: 'https://doi.org/doi-123v3',
-            }
-          ]
+            },
+          ],
         },
       },
     });
