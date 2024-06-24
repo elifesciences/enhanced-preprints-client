@@ -4,18 +4,26 @@ import { peerReview } from '../../../../utils/mocks';
 
 describe('ReviewsTab', () => {
   it('renders with reviews tab', () => {
-    expect(() => render(<ArticleReviewsTab peerReview={peerReview} />)).not.toThrow();
+    expect(() => render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />)).not.toThrow();
+  });
+
+  it('displays the appropriate peer review process', () => {
+    render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
+    expect(screen.getByText('Not revised:')).toBeInTheDocument();
+
+    render(<ArticleReviewsTab peerReview={peerReview} currentVersion={2} />);
+    expect(screen.getByText('Revised:')).toBeInTheDocument();
   });
 
   it('renders each review in the peer review passed in', () => {
-    render(<ArticleReviewsTab peerReview={peerReview} />);
+    render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
 
     peerReview.reviews
       .forEach(({ text }) => expect(screen.getByText(text)).toBeInTheDocument());
   });
 
   it('renders the author response when it is in the peer review', () => {
-    render(<ArticleReviewsTab peerReview={peerReview} />);
+    render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
 
     expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
   });
@@ -25,6 +33,10 @@ describe('ReviewsTab', () => {
       description: 'complete',
       peerReviewExample: peerReview,
       expectedJumpToLinks: [
+        {
+          href: '#review-process',
+          text: 'Peer review process',
+        },
         {
           href: '#editors-and-reviewers',
           text: 'Editors',
@@ -51,6 +63,10 @@ describe('ReviewsTab', () => {
       },
       expectedJumpToLinks: [
         {
+          href: '#review-process',
+          text: 'Peer review process',
+        },
+        {
           href: '#editors-and-reviewers',
           text: 'Editors',
         },
@@ -72,6 +88,10 @@ describe('ReviewsTab', () => {
       },
       expectedJumpToLinks: [
         {
+          href: '#review-process',
+          text: 'Peer review process',
+        },
+        {
           href: '#editors-and-reviewers',
           text: 'Editors',
         },
@@ -81,7 +101,7 @@ describe('ReviewsTab', () => {
     peerReviewExample,
     expectedJumpToLinks,
   }) => {
-    const { container } = render(<ArticleReviewsTab peerReview={peerReviewExample} />);
+    const { container } = render(<ArticleReviewsTab peerReview={peerReviewExample} currentVersion={1} />);
     const jumpLinks = container.querySelectorAll('.jump-menu-list__link');
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
@@ -95,7 +115,7 @@ describe('ReviewsTab', () => {
   });
 
   it('uses the heading ids for the hrefs in jump-to-menu', () => {
-    const { container } = render(<ArticleReviewsTab peerReview={peerReview} />);
+    const { container } = render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
 
     const headings = Array.from(container.querySelectorAll('[id]'));
     const ids = headings.map(({ id }) => id);

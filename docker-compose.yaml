@@ -4,7 +4,7 @@ services:
 
   ## Image Server
   image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-64a26a36-20240605.1015
+    image: ghcr.io/elifesciences/epp-image-server:master-9797adfc-20240617.1602
     depends_on:
       createbucket:
         condition: service_completed_successfully
@@ -63,7 +63,7 @@ services:
 
   ## EPP server mock
   wiremock:
-    image: wiremock/wiremock:3.6.0-1
+    image: wiremock/wiremock:3.7.0-1
     ports:
       - 3000:3000
     healthcheck:

@@ -97,6 +97,10 @@ export type ExternalVersionSummary = {
   versionIdentifier: string,
   published: Date | null,
   url: string,
+  corrections?: {
+    date: Date,
+    content: string,
+  }[]
 };
 
 export type VersionSummary = PreprintVersionSummary | ExternalVersionSummary;

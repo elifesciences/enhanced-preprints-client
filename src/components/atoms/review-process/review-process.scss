@@ -2,6 +2,11 @@
 @use "../../../sass/typography";
 @use "../../../sass/settings";
 
+.review-process {
+  @include mixins.margin(36, "bottom");
+  @include mixins.padding(18, "top");
+}
+
 .review-process__header {
   @include mixins.margin(0 0 18 0);
   @include typography.heading-2();
