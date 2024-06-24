@@ -145,4 +145,52 @@ describe('generateTimeline', () => {
       },
     ]);
   });
+
+  it('should generate the correct timeline with VOR corrections', () => {
+    const timeline = generateTimeline({
+      article: version2,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+        v3: {
+          ...version3Summary,
+          corrections: [
+            {
+              date: new Date('2023-02-10'),
+              content: 'https://doi.org/doi-123v3',
+            },
+          ],
+        },
+      },
+    });
+
+    expect(timeline).toEqual([
+      {
+        name: 'Version of Record',
+        url: 'https://doi.org/doi-123v3',
+        version: 3,
+        date: 'Fri Feb 10 2023',
+      },
+      {
+        name: 'Version of Record',
+        url: 'https://doi.org/doi-123v3',
+        version: 3,
+        date: 'Thu Feb 09 2023',
+      },
+      {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
+        date: 'Mon Jan 09 2023',
+        versionIndicator: 'v2',
+      },
+      {
+        name: 'Reviewed Preprint',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        date: 'Tue Jan 03 2023',
+        versionIndicator: 'v1',
+      },
+    ]);
+  });
 });
