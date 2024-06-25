@@ -5151,21 +5151,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/csf@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@storybook/csf@npm:0.1.2"
+"@storybook/csf@npm:^0.1.2, @storybook/csf@npm:^0.1.7":
+  version: 0.1.9
+  resolution: "@storybook/csf@npm:0.1.9"
   dependencies:
     type-fest: "npm:^2.19.0"
-  checksum: 10c0/b51a55292e5d2af8b1d135a28ecaa94f8860ddfedcb393adfa2cca1ee23853156066f737d8be1cb5412f572781aa525dc0b2f6e4a6f6ce805489f0149efe837c
-  languageName: node
-  linkType: hard
-
-"@storybook/csf@npm:^0.1.7":
-  version: 0.1.7
-  resolution: "@storybook/csf@npm:0.1.7"
-  dependencies:
-    type-fest: "npm:^2.19.0"
-  checksum: 10c0/aaebc9fa5f850cebef1fd9d786d7b5844e2d88e5c8078904ea4571c053f858fab064392960274b854037b9f8693d12c7c45c3c4c9142ec88a08fb498f3f056a5
+  checksum: 10c0/f94765d671d80fabbf6b372c82ab80cc2960027bfab0dc2f47001fe49d78caab90f32abab372aa27ab7b67b4a8f39d3dc0c5c43b7c83ce9f60d238e9fb1f0499
   languageName: node
   linkType: hard
 
