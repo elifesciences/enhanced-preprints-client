@@ -11,6 +11,7 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "storybook-dark-mode",
+    "@storybook/addon-interactions"
   ],
   "framework": {
     name: "@storybook/nextjs",

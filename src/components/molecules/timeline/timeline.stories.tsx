@@ -1,4 +1,5 @@
 import { StoryFn, Meta } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { Timeline } from './timeline';
 
 export default {
@@ -51,6 +52,17 @@ EventTimelineRevisedWithPrevious.args = {
   ],
 };
 
+EventTimelineRevisedWithPrevious.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText('Show previous version');
+
+  await expect(canvas.getByText('Show previous version')).toBeInTheDocument();
+
+  await userEvent.click(canvas.getByText('Show previous version'));
+
+  await expect(canvas.getByText('Hide previous version')).toBeInTheDocument();
+};
+
 export const EventTimelineRevisedWithSubsequent = Template.bind({});
 EventTimelineRevisedWithSubsequent.args = {
   current: 2,
@@ -74,6 +86,16 @@ EventTimelineRevisedWithSubsequent.args = {
       versionIndicator: 'v1',
     },
   ],
+};
+EventTimelineRevisedWithSubsequent.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText('Show all versions');
+
+  await expect(canvas.getByText('Show all versions')).toBeInTheDocument();
+
+  await userEvent.click(canvas.getByText('Show all versions'));
+
+  await expect(canvas.getByText('Hide all versions')).toBeInTheDocument();
 };
 
 export const EventTimelineWithMultipleVOR = Template.bind({});
@@ -105,4 +127,15 @@ EventTimelineWithMultipleVOR.args = {
       versionIndicator: 'v1',
     },
   ],
+};
+
+EventTimelineWithMultipleVOR.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText('Show all versions');
+
+  await expect(canvas.getByText('Show all versions')).toBeInTheDocument();
+
+  await userEvent.click(canvas.getByText('Show all versions'));
+
+  await expect(canvas.getByText('Hide all versions')).toBeInTheDocument();
 };
