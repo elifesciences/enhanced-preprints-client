@@ -10,6 +10,23 @@ const meta: Meta<typeof Timeline> = {
 export default meta;
 type Story = StoryObj<typeof Timeline>;
 
+const timeLineTest = async (canvasElement: HTMLElement, expandText: string, collapseText: string, numberExpected: number) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(expandText);
+
+  const collapsedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
+  expect(collapsedDts).toHaveLength(1);
+
+  await expect(canvas.getByText(expandText)).toBeInTheDocument();
+
+  await userEvent.click(canvas.getByText(expandText));
+
+  await expect(canvas.getByText(collapseText)).toBeInTheDocument();
+
+  const expandedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
+  expect(expandedDts).toHaveLength(numberExpected);
+};
+
 export const EventTimeline: Story = {
   args: {
     events: [
@@ -55,14 +72,7 @@ export const EventTimelineRevisedWithPrevious: Story = {
     ],
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await canvas.findByText('Show previous version');
-
-    await expect(canvas.getByText('Show previous version')).toBeInTheDocument();
-
-    await userEvent.click(canvas.getByText('Show previous version'));
-
-    await expect(canvas.getByText('Hide previous version')).toBeInTheDocument();
+    await timeLineTest(canvasElement, 'Show previous version', 'Hide previous version', 2);
   },
 };
 
@@ -91,14 +101,7 @@ export const EventTimelineRevisedWithSubsequent: Story = {
     ],
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await canvas.findByText('Show all versions');
-
-    await expect(canvas.getByText('Show all versions')).toBeInTheDocument();
-
-    await userEvent.click(canvas.getByText('Show all versions'));
-
-    await expect(canvas.getByText('Hide all versions')).toBeInTheDocument();
+    await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 3);
   },
 };
 
@@ -133,13 +136,6 @@ export const EventTimelineWithMultipleVOR: Story = {
     ],
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await canvas.findByText('Show all versions');
-
-    await expect(canvas.getByText('Show all versions')).toBeInTheDocument();
-
-    await userEvent.click(canvas.getByText('Show all versions'));
-
-    await expect(canvas.getByText('Hide all versions')).toBeInTheDocument();
+    await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 4);
   },
 };
