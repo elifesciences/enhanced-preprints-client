@@ -14,8 +14,8 @@ const timeLineTest = async (canvasElement: HTMLElement, expandText: string, coll
   const canvas = within(canvasElement);
   await canvas.findByText(expandText);
 
-  const collapsedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
-  expect(collapsedDts).toHaveLength(1);
+  const initialDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
+  expect(initialDts).toHaveLength(1);
 
   await expect(canvas.getByText(expandText)).toBeInTheDocument();
 
@@ -25,6 +25,12 @@ const timeLineTest = async (canvasElement: HTMLElement, expandText: string, coll
 
   const expandedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
   expect(expandedDts).toHaveLength(numberExpected);
+
+  await userEvent.click(canvas.getByText(collapseText));
+  await expect(canvas.getByText(expandText)).toBeInTheDocument();
+
+  const collapsedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
+  expect(collapsedDts).toHaveLength(1);
 };
 
 export const EventTimeline: Story = {

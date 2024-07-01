@@ -24,12 +24,17 @@ export const InstitutionList: Story = {
     const canvas = within(canvasElement);
     await canvas.findByText('show', { exact: false });
 
-    const collapsedInstitutions = Array.from(document.querySelectorAll('.institutions-list li')).filter((node) => node.checkVisibility());
-    expect(collapsedInstitutions).toHaveLength(3);
+    const initialInstitutions = Array.from(document.querySelectorAll('.institutions-list li')).filter((node) => node.checkVisibility());
+    expect(initialInstitutions).toHaveLength(3);
 
     await userEvent.click(canvas.getByText('show', { exact: false }));
 
     const expandedInstitutions = Array.from(document.querySelectorAll('.institutions-list li')).filter((node) => node.checkVisibility());
     expect(expandedInstitutions).toHaveLength(5);
+
+    await userEvent.click(canvas.getByText('show', { exact: false }));
+
+    const collapsedInstitutions = Array.from(document.querySelectorAll('.institutions-list li')).filter((node) => node.checkVisibility());
+    expect(collapsedInstitutions).toHaveLength(3);
   },
 };

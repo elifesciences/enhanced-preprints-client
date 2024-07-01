@@ -20,12 +20,17 @@ export const AuthorList: Story = {
     const canvas = within(canvasElement);
     await canvas.findByText('show', { exact: false });
 
-    const collapsedAuthors = Array.from(document.querySelectorAll('.authors-list li')).filter((node) => node.checkVisibility());
-    expect(collapsedAuthors).toHaveLength(10);
+    const initialAuthors = Array.from(document.querySelectorAll('.authors-list li')).filter((node) => node.checkVisibility());
+    expect(initialAuthors).toHaveLength(10);
 
     await userEvent.click(canvas.getByText('show', { exact: false }));
 
     const expandedAuthors = Array.from(document.querySelectorAll('.authors-list li')).filter((node) => node.checkVisibility());
     expect(expandedAuthors).toHaveLength(15);
+
+    await userEvent.click(canvas.getByText('show', { exact: false }));
+
+    const collapsedAuthors = Array.from(document.querySelectorAll('.authors-list li')).filter((node) => node.checkVisibility());
+    expect(collapsedAuthors).toHaveLength(10);
   },
 };
