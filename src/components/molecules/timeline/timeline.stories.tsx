@@ -31,6 +31,8 @@ const timeLineTest = async (canvasElement: HTMLElement, expandText: string, coll
 
   const collapsedDts = Array.from(document.querySelectorAll('.review-timeline dt')).filter((node) => node.checkVisibility());
   expect(collapsedDts).toHaveLength(1);
+
+  await userEvent.click(canvas.getByText('v2')); // unfocus the element to prevent issues with visual-regression
 };
 
 export const EventTimeline: Story = {
