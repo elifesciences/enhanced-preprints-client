@@ -136,6 +136,6 @@ export const EventTimelineWithMultipleVOR: Story = {
     ],
   },
   play: async ({ canvasElement }) => {
-    await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 5);
+    await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 4);
   },
 };
