@@ -1,7 +1,8 @@
 import {
   useState,
 } from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
@@ -9,39 +10,67 @@ import { citation, references } from '../../../utils/mocks';
 import { Reference as ReferenceData } from '../../../types';
 import { Citation } from '../../atoms/citation/citation';
 
-export default {
+const meta: Meta<typeof Modal> = {
   title: 'Molecules/Modal',
   component: Modal,
-} as Meta<typeof Modal>;
+  render: (args) => {
+    const [showModal, setShowModal] = useState(false);
 
-const Template: StoryFn<typeof Modal> = (args) => {
-  const [showModal, setShowModal] = useState(false);
-
-  return (
-    <>
-      <button onClick={() => { setShowModal(true); }}>Modal Link</button>
-      <Modal {...args} open={showModal} onModalClose={() => { setShowModal(false); }} />
-    </>
-  );
+    return (
+      <>
+        <button onClick={() => { setShowModal(true); }}>Modal Link</button>
+        <Modal {...args} open={showModal} onModalClose={() => { setShowModal(false); }} />
+      </>
+    );
+  },
 };
 
-export const ModalContainer = Template.bind({});
-ModalContainer.args = {
-  modalTitle: 'This is a title',
-  children: (<>This is content</>),
+export default meta;
+type Story = StoryObj<typeof Modal>;
+
+export const ModalContainer: Story = {
+  args: {
+    modalTitle: 'This is a title',
+    children: (<>This is content</>),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await canvas.findByText('Modal Link');
+
+    expect(await canvas.findByText('This is a title')).not.toBeVisible();
+
+    await userEvent.click(canvas.getByText('Modal Link'));
+    expect(canvas.getByText('This is a title')).toBeVisible();
+
+    await userEvent.click(canvas.getByText('Close'));
+    expect(await canvas.findByText('This is a title')).not.toBeVisible();
+  },
 };
 
-export const ModalShare = Template.bind({});
-ModalShare.args = {
-  modalTitle: 'Share this article',
-  modalLayout: 'share',
-  children: (<>
-    <div className="form-item">
-      <input type="input" className="text-field text-field--clipboard" value={'https://doi.org/10.7554/eLife.09560'} />
-    </div>
-    <Clipboard text={'https://doi.org/10.7554/eLife.09560'} />
-    <Socials doi='www.google.com' title='I am a title' />
-  </>),
+export const ModalShare: Story = {
+  args: {
+    modalTitle: 'Share this article',
+    modalLayout: 'share',
+    children: (<>
+      <div className="form-item">
+        <input type="input" className="text-field text-field--clipboard" value={'https://doi.org/10.7554/eLife.09560'} />
+      </div>
+      <Clipboard text={'https://doi.org/10.7554/eLife.09560'} />
+      <Socials doi='www.google.com' title='I am a title' />
+    </>),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await canvas.findByText('Modal Link');
+
+    expect(await canvas.findByText('Share this article')).not.toBeVisible();
+
+    await userEvent.click(canvas.getByText('Modal Link'));
+    expect(canvas.getByText('Share this article')).toBeVisible();
+
+    await userEvent.click(canvas.getByText('Close'));
+    expect(await canvas.findByText('Share this article')).not.toBeVisible();
+  },
 };
 
 const formatReference = (reference: ReferenceData): string => {
@@ -53,12 +82,25 @@ const formatReference = (reference: ReferenceData): string => {
   return `${authors} (${year}) ${reference.title}${journal ? ` ${journal}` : ''}${doiIdentifier ? `\n\nhttps://doi.org/${doiIdentifier.value}` : ''}`;
 };
 
-export const ModalCite = Template.bind({});
-ModalCite.args = {
-  modalTitle: 'Cite this article',
-  modalLayout: 'cite',
-  children: (<>
-    <Citation citation={citation} />
-    <Clipboard text={formatReference(references[0])} />
-  </>),
+export const ModalCite: Story = {
+  args: {
+    modalTitle: 'Cite this article',
+    modalLayout: 'cite',
+    children: (<>
+      <Citation citation={citation} />
+      <Clipboard text={formatReference(references[0])} />
+    </>),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await canvas.findByText('Modal Link');
+
+    expect(await canvas.findByText('Cite this article')).not.toBeVisible();
+
+    await userEvent.click(canvas.getByText('Modal Link'));
+    expect(canvas.getByText('Cite this article')).toBeVisible();
+
+    await userEvent.click(canvas.getByText('Close'));
+    expect(await canvas.findByText('Cite this article')).not.toBeVisible();
+  },
 };
