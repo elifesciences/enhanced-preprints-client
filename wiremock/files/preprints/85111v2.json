@@ -10102,7 +10102,13 @@
     "85111v3": {
       "versionIdentifier": "3",
       "published": "2023-06-07T00:00:00.000Z",
-      "url": "https://elifesciences.org/articles/85111v1"
+      "url": "https://elifesciences.org/articles/85111v1",
+      "corrections": [
+        {
+          "content": "https://elifesciences.org/articles/85111v2",
+          "date": "2024-07-01T00:00:00.000Z"
+        }
+      ]
     }
   },
   "metrics": {
