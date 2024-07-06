@@ -99,7 +99,7 @@ export type ExternalVersionSummary = {
   url: string,
   corrections?: {
     date: Date,
-    content: string,
+    url: string,
   }[]
 };
 

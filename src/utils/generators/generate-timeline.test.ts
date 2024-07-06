@@ -157,7 +157,7 @@ describe('generateTimeline', () => {
           corrections: [
             {
               date: new Date('2023-02-10'),
-              content: 'https://doi.org/doi-123v3',
+              url: 'https://doi.org/doi-123v3',
             },
           ],
         },

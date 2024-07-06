@@ -22,7 +22,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
           events.push(
             {
               name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
-              url: correction.content,
+              url: correction.url,
               version: +current.versionIdentifier,
               date: new Date(correction.date).toDateString(),
             },
