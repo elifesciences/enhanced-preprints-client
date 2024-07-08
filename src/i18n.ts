@@ -26,6 +26,7 @@ const resources = {
       external_timeline_version_title: '$t(timeline_version_title)',
       history_version_title: '$t(reviewed_preprint) version {{version}}',
       external_history_version_title: '$t(history_version_title)',
+      external_history_version_title_updated: '$t(external_history_version_title)',
     },
     elife: {
       twitter_handle: '@elife',
@@ -41,6 +42,7 @@ const resources = {
       related_type_podcastChapterEpisode: 'Podcast',
       external_timeline_version_title: 'Version of Record',
       external_history_version_title: 'Version of Record published',
+      external_history_version_title_updated: 'Version of Record updated',
       review_process_reviewed: '<strong>Not revised:</strong> This Reviewed Preprint includes the authors’ original preprint (without revision), an eLife assessment, public reviews, and a response from the authors (if available).',
       review_process_revised: (
         '<strong>Revised:</strong> This Reviewed Preprint has been revised by the authors in response to the previous round of peer review; '
