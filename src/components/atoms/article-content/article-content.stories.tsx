@@ -1,18 +1,16 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { ArticleContent } from './article-content';
 import { content } from '../../../utils/mocks';
 import { contentToJsx } from '../../../utils/content';
 
-export default {
+const meta: Meta<typeof ArticleContent> = {
   title: 'Atoms/ArticleContent',
   component: ArticleContent,
-} as Meta<typeof ArticleContent>;
+};
 
-const Template: StoryFn<typeof ArticleContent> = (args) => (
-  <ArticleContent {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof ArticleContent>;
 
-export const Article = Template.bind({});
-Article.args = {
-  content: contentToJsx(content),
+export const Article: Story = {
+  args: { content: contentToJsx(content) },
 };

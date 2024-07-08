@@ -1,17 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { ReferenceList } from './reference-list';
 import { references } from '../../../utils/mocks';
 
-export default {
+const meta: Meta<typeof ReferenceList> = {
   title: 'Atoms/Reference List',
   component: ReferenceList,
-} as Meta<typeof ReferenceList>;
+};
 
-const Template: StoryFn<typeof ReferenceList> = (args) => (
-  <ReferenceList {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof ReferenceList>;
 
-export const ReferenceStory = Template.bind({});
-ReferenceStory.args = {
-  references,
+export const ReferenceStory: Story = {
+  args: {
+    references,
+  },
 };

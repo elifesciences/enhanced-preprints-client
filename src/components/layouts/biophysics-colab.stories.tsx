@@ -1,12 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { BiophysicsColabLayout } from './biophysics-colab';
 
-export default {
+const meta: Meta<typeof BiophysicsColabLayout> = {
   title: 'Layout/BiophysicsColab',
   component: BiophysicsColabLayout,
-} as Meta<typeof BiophysicsColabLayout>;
+};
 
-const Template: StoryFn<typeof BiophysicsColabLayout> = () => <BiophysicsColabLayout>Hello</BiophysicsColabLayout>;
+export default meta;
+type Story = StoryObj<typeof BiophysicsColabLayout>;
 
-export const BiophysicsColabLayoutStory = Template.bind({});
-BiophysicsColabLayoutStory.args = {};
+export const BiophysicsColabLayoutStory: Story = {};

@@ -1,12 +1,15 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { VersionHistory } from './version-history';
 import { versionHistory } from '../../../utils/mocks';
 
-export default {
+const meta: Meta<typeof VersionHistory> = {
   title: 'Atoms/VersionHistory',
   component: VersionHistory,
-} as Meta<typeof VersionHistory>;
+};
 
-const Template: StoryFn<typeof VersionHistory> = () => <VersionHistory versions={versionHistory}/>;
+export default meta;
+type Story = StoryObj<typeof VersionHistory>;
 
-export const VersionHistoryDefault = Template.bind({});
+export const VersionHistoryDefault: Story = {
+  args: { versions: versionHistory },
+};

@@ -1,13 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { FooterMain } from './footer-main';
 
-export default {
+const meta: Meta<typeof FooterMain> = {
   title: 'Atoms/Footer Main',
   component: FooterMain,
-} as Meta<typeof FooterMain>;
+};
 
-const Template: StoryFn<typeof FooterMain> = () => (
-  <FooterMain />
-);
+export default meta;
+type Story = StoryObj<typeof FooterMain>;
 
-export const FooterMainSection = Template.bind({});
+export const FooterMainSection: Story = {};

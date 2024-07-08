@@ -1,11 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SiteHeader } from './site-header';
 
-export default {
+const meta: Meta<typeof SiteHeader> = {
   title: 'Molecules/SiteHeader',
   component: SiteHeader,
-} as Meta<typeof SiteHeader>;
+};
 
-const Template: StoryFn<typeof SiteHeader> = () => <SiteHeader />;
+export default meta;
+type Story = StoryObj<typeof SiteHeader>;
 
-export const StandardSiteHeader = Template.bind({});
+export const StandardSiteHeader: Story = {};

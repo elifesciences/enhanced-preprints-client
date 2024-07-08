@@ -1,15 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { PreviousVersionWarning } from './previous-version-warning';
 
-export default {
+const meta: Meta<typeof PreviousVersionWarning> = {
   title: 'Atoms/Previous Version Warning',
   component: PreviousVersionWarning,
-} as Meta<typeof PreviousVersionWarning>;
+};
 
-const Template: StoryFn<typeof PreviousVersionWarning> = (args) => <PreviousVersionWarning {...args} />;
+export default meta;
+type Story = StoryObj<typeof PreviousVersionWarning>;
 
-export const PreviousVersionWarningComponent = Template.bind({});
-PreviousVersionWarningComponent.args = {
-  url: 'www.google.com',
+export const PreviousVersionWarningComponent: Story = {
+  args: {
+    url: 'www.google.com',
+  },
 };

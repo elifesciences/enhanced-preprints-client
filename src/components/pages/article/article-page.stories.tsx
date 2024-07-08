@@ -1,5 +1,5 @@
 import LinkTo from '@storybook/addon-links/react';
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import {
   content, metaData, metrics, peerReview, relatedContent, status, timeline,
 } from '../../../utils/mocks';
@@ -9,7 +9,7 @@ import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 
-export default {
+const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',
   component: ArticlePage,
   parameters: {
@@ -30,7 +30,10 @@ export default {
       },
     },
   },
-} as Meta<typeof ArticlePage>;
+};
+
+export default meta;
+type Story = StoryObj<typeof ArticlePage>;
 
 const tabs = [
   {
@@ -50,70 +53,101 @@ const tabs = [
 const jsxContent = contentToJsx(content);
 const headings = contentToHeadings(content);
 
-const FullTextTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout>
-  <ArticlePage {...args}>
-    <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
-  </ArticlePage>
-</DefaultLayout>;
-export const ArticlePageFullTextTab = FullTextTemplate.bind({});
-ArticlePageFullTextTab.args = {
-  metaData,
-  status,
-  activeTab: 'fulltext',
-  tabs,
-  relatedContent,
-  metrics,
-  previousVersionWarningUrl: '#',
-  timeline,
-};
-
-const FiguresTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleFiguresTab content={jsxContent} /></ArticlePage></DefaultLayout>;
-export const ArticlePageFiguresTab = FiguresTemplate.bind({});
-ArticlePageFiguresTab.args = {
-  metaData,
-  status,
-  activeTab: 'figures',
-  tabs,
-  relatedContent,
-  metrics,
-  timeline,
-};
-
-const ReviewedReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} currentVersion={1} /></ArticlePage></DefaultLayout>;
-export const ArticlePageReviewedReviewsTab = ReviewedReviewsTemplate.bind({});
-ArticlePageReviewedReviewsTab.args = {
-  metaData: {
-    ...metaData,
-    version: '1',
+export const ArticlePageFullTextTab: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'fulltext',
+    tabs,
+    relatedContent,
+    metrics,
+    previousVersionWarningUrl: '#',
+    timeline,
   },
-  status,
-  activeTab: 'reviews',
-  tabs,
-  relatedContent,
-  metrics,
-  timeline,
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
 };
 
-const RevisedReviewsTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ArticleReviewsTab peerReview={peerReview} currentVersion={2} /></ArticlePage></DefaultLayout>;
-export const ArticlePageRevisedReviewsTab = RevisedReviewsTemplate.bind({});
-ArticlePageRevisedReviewsTab.args = {
-  metaData,
-  status,
-  activeTab: 'reviews',
-  tabs,
-  relatedContent,
-  metrics,
-  timeline,
+export const ArticlePageFiguresTab: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'figures',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleFiguresTab content={jsxContent} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
 };
 
-const ErrorTemplate: StoryFn<typeof ArticlePage> = (args) => <DefaultLayout><ArticlePage {...args}><ErrorMessages/></ArticlePage></DefaultLayout>;
-export const ArticlePageErrorTab = ErrorTemplate.bind({});
-ArticlePageErrorTab.args = {
-  metaData,
-  status,
-  activeTab: 'reviews',
-  tabs,
-  relatedContent,
-  metrics,
-  timeline,
+export const ArticlePageReviewedReviewsTab: Story = {
+  args: {
+    metaData: {
+      ...metaData,
+      version: '1',
+    },
+    status,
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
+};
+
+export const ArticlePageRevisedReviewsTab: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleReviewsTab peerReview={peerReview} currentVersion={2} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
+};
+
+export const ArticlePageErrorTab: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ErrorMessages/>
+      </ArticlePage>
+    </DefaultLayout>
+  ),
 };

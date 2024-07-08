@@ -1,20 +1,23 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Clipboard } from './clipboard';
 
-export default {
+const meta: Meta<typeof Clipboard> = {
   title: 'Atoms/Clipboard',
   component: Clipboard,
-} as Meta<typeof Clipboard>;
-
-const Template: StoryFn<typeof Clipboard> = (args) => <Clipboard {...args} />;
-
-export const ClipboardContainer = Template.bind({});
-ClipboardContainer.args = {
-  text: 'https://doi.org/10.7554/eLife.09560',
 };
 
-export const ButtonTextClipboardContainer = Template.bind({});
-ButtonTextClipboardContainer.args = {
-  buttonText: 'Copy foo to clipboard',
-  text: 'foo',
+export default meta;
+type Story = StoryObj<typeof Clipboard>;
+
+export const ClipboardContainer: Story = {
+  args: {
+    text: 'https://doi.org/10.7554/eLife.09560',
+  },
+};
+
+export const ButtonTextClipboardContainer: Story = {
+  args: {
+    buttonText: 'Copy foo to clipboard',
+    text: 'foo',
+  },
 };
