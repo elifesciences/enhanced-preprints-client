@@ -1,13 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Investors } from './investors';
 
-export default {
+const meta: Meta<typeof Investors> = {
   title: 'Atoms/Investors',
   component: Investors,
-} as Meta<typeof Investors>;
+};
 
-const Template: StoryFn<typeof Investors> = () => (
-  <Investors />
-);
+export default meta;
+type Story = StoryObj<typeof Investors>;
 
-export const Review = Template.bind({});
+export const Review: Story = {};

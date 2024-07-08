@@ -1,8 +1,8 @@
-import { StoryFn } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { PageNotFound } from './page-not-found';
 import { DefaultLayout } from '../../layouts/default';
 
-export default {
+const meta: Meta<typeof PageNotFound> = {
   title: 'Pages/Page not found',
   parameters: {
     chromatic: {
@@ -22,8 +22,14 @@ export default {
       },
     },
   },
+  render: () => (
+    <DefaultLayout>
+      <PageNotFound />
+    </DefaultLayout>
+  ),
 };
 
-const Template: StoryFn<typeof PageNotFound> = () => <DefaultLayout><PageNotFound /></DefaultLayout>;
+export default meta;
+type Story = StoryObj<typeof PageNotFound>;
 
-export const PageNotFoundPage = Template.bind({});
+export const PageNotFoundPage: Story = {};

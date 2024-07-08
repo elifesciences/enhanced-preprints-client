@@ -1,11 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SiteHeaderBiophysicsColab } from './site-header-biophysics-colab';
 
-export default {
+const meta: Meta<typeof SiteHeaderBiophysicsColab> = {
   title: 'Molecules/SiteHeaderBiophysicsColab',
   component: SiteHeaderBiophysicsColab,
-} as Meta<typeof SiteHeaderBiophysicsColab>;
+};
 
-const Template: StoryFn<typeof SiteHeaderBiophysicsColab> = () => <SiteHeaderBiophysicsColab />;
+export default meta;
+type Story = StoryObj<typeof SiteHeaderBiophysicsColab>;
 
-export const StandardSiteHeaderBiophysicsColab = Template.bind({});
+export const StandardSiteHeaderBiophysicsColab: Story = {};

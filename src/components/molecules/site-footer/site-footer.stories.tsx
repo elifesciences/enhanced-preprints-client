@@ -1,11 +1,12 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { SiteFooter } from './site-footer';
 
-export default {
+const meta: Meta<typeof SiteFooter> = {
   title: 'Molecules/SiteFooter',
   component: SiteFooter,
-} as Meta<typeof SiteFooter>;
+};
 
-const Template: StoryFn<typeof SiteFooter> = () => <SiteFooter ></SiteFooter>;
+export default meta;
+type Story = StoryObj<typeof SiteFooter>;
 
-export const FooterSection = Template.bind({});
+export const FooterSection: Story = {};

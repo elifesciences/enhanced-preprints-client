@@ -1,15 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { ArticleFlagList } from './article-flag-list';
 
-export default {
+const meta: Meta<typeof ArticleFlagList> = {
   title: 'Molecules/ArticleFlagList',
   component: ArticleFlagList,
-} as Meta<typeof ArticleFlagList>;
+};
 
-const Template: StoryFn<typeof ArticleFlagList> = (args) => <ArticleFlagList {...args} />;
+export default meta;
+type Story = StoryObj<typeof ArticleFlagList>;
 
-export const FlagList = Template.bind({});
-FlagList.args = {
-  msas: ['Mad Science', 'Alchemy'],
+export const FlagList: Story = {
+  args: {
+    msas: ['Mad Science', 'Alchemy'],
+  },
 };

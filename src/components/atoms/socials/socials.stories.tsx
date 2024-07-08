@@ -1,15 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Socials } from './socials';
 
-export default {
+const meta: Meta<typeof Socials> = {
   title: 'Atoms/Socials',
   component: Socials,
-} as Meta<typeof Socials>;
+};
 
-const Template: StoryFn<typeof Socials> = (args) => <Socials {...args} />;
+export default meta;
+type Story = StoryObj<typeof Socials>;
 
-export const SocialsContainer = Template.bind({});
-SocialsContainer.args = {
-  title: 'some article',
-  doi: 'www.example.com/some-article',
+export const SocialsContainer: Story = {
+  args: {
+    title: 'some article',
+    doi: 'www.example.com/some-article',
+  },
 };

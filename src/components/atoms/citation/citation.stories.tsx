@@ -1,17 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Citation } from './citation';
 import { citation } from '../../../utils/mocks';
 
-export default {
+const meta: Meta<typeof Citation> = {
   title: 'Atoms/Citation',
   component: Citation,
-} as Meta<typeof Citation>;
+};
 
-const Template: StoryFn<typeof Citation> = (args) => (
-  <Citation {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof Citation>;
 
-export const CitationStory = Template.bind({});
-CitationStory.args = {
-  citation,
+export const CitationStory: Story = {
+  args: {
+    citation,
+  },
 };

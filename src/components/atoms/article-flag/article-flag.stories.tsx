@@ -1,16 +1,17 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { ArticleFlag } from './article-flag';
 
-export default {
+const meta: Meta<typeof ArticleFlag> = {
   title: 'Atoms/ArticleFlag',
   component: ArticleFlag,
-} as Meta<typeof ArticleFlag>;
+};
+export default meta;
+type Story = StoryObj<typeof ArticleFlag>;
 
-const Template: StoryFn<typeof ArticleFlag> = (args) => <ArticleFlag {...args} />;
-
-export const MSA = Template.bind({});
-MSA.args = {
-  flagText: 'MSA',
-  url: 'https://bbc.co.uk',
+export const MSA: Story = {
+  args: {
+    flagText: 'MSA',
+    url: 'https://bbc.co.uk',
+  },
 };

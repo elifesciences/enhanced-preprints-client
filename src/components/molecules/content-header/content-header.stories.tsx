@@ -1,20 +1,22 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { ContentHeader } from './content-header';
 import { authors } from '../../../utils/mocks';
 
-export default {
+const meta: Meta<typeof ContentHeader> = {
   title: 'Molecules/ContentHeader',
   component: ContentHeader,
-} as Meta<typeof ContentHeader>;
+};
 
-const Template: StoryFn<typeof ContentHeader> = (args) => <ContentHeader {...args} />;
+export default meta;
+type Story = StoryObj<typeof ContentHeader>;
 
-export const Header = Template.bind({});
-Header.args = {
-  msas: ['Mad Science', 'Alchemy'],
-  title: 'This is a title',
-  doi: 'bbc.co.uk',
-  authors,
-  license: 'https://creativecommons.org/licenses/by/4.0/',
+export const Header: Story = {
+  args: {
+    msas: ['Mad Science', 'Alchemy'],
+    title: 'This is a title',
+    doi: 'bbc.co.uk',
+    authors,
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+  },
 };
