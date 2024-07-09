@@ -12,7 +12,7 @@ import {
   RelatedContent,
   TimelineEvent,
 } from '../../types';
-import { fetchVersion, getLatestVersion } from '../../utils/data-fetch';
+import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import {
@@ -22,7 +22,6 @@ import { generateStatus, generateTimeline, generateVersionHistory } from '../../
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
-import { isPreprintVersionSummary } from '../../utils/type-guards';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 
@@ -199,12 +198,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const latestVersion = getLatestVersion(articleWithVersions);
-
-  let previousVersionWarningUrl = null;
-  if (latestVersion && latestVersion.versionIdentifier !== articleWithVersions.article.versionIdentifier) {
-    previousVersionWarningUrl = isPreprintVersionSummary(latestVersion) ? `/reviewed-preprints/${articleWithVersions.article.msid}` : latestVersion.url;
-  }
+  const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 

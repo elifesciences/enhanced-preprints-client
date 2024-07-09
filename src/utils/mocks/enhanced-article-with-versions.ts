@@ -59,6 +59,16 @@ export const mock85111: EnhancedArticleWithVersions = {
       versionIdentifier: '3',
       published: new Date('2023-06-07T00:00:00.000Z'),
       url: 'https://elifesciences.org/articles/85111v1',
+      corrections: [
+        {
+          date: new Date('2023-06-20'),
+          url: 'https://elifesciences.org/articles/85111v2',
+        },
+        {
+          date: new Date('2023-08-4'),
+          url: 'https://elifesciences.org/articles/85111v3',
+        },
+      ],
     },
   },
   metrics: {
