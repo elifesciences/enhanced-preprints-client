@@ -94,13 +94,14 @@ export type PreprintVersionSummary = {
 };
 
 export type ExternalVersionSummary = {
+  doi: string,
   versionIdentifier: string,
   published: Date | null,
   url: string,
   corrections?: {
     date: Date,
     url: string,
-  }[]
+  }[],
 };
 
 export type VersionSummary = PreprintVersionSummary | ExternalVersionSummary;

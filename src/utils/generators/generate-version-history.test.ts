@@ -46,12 +46,14 @@ const version2: EnhancedArticle = {
 };
 
 const version3Summary: VersionSummary = {
+  doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
 };
 
 const version3SummaryWithCorrections: VersionSummary = {
+  doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
