@@ -27,6 +27,7 @@ import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 
 type PageProps = {
+  siteName?: string,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -220,6 +221,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
+      siteName: config.siteName,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,
