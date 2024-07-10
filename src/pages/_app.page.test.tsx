@@ -2,17 +2,13 @@ import { render, screen } from '@testing-library/react';
 import MyApp from './_app.page';
 
 describe('MyApp', () => {
-  it.each([
-    {
-      name: 'siteName is null',
-      siteName: null,
-    },
-    {
-      name: 'siteName is unknown',
-      siteName: 'unknown',
-    },
-  ])('renders default layout ($name)', ({ siteName }) => {
-    render(<MyApp Component={() => <div>Test</div>} pageProps={{ siteName }} />);
+  it('renders default layout (siteName is undefined)', () => {
+    render(<MyApp Component={() => <div>Test</div>} pageProps={{}} />);
+    expect(screen.getByAltText('eLife logo')).toBeInTheDocument();
+  });
+
+  it('renders default layout (siteName is unknown)', () => {
+    render(<MyApp Component={() => <div>Test</div>} pageProps={{ siteName: 'unknown' }} />);
     expect(screen.getByAltText('eLife logo')).toBeInTheDocument();
   });
 
