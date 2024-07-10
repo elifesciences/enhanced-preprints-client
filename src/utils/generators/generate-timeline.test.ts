@@ -171,6 +171,7 @@ describe('generateTimeline', () => {
         url: 'https://doi.org/doi-123v3',
         version: 3,
         date: 'Fri Feb 10 2023',
+        datePrefix: 'Updated ',
       },
       {
         name: 'Version of Record',

@@ -121,6 +121,7 @@ export const EventTimelineWithMultipleVOR: Story = {
         name: 'Version of Record',
         url: '#',
         date: new Date('2023-03-21'),
+        datePrefix: 'Updated ',
         version: 4,
       },
       {

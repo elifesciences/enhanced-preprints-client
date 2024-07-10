@@ -36,6 +36,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                 </dt>
                 <dd className={`review-timeline__detail${typeClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                   {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
+                  {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"
                     dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
                   {typeClass && <a className="review-timeline__link"

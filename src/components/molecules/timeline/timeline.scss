@@ -82,7 +82,8 @@
   }
 
   &__version,
-  &__date {
+  &__date,
+  &__date-prefix {
     @include typography.body-small();
 
     font-family: var(--font-family-primary);
@@ -96,7 +97,8 @@
     content: " • ";
   }
 
-  &__date {
+  &__date,
+  &__date-prefix {
     color: var(--color-text-secondary);
     font-weight: 400;
   }

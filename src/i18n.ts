@@ -24,6 +24,7 @@ const resources = {
       related_type_default: 'content',
       timeline_version_title: '$t(reviewed_preprint)',
       external_timeline_version_title: '$t(timeline_version_title)',
+      external_timeline_version_correction_date_prefix: 'Updated ',
       history_version_title: '$t(reviewed_preprint) version {{version}}',
       external_history_version_title: '$t(history_version_title)',
       external_history_version_title_updated: '$t(external_history_version_title)',
