@@ -12,7 +12,7 @@ describe('MyApp', () => {
     expect(screen.getByAltText('eLife logo')).toBeInTheDocument();
   });
 
-  it('renders alternative layout when siteName property is set', () => {
+  it('renders alternative layout when siteName property is recognised', () => {
     render(<MyApp Component={() => <div>Test</div>} pageProps={{ siteName: 'biophysics-colab' }} />);
     expect(screen.getByAltText('Biophysics Colab logo')).toBeInTheDocument();
   });
