@@ -1,6 +1,7 @@
 import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
 
 const externalVersionSummary = {
+  doi: '10.7554/eLife.85111.3',
   versionIdentifier: '3',
   published: new Date('2023-06-07T00:00:00.000Z'),
   url: 'https://elifesciences.org/articles/85111v1',

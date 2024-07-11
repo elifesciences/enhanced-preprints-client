@@ -20,6 +20,32 @@ describe('Timeline', () => {
     expect(screen.getByText('Not revised')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
+  it('may have a timeline item with a name', () => {
+    render(<Timeline events={[
+      {
+        name: 'New name', url: '#', version: 1, date: new Date('2001-01-13'),
+      },
+    ]}
+    />);
+
+    const firstItem = screen.getByText('January 13, 2001');
+    expect(firstItem).toBeInTheDocument();
+    expect(screen.getByText('New name')).toBeInTheDocument();
+  });
+
+  it('may have a timeline item with a date prefix', () => {
+    render(<Timeline events={[
+      {
+        datePrefix: 'Updated', url: '#', version: 1, date: new Date('2001-01-13'),
+      },
+    ]}
+    />);
+
+    const firstItem = screen.getByText('January 13, 2001');
+    expect(firstItem).toBeInTheDocument();
+    expect(screen.getByText('Updated')).toBeInTheDocument();
+  });
+
   it('has an appropriate aria-label', () => {
     render(<Timeline events={[
       {

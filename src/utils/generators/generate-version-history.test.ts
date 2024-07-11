@@ -46,9 +46,27 @@ const version2: EnhancedArticle = {
 };
 
 const version3Summary: VersionSummary = {
+  doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
+};
+
+const version3SummaryWithCorrections: VersionSummary = {
+  doi: 'doi-123v3',
+  versionIdentifier: '3',
+  published: new Date('2023-02-09'),
+  url: 'https://doi.org/doi-123v3',
+  corrections: [
+    {
+      date: new Date('2023-02-10'),
+      url: 'https://elifesciences.org/articles/1v1',
+    },
+    {
+      date: new Date('2023-02-11'),
+      url: 'https://elifesciences.org/articles/1v2',
+    },
+  ],
 };
 
 const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
@@ -158,6 +176,54 @@ describe('generateVersionHistory', () => {
         label: 'Version of Record published',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
+      },
+    ]);
+  });
+
+  it('should generate the correct version history with an external version summary with corrections', () => {
+    const history = generateVersionHistory({
+      article: version2,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+        v3: version3SummaryWithCorrections,
+      },
+    });
+
+    expect(history).toEqual([
+      {
+        date: 'Sun Jan 01 2023',
+        label: 'Sent for peer review',
+      },
+      {
+        date: 'Mon Jan 02 2023',
+        label: 'Preprint posted',
+        url: 'https://doi.org/doi-123',
+      },
+      {
+        label: 'Reviewed Preprint version 1',
+        url: '/reviewed-preprints/1v1',
+        date: 'Tue Jan 03 2023',
+      },
+      {
+        label: 'Reviewed Preprint version 2',
+        url: '/reviewed-preprints/1v2',
+        date: 'Mon Jan 09 2023',
+      },
+      {
+        label: 'Version of Record published',
+        url: 'https://doi.org/doi-123v3',
+        date: 'Thu Feb 09 2023',
+      },
+      {
+        label: 'Version of Record updated',
+        url: 'https://elifesciences.org/articles/1v1',
+        date: 'Fri Feb 10 2023',
+      },
+      {
+        label: 'Version of Record updated',
+        url: 'https://elifesciences.org/articles/1v2',
+        date: 'Sat Feb 11 2023',
       },
     ]);
   });

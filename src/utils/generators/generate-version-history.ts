@@ -14,6 +14,16 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         date: new Date(current.published).toDateString(),
       });
+
+      if (isExternalVersionSummary(current) && (current.corrections ?? []).length > 0) {
+        versions.push(...(current.corrections ?? []).map((correction) => ({
+          label: i18n.t('external_history_version_title_updated', {
+            version: +current.versionIdentifier,
+          }),
+          url: correction.url,
+          date: new Date(correction.date).toDateString(),
+        })));
+      }
     }
     return versions;
   }, []);

@@ -46,6 +46,7 @@ const version2: EnhancedArticle = {
 };
 
 const version3Summary: VersionSummary = {
+  doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
@@ -170,6 +171,7 @@ describe('generateTimeline', () => {
         url: 'https://doi.org/doi-123v3',
         version: 3,
         date: 'Fri Feb 10 2023',
+        datePrefix: 'Updated ',
       },
       {
         name: 'Version of Record',

@@ -1,5 +1,5 @@
 import { EnhancedArticleWithVersions } from '../../types';
-import { getLatestVersion } from './get-latest-version';
+import { getLatestVersionWarningUrl } from './get-latest-version-warning-url';
 import { mock85111 } from '../mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {
@@ -11,9 +11,9 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual(mock85111.article.versionIdentifier);
+    expect(result).toBeNull();
   });
 
   it('single version preview', () => {
@@ -30,7 +30,7 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
     expect(result).toBeNull();
   });
 
@@ -46,9 +46,9 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual('2');
+    expect(result).toBeNull();
   });
 
   it('two versions, current is not published', () => {
@@ -67,9 +67,9 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual('1');
+    expect(result).toStrictEqual('/reviewed-preprints/85111');
   });
 
   it('two versions, current is not latest', () => {
@@ -81,9 +81,9 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual('2');
+    expect(result).toStrictEqual('/reviewed-preprints/85111');
   });
 
   it('two versions, current is only published', () => {
@@ -98,15 +98,15 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual('1');
+    expect(result).toBeNull();
   });
 
   it('3 versions, current is not latest, latest is vor', () => {
-    const result = getLatestVersion(mock85111);
+    const result = getLatestVersionWarningUrl(mock85111);
 
-    expect(result!.versionIdentifier).toStrictEqual('3');
+    expect(result).toStrictEqual('https://doi.org/10.7554/eLife.85111.3');
   });
 
   it('3 versions, current is not latest, latest is vor, vor published date in future', () => {
@@ -123,8 +123,8 @@ describe('getLatestVersion', () => {
       },
     };
 
-    const result = getLatestVersion(input);
+    const result = getLatestVersionWarningUrl(input);
 
-    expect(result!.versionIdentifier).toStrictEqual('2');
+    expect(result).toStrictEqual('/reviewed-preprints/85111');
   });
 });

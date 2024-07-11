@@ -21,10 +21,11 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
         current.corrections.forEach((correction) => {
           events.push(
             {
-              name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
+              name: i18n.t('external_timeline_version_title'),
               url: correction.url,
               version: +current.versionIdentifier,
               date: new Date(correction.date).toDateString(),
+              datePrefix: i18n.t('external_timeline_version_correction_date_prefix'),
             },
           );
         });
