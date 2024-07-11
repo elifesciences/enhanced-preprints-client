@@ -5,8 +5,8 @@ import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 
-const LayoutSelector = ({ children }: { children: ReactNode }) => {
-  switch (config.siteName) {
+const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
+  switch (siteName) {
     case 'biophysics-colab':
       return (
         <BiophysicsColabLayout>
@@ -74,7 +74,7 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <LayoutSelector>
+      <LayoutSelector siteName={pageProps.siteName}>
         <Component {...pageProps} />
       </LayoutSelector>
     </>

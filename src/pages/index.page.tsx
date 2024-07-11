@@ -2,8 +2,10 @@ import { GetServerSideProps } from 'next';
 import { fetchVersions } from '../utils/data-fetch';
 import { ArticleSummary } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
+import { config } from '../config';
 
 type PageProps = {
+  siteName?: string,
   ids?: string[],
   articles?: ArticleSummary[]
   previews?: ArticleSummary[]
@@ -39,6 +41,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   const previews = versions.filter((version) => (!version.date));
   return {
     props: {
+      siteName: config.siteName,
       articles,
       previews,
     },
