@@ -15,6 +15,13 @@ export const NotRevisedReviewProcess: Story = {
   },
 };
 
+export const NotRevisedReviewProcessWithAuthorResponse: Story = {
+  args: {
+    current: 1,
+    authorResponse: true,
+  },
+};
+
 export const RevisedReviewProcess: Story = {
   args: {
     current: 2,

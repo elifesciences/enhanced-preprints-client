@@ -5,11 +5,12 @@ import parse from 'html-react-parser';
 
 type ReviewProcessProps = {
   current?: number;
+  authorResponse?: boolean,
 };
 
-export const ReviewProcess = ({ current }: ReviewProcessProps) => {
+export const ReviewProcess = ({ current, authorResponse }: ReviewProcessProps) => {
   const { t } = useTranslation();
-  const type = current && current > 1 ? 'revised' : 'reviewed';
+  const type = current && current > 1 ? 'revised' : `reviewed${authorResponse === true ? '_with_author_response' : ''}`;
   return (
     <section className={`review-process review-process--${type}`}>
       <h2 className="review-process__header" id="review-process">Peer review process</h2>

@@ -44,7 +44,10 @@ const resources = {
       external_timeline_version_title: 'Version of Record',
       external_history_version_title: 'Version of Record published',
       external_history_version_title_updated: 'Version of Record updated',
-      review_process_reviewed: '<strong>Not revised:</strong> This Reviewed Preprint includes the authors’ original preprint (without revision), an eLife assessment, public reviews, and a response from the authors (if available).',
+      review_process_reviewed: '<strong>Not revised:</strong> This Reviewed Preprint includes the authors’ original preprint (without revision), an eLife assessment, and public reviews.',
+      review_process_reviewed_with_author_response: (
+        '<strong>Not revised:</strong> This Reviewed Preprint includes the authors’ original preprint (without revision), an eLife assessment, public reviews, and a provisional response from the authors.'
+      ),
       review_process_revised: (
         '<strong>Revised:</strong> This Reviewed Preprint has been revised by the authors in response to the previous round of peer review; '
         + 'the eLife assessment and the public reviews have been updated where necessary by the editors and peer reviewers.'
