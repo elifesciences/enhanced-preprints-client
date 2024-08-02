@@ -24,9 +24,11 @@ import { formatAuthorName } from '../../utils/formatters';
 import '../../i18n';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { Brand, brands } from '../../brand';
 
 type PageProps = {
   siteName: string | null,
+  brand: Brand | null,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -213,9 +215,14 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  // support branding
+  const brandName = context.req.headers['x-epp-brand'] as string;
+  const brand = (brandName && brands[brandName]) ? brands[brandName] : brands.science_core;
+
   return {
     props: {
       siteName: config.siteName ?? null,
+      brand,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,
