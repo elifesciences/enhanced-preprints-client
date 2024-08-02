@@ -218,7 +218,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // support branding
   const brandName = (context.req.headers['x-epp-brand'] || context.query['x-epp-brand']) as string | undefined;
 
-  const brand = (brandName && brands[brandName]) ?? null;
+  const brand = brandName && brands[brandName] ? brands[brandName] : null;
 
   return {
     props: {
