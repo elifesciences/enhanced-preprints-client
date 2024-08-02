@@ -45,7 +45,7 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
-  if (!config.siteName) {
+  if (pageProps.brand) {
     // select given brand, or if not set or doesn't exist, choose default
     const brand = pageProps.brand ?? brands.default;
     return <>
