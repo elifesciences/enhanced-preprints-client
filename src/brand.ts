@@ -44,4 +44,11 @@ export const brands: Brands = {
       primaryDark: '#181830',
     },
   },
+  sciety: {
+    logo: 'https://sciety.org/static/images/sciety-logo-navigation-link-colour-text.svg',
+    colors: {
+      primary: 'rgb(206, 72, 26)',
+      primaryDark: '#983513',
+    },
+  },
 };

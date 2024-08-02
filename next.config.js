@@ -13,6 +13,12 @@ const nextConfig = {
         port: '',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sciety.org',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
   reactStrictMode: true,
