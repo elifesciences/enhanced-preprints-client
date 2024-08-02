@@ -1,8 +1,7 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import './simple-site-header.scss';
-import logo from '../../../images/epp-logo.png';
 
-export const SimpleSiteHeader = () => (
+export const SimpleSiteHeader = ({ logo } : { logo: string | StaticImageData }) => (
   <div className="site-header">
     <div className="site-header-container">
       <a href="#" className="site-header__logo_link">

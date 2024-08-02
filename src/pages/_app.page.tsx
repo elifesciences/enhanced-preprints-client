@@ -47,7 +47,7 @@ const notoSans = Noto_Sans({
 export default function MyApp({ Component, pageProps }: any) {
   if (!config.siteName) {
     // select given brand, or if not set or doesn't exist, choose default
-    const brand = brands[pageProps.brand] ?? brands.default;
+    const brand = pageProps.brand ?? brands.default;
     return <>
       <Head>
         <title>Enhanced Preprints Platform</title>
@@ -82,7 +82,7 @@ export default function MyApp({ Component, pageProps }: any) {
       </Head>
       <div className="grid-container article-page">
         <div className="grid-header">
-          <SimpleSiteHeader/>
+          <SimpleSiteHeader logo={brand.logo}/>
         </div>
         <Component {...pageProps} />
       </div>
