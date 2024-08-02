@@ -5,7 +5,7 @@ import { Heading } from '../components/atoms/heading/heading';
 import { config } from '../config';
 
 type PageProps = {
-  siteName?: string,
+  siteName: string | null,
   ids?: string[],
   articles?: ArticleSummary[]
   previews?: ArticleSummary[]
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   const previews = versions.filter((version) => (!version.date));
   return {
     props: {
-      siteName: config.siteName,
+      siteName: config.siteName ?? null,
       articles,
       previews,
     },

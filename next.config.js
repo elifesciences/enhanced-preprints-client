@@ -5,6 +5,22 @@ const nextConfig = {
   experimental: {
     instrumentationHook: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'sciencecoreorg.wpcomstaging.com',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sciety.org',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
   reactStrictMode: true,
   swcMinify: true,
   rewrites: async () => ({

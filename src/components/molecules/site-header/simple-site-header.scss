@@ -1,0 +1,115 @@
+@use "../../../sass/mixins";
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+
+.site-header {
+  @include mixins.margin(36, "top");
+  @include mixins.margin(36, "bottom");
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.margin(48, "top");
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    @include mixins.margin(54, "bottom");
+  }
+}
+
+.site-header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    justify-content: unset;
+  }
+}
+
+.site-header__title {
+  @include mixins.visuallyhidden();
+}
+
+.site-header__logo_link {
+  line-height: 0;
+}
+
+// Navigation css to be moved to its own file when basic styling as been done
+
+.nav-primary {
+  @media only all and (min-width: settings.$breakpoint-large) {
+    @include mixins.margin(20, "left");
+
+    border-left: var(--border);
+    display: inline-block;
+    height: 24px;
+  }
+}
+
+.nav-primary__list {
+  @include mixins.padding(0, "left");
+  @include mixins.padding(0, "top");
+
+  align-items: top;
+  display: flex;
+  justify-content: top;
+  margin: 0;
+}
+
+/* stylelint-disable no-descending-specificity */
+.nav-primary__item {
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.padding(24, "left");
+
+  color: var(--link-decoration);
+  display: none;
+  font-family: var(--font-family-primary);
+  font-weight: bold;
+  list-style-type: none;
+
+  a {
+    color: var(--link-decoration);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &.nav-primary__item--inactive {
+    a {
+      pointer-events: none;
+    }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    display: list-item;
+  }
+}
+
+.nav-primary__item--first {
+  @include mixins.padding(0, "left");
+
+  display: list-item;
+
+  a {
+    @include mixins.padding(48, "right");
+
+    background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat right 0;
+    background-size: 24px;
+    display: block;
+    width: 24px;
+
+    &:hover {
+      background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
+      color: var(--color-primary);
+    }
+  }
+
+  @media only all and (min-width: settings.$breakpoint-large) {
+    text-indent: -9999px;
+
+    a {
+      @include mixins.padding(24, "right");
+    }
+  }
+}
