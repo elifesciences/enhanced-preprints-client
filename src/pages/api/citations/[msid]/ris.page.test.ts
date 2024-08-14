@@ -50,7 +50,7 @@ PY  - 2022
 DO  - 10.7554/eLife.321.1`);
     (fetchVersion as jest.Mock).mockResolvedValueOnce({
       article: {
-        preprintDoi: '10.1101/321456',
+        doi: '10.1101/321456',
       },
     });
     await handler(req, res);

@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const doi = version.article.preprintDoi;
+  const { doi } = version.article;
   const extReq = await fetch(
     `${config.apiServer}/api/citations/${doi}/ris`,
   );
