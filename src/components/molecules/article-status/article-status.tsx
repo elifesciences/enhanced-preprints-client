@@ -60,7 +60,7 @@ export const ArticleStatus = ({
       </div>
       <Socials doi={doi} title={title} />
     </Modal>
-    <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
+    <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite" modalWarning={'There is a planned Crossref maintenance outage between Sunday, 18 August 20:00 UTC to Monday, 19 August 20:00 UTC. This impacts access to BibTex and RIS files.'}>
       <Citation citation={citation} />
       <ol className="cite-downloads__list">
         <li className="cite-downloads__list-item">

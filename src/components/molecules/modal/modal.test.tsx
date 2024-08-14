@@ -44,4 +44,14 @@ describe('Modal window', () => {
 
     expect(onModalCloseIndicator).toStrictEqual(true);
   });
+
+  it('only displays warning message in modalWarning set', () => {
+    render(<Modal modalTitle='This is the title' open={true}>This is the content</Modal>);
+
+    expect(screen.queryByText('Warning text', { exact: false })).not.toBeInTheDocument();
+
+    render(<Modal modalTitle='This is the title' open={true} modalWarning={'Warning text'}>This is the content</Modal>);
+
+    expect(screen.queryByText('Warning text', { exact: false })).toBeInTheDocument();
+  });
 });
