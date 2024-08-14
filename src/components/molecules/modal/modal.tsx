@@ -9,6 +9,7 @@ type Props = {
   open?: boolean,
   modalLayout?: 'cite' | 'share',
   onModalClose?: () => void,
+  modalWarning?: string,
 };
 
 export const Modal = ({
@@ -17,6 +18,7 @@ export const Modal = ({
   open = false,
   onModalClose,
   modalLayout,
+  modalWarning,
 }: Props) => {
   const contentRef = useRef<HTMLDialogElement>(null);
 
@@ -32,6 +34,7 @@ export const Modal = ({
               {onModalClose !== undefined ? (<button className="modal-content__close-button" onClick={onModalClose}>Close</button>) : ''}
             </div>
             {children !== undefined && open ? (<div className="modal-content__body">{children}</div>) : ''}
+            {modalWarning && <span className="modal-content__warning">{modalWarning}</span>}
           </div>
         </dialog>
       </div>
