@@ -74,6 +74,7 @@
   @include mixins.margin(12, "top");
   @include typography.body-small();
 
+  color: var(--color-primary);
   display: grid;
   grid-column: 1/6;
 }
