@@ -6449,17 +6449,17 @@ __metadata:
   linkType: hard
 
 "@vercel/otel@npm:^1.8.2":
-  version: 1.8.4
-  resolution: "@vercel/otel@npm:1.8.4"
+  version: 1.9.2
+  resolution: "@vercel/otel@npm:1.9.2"
   peerDependencies:
     "@opentelemetry/api": ^1.7.0
-    "@opentelemetry/api-logs": ^0.46.0
-    "@opentelemetry/instrumentation": ^0.46.0
+    "@opentelemetry/api-logs": "*"
+    "@opentelemetry/instrumentation": "*"
     "@opentelemetry/resources": ^1.19.0
-    "@opentelemetry/sdk-logs": ^0.46.0
+    "@opentelemetry/sdk-logs": "*"
     "@opentelemetry/sdk-metrics": ^1.19.0
     "@opentelemetry/sdk-trace-base": ^1.19.0
-  checksum: 10c0/26f5c6f70d50612b97825ad26fcad2a59519f738900b8b511630ef5b1b02f0d992db6ba45c4ffa725676bcbf4d1b80f4e25d539d06f9f8a06bc284b284fb5eec
+  checksum: 10c0/c73e63a63a9f9ed131929e3b7904916b8bd543e28ce5b4f89b378a24d1422798505cb6fac81c75d82145c4cd6c26c6151d5ac16d9f65a5eeba8aac41a0c3e097
   languageName: node
   linkType: hard
 
