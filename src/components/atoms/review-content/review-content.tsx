@@ -25,14 +25,8 @@ export const ReviewContent = ({
   return (
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
-      {doi && <Descriptors doi={doi}/>}
       {isAssessment ? (
-        <ul className="review-content-items">
-          { peerReviewUrl && <li className="review-content_item"><Link href={`${peerReviewUrl}#tab-content`} scroll={true} shallow={true}>Read the peer reviews</Link></li> }
-          <li className="review-content_item">
-            <a href={t('about_assessments_url')} className="ga-review-content_links">{t('about_assessments')}</a>
-          </li>
-        </ul>
+            <a href='#'>Read more about this assessment</a>
       ) : ''}
     </section>
   );
