@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
-import { Descriptors } from '../descriptors/descriptors';
 import './review-content.scss';
 import '../../../i18n';
 
@@ -12,9 +9,8 @@ const highlightTerms = (content: string): string => content.replaceAll(new RegEx
 
 type Props = { content: string, isAssessment?: boolean, id?: string, peerReviewUrl?: string, doi?: string };
 export const ReviewContent = ({
-  content, isAssessment = false, id = '', peerReviewUrl = undefined, doi = '',
+  content, isAssessment = false, id = '',
 }: Props) => {
-  const { t } = useTranslation();
   const sectionProps: Record<string, string> = {
     className: `review-content${isAssessment ? ' review-content--assessment' : ''}`,
   };
@@ -26,7 +22,7 @@ export const ReviewContent = ({
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
       {isAssessment ? (
-            <a href='#'>Read more about this assessment</a>
+        <a className='explananation_link' href='#'>Read more about this assessment</a>
       ) : ''}
     </section>
   );

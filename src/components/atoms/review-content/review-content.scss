@@ -59,31 +59,11 @@
   background-color: var(--color-background);
 }
 
-.review-content-items {
-  @include mixins.margin(12 0 12 0);
-
-  list-style: none;
-  padding: 0;
-}
-
-.review-content_item {
+.explananation_link {
   @include typography.body-small();
+  @include typography.link-text();
 
-  display: inline;
-
-  &::after {
-    content: " • ";
-  }
-
-  &:last-child::after {
-    content: "";
-  }
-
-  a {
-    @include typography.link-text();
-
-    color: #0b70b9; // Only being used for review content component
-  }
+  color: #0b70b9; // Only being used for review content component
 }
 
 .review-content_body {
