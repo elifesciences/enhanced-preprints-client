@@ -11658,13 +11658,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-dom-parser@npm:5.0.9":
-  version: 5.0.9
-  resolution: "html-dom-parser@npm:5.0.9"
+"html-dom-parser@npm:5.0.10":
+  version: 5.0.10
+  resolution: "html-dom-parser@npm:5.0.10"
   dependencies:
     domhandler: "npm:5.0.3"
     htmlparser2: "npm:9.1.0"
-  checksum: 10c0/d440520dbc1b2f295af70292d409435c89f5b5cb2f0d370722e76ddad473cb3ab750c4e4db2c3625ca4e469f5638a5aef716d31874c3b001d964cdbdcf090736
+  checksum: 10c0/cc81f276cd90c4583a79eca13c4c29dfe5b049c06235f8259a007855f3f69cb30c44ee8ff7f7ac64114de6c7bc4ea47c394780a61b670e4b01814822e3f69b5e
   languageName: node
   linkType: hard
 
@@ -11718,20 +11718,20 @@ __metadata:
   linkType: hard
 
 "html-react-parser@npm:^5.1.10":
-  version: 5.1.12
-  resolution: "html-react-parser@npm:5.1.12"
+  version: 5.1.15
+  resolution: "html-react-parser@npm:5.1.15"
   dependencies:
     domhandler: "npm:5.0.3"
-    html-dom-parser: "npm:5.0.9"
+    html-dom-parser: "npm:5.0.10"
     react-property: "npm:2.0.2"
-    style-to-js: "npm:1.1.12"
+    style-to-js: "npm:1.1.13"
   peerDependencies:
     "@types/react": 0.14 || 15 || 16 || 17 || 18
     react: 0.14 || 15 || 16 || 17 || 18
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/2979bfb5934d65608c7ceb50325b36a7901a674ee8ac3a765b08d61d5fd396870d9061aa6c63cf44291a566fc5bc451d80a9f9d92ef89ed5fef7e0a8036be9cd
+  checksum: 10c0/3edd063386b935c706a6d369c051d44bc6d7b6512b3c4c004ec5487bd9bf79eabe0a681c166db2348be7e9c85ed2cfa98e1a188c393cf1b42bdde60cca705fd0
   languageName: node
   linkType: hard
 
@@ -17395,12 +17395,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-to-js@npm:1.1.12":
-  version: 1.1.12
-  resolution: "style-to-js@npm:1.1.12"
+"style-to-js@npm:1.1.13":
+  version: 1.1.13
+  resolution: "style-to-js@npm:1.1.13"
   dependencies:
     style-to-object: "npm:1.0.6"
-  checksum: 10c0/4b03ac3cec5d0e4c2578513dfbae9861eb9fb56825bccfd64bddcdf067e66805d6f160b93d2985aad4198893940fa162c4c85c3969e13ba2662a5824231c009c
+  checksum: 10c0/ce1254c532cf7bd8c19b691349197ea28350aabfc9d3fa2c139a16aa7e43c49cfc12ac95ad48560210ad7c8ae089be63feba9e679d23b894f745e3c42375094d
   languageName: node
   linkType: hard
 
