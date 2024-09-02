@@ -80,3 +80,11 @@
 .ga-review-content_links {
   // Used to catch data for Google Analytics - Do not remove
 }
+
+.review-content-collapsable__shown {
+  display: unset;
+}
+
+.review-content-collapsable__hidden {
+  display: none;
+}
