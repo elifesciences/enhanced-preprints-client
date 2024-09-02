@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ReviewContent } from './review-content';
+import { within, userEvent, expect } from '@storybook/test';
 
 const meta: Meta<typeof ReviewContent> = {
   title: 'Atoms/Review Content',
@@ -27,6 +28,14 @@ export const ReviewAssessmentAndDoi: Story = {
     peerReviewUrl: '#',
     doi: '10.7554/eLife.81090.sa0',
   },
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await canvas.findByText('Read more about this assessment');
+
+    await userEvent.click(canvas.getByText('Read more about this assessment'));
+    await expect(canvas.getByText('Show less')).toBeInTheDocument();
+  }
 };
 
 export const ReviewBlockQuote: Story = {
