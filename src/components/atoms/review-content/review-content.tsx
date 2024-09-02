@@ -29,7 +29,7 @@ export const ReviewContent = ({
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
       {isAssessment ? (
-        <a className='explananation_link' href='#' onClick={toggleText}> {isToggled ? 'Show less' : 'Read more about this assessment'}</a>
+        <span className='explananation_link' onClick={toggleText}> {isToggled ? 'Show less' : 'Read more about this assessment'}</span>
       ) : ''}
     </section>
   );
