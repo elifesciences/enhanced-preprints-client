@@ -1,5 +1,6 @@
 import './review-content.scss';
 import '../../../i18n';
+import { useState } from 'react';
 
 export const terms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful', 'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate', 'incompletely', 'inadequately', 'convincingly',
@@ -18,11 +19,17 @@ export const ReviewContent = ({
     sectionProps.id = 'assessment';
   }
 
+  const [isToggled, setIsToggled] = useState(false);
+
+  const toggleText = () => {
+    setIsToggled(!isToggled);
+  }
+
   return (
     <section id={id} {...sectionProps}>
       <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
       {isAssessment ? (
-        <a className='explananation_link' href='#'>Read more about this assessment</a>
+        <a className='explananation_link' href='#' onClick={toggleText}> {isToggled ? 'Show less' : 'Read more about this assessment'}</a>
       ) : ''}
     </section>
   );
