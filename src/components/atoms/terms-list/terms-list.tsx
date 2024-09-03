@@ -1,17 +1,17 @@
 import './terms-list.scss';
+import { getTermDescription } from '../../../utils/terms';
 
-export const TermsList = () => {
-  const terms = ['Landmark', 'Fundamental', 'Important', 'Valuable', 'Useful'];
-  return (
-    <div className='terms-container'>
-      <p className='term-description'>
-        <b>Valuable</b>: Contains findings that have theoretical or practical implications for a subfield.
+export const TermsList = ({ terms, selectedTerm }:{ terms: string[], selectedTerm: string[] }) => (
+  <div className='terms-container'>
+    {selectedTerm.map((term, index) => (
+      <p className='term-description' key={index}>
+        <b>{ term }</b>: { getTermDescription(term) }
       </p>
-      <div className="terms-list">
-        {terms.map((term) => (
-          <span className="term" key={term}>{term}</span>
-        ))}
-      </div>
+    ))}
+    <div className="terms-list">
+      {terms.map((term) => (
+        <span className={`term${selectedTerm.includes(term) ? ' term__highlighted' : ''}`} key={term}>{term}</span>
+      ))}
     </div>
-  );
-};
+  </div>
+);

@@ -2,10 +2,20 @@
 @use "../../../sass/typography";
 @use "../../../sass/mixins";
 
-
 .term-description {
   @include typography.body-alternative();
+  @include mixins.margin(16, "top");
+  @include mixins.margin(0, "bottom");
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+
+  &:last-child {
+    @include mixins.margin(16, "bottom");
+  }
 }
+
 .terms-list {
   display: flex;
   gap: 6px;
@@ -33,5 +43,9 @@
   &__highlighted {
     background-color: var(--color-primary);
     color: var(--color-background);
+  }
+
+  &::first-letter {
+    text-transform: capitalize;
   }
 }
