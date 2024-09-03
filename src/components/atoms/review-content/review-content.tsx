@@ -23,7 +23,7 @@ export const ReviewContent = ({
 
   const toggleText = () => {
     setIsToggled(!isToggled);
-  }
+  };
 
   return (
     <section id={id} {...sectionProps}>

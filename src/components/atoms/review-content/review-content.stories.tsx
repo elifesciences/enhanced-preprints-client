@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ReviewContent } from './review-content';
 import { within, userEvent, expect } from '@storybook/test';
+import { ReviewContent } from './review-content';
 
 const meta: Meta<typeof ReviewContent> = {
   title: 'Atoms/Review Content',
@@ -35,9 +35,9 @@ export const ReviewAssessmentAndDoi: Story = {
 
     await userEvent.click(canvas.getByText('Read more about this assessment'));
     await expect(canvas.getByText('Show less')).toBeInTheDocument();
-    {/* eslint-disable-next-line max-len */}
+    { /* eslint-disable-next-line max-len */ }
     await expect(canvas.getByText('During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance of the findings reported in the article (on a scale ranging from useful to landmark) and the strength of the evidence (on a scale ranging from inadequate to exceptional).')).toBeVisible();
-  }
+  },
 };
 
 export const ReviewBlockQuote: Story = {
