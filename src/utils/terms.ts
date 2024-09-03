@@ -43,5 +43,7 @@ export const highlightTerms = (content: string): string => {
     value.forEach((term) => toHighlight.push(term));
   }
 
-  return content.replaceAll(new RegExp(`([^\\w]+)(?<term>${toHighlight.join('|')})([^\\w]+)`, 'gi'), '$1<strong class="highlighted-term">$<term></strong>$3');
+  const regex = new RegExp(`\\b(${toHighlight.join('|')})\\b`, 'gi');
+
+  return content.replaceAll(regex, '<strong class="highlighted-term">$1</strong>');
 };
