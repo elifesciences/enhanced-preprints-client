@@ -6,8 +6,24 @@
 .term-description {
   @include typography.body-alternative();
 }
+.terms-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
 .term {
   @include mixins.padding(8 18);
   @include typography.body-small();
+
+  border: 0;
+  border-radius: 4px;
+  display: inline-block;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  background-color: var(--color-button);
+  color: var(--color-text);
+  font-weight: 600;
+  text-transform: none;
+  border-radius: 4px;
 }
