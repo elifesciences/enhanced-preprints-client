@@ -38,7 +38,7 @@ describe('terms', () => {
     it('highlights multiple terms', () => {
       const highlighted = highlightTerms('foo useful compelling foo');
 
-      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">useful</strong> foo');
+      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">useful</strong> <strong class="highlighted-term">compelling</strong> foo');
     });
 
     it('highlights extra strength terms if they exist', () => {
