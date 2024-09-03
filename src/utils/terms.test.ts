@@ -1,4 +1,4 @@
-import { findTerms, highlightTerms } from './terms';
+import { findTerms, getTermDescription, highlightTerms } from './terms';
 
 describe('terms', () => {
   describe('find-terms', () => {
@@ -45,6 +45,20 @@ describe('terms', () => {
       const highlighted = highlightTerms('foo incomplete incompletely foo');
 
       expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">incomplete</strong> <strong class="highlighted-term">incompletely</strong> foo');
+    });
+  });
+
+  describe('get-term-description', () => {
+    it('returns the description of a term', () => {
+      const description = getTermDescription('compelling');
+
+      expect(description).toStrictEqual('evidence that features methods, data and analyses more rigorous than the current state-of-the-art');
+    });
+
+    it('returns undefined if the term is not in the list', () => {
+      const description = getTermDescription('foo');
+
+      expect(description).toBeUndefined();
     });
   });
 });
