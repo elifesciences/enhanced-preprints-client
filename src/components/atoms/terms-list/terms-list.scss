@@ -13,8 +13,7 @@
 }
 
 .term {
-  @include mixins.padding(8 18);
-  @include typography.body-small();
+  @include typography.term-list-text();
 
   border: 0;
   border-radius: 4px;
@@ -26,4 +25,8 @@
   font-weight: 600;
   text-transform: none;
   border-radius: 4px;
+  width: 90px;
+  height: 26px;
+  align-content: center;
+  text-align: center;
 }

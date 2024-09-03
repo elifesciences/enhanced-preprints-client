@@ -24,6 +24,13 @@
   font-family: var(--font-family-primary);
 }
 
+@mixin term-list-text() {
+  @include font-size-and-vertical-height(12, 16);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
 @mixin expansion-text() {
   color: var(--color-primary);
   cursor: pointer;
