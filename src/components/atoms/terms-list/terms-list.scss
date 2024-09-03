@@ -1,0 +1,13 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+
+.term-description {
+  @include typography.body-alternative();
+}
+
+.term {
+  @include mixins.padding(8 18);
+  @include typography.body-small();
+}
