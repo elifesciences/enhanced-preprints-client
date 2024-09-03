@@ -22,27 +22,26 @@
 
 .terms-list {
   display: flex;
-  gap: 6px;
   flex-wrap: wrap;
+  gap: 6px;
 }
 
 .term {
   @include typography.term-list-text();
 
+  align-content: center;
+  background-color: var(--color-button);
   border: 0;
   border-radius: 4px;
-  display: inline-block;
-  letter-spacing: 0.2px;
-  text-decoration: none;
-  background-color: var(--color-button);
   color: var(--color-text);
+  display: inline-block;
   font-weight: 600;
-  text-transform: none;
-  border-radius: 4px;
-  width: 90px;
   height: 26px;
-  align-content: center;
+  letter-spacing: 0.2px;
   text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  width: 90px;
 
   &__highlighted {
     background-color: var(--color-primary);
