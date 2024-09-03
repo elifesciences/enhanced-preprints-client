@@ -4,11 +4,15 @@
 
 .term-description {
   @include typography.body-alternative();
-  @include mixins.margin(16, "top");
+  @include mixins.margin(8, "top");
   @include mixins.margin(0, "bottom");
 
   &::first-letter {
     text-transform: capitalize;
+  }
+
+  &:first-child {
+    @include mixins.margin(16, "top");
   }
 
   &:last-of-type {
