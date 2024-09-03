@@ -29,4 +29,9 @@
   height: 26px;
   align-content: center;
   text-align: center;
+
+  &__highlighted {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
 }
