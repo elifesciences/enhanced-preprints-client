@@ -11,7 +11,7 @@
     text-transform: capitalize;
   }
 
-  &:last-child {
+  &:last-of-type {
     @include mixins.margin(16, "bottom");
   }
 }
