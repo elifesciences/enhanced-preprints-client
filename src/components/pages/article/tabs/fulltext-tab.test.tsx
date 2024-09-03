@@ -22,13 +22,7 @@ describe('FulltextTab', () => {
   it('renders the evaluation summary when one is passed in', () => {
     const { container } = render(<ArticleFullTextTab metrics={null} headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>);
 
-    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0About eLife assessments');
-  });
-
-  it('renders the link to read peer reviews', () => {
-    const { container } = render(<ArticleFullTextTab metrics={null} headings={[]} content={''} metaData={metaData} peerReview={peerReview} peerReviewUrl='http://bbc.co.uk'/>);
-
-    expect(container.querySelector('#assessment')).toHaveTextContent('This paper is important and is very convincinghttps://doi.org/10.7554/eLife.81090.sa0Read the peer reviewsAbout eLife assessments');
+    expect(container.querySelector('#assessment .review-content_body')).toHaveTextContent('This paper is important and is very convincing');
   });
 
   it('passes down the correct headings to jump-to-menu no peer-review', () => {

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewContent, terms } from './review-content';
 
-describe('ArticleContent', () => {
+describe('ReviewContent', () => {
   it('renders with a simple string content', async () => {
     render(<ReviewContent content="I am an article"/>);
 
@@ -56,20 +56,7 @@ describe('ArticleContent', () => {
   it('shows links to explain assessment terms', async () => {
     render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
 
-    expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
-  });
-
-  it('displays DOI link', async () => {
-    render(<ReviewContent isAssessment={true} content='This is a thorough review of the article' peerReviewUrl='#' doi='10.7554/eLife.81090.sa0'/>);
-
-    expect(screen.getByText('https://doi.org/10.7554/eLife.81090.sa0')).toBeInTheDocument();
-    expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
-  });
-
-  it('displays DOI link containing sa1', async () => {
-    render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa1'/>);
-    expect(screen.queryByText('.sa1', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
+    expect(document.querySelector('.review-content-collapsable p a')).toHaveAttribute('href', 'https://elifesciences.org/inside-elife/db24dd46');
   });
 });

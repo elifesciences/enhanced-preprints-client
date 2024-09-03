@@ -52,7 +52,7 @@ describe('terms', () => {
     it('returns the description of a term', () => {
       const description = getTermDescription('compelling');
 
-      expect(description).toStrictEqual('evidence that features methods, data and analyses more rigorous than the current state-of-the-art');
+      expect(description).toStrictEqual('Evidence that features methods, data and analyses more rigorous than the current state-of-the-art');
     });
 
     it('returns undefined if the term is not in the list', () => {
