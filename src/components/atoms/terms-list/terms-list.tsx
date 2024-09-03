@@ -1,11 +1,10 @@
-export const TermsList = () => (
-  <div>
-    <div>
-      <span>Landmark</span>
-      <span>Fundamental</span>
-      <span>Important</span>
-      <span>Valuable</span>
-      <span>Useful</span>
+export const TermsList = () => {
+  const terms = ['Landmark', 'Fundamental', 'Important', 'Valuable', 'Useful'];
+  return (
+    <div className="terms-list">
+      {terms.map((term) => (
+        <span className="term" key={term}>{term}</span>
+      ))}
     </div>
-  </div>
-);
+  );
+};
