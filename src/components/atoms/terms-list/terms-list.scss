@@ -2,6 +2,11 @@
 @use "../../../sass/typography";
 @use "../../../sass/mixins";
 
+.term-list__title {
+  @include typography.navigation-heading();
+  @include mixins.margin(8, "bottom");
+}
+
 .term-description {
   @include typography.body-alternative();
   @include mixins.margin(8, "top");
@@ -9,10 +14,6 @@
 
   &::first-letter {
     text-transform: capitalize;
-  }
-
-  &:first-child {
-    @include mixins.margin(16, "top");
   }
 
   &:last-of-type {
