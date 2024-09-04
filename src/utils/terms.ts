@@ -1,8 +1,8 @@
-const significanceTerms = [
+export const significanceTerms = [
   'landmark', 'fundamental', 'important', 'valuable', 'useful',
 ];
 
-const strengthTerms = [
+export const strengthTerms = [
   'exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate',
 ];
 
@@ -11,8 +11,6 @@ const strengthAlternativeTerms: Record<string, string[]> = {
   inadequate: ['inadequately'],
   convincing: ['convincingly'],
 };
-
-export const terms = [...significanceTerms, ...strengthTerms];
 
 export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
   const significance: string[] = [];
@@ -36,7 +34,7 @@ export const findTerms = (content: string): { significance?: string[], strength?
 };
 
 export const highlightTerms = (content: string): string => {
-  const toHighlight = [...terms];
+  const toHighlight = [...significanceTerms, ...strengthTerms];
 
   // eslint-disable-next-line no-restricted-syntax
   for (const value of Object.values(strengthAlternativeTerms)) {

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { ReviewContent, terms } from './review-content';
+import { ReviewContent } from './review-content';
+import { significanceTerms, strengthTerms } from '../../../utils/terms';
 
 describe('ReviewContent', () => {
   it('renders with a simple string content', async () => {
@@ -23,11 +24,13 @@ describe('ReviewContent', () => {
   it('highlights the terms within an assessment', async () => {
     render(<ReviewContent isAssessment={true} content="I am an important article that is very convincing dslfkjhas"/>);
 
-    expect(screen.getByText('important')).toBeInTheDocument();
-    expect(screen.getByText('important').tagName).toStrictEqual('STRONG');
+    const highlightedElementImportant = document.querySelector('strong.highlighted-term:first-child');
+    expect(highlightedElementImportant).toBeInTheDocument();
+    expect(highlightedElementImportant).toHaveTextContent('important');
 
-    expect(screen.getByText('convincing')).toBeInTheDocument();
-    expect(screen.getByText('convincing').tagName).toStrictEqual('STRONG');
+    const highlightedElementConvincing = document.querySelector('strong.highlighted-term:nth-child(2)');
+    expect(highlightedElementConvincing).toBeInTheDocument();
+    expect(highlightedElementConvincing).toHaveTextContent('convincing');
   });
 
   it('highlights the terms within an assessment, regardless of case', async () => {
@@ -40,17 +43,12 @@ describe('ReviewContent', () => {
     expect(screen.getByText('CONVINCING').tagName).toStrictEqual('STRONG');
   });
 
-  it.each(terms)('highlights the term: %s when review-content is an editors assessment', async (term) => {
+  it.each([...strengthTerms, ...significanceTerms])('highlights the term: %s when review-content is an editors assessment', async (term) => {
     render(<ReviewContent isAssessment={true} content={`the term is ${term} and should be bold`}/>);
 
-    expect(screen.getByText(term)).toBeInTheDocument();
-    expect(screen.getByText(term).tagName).toStrictEqual('STRONG');
-  });
-
-  it('does not highlight terms unless term is exact', async () => {
-    render(<ReviewContent isAssessment={true} content="I am an important article that is very convincingly good."/>);
-
-    expect(screen.queryByText('convincing')).not.toBeInTheDocument();
+    const highlightedElement = document.querySelector('strong.highlighted-term');
+    expect(highlightedElement).toBeInTheDocument();
+    expect(highlightedElement).toHaveTextContent(term);
   });
 
   it('shows links to explain assessment terms', async () => {

@@ -17,18 +17,18 @@ export const SignificanceList: Story = {
   },
 };
 
-export const MultipleSignificanceList: Story = {
-  args: {
-    title: 'Multiple fields',
-    terms: ['landmark', 'fundamental', 'important', 'valuable', 'useful'],
-    selectedTerm: ['important', 'fundamental'],
-  },
-};
-
 export const StrengthList: Story = {
   args: {
     title: 'Strength of evidence',
     terms: ['exceptional', 'compelling', 'convincing', 'solid', 'incomplete', 'inadequate'],
     selectedTerm: ['compelling'],
+  },
+};
+
+export const MultipleTermList: Story = {
+  args: {
+    title: 'Multiple terms',
+    terms: ['landmark', 'fundamental', 'important', 'valuable', 'useful'],
+    selectedTerm: ['important', 'fundamental'],
   },
 };
