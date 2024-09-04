@@ -8,10 +8,10 @@ export const TermsList = ({ terms, selectedTerm }:{ terms: string[], selectedTer
         <b>{ term }</b>: { getTermDescription(term) }
       </p>
     ))}
-    <div className="terms-list">
+    <ul className="terms-list" aria-label="A list showing important assesment terms">
       {terms.map((term) => (
-        <span className={`term${selectedTerm.includes(term) ? ' term__highlighted' : ''}`} key={term}>{term}</span>
+        <li className={`term${selectedTerm.includes(term) ? ' term__highlighted' : ''}`} key={term} aria-label="This term is reflected in the article">{term}</li>
       ))}
-    </div>
+    </ul>
   </div>
 );
