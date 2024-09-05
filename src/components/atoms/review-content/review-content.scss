@@ -10,7 +10,7 @@
   }
 
   .highlighted-term {
-    @include typography.body();
+    @include typography.body-alternative();
 
     font-weight: 600;
   }
