@@ -19,6 +19,10 @@
     @include typography.body();
   }
 
+  a {
+    color: var(--color-text);
+  }
+
   blockquote {
     @include typography.blockquote();
     @include mixins.padding(16, "left");
