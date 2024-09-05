@@ -67,7 +67,7 @@
   background-color: var(--color-background);
 }
 
-.explananation_link {
+.explanation_link {
   @include typography.body-small();
   @include typography.link-text();
 

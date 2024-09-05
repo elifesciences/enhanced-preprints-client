@@ -36,7 +36,7 @@ export const ReviewContent = ({
             {/* eslint-disable-next-line max-len */}
             <p>During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance of the findings reported in the article (on a scale ranging from useful to landmark) and the strength of the evidence (on a scale ranging from inadequate to exceptional). <a href="https://elifesciences.org/inside-elife/db24dd46">Learn more about eLife assessments</a></p>
           </div>
-          <span className='explananation_link' onClick={toggleText}> {isToggled ? 'Show less' : 'Read more about this assessment'}</span>
+          <span aria-expanded={isToggled} className='explanation_link' onClick={toggleText}> {isToggled ? 'Show less' : 'Read more about this assessment'}</span>
         </>
       ) : ''}
     </section>

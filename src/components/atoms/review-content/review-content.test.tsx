@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { ReviewContent } from './review-content';
 import { significanceTerms, strengthTerms } from '../../../utils/terms';
 
@@ -56,5 +56,16 @@ describe('ReviewContent', () => {
 
     expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
     expect(document.querySelector('.review-content-collapsable p a')).toHaveAttribute('href', 'https://elifesciences.org/inside-elife/db24dd46');
+  });
+
+  it('has correct aria-expanded attribute values on click', async () => {
+    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
+
+    const expandLinkBefore = screen.getByText('Read more about this assessment');
+    expect(expandLinkBefore).toHaveAttribute('aria-expanded', 'false');
+    fireEvent.click(expandLinkBefore);
+
+    const expandLinkAfter = screen.getByText('Show less');
+    expect(expandLinkAfter).toHaveAttribute('aria-expanded', 'true');
   });
 });
