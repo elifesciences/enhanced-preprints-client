@@ -10,13 +10,11 @@
   }
 
   .highlighted-term {
-    @include typography.body();
-
     font-weight: 600;
   }
 
   p {
-    @include typography.body();
+    @include typography.body-alternative();
   }
 
   a {
@@ -72,7 +70,7 @@
 }
 
 .review-content_body {
-  @include typography.body();
+  @include typography.body-alternative();
 
   display: block;
 
