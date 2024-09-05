@@ -11,7 +11,7 @@ export const TermsList = ({ title, terms, selectedTerm }:{ title: string, terms:
     ))}
     <ul className="terms-list" aria-label="A list showing important assesment terms">
       {terms.map((term) => (
-        <li className={`term${selectedTerm.includes(term) ? ' term__highlighted' : ''}`} key={term} aria-label="This term is reflected in the article">{term}</li>
+        <li {...selectedTerm.includes(term) ? { 'aria-label': 'This term is reflected in the article' } : {}} className={`term${selectedTerm.includes(term) ? ' term__highlighted' : ''}`} key={term}>{term}</li>
       ))}
     </ul>
   </div>
