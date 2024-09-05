@@ -27,7 +27,7 @@ export const ReviewContent = ({
 
   return (
     <section id={id} {...sectionProps}>
-      <div className="review-content_body" dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
+      <div className={`review-content_body${isAssessment ? ' review-content_body_assessment' : ''}`} dangerouslySetInnerHTML={{ __html: isAssessment ? highlightTerms(content) : content }} />
       {isAssessment ? (
         <>
           <div className={`review-content-collapsable review-content-collapsable__${isToggled ? 'shown' : 'hidden'}`}>

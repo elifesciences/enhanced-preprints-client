@@ -19,6 +19,10 @@
     @include typography.body();
   }
 
+  .review-content-collapsable p {
+    @include typography.body-alternative();
+  }
+
   a {
     color: var(--color-text);
   }
@@ -79,6 +83,10 @@
   p img {
     max-width: 100%;
   }
+}
+
+.review-content_body_assessment {
+  @include typography.body-alternative();
 }
 
 .ga-review-content_links {
