@@ -52,14 +52,14 @@ describe('Assessment', () => {
   });
 
   it('shows links to explain assessment terms', async () => {
-    render(<Assessment content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
+    render(<Assessment content="I have reviewed it, and it's good"/>);
 
     expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
     expect(document.querySelector('.review-content-collapsable p a')).toHaveAttribute('href', 'https://elifesciences.org/inside-elife/db24dd46');
   });
 
   it('has correct aria-expanded attribute values on click', async () => {
-    render(<Assessment content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
+    render(<Assessment content="I have reviewed it, and it's good"/>);
 
     const expandLinkBefore = screen.getByText('Read more about this assessment');
     expect(expandLinkBefore).toHaveAttribute('aria-expanded', 'false');
