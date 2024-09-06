@@ -22,7 +22,7 @@ describe('FulltextTab', () => {
   it('renders the evaluation summary when one is passed in', () => {
     const { container } = render(<ArticleFullTextTab metrics={null} headings={[]} content={''} metaData={metaData} peerReview={peerReview}/>);
 
-    expect(container.querySelector('#assessment .review-content_body')).toHaveTextContent('This paper is important and is very convincing');
+    expect(container.querySelector('#assessment>div:first-child')).toHaveTextContent('This paper is important and is very convincing');
   });
 
   it('passes down the correct headings to jump-to-menu no peer-review', () => {

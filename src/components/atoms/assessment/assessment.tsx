@@ -6,11 +6,8 @@ import {
   findTerms, highlightTerms, significanceTerms, strengthTerms,
 } from '../../../utils/terms';
 
-type Props = { content: string, id?: string, peerReviewUrl?: string, doi?: string };
-export const Assessment = ({
-  content, id = '',
-}: Props) => {
-
+type Props = { content: string };
+export const Assessment = ({ content }: Props) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const toggleText = () => {

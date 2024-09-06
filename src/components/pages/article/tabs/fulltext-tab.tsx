@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
-import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
 import { MetaData, PeerReview } from '../../../../types';
@@ -11,6 +10,7 @@ import { JSXContent } from '../../../../utils/content';
 import '../../../../i18n';
 import { Metrics as MetricsType } from '../../../../types/enhanced-article';
 import { Metrics } from '../../../atoms/metrics/metrics';
+import { Assessment } from '../../../atoms/assessment/assessment';
 
 type Props = {
   headings: Heading[],
@@ -42,7 +42,7 @@ export const ArticleFullTextTab = (props: Props) => {
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
         <Abstract content={props.metaData.abstract} />
-        { props.peerReview && <ReviewContent content={props.peerReview.evaluationSummary.text} isAssessment={true} peerReviewUrl={props.peerReviewUrl} doi={props.peerReview.evaluationSummary.doi}/> }
+        { props.peerReview && <Assessment content={props.peerReview.evaluationSummary.text}/> }
         <ArticleContent content={props.content} />
         <ReferenceList references={props.metaData.references} />
         <ArticleAndAuthorInformation authors={props.metaData.authors} versions={props.metaData.versionHistory} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />

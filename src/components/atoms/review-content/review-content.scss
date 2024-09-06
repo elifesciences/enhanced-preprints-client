@@ -19,10 +19,6 @@
     @include typography.body();
   }
 
-  .review-content-collapsable p {
-    @include typography.body-alternative();
-  }
-
   a {
     color: var(--color-text);
   }
@@ -49,36 +45,6 @@
   }
 }
 
-.review-content--assessment {
-  @include mixins.margin(0 -24);
-  @include mixins.padding(24);
-
-  @media only all and (min-width: settings.$breakpoint-small) {
-    @include mixins.margin(0 -48);
-    @include mixins.padding(36 48);
-  }
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.padding(24 36);
-
-    margin: 0;
-  }
-
-  background-color: var(--color-background);
-
-  p {
-    @include typography.body-alternative();
-  }
-}
-
-.explanation_link {
-  @include typography.body-small();
-  @include typography.link-text();
-
-  color: #0b70b9; // Only being used for review content component
-  cursor: pointer;
-}
-
 .review-content_body {
   @include typography.body();
 
@@ -89,18 +55,6 @@
   }
 }
 
-.review-content_body_assessment {
-  @include typography.body-alternative();
-}
-
 .ga-review-content_links {
   // Used to catch data for Google Analytics - Do not remove
-}
-
-.review-content-collapsable__shown {
-  display: unset;
-}
-
-.review-content-collapsable__hidden {
-  display: none;
 }
