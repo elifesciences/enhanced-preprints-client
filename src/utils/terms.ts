@@ -43,7 +43,7 @@ export const highlightTerms = (content: string): string => {
 
   const regex = new RegExp(`\\b(${toHighlight.join('|')})\\b`, 'gi');
 
-  return content.replaceAll(regex, '<strong class="highlighted-term">$1</strong>');
+  return content.replaceAll(regex, '<strong class="highlighted-term" aria-label="Highlighted">$1</strong>');
 };
 
 const termDescriptions: Record<string, string> = {
