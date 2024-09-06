@@ -32,19 +32,19 @@ describe('terms', () => {
     it('highlights a single term', () => {
       const highlighted = highlightTerms('foo useful foo');
 
-      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">useful</strong> foo');
+      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term" aria-label="Highlighted">useful</strong> foo');
     });
 
     it('highlights multiple terms', () => {
       const highlighted = highlightTerms('foo useful compelling foo');
 
-      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">useful</strong> <strong class="highlighted-term">compelling</strong> foo');
+      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term" aria-label="Highlighted">useful</strong> <strong class="highlighted-term" aria-label="Highlighted">compelling</strong> foo');
     });
 
     it('highlights extra strength terms if they exist', () => {
       const highlighted = highlightTerms('foo incomplete incompletely foo');
 
-      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term">incomplete</strong> <strong class="highlighted-term">incompletely</strong> foo');
+      expect(highlighted).toStrictEqual('foo <strong class="highlighted-term" aria-label="Highlighted">incomplete</strong> <strong class="highlighted-term" aria-label="Highlighted">incompletely</strong> foo');
     });
   });
 
