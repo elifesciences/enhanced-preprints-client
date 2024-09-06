@@ -1,0 +1,75 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.assessment {
+  @include mixins.margin(0 -24);
+  @include mixins.padding(24);
+  @include typography.body-alternative();
+
+  .highlighted-term {
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--color-text);
+  }
+
+  blockquote {
+    @include typography.blockquote();
+    @include mixins.padding(16, "left");
+
+    border-left: 1px solid var(--divider);
+    margin: 0;
+
+    p,
+    li {
+      @include typography.body-small();
+    }
+
+    strong {
+      @include typography.heading-4();
+    }
+  }
+
+  p:first-of-type strong {
+    @include typography.heading-2();
+  }
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0 -48);
+    @include mixins.padding(36 48);
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.padding(24 36);
+
+    margin: 0;
+  }
+
+  background-color: var(--color-background);
+
+  p {
+    @include typography.body-alternative();
+  }
+}
+
+.explanation_link {
+  @include typography.body-small();
+  @include typography.link-text();
+
+  color: #0b70b9; // Only being used for review content component
+  cursor: pointer;
+}
+
+.ga-review-content_links {
+  // Used to catch data for Google Analytics - Do not remove
+}
+
+.review-content-collapsable__shown {
+  display: unset;
+}
+
+.review-content-collapsable__hidden {
+  display: none;
+}
