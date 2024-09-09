@@ -31,6 +31,8 @@
 
 .term {
   @include typography.term-list-text();
+  @include mixins.padding(10, "left");
+  @include mixins.padding(10, "right");
 
   align-content: center;
   background-color: var(--color-button);
@@ -44,7 +46,6 @@
   text-align: center;
   text-decoration: none;
   text-transform: none;
-  width: 90px;
 
   &__highlighted {
     background-color: var(--color-primary);
