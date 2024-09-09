@@ -133,10 +133,25 @@
   font-family: var(--font-family-primary);
 }
 
+@mixin assessment-body() {
+  @include font-size-and-vertical-height(16, 28);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
 @mixin navigation-heading() {
   @include font-size-and-vertical-height(14, 26);
 
   color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+}
+
+@mixin term-title() {
+  @include font-size-and-vertical-height(12, 24);
+
+  color: var(--color-text-secondary-dark);
   font-family: var(--font-family-primary);
   font-weight: 400;
 }

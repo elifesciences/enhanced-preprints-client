@@ -5,7 +5,7 @@
 .assessment {
   @include mixins.margin(0 -24);
   @include mixins.padding(24);
-  @include typography.body-alternative();
+  @include typography.assessment-body();
 
   .highlighted-term {
     font-weight: 600;
@@ -52,6 +52,10 @@
   p.assessment__body {
     @include typography.body-alternative();
   }
+}
+
+.assessment__body {
+  @include mixins.margin(24, "bottom");
 }
 
 .explanation_link {

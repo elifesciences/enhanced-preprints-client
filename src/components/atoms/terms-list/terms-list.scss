@@ -3,8 +3,10 @@
 @use "../../../sass/mixins";
 
 .term-list__title {
-  @include typography.navigation-heading();
+  @include typography.term-title();
   @include mixins.margin(8, "bottom");
+
+  color: var(--color-text-secondary-dark);
 }
 
 .term-description {
@@ -31,8 +33,7 @@
 
 .term {
   @include typography.term-list-text();
-  @include mixins.padding(10, "left");
-  @include mixins.padding(10, "right");
+  @include mixins.padding(5 10);
 
   align-content: center;
   background-color: var(--color-button);
@@ -41,7 +42,6 @@
   color: var(--color-text);
   display: inline-block;
   font-weight: 600;
-  height: 26px;
   letter-spacing: 0.2px;
   text-align: center;
   text-decoration: none;
@@ -49,7 +49,7 @@
 
   &__highlighted {
     background-color: var(--color-primary);
-    color: var(--color-background);
+    color: var(--color-white);
   }
 
   &::first-letter {
