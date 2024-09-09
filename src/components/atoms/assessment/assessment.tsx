@@ -19,7 +19,7 @@ export const Assessment = ({ content }: Props) => {
   return (
     <section id='assessment' className='assessment'>
       <div className="assessment__body" dangerouslySetInnerHTML={{ __html: highlightTerms(content) }} />
-      <div className={`review-content-collapsable review-content-collapsable__${isToggled ? 'shown' : 'hidden'}`}>
+      <div className={`assessment-collapsable__${isToggled ? 'shown' : 'hidden'}`}>
         { (significance && significance.length > 0) && <TermsList title="Significance of findings" terms={significanceTerms} selectedTerm={significance} /> }
         { (strength && strength.length > 0) && <TermsList title="Strength of evidence" terms={strengthTerms} selectedTerm={findTerms(content).strength || []} /> }
         {/* eslint-disable-next-line max-len */}
