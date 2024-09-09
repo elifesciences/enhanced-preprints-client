@@ -69,6 +69,11 @@
   cursor: pointer;
 }
 
+.explanation_link--expanded {
+  @extend .explanation_link;
+  background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
+}
+
 .assessment__fixed_text {
   @include typography.body-small();
 }
