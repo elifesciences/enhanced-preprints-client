@@ -61,7 +61,10 @@
 .explanation_link {
   @include typography.body-small();
   @include typography.link-text();
-
+  @include mixins.padding(16, "right");
+  
+  background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
+  vertical-align: middle;
   color: #0b70b9; // Only being used for review content component
   cursor: pointer;
 }
