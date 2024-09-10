@@ -12,18 +12,19 @@
 .term-description {
   @include typography.body-alternative();
   @include mixins.margin(8, "top");
-  @include mixins.margin(0, "bottom");
 
   &::first-letter {
     text-transform: capitalize;
   }
 
   &:last-of-type {
-    @include mixins.margin(16, "bottom");
+    @include mixins.margin(6, "bottom");
   }
 }
 
 .terms-list {
+  @include mixins.margin(0, "top");
+
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
