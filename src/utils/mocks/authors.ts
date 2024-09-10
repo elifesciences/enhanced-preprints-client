@@ -4,7 +4,12 @@ export const authorNotes: AuthorNotes = [
   {
     type: 'corresp',
     id: 'cor1',
-    text: 'For Correspondence: steve@rogers.avengers',
+    text: 'FAO: steve@rogers.avengers and kara.danvers@katco.com',
+  },
+  {
+    type: 'corresp',
+    id: 'cor2',
+    text: 'For questions about the multiverse: clark.kent@dailyplanet.com',
   },
 ];
 
@@ -26,7 +31,7 @@ export const authors: Author[] = [
   {
     givenNames: ['Elliot'],
     familyNames: ['Kemp'],
-    emails: ['elliot.kemp@x-force.norwich'],
+    emails: ['elliot.kemp@x-force.norwich', 'kemp.elliot@x-force.norwich'],
     affiliations: [{ name: 'X-Force', address: { addressCountry: 'Norwich' } }],
   },
   { givenNames: ['Antony'], familyNames: ['Stark'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
@@ -39,10 +44,32 @@ export const authors: Author[] = [
   },
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   {
-    givenNames: ['Kara'], familyNames: ['Zor-el'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }], emails: ['kara.danvers@katco.com'],
+    givenNames: ['Kara'],
+    familyNames: ['Zor-el'],
+    affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }],
+    emails: ['kara.danvers@katco.com'],
+    meta: {
+      notes: [
+        {
+          type: 'corresp',
+          rid: 'cor1',
+        },
+      ],
+    },
   },
   {
-    givenNames: ['Kal'], familyNames: ['El'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }], emails: ['clark.kent@dailyplanet.com'],
+    givenNames: ['Kal'],
+    familyNames: ['El'],
+    affiliations: [{ name: 'Justice League', address: { addressCountry: 'Arctic' } }],
+    emails: ['clark.kent@dailyplanet.com'],
+    meta: {
+      notes: [
+        {
+          type: 'corresp',
+          rid: 'cor2',
+        },
+      ],
+    },
   },
   {
     givenNames: ['Arthur'],

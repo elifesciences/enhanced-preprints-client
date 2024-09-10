@@ -40,6 +40,25 @@ describe('AuthorList', () => {
     expect(screen.getByText('Oliver Queen').nextSibling?.nextSibling).not.toBeInTheDocument();
   });
 
+  it('renders the author\'s email', () => {
+    render(<AuthorList authors={authors} authorNotes={[]} />);
+
+    expect(screen.queryByText('steve@rogers.avengers')).not.toBeInTheDocument();
+    expect(screen.getByText('elliot.kemp@x-force.norwich, kemp.elliot@x-force.norwich')).toBeInTheDocument();
+    expect(screen.getByText('kara.danvers@katco.com')).toBeInTheDocument();
+    expect(screen.getByText('clark.kent@dailyplanet.com')).toBeInTheDocument();
+  });
+
+  it('renders the corresponding statements', () => {
+    render(<AuthorList authors={authors} authorNotes={authorNotes} />);
+
+    expect(screen.getByText('Steve Rogers').nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
+    expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling).toHaveTextContent('For correspondence: kara.danvers@katco.com');
+    expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
+    expect(screen.getByText('Kal El').nextSibling?.nextSibling).toHaveTextContent('For correspondence: clark.kent@dailyplanet.com');
+    expect(screen.getByText('Kal El').nextSibling?.nextSibling?.nextSibling).toHaveTextContent('For questions about the multiverse: clark.kent@dailyplanet.com');
+  });
+
   it('does not render other identifiers', () => {
     render(<AuthorList authors={[
       {

@@ -19,7 +19,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
         )
       }
 
-      {author.emails ? <div className="author-list__email"><h5 className="author-list__email--heading">For correspondence:</h5> <span className="author-list__email">{author.emails}</span></div> : '' }
+      {author.emails ? <div className="author-list__email"><h5 className="author-list__email--heading">For correspondence:</h5> <span className="author-list__email">{author.emails.join(', ')}</span></div> : '' }
 
       {author.meta?.notes.filter((note) => note.type === 'corresp').map((note, index) => (
         authorNotes.filter((authorNote) => authorNote.type === 'corresp' && authorNote.id === note.rid).map((authorNote) => (
