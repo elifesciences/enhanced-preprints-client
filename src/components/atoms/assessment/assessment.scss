@@ -62,15 +62,16 @@
   @include typography.body-small();
   @include typography.link-text();
   @include mixins.padding(16, "right");
-  
+
   background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
-  vertical-align: middle;
   color: #0b70b9; // Only being used for review content component
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .explanation_link--expanded {
   @extend .explanation_link;
+
   background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
 }
 
