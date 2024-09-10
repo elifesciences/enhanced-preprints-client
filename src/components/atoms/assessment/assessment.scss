@@ -67,12 +67,10 @@
   color: #0b70b9; // Only being used for review content component
   cursor: pointer;
   vertical-align: middle;
-}
 
-.explanation_link--expanded {
-  @extend .explanation_link;
-
-  background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
+  &__expanded {
+    background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
+  }
 }
 
 .assessment__fixed_text {
