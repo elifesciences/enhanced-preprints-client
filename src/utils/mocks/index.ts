@@ -1,4 +1,4 @@
-export { authors } from './authors';
+export { authors, authorNotes } from './authors';
 export { metaData } from './meta-data';
 export { content } from './content';
 export { peerReview } from './peer-review';

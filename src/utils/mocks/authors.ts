@@ -1,4 +1,12 @@
-import { Author } from '../../types';
+import { Author, AuthorNotes } from '../../types';
+
+export const authorNotes: AuthorNotes = [
+  {
+    type: 'corresp',
+    id: 'cor1',
+    text: 'For Correspondence: steve@rogers.avengers',
+  },
+];
 
 export const authors: Author[] = [
   {
@@ -6,8 +14,21 @@ export const authors: Author[] = [
     familyNames: ['Rogers'],
     affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }],
     identifiers: [{ type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }],
+    meta: {
+      notes: [
+        {
+          type: 'corresp',
+          rid: 'cor1',
+        },
+      ],
+    },
   },
-  { givenNames: ['Elliot'], familyNames: ['Kemp'], affiliations: [{ name: 'X-Force', address: { addressCountry: 'Norwich' } }] },
+  {
+    givenNames: ['Elliot'],
+    familyNames: ['Kemp'],
+    emails: ['elliot.kemp@x-force.norwich'],
+    affiliations: [{ name: 'X-Force', address: { addressCountry: 'Norwich' } }],
+  },
   { givenNames: ['Antony'], familyNames: ['Stark'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Natasha'], familyNames: ['Romanov'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Bruce'], familyNames: ['Banner'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },

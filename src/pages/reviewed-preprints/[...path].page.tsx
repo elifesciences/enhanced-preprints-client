@@ -223,6 +223,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
         versionHistory,
+        authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
       },
       imgInfo,
       msidWithVersion: id,

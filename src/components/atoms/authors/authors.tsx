@@ -21,7 +21,7 @@ export const Authors = ({ authors }: { authors: Author[] }) => {
       <ol className={`authors-list${expanded ? ' authors-list--expanded' : ''}`} aria-label="Authors of this article">
         { authors.map((author, index) => (
           <li className="authors-list__item" key={index}>
-            <a href={`#${generateAuthorId(author)}`} className={`authors-link${author.emails ? ' authors-email__link' : ''}`}>
+            <a href={`#${generateAuthorId(author)}`} className={`authors-link${author.emails || (author.meta?.notes ?? []).filter((note) => note.type === 'corresp').length > 0 ? ' authors-email__link' : ''}`}>
               {author.type === 'Organization' ?
                 author.name :
                 `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}

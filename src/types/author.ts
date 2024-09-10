@@ -14,4 +14,18 @@ export type Author = {
     value: string,
   }[],
   emails?: string[],
+  meta?: {
+    notes: {
+      type: string,
+      rid: string,
+      label?: string,
+    }[],
+  },
 };
+
+export type AuthorNotes = {
+  type: string,
+  id: string,
+  text: string,
+  label?: string,
+}[];
