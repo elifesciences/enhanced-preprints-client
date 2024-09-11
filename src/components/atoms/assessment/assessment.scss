@@ -74,6 +74,7 @@
 
 .assessment__fixed_text {
   @include typography.body-small();
+  @include mixins.margin(24 0);
 }
 
 .assessment-collapsable {
