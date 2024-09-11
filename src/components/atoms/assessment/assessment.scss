@@ -73,7 +73,7 @@
 }
 
 .assessment__fixed_text {
-  @include typography.body-small();
+  @include typography.assessment-fixed-text();
   @include mixins.margin(24 0);
 }
 
