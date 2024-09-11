@@ -23,6 +23,11 @@
   }
 }
 
+.author-list__corresp {
+  @include mixins.margin(24, "bottom");
+  @include typography.body();
+}
+
 .author-list__author_name {
   @include mixins.padding(12, "bottom");
   @include typography.heading-3();

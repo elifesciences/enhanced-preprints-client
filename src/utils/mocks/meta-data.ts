@@ -1,5 +1,5 @@
 import { references } from './references';
-import { authors } from './authors';
+import { authors, authorNotes } from './authors';
 import { versionHistory } from './version-history';
 
 export const metaData = {
@@ -11,6 +11,7 @@ export const metaData = {
   msas: ['Mad Science', 'Alchemy'],
   title: 'This is a title',
   authors,
+  authorNotes,
   references,
   publishedYear: 2022,
   license: 'https://creativecommons.org/licenses/by/4.0/',

@@ -8,7 +8,7 @@ describe('authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);
 
     expect(screen.getByText('Steve Rogers')).toBeInTheDocument();
-    expect(container.querySelector('.authors-link')!.textContent).toStrictEqual('Steve Rogers');
+    expect(container.querySelector('.authors-link')!.textContent).toContain('Steve Rogers');
   });
 
   it('should hide authors after the author limit', () => {
@@ -86,8 +86,13 @@ describe('authors', () => {
     it('does not show email icon for non corresponding authors', () => {
       render(<Authors authors={authors}/>);
 
-      expect(screen.getByText('Steve Rogers')).not.toHaveClass('authors-email__link');
       expect(screen.getByText('Antony Stark')).not.toHaveClass('authors-email__link');
+    });
+
+    it('shows email icon with related corresponding author statement', () => {
+      render(<Authors authors={authors}/>);
+
+      expect(screen.getByText('Steve Rogers')).toHaveClass('authors-email__link');
     });
 
     it('shows accessibility span', () => {

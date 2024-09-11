@@ -11,9 +11,6 @@
               "name": "Friedrich Miescher Institute for Biomedical Research, Basel, Switzerland"
             }
           ],
-          "emails": [
-            "rjordan3@ed.ac.uk"
-          ],
           "familyNames": [
             "Jordan"
           ],
@@ -26,7 +23,21 @@
               "propertyID": "https://registry.identifiers.org/registry/orcid",
               "value": "http://orcid.org/0000-0002-4871-6265"
             }
-          ]
+          ],
+          "meta": {
+            "notes": [
+              {
+                "type": "fn",
+                "label": "3",
+                "rid": "n1"
+              },
+              {
+                "type": "corresp",
+                "label": "4",
+                "rid": "cor1"
+              }
+            ]
+          }
         },
         {
           "type": "Person",
@@ -5344,6 +5355,27 @@
           ]
         }
       ],
+      "meta": {
+        "authorNotes": [
+          {
+            "type": "fn",
+            "id": "n1",
+            "label": "3",
+            "text": "Current address: Simons Initiative for the Developing Brain, University of Edinburgh, 1 George Square, EH8 9JZ, Edinburgh, United Kingdom"
+          },
+          {
+            "type": "fn",
+            "id": "n2",
+            "text": "Dear reader, please note this manuscript is formatted in a standard submission format, and all statistical information is in Table S1."
+          },
+          {
+            "type": "corresp",
+            "id": "cor1",
+            "label": "4",
+            "text": "Correspondence to: rjordan3@ed.ac.uk"
+          }
+        ]
+      },
       "references": [
         {
           "type": "Article",
