@@ -24,12 +24,13 @@
 
 .terms-list {
   @include mixins.margin(0, "top");
+  @include mixins.margin(30, "bottom");
+  @include mixins.padding(0, "left");
 
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   list-style: none;
-  padding-left: 0;
 }
 
 .term {

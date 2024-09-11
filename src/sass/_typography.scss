@@ -205,6 +205,19 @@
   }
 }
 
+@mixin terms-link-text() {
+  @include font-size-and-vertical-height(16, 24);
+
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  :visited {
+    color: var(--color-primary);
+  }
+}
+
 @mixin blockquote() {
   font-style: italic;
 }

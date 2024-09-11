@@ -59,8 +59,7 @@
 }
 
 .explanation_link {
-  @include typography.body-small();
-  @include typography.link-text();
+  @include typography.terms-link-text();
   @include mixins.padding(16, "right");
 
   background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
