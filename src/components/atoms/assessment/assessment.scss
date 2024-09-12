@@ -10,13 +10,13 @@
   .highlighted-term {
     font-weight: 600;
   }
-  
-  .descriptors__identifier a {
-    color: var(--color-text-secondary-dark)
-  }
 
   a {
     color: var(--color-text);
+  }
+
+  .descriptors__identifier a {
+    color: var(--color-text-secondary-dark);
   }
 
   blockquote {
