@@ -91,6 +91,7 @@ const toIsoStringWithoutMilliseconds = (date: Date): string => {
 const enhancedArticleNoContentToSnippet = ({
   msid,
   preprintDoi,
+  versionIdentifier,
   pdfUrl,
   article,
   published,
@@ -99,6 +100,7 @@ const enhancedArticleNoContentToSnippet = ({
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi,
+  version: +versionIdentifier,
   pdf: pdfUrl,
   status: 'reviewed',
   authorLine: prepareAuthorLine(article.authors || []),
@@ -113,6 +115,7 @@ const enhancedArticleNoContentToSnippet = ({
 
 export const enhancedArticleToReviewedPreprintItemResponse = ({
   msid,
+  versionIdentifier,
   preprintDoi,
   pdfUrl,
   article,
@@ -122,6 +125,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
 }: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   id: msid,
   doi: preprintDoi,
+  version: +versionIdentifier,
   pdf: pdfUrl,
   status: 'reviewed',
   authorLine: prepareAuthorLine(authors || []),

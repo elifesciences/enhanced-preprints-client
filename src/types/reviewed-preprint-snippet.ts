@@ -3,6 +3,7 @@ import { EnhancedArticle, ProcessedArticle } from './enhanced-article';
 export type ReviewedPreprintSnippet = {
   id: string,
   doi: string,
+  version: number,
   pdf?: string,
   status: 'reviewed',
   authorLine?: string,
