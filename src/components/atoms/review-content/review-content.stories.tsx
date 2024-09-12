@@ -18,7 +18,7 @@ export const ReviewDoi: Story = {
 
 export const ReviewWithHtml: Story = {
   args: {
-    content: 'qThis is a review to say that this article is <strong>awesome</strong>',
+    content: 'This is a review to say that this article is <strong>awesome</strong>',
     doi: '10.7554/eLife.81090.sa0',
   },
 };
