@@ -68,4 +68,10 @@ describe('Assessment', () => {
     const expandLinkAfter = screen.getByText('Show less');
     expect(expandLinkAfter).toHaveAttribute('aria-expanded', 'true');
   });
+
+  it.only('renders the DOI when it is passed in', async () => {
+    render(<Assessment content="I am an article" doi="12345-real-DOI"/>);
+
+    expect(screen.getByText('https://doi.org/12345-real-DOI')).toBeInTheDocument();
+  })
 });
