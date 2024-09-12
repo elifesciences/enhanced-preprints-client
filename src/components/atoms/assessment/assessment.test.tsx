@@ -54,7 +54,7 @@ describe('Assessment', () => {
   it('shows links to explain assessment terms', async () => {
     render(<Assessment content="I have reviewed it, and it's good"/>);
 
-    expect(screen.getByText('Learn more about eLife Assessments')).toBeInTheDocument();
+    expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
     expect(document.querySelector('.assessment__fixed_text a')).toHaveAttribute('href', 'https://elifesciences.org/inside-elife/db24dd46');
   });
 
