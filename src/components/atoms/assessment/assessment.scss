@@ -10,6 +10,10 @@
   .highlighted-term {
     font-weight: 600;
   }
+  
+  .descriptors__identifier a {
+    color: var(--color-text-secondary-dark)
+  }
 
   a {
     color: var(--color-text);
@@ -55,7 +59,11 @@
 }
 
 .assessment__body {
-  @include mixins.margin(24, "bottom");
+  @include mixins.margin(12, "bottom");
+
+  p:last-of-type {
+    @include mixins.margin(0, "bottom");
+  }
 }
 
 .explanation_link {
