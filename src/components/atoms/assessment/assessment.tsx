@@ -5,9 +5,10 @@ import { TermsList } from '../terms-list/terms-list';
 import {
   findTerms, highlightTerms, significanceTerms, strengthTerms,
 } from '../../../utils/terms';
+import { Descriptors } from '../descriptors/descriptors';
 
-type Props = { content: string };
-export const Assessment = ({ content }: Props) => {
+type Props = { content: string, doi?: string };
+export const Assessment = ({ content, doi }: Props) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const toggleText = () => {
@@ -19,6 +20,7 @@ export const Assessment = ({ content }: Props) => {
   return (
     <section id='assessment' className='assessment'>
       <div className="assessment__body" dangerouslySetInnerHTML={{ __html: highlightTerms(content) }} />
+      {doi && <Descriptors doi={doi}/>}
       <div className={`assessment-collapsable__${isToggled ? 'shown' : 'hidden'}`}>
         { (significance && significance.length > 0) && <TermsList title="Significance of findings" terms={significanceTerms} selectedTerm={significance} /> }
         { (strength && strength.length > 0) && <TermsList title="Strength of evidence" terms={strengthTerms} selectedTerm={findTerms(content).strength || []} /> }

@@ -23,6 +23,7 @@ async function collapseTest(canvasElement: HTMLElement) {
 export const ElifeAssessmentSingleTermList: Story = {
   args: {
     content: 'This is a review that is fundamental to everything',
+    doi: '10.1101/123456',
   },
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
@@ -32,6 +33,7 @@ export const ElifeAssessmentSingleTermList: Story = {
 export const ElifeAssessmentSingleTermListMultipleTerms: Story = {
   args: {
     content: 'This is a review that is important and fundamental to everything',
+    doi: '10.1101/123456',
   },
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
@@ -41,6 +43,7 @@ export const ElifeAssessmentSingleTermListMultipleTerms: Story = {
 export const ElifeAssessmentMultipleTermList: Story = {
   args: {
     content: 'This is a review that is exceptional and fundamental to everything',
+    doi: '10.1101/123456',
   },
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
