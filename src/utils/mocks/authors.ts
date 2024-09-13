@@ -11,6 +11,10 @@ export const authorNotes: AuthorNotes = [
     id: 'cor2',
     text: 'For questions about the multiverse: clark.kent@dailyplanet.com',
   },
+  {
+    type: 'fn',
+    text: 'Generic footnote',
+  },
 ];
 
 export const authors: Author[] = [

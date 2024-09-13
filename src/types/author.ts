@@ -25,7 +25,7 @@ export type Author = {
 
 export type AuthorNotes = {
   type: string,
-  id: string,
   text: string,
+  id?: string,
   label?: string,
 }[];
