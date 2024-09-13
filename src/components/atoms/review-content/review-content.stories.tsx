@@ -11,30 +11,21 @@ type Story = StoryObj<typeof ReviewContent>;
 
 export const ReviewDoi: Story = {
   args: {
-    content: `# This is a review in markdown
-
-    With some body *emphasised*`,
+    content: 'This is a review to say that this article is alright',
     doi: '10.7554/eLife.81090.sa0',
   },
 };
 
-export const ReviewAssessmentAndDoi: Story = {
+export const ReviewWithHtml: Story = {
   args: {
-    content: `# This is a review in markdown
-
-    With some body *emphasised*`,
-    isAssessment: true,
-    peerReviewUrl: '#',
+    content: 'This is a review to say that this article is <strong>awesome</strong>',
     doi: '10.7554/eLife.81090.sa0',
   },
 };
 
 export const ReviewBlockQuote: Story = {
   args: {
-    content: `# This is a review in markdown
-
-  > With some body *emphasised*
-
-  Some other comments here reference the quote above`,
+    content: `This is a review
+    <blockquote>with a quote</blockquote>`,
   },
 };

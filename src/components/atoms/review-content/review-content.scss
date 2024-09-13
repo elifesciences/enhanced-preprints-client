@@ -10,13 +10,17 @@
   }
 
   .highlighted-term {
-    @include typography.body();
+    @include typography.body-alternative();
 
     font-weight: 600;
   }
 
   p {
     @include typography.body();
+  }
+
+  a {
+    color: var(--color-text);
   }
 
   blockquote {
@@ -38,51 +42,6 @@
 
   p:first-of-type strong {
     @include typography.heading-2();
-  }
-}
-
-.review-content--assessment {
-  @include mixins.margin(0 -24);
-  @include mixins.padding(24);
-
-  @media only all and (min-width: settings.$breakpoint-small) {
-    @include mixins.margin(0 -48);
-    @include mixins.padding(36 48);
-  }
-
-  @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.padding(24 36);
-
-    margin: 0;
-  }
-
-  background-color: var(--color-background);
-}
-
-.review-content-items {
-  @include mixins.margin(12 0 12 0);
-
-  list-style: none;
-  padding: 0;
-}
-
-.review-content_item {
-  @include typography.body-small();
-
-  display: inline;
-
-  &::after {
-    content: " • ";
-  }
-
-  &:last-child::after {
-    content: "";
-  }
-
-  a {
-    @include typography.link-text();
-
-    color: #0b70b9; // Only being used for review content component
   }
 }
 

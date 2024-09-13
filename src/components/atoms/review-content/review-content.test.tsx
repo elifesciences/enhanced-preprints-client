@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { ReviewContent, terms } from './review-content';
+import { ReviewContent } from './review-content';
 
-describe('ArticleContent', () => {
+describe('ReviewContent', () => {
   it('renders with a simple string content', async () => {
     render(<ReviewContent content="I am an article"/>);
 
@@ -18,58 +18,5 @@ describe('ArticleContent', () => {
 
     expect(screen.getByText('I am an em')).toBeInTheDocument();
     expect(screen.getByText('I am an em').tagName).toStrictEqual('EM');
-  });
-
-  it('highlights the terms within an assessment', async () => {
-    render(<ReviewContent isAssessment={true} content="I am an important article that is very convincing dslfkjhas"/>);
-
-    expect(screen.getByText('important')).toBeInTheDocument();
-    expect(screen.getByText('important').tagName).toStrictEqual('STRONG');
-
-    expect(screen.getByText('convincing')).toBeInTheDocument();
-    expect(screen.getByText('convincing').tagName).toStrictEqual('STRONG');
-  });
-
-  it('highlights the terms within an assessment, regardless of case', async () => {
-    render(<ReviewContent isAssessment={true} content="I am an ImPoRtAnt article that is very CONVINCING dslfkjhas"/>);
-
-    expect(screen.getByText('ImPoRtAnt')).toBeInTheDocument();
-    expect(screen.getByText('ImPoRtAnt').tagName).toStrictEqual('STRONG');
-
-    expect(screen.getByText('CONVINCING')).toBeInTheDocument();
-    expect(screen.getByText('CONVINCING').tagName).toStrictEqual('STRONG');
-  });
-
-  it.each(terms)('highlights the term: %s when review-content is an editors assessment', async (term) => {
-    render(<ReviewContent isAssessment={true} content={`the term is ${term} and should be bold`}/>);
-
-    expect(screen.getByText(term)).toBeInTheDocument();
-    expect(screen.getByText(term).tagName).toStrictEqual('STRONG');
-  });
-
-  it('does not highlight terms unless term is exact', async () => {
-    render(<ReviewContent isAssessment={true} content="I am an important article that is very convincingly good."/>);
-
-    expect(screen.queryByText('convincing')).not.toBeInTheDocument();
-  });
-
-  it('shows links to explain assessment terms', async () => {
-    render(<ReviewContent isAssessment={true} content="I have reviewed it, and it's good" peerReviewUrl="#"/>);
-
-    expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
-  });
-
-  it('displays DOI link', async () => {
-    render(<ReviewContent isAssessment={true} content='This is a thorough review of the article' peerReviewUrl='#' doi='10.7554/eLife.81090.sa0'/>);
-
-    expect(screen.getByText('https://doi.org/10.7554/eLife.81090.sa0')).toBeInTheDocument();
-    expect(screen.getByText('Read the peer reviews')).toBeInTheDocument();
-    expect(screen.getByText('About eLife assessments')).toBeInTheDocument();
-  });
-
-  it('displays DOI link containing sa1', async () => {
-    render(<ReviewContent content='The article is excellent and well-researched' doi='10.7554/eLife.81090.sa1'/>);
-    expect(screen.queryByText('.sa1', { exact: false })).toBeInTheDocument();
   });
 });

@@ -1,0 +1,57 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.term-list__title {
+  @include typography.term-title();
+  @include mixins.margin(8, "bottom");
+
+  color: var(--color-text-secondary-dark);
+}
+
+.term-description {
+  @include typography.body-alternative();
+  @include mixins.margin(8, "top");
+  @include mixins.margin(12, "bottom");
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.terms-list {
+  @include mixins.margin(0, "top");
+  @include mixins.margin(30, "bottom");
+  @include mixins.padding(0, "left");
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+
+.term {
+  @include typography.term-list-text();
+  @include mixins.padding(5 10);
+
+  align-content: center;
+  background-color: var(--color-button);
+  border: 0;
+  border-radius: 4px;
+  color: var(--color-text);
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+
+  &__highlighted {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
