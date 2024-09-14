@@ -118,5 +118,5 @@
     "typescript": "^5.0.0",
     "webpack": "^5.74.0"
   },
-  "packageManager": "yarn@4.4.1"
+  "packageManager": "yarn@4.5.0"
 }
