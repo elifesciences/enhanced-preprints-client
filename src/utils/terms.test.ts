@@ -24,10 +24,17 @@ describe('terms', () => {
       }));
     });
 
-    it('finds multiple term in a string', () => {
+    it('finds one tern in a string and does not preserve duplicates', () => {
+      const terms = findTerms('this test is very useful useful');
+      expect(terms).toStrictEqual(expect.objectContaining({
+        significance: ['useful'],
+      }));
+    });
+
+    it('finds multiple term in a string and preserves the order from content', () => {
       const terms = findTerms('this test is very useful useful and important');
       expect(terms).toStrictEqual(expect.objectContaining({
-        significance: ['important', 'useful'],
+        significance: ['useful', 'important'],
       }));
     });
 

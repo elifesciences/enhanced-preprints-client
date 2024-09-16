@@ -16,8 +16,16 @@ const termsRegex = (additionalTerms?: string[]): RegExp => new RegExp(`\\b(${[..
 
 export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
   const found = (content.match(termsRegex()) || []).map((term) => term.toLowerCase());
-  const significance = significanceTerms.filter((term) => found.includes(term));
-  const strength = strengthTerms.filter((term) => found.includes(term));
+  const significance: string[] = [];
+  const strength: string[] = [];
+
+  found.forEach((term) => {
+    if (significanceTerms.includes(term) && !significance.includes(term)) {
+      significance.push(term);
+    } else if (strengthTerms.includes(term) && !strength.includes(term)) {
+      strength.push(term);
+    }
+  });
 
   return {
     significance: significance.length > 0 ? significance : undefined,
