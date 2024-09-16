@@ -12,14 +12,20 @@ const strengthAlternativeTerms: Record<string, string[]> = {
   convincing: ['convincingly'],
 };
 
-const termsRegex = (additionalTerms?: string[]): RegExp => new RegExp(`\\b(${[...significanceTerms, ...strengthTerms, ...(additionalTerms || [])].join('|')})\\b`, 'gi');
+const termsRegex = (terms: string[]): RegExp => new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
 
 export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
-  const found = (content.match(termsRegex()) || []).map((term) => term.toLowerCase());
+  // Replace entries of alternative terms with the primary terms in content.
+  let mutableContent = content;
+  Object.entries(strengthAlternativeTerms).forEach(([term, alternatives]) => {
+    mutableContent = mutableContent.replaceAll(termsRegex(alternatives), term);
+  });
+
+  const contentSplit = Array.from(new Set(mutableContent.toLowerCase().replaceAll(/[^a-z]+/g, ',').split(',')));
   const significance: string[] = [];
   const strength: string[] = [];
 
-  found.forEach((term) => {
+  contentSplit.forEach((term) => {
     if (significanceTerms.includes(term) && !significance.includes(term)) {
       significance.push(term);
     } else if (strengthTerms.includes(term) && !strength.includes(term)) {
@@ -34,7 +40,7 @@ export const findTerms = (content: string): { significance?: string[], strength?
 };
 
 export const highlightTerms = (content: string): string => {
-  const toHighlight = Object.values(strengthAlternativeTerms).flat();
+  const toHighlight = [...significanceTerms, ...strengthTerms, ...Object.values(strengthAlternativeTerms).flat()];
 
   const regex = termsRegex(toHighlight);
 

@@ -42,7 +42,7 @@ export const ElifeAssessmentSingleTermListMultipleTerms: Story = {
 
 export const ElifeAssessmentMultipleTermList: Story = {
   args: {
-    content: 'This is a review that is exceptional and fundamental to everything',
+    content: 'This is a review that is convincingly exceptional and fundamental to everything',
     doi: '10.1101/123456',
   },
   play: async ({ canvasElement }) => {

@@ -17,6 +17,13 @@ describe('terms', () => {
       }));
     });
 
+    it('finds one term in a string from alternative terms', () => {
+      const terms = findTerms('very convincingly funny');
+      expect(terms).toStrictEqual(expect.objectContaining({
+        strength: ['convincing'],
+      }));
+    });
+
     it('finds one term in a string (case insensitive)', () => {
       const terms = findTerms('this test is very Useful');
       expect(terms).toStrictEqual(expect.objectContaining({
@@ -24,7 +31,7 @@ describe('terms', () => {
       }));
     });
 
-    it('finds one tern in a string and does not preserve duplicates', () => {
+    it('finds one term in a string and does not preserve duplicates', () => {
       const terms = findTerms('this test is very useful useful');
       expect(terms).toStrictEqual(expect.objectContaining({
         significance: ['useful'],
