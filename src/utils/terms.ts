@@ -15,8 +15,10 @@ const strengthAlternativeTerms: Record<string, string[]> = {
 const termsRegex = (terms: string[]): RegExp => new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
 
 export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
-  const significance = Array.from(new Set(content.match(termsRegex(significanceTerms)))).map((term) => term.toLowerCase());
-  const strength = Array.from(new Set(content.match(termsRegex(strengthTerms)))).map((term) => term.toLowerCase());
+  const significanceMatches = Array.from(new Set(content.match(termsRegex(significanceTerms)))).map((term) => term.toLowerCase());
+  const strengthMatches = Array.from(new Set(content.match(termsRegex(strengthTerms)))).map((term) => term.toLowerCase());
+  const significance = significanceTerms.filter((term) => significanceMatches.includes(term));
+  const strength = strengthTerms.filter((term) => strengthMatches.includes(term));
 
   return {
     significance: significance.length > 0 ? significance : undefined,

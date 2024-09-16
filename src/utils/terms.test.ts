@@ -27,7 +27,7 @@ describe('terms', () => {
     it('finds multiple term in a string', () => {
       const terms = findTerms('this test is very useful useful and important');
       expect(terms).toStrictEqual(expect.objectContaining({
-        significance: ['useful', 'important'],
+        significance: ['important', 'useful'],
       }));
     });
 
