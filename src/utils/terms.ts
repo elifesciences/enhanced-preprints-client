@@ -12,13 +12,12 @@ const strengthAlternativeTerms: Record<string, string[]> = {
   convincing: ['convincingly'],
 };
 
-const termsRegex = (terms: string[]): RegExp => new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
+const termsRegex = (additionalTerms?: string[]): RegExp => new RegExp(`\\b(${[...significanceTerms, ...strengthTerms, ...(additionalTerms || [])].join('|')})\\b`, 'gi');
 
 export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
-  const significanceMatches = Array.from(new Set(content.match(termsRegex(significanceTerms)))).map((term) => term.toLowerCase());
-  const strengthMatches = Array.from(new Set(content.match(termsRegex(strengthTerms)))).map((term) => term.toLowerCase());
-  const significance = significanceTerms.filter((term) => significanceMatches.includes(term));
-  const strength = strengthTerms.filter((term) => strengthMatches.includes(term));
+  const found = (content.match(termsRegex()) || []).map((term) => term.toLowerCase());
+  const significance = significanceTerms.filter((term) => found.includes(term));
+  const strength = strengthTerms.filter((term) => found.includes(term));
 
   return {
     significance: significance.length > 0 ? significance : undefined,
@@ -27,12 +26,7 @@ export const findTerms = (content: string): { significance?: string[], strength?
 };
 
 export const highlightTerms = (content: string): string => {
-  const toHighlight = [...significanceTerms, ...strengthTerms];
-
-  // eslint-disable-next-line no-restricted-syntax
-  for (const value of Object.values(strengthAlternativeTerms)) {
-    value.forEach((term) => toHighlight.push(term));
-  }
+  const toHighlight = Object.values(strengthAlternativeTerms).flat();
 
   const regex = termsRegex(toHighlight);
 
