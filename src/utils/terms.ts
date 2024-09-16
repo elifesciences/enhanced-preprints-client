@@ -12,20 +12,11 @@ const strengthAlternativeTerms: Record<string, string[]> = {
   convincing: ['convincingly'],
 };
 
-export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
-  const significance: string[] = [];
-  significanceTerms.forEach((term) => {
-    if (content.includes(term)) {
-      significance.push(term);
-    }
-  });
+const termsRegex = (terms: string[]): RegExp => new RegExp(`\\b(${terms.join('|')})\\b`, 'gi');
 
-  const strength: string[] = [];
-  strengthTerms.forEach((term) => {
-    if (content.includes(term)) {
-      strength.push(term);
-    }
-  });
+export const findTerms = (content: string): { significance?: string[], strength?: string[] } => {
+  const significance = Array.from(new Set(content.match(termsRegex(significanceTerms)))).map((term) => term.toLowerCase());
+  const strength = Array.from(new Set(content.match(termsRegex(strengthTerms)))).map((term) => term.toLowerCase());
 
   return {
     significance: significance.length > 0 ? significance : undefined,
@@ -41,7 +32,7 @@ export const highlightTerms = (content: string): string => {
     value.forEach((term) => toHighlight.push(term));
   }
 
-  const regex = new RegExp(`\\b(${toHighlight.join('|')})\\b`, 'gi');
+  const regex = termsRegex(toHighlight);
 
   return content.replaceAll(regex, '<strong class="highlighted-term" aria-label="Highlighted">$1</strong>');
 };

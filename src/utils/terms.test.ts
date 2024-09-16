@@ -17,6 +17,20 @@ describe('terms', () => {
       }));
     });
 
+    it('finds one term in a string (case insensitive)', () => {
+      const terms = findTerms('this test is very Useful');
+      expect(terms).toStrictEqual(expect.objectContaining({
+        significance: ['useful'],
+      }));
+    });
+
+    it('finds multiple term in a string', () => {
+      const terms = findTerms('this test is very useful useful and important');
+      expect(terms).toStrictEqual(expect.objectContaining({
+        significance: ['useful', 'important'],
+      }));
+    });
+
     it('finds both terms in a long paragraph', () => {
       // eslint-disable-next-line max-len
       const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, fundamental, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit solid, anim id est laborum.';
@@ -25,6 +39,22 @@ describe('terms', () => {
         significance: ['fundamental'],
         strength: ['solid'],
       }));
+    });
+
+    it('should handle no matches', () => {
+      const terms = findTerms('no terms here');
+      expect(terms).toStrictEqual({
+        significance: undefined,
+        strength: undefined,
+      });
+    });
+
+    it('should only find a match on a complete word', () => {
+      const terms = findTerms('this test is very usefully');
+      expect(terms).toStrictEqual({
+        significance: undefined,
+        strength: undefined,
+      });
     });
   });
 
