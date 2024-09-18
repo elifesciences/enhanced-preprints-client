@@ -1,4 +1,7 @@
 export const parameters = {
+  nextjs: {
+    appDirectory: true,
+  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   layout: 'fullscreen',
   controls: {

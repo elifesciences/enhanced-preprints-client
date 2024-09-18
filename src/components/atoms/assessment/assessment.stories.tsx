@@ -49,3 +49,17 @@ export const ElifeAssessmentMultipleTermList: Story = {
     await collapseTest(canvasElement);
   },
 };
+
+export const ElifeAssessmentPdfRoute: Story = {
+  args: {
+    content: 'This is a review that is convincingly exceptional and fundamental to everything',
+    doi: '10.1101/123456',
+  },
+  parameters: {
+    nextjs: {
+      navigation: {
+        pathname: 'route/pdf',
+      },
+    },
+  },
+};

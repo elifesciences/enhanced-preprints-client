@@ -3,6 +3,10 @@ import { metaData, peerReview, content } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
 import { contentToJsx } from '../../../../utils/content';
 
+jest.mock('next/navigation', () => ({
+  usePathname: () => '',
+}));
+
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {
     expect(() => render(<ArticleFullTextTab metrics={null} headings={[]} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();

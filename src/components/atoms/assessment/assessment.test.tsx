@@ -2,14 +2,21 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { significanceTerms, strengthTerms } from '../../../utils/terms';
 import { Assessment } from './assessment';
 
+let mockPathName = '';
+jest.mock('next/navigation', () => ({
+  usePathname: () => mockPathName,
+}));
+
 describe('Assessment', () => {
   it('renders with a simple string content', async () => {
+    mockPathName = '';
     render(<Assessment content="I am an article"/>);
 
     expect(screen.getByText('I am an article')).toBeInTheDocument();
   });
 
   it('renders with a complex html', async () => {
+    mockPathName = '';
     render(<Assessment content={`<h1>A title</h1>
 
 <em>I am an em<em>`}/>);
@@ -22,6 +29,7 @@ describe('Assessment', () => {
   });
 
   it('highlights the terms within the content', async () => {
+    mockPathName = '';
     render(<Assessment content="I am an important article that is very convincing dslfkjhas"/>);
 
     const highlightedElementImportant = document.querySelector('strong.highlighted-term:first-child');
@@ -34,6 +42,7 @@ describe('Assessment', () => {
   });
 
   it('highlights the terms within the content, regardless of case', async () => {
+    mockPathName = '';
     render(<Assessment content="I am an ImPoRtAnt article that is very CONVINCING dslfkjhas"/>);
 
     expect(screen.getByText('ImPoRtAnt')).toBeInTheDocument();
@@ -44,6 +53,7 @@ describe('Assessment', () => {
   });
 
   it.each([...strengthTerms, ...significanceTerms])('highlights the term: %s when review-content is an editors assessment', async (term) => {
+    mockPathName = '';
     render(<Assessment content={`the term is ${term} and should be bold`}/>);
 
     const highlightedElement = document.querySelector('strong.highlighted-term');
@@ -52,6 +62,7 @@ describe('Assessment', () => {
   });
 
   it('shows links to explain assessment terms', async () => {
+    mockPathName = '';
     render(<Assessment content="I have reviewed it, and it's good"/>);
 
     expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
@@ -59,6 +70,7 @@ describe('Assessment', () => {
   });
 
   it('has correct aria-expanded attribute values on click', async () => {
+    mockPathName = '';
     render(<Assessment content="I have reviewed it, and it's good"/>);
 
     const expandLinkBefore = screen.getByText('Read more about this assessment');
@@ -70,8 +82,26 @@ describe('Assessment', () => {
   });
 
   it('renders the DOI when it is passed in', async () => {
+    mockPathName = '';
     render(<Assessment content="I am an article" doi="12345-real-DOI"/>);
 
     expect(screen.getByText('https://doi.org/12345-real-DOI')).toBeInTheDocument();
+  });
+
+  describe('pdf route', () => {
+    it('does not render the expanded content', () => {
+      mockPathName = 'foo/bar/pdf';
+      render(<Assessment content="I have reviewed it, and it's good"/>);
+
+      expect(document.querySelector('.assessment-collapsable__hidden')).toBeInTheDocument();
+    });
+
+    it('does not render the expand link', () => {
+      mockPathName = 'foo/bar/pdf';
+      render(<Assessment content="I have reviewed it, and it's good"/>);
+
+      expect(screen.queryByText('Read more about this assessment')).not.toBeInTheDocument();
+      expect(screen.queryByText('Show less')).not.toBeInTheDocument();
+    });
   });
 });

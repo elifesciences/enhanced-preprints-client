@@ -6,10 +6,13 @@ import {
   findTerms, highlightTerms, significanceTerms, strengthTerms,
 } from '../../../utils/terms';
 import { Descriptors } from '../descriptors/descriptors';
+import { isPdfRoute } from '../../../utils/isPdfRoute';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
+
+  const isPdf = isPdfRoute();
 
   useEffect(() => setExpanded(false), []);
 
@@ -25,7 +28,7 @@ export const Assessment = ({ content, doi }: Props) => {
         {/* eslint-disable-next-line max-len */}
         <p className="assessment__fixed_text">During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance of the findings reported in the article (on a scale ranging from landmark to useful) and the strength of the evidence (on a scale ranging from exceptional to inadequate). <a href="https://elifesciences.org/inside-elife/db24dd46">Learn more about eLife assessments</a></p>
       </div>
-      {(expanded !== null) &&
+      {(expanded !== null && !isPdf) &&
       <span role="button" aria-controls="assessment" aria-expanded={expanded}
         className={`explanation_link ${expanded ? 'explanation_link__expanded' : ''}`}
         onClick={() => setExpanded(!expanded)}> {expanded ? 'Show less' : 'Read more about this assessment'}</span>}
