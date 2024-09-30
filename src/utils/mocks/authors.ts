@@ -15,6 +15,12 @@ export const authorNotes: AuthorNotes = [
     type: 'fn',
     text: 'Generic footnote',
   },
+  {
+    type: 'fn',
+    text: 'Another generic footnote',
+    id: 'fn2',
+    label: '💀'
+  },
 ];
 
 export const authors: Author[] = [
@@ -29,6 +35,10 @@ export const authors: Author[] = [
           type: 'corresp',
           rid: 'cor1',
         },
+        {
+          type: 'fn',
+          rid: 'fn2'
+        }
       ],
     },
   },
