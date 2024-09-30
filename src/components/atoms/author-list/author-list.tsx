@@ -5,12 +5,19 @@ import './author-list.scss';
 
 const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: AuthorNotes }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
+  const rids = author.meta?.notes.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
+  const notes = rids?.map((rid) => {
+    const note = authorNotes.find(({ id }) => id === rid);
+    return note ? { text: note.text, label: note.label } : undefined;
+  }).filter((note) => !!note);
+
+  const labels = notes?.map(({ label }) => label).join(', ');
 
   return (
     <li className="author-list__author">
       <h4 id={generateAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
-        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}</h4>
+        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`} {labels || ''}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
@@ -33,6 +40,11 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
             ORCID iD: {orcids.map(({ value }, index) => (<Fragment key={index}>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substring(value.lastIndexOf('/') + 1)}</a></Fragment>))}
           </div>
         )
+      }
+
+      {notes?.map((note, index) => (
+        <div className="author-list__footnote" key={index}>{`${note.label} ${note.text}`}</div>
+      ))
       }
     </li>
   );
