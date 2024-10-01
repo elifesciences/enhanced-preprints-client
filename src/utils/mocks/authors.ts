@@ -21,6 +21,12 @@ export const authorNotes: AuthorNotes = [
     id: 'fn2',
     label: '*'
   },
+  {
+    type: 'fn',
+    text: 'This is a second footnote',
+    id: 'fn3',
+    label: '†',
+  }
 ];
 
 export const authors: Author[] = [
@@ -54,7 +60,22 @@ export const authors: Author[] = [
   { givenNames: ['Wanda'], familyNames: ['Maximof'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Bucky'], familyNames: ['Barnes'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   {
-    givenNames: ['Barry'], familyNames: ['Allen'], honorificSuffix: 'Jr.', affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }],
+    givenNames: ['Barry'],
+    familyNames: ['Allen'],
+    honorificSuffix: 'Jr.',
+    affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }],
+    meta: {
+      notes: [
+        {
+          type: 'fn',
+          rid: 'fn2',
+        },
+        {
+          type: 'fn',
+          rid: 'fn3',
+        }
+      ]
+    }
   },
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   {

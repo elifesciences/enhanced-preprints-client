@@ -11,13 +11,13 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
     return note ? { text: note.text, label: note.label } : undefined;
   }).filter((note) => !!note);
 
-  const labels = notes?.map(({ label }) => label).join(', ');
+  const labels = notes?.map(({ label }) => label).join('');
 
   return (
     <li className="author-list__author">
       <h4 id={generateAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
-        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`} {labels || ''}</h4>
+        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}{labels || ''}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
