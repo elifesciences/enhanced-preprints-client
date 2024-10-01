@@ -42,6 +42,7 @@
 
 .author-list__orcids {
   @include typography.body();
+  @include mixins.padding(18, "bottom");
 }
 
 .author-list__orcids_link {
@@ -56,5 +57,4 @@
 .author-list__footnote {
   @include typography.body();
   @include typography.blockquote();
-  @include mixins.padding(18, "top");
 }
