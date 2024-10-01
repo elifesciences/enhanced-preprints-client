@@ -17,9 +17,9 @@ export const authorNotes: AuthorNotes = [
   },
   {
     type: 'fn',
-    text: 'Another generic footnote',
+    text: 'These authors contributed equally',
     id: 'fn2',
-    label: '💀'
+    label: '*'
   },
 ];
 

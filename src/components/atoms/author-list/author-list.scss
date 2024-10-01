@@ -56,4 +56,5 @@
 .author-list__footnote {
   @include typography.body();
   @include typography.blockquote();
+  @include mixins.padding(18, "top");
 }
