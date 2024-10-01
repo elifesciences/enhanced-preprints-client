@@ -43,7 +43,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
       }
 
       {notes?.map((note, index) => (
-        <div className="author-list__footnote" key={index}>{`${note.label} ${note.text}`}</div>
+        <div className="author-list__footnote" key={index}>{`${note?.label} ${note?.text}`}</div>
       ))
       }
     </li>
