@@ -1,6 +1,6 @@
-import { Author, AuthorNotes } from '../../types';
+import { Author, AuthorNotesData } from '../../types';
 
-export const authorNotes: AuthorNotes = [
+export const authorNotes: AuthorNotesData = [
   {
     type: 'corresp',
     id: 'cor1',
