@@ -1,0 +1,15 @@
+@use "../../../sass/mixins";
+@use "../../../sass/typography";
+
+.author-notes {
+  list-style: none;
+}
+
+.author-notes__list {
+  @include mixins.padding(0, "left");
+  @include typography.body();
+}
+
+.author-notes__title {
+  @include typography.heading-3();
+}

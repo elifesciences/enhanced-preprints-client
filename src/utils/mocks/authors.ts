@@ -19,14 +19,14 @@ export const authorNotes: AuthorNotes = [
     type: 'fn',
     text: 'These authors contributed equally',
     id: 'fn2',
-    label: '*'
+    label: '*',
   },
   {
     type: 'fn',
     text: 'This is a second footnote',
     id: 'fn3',
     label: '†',
-  }
+  },
 ];
 
 export const authors: Author[] = [
@@ -43,8 +43,8 @@ export const authors: Author[] = [
         },
         {
           type: 'fn',
-          rid: 'fn2'
-        }
+          rid: 'fn2',
+        },
       ],
     },
   },
@@ -73,9 +73,9 @@ export const authors: Author[] = [
         {
           type: 'fn',
           rid: 'fn3',
-        }
-      ]
-    }
+        },
+      ],
+    },
   },
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   {

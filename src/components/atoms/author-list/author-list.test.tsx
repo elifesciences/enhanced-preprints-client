@@ -94,7 +94,7 @@ describe('AuthorList', () => {
 
         expect(document.querySelector('.author-list__footnote')).not.toBeInTheDocument();
       });
-    })
+    });
 
     describe('author has footnote', () => {
       it('renders the label for the author-notes if there is a note', () => {
@@ -114,7 +114,6 @@ describe('AuthorList', () => {
 
         expect(screen.queryByText('Steve Rogers*')).toBeInTheDocument();
         expect(screen.queryByText('* These authors contributed equally')).toBeInTheDocument();
-
       });
 
       describe('multiple footnotes', () => {
@@ -132,5 +131,5 @@ describe('AuthorList', () => {
         });
       });
     });
-  })
+  });
 });
