@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import { Author, AuthorNotes } from '../../../types';
+import { Author, AuthorNotesData } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
 
-const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: AuthorNotes }) => {
+const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: AuthorNotesData }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
   const rids = author.meta?.notes.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
   const notes = rids?.map((rid) => {
@@ -52,7 +52,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
 
 export const AuthorList = ({
   authors, authorNotes,
-}: { authors: Author[], authorNotes: AuthorNotes }) => (
+}: { authors: Author[], authorNotes: AuthorNotesData }) => (
   <ol className="author-list">
     {authors.map((author, index) => <AuthorInformation author={author} authorNotes={authorNotes} key={index}/>)}
   </ol>
