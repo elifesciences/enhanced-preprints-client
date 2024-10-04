@@ -53,7 +53,10 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
 export const AuthorList = ({
   authors, authorNotes,
 }: { authors: Author[], authorNotes: AuthorNotesData }) => (
-  <ol className="author-list">
-    {authors.map((author, index) => <AuthorInformation author={author} authorNotes={authorNotes} key={index}/>)}
-  </ol>
+  <>
+    <h3 className="author-list__title">Author information</h3>
+    <ol className="author-list">
+      {authors.map((author, index) => <AuthorInformation author={author} authorNotes={authorNotes} key={index}/>)}
+    </ol>
+  </>
 );

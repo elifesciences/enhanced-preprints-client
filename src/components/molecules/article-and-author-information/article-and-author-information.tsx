@@ -15,7 +15,7 @@ export const ArticleAndAuthorInformation = ({
   <section>
     <h1 id="article-and-author-information" className="article-and-author-information__title">Article and author information</h1>
     { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
-    { authorNotes.length > 0 && <AuthorNotes authorNotes={authorNotes}/>}
+    { authorNotes.filter(({ id }) => id === undefined).length > 0 && <AuthorNotes authorNotes={authorNotes}/>}
     { versions.length > 0 && <VersionHistory versions={versions} /> }
     { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
   </section>

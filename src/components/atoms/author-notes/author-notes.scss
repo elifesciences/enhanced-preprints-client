@@ -11,5 +11,6 @@
 }
 
 .author-notes__title {
-  @include typography.heading-3();
+  @include typography.heading-base();
+  @include typography.font-size-and-vertical-height(20, 30);
 }
