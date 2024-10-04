@@ -66,7 +66,7 @@ describe('Assessment', () => {
     render(<Assessment content="I have reviewed it, and it's good"/>);
 
     expect(screen.getByText('Learn more about eLife assessments')).toBeInTheDocument();
-    expect(document.querySelector('.assessment__fixed_text a')).toHaveAttribute('href', 'https://elifesciences.org/inside-elife/db24dd46');
+    expect(document.querySelector('.assessment__fixed_text a')).toHaveAttribute('href', 'https://elifesciences.org/about/elife-assessments');
   });
 
   it('has correct aria-expanded attribute values on click', async () => {
