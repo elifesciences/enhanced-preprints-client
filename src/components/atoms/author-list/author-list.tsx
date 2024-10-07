@@ -11,7 +11,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
     return note ? { text: note.text, label: note.label } : undefined;
   }).filter((note) => !!note);
 
-  const labels = notes?.map(({ label }, index) => <sup key={index}>{label}</sup>);
+  const labels = notes?.filter(({ label }) => !!label).map(({ label }, index) => <sup aria-hidden="true" key={index}>{label}</sup>);
 
   return (
     <li className="author-list__author">
@@ -43,7 +43,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
       ))}
 
       {notes?.map((note, index) => (
-        <div className="author-list__footnote" key={index}><sup>{note?.label}</sup>{note?.text}</div>
+        <div className="author-list__footnote" key={index}>{note.label && <sup aria-hidden="true">{note.label}</sup>}{note.text}</div>
       ))
       }
     </li>
