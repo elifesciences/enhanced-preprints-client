@@ -1,4 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import {
+  getByText,
+  queryByText,
+  render,
+  screen,
+} from '@testing-library/react';
 import { ArticleAndAuthorInformation } from './article-and-author-information';
 import { authors, authorNotes, versionHistory } from '../../../utils/mocks';
 
@@ -27,9 +32,37 @@ describe('ArticleAndAuthorInformation', () => {
     expect(screen.getByText('Version history')).toBeInTheDocument();
   });
 
-  it('does not renders version history if no versions', () => {
+  it('does not render version history if no versions', () => {
     render(<ArticleAndAuthorInformation authors={[]} authorNotes={[]} versions={[]} />);
 
     expect(screen.queryByText('Version history')).not.toBeInTheDocument();
+  });
+
+  it('renders author notes', () => {
+    render(<ArticleAndAuthorInformation authors={[]} authorNotes={authorNotes} versions={[]} />);
+
+    expect(screen.getByText('Author Notes')).toBeInTheDocument();
+  });
+
+  it('renders only orphaned author notes', () => {
+    render(<ArticleAndAuthorInformation authors={authors} authorNotes={authorNotes} versions={[]} />);
+    const authorNotesElement = screen.getByText('Author Notes').parentElement;
+
+    expect(authorNotesElement).toBeInTheDocument();
+    expect(getByText(authorNotesElement!, 'Generic footnote')).toBeInTheDocument();
+    expect(getByText(authorNotesElement!, 'Generic footnote with an id')).toBeInTheDocument();
+    expect(queryByText(authorNotesElement!, 'These authors contributed equally')).not.toBeInTheDocument();
+  });
+
+  it('does not render author notes section if no notes', () => {
+    render(<ArticleAndAuthorInformation authors={[]} authorNotes={[]} versions={[]} />);
+
+    expect(screen.queryByText('Author Notes')).not.toBeInTheDocument();
+  });
+
+  it('does not render author notes section if no unclaimed notes', () => {
+    render(<ArticleAndAuthorInformation authors={authors} authorNotes={[authorNotes[0]]} versions={[]} />);
+
+    expect(screen.queryByText('Author Notes')).not.toBeInTheDocument();
   });
 });

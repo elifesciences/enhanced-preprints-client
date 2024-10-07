@@ -95,6 +95,7 @@ describe('AuthorList', () => {
 
         expect(screen.queryByText('Elliot Kemp')).toBeInTheDocument();
       });
+
       it('does not display a footnote', () => {
         render(<AuthorList authors={[authors[2]]} authorNotes={[]} />);
 

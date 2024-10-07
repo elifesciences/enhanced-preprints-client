@@ -32,6 +32,11 @@ export const authorNotes: AuthorNotesData = [
     text: 'This footnote has no label',
     id: 'fn4',
   },
+  {
+    type: 'fn',
+    text: 'Generic footnote with an id',
+    id: 'n1',
+  },
 ];
 
 export const authors: Author[] = [

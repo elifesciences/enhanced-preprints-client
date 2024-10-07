@@ -11,12 +11,17 @@ export const ArticleAndAuthorInformation = ({
   license,
   publishedYear,
   versions,
-}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, publishedYear?: number }) => (
-  <section>
-    <h1 id="article-and-author-information" className="article-and-author-information__title">Article and author information</h1>
-    { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
-    { authorNotes.filter(({ id }) => id === undefined).length > 0 && <AuthorNotes authorNotes={authorNotes}/>}
-    { versions.length > 0 && <VersionHistory versions={versions} /> }
-    { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
-  </section>
-);
+}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, publishedYear?: number }) => {
+  const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes.map((note) => note.rid)).flat();
+  const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
+
+  return (
+    <section>
+      <h1 id="article-and-author-information" className="article-and-author-information__title">Article and author information</h1>
+      { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
+      { orphanedAuthorNotes.length > 0 && <AuthorNotes authorNotes={orphanedAuthorNotes} /> }
+      { versions.length > 0 && <VersionHistory versions={versions} /> }
+      { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
+    </section>
+  );
+};
