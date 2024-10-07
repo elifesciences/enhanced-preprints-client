@@ -1,6 +1,7 @@
 import './assessment.scss';
 import '../../../i18n';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TermsList } from '../terms-list/terms-list';
 import {
   findTerms, highlightTerms, significanceTerms, strengthTerms,
@@ -10,6 +11,8 @@ import { isPdfRoute } from '../../../utils/isPdfRoute';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {
+  const { t } = useTranslation();
+
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   const isPdf = isPdfRoute();
@@ -25,8 +28,7 @@ export const Assessment = ({ content, doi }: Props) => {
       <div className={`assessment-collapsable__${expanded !== false ? 'shown' : 'hidden'}`}>
         { (significance && significance.length > 0) && <TermsList title="Significance of findings" terms={significanceTerms} selectedTerm={significance} /> }
         { (strength && strength.length > 0) && <TermsList title="Strength of evidence" terms={strengthTerms} selectedTerm={findTerms(content).strength || []} /> }
-        {/* eslint-disable-next-line max-len */}
-        <p className="assessment__fixed_text">During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance of the findings reported in the article (on a scale ranging from landmark to useful) and the strength of the evidence (on a scale ranging from exceptional to inadequate). <a href="https://elifesciences.org/about/elife-assessments">Learn more about eLife assessments</a></p>
+        <p className="assessment__fixed_text">{t('about_assessments_description')} <a href={t('about_assessments_url')}>{t('about_assessments')}</a></p>
       </div>
       {(expanded !== null && !isPdf) &&
       <span role="button" aria-controls="assessment" aria-expanded={expanded}
