@@ -1,6 +1,6 @@
-import { Author, AuthorNotes } from '../../types';
+import { Author, AuthorNotesData } from '../../types';
 
-export const authorNotes: AuthorNotes = [
+export const authorNotes: AuthorNotesData = [
   {
     type: 'corresp',
     id: 'cor1',
@@ -15,6 +15,23 @@ export const authorNotes: AuthorNotes = [
     type: 'fn',
     text: 'Generic footnote',
   },
+  {
+    type: 'fn',
+    text: 'These authors contributed equally',
+    id: 'fn2',
+    label: '*',
+  },
+  {
+    type: 'fn',
+    text: 'This is a second footnote',
+    id: 'fn3',
+    label: '†',
+  },
+  {
+    type: 'fn',
+    text: 'This footnote has no label',
+    id: 'fn4',
+  },
 ];
 
 export const authors: Author[] = [
@@ -22,12 +39,17 @@ export const authors: Author[] = [
     givenNames: ['Steve'],
     familyNames: ['Rogers'],
     affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }],
+    emails: ['steve@rogers.avengers'],
     identifiers: [{ type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }],
     meta: {
       notes: [
         {
           type: 'corresp',
           rid: 'cor1',
+        },
+        {
+          type: 'fn',
+          rid: 'fn2',
         },
       ],
     },
@@ -44,7 +66,22 @@ export const authors: Author[] = [
   { givenNames: ['Wanda'], familyNames: ['Maximof'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   { givenNames: ['Bucky'], familyNames: ['Barnes'], affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }] },
   {
-    givenNames: ['Barry'], familyNames: ['Allen'], honorificSuffix: 'Jr.', affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }],
+    givenNames: ['Barry'],
+    familyNames: ['Allen'],
+    honorificSuffix: 'Jr.',
+    affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }],
+    meta: {
+      notes: [
+        {
+          type: 'fn',
+          rid: 'fn2',
+        },
+        {
+          type: 'fn',
+          rid: 'fn3',
+        },
+      ],
+    },
   },
   { givenNames: ['Jesse'], familyNames: ['Quick'], affiliations: [{ name: 'Justice League', address: { addressCountry: 'Star City' } }] },
   {
@@ -57,6 +94,10 @@ export const authors: Author[] = [
         {
           type: 'corresp',
           rid: 'cor1',
+        },
+        {
+          type: 'fn',
+          rid: 'fn4',
         },
       ],
     },

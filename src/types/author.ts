@@ -23,7 +23,7 @@ export type Author = {
   },
 };
 
-export type AuthorNotes = {
+export type AuthorNotesData = {
   type: string,
   text: string,
   id?: string,
