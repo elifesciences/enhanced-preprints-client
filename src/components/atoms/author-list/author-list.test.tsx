@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { getByText, render, screen } from '@testing-library/react';
 import { Author } from '../../../types';
 import { AuthorList } from './author-list';
 import { generateAuthorId } from '../../../utils/generators';
@@ -7,7 +7,7 @@ import { authors, authorNotes } from '../../../utils/mocks';
 const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
-const getByTextMather = (text: string) => (_: any, element: Element | null) => element?.textContent === text;
+const getByTextMatcher = (text: string) => (_: any, element: Element | null) => element?.textContent === text;
 
 describe('AuthorList', () => {
   it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
@@ -53,12 +53,16 @@ describe('AuthorList', () => {
   it('renders the corresponding statements', () => {
     render(<AuthorList authors={authors} authorNotes={authorNotes} />);
 
-    expect(screen.getByText('Steve Rogers', { exact: false }).nextSibling?.nextSibling?.nextSibling).toHaveTextContent('For correspondence: steve@rogers.avengers');
-    expect(screen.getByText('Steve Rogers', { exact: false }).nextSibling?.nextSibling?.nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
-    expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling).toHaveTextContent('For correspondence: kara.danvers@katco.com');
-    expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
-    expect(screen.getByText('Kal El').nextSibling?.nextSibling).toHaveTextContent('For correspondence: clark.kent@dailyplanet.com');
-    expect(screen.getByText('Kal El').nextSibling?.nextSibling?.nextSibling).toHaveTextContent('For questions about the multiverse: clark.kent@dailyplanet.com');
+    const steveElement = screen.getByText('Steve Rogers').parentElement;
+    const karaElement = screen.getByText('Kara Zor-el').parentElement;
+    const kalElement = screen.getByText('Kal El').parentElement;
+
+    expect(getByText(steveElement!, getByTextMatcher('For correspondence: steve@rogers.avengers'))).toBeInTheDocument();
+    expect(getByText(steveElement!, getByTextMatcher('FAO: steve@rogers.avengers and kara.danvers@katco.com'))).toBeInTheDocument();
+    expect(getByText(karaElement!, getByTextMatcher('For correspondence: kara.danvers@katco.com'))).toBeInTheDocument();
+    expect(getByText(karaElement!, getByTextMatcher('FAO: steve@rogers.avengers and kara.danvers@katco.com'))).toBeInTheDocument();
+    expect(getByText(kalElement!, getByTextMatcher('For correspondence: clark.kent@dailyplanet.com'))).toBeInTheDocument();
+    expect(getByText(kalElement!, getByTextMatcher('For questions about the multiverse: clark.kent@dailyplanet.com'))).toBeInTheDocument();
   });
 
   it('does not render other identifiers', () => {
@@ -92,7 +96,7 @@ describe('AuthorList', () => {
         expect(screen.queryByText('Elliot Kemp')).toBeInTheDocument();
       });
       it('does not display a footnote', () => {
-        render(<AuthorList authors={[authors[1]]} authorNotes={[]} />);
+        render(<AuthorList authors={[authors[2]]} authorNotes={[]} />);
 
         expect(document.querySelector('.author-list__footnote')).not.toBeInTheDocument();
       });
@@ -102,20 +106,20 @@ describe('AuthorList', () => {
       it('renders the label for the author-notes if there is a note', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.getByText(getByTextMather('Steve Rogers*'))).toBeInTheDocument();
+        expect(screen.getByText(getByTextMatcher('Steve Rogers*'))).toBeInTheDocument();
       });
 
       it('displays the footnote passed in', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMatcher('*These authors contributed equally'))).toBeInTheDocument();
       });
 
       it('uses the same label for the author title and footnote', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.queryByText(getByTextMather('Steve Rogers*'))).toBeInTheDocument();
-        expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMatcher('Steve Rogers*'))).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMatcher('*These authors contributed equally'))).toBeInTheDocument();
       });
 
       it('should display footnotes without labels', () => {
@@ -129,14 +133,14 @@ describe('AuthorList', () => {
         it('displays multiple labels', () => {
           render(<AuthorList authors={[authors[7]]} authorNotes={authorNotes} />);
 
-          expect(screen.queryByText(getByTextMather('Barry Allen Jr.*†'))).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMatcher('Barry Allen Jr.*†'))).toBeInTheDocument();
         });
 
         it('displays multiple footnotes', () => {
           render(<AuthorList authors={[authors[7]]} authorNotes={authorNotes} />);
 
-          expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
-          expect(screen.queryByText(getByTextMather('†This is a second footnote'))).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMatcher('*These authors contributed equally'))).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMatcher('†This is a second footnote'))).toBeInTheDocument();
         });
       });
     });
