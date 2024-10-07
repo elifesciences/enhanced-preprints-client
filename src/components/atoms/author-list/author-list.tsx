@@ -11,17 +11,25 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
     return note ? { text: note.text, label: note.label } : undefined;
   }).filter((note) => !!note);
 
-  const labels = notes?.map(({ label }) => label).join('');
+  const labels = notes?.map(({ label }, index) => <sup key={index}>{label}</sup>);
 
   return (
     <li className="author-list__author">
       <h4 id={generateAuthorId(author)} className="author-list__author_name">{author.type === 'Organization' ?
         author.name :
-        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}{labels || ''}</h4>
+        `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}${author.honorificSuffix ? ` ${author.honorificSuffix}` : ''}`}{labels}</h4>
       {
         author.affiliations && (
           <div className="author-list__affiliations">
             {author.affiliations.map(({ name, address }) => `${name}${address ? `, ${address.addressCountry}` : ''}`).join(', ')}
+          </div>
+        )
+      }
+
+      {
+        orcids.length > 0 && (
+          <div className="author-list__orcids">
+            ORCID iD: {orcids.map(({ value }, index) => (<Fragment key={index}>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substring(value.lastIndexOf('/') + 1)}</a></Fragment>))}
           </div>
         )
       }
@@ -34,16 +42,8 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
         ))
       ))}
 
-      {
-        orcids.length > 0 && (
-          <div className="author-list__orcids">
-            ORCID iD: {orcids.map(({ value }, index) => (<Fragment key={index}>{!!index && ', '}<a className="author-list__orcids_link" href={value}>{value.substring(value.lastIndexOf('/') + 1)}</a></Fragment>))}
-          </div>
-        )
-      }
-
       {notes?.map((note, index) => (
-        <div className="author-list__footnote" key={index}>{`${note?.label} ${note?.text}`}</div>
+        <div className="author-list__footnote" key={index}><sup>{note?.label}</sup>{note?.text}</div>
       ))
       }
     </li>

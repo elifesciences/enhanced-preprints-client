@@ -34,6 +34,7 @@ export const authors: Author[] = [
     givenNames: ['Steve'],
     familyNames: ['Rogers'],
     affiliations: [{ name: 'Avengers', address: { addressCountry: 'New York' } }],
+    emails: ['steve@rogers.avengers'],
     identifiers: [{ type: 'PropertyValue', propertyID: 'https://registry.identifiers.org/registry/orcid', value: 'http://orcid.org/0000-0002-1234-5678' }, { type: 'orcid', value: 'http://orcid.org/0000-0002-1234-5679' }],
     meta: {
       notes: [
