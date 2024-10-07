@@ -7,6 +7,7 @@ import { authors, authorNotes } from '../../../utils/mocks';
 const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
 const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
 const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
+const getByTextMather = (text: string) => (_: any, element: Element | null) => element?.textContent === text;
 
 describe('AuthorList', () => {
   it.each(authors.filter(({ type }) => type !== 'Organization').map(getName))('renders each author in the list: %s', (name) => {
@@ -43,7 +44,7 @@ describe('AuthorList', () => {
   it('renders the author\'s email', () => {
     render(<AuthorList authors={authors} authorNotes={[]} />);
 
-    expect(screen.queryByText('steve@rogers.avengers')).not.toBeInTheDocument();
+    expect(screen.getByText('steve@rogers.avengers')).toBeInTheDocument();
     expect(screen.getByText('elliot.kemp@x-force.norwich, kemp.elliot@x-force.norwich')).toBeInTheDocument();
     expect(screen.getByText('kara.danvers@katco.com')).toBeInTheDocument();
     expect(screen.getByText('clark.kent@dailyplanet.com')).toBeInTheDocument();
@@ -52,7 +53,8 @@ describe('AuthorList', () => {
   it('renders the corresponding statements', () => {
     render(<AuthorList authors={authors} authorNotes={authorNotes} />);
 
-    expect(screen.getByText('Steve Rogers', { exact: false }).nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
+    expect(screen.getByText('Steve Rogers', { exact: false }).nextSibling?.nextSibling?.nextSibling).toHaveTextContent('For correspondence: steve@rogers.avengers');
+    expect(screen.getByText('Steve Rogers', { exact: false }).nextSibling?.nextSibling?.nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
     expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling).toHaveTextContent('For correspondence: kara.danvers@katco.com');
     expect(screen.getByText('Kara Zor-el').nextSibling?.nextSibling?.nextSibling).toHaveTextContent('FAO: steve@rogers.avengers and kara.danvers@katco.com');
     expect(screen.getByText('Kal El').nextSibling?.nextSibling).toHaveTextContent('For correspondence: clark.kent@dailyplanet.com');
@@ -100,34 +102,34 @@ describe('AuthorList', () => {
       it('renders the label for the author-notes if there is a note', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.queryByText('Steve Rogers*')).toBeInTheDocument();
+        expect(screen.getByText(getByTextMather('Steve Rogers*'))).toBeInTheDocument();
       });
 
       it('displays the footnote passed in', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.queryByText('* These authors contributed equally')).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
       });
 
       it('uses the same label for the author title and footnote', () => {
         render(<AuthorList authors={[authors[0]]} authorNotes={authorNotes} />);
 
-        expect(screen.queryByText('Steve Rogers*')).toBeInTheDocument();
-        expect(screen.queryByText('* These authors contributed equally')).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMather('Steve Rogers*'))).toBeInTheDocument();
+        expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
       });
 
       describe('multiple footnotes', () => {
         it('displays multiple labels', () => {
           render(<AuthorList authors={[authors[7]]} authorNotes={authorNotes} />);
 
-          expect(screen.queryByText('Barry Allen Jr.*†')).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMather('Barry Allen Jr.*†'))).toBeInTheDocument();
         });
 
         it('displays multiple footnotes', () => {
           render(<AuthorList authors={[authors[7]]} authorNotes={authorNotes} />);
 
-          expect(screen.queryByText('* These authors contributed equally')).toBeInTheDocument();
-          expect(screen.queryByText('† This is a second footnote')).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
+          expect(screen.queryByText(getByTextMather('†This is a second footnote'))).toBeInTheDocument();
         });
       });
     });
