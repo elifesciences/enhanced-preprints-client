@@ -12,6 +12,18 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
   }).filter((note) => !!note);
 
   const labels = notes?.filter(({ label }) => !!label).map(({ label }, index) => <sup aria-hidden="true" key={index}>{label}</sup>);
+  const email = author.emails && <><strong className="author-list__email--heading">For correspondence:</strong> {author.emails.join(', ')}</>;
+  const footNotes = [
+    ...(email ? [email] : []),
+    ...(author.meta?.notes ?? []).filter((note) => note.type === 'corresp').map((note) => (
+      authorNotes.filter((authorNote) => authorNote.type === 'corresp' && authorNote.id === note.rid).map((authorNote) => (
+        <>{authorNote.text}</>
+      ))
+    )),
+    ...(notes ?? []).map((note) => (
+      <>{note.label && <sup aria-hidden="true">{note.label}</sup>}{note.text}</>
+    )),
+  ];
 
   return (
     <li className="author-list__author">
@@ -34,17 +46,10 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
         )
       }
 
-      {author.emails ? <div className="author-list__email"><h5 className="author-list__email--heading">For correspondence:</h5> <span className="author-list__email">{author.emails.join(', ')}</span></div> : '' }
-
-      {author.meta?.notes.filter((note) => note.type === 'corresp').map((note, index) => (
-        authorNotes.filter((authorNote) => authorNote.type === 'corresp' && authorNote.id === note.rid).map((authorNote) => (
-          <div className="author-list__corresp" key={index}>{authorNote.text}</div>
-        ))
-      ))}
-
-      {notes?.map((note, index) => (
-        <div className="author-list__footnote" key={index}>{note.label && <sup aria-hidden="true">{note.label}</sup>}{note.text}</div>
-      ))
+      { footNotes &&
+        <ul>
+          {footNotes.map((element, index) => (<li className="author-list__footnote" key={index}>{element}</li>)) }
+        </ul>
       }
     </li>
   );
