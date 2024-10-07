@@ -18,28 +18,10 @@
   @include mixins.margin(36, "bottom");
 }
 
-.author-list__email {
-  @include mixins.margin(24, "bottom");
-  @include typography.body();
-
-  .author-list__email--heading {
-    @include typography.font-size-and-vertical-height(16, 24);
-
-    display: inline;
-  }
-}
-
-.author-list__corresp {
-  @include mixins.margin(24, "bottom");
-  @include typography.body();
-}
-
 .author-list__author_name {
-  @include mixins.padding(12, "bottom");
+  @include mixins.margin(12, "bottom");
   @include typography.heading-base();
   @include typography.font-size-and-vertical-height(16, 24);
-
-  margin: 0;
 }
 
 .author-list__affiliations {
@@ -48,8 +30,8 @@
 }
 
 .author-list__orcids {
+  @include mixins.margin(18, "bottom");
   @include typography.body();
-  @include mixins.padding(18, "bottom");
 }
 
 .author-list__orcids_link {
@@ -59,6 +41,13 @@
   &:hover {
     color: var(--color-primary-dark);
   }
+}
+
+.author-list__footnotes_list {
+  @include mixins.margin(0);
+  @include mixins.padding(0);
+
+  list-style: none;
 }
 
 .author-list__footnote {

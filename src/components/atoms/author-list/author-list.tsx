@@ -46,9 +46,9 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
         )
       }
 
-      { footNotes &&
-        <ul>
-          {footNotes.map((element, index) => (<li className="author-list__footnote" key={index}>{element}</li>)) }
+      { footNotes.length > 0 &&
+        <ul className="author-list__footnotes_list">
+          {footNotes.map((element, index) => <li className="author-list__footnote" key={index}>{element}</li>) }
         </ul>
       }
     </li>
