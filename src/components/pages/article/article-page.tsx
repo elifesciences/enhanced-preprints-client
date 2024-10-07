@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
-import { MetaData, TimelineEvent } from '../../../types';
+import { MetaData, Metrics, TimelineEvent } from '../../../types';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
-import { contentToText } from '../../../utils/content/content-to-text';
+import { contentToText } from '../../../utils/content';
 import { CitationData } from '../../atoms/citation/citation';
 import '../../../i18n';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
-import { Metrics } from '../../../types/enhanced-article';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 
 export type ArticleStatusProps = {
