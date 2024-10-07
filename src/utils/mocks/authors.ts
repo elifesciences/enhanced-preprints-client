@@ -27,6 +27,11 @@ export const authorNotes: AuthorNotesData = [
     id: 'fn3',
     label: '†',
   },
+  {
+    type: 'fn',
+    text: 'This footnote has no label',
+    id: 'fn4',
+  },
 ];
 
 export const authors: Author[] = [
@@ -89,6 +94,10 @@ export const authors: Author[] = [
         {
           type: 'corresp',
           rid: 'cor1',
+        },
+        {
+          type: 'fn',
+          rid: 'fn4',
         },
       ],
     },

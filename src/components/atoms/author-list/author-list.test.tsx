@@ -118,6 +118,13 @@ describe('AuthorList', () => {
         expect(screen.queryByText(getByTextMather('*These authors contributed equally'))).toBeInTheDocument();
       });
 
+      it('should display footnotes without labels', () => {
+        render(<AuthorList authors={[authors[9]]} authorNotes={authorNotes} />);
+
+        expect(screen.queryByText('This footnote has no label')).toBeInTheDocument();
+        expect(document.getElementsByTagName('SUP')).toHaveLength(0);
+      });
+
       describe('multiple footnotes', () => {
         it('displays multiple labels', () => {
           render(<AuthorList authors={[authors[7]]} authorNotes={authorNotes} />);
