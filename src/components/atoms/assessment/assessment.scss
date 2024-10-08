@@ -4,7 +4,7 @@
 
 .assessment {
   @include mixins.margin(0 -24 36);
-  @include mixins.padding(24);
+  @include mixins.padding(36 24);
   @include typography.assessment-body();
 
   .highlighted-term {
@@ -58,6 +58,10 @@
 
 .assessment__body {
   @include mixins.margin(12, "bottom");
+
+  p:first-of-type {
+    @include mixins.margin(0, "top");
+  }
 
   p:last-of-type {
     @include mixins.margin(0, "bottom");
