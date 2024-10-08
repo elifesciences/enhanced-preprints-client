@@ -4,9 +4,11 @@ import { ReactNode } from 'react';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+import { ContextProvider, useCreatedContext } from '../components/layouts/context-provider';
 
-const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
-  switch (siteName) {
+const LayoutSelector = ({ children }: { children: ReactNode }) => {
+  const { storedSiteName } = useCreatedContext();
+  switch (storedSiteName) {
     case 'biophysics-colab':
       return (
         <BiophysicsColabLayout>
@@ -74,9 +76,11 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <LayoutSelector siteName={pageProps.siteName}>
-        <Component {...pageProps} />
-      </LayoutSelector>
+      <ContextProvider siteName={pageProps.siteName}>
+        <LayoutSelector>
+          <Component {...pageProps} />
+        </LayoutSelector>
+      </ContextProvider>
     </>
   );
 }

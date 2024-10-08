@@ -17,5 +17,4 @@ export const DefaultLayout = ({ children }: Props) => (
     </div>
     <SiteFooter/>
   </>
-
 );
