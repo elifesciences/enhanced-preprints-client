@@ -4,7 +4,7 @@
 
 .assessment {
   @include mixins.margin(0 -24);
-  @include mixins.padding(24);
+  @include mixins.padding(48);
   @include typography.assessment-body();
 
   .highlighted-term {
@@ -42,12 +42,9 @@
 
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(0 -48);
-    @include mixins.padding(36 48);
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.padding(24 36);
-
     margin: 0;
   }
 
