@@ -11803,20 +11803,20 @@ __metadata:
   linkType: hard
 
 "html-react-parser@npm:^5.1.10":
-  version: 5.1.17
-  resolution: "html-react-parser@npm:5.1.17"
+  version: 5.1.18
+  resolution: "html-react-parser@npm:5.1.18"
   dependencies:
     domhandler: "npm:5.0.3"
     html-dom-parser: "npm:5.0.10"
     react-property: "npm:2.0.2"
-    style-to-js: "npm:1.1.15"
+    style-to-js: "npm:1.1.16"
   peerDependencies:
     "@types/react": 0.14 || 15 || 16 || 17 || 18
     react: 0.14 || 15 || 16 || 17 || 18
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10c0/44d491e4de028e51fc2cfdd2e78a322684f35f5ba84df43c67d97bfefa815e5ff0f9a0f454467f280b221b26f99f2baf7b101c5231435d46374c26503826cf67
+  checksum: 10c0/22b69abdfe8211375a2522e39b888b6b2bce220e10c6c1ba4251aac9e6709873216d0082230f98a80ef3fba57f802e6334bbf664d3cb755a7a603bc6160fbe6f
   languageName: node
   linkType: hard
 
@@ -17500,12 +17500,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"style-to-js@npm:1.1.15":
-  version: 1.1.15
-  resolution: "style-to-js@npm:1.1.15"
+"style-to-js@npm:1.1.16":
+  version: 1.1.16
+  resolution: "style-to-js@npm:1.1.16"
   dependencies:
     style-to-object: "npm:1.0.8"
-  checksum: 10c0/097b63192920918740dd4bb3df790a0031285059a7a5184a34b1988543a2c395ff8050e313efb72f8315aa0f272e2308f0a788f7efab747ae4d65d53e6d59647
+  checksum: 10c0/578a4dff804539ec7e64d3cc8d327540befb9ad30e3cd0b6b0392f93f793f3a028f90084a9aaff088bffb87818fa2c6c153f0df576f61f9ab0b0938b582bcac7
   languageName: node
   linkType: hard
 
