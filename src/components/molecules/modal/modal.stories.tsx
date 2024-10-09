@@ -104,3 +104,27 @@ export const ModalCite: Story = {
     expect(await canvas.findByText('Cite this article')).not.toBeVisible();
   },
 };
+
+export const ModalCiteWithWarning: Story = {
+  args: {
+    modalTitle: 'Cite this article',
+    modalLayout: 'cite',
+    modalWarning: 'Warning text',
+    children: (<>
+      <Citation citation={citation} />
+      <Clipboard text={formatReference(references[0])} />
+    </>),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await canvas.findByText('Modal Link');
+
+    expect(await canvas.findByText('Warning text')).not.toBeVisible();
+
+    await userEvent.click(canvas.getByText('Modal Link'));
+    expect(canvas.getByText('Warning text')).toBeVisible();
+
+    await userEvent.click(canvas.getByText('Close'));
+    expect(await canvas.findByText('Warning text')).not.toBeVisible();
+  },
+};

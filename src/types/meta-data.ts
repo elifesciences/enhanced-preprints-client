@@ -1,5 +1,5 @@
 import { Content } from './content';
-import { Author } from './author';
+import { Author, AuthorNotesData } from './author';
 import { Reference } from './reference';
 import { PeerReview } from './peer-review';
 import { Heading } from './enhanced-article';
@@ -20,6 +20,7 @@ export type MetaData = {
   eLocationId?: string,
   license?: string,
   versionHistory: VersionHistoryItem[],
+  authorNotes: AuthorNotesData,
 };
 
 export type VersionedMetaData = {

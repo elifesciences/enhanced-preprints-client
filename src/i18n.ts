@@ -15,7 +15,11 @@ const resources = {
       // Defaults:
       reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
       heading_assessment: '$t(publisher_short) assessment',
-      about_assessments: 'About $t(publisher_short) assessments',
+      about_assessments_description: (
+        'During the peer-review process the editor and reviewers write an assessment that summarises the significance'
+        + ' of the findings reported in the article and the strength of the evidence.'
+      ),
+      about_assessments: 'Learn more about $t(publisher_short) assessments',
       status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
       status_description_revised: 'Revised by authors after peer review.',
       status_about: 'About $t(publisher_short)\'s process',
@@ -33,8 +37,13 @@ const resources = {
       twitter_handle: '@elife',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
-      process_url: 'https://elifesciences.org/peer-review-process',
-      about_assessments_url: 'https://elifesciences.org/inside-elife/db24dd46',
+      process_url: 'https://elifesciences.org/about/peer-review',
+      about_assessments_description: (
+        'During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance'
+        + ' of the findings reported in the article (on a scale ranging from landmark to useful) and the strength of the'
+        + ' evidence (on a scale ranging from exceptional to inadequate).'
+      ),
+      about_assessments_url: 'https://elifesciences.org/about/elife-assessments',
       reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
       related_intro_collection: 'Part of {{type}}',
       related_intro_podcastChapterEpisode: 'Discussed in {{type}}',

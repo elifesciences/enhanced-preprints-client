@@ -60,7 +60,12 @@ export const ArticleStatus = ({
       </div>
       <Socials doi={doi} title={title} />
     </Modal>
-    <Modal modalTitle={'Cite this article'} open={showCiteModal} onModalClose={() => setShowCiteModal(false)} modalLayout="cite">
+    <Modal
+      modalTitle={'Cite this article'}
+      open={showCiteModal}
+      onModalClose={() => setShowCiteModal(false)}
+      modalLayout="cite"
+    >
       <Citation citation={citation} />
       <ol className="cite-downloads__list">
         <li className="cite-downloads__list-item">

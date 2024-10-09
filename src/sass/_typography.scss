@@ -24,6 +24,13 @@
   font-family: var(--font-family-primary);
 }
 
+@mixin term-list-text() {
+  @include font-size-and-vertical-height(12, 16);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
 @mixin expansion-text() {
   color: var(--color-primary);
   cursor: pointer;
@@ -126,10 +133,25 @@
   font-family: var(--font-family-primary);
 }
 
+@mixin assessment-body() {
+  @include font-size-and-vertical-height(16, 28);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+}
+
 @mixin navigation-heading() {
   @include font-size-and-vertical-height(14, 26);
 
   color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+}
+
+@mixin term-title() {
+  @include font-size-and-vertical-height(12, 24);
+
+  color: var(--color-text-secondary-dark);
   font-family: var(--font-family-primary);
   font-weight: 400;
 }
@@ -181,6 +203,26 @@
   :visited {
     color: var(--color-primary);
   }
+}
+
+@mixin terms-link-text() {
+  @include font-size-and-vertical-height(16, 24);
+
+  color: var(--color-primary);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  :visited {
+    color: var(--color-primary);
+  }
+}
+
+@mixin assessment-fixed-text() {
+  @include font-size-and-vertical-height(14, 20);
+
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
 }
 
 @mixin blockquote() {

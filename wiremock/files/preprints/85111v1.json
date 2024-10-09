@@ -15,9 +15,6 @@
               "name": "Simons Initiative for the Developing Brain, University of Edinburgh, 1 George Square, EH8 9JZ, Edinburgh, United Kingdom"
             }
           ],
-          "emails": [
-            "rjordan3@ed.ac.uk"
-          ],
           "familyNames": [
             "Jordan"
           ],
@@ -30,7 +27,16 @@
               "propertyID": "https://registry.identifiers.org/registry/orcid",
               "value": "http://orcid.org/0000-0002-4871-6265"
             }
-          ]
+          ],
+          "meta": {
+            "notes": [
+              {
+                "type": "corresp",
+                "label": "4",
+                "rid": "cor1"
+              }
+            ]
+          }
         },
         {
           "type": "Person",
@@ -5104,6 +5110,16 @@
           ]
         }
       ],
+      "meta": {
+        "authorNotes": [
+          {
+            "type": "corresp",
+            "id": "cor1",
+            "label": "4",
+            "text": "Correspondence to:⠀rjordan3@ed.ac.uk"
+          }
+        ]
+      },
       "references": [
         {
           "type": "Article",

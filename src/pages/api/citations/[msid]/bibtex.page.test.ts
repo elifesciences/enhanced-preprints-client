@@ -41,7 +41,7 @@ describe('citation BibTeX handler', () => {
 }`);
     (fetchVersion as jest.Mock).mockResolvedValueOnce({
       article: {
-        preprintDoi: '10.1101/321456',
+        doi: '10.1101/321456',
       },
     });
     await handler(req, res);

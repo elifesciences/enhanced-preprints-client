@@ -58,6 +58,14 @@ export type ProcessedArticle = {
   content: Content,
   headings: Heading[],
   references: Reference[],
+  meta?: {
+    authorNotes?: {
+      type: string,
+      id: string,
+      text: string,
+      label?: string,
+    }[],
+  },
 };
 
 export type ArticleSummary = {

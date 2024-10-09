@@ -1,0 +1,100 @@
+@use "../../../sass/settings";
+@use "../../../sass/typography";
+@use "../../../sass/mixins";
+
+.assessment {
+  @include mixins.margin(0 -24);
+  @include mixins.padding(24);
+  @include typography.assessment-body();
+
+  .highlighted-term {
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--color-text);
+  }
+
+  .descriptors__identifier a {
+    color: var(--color-text-secondary-dark);
+  }
+
+  blockquote {
+    @include typography.blockquote();
+    @include mixins.padding(16, "left");
+
+    border-left: 1px solid var(--divider);
+    margin: 0;
+
+    p,
+    li {
+      @include typography.body-small();
+    }
+
+    strong {
+      @include typography.heading-4();
+    }
+  }
+
+  p:first-of-type strong {
+    @include typography.heading-2();
+  }
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    @include mixins.margin(0 -48);
+    @include mixins.padding(36 48);
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    @include mixins.padding(24 36);
+
+    margin: 0;
+  }
+
+  background-color: var(--color-background);
+
+  p.assessment__body {
+    @include typography.body-alternative();
+  }
+}
+
+.assessment__body {
+  @include mixins.margin(12, "bottom");
+
+  p:last-of-type {
+    @include mixins.margin(0, "bottom");
+  }
+}
+
+.explanation_link {
+  @include typography.terms-link-text();
+  @include mixins.padding(16, "right");
+
+  background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
+  color: #0b70b9; // Only being used for review content component
+  cursor: pointer;
+  vertical-align: middle;
+
+  &__expanded {
+    background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
+  }
+}
+
+.assessment__fixed_text {
+  @include typography.assessment-fixed-text();
+  @include mixins.margin(24 0);
+}
+
+.assessment-collapsable {
+  &__shown {
+    display: unset;
+  }
+
+  &__hidden {
+    display: none;
+  }
+}
+
+.ga-review-content_links {
+  // Used to catch data for Google Analytics - Do not remove
+}
