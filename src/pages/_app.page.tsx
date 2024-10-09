@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
@@ -44,10 +45,6 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
-  const namespace = pageProps.siteName?.replace('-', '_');
-  if (namespace && i18n.hasLoadedNamespace(namespace)) {
-    i18n.setDefaultNamespace(namespace);
-  }
   return (
     <>
       <Head>
@@ -79,9 +76,11 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <LayoutSelector siteName={pageProps.siteName}>
-        <Component {...pageProps} />
-      </LayoutSelector>
+      <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
+        <LayoutSelector siteName={pageProps.siteName}>
+          <Component {...pageProps} />
+        </LayoutSelector>
+      </I18nextProvider>
     </>
   );
 }
