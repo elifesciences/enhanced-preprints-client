@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+import { i18n } from '../i18n';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
   switch (siteName) {
@@ -43,6 +44,10 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
+  const namespace = pageProps.siteName?.replace('-', '_');
+  if (namespace && i18n.hasLoadedNamespace(namespace)) {
+    i18n.setDefaultNamespace(namespace);
+  }
   return (
     <>
       <Head>
