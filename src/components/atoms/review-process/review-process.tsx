@@ -1,5 +1,4 @@
 import './review-process.scss';
-import '../../../i18n';
 import { useTranslation } from 'react-i18next';
 import parse from 'html-react-parser';
 

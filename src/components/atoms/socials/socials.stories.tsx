@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Socials } from './socials';
+import '../../../i18n';
 
 const meta: Meta<typeof Socials> = {
   title: 'Atoms/Socials',

@@ -7,7 +7,6 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
 import { MetaData, PeerReview } from '../../../../types';
 import { JSXContent } from '../../../../utils/content';
-import '../../../../i18n';
 import { Metrics as MetricsType } from '../../../../types/enhanced-article';
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { Assessment } from '../../../atoms/assessment/assessment';

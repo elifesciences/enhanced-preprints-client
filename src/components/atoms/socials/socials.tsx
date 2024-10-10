@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import './socials.scss';
-import '../../../i18n';
 
 type SocialsProps = {
   doi: string,
