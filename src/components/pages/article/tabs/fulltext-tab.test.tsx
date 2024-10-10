@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { metaData, peerReview, content } from '../../../../utils/mocks';
 import { ArticleFullTextTab } from './fulltext-tab';
 import { contentToJsx } from '../../../../utils/content';
+import '../../../../i18n';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '',

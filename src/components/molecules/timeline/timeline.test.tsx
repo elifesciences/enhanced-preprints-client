@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Timeline } from './timeline';
+import '../../../i18n';
 
 describe('Timeline', () => {
   it('renders a single timeline item', () => {

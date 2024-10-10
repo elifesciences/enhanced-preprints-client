@@ -21,7 +21,6 @@ import {
 import { generateStatus, generateTimeline, generateVersionHistory } from '../../utils/generators';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
-import '../../i18n';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 

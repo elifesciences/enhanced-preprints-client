@@ -1,7 +1,9 @@
 # overrides that make the app behave like a production build
 services:
   app:
-    command: sh -c 'yarn build; yarn start'
+    build:
+      context: .
+      target: prod
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'apk add curl; curl -X POST http://app:3000/'"]
       interval: 5s
