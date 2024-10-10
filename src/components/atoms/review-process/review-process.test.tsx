@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewProcess } from './review-process';
+import '../../../i18n';
 
 describe('Review Process', () => {
   it('renders review process', () => {

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewContent } from './review-content';
+import '../../../i18n';
 
 describe('ReviewContent', () => {
   it('renders with a simple string content', async () => {

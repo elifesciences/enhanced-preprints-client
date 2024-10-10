@@ -5,7 +5,6 @@ import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Citation, CitationData } from '../../atoms/citation/citation';
-import '../../../i18n';
 import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
 import { Timeline, TimelineProps } from '../timeline/timeline';
 

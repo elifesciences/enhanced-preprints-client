@@ -1,5 +1,4 @@
 import './review-content.scss';
-import '../../../i18n';
 import { Descriptors } from '../descriptors/descriptors';
 
 type Props = { content: string, id?: string, peerReviewUrl?: string, doi?: string };
