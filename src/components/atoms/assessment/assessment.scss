@@ -3,8 +3,8 @@
 @use "../../../sass/mixins";
 
 .assessment {
-  @include mixins.margin(0 -24);
-  @include mixins.padding(24);
+  @include mixins.margin(0 -24 36);
+  @include mixins.padding(36 24);
   @include typography.assessment-body();
 
   .highlighted-term {
@@ -41,14 +41,12 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-small) {
-    @include mixins.margin(0 -48);
-    @include mixins.padding(36 48);
+    @include mixins.margin(0 -48 36);
+    @include mixins.padding(48);
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.padding(24 36);
-
-    margin: 0;
+    @include mixins.margin(0 0 36);
   }
 
   background-color: var(--color-background);
@@ -60,6 +58,10 @@
 
 .assessment__body {
   @include mixins.margin(12, "bottom");
+
+  p:first-of-type {
+    @include mixins.margin(0, "top");
+  }
 
   p:last-of-type {
     @include mixins.margin(0, "bottom");

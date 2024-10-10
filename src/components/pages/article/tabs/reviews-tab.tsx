@@ -16,7 +16,7 @@ export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: 
   ];
 
   return (
-    <div className="tabbed-navigation__content">
+    <div className="tabbed-navigation__content tabbed-navigation__content--reviews">
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
         <ReviewProcess current={currentVersion} {...(peerReview.authorResponse ? { authorResponse: true } : {})} />
