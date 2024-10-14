@@ -104,8 +104,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
 
       {
         // eslint-disable-next-line @next/next/no-img-element
-        const image = <img loading="lazy" {...(content.meta.inline ?
-          { className: 'inline-image' } : {})}
+        const image = <img loading="lazy" {...(content.meta.inline && { className: 'inline-image' })}
           src={generateImageUrl(content.contentUrl)} alt=""
           {...additionalProps}
         />;
@@ -114,7 +113,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
           return image;
         }
 
-        return <picture key={index}>
+        return <picture key={index} {...(content.id && { id: content.id })}>
           <source srcSet={generateImageUrl(content.contentUrl)} />
           {image}
         </picture>;

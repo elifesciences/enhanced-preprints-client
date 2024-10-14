@@ -49,6 +49,7 @@ export type FigureContent = DecoratedContent & {
 
 export type ImageObjectContent = {
   type: 'ImageObject',
+  id?: string,
   contentUrl?: string,
   content?: Content
   meta: {
