@@ -9,7 +9,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'sciencecoreorg.wpcomstaging.com',
+        hostname: 'cms.sciencecore.org',
         port: '',
         pathname: '**',
       },

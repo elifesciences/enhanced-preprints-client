@@ -38,7 +38,7 @@ export const brands: Brands = {
     },
   },
   science_core: {
-    logo: 'https://sciencecoreorg.wpcomstaging.com/wp-content/uploads/2024/07/Original-Logo-1024x501.png',
+    logo: 'https://cms.sciencecore.org/wp-content/uploads/2024/07/Original-Logo-1024x501.png',
     colors: {
       primary: '#181830',
       primaryDark: '#181830',
