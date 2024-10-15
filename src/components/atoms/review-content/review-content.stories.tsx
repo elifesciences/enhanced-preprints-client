@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ReviewContent } from './review-content';
+import '../../../i18n';
 
 const meta: Meta<typeof ReviewContent> = {
   title: 'Atoms/Review Content',

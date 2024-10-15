@@ -147,6 +147,7 @@ describe('Content to JSX', () => {
   it('generates the expected html when passed a ImageObject', () => {
     const result = contentToJsx({
       type: 'ImageObject',
+      id: 'id',
       contentUrl: 'https://placekitten.com/500/300',
       content: [],
       meta: {
@@ -156,7 +157,7 @@ describe('Content to JSX', () => {
 
     // eslint-disable-next-line @next/next/no-img-element
     expect(result).toStrictEqual(
-      <picture>
+      <picture id="id">
         <source srcSet="https://placekitten.com/500/300" />
         <img
           loading="lazy"

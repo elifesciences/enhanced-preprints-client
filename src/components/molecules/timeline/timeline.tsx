@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from 'react';
-import '../../../i18n';
 import './timeline.scss';
 import { formatDate } from '../../../utils/formatters';
 import { TimelineEvent } from '../../../types';

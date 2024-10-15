@@ -8,6 +8,7 @@ import {
 } from '../../../utils/mocks';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content';
+import '../../../i18n';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '',

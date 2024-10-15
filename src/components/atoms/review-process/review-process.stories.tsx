@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ReviewProcess } from './review-process';
+import '../../../i18n';
 
 const meta: Meta<typeof ReviewProcess> = {
   title: 'Atoms/Review Process',

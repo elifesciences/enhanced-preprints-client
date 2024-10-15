@@ -27,7 +27,7 @@
 }
 
 .tabbed-navigation {
-  @include mixins.margin(0 -24 24);
+  @include mixins.margin(0 -24);
   @include mixins.z-index(1);
 
   background-color: #fff;
@@ -39,7 +39,7 @@
   top: 0;
 
   @media only screen and (min-width: settings.$breakpoint-small) {
-    @include mixins.margin(0 -48 36);
+    @include mixins.margin(0 -48);
   }
 
   @media only screen and (min-width: settings.$breakpoint-medium) {
@@ -126,5 +126,14 @@
 .tabbed-navigation__content {
   @media only all and (min-width: settings.$breakpoint-large) {
     display: flex;
+  }
+
+  &.tabbed-navigation__content--reviews,
+  &.tabbed-navigation__content--figures {
+    @include mixins.margin(36, "top");
+
+    @media only all and (min-width: settings.$breakpoint-medium) {
+      @include mixins.margin(0, "top");
+    }
   }
 }

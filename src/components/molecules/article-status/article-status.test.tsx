@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { citation } from '../../../utils/mocks';
 import { ArticleStatus } from './article-status';
+import '../../../i18n';
 
 describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
