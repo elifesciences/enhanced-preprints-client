@@ -76,7 +76,7 @@ export const references: Reference[] = [
       },
     ],
     datePublished: '2021',
-    isPartOf: { type: 'Periodical', name: 'Jounal of Neurology' },
+    isPartOf: { type: 'Periodical', name: 'Journal of Neurology' },
     pageStart: 21,
     title: 'The Theory of Everything',
     identifiers: [
@@ -112,5 +112,33 @@ export const references: Reference[] = [
     meta: {
       label: '1.',
     },
+  },
+  {
+    type: 'Article',
+    id: 'c5',
+    authors: [
+      {
+        familyNames: [
+          'Hoffman',
+        ],
+        givenNames: [
+          'K.H',
+        ],
+        type: 'Person',
+      },
+    ],
+    datePublished: {
+      type: 'Date',
+      value: '1985',
+    },
+    publisher: {
+      address: {
+        addressLocality: 'Berlin',
+        type: 'PostalAddress',
+      },
+      name: 'Springer-Verlag',
+      type: 'Organization',
+    },
+    title: 'Environmental Physiology and Biochemistry of Insects',
   },
 ];

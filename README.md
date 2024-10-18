@@ -1,6 +1,6 @@
 # Getting Started with Enhanced Preprints Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.JS added following <https://nextjs.org/docs/migrating/from-create-react-app>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), then Next.js added following <https://nextjs.org/docs/migrating/from-create-react-app>
 
 ## Prerequisites
 
