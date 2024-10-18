@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Reference } from './reference';
+import { Reference as ReferenceData } from '../../../types';
 import { references } from '../../../utils/mocks';
 
 describe('Reference', () => {
@@ -36,6 +37,74 @@ describe('Reference', () => {
     render(<Reference reference={references[2]} isReferenceList={false} />);
 
     expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
+  });
+
+  it.each(
+    [
+      [
+        {
+          isPartOf: {
+            type: 'Periodical',
+            name: 'No Publisher Title',
+          },
+        },
+        'No Publisher Title',
+      ],
+      [
+        {
+          publisher: {
+            type: 'Organization',
+            name: 'Publisher Title Only',
+          },
+        },
+        'Publisher Title Only',
+      ],
+      [
+        {
+          publisher: {
+            type: 'Organization',
+            name: 'Publisher Title',
+            address: {
+              type: 'PostalAddress',
+              addressLocality: 'with Locality',
+            },
+          },
+        },
+        'Publisher Title, with Locality',
+      ],
+      [
+        {
+          isPartOf: {
+            type: 'Periodical',
+            name: 'Journal Title',
+          },
+          publisher: {
+            type: 'Organization',
+            name: 'with Publisher Title',
+            address: {
+              type: 'PostalAddress',
+              addressLocality: 'and Locality',
+            },
+          },
+        },
+        'Journal Title, with Publisher Title, and Locality',
+      ],
+    ],
+  )('renders the name and locality of the publisher', (referenceWithPublisher, expectedJournalAndPublisher) => {
+    const prepareReference = {
+      type: 'Article',
+      id: 'c5',
+      authors: [],
+      datePublished: {
+        type: 'Date',
+        value: '1985',
+      },
+      title: 'Environmental Physiology and Biochemistry of Insects',
+      ...referenceWithPublisher,
+    } as ReferenceData;
+    render(<Reference reference={prepareReference} isReferenceList={false} />);
+
+    expect(screen.getByText(expectedJournalAndPublisher)).toBeInTheDocument();
   });
 
   describe('inside a reference list', () => {

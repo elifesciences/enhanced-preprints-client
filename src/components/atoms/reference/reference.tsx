@@ -10,6 +10,7 @@ const formatName = (author: Author) => `${author.familyNames ? author.familyName
 
 export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
+  const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
   const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
@@ -27,9 +28,15 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
       { year && <span className="reference__authors_list_suffix">{year}</span> }
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
-        {referenceJournal ? <i>{referenceJournal} </i> : ''}
-        {referenceVolume !== undefined ? <strong>{referenceVolume}</strong> : ''}
-        {reference.pageStart !== undefined ? `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}` : ''}
+        {
+          (referenceJournal || referencePublisher) &&
+          <><i>
+            {referenceJournal && <>{referenceJournal}{referencePublisher && <>, </>}</>}
+            {referencePublisher && <>{referencePublisher.name}{referencePublisher.address && <>, {referencePublisher.address.addressLocality}</>}</>}
+          </i> </>
+        }
+        {referenceVolume && <strong>{referenceVolume}</strong>}
+        {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>
       {doiIdentifier && <span className="reference__doi">
         {isReferenceList ?
