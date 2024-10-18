@@ -28,13 +28,8 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
       { year && <span className="reference__authors_list_suffix">{year}</span> }
       <span className="reference__title">{reference.title}</span>
       <span className="reference__origin">
-        {
-          (referenceJournal || referencePublisher) &&
-          <><i>
-            {referenceJournal && <>{referenceJournal}{referencePublisher && <>, </>}</>}
-            {referencePublisher && <>{referencePublisher.name}{referencePublisher.address && <>, {referencePublisher.address.addressLocality}</>}</>}
-          </i> </>
-        }
+        {referenceJournal && <><i>{referenceJournal}</i> </>}
+        {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>

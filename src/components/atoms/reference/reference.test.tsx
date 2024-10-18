@@ -43,15 +43,6 @@ describe('Reference', () => {
     [
       [
         {
-          isPartOf: {
-            type: 'Periodical',
-            name: 'No Publisher Title',
-          },
-        },
-        'No Publisher Title',
-      ],
-      [
-        {
           publisher: {
             type: 'Organization',
             name: 'Publisher Title Only',
@@ -66,28 +57,11 @@ describe('Reference', () => {
             name: 'Publisher Title',
             address: {
               type: 'PostalAddress',
-              addressLocality: 'with Locality',
+              addressLocality: 'Locality',
             },
           },
         },
-        'Publisher Title, with Locality',
-      ],
-      [
-        {
-          isPartOf: {
-            type: 'Periodical',
-            name: 'Journal Title',
-          },
-          publisher: {
-            type: 'Organization',
-            name: 'with Publisher Title',
-            address: {
-              type: 'PostalAddress',
-              addressLocality: 'and Locality',
-            },
-          },
-        },
-        'Journal Title, with Publisher Title, and Locality',
+        'Locality: Publisher Title',
       ],
     ],
   )('renders the name and locality of the publisher', (referenceWithPublisher, expectedJournalAndPublisher) => {
