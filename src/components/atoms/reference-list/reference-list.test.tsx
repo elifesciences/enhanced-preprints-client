@@ -20,7 +20,7 @@ describe('ReferenceList', () => {
 
     expect(screen.getByText('Int J Mol Sci')).toBeInTheDocument();
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();
-    expect(screen.getByText('Jounal of Neurology')).toBeInTheDocument();
+    expect(screen.getByText('Journal of Neurology')).toBeInTheDocument();
 
     expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.id).toStrictEqual('c1');
     expect(screen.getByText('The Role of Estrogen Receptors in Cardiovascular Disease').parentElement?.id).toStrictEqual('c2');
