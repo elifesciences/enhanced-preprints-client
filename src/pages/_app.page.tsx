@@ -5,6 +5,8 @@ import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+import { SimpleSiteHeader } from '../components/molecules/site-header/simple-site-header';
+import { brands } from '../brand';
 import { i18n } from '../i18n';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
@@ -45,6 +47,50 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
+  if (pageProps.brand) {
+    // select given brand, or if not set or doesn't exist, choose default
+    const brand = pageProps.brand ?? brands.default;
+    return <>
+      <Head>
+        <title>Enhanced Preprints Platform</title>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+            }
+            body {
+              --font-family-primary: ${notoSans.style.fontFamily};
+              --font-family-secondary: ${notoSerif.style.fontFamily};
+              --color-primary: ${brand.colors.primary};
+              --color-primary-dark: ${brand.colors.primaryDark};
+            }
+          `,
+        }} />
+        { config.cookiebotId &&
+          // eslint-disable-next-line @next/next/no-sync-scripts
+          <script id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid={config.cookiebotId}></script>
+        }
+        { config.gtmId &&
+          // eslint-disable-next-line @next/next/next-script-for-ga
+          <script id="GTM" dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${config.gtmId}');`,
+          }}></script>
+        }
+      </Head>
+      <div className="grid-container article-page">
+        <div className="grid-header">
+          <SimpleSiteHeader logo={brand.logo}/>
+        </div>
+        <Component {...pageProps} />
+      </div>
+    </>;
+  }
+
   return (
     <>
       <Head>
