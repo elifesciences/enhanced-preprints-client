@@ -5,10 +5,8 @@ import {
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
-import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
-import '../../../i18n';
 
 const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',
@@ -31,6 +29,7 @@ const meta: Meta<typeof ArticlePage> = {
       },
     },
   },
+  tags: ['nomain'],
 };
 
 export default meta;
@@ -66,11 +65,9 @@ export const ArticlePageFullTextTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+    </ArticlePage>
   ),
 };
 
@@ -85,11 +82,9 @@ export const ArticlePageFiguresTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleFiguresTab content={jsxContent} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleFiguresTab content={jsxContent} />
+    </ArticlePage>
   ),
 };
 
@@ -107,11 +102,9 @@ export const ArticlePageReviewedReviewsTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
+    </ArticlePage>
   ),
 };
 
@@ -126,11 +119,9 @@ export const ArticlePageRevisedReviewsTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleReviewsTab peerReview={peerReview} currentVersion={2} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleReviewsTab peerReview={peerReview} currentVersion={2} />
+    </ArticlePage>
   ),
 };
 
@@ -145,10 +136,8 @@ export const ArticlePageErrorTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ErrorMessages/>
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ErrorMessages/>
+    </ArticlePage>
   ),
 };

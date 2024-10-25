@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { Timeline } from './timeline';
-import '../../../i18n';
 
 const meta: Meta<typeof Timeline> = {
   title: 'Molecules/Timeline',
