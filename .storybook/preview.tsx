@@ -88,13 +88,13 @@ export const globalTypes = {
 };
 
 export const decorators = [
+  (Story, context) => context.tags.includes('nomain') ? <Story /> : <main className="primary-section"><Story /></main>,
   (Story, context) => {
-    const { stringsNamespace, layoutName } = context.globals;
+    const { layoutName } = context.globals;
 
-    return <I18nextProvider i18n={i18n} defaultNS={stringsNamespace}>
-      <LayoutSelector siteName={layoutName}>
-        <Story />
-      </LayoutSelector>
-    </I18nextProvider>;
-  }
+    return context.tags.includes('nolayout') ? <Story /> : <LayoutSelector siteName={layoutName}><Story /></LayoutSelector>
+  },
+  (Story, context) => <I18nextProvider i18n={i18n} defaultNS={context.globals.stringsNamespace}>
+    <Story />
+  </I18nextProvider>
 ];

@@ -4,6 +4,7 @@ import { BiophysicsColabLayout } from './biophysics-colab';
 const meta: Meta<typeof BiophysicsColabLayout> = {
   title: 'Layout/BiophysicsColab',
   component: BiophysicsColabLayout,
+  tags: ['nolayout'],
 };
 
 export default meta;

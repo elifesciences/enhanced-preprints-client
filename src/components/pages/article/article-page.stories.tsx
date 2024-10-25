@@ -29,6 +29,7 @@ const meta: Meta<typeof ArticlePage> = {
       },
     },
   },
+  tags: ['nomain'],
 };
 
 export default meta;
