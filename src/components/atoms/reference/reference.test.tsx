@@ -112,5 +112,11 @@ describe('Reference', () => {
 
       expect(document.getElementById('c4')?.textContent).toContain('Given BugsResurgent');
     });
+
+    it('should render the published year with a suffix if provided', () => {
+      render(<Reference reference={references[5]} isReferenceList={true} />);
+
+      expect(screen.getByText('2019a')).toBeInTheDocument();
+    });
   });
 });
