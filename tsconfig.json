@@ -22,6 +22,7 @@
     "incremental": true
   },
   "include": [
+    ".storybook/",
     "src/",
     "pages/",
     "browser-tests",

@@ -7,7 +7,7 @@ import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
 
-const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
+export const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
   switch (siteName) {
     case 'biophysics-colab':
       return (

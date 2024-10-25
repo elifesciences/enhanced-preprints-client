@@ -66,11 +66,9 @@ export const ArticlePageFullTextTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+    </ArticlePage>
   ),
 };
 
@@ -85,11 +83,9 @@ export const ArticlePageFiguresTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleFiguresTab content={jsxContent} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleFiguresTab content={jsxContent} />
+    </ArticlePage>
   ),
 };
 
@@ -107,11 +103,9 @@ export const ArticlePageReviewedReviewsTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
+    </ArticlePage>
   ),
 };
 
@@ -126,11 +120,9 @@ export const ArticlePageRevisedReviewsTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ArticleReviewsTab peerReview={peerReview} currentVersion={2} />
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ArticleReviewsTab peerReview={peerReview} currentVersion={2} />
+    </ArticlePage>
   ),
 };
 
@@ -145,10 +137,8 @@ export const ArticlePageErrorTab: Story = {
     timeline,
   },
   render: (args) => (
-    <DefaultLayout>
-      <ArticlePage {...args}>
-        <ErrorMessages/>
-      </ArticlePage>
-    </DefaultLayout>
+    <ArticlePage {...args}>
+      <ErrorMessages/>
+    </ArticlePage>
   ),
 };
