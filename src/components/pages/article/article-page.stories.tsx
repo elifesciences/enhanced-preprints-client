@@ -7,7 +7,6 @@ import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
-import '../../../i18n';
 
 const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',

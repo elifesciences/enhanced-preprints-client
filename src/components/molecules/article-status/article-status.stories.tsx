@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { citation, metrics } from '../../../utils/mocks';
 import { ArticleStatus } from './article-status';
-import '../../../i18n';
 
 const meta: Meta<typeof ArticleStatus> = {
   title: 'Molecules/ArticleStatus',

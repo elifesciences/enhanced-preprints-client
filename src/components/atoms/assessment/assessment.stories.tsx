@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { within, userEvent, expect } from '@storybook/test';
 import { Assessment } from './assessment';
-import '../../../i18n';
 
 const meta: Meta<typeof Assessment> = {
   title: 'Atoms/Assessment',
