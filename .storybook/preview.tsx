@@ -64,7 +64,7 @@ export const globalTypes = {
     name: 'Strings namespace',
     description: 'Which flavour of PRC to use?',
     toolbar: {
-      icon: 'globe',
+      icon: 'document',
       items: [
         { value: 'default', title: 'default'},
         { value: 'elife', title: 'elife'},
@@ -77,7 +77,7 @@ export const globalTypes = {
     name: 'Layout',
     description: 'Which layout to use?',
     toolbar: {
-      icon: 'globe',
+      icon: 'category',
       items: [
         { value: 'default', title: 'default'},
         { value: 'biophysics-colab', title: 'biophysics-colab'}
