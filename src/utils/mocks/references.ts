@@ -32,6 +32,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
+      yearPublished: '2019a',
       label: '1.',
     },
   },
@@ -63,6 +64,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
+      yearPublished: '2019b',
       label: '2.',
     },
   },
@@ -88,6 +90,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
+      yearPublished: '2019b',
       label: '2.',
     },
   },
@@ -110,6 +113,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
+      yearPublished: '2019a',
       label: '1.',
     },
   },
