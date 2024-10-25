@@ -5,7 +5,6 @@ import {
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
-import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import '../../../i18n';
