@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { config } from './config';
 
 const resources = {
   en: {
@@ -77,14 +76,11 @@ const resources = {
   },
 };
 
-const siteName = config.siteName?.replace('-', '_');
-
 i18n
   .use(initReactI18next)
   .init({
     resources,
     lng: 'en',
-    defaultNS: Object.keys(resources.en).includes(siteName ?? '') ? siteName : 'elife',
     fallbackNS: 'default',
     interpolation: {
       escapeValue: false,

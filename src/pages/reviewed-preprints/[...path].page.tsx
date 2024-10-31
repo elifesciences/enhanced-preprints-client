@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { config } from '../../config';
+import { config, TenantConfiguredPageProps } from '../../config';
 import {
   Content,
   MetaData,
@@ -23,9 +23,9 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { fetchTenantConfig } from '../../utils/data-fetch/fetch-data';
 
-type PageProps = {
-  siteName?: string,
+type PageProps = TenantConfiguredPageProps & {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -179,6 +179,17 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const tenantId = (context.query['x-epp-tenant-id'] || context.req.headers['x-epp-tenant-id']) as string | undefined;
+  if (!tenantId) {
+    console.log('no tenant id set'); // eslint-disable-line no-console
+    return { notFound: true };
+  }
+  const tenantConfig = await fetchTenantConfig(tenantId);
+  if (!tenantConfig) {
+    console.log('no tenant config found'); // eslint-disable-line no-console
+    return { notFound: true };
+  }
+
   const idParts = [...context.params?.path as string[]];
 
   if (idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
@@ -191,7 +202,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(config.siteName, id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const articleWithVersions = await fetchVersion(tenantId, id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
@@ -214,7 +225,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
-      siteName: config.siteName,
+      tenantConfig,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,

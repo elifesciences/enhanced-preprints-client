@@ -3,12 +3,13 @@ import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
-import { config } from '../config';
+import { config, TenantConfig, TenantConfiguredPageProps } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
+import EPPLogo from '../images/epp-logo.png';
 
-const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
-  switch (siteName) {
+const LayoutSelector = ({ layoutName, children }: { layoutName?: string, children: ReactNode }) => {
+  switch (layoutName) {
     case 'biophysics-colab':
       return (
         <BiophysicsColabLayout>
@@ -44,7 +45,18 @@ const notoSans = Noto_Sans({
   fallback: ['arial', 'helvetica', 'sans-serif'],
 });
 
-export default function MyApp({ Component, pageProps }: any) {
+export default function MyApp({ Component, pageProps }: { Component: any, pageProps: TenantConfiguredPageProps }) {
+  const tenantConfig: TenantConfig = pageProps.tenantConfig ?? {
+    id: 'none',
+    layout: 'default',
+    i18nNamespace: 'default',
+    logo: EPPLogo,
+    colors: {
+      primary: '#087acc',
+      primaryDark: '#0769b0',
+    },
+  };
+
   return (
     <>
       <Head>
@@ -56,6 +68,8 @@ export default function MyApp({ Component, pageProps }: any) {
             body {
               --font-family-primary: ${notoSans.style.fontFamily};
               --font-family-secondary: ${notoSerif.style.fontFamily};
+              --color-primary: ${tenantConfig.colors.primary};
+              --color-primary-dark: ${tenantConfig.colors.primaryDark};
             }
           `,
         }} />
@@ -76,8 +90,8 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
-        <LayoutSelector siteName={pageProps.siteName}>
+      <I18nextProvider i18n={i18n} defaultNS={tenantConfig.i18nNamespace}>
+        <LayoutSelector layoutName={tenantConfig.layout}>
           <Component {...pageProps} />
         </LayoutSelector>
       </I18nextProvider>

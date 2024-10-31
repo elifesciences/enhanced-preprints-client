@@ -1,0 +1,18 @@
+{
+  "scenarioName": "biophysics-colab-config",
+  "requiredScenarioState": "Started",
+  "request": {
+      "method": "GET",
+      "urlPath": "/api/biophysics-colab/config"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "id": "biophysics-colab",
+      "layout": "biophysics-colab",
+      "i18nNamespace": "biophysics_colab",
+      "logo": "https://sciety.org/static/images/home-page/biophysics-colab.png",
+      "colors": {"primary": "#5556a8", "primaryDark": "#50519b"}
+    }
+  }
+}

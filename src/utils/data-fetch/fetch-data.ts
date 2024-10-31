@@ -1,8 +1,9 @@
-import { config } from '../../config';
+import { config, TenantConfig } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
+export const fetchTenantConfig = (tenantId: string) => jsonFetch<TenantConfig>(`${config.apiServer}/api/${tenantId}/config`);
 export const fetchVersion = (tenantId: string, id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/${tenantId}/preprints/${id}${preview ? '?previews=true' : ''}`);
 export const fetchVersions = (tenantId: string) => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/${tenantId}/preprints`);
 export const fetchVersionsNoContent = async (tenantId: string, page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {

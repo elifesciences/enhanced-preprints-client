@@ -101,7 +101,6 @@ services:
       retries: 10
       start_period: 2s
     environment:
-      NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-elife}
       API_SERVER: ${API_SERVER:-http://wiremock:3000}
       IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
@@ -119,6 +118,8 @@ services:
   # Expose API and client via proxy
   nginx:
     image: nginx:latest
+    environment:
+      TENANT_ID: ${TENANT_ID:-''}
     depends_on:
       wiremock:
         condition: service_healthy
@@ -127,7 +128,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./.docker/nginx.conf:/etc/nginx/templates/default.conf.template
 
 volumes:
   data:

@@ -2,10 +2,7 @@
 @use "../../sass/mixins";
 @use "../../sass/settings";
 
-.site-biophysics-colab {
-  --color-primary: #5556a8;
-  --color-primary-dark: #50519b;
-
+body {
   .nav-primary {
     @media only all and (min-width: settings.$breakpoint-large) {
       margin-top: 16px;
