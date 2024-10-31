@@ -1,12 +1,12 @@
 {
-    "scenarioName": "85111",
+    "scenarioName": "index",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints/85111v1"
+        "urlPath": "/api/elife/preprints-no-content"
     },
     "response": {
         "status": 200,
-        "bodyFileName": "preprints/85111v1.json"
+        "bodyFileName": "preprints-no-content/index.json"
     }
 }

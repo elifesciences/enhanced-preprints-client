@@ -1,0 +1,38 @@
+{
+    "scenarioName": "index",
+    "requiredScenarioState": "Started",
+    "request": {
+        "method": "GET",
+        "urlPath": "/api/biophysics-colab/preprints"
+    },
+    "response": {
+        "status": 200,
+        "jsonBody": {
+            "items": [
+                {
+                    "id": "biophysics-colab-111111v1",
+                    "doi": "xxxxxx/biophysics-colab-111111.1",
+                    "msid": "biophysics-colab-111111",
+                    "date": "2022-10-03T09:03:08.000Z",
+                    "title": [
+                        "Structure of an open K",
+                        {
+                            "type": "Subscript",
+                            "content": [
+                                "ATP"
+                            ]
+                        },
+                        " channel reveals tandem PIP",
+                        {
+                            "type": "Subscript",
+                            "content": [
+                                "2"
+                            ]
+                        },
+                        " binding sites mediating the Kir6.2 and SUR1 regulatory interface"
+                    ]
+                }
+            ]
+        }
+    }
+}

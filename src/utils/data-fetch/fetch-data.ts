@@ -3,11 +3,11 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
 
-export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
-export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
-export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
+export const fetchVersion = (tenantId: string, id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/${tenantId}/preprints/${id}${preview ? '?previews=true' : ''}`);
+export const fetchVersions = (tenantId: string) => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/${tenantId}/preprints`);
+export const fetchVersionsNoContent = async (tenantId: string, page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
   const url = [
-    `${config.apiServer}/api/preprints-no-content?`,
+    `${config.apiServer}/api/${tenantId}/preprints-no-content?`,
     [
       `page=${page}`,
       `per-page=${perPage}`,

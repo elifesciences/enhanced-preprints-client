@@ -191,7 +191,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const articleWithVersions = await fetchVersion(config.siteName, id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console

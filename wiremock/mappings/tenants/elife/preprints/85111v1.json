@@ -3,10 +3,10 @@
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints/85111v2"
+        "url": "/api/elife/preprints/85111v1"
     },
     "response": {
         "status": 200,
-        "bodyFileName": "preprints/85111v2.json"
+        "bodyFileName": "preprints/85111v1.json"
     }
 }

@@ -3,7 +3,7 @@
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints/85111"
+        "url": "/api/elife/preprints/85111v2"
     },
     "response": {
         "status": 200,

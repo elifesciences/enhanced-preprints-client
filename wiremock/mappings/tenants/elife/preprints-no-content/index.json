@@ -3,7 +3,7 @@
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "urlPath": "/api/preprints-no-content"
+        "urlPath": "/api/biophysics-colab/preprints-no-content"
     },
     "response": {
         "status": 200,

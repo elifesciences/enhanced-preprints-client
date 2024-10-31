@@ -4,7 +4,7 @@ if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-bui
 }
 
 type Config = {
-  siteName?: string,
+  siteName: string,
   showPreviews: boolean
   apiServer?: string,
   iiifServer?: string,
