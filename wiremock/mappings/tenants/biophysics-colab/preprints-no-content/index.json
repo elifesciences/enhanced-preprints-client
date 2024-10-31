@@ -1,5 +1,5 @@
 {
-    "scenarioName": "index",
+    "scenarioName": "biophysics-colab-preprints-no-content-index",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",

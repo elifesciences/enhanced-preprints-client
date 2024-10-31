@@ -1,5 +1,5 @@
 {
-    "scenarioName": "biophysics-colab-111111",
+    "scenarioName": "biophysics-colab-111111v1",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",

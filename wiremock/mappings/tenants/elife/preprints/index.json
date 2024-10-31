@@ -1,5 +1,5 @@
 {
-    "scenarioName": "index",
+    "scenarioName": "elife-index",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",

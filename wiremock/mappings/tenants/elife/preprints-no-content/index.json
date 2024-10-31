@@ -1,5 +1,5 @@
 {
-    "scenarioName": "index",
+    "scenarioName": "elife-preprints-no-content-index",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
