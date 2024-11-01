@@ -95,7 +95,7 @@ services:
       context: .
       target: dev
     healthcheck:
-      test: ["CMD-SHELL", "sh -c 'apk add curl; curl -X POST http://app:3000/'"]
+      test: ["CMD-SHELL", "sh -c 'apk add curl; curl -X POST http://app:3000/api/ping'"]
       interval: 5s
       timeout: 5s
       retries: 10
