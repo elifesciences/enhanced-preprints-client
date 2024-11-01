@@ -1,15 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createMocks, createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
-import { fetchVersion, fetchTenantConfigFromRequest } from '../../../../utils/data-fetch';
+import { fetchTenantUsingRequest, fetchVersion } from '../../../../utils/data-fetch';
 import handler from './ris.page';
 
-jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
+jest.mock('../../../../utils/data-fetch', () => ({
   fetchVersion: jest.fn(),
-}));
-
-jest.mock('../../../../utils/data-fetch/fetch-tenant-config', () => ({
-  fetchTenantConfigFromRequest: jest.fn(),
+  fetchTenantUsingRequest: jest.fn(),
 }));
 
 describe('citation RIS handler', () => {
@@ -30,7 +27,7 @@ describe('citation RIS handler', () => {
   });
 
   beforeEach(() => {
-    (fetchTenantConfigFromRequest as jest.Mock).mockResolvedValue({ id: 'elife' });
+    (fetchTenantUsingRequest as jest.Mock).mockResolvedValue({ id: 'elife' });
   });
 
   test('returns 503 if version is not available', async () => {

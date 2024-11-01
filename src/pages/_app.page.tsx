@@ -3,10 +3,10 @@ import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
-import { config, TenantConfig, TenantConfiguredPageProps } from '../config';
+import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
-import EPPLogo from '../images/epp-logo.png';
+import { HasTenant } from '../tenant';
 
 const LayoutSelector = ({ layoutName, children }: { layoutName?: string, children: ReactNode }) => {
   switch (layoutName) {
@@ -45,17 +45,10 @@ const notoSans = Noto_Sans({
   fallback: ['arial', 'helvetica', 'sans-serif'],
 });
 
-export default function MyApp({ Component, pageProps }: { Component: any, pageProps: Partial<TenantConfiguredPageProps> }) {
-  const tenantConfig: TenantConfig = pageProps.tenantConfig ?? {
-    id: 'none',
-    layout: 'default',
-    i18nNamespace: 'default',
-    logo: EPPLogo,
-    colors: {
-      primary: '#087acc',
-      primaryDark: '#0769b0',
-    },
-  };
+export default function MyApp({ Component, pageProps }: { Component: any, pageProps: HasTenant }) {
+  if (!pageProps.tenant) {
+    throw new Error('tenant not passed to PageProps. Make sure to specify a union type with TenantConfiguredPageProps and pass the tenant prop');
+  }
 
   return (
     <>
@@ -68,8 +61,8 @@ export default function MyApp({ Component, pageProps }: { Component: any, pagePr
             body {
               --font-family-primary: ${notoSans.style.fontFamily};
               --font-family-secondary: ${notoSerif.style.fontFamily};
-              --color-primary: ${tenantConfig.colors.primary};
-              --color-primary-dark: ${tenantConfig.colors.primaryDark};
+              --color-primary: ${pageProps.tenant.colors.primary};
+              --color-primary-dark: ${pageProps.tenant.colors.primaryDark};
             }
           `,
         }} />
@@ -90,8 +83,8 @@ export default function MyApp({ Component, pageProps }: { Component: any, pagePr
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={tenantConfig.i18nNamespace}>
-        <LayoutSelector layoutName={tenantConfig.layout}>
+      <I18nextProvider i18n={i18n} defaultNS={pageProps.tenant.i18nNamespace}>
+        <LayoutSelector layoutName={pageProps.tenant.layout}>
           <Component {...pageProps} />
         </LayoutSelector>
       </I18nextProvider>

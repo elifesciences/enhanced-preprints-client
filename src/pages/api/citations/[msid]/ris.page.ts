@@ -1,18 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../../config';
-import { fetchVersion } from '../../../../utils/data-fetch';
-import { fetchTenantConfigFromRequest } from '../../../../utils/data-fetch/fetch-tenant-config';
+import { fetchTenantUsingRequest, fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
 
-  const tenantConfig = await fetchTenantConfigFromRequest(req);
-  if (tenantConfig === false) {
-    res.status(404).send('Cannot find tenant');
-    return;
-  }
+  const tenant = await fetchTenantUsingRequest(req);
 
-  const version = await fetchVersion(tenantConfig.id, msid);
+  const version = await fetchVersion(tenant.id, msid);
   const filename = `${msid}.ris`;
 
   if (!version) {

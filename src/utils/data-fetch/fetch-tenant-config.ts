@@ -1,33 +1,29 @@
 import { GetServerSidePropsContext, NextApiRequest } from 'next';
-import { fetchTenantConfig } from './fetch-data';
-import { TenantConfig } from '../../config';
+import { fetchTenant } from './fetch-data';
+import { TenantData } from '../../tenant';
 
-export const fetchTenantConfigFromContext = async (context: GetServerSidePropsContext): Promise<TenantConfig | false> => {
+export const fetchTenantUsingContext = async (context: GetServerSidePropsContext): Promise<TenantData> => {
   const tenantId = (context.query['x-epp-tenant-id'] || context.req.headers['x-epp-tenant-id']) as string | undefined;
   if (!tenantId) {
-    console.log('no tenant id set'); // eslint-disable-line no-console
-    return false;
+    throw new Error('no tenant id set');
   }
-  const tenantConfig = await fetchTenantConfig(tenantId);
-  if (!tenantConfig) {
-    console.log('no tenant config found'); // eslint-disable-line no-console
-    return false;
+  const tenant = await fetchTenant(tenantId);
+  if (!tenant) {
+    throw new Error('no tenant config found'); // eslint-disable-line no-console
   }
 
-  return tenantConfig;
+  return tenant;
 };
 
-export const fetchTenantConfigFromRequest = async (req: NextApiRequest): Promise<TenantConfig | false> => {
+export const fetchTenantUsingRequest = async (req: NextApiRequest): Promise<TenantData> => {
   const tenantId = (req.query['x-epp-tenant-id'] || req.headers['x-epp-tenant-id']) as string | undefined;
   if (!tenantId) {
-    console.log('no tenant id set'); // eslint-disable-line no-console
-    return false;
+    throw new Error('no tenant id set'); // eslint-disable-line no-console
   }
-  const tenantConfig = await fetchTenantConfig(tenantId);
-  if (!tenantConfig) {
-    console.log('no tenant config found'); // eslint-disable-line no-console
-    return false;
+  const tenant = await fetchTenant(tenantId);
+  if (!tenant) {
+    throw new Error('no tenant config found'); // eslint-disable-line no-console
   }
 
-  return tenantConfig;
+  return tenant;
 };

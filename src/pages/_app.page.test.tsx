@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import MyApp from './_app.page';
-import { TenantConfig } from '../config';
 import EPPLogo from '../images/epp-logo.png';
+import { TenantData } from '../tenant';
 
-const tenantConfig: Omit<TenantConfig, 'layout'> = {
+const tenant: Omit<TenantData, 'layout'> = {
   id: 'default',
   logo: EPPLogo,
   i18nNamespace: 'default',
@@ -13,18 +13,18 @@ const tenantConfig: Omit<TenantConfig, 'layout'> = {
   },
 };
 describe('MyApp', () => {
-  it('renders default layout (tenantConfig is undefined)', () => {
-    render(<MyApp Component={() => <div>Test</div>} pageProps={{ tenantConfig: { ...tenantConfig, layout: 'unknown' } }} />);
+  it('renders default layout (tenant is undefined)', () => {
+    render(<MyApp Component={() => <div>Test</div>} pageProps={{ tenant: { ...tenant, layout: undefined as unknown as string } }} />);
     expect(screen.getByAltText('eLife logo')).toBeInTheDocument();
   });
 
-  it('renders default layout (tenantConfig.layout is unknown)', () => {
-    render(<MyApp Component={() => <div>Test</div>} pageProps={{}} />);
+  it('renders default layout (tenant.layout is unknown)', () => {
+    render(<MyApp Component={() => <div>Test</div>} pageProps={{ tenant: { ...tenant, layout: 'unknown' } }} />);
     expect(screen.getByAltText('eLife logo')).toBeInTheDocument();
   });
 
   it('renders alternative layout when layoutName property is recognised', () => {
-    render(<MyApp Component={() => <div>Test</div>} pageProps={{ tenantConfig: { ...tenantConfig, layout: 'biophysics-colab' } }} />);
+    render(<MyApp Component={() => <div>Test</div>} pageProps={{ tenant: { ...tenant, layout: 'biophysics-colab' } }} />);
     expect(screen.getByAltText('Biophysics Colab logo')).toBeInTheDocument();
   });
 });

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { config, TenantConfiguredPageProps } from '../../config';
+import { config } from '../../config';
 import {
   Content,
   MetaData,
@@ -12,7 +12,7 @@ import {
   RelatedContent,
   TimelineEvent,
 } from '../../types';
-import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
+import { fetchTenantUsingContext, fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
 import {
@@ -23,9 +23,9 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
-import { fetchTenantConfig } from '../../utils/data-fetch/fetch-data';
+import { HasTenant } from '../../tenant';
 
-type PageProps = TenantConfiguredPageProps & {
+type PageProps = HasTenant & {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -179,16 +179,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const tenantId = (context.query['x-epp-tenant-id'] || context.req.headers['x-epp-tenant-id']) as string | undefined;
-  if (!tenantId) {
-    console.log('no tenant id set'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
-  const tenantConfig = await fetchTenantConfig(tenantId);
-  if (!tenantConfig) {
-    console.log('no tenant config found'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
+  const tenant = await fetchTenantUsingContext(context);
 
   const idParts = [...context.params?.path as string[]];
 
@@ -202,7 +193,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(tenantId, id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const articleWithVersions = await fetchVersion(tenant.id, id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
@@ -225,7 +216,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
-      tenantConfig,
+      tenant,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,
