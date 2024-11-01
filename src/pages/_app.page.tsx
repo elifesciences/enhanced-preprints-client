@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { ELifeLayout } from '../components/layouts/elife';
 import { i18n } from '../i18n';
-import { HasTenant } from '../tenant';
-import EPPLogo from '../images/epp-logo.png';
+import { HasTenant, TenantContext } from '../tenant';
 
-const LayoutSelector = ({ layoutName, children }: { layoutName?: string, children: ReactNode }) => {
+const LayoutSelector = ({ children }: { children: ReactNode }) => {
+  const layoutName = useContext(TenantContext).layout;
   switch (layoutName) {
     case 'elife':
       return (
@@ -47,13 +47,7 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: { Component: any, pageProps: HasTenant }) {
-  const tenant = pageProps.tenant ?? {
-    id: 'default',
-    layout: 'default',
-    logo: EPPLogo,
-    colors: { primary: '#087acc', primaryDark: '#0769b0' },
-    i18nNamespace: 'default',
-  };
+  const tenant = pageProps.tenant ?? useContext(TenantContext);
 
   return (
     <>
@@ -88,11 +82,13 @@ export default function MyApp({ Component, pageProps }: { Component: any, pagePr
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={tenant.i18nNamespace}>
-        <LayoutSelector layoutName={tenant.layout}>
-          <Component {...pageProps} />
-        </LayoutSelector>
-      </I18nextProvider>
+      <TenantContext.Provider value={tenant}>
+        <I18nextProvider i18n={i18n} defaultNS={tenant.i18nNamespace}>
+          <LayoutSelector>
+            <Component {...pageProps} />
+          </LayoutSelector>
+        </I18nextProvider>
+      </TenantContext.Provider>
     </>
   );
 }
