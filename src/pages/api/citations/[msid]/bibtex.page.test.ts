@@ -1,11 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createMocks, createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion, fetchTenantConfigFromRequest } from '../../../../utils/data-fetch';
 import handler from './bibtex.page';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
+  fetchTenantConfigFromRequest: jest.fn(),
+}));
+
+jest.mock('../../../../utils/data-fetch/fetch-tenant-config', () => ({
+  fetchTenantConfigFromRequest: jest.fn(),
 }));
 
 describe('citation BibTeX handler', () => {
@@ -13,6 +18,9 @@ describe('citation BibTeX handler', () => {
     req,
     res,
   }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
+    headers: {
+      'x-epp-tenant-id': 'elife',
+    },
     url: '/reviewed-preprints/321.bib',
     query: { msid: '321' },
   });
@@ -20,6 +28,10 @@ describe('citation BibTeX handler', () => {
   afterEach(() => {
     jest.resetAllMocks();
     fetchMock.resetBehavior();
+  });
+
+  beforeEach(() => {
+    (fetchTenantConfigFromRequest as jest.Mock).mockResolvedValue({ id: 'elife' });
   });
 
   test('returns 503 if version is not available', async () => {

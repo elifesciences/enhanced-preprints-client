@@ -7,7 +7,7 @@ import {
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
 import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
-import { config } from '../../config';
+import { fetchTenantConfigFromRequest } from '../../utils/data-fetch/fetch-tenant-config';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -179,7 +179,13 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting YYYY-MM-DD format for \'end-date\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(config.siteName, page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate, endDate);
+  const tenantConfig = await fetchTenantConfigFromRequest(req);
+  if (tenantConfig === false) {
+    errorNotFoundRequest(res);
+    return;
+  }
+
+  const results = await fetchVersionsNoContent(tenantConfig.id, page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate, endDate);
 
   const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 
