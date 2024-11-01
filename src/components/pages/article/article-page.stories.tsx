@@ -169,12 +169,12 @@ export const ArticlePageRevisedReviewsTabNoSummary: Story = {
     timeline,
   },
   render: (args) => {
-  const { reviews, authorResponse } = peerReview;
+    const { reviews, authorResponse } = peerReview;
 
     return (
       <DefaultLayout>
         <ArticlePage {...args}>
-         <ArticleReviewsTab peerReview={{ reviews, authorResponse }} currentVersion={2} />
+          <ArticleReviewsTab peerReview={{ reviews, authorResponse }} currentVersion={2} />
         </ArticlePage>
       </DefaultLayout>
     );
