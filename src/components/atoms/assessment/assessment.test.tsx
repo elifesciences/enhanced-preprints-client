@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { significanceTerms, strengthTerms } from '../../../utils/terms';
 import { Assessment } from './assessment';
-import '../../../i18n';
+import { i18n } from '../../../i18n';
 
 let mockPathName = '';
 jest.mock('next/navigation', () => ({
@@ -9,6 +9,9 @@ jest.mock('next/navigation', () => ({
 }));
 
 describe('Assessment', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('renders with a simple string content', async () => {
     mockPathName = '';
     render(<Assessment content="I am an article"/>);

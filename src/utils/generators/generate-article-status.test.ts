@@ -1,3 +1,4 @@
+import { i18n } from '../../i18n';
 import { EnhancedArticle, ProcessedArticle, VersionSummary } from '../../types/enhanced-article';
 import { generateStatus } from './generate-article-status';
 
@@ -59,6 +60,9 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateStatus', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('should has specific status text if article is the same as the first version', () => {
     const status = generateStatus({
       article: version1,

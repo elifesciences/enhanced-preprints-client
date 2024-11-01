@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { ArticleReviewsTab } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
+import { i18n } from '../../../../i18n';
 
 describe('ReviewsTab', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('renders with reviews tab', () => {
     expect(() => render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />)).not.toThrow();
   });

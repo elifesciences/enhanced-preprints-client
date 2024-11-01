@@ -1,3 +1,4 @@
+import { i18n } from '../../i18n';
 import { EnhancedArticle, VersionSummary } from '../../types';
 import { ProcessedArticle } from '../../types/enhanced-article';
 import { generateTimeline } from './generate-timeline';
@@ -67,6 +68,9 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateTimeline', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('should generate the correct timeline with one version', () => {
     const timeline = generateTimeline({
       article: version1,
