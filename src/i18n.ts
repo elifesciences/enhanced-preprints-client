@@ -8,6 +8,9 @@ const resources = {
       twitter_handle: 'Twitter handle',
       publisher_short: 'Publisher short name',
       publisher_long: 'Publisher long name',
+      home_url: '/',
+      about_url: '/about',
+      search_url: '/search',
       process_url: '#', // link to review process
       about_assessments_url: '#', // link to about assessments
 
@@ -36,6 +39,9 @@ const resources = {
       twitter_handle: '@elife',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
+      home_url: 'https://elifesciences.org',
+      about_url: 'https://elifesciences.org/about',
+      search_url: 'https://elifesciences.org/search',
       process_url: 'https://elifesciences.org/about/peer-review',
       about_assessments_description: (
         'During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance'
@@ -65,6 +71,9 @@ const resources = {
       twitter_handle: '@BiophysicsColab',
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
+      home_url: 'https://biophysicscolab.pubpub.org/',
+      about_url: 'https://biophysicscolab.pubpub.org/about',
+      search_url: 'https://biophysicscolab.pubpub.org/search',
       heading_assessment: 'Endorsement statement',
       timeline_version_title: 'Endorsed article published',
       reviewed_preprint: 'Endorsed article',

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { SiteHeaderBiophysicsColab } from './site-header-biophysics-colab';
+import { SiteHeaderELife } from './site-header-elife';
 
 describe('SiteHeader', () => {
   it('renders the logo image with alt text', () => {
-    render(<SiteHeaderBiophysicsColab />);
+    render(<SiteHeaderELife />);
 
-    expect(screen.getByAltText('Biophysics Colab logo', { exact: false })).toBeInTheDocument();
+    expect(screen.getByAltText('eLife logo', { exact: false })).toBeInTheDocument();
     expect(screen.getByText('Enhanced Preprints')).toBeInTheDocument();
   });
 });

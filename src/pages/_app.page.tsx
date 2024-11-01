@@ -4,18 +4,18 @@ import { ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
-import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+import { ELifeLayout } from '../components/layouts/elife';
 import { i18n } from '../i18n';
 import { HasTenant } from '../tenant';
 import EPPLogo from '../images/epp-logo.png';
 
 const LayoutSelector = ({ layoutName, children }: { layoutName?: string, children: ReactNode }) => {
   switch (layoutName) {
-    case 'biophysics-colab':
+    case 'elife':
       return (
-        <BiophysicsColabLayout>
+        <ELifeLayout>
           {children}
-        </BiophysicsColabLayout>
+        </ELifeLayout>
       );
     default:
       return (
