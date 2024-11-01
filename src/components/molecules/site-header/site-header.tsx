@@ -1,17 +1,19 @@
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
 import './site-header.scss';
-import logo from '../../../../public/biophysics-colab-logo.png';
+import { TenantContext } from '../../../tenant';
 
 export const SiteHeader = () => {
   const { t } = useTranslation();
+  const tenant = useContext(TenantContext);
   return (
     <div className="site-header">
       <div className="site-header-container">
         <a href={t('home_url')} className="site-header__logo_link">
           <Image
             className="site-header__logo"
-            src={logo}
+            src={tenant.logo}
             alt={`${t('publisher_short')} logo`}
             width="104"
             height="40"

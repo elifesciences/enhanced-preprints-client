@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import { StaticImageData } from 'next/image';
-import EPPLogo from '../images/epp-logo.png';
+import EPPLogo from './images/epp-logo.png';
 
 export type TenantData = {
   id: string,
