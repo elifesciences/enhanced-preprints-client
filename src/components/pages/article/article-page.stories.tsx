@@ -158,6 +158,29 @@ export const ArticlePageRevisedReviewsTab: Story = {
   ),
 };
 
+export const ArticlePageRevisedReviewsTabNoSummary: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => {
+  const { reviews, authorResponse } = peerReview;
+
+    return (
+      <DefaultLayout>
+        <ArticlePage {...args}>
+         <ArticleReviewsTab peerReview={{ reviews, authorResponse }} currentVersion={2} />
+        </ArticlePage>
+      </DefaultLayout>
+    );
+  },
+};
+
 export const ArticlePageErrorTab: Story = {
   args: {
     metaData,
