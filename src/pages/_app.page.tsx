@@ -7,6 +7,7 @@ import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
 import { HasTenant } from '../tenant';
+import EPPLogo from '../images/epp-logo.png';
 
 const LayoutSelector = ({ layoutName, children }: { layoutName?: string, children: ReactNode }) => {
   switch (layoutName) {
@@ -46,9 +47,13 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: { Component: any, pageProps: HasTenant }) {
-  if (!pageProps.tenant) {
-    throw new Error('tenant not passed to PageProps. Make sure to specify a union type with TenantConfiguredPageProps and pass the tenant prop');
-  }
+  const tenant = pageProps.tenant ?? {
+    id: 'default',
+    layout: 'default',
+    logo: EPPLogo,
+    colors: { primary: '#087acc', primaryDark: '#0769b0' },
+    i18nNamespace: 'default',
+  };
 
   return (
     <>
@@ -61,8 +66,8 @@ export default function MyApp({ Component, pageProps }: { Component: any, pagePr
             body {
               --font-family-primary: ${notoSans.style.fontFamily};
               --font-family-secondary: ${notoSerif.style.fontFamily};
-              --color-primary: ${pageProps.tenant.colors.primary};
-              --color-primary-dark: ${pageProps.tenant.colors.primaryDark};
+              --color-primary: ${tenant.colors.primary};
+              --color-primary-dark: ${tenant.colors.primaryDark};
             }
           `,
         }} />
@@ -83,8 +88,8 @@ export default function MyApp({ Component, pageProps }: { Component: any, pagePr
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={pageProps.tenant.i18nNamespace}>
-        <LayoutSelector layoutName={pageProps.tenant.layout}>
+      <I18nextProvider i18n={i18n} defaultNS={tenant.i18nNamespace}>
+        <LayoutSelector layoutName={tenant.layout}>
           <Component {...pageProps} />
         </LayoutSelector>
       </I18nextProvider>
