@@ -74,6 +74,30 @@ export const ArticlePageFullTextTab: Story = {
   ),
 };
 
+export const ArticlePageFullTextTabNoSummary: Story = {
+  args: {
+    metaData,
+    status,
+    activeTab: 'fulltext',
+    tabs,
+    relatedContent,
+    metrics,
+    previousVersionWarningUrl: '#',
+    timeline,
+  },
+  render: (args) => {
+    const { reviews, authorResponse } = peerReview;
+
+    return (
+      <DefaultLayout>
+        <ArticlePage {...args}>
+          <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{ reviews, authorResponse }} content={jsxContent} />
+        </ArticlePage>
+      </DefaultLayout>
+    );
+  },
+};
+
 export const ArticlePageFiguresTab: Story = {
   args: {
     metaData,
