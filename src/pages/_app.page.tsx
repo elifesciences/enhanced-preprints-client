@@ -45,7 +45,7 @@ const notoSans = Noto_Sans({
   fallback: ['arial', 'helvetica', 'sans-serif'],
 });
 
-export default function MyApp({ Component, pageProps }: { Component: any, pageProps: TenantConfiguredPageProps }) {
+export default function MyApp({ Component, pageProps }: { Component: any, pageProps: Partial<TenantConfiguredPageProps> }) {
   const tenantConfig: TenantConfig = pageProps.tenantConfig ?? {
     id: 'none',
     layout: 'default',
