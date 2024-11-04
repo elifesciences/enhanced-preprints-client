@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { within, userEvent, expect } from '@storybook/test';
+import { I18nextProvider } from 'react-i18next';
 import { Assessment } from './assessment';
-import '../../../i18n';
+import { i18n } from '../../../i18n';
 
 const meta: Meta<typeof Assessment> = {
   title: 'Atoms/Assessment',
@@ -26,6 +27,7 @@ export const ElifeAssessmentSingleTermList: Story = {
     content: 'This is a review that is fundamental to everything',
     doi: '10.1101/123456',
   },
+  render: (args) => <I18nextProvider i18n={i18n} defaultNS="elife"><Assessment {...args} /></I18nextProvider>,
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
   },
@@ -36,6 +38,7 @@ export const ElifeAssessmentSingleTermListMultipleTerms: Story = {
     content: 'This is a review that is important and fundamental to everything',
     doi: '10.1101/123456',
   },
+  render: (args) => <I18nextProvider i18n={i18n} defaultNS="elife"><Assessment {...args} /></I18nextProvider>,
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
   },
@@ -46,6 +49,7 @@ export const ElifeAssessmentMultipleTermList: Story = {
     content: 'This is a review that is convincingly exceptional and fundamental to everything',
     doi: '10.1101/123456',
   },
+  render: (args) => <I18nextProvider i18n={i18n} defaultNS="elife"><Assessment {...args} /></I18nextProvider>,
   play: async ({ canvasElement }) => {
     await collapseTest(canvasElement);
   },
@@ -56,6 +60,7 @@ export const ElifeAssessmentPdfRoute: Story = {
     content: 'This is a review that is convincingly exceptional and fundamental to everything',
     doi: '10.1101/123456',
   },
+  render: (args) => <I18nextProvider i18n={i18n} defaultNS="elife"><Assessment {...args} /></I18nextProvider>,
   parameters: {
     nextjs: {
       navigation: {
