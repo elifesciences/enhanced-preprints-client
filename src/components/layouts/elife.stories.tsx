@@ -2,7 +2,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import { ELifeLayout } from './elife';
 
 export default {
-  title: 'Layout/Default',
+  title: 'Layout/ELifeLayout',
   component: ELifeLayout,
 } as Meta<typeof ELifeLayout>;
 
