@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { SiteHeader } from './site-header';
+import { SiteHeaderELife } from './site-header-elife';
 
-const meta: Meta<typeof SiteHeader> = {
-  title: 'Molecules/SiteHeader',
-  component: SiteHeader,
+const meta: Meta<typeof SiteHeaderELife> = {
+  title: 'Molecules/SiteHeaderELife',
+  component: SiteHeaderELife,
 };
 
 export default meta;
-type Story = StoryObj<typeof SiteHeader>;
+type Story = StoryObj<typeof SiteHeaderELife>;
 
-export const StandardSiteHeader: Story = {};
+export const ELifeSiteHeader: Story = {};

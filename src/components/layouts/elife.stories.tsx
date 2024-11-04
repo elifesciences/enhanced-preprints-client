@@ -8,5 +8,5 @@ export default {
 
 const Template: StoryFn<typeof ELifeLayout> = () => <ELifeLayout>Hello</ELifeLayout>;
 
-export const DefaultLayoutStory = Template.bind({});
-DefaultLayoutStory.args = {};
+export const ELifeLayoutStory = Template.bind({});
+ELifeLayoutStory.args = {};
