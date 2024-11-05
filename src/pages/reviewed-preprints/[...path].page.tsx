@@ -23,7 +23,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
-import { HasTenant } from '../../tenant';
+import { HasTenant, TenantData } from '../../tenant';
 
 type PageProps = HasTenant & {
   metaData: MetaData,
@@ -179,7 +179,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const tenant = await fetchTenantUsingContext(context);
+  let tenant: TenantData;
+  try {
+    tenant = await fetchTenantUsingContext(context);
+  } catch (e) {
+    return { notFound: true };
+  }
 
   const idParts = [...context.params?.path as string[]];
 

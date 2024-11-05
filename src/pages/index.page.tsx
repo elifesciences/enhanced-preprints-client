@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { fetchTenantUsingContext, fetchVersions } from '../utils/data-fetch';
 import { ArticleSummary } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
-import { HasTenant } from '../tenant';
+import { HasTenant, TenantData } from '../tenant';
 
 type PageProps = HasTenant & {
   ids?: string[],
@@ -35,7 +35,12 @@ export const App = ({ ids, articles, previews }: PageProps) => (
 );
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
-  const tenant = await fetchTenantUsingContext(context);
+  let tenant: TenantData;
+  try {
+    tenant = await fetchTenantUsingContext(context);
+  } catch (e) {
+    return { notFound: true };
+  }
 
   const versions = (await fetchVersions(tenant.id)).items.sort((a, b) => (a.id > b.id ? 1 : -1));
   const articles = versions.filter((version) => (version.date));
