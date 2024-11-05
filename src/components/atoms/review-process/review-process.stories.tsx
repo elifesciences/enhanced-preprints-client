@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ReviewProcess } from './review-process';
-import '../../../i18n';
 import { I18nextProvider } from 'react-i18next';
+import { ReviewProcess } from './review-process';
 import { i18n } from '../../../i18n';
 
 const meta: Meta<typeof ReviewProcess> = {
