@@ -16,7 +16,7 @@ type Config = {
 
 export const config: Config = {
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
-  apiServer: process.env.API_SERVER,
+  apiServer: process.env.MULTITENANT_API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
   iiifServer: process.env.IIIF_SERVER,
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,
