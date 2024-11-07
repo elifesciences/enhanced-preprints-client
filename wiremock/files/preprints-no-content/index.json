@@ -68,7 +68,27 @@
     "versionDoi": "10.7554/eLife.85111.2",
     "versionIdentifier": "2",
     "volume": "12",
-    "firstPublished": "2023-01-25T14:00:00.000Z"
+    "firstPublished": "2023-01-25T14:00:00.000Z",
+    "peerReview": {
+      "evaluationSummary": {
+        "date": "2023-04-14T13:42:25.781Z",
+        "doi": "10.7554/eLife.85111.2.sa2",
+        "participants": [
+          {
+            "name": "Brice Bathellier",
+            "institution": "unknown",
+            "role": "editor"
+          },
+          {
+            "name": "Kate Wassum",
+            "institution": "unknown",
+            "role": "senior-editor"
+          }
+        ],
+        "reviewType": "evaluation-summary",
+        "text": "<p><strong>eLife assessment</strong></p>\n<p>This important study provides convincing evidence that locus coeruleus is activated during visuomotor mismatches. Gain of function optogenetic experiments complement this evidence and indicate that locus coeruleus could be involved in the learning process that enables visuomotor predictions. This study, therefore, sets the groundwork for the circuit dissection of predictive signals in the visual cortex. Loss-of-function experiments would strengthen the evidence of the involvement of locus coeruleus in prediction learning. These results will be of interest to systems neuroscientists.</p>\n"
+      }
+    }
   },
   {
     "article": {
@@ -226,6 +246,19 @@
     "versionDoi": "xxxxxx/biophysics-colab-111111.1",
     "versionIdentifier": "1",
     "volume": "1",
-    "firstPublished": "2022-10-03T09:03:08.000Z"
+    "firstPublished": "2022-10-03T09:03:08.000Z",
+    "peerReview": {
+      "evaluationSummary": {
+        "date": "2024-01-12T08:24:31.557Z",
+        "reviewType": "evaluation-summary",
+        "text": "<p><strong>Evaluation statement (10 January 2024)</strong></p>\n<p>Driggers et al. is an elegant study that reports the structure of an open KATP channel complex formed from the Q52R diabetes mutation of the pore-forming subunit Kir 6.2, the sulfonylurea receptor (SUR1), and long-chain phosphatidylinositol 4,5-bisphosphate (PIP2) – a key lipid that stabilizes the open state of the channel and regulates inhibition by intracellular ATP. The structure reveals one PIP2 site related to that seen in other Kir channels as well as a second unanticipated one where the lipid snuggles into the interface between Kir6.2 and a region of SUR1 previously implicated in promoting the open state of KATP. This important finding helps to explain how PIP2 exerts such a profound regulatory influence on KATP.</p>\n<p><strong>Biophysics Colab</strong> considers this to be a <strong>convincing</strong> study and <strong>recommends</strong> it to scientists working on KATP and other membrane proteins regulated by PIP2.</p>\n<p><em>(This evaluation by Biophysics Colab refers to version 2 of this preprint, which has been revised in response to peer review of version 1.)</em></p>",
+        "participants": [
+          {
+            "name": "Anonymous",
+            "role": "editor"
+          }
+        ]
+      }
+    }
   }
 ]

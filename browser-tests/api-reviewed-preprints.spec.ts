@@ -18,6 +18,14 @@ test('reviewed preprints api listing', async ({ request }) => {
   expect(responseJson.items[0].version).toBe(2);
   expect(responseJson.items[0].doi).toBe('10.1101/2022.11.08.515698');
   expect(responseJson.items[0].title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
+  expect(responseJson.items[0].elifeAssessment).toStrictEqual({
+    significance: [
+      'important',
+    ],
+    strength: [
+      'convincing',
+    ],
+  });
 });
 
 test('reviewed preprints api item found', async ({ request }) => {
@@ -37,6 +45,14 @@ test('reviewed preprints api item found', async ({ request }) => {
   expect(responseJson.version).toBe(2);
   expect(responseJson.doi).toBe('10.1101/2022.11.08.515698');
   expect(responseJson.title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
+  expect(responseJson.elifeAssessment).toStrictEqual({
+    significance: [
+      'important',
+    ],
+    strength: [
+      'convincing',
+    ],
+  });
   expect(responseJson.indexContent).toContain('Through experience with the world, brains learn to predict the sensory feedback');
   expect(responseJson.indexContent).toContain('Rebecca Jordan, Georg B. Keller');
 });

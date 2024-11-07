@@ -6,7 +6,12 @@ import {
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
-import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
+import {
+  ElifeAssessment,
+  EnhancedArticleNoContent,
+  PeerReviewEvaluationSummaryOnly,
+} from '../../types/reviewed-preprint-snippet';
+import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -68,6 +73,21 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
   });
 };
 
+export const getAssessmentTerms = (peerReview?: PeerReviewEvaluationSummaryOnly): ElifeAssessment | {} => {
+  if (!peerReview) {
+    return {};
+  }
+
+  const terms = findTerms(peerReview.evaluationSummary?.text ?? '');
+
+  return terms.strength && terms.strength.length > 0 ? {
+    elifeAssessment: {
+      significance: [],
+      ...terms,
+    },
+  } as ElifeAssessment : {};
+};
+
 export const errorNotFoundRequest = (res: NextApiResponse) : void => {
   writeResponse(res, 'application/json', 404, {
     title: 'not found',
@@ -97,6 +117,7 @@ const enhancedArticleNoContentToSnippet = ({
   published,
   subjects,
   firstPublished,
+  peerReview,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi,
@@ -111,6 +132,7 @@ const enhancedArticleNoContentToSnippet = ({
   statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
   stage: 'published',
   subjects: getSubjects(subjects || []),
+  ...getAssessmentTerms(peerReview),
 });
 
 export const enhancedArticleToReviewedPreprintItemResponse = ({
@@ -121,21 +143,20 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   article,
   published,
   subjects,
+  peerReview,
   article: { content, authors },
 }: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
-  id: msid,
-  doi: preprintDoi,
-  version: +versionIdentifier,
-  pdf: pdfUrl,
-  status: 'reviewed',
-  authorLine: prepareAuthorLine(authors || []),
-  title: contentToHtml(article.title),
-  published: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
-  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
-  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
-  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
-  stage: 'published',
-  subjects: getSubjects(subjects || []),
+  ...enhancedArticleNoContentToSnippet({
+    msid,
+    versionIdentifier,
+    preprintDoi,
+    pdfUrl,
+    article,
+    published,
+    subjects,
+    firstPublished: firstPublished ?? published!,
+    peerReview,
+  } as EnhancedArticleNoContent),
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
