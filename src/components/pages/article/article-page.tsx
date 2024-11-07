@@ -10,6 +10,12 @@ import { CitationData } from '../../atoms/citation/citation';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 
+export type ArticleStatusProps = {
+  articleType: string,
+  status: string,
+  isPreview: boolean,
+};
+
 export type Tab = {
   id: string,
   linkElement: ReactElement,
@@ -18,6 +24,7 @@ export type Tab = {
 export type ArticlePageProps = {
   metaData: MetaData,
   msidWithVersion: string,
+  status: ArticleStatusProps,
   relatedContent: RelatedContentData[],
   metrics?: Metrics,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
