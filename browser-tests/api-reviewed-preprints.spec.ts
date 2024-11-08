@@ -19,6 +19,16 @@ test('reviewed preprints api listing', async ({ request }) => {
   expect(responseJson.items[0].doi).toBe('10.1101/2022.11.08.515698');
   expect(responseJson.items[0].title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
   expect(responseJson.items[0].elifeAssessment).toStrictEqual({
+    title: 'eLife assessment',
+    content: [
+      {
+        type: 'paragraph',
+        // eslint-disable-next-line max-len
+        text: 'This important study provides convincing evidence that locus coeruleus is activated during visuomotor mismatches. Gain of function optogenetic experiments complement this evidence and indicate that locus coeruleus could be involved in the learning process that enables visuomotor predictions. This study, therefore, sets the groundwork for the circuit dissection of predictive signals in the visual cortex. Loss-of-function experiments would strengthen the evidence of the involvement of locus coeruleus in prediction learning. These results will be of interest to systems neuroscientists.',
+      },
+    ],
+    id: 'sa2',
+    doi: '10.7554/eLife.85111.2.sa2',
     significance: [
       'important',
     ],
@@ -46,6 +56,16 @@ test('reviewed preprints api item found', async ({ request }) => {
   expect(responseJson.doi).toBe('10.1101/2022.11.08.515698');
   expect(responseJson.title).toBe('The locus coeruleus broadcasts prediction errors across the cortex to promote sensorimotor plasticity');
   expect(responseJson.elifeAssessment).toStrictEqual({
+    title: 'eLife assessment',
+    content: [
+      {
+        type: 'paragraph',
+        // eslint-disable-next-line max-len
+        text: 'This important study provides convincing evidence that locus coeruleus is activated during visuomotor mismatches. Gain of function optogenetic experiments complement this evidence and indicate that locus coeruleus could be involved in the learning process that enables visuomotor predictions. This study, therefore, sets the groundwork for the circuit dissection of predictive signals in the visual cortex. Loss-of-function experiments would strengthen the evidence of the involvement of locus coeruleus in prediction learning. These results will be of interest to systems neuroscientists.',
+      },
+    ],
+    id: 'sa2',
+    doi: '10.7554/eLife.85111.2.sa2',
     significance: [
       'important',
     ],

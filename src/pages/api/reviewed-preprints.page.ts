@@ -73,19 +73,39 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
   });
 };
 
-export const getAssessmentTerms = (peerReview?: PeerReviewEvaluationSummaryOnly): ElifeAssessment | {} => {
-  if (!peerReview) {
-    return {};
-  }
+const getAssessment = (peerReview: PeerReviewEvaluationSummaryOnly): ElifeAssessment => {
+  const { significance, strength } = findTerms(peerReview.evaluationSummary?.text ?? '');
 
-  const terms = findTerms(peerReview.evaluationSummary?.text ?? '');
+  const doi = peerReview.evaluationSummary?.doi;
+  const id = doi && doi.replace(/^.+\.(sa[0-9]+)$/, '$1');
 
-  return terms.strength && terms.strength.length > 0 ? {
+  const items = (peerReview.evaluationSummary?.text ?? '')
+    .replaceAll(/(\\n|^\s*<p*>|<\/p+>\s*$)/g, '')
+    .split(/\s*<\/p>\s*<p[^>]*>\s*/);
+
+  const titleRegex = /^<strong>(.*)<\/strong>$/;
+  const titles = items
+    .filter((item) => item.match(titleRegex));
+
+  const title = (titles.length > 0) ? titles[0].replace(titleRegex, '$1') : 'eLife Assessment';
+
+  return {
     elifeAssessment: {
-      significance: [],
-      ...terms,
+      title,
+      content: (peerReview.evaluationSummary?.text ?? '')
+        .replaceAll(/(\\n|^\s*<p*>|<\/p+>\s*$)/g, '')
+        .split(/\s*<\/p>\s*<p[^>]*>\s*/)
+        .filter((item) => !item.match(titleRegex))
+        .map((item) => ({
+          type: 'paragraph',
+          text: item,
+        })),
+      ...(id ? { id } : {}),
+      ...(doi ? { doi } : {}),
+      significance: significance ?? [],
+      ...((strength ?? []).length > 0 ? { strength } : {}),
     },
-  } as ElifeAssessment : {};
+  };
 };
 
 export const errorNotFoundRequest = (res: NextApiResponse) : void => {
@@ -132,7 +152,7 @@ const enhancedArticleNoContentToSnippet = ({
   statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
   stage: 'published',
   subjects: getSubjects(subjects || []),
-  ...getAssessmentTerms(peerReview),
+  ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
 export const enhancedArticleToReviewedPreprintItemResponse = ({

@@ -1,10 +1,19 @@
 import { EnhancedArticle, ProcessedArticle } from './enhanced-article';
 import { PeerReview } from './peer-review';
 
+export type ElifeAssessmentContent = {
+  type: 'paragraph',
+  text: string,
+}[];
+
 export type ElifeAssessment = {
   elifeAssessment?: {
+    title: string,
+    content: ElifeAssessmentContent,
+    id?: string,
+    doi?: string,
     significance: string[],
-    strength: [string, ...string[]],
+    strength?: string[],
   },
 };
 
