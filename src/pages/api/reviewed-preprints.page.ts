@@ -6,7 +6,12 @@ import {
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
-import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
+import {
+  ElifeAssessment,
+  EnhancedArticleNoContent,
+  PeerReviewEvaluationSummaryOnly,
+} from '../../types/reviewed-preprint-snippet';
+import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -68,6 +73,41 @@ const errorBadRequest = (res: NextApiResponse, message: string) : void => {
   });
 };
 
+const getAssessment = (peerReview: PeerReviewEvaluationSummaryOnly): ElifeAssessment => {
+  const { significance, strength } = findTerms(peerReview.evaluationSummary?.text ?? '');
+
+  const doi = peerReview.evaluationSummary?.doi;
+  const id = doi && doi.replace(/^.+\.(sa[0-9]+)$/, '$1');
+
+  const items = (peerReview.evaluationSummary?.text ?? '')
+    .replaceAll(/(\\n|^\s*<p*>|<\/p+>\s*$)/g, '')
+    .split(/\s*<\/p>\s*<p[^>]*>\s*/);
+
+  const titleRegex = /^<strong>(.*)<\/strong>$/;
+  const titles = items
+    .filter((item) => item.match(titleRegex));
+
+  const title = (titles.length > 0) ? titles[0].replace(titleRegex, '$1') : 'eLife Assessment';
+
+  return {
+    elifeAssessment: {
+      title,
+      content: (peerReview.evaluationSummary?.text ?? '')
+        .replaceAll(/(\\n|^\s*<p*>|<\/p+>\s*$)/g, '')
+        .split(/\s*<\/p>\s*<p[^>]*>\s*/)
+        .filter((item) => !item.match(titleRegex))
+        .map((item) => ({
+          type: 'paragraph',
+          text: item,
+        })),
+      ...(id ? { id } : {}),
+      ...(doi ? { doi } : {}),
+      significance: significance ?? [],
+      ...((strength ?? []).length > 0 ? { strength } : {}),
+    },
+  };
+};
+
 export const errorNotFoundRequest = (res: NextApiResponse) : void => {
   writeResponse(res, 'application/json', 404, {
     title: 'not found',
@@ -97,6 +137,7 @@ const enhancedArticleNoContentToSnippet = ({
   published,
   subjects,
   firstPublished,
+  peerReview,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi,
@@ -111,6 +152,7 @@ const enhancedArticleNoContentToSnippet = ({
   statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
   stage: 'published',
   subjects: getSubjects(subjects || []),
+  ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
 export const enhancedArticleToReviewedPreprintItemResponse = ({
@@ -121,21 +163,20 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   article,
   published,
   subjects,
+  peerReview,
   article: { content, authors },
 }: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
-  id: msid,
-  doi: preprintDoi,
-  version: +versionIdentifier,
-  pdf: pdfUrl,
-  status: 'reviewed',
-  authorLine: prepareAuthorLine(authors || []),
-  title: contentToHtml(article.title),
-  published: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
-  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished ?? published!)),
-  versionDate: toIsoStringWithoutMilliseconds(new Date(published!)),
-  statusDate: toIsoStringWithoutMilliseconds(new Date(published!)),
-  stage: 'published',
-  subjects: getSubjects(subjects || []),
+  ...enhancedArticleNoContentToSnippet({
+    msid,
+    versionIdentifier,
+    preprintDoi,
+    pdfUrl,
+    article,
+    published,
+    subjects,
+    firstPublished: firstPublished ?? published!,
+    peerReview,
+  } as EnhancedArticleNoContent),
   indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
 });
 
