@@ -3,6 +3,10 @@ if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-bui
   console.warn('Could not find API_SERVER environment variable');
 }
 
+export type ConfigFlags = {
+  assessmentTerms?: boolean,
+};
+
 type Config = {
   siteName?: string,
   showPreviews: boolean
@@ -13,6 +17,7 @@ type Config = {
   cookiebotId?: string,
   articleCacheAge: string,
   disallowRobots: boolean,
+  flags?: ConfigFlags,
 };
 
 export const config: Config = {
@@ -25,4 +30,7 @@ export const config: Config = {
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   disallowRobots: !!process.env.DISALLOW_ROBOTS,
+  flags: {
+    assessmentTerms: (!!process.env.NEXT_FEATURE_ASSESSMENT_TERMS) || false,
+  },
 };

@@ -7,10 +7,12 @@ import {
 } from '../../../utils/terms';
 import { Descriptors } from '../descriptors/descriptors';
 import { isPdfRoute } from '../../../utils/isPdfRoute';
+import { useFeatureFlags } from '../../../context/feature-flag-context';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {
   const { t } = useTranslation();
+  const { flags } = useFeatureFlags();
 
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
@@ -23,6 +25,7 @@ export const Assessment = ({ content, doi }: Props) => {
   return (
     <section id="assessment" className="assessment">
       <div className="assessment__body" dangerouslySetInnerHTML={{ __html: highlightTerms(content) }} />
+      {flags.assessmentTerms && <>Feature Assessment Terms</>}
       {doi && <Descriptors doi={doi}/>}
       <div className={`assessment-collapsable__${expanded !== false ? 'shown' : 'hidden'}`}>
         { (significance && significance.length > 0) && <TermsList title="Significance of findings" terms={significanceTerms} selectedTerm={significance} /> }

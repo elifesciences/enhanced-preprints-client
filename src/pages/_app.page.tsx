@@ -6,6 +6,7 @@ import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
+import { FeatureFlagProvider } from '../context/feature-flag-context';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
   switch (siteName) {
@@ -45,6 +46,8 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
+  const initialFlags = config.flags ?? {};
+
   return (
     <>
       <Head>
@@ -76,11 +79,13 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
-        <LayoutSelector siteName={pageProps.siteName}>
-          <Component {...pageProps} />
-        </LayoutSelector>
-      </I18nextProvider>
+      <FeatureFlagProvider initialFlags={initialFlags}>
+        <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
+          <LayoutSelector siteName={pageProps.siteName}>
+            <Component {...pageProps} />
+          </LayoutSelector>
+        </I18nextProvider>
+      </FeatureFlagProvider>
     </>
   );
 }
