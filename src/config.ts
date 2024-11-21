@@ -13,6 +13,7 @@ type Config = {
   cookiebotId?: string,
   articleCacheAge: string,
   disallowRobots: boolean,
+  disableTerms: boolean,
 };
 
 export const config: Config = {
@@ -25,4 +26,5 @@ export const config: Config = {
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   disallowRobots: !!process.env.DISALLOW_ROBOTS,
+  disableTerms: !!process.env.NEXT_PUBLIC_DISABLE_TERMS && process.env.NEXT_PUBLIC_DISABLE_TERMS === 'true',
 };
