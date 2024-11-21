@@ -7,6 +7,7 @@ import {
 } from '../../../utils/terms';
 import { Descriptors } from '../descriptors/descriptors';
 import { isPdfRoute } from '../../../utils/isPdfRoute';
+import { config } from '../../../config';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {
@@ -20,7 +21,12 @@ export const Assessment = ({ content, doi }: Props) => {
 
   const { strength, significance } = findTerms(content);
 
-  return (
+  return config.disableTerms ? (
+    <section id="assessment" className="assessment">
+      <div className="assessment__body" dangerouslySetInnerHTML={{ __html: content }} />
+      {doi && <Descriptors doi={doi}/>}
+    </section>
+  ) : (
     <section id="assessment" className="assessment">
       <div className="assessment__body" dangerouslySetInnerHTML={{ __html: highlightTerms(content) }} />
       {doi && <Descriptors doi={doi}/>}
@@ -30,9 +36,9 @@ export const Assessment = ({ content, doi }: Props) => {
         <p className="assessment__fixed_text">{t('about_assessments_description')} <a href={t('about_assessments_url')}>{t('about_assessments')}</a></p>
       </div>
       {(expanded !== null && !isPdf) &&
-      <span role="button" aria-controls="assessment" aria-expanded={expanded}
-        className={`explanation_link ${expanded ? 'explanation_link__expanded' : ''}`}
-        onClick={() => setExpanded(!expanded)}> {expanded ? 'Show less' : 'Read more about this assessment'}</span>}
+        <span role="button" aria-controls="assessment" aria-expanded={expanded}
+          className={`explanation_link ${expanded ? 'explanation_link__expanded' : ''}`}
+          onClick={() => setExpanded(!expanded)}> {expanded ? 'Show less' : 'Read more about this assessment'}</span>}
     </section>
   );
 };
