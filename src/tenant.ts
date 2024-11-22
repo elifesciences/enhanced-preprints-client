@@ -10,7 +10,8 @@ export type TenantData = {
   colors: {
     primary: string,
     primaryDark: string,
-  }
+  },
+  features?: Record<string, boolean>,
 };
 
 export type HasTenant = {
@@ -23,4 +24,7 @@ export const TenantContext = createContext<TenantData>({
   logo: EPPLogo,
   colors: { primary: '#087acc', primaryDark: '#0769b0' },
   i18nNamespace: 'default',
+  features: {
+    showElifeTerms: false,
+  },
 });
