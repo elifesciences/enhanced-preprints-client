@@ -1,0 +1,10 @@
+@use "../../sass/layout";
+@use "../../sass/mixins";
+@use "../../sass/settings";
+
+.article-page {
+  @include settings.container-padding();
+  @include mixins.padding(96, "bottom");
+
+  margin: 0 auto;
+}

@@ -1,0 +1,12 @@
+{
+    "scenarioName": "elife-preprints-no-content-index",
+    "requiredScenarioState": "Started",
+    "request": {
+        "method": "GET",
+        "urlPath": "/api/biophysics-colab/preprints-no-content"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "preprints-no-content/index.json"
+    }
+}

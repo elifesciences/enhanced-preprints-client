@@ -1,19 +1,21 @@
 import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
-import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
+import { ELifeLayout } from '../components/layouts/elife';
 import { i18n } from '../i18n';
+import { HasTenant, TenantContext } from '../tenant';
 
-const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
-  switch (siteName) {
-    case 'biophysics-colab':
+const LayoutSelector = ({ children }: { children: ReactNode }) => {
+  const layoutName = useContext(TenantContext).layout;
+  switch (layoutName) {
+    case 'elife':
       return (
-        <BiophysicsColabLayout>
+        <ELifeLayout>
           {children}
-        </BiophysicsColabLayout>
+        </ELifeLayout>
       );
     default:
       return (
@@ -44,7 +46,9 @@ const notoSans = Noto_Sans({
   fallback: ['arial', 'helvetica', 'sans-serif'],
 });
 
-export default function MyApp({ Component, pageProps }: any) {
+export default function MyApp({ Component, pageProps }: { Component: any, pageProps: HasTenant }) {
+  const tenant = pageProps.tenant ?? useContext(TenantContext);
+
   return (
     <>
       <Head>
@@ -56,6 +60,8 @@ export default function MyApp({ Component, pageProps }: any) {
             body {
               --font-family-primary: ${notoSans.style.fontFamily};
               --font-family-secondary: ${notoSerif.style.fontFamily};
+              --color-primary: ${tenant.colors.primary};
+              --color-primary-dark: ${tenant.colors.primaryDark};
             }
           `,
         }} />
@@ -76,11 +82,13 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
-        <LayoutSelector siteName={pageProps.siteName}>
-          <Component {...pageProps} />
-        </LayoutSelector>
-      </I18nextProvider>
+      <TenantContext.Provider value={tenant}>
+        <I18nextProvider i18n={i18n} defaultNS={tenant.i18nNamespace}>
+          <LayoutSelector>
+            <Component {...pageProps} />
+          </LayoutSelector>
+        </I18nextProvider>
+      </TenantContext.Provider>
     </>
   );
 }

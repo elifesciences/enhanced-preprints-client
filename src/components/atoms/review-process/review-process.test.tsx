@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { ReviewProcess } from './review-process';
-import '../../../i18n';
+import { i18n } from '../../../i18n';
 
 describe('Review Process', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('renders review process', () => {
     render(<ReviewProcess />);
 

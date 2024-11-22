@@ -1,10 +1,9 @@
-if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-build' && process.env.NODE_ENV !== 'test')) {
+if (!process.env.MULTI_TENANT_API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-build' && process.env.NODE_ENV !== 'test')) {
   // eslint-disable-next-line no-console
-  console.warn('Could not find API_SERVER environment variable');
+  console.warn('Could not find MULTI_TENANT_API_SERVER environment variable');
 }
 
 type Config = {
-  siteName?: string,
   showPreviews: boolean
   apiServer?: string,
   iiifServer?: string,
@@ -17,9 +16,8 @@ type Config = {
 };
 
 export const config: Config = {
-  siteName: process.env.NEXT_PUBLIC_SITE_NAME,
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
-  apiServer: process.env.API_SERVER,
+  apiServer: process.env.MULTI_TENANT_API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
   iiifServer: process.env.IIIF_SERVER,
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,

@@ -1,6 +1,5 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { config } from './config';
 
 const resources = {
   en: {
@@ -9,6 +8,9 @@ const resources = {
       twitter_handle: 'Twitter handle',
       publisher_short: 'Publisher short name',
       publisher_long: 'Publisher long name',
+      home_url: '/',
+      about_url: '/about',
+      search_url: '/search',
       process_url: '#', // link to review process
       about_assessments_url: '#', // link to about assessments
 
@@ -37,6 +39,9 @@ const resources = {
       twitter_handle: '@elife',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
+      home_url: 'https://elifesciences.org',
+      about_url: 'https://elifesciences.org/about',
+      search_url: 'https://elifesciences.org/search',
       process_url: 'https://elifesciences.org/about/peer-review',
       about_assessments_description: (
         'During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance'
@@ -66,6 +71,9 @@ const resources = {
       twitter_handle: '@BiophysicsColab',
       publisher_short: 'Biophysics Colab',
       publisher_long: 'Biophysics Colab',
+      home_url: 'https://biophysicscolab.pubpub.org/',
+      about_url: 'https://biophysicscolab.pubpub.org/about',
+      search_url: 'https://biophysicscolab.pubpub.org/search',
       timeline_version_title: 'Curated preprint published',
       reviewed_preprint: 'Curated preprint',
       process_url: 'https://www.sciencecolab.org/biophysics-colab',
@@ -74,14 +82,11 @@ const resources = {
   },
 };
 
-const siteName = config.siteName?.replace('-', '_');
-
 i18n
   .use(initReactI18next)
   .init({
     resources,
     lng: 'en',
-    defaultNS: Object.keys(resources.en).includes(siteName ?? '') ? siteName : 'elife',
     fallbackNS: 'default',
     interpolation: {
       escapeValue: false,

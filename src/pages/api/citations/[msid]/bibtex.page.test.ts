@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createMocks, createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion, fetchTenantUsingRequest } from '../../../../utils/data-fetch';
 import handler from './bibtex.page';
 
-jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
+jest.mock('../../../../utils/data-fetch', () => ({
   fetchVersion: jest.fn(),
+  fetchTenantUsingRequest: jest.fn(),
 }));
 
 describe('citation BibTeX handler', () => {
@@ -13,6 +14,9 @@ describe('citation BibTeX handler', () => {
     req,
     res,
   }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
+    headers: {
+      'x-epp-tenant-id': 'elife',
+    },
     url: '/reviewed-preprints/321.bib',
     query: { msid: '321' },
   });
@@ -20,6 +24,10 @@ describe('citation BibTeX handler', () => {
   afterEach(() => {
     jest.resetAllMocks();
     fetchMock.resetBehavior();
+  });
+
+  beforeEach(() => {
+    (fetchTenantUsingRequest as jest.Mock).mockResolvedValue({ id: 'elife' });
   });
 
   test('returns 503 if version is not available', async () => {

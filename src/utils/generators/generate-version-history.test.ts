@@ -1,3 +1,4 @@
+import { i18n } from '../../i18n';
 import { EnhancedArticle, VersionSummary } from '../../types';
 import { ProcessedArticle } from '../../types/enhanced-article';
 import { generateVersionHistory } from './generate-version-history';
@@ -84,6 +85,9 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateVersionHistory', () => {
+  // TODO: remove dependance on elife namespace and/or translation
+  i18n.setDefaultNamespace('elife');
+
   it('should generate the correct version history with one reviewed preprint', () => {
     const history = generateVersionHistory({
       article: version1,

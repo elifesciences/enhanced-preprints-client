@@ -5,7 +5,7 @@ test.describe('content header', () => {
   let contentHeader: ContentHeader;
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 1000, height: 1000 });
-    await page.goto('http://localhost:3001/reviewed-preprints/85111');
+    await page.goto('http://localhost:8080/reviewed-preprints/85111');
     contentHeader = new ContentHeader(page);
   });
 

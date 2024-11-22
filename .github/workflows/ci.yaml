@@ -57,6 +57,9 @@ jobs:
           yarn playwright install
           yarn playwright install-deps
       - name: Bring up browser test stack
+        # todo: This should be reviewed at somepoint
+        env:
+          TENANT_ID: elife
         run: docker compose up --wait
       - name: Debug bring up browser test stack
         if: failure()

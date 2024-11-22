@@ -1,9 +1,9 @@
 {
-    "scenarioName": "biophysics-colab-111111",
+    "scenarioName": "biophysics-colab-111111v1",
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints/biophysics-colab-111111"
+        "urlPath": "/api/biophysics-colab/preprints/biophysics-colab-111111v1"
     },
     "response": {
         "status": 200,

@@ -1,0 +1,18 @@
+{
+  "scenarioName": "elife-config",
+  "requiredScenarioState": "Started",
+  "request": {
+      "method": "GET",
+      "urlPath": "/api/elife/config"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "id": "elife",
+      "layout": "default",
+      "i18nNamespace": "elife",
+      "logo": "https://sciety.org/static/images/article-page/elife-logo-sm.svg",
+      "colors": {"primary": "#087acc", "primaryDark": "#0769b0"}
+    }
+  }
+}

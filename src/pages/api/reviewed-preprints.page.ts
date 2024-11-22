@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import moment from 'moment';
-import { fetchVersionsNoContent } from '../../utils/data-fetch';
+import { fetchTenantUsingRequest, fetchVersionsNoContent } from '../../utils/data-fetch';
 import {
   Author, EnhancedArticle, ReviewedPreprintSnippet,
 } from '../../types';
@@ -219,7 +219,9 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorBadRequest(res, 'expecting YYYY-MM-DD format for \'end-date\' parameter');
   }
 
-  const results = await fetchVersionsNoContent(page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate, endDate);
+  const tenant = await fetchTenantUsingRequest(req);
+
+  const results = await fetchVersionsNoContent(tenant.id, page, perPage, order as 'asc' | 'desc', useDate as 'default' | 'published', startDate, endDate);
 
   const items = Array.from(results.items).map(enhancedArticleNoContentToSnippet);
 

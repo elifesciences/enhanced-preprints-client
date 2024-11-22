@@ -45,10 +45,10 @@ The EPP API server can be viewed at [`localhost:3001`](http://localhost:3001)
 
 You can also view a rudimentary mongodb GUI client at [`localhost:8081`](http://localhost:8081)
 
-### Set the SITE_NAME to allow for site specific overrides
+### Set the TENANT_ID to allow for tenant specific overrides
 
 ```bash
-NEXT_PUBLIC_SITE_NAME=elife docker compose up
+TENANT_ID=elife docker compose up
 ```
 
 ## Development build with local API - `SERVER_DIR="../your-directory-here" docker compose -f docker-compose.yaml -f docker-compose.localserver.yaml up`

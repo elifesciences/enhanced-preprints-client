@@ -12,7 +12,7 @@ import {
   RelatedContent,
   TimelineEvent,
 } from '../../types';
-import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
+import { fetchTenantUsingContext, fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { ArticlePage, Tab } from '../../components/pages/article/article-page';
 import {
@@ -23,9 +23,9 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { HasTenant, TenantData } from '../../tenant';
 
-type PageProps = {
-  siteName?: string,
+type PageProps = HasTenant & {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -184,6 +184,13 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  let tenant: TenantData;
+  try {
+    tenant = await fetchTenantUsingContext(context);
+  } catch (e) {
+    return { notFound: true };
+  }
+
   const idParts = [...context.params?.path as string[]];
 
   if (idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
@@ -196,7 +203,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
 
-  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
+  const articleWithVersions = await fetchVersion(tenant.id, id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
   if (!articleWithVersions) {
     console.log(`Article version not found (${id})`); // eslint-disable-line no-console
@@ -212,7 +219,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
-      siteName: config.siteName,
+      tenant,
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,

@@ -1,11 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../../config';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchTenantUsingRequest, fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
 
-  const version = await fetchVersion(msid);
+  const tenant = await fetchTenantUsingRequest(req);
+
+  const version = await fetchVersion(tenant.id, msid);
   const filename = `${msid}.bib`;
 
   if (!version) {

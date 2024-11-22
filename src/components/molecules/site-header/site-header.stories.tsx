@@ -9,4 +9,4 @@ const meta: Meta<typeof SiteHeader> = {
 export default meta;
 type Story = StoryObj<typeof SiteHeader>;
 
-export const StandardSiteHeader: Story = {};
+export const DefaultSiteHeader: Story = {};

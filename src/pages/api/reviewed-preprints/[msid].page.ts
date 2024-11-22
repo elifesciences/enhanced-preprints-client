@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { fetchVersion } from '../../../utils/data-fetch';
+import { fetchTenantUsingRequest, fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
   writeResponse,
@@ -14,7 +14,9 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     errorNotFoundRequest(res);
   }
 
-  const version = await fetchVersion(msid);
+  const tenantConfig = await fetchTenantUsingRequest(req);
+
+  const version = await fetchVersion(tenantConfig.id, msid);
   const firstPublished = Object.values(version?.versions || {} as VersionSummary[])
     .reduce((min: null | VersionSummary, v) => ((!min || (min.published && v.published && v.published < min.published)) ? v : min), null);
   if (!version) {
