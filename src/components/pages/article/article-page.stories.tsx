@@ -1,7 +1,7 @@
 import LinkTo from '@storybook/addon-links/react';
 import { Meta, StoryObj } from '@storybook/react';
 import {
-  content, metaData, metrics, peerReview, relatedContent, status, timeline,
+  content, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
@@ -57,7 +57,6 @@ const headings = contentToHeadings(content);
 export const ArticlePageFullTextTab: Story = {
   args: {
     metaData,
-    status,
     activeTab: 'fulltext',
     tabs,
     relatedContent,
@@ -74,10 +73,32 @@ export const ArticlePageFullTextTab: Story = {
   ),
 };
 
+export const ArticlePageFullTextTabNoSummary: Story = {
+  args: {
+    metaData,
+    activeTab: 'fulltext',
+    tabs,
+    relatedContent,
+    metrics,
+    previousVersionWarningUrl: '#',
+    timeline,
+  },
+  render: (args) => {
+    const { reviews, authorResponse } = peerReview;
+
+    return (
+      <DefaultLayout>
+        <ArticlePage {...args}>
+          <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{ reviews, authorResponse }} content={jsxContent} />
+        </ArticlePage>
+      </DefaultLayout>
+    );
+  },
+};
+
 export const ArticlePageFiguresTab: Story = {
   args: {
     metaData,
-    status,
     activeTab: 'figures',
     tabs,
     relatedContent,
@@ -99,7 +120,6 @@ export const ArticlePageReviewedReviewsTab: Story = {
       ...metaData,
       version: '1',
     },
-    status,
     activeTab: 'reviews',
     tabs,
     relatedContent,
@@ -118,7 +138,6 @@ export const ArticlePageReviewedReviewsTab: Story = {
 export const ArticlePageRevisedReviewsTab: Story = {
   args: {
     metaData,
-    status,
     activeTab: 'reviews',
     tabs,
     relatedContent,
@@ -134,10 +153,31 @@ export const ArticlePageRevisedReviewsTab: Story = {
   ),
 };
 
+export const ArticlePageRevisedReviewsTabNoSummary: Story = {
+  args: {
+    metaData,
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => {
+    const { reviews, authorResponse } = peerReview;
+
+    return (
+      <DefaultLayout>
+        <ArticlePage {...args}>
+          <ArticleReviewsTab peerReview={{ reviews, authorResponse }} currentVersion={2} />
+        </ArticlePage>
+      </DefaultLayout>
+    );
+  },
+};
+
 export const ArticlePageErrorTab: Story = {
   args: {
     metaData,
-    status,
     activeTab: 'reviews',
     tabs,
     relatedContent,

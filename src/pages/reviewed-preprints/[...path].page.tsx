@@ -14,11 +14,11 @@ import {
 } from '../../types';
 import { fetchTenantUsingContext, fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
-import { ArticlePage, ArticleStatusProps, Tab } from '../../components/pages/article/article-page';
+import { ArticlePage, Tab } from '../../components/pages/article/article-page';
 import {
   contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
-import { generateStatus, generateTimeline, generateVersionHistory } from '../../utils/generators';
+import { generateTimeline, generateVersionHistory } from '../../utils/generators';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
@@ -29,7 +29,6 @@ type PageProps = HasTenant & {
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
-  status: ArticleStatusProps,
   timeline: SerialisedTimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
@@ -60,7 +59,6 @@ export const Page = ({
   metaData,
   imgInfo,
   msidWithVersion,
-  status,
   timeline,
   relatedContent,
   content,
@@ -69,7 +67,8 @@ export const Page = ({
   previousVersionWarningUrl,
 }: PageProps) => {
   const { processedTimeline } = stringsToDates({ timeline });
-  const routePrefix = status.isPreview ? '/previews/' : '/reviewed-preprints/';
+  const router = useRouter();
+  const routePrefix = router.asPath.startsWith('/previews/') ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
     {
       id: 'fulltext',
@@ -116,7 +115,6 @@ export const Page = ({
       </>,
     },
   };
-  const router = useRouter();
   const tabName = useMemo(
     () => {
       if (Array.isArray(router.query.path)) {
@@ -163,7 +161,6 @@ export const Page = ({
         metaData={metaData}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
-        status={status}
         timeline={processedTimeline}
         activeTab={tabName}
       >
@@ -209,15 +206,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
-  const status = generateStatus(articleWithVersions);
   const timeline = generateTimeline(articleWithVersions);
   const versionHistory = generateVersionHistory(articleWithVersions);
-
-  // This is redundant after server has been updated
-  if (status.isPreview && !(config.showPreviews || context.req.url?.startsWith('/previews'))) {
-    console.log('Preview requested in non-preview environment'); // eslint-disable-line no-console
-    return { notFound: true };
-  }
 
   return {
     props: {
@@ -234,11 +224,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
-      status: {
-        articleType: status.type,
-        status: status.status,
-        isPreview: status.isPreview,
-      },
       timeline,
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value

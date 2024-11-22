@@ -16,15 +16,11 @@ const resources = {
 
       // Defaults:
       reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
-      heading_assessment: '$t(publisher_short) assessment',
       about_assessments_description: (
         'During the peer-review process the editor and reviewers write an assessment that summarises the significance'
         + ' of the findings reported in the article and the strength of the evidence.'
       ),
       about_assessments: 'Learn more about $t(publisher_short) assessments',
-      status_description_reviewed: 'Published from the original preprint after peer review and assessment by $t(publisher_short).',
-      status_description_revised: 'Revised by authors after peer review.',
-      status_about: 'About $t(publisher_short)\'s process',
       reviewed_preprint: 'Reviewed Preprint',
       related_intro: 'Related {{type}}',
       related_type_default: 'content',
@@ -34,6 +30,10 @@ const resources = {
       history_version_title: '$t(reviewed_preprint) version {{version}}',
       external_history_version_title: '$t(history_version_title)',
       external_history_version_title_updated: '$t(external_history_version_title)',
+      process_url_read_more: 'Read more about $t(publisher_short)’s peer review process.',
+      review_process_reviewed: '',
+      review_process_reviewed_with_author_response: '',
+      review_process_revised: '',
     },
     elife: {
       twitter_handle: '@elife',
@@ -74,11 +74,8 @@ const resources = {
       home_url: 'https://biophysicscolab.pubpub.org/',
       about_url: 'https://biophysicscolab.pubpub.org/about',
       search_url: 'https://biophysicscolab.pubpub.org/search',
-      heading_assessment: 'Endorsement statement',
-      timeline_version_title: 'Endorsed article published',
-      reviewed_preprint: 'Endorsed article',
-      status_description_reviewed: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
-      status_description_revised: '$t(publisher_short) have endorsed this preprint that was revised by authors after peer review.',
+      timeline_version_title: 'Curated preprint published',
+      reviewed_preprint: 'Curated preprint',
       process_url: 'https://www.sciencecolab.org/biophysics-colab',
       about_assessments_url: 'https://www.sciencecolab.org/biophysics-colab',
     },

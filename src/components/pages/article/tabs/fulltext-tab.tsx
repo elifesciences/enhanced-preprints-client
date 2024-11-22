@@ -33,7 +33,7 @@ export const ArticleFullTextTab = (props: Props) => {
 
   return (
     <>
-      { props.peerReview && <Assessment content={props.peerReview.evaluationSummary.text} doi={props.peerReview.evaluationSummary.doi}/> }
+      { (props.peerReview && props.peerReview.evaluationSummary) && <Assessment content={props.peerReview.evaluationSummary.text} doi={props.peerReview.evaluationSummary.doi}/> }
       <div className="tabbed-navigation__content">
         <JumpToMenu headings={headings} />
         <div className="article-body-container">

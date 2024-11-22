@@ -1,4 +1,21 @@
 import { EnhancedArticle, ProcessedArticle } from './enhanced-article';
+import { PeerReview } from './peer-review';
+
+export type ElifeAssessmentContent = {
+  type: 'paragraph',
+  text: string,
+}[];
+
+export type ElifeAssessment = {
+  elifeAssessment?: {
+    title: string,
+    content: ElifeAssessmentContent,
+    id?: string,
+    doi?: string,
+    significance: string[],
+    strength?: string[],
+  },
+};
 
 export type ReviewedPreprintSnippet = {
   id: string,
@@ -17,11 +34,14 @@ export type ReviewedPreprintSnippet = {
     id: string,
     name: string,
   }[],
-};
+} & ElifeAssessment;
 
 export type VersionSummary = Omit<EnhancedArticle, 'article' | 'peerReview'>;
 
+export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummary'>;
+
 export type EnhancedArticleNoContent = VersionSummary & {
   article: Omit<ProcessedArticle, 'doi' | 'date' | 'content' | 'abstract'>,
+  peerReview?: PeerReviewEvaluationSummaryOnly,
   firstPublished: Date,
 };
