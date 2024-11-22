@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { i18n } from '../i18n';
+import { FeaturesContext } from '../features';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
   switch (siteName) {
@@ -45,6 +46,7 @@ const notoSans = Noto_Sans({
 });
 
 export default function MyApp({ Component, pageProps }: any) {
+  const features = pageProps.features ?? useContext(FeaturesContext);
   return (
     <>
       <Head>
@@ -76,11 +78,13 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
-      <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
-        <LayoutSelector siteName={pageProps.siteName}>
-          <Component {...pageProps} />
-        </LayoutSelector>
-      </I18nextProvider>
+      <FeaturesContext.Provider value={features}>
+        <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
+          <LayoutSelector siteName={pageProps.siteName}>
+            <Component {...pageProps} />
+          </LayoutSelector>
+        </I18nextProvider>
+      </FeaturesContext.Provider>
     </>
   );
 }

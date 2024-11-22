@@ -1,5 +1,5 @@
 import './assessment.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TermsList } from '../terms-list/terms-list';
 import {
@@ -7,11 +7,12 @@ import {
 } from '../../../utils/terms';
 import { Descriptors } from '../descriptors/descriptors';
 import { isPdfRoute } from '../../../utils/isPdfRoute';
-import { config } from '../../../config';
+import { FeaturesContext } from '../../../features';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {
   const { t } = useTranslation();
+  const features = useContext(FeaturesContext);
 
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
@@ -21,7 +22,7 @@ export const Assessment = ({ content, doi }: Props) => {
 
   const { strength, significance } = findTerms(content);
 
-  return config.disableTerms ? (
+  return !features.showElifeTerms ? (
     <section id="assessment" className="assessment">
       <div className="assessment__body" dangerouslySetInnerHTML={{ __html: content }} />
       {doi && <Descriptors doi={doi}/>}

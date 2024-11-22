@@ -23,6 +23,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { FeaturesData } from '../../features';
 
 type PageProps = {
   siteName?: string,
@@ -35,6 +36,7 @@ type PageProps = {
   peerReview: PeerReview | null,
   metrics: Metrics | null,
   previousVersionWarningUrl: string | null,
+  features: FeaturesData,
 };
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
@@ -230,6 +232,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
       previousVersionWarningUrl,
+      features: {
+        showElifeTerms: !config.disableTerms,
+      },
     },
   };
 };
