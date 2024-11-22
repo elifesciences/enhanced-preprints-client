@@ -1,4 +1,3 @@
-import { i18n } from '../../i18n';
 import {
   EnhancedArticleWithVersions, VersionHistoryItem,
 } from '../../types';
@@ -8,20 +7,18 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
     if (current.published) {
       versions.push({
-        label: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`, {
-          version: +current.versionIdentifier,
-        }),
+        label: `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`,
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         date: new Date(current.published).toDateString(),
+        version: +current.versionIdentifier,
       });
 
       if (isExternalVersionSummary(current) && (current.corrections ?? []).length > 0) {
         versions.push(...(current.corrections ?? []).map((correction) => ({
-          label: i18n.t('external_history_version_title_updated', {
-            version: +current.versionIdentifier,
-          }),
+          label: 'external_history_version_title_updated',
           url: correction.url,
           date: new Date(correction.date).toDateString(),
+          version: +current.versionIdentifier,
         })));
       }
     }

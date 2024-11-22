@@ -9,10 +9,10 @@ describe('ReviewsTab', () => {
 
   it('displays the appropriate peer review process', () => {
     render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
-    expect(screen.getByText('Not revised:')).toBeInTheDocument();
+    expect(screen.getByText('review_process_reviewed_with_author_response')).toBeInTheDocument();
 
     render(<ArticleReviewsTab peerReview={peerReview} currentVersion={2} />);
-    expect(screen.getByText('Revised:')).toBeInTheDocument();
+    expect(screen.getByText('review_process_revised')).toBeInTheDocument();
   });
 
   it('renders each review in the peer review passed in', () => {
