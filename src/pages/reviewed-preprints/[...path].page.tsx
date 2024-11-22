@@ -48,15 +48,10 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): { processedTimeline: TimelineEvent[] } => {
-  const processedTimeline = timeline.map((event) => ({ ...event, date: new Date(event.date) }));
-  return {
-    processedTimeline,
-  };
-};
+const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
 export const Page = ({
-  metaData,
+  metaData: rawMetaData,
   imgInfo,
   msidWithVersion,
   timeline,
@@ -66,7 +61,12 @@ export const Page = ({
   metrics,
   previousVersionWarningUrl,
 }: PageProps) => {
-  const { processedTimeline } = stringsToDates({ timeline });
+  const { t } = useTranslation();
+  const processedTimeline = stringsToDates({ timeline }).map(({ name, datePrefix, ...other }) => ({
+    ...other,
+    ...(name ? { name: t(name) } : {}),
+    ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
+  }));
   const router = useRouter();
   const routePrefix = router.asPath.startsWith('/previews/') ? '/previews/' : '/reviewed-preprints/';
   const tabLinks = [
@@ -86,6 +86,15 @@ export const Page = ({
 
   const headings = contentToHeadings(content);
   const figures = contentToFigures(content);
+  const metaData = {
+    ...rawMetaData,
+    versionHistory: rawMetaData.versionHistory.map(({ label, version, ...other }) => ({
+      ...other,
+      label: t(label, {
+        version,
+      }),
+    })),
+  };
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
@@ -126,7 +135,6 @@ export const Page = ({
   );
   const { tabLinks: tabs } = subPages[tabName];
   const tabContent = subPages[tabName].content();
-  const { t } = useTranslation();
   const processedRelatedContent = relatedContent.map((item) => {
     const relatedType = t(`related_type_${item.type}`, { defaultValue: t('related_type_default') });
     return {

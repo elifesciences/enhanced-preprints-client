@@ -108,8 +108,9 @@ describe('generateVersionHistory', () => {
       },
       {
         date: 'Tue Jan 03 2023',
-        label: 'Reviewed Preprint version 1',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v1',
+        version: 1,
       },
     ]);
   });
@@ -134,14 +135,16 @@ describe('generateVersionHistory', () => {
         url: 'https://doi.org/doi-123',
       },
       {
-        label: 'Reviewed Preprint version 1',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v1',
         date: 'Tue Jan 03 2023',
+        version: 1,
       },
       {
-        label: 'Reviewed Preprint version 2',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
+        version: 2,
       },
     ]);
   });
@@ -167,19 +170,22 @@ describe('generateVersionHistory', () => {
         url: 'https://doi.org/doi-123',
       },
       {
-        label: 'Reviewed Preprint version 1',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v1',
         date: 'Tue Jan 03 2023',
+        version: 1,
       },
       {
-        label: 'Reviewed Preprint version 2',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
+        version: 2,
       },
       {
-        label: 'Version of Record published',
+        label: 'external_history_version_title',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
+        version: 3,
       },
     ]);
   });
@@ -205,29 +211,34 @@ describe('generateVersionHistory', () => {
         url: 'https://doi.org/doi-123',
       },
       {
-        label: 'Reviewed Preprint version 1',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v1',
         date: 'Tue Jan 03 2023',
+        version: 1,
       },
       {
-        label: 'Reviewed Preprint version 2',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
+        version: 2,
       },
       {
-        label: 'Version of Record published',
+        label: 'external_history_version_title',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
+        version: 3,
       },
       {
-        label: 'Version of Record updated',
+        label: 'external_history_version_title_updated',
         url: 'https://elifesciences.org/articles/1v1',
         date: 'Fri Feb 10 2023',
+        version: 3,
       },
       {
-        label: 'Version of Record updated',
+        label: 'external_history_version_title_updated',
         url: 'https://elifesciences.org/articles/1v2',
         date: 'Sat Feb 11 2023',
+        version: 3,
       },
     ]);
   });

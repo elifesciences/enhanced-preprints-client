@@ -1,4 +1,3 @@
-import { i18n } from '../../i18n';
 import {
   EnhancedArticleWithVersions,
 } from '../../types';
@@ -9,7 +8,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
   const timeline: SerialisedTimelineEvent[] = Object.values(version.versions).reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       events.push({
-        name: i18n.t(`${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`),
+        name: `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         version: +current.versionIdentifier,
         date: new Date(current.published).toDateString(),
@@ -21,11 +20,11 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
         current.corrections.forEach((correction) => {
           events.push(
             {
-              name: i18n.t('external_timeline_version_title'),
+              name: 'external_timeline_version_title',
               url: correction.url,
               version: +current.versionIdentifier,
               date: new Date(correction.date).toDateString(),
-              datePrefix: i18n.t('external_timeline_version_correction_date_prefix'),
+              datePrefix: 'external_timeline_version_correction_date_prefix',
             },
           );
         });
