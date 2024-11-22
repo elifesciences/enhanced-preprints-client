@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('reviewed preprints api listing', async ({ request }) => {
-  const response = await request.get('http://localhost:3001/api/reviewed-preprints');
+  const response = await request.get('http://localhost:3001/api/reviewed-preprints?x-epp-tenant-id=elife');
   expect(response.ok()).toBeTruthy();
 
   const headers = response.headers();
@@ -39,7 +39,7 @@ test('reviewed preprints api listing', async ({ request }) => {
 });
 
 test('reviewed preprints api item found', async ({ request }) => {
-  const response = await request.get('http://localhost:3001/api/reviewed-preprints/85111');
+  const response = await request.get('http://localhost:3001/api/reviewed-preprints/85111?x-epp-tenant-id=elife');
   expect(response.ok()).toBeTruthy();
 
   const headers = response.headers();
@@ -78,7 +78,7 @@ test('reviewed preprints api item found', async ({ request }) => {
 });
 
 test('reviewed preprints api item unknown', async ({ request }) => {
-  const response = await request.get('http://localhost:3001/api/reviewed-preprints/unknown');
+  const response = await request.get('http://localhost:3001/api/reviewed-preprints/unknown?x-epp-tenant-id=elife');
   expect(response.status()).toEqual(404);
 
   const headers = response.headers();

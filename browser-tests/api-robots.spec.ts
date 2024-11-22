@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('robots show preview urls', async ({ request }) => {
-  const response = await request.get('http://localhost:3001/robots.txt');
+  const response = await request.get('http://localhost:8080/robots.txt');
   expect(response.ok()).toBeTruthy();
 
   const robotsResponse = await response.text();

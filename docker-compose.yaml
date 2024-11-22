@@ -101,7 +101,7 @@ services:
       retries: 10
       start_period: 2s
     environment:
-      API_SERVER: ${API_SERVER:-http://wiremock:3000}
+      MULTI_TENANT_API_SERVER: ${MULTI_TENANT_API_SERVER:-http://wiremock:3000}
       IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
       NEXT_PUBLIC_IMAGE_SERVER: /iiif
       NEXT_PUBLIC_DISABLE_TERMS: ${NEXT_PUBLIC_DISABLE_TERMS:-false}
