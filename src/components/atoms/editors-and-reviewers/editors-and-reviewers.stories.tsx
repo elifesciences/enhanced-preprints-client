@@ -14,8 +14,8 @@ type Story = StoryObj<typeof EditorsAndReviewers>;
 export const EditorsAndReviewersExample: Story = {
   args: {
     participants: [
-      { name: 'Steve Rogers', role: 'Reviewing Editor', institution: 'The Strategic Homeland Intervention, Enforcement, and Logistics Division, Washington, D.C., United States' },
-      { name: 'Antony Stark', role: 'Senior Editor', institution: 'Stark Industries, Los Angeles, California, United States' },
+      { name: 'Steve Rogers', role: 'editor', institution: 'The Strategic Homeland Intervention, Enforcement, and Logistics Division, Washington, D.C., United States' },
+      { name: 'Antony Stark', role: 'senior-editor', institution: 'Stark Industries, Los Angeles, California, United States' },
     ],
   },
 };
