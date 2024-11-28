@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ArticleReviewsTab } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
+import '../../../../i18n';
 
 describe('ReviewsTab', () => {
   it('renders with reviews tab', () => {
@@ -9,10 +10,10 @@ describe('ReviewsTab', () => {
 
   it('displays the appropriate peer review process', () => {
     render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
-    expect(screen.getByText('review_process_reviewed_with_author_response')).toBeInTheDocument();
+    expect(screen.getByText('Not revised:')).toBeInTheDocument();
 
     render(<ArticleReviewsTab peerReview={peerReview} currentVersion={2} />);
-    expect(screen.getByText('review_process_revised')).toBeInTheDocument();
+    expect(screen.getByText('Revised:')).toBeInTheDocument();
   });
 
   it('renders each review in the peer review passed in', () => {

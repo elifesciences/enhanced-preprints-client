@@ -1,4 +1,5 @@
 import '../article-page.scss';
+import { useTranslation } from 'react-i18next';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { PeerReview } from '../../../../types';
@@ -6,9 +7,10 @@ import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
 export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: PeerReview, currentVersion: number, }) => {
+  const { t } = useTranslation();
   const headings = [
     { id: 'review-process', text: 'Peer review process' },
-    { id: 'editors-and-reviewers', text: 'Editors' },
+    { id: 'editors-and-reviewers', text: t('editors_and_reviewers_title') },
     ...peerReview.reviews.map((_, index) => (
       { id: `peer-review-${index}`, text: `Reviewer #${index + 1}` }
     )),

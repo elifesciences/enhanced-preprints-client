@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import '../../../i18n';
 
 import { EditorsAndReviewers } from './editors-and-reviewers';
 

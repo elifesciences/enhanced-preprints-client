@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { EditorsAndReviewers } from './editors-and-reviewers';
+import '../../../i18n';
 
 const participants = [
   { name: 'Steve Rogers', role: 'editor', institution: 'The Strategic Homeland Intervention, Enforcement, and Logistics Division, Washington, D.C., United States' },
