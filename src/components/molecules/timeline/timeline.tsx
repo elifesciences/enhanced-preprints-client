@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import './timeline.scss';
 import { formatDate } from '../../../utils/formatters';
 import { TimelineEvent } from '../../../types';
+import { useTranslation } from 'react-i18next';
 
 export type TimelineProps = {
   current?: number;
@@ -11,6 +12,7 @@ export type TimelineProps = {
 export const Timeline = ({ current, events }: TimelineProps) => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => setExpanded(false), []);
   const expansionText = `${expanded ? 'Hide' : 'Show'} ${sortedEvents.length > 1 && sortedEvents[0].version === current ? `previous version${sortedEvents.length > 2 ? 's' : ''}` : 'all versions'}`;
@@ -39,7 +41,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                   <time className="review-timeline__date"
                     dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
                   {typeClass && <a className="review-timeline__link"
-                    href={`${event.url}/reviews#review-process`}>{event.version > 1 ? 'Revised by authors' : 'Not revised'}</a>}
+                    href={`${event.url}/reviews#review-process`}>{event.version > 1 ? t('revised') : t('not_revised')}</a>}
                 </dd>
               </Fragment>
             );

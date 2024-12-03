@@ -37,6 +37,8 @@ const resources = {
       role_editor: 'Reviewing Editor',
       'role_peer-reviewer': 'Reviewing Editor',
       role_curator: 'Curator',
+      revised: 'Revised by authors',
+      not_revised: 'Not revised',
     },
     elife: {
       twitter_handle: '@elife',
