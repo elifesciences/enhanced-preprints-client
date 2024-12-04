@@ -79,8 +79,6 @@ const resources = {
       about_assessments_url: 'https://www.sciencecolab.org/biophysics-colab',
       history_version_title: '$t(reviewed_preprint)',
       editors_and_reviewers_title: 'Curators',
-      role_editor: 'Curator',
-      'role_peer-reviewer': 'Curator',
     },
   },
 };
