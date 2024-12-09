@@ -13,7 +13,15 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
-  const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
+  const year = reference.datePublished
+    ? new Date(
+      typeof reference.datePublished === 'string'
+        ? reference.datePublished
+        : reference.datePublished.value,
+    ).getUTCFullYear()
+    : reference.meta?.yearPublished
+      ? reference.meta?.yearPublished
+      : undefined;
 
   return (
     <>

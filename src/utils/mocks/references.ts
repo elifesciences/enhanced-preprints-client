@@ -145,4 +145,32 @@ export const references: Reference[] = [
     },
     title: 'Environmental Physiology and Biochemistry of Insects',
   },
+  {
+    type: 'Article',
+    id: 'c6',
+    authors: [
+      {
+        familyNames: [
+          'Hoffman',
+        ],
+        givenNames: [
+          'K.H',
+        ],
+        type: 'Person',
+      },
+    ],
+    publisher: {
+      address: {
+        addressLocality: 'Berlin',
+        type: 'PostalAddress',
+      },
+      name: 'Springer-Verlag',
+      type: 'Organization',
+    },
+    title: 'Environmental Physiology and Biochemistry of Insects',
+    meta: {
+      yearPublished: '2019a',
+      label: '1.',
+    },
+  },
 ];
