@@ -5352,6 +5352,40 @@
               "meta": {
                 "inline": false
               }
+            },
+            {
+              "type": "Heading",
+              "id": "",
+              "depth": 1,
+              "content": [
+                "Supporting information"
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "content": [
+                {
+                  "type": "Link",
+                  "target": "supplements/file01.pdf",
+                  "title": "File 1",
+                  "content": [
+                    "supplements/file01.pdf"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "content": [
+                {
+                  "type": "Link",
+                  "target": "supplements/file02.pdf",
+                  "title": "File 2",
+                  "content": [
+                    "supplements/file02.pdf"
+                  ]
+                }
+              ]
             }
           ]
         }
