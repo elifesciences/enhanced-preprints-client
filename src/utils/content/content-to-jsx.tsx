@@ -5,6 +5,7 @@ import { generateImageUrl } from '../generators';
 import { Figure } from '../../components/atoms/figure/figure';
 import { contentToText } from './content-to-text';
 import { List } from '../../components/atoms/list/list';
+import { config } from '../../config';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -68,6 +69,10 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'CiteGroup':
       return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
+      if (!content.target.startsWith('http://')) {
+        const contentLink = `${config.apiServer}/api/files/85111/v2/content/` + content.target;
+        return <a key={index} href={contentLink}>{ contentToJsx(content.content, options)}</a>;
+      }
       if (options?.removeLinkTag) {
         return contentToJsx(content.content, options);
       }
