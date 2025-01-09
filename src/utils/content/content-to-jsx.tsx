@@ -1,12 +1,10 @@
-import { Fragment, JSX, useContext } from 'react';
+import { Fragment, JSX } from 'react';
 import { Content } from '../../types';
 import { Heading } from '../../components/atoms/heading/heading';
 import { generateImageUrl } from '../generators';
 import { Figure } from '../../components/atoms/figure/figure';
 import { contentToText } from './content-to-text';
 import { List } from '../../components/atoms/list/list';
-import { config } from '../../config';
-import { PathContext } from '../../pages/reviewed-preprints/[...path].page';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -15,6 +13,7 @@ export type Options = {
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
   removeLinkTag?: boolean,
+  filesPath?: string,
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -70,9 +69,8 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'CiteGroup':
       return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
-      if (!content.target.startsWith('http://')) {
-        const path = useContext(PathContext);
-        const contentLink = `${config.apiServer}/api/files/${path}` + content.target;
+      if (!content.target.match(/^(http:\/\/|https:\/\/|#)/)) {
+        const contentLink = `${options?.filesPath ?? ''}${content.target}`;
         return <a key={index} href={contentLink}>{ contentToJsx(content.content, options)}</a>;
       }
       if (options?.removeLinkTag) {
