@@ -39,7 +39,7 @@ type PageProps = {
   features: FeaturesData,
 };
 
-export const PathContext = createContext('foo');
+export const PathContext = createContext('');
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
