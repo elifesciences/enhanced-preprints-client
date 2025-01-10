@@ -1,7 +1,7 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createContext, JSX, useMemo } from 'react';
+import { JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import {
@@ -38,8 +38,6 @@ type PageProps = {
   previousVersionWarningUrl: string | null,
   features: FeaturesData,
 };
-
-export const PathContext = createContext('');
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
@@ -104,7 +102,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { supportingFilePath: `${rawMetaData.msid}/v${rawMetaData.version}/content/` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -151,7 +149,6 @@ export const Page = ({
   });
   return (
     <>
-      <PathContext.Provider value="85111/v2/content/">
       <Head>
         <title>{contentToText(metaData.title)}</title>
         <meta name="citation_title" content={contentToText(metaData.title)}/>
@@ -179,7 +176,6 @@ export const Page = ({
       >
         { tabContent }
       </ArticlePage>
-      </PathContext.Provider>
     </>
   );
 };
