@@ -64,8 +64,6 @@ export const ArticleStatus = ({
       open={showCiteModal}
       onModalClose={() => setShowCiteModal(false)}
       modalLayout="cite"
-      // TODO: Remove this warning on Tuesday, 14 January afternoon
-      modalWarning={'There is a planned Crossref maintenance outage between Tuesday, 14 January 6:00 to 11:00 UTC. This impacts access to BibTeX and RIS files.'}
     >
       <Citation citation={citation} />
       <ol className="cite-downloads__list">
