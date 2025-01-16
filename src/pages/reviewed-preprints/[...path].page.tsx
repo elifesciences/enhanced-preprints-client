@@ -104,7 +104,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.apiServer}/api/files` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,

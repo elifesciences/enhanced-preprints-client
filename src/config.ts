@@ -8,6 +8,7 @@ type Config = {
   showPreviews: boolean
   apiServer?: string,
   iiifServer?: string,
+  filesApiPath?: string,
   imageServer?: string,
   gtmId?: string,
   cookiebotId?: string,
@@ -21,6 +22,7 @@ export const config: Config = {
   showPreviews: (!!process.env.SHOW_PREVIEWS) || false,
   apiServer: process.env.API_SERVER,
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
+  filesApiPath: process.env.NEXT_PUBLIC_FILES_API_PATH,
   iiifServer: process.env.IIIF_SERVER,
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
