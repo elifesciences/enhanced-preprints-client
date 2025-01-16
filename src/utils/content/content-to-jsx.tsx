@@ -13,6 +13,8 @@ export type Options = {
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
   removeLinkTag?: boolean,
+  filesApiPath?: string,
+  hostedFileMatcher?: (path: string) => boolean,
 };
 
 export const contentToJsx = (content?: Content, options?: Options, index?: number): JSXContent => {
@@ -68,6 +70,11 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'CiteGroup':
       return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
+      if (options?.hostedFileMatcher && options.hostedFileMatcher(content.target)) {
+        const contentLink = `${options.filesApiPath}/${content.target}`;
+
+        return <a key={index} href={contentLink}>{ contentToJsx(content.content, options)}</a>;
+      }
       if (options?.removeLinkTag) {
         return contentToJsx(content.content, options);
       }
