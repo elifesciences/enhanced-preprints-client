@@ -36,43 +36,55 @@ describe('Content to JSX', () => {
     expect(result).toStrictEqual(<><a href={'#target'}>I am a citation</a></>);
   });
 
-  it('generates the expected html when passed a Link', () => {
-    const result = contentToJsx({
-      type: 'Link',
-      content: 'I am a link',
-      target: 'http://www.google.com',
+  describe('Link', () => {
+    it('generates the expected html when passed a Link', () => {
+      const result = contentToJsx({
+        type: 'Link',
+        content: 'I am a link',
+        target: 'http://www.google.com',
+      });
+
+      expect(result).toStrictEqual(<a href={'http://www.google.com'}>I am a link</a>);
     });
 
-    expect(result).toStrictEqual(<a href={'http://www.google.com'}>I am a link</a>);
-  });
+    it('generates the expected html when passed a Link that passes the matcher', () => {
+      const result = contentToJsx({
+        type: 'Link',
+        content: 'I am a link',
+        target: 'supplements/file1.pdf',
+      }, { hostedFileMatcher: (path: string) => path === 'supplements/file1.pdf', filesApiPath: '/api/files' });
 
-  it('generates the expected html when passed a supporting file Link', () => {
-    const result = contentToJsx({
-      type: 'Link',
-      content: 'I am a link',
-      target: 'supplements/file1.pdf',
-    }, { supportingFilePath: '123/v42/content/' });
+      expect(result).toStrictEqual(<a href={'/api/files/supplements/file1.pdf'}>I am a link</a>);
+    });
 
-    expect(result).toStrictEqual(<a href={'undefined/api/files/123/v42/content/supplements/file1.pdf'}>I am a link</a>);
-  });
+    it('generates the expected html when passed a Link that fails the matcher', () => {
+      const result = contentToJsx({
+        type: 'Link',
+        content: 'I am a link',
+        target: 'supplements/file2.pdf',
+      }, { hostedFileMatcher: (path: string) => path === 'supplements/file1.pdf', filesApiPath: '/api/files' });
 
-  it('generates the expected html when passed a Link with the removeLinkTag set to true', () => {
-    render(contentToJsx({
-      type: 'Link',
-      content: [
-        'I am ',
-        {
-          type: 'Emphasis',
-          content: 'not',
-        },
-        ' a link',
-      ],
-      target: 'target',
-    }, {
-      removeLinkTag: true,
-    }));
+      expect(result).toStrictEqual(<a href={'supplements/file2.pdf'}>I am a link</a>);
+    });
 
-    expect(document.body).toContainHTML('I am <em>not</em> a link');
+    it('generates the expected html when passed a Link with the removeLinkTag set to true', () => {
+      render(contentToJsx({
+        type: 'Link',
+        content: [
+          'I am ',
+          {
+            type: 'Emphasis',
+            content: 'not',
+          },
+          ' a link',
+        ],
+        target: 'target',
+      }, {
+        removeLinkTag: true,
+      }));
+
+      expect(document.body).toContainHTML('I am <em>not</em> a link');
+    });
   });
 
   it('generates the expected html when passed a Paragraph', () => {
