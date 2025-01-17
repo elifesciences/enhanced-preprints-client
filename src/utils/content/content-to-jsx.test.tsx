@@ -54,7 +54,7 @@ describe('Content to JSX', () => {
         target: 'supplements/file1.pdf',
       }, { hostedFileMatcher: (path: string) => path === 'supplements/file1.pdf', filesApiPath: '/api/files' });
 
-      expect(result).toStrictEqual(<a href={'/api/files/supplements/file1.pdf'}>I am a link</a>);
+      expect(result).toStrictEqual(<a href={'/api/files/supplements/file1.pdf'} download={true}>I am a link</a>);
     });
 
     it('generates the expected html when passed a Link that fails the matcher', () => {

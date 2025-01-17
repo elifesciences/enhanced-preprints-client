@@ -70,13 +70,14 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
     case 'CiteGroup':
       return <span key={index}>({content.items.map(async (citeContent, citeIndex) => <a key={citeIndex} href={`#${citeContent.target}`}>{ contentToJsx(citeContent.content, options)}</a>)})</span>;
     case 'Link':
+      if (options?.removeLinkTag) {
+        return contentToJsx(content.content, options);
+      }
+
       if (options?.hostedFileMatcher && options.hostedFileMatcher(content.target)) {
         const contentLink = `${options.filesApiPath}/${content.target}`;
 
-        return <a key={index} href={contentLink}>{ contentToJsx(content.content, options)}</a>;
-      }
-      if (options?.removeLinkTag) {
-        return contentToJsx(content.content, options);
+        return <a key={index} href={contentLink} download>{ contentToJsx(content.content, options)}</a>;
       }
 
       return <a key={index} href={content.target}>{ contentToJsx(content.content, options)}</a>;
