@@ -21,6 +21,10 @@
       "automerge": true
     },
     {
+      "packagePatterns": ["^minio"],
+      "versioning": "regex:^RELEASE\\.(?<minor>\\d{4}-\\d{2}-\\d{2})T(?<patch>\\d{2}-\\d{2}-\\d{2})Z$"
+    },
+    {
       "matchPackageNames": ["node"],
       "matchDatasources": ["docker"],
       "enabled": false
