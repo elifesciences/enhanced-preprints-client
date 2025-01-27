@@ -33,11 +33,16 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>
-      {doiIdentifier && <span className="reference__doi">
+      {(doiIdentifier || reference.url) && <span className="reference__doi">
         {isReferenceList ?
+          doiIdentifier ?
           <a href={`https://doi.org/${doiIdentifier.value}`} className="reference__doi_link">
             https://doi.org/{doiIdentifier.value}
-          </a> : `https://doi.org/${doiIdentifier.value}`}
+          </a> :
+          <a href={reference.url} className="reference__doi_link">
+            {reference.url}
+          </a>
+          : `https://doi.org/${doiIdentifier.value}`}
         </span>
       }
     </>
