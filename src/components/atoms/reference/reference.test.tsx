@@ -15,6 +15,19 @@ describe('Reference', () => {
     expect(screen.getByText('2843', { exact: false })).toBeInTheDocument();
   });
 
+  it('should render the title as a link if URL is present', () => {
+    const ref: ReferenceData = {
+        type: 'Article',
+        id: 'c1',
+        title: 'Title',
+        authors: [],
+        url: 'http://www.google.com',
+    }
+    render(<Reference reference={ref} isReferenceList={false} />);
+
+    expect(screen.getByText('Title')).toHaveAttribute('href', 'http://www.google.com');
+  });
+
   it('should be wrapped in a div if isReferenceList is false', () => {
     render(<Reference reference={references[0]} isReferenceList={false} />);
 
