@@ -114,6 +114,13 @@ describe('Reference', () => {
       expect(screen.getByText('1.')).toBeInTheDocument();
     });
 
+    it('should display URL link if present', () => {
+      render(<Reference reference={ref} isReferenceList={true} />);
+
+      expect(screen.getByText('http://www.google.com').tagName).toStrictEqual('A');
+      expect(screen.getByText('http://www.google.com')).toHaveAttribute('href', 'http://www.google.com');
+    });
+
     it('should render the reference name correctly if givenNames is undefined', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);
 
