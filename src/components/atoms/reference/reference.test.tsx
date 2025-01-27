@@ -98,7 +98,7 @@ describe('Reference', () => {
     it('should be wrapped in an li if isReferenceList is true', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);
 
-      expect(screen.getByText(references[0].title).parentElement?.parentElement?.tagName).toStrictEqual('LI');
+      expect(document.getElementById('c1')?.tagName).toStrictEqual('LI');
     });
 
     it('should wrap doi in link if isReferenceList is true', () => {
