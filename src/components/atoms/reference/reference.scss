@@ -9,6 +9,17 @@
   font-weight: bold;
 }
 
+.reference__title--link {
+  @include typography.body();
+
+  font-family: var(--font-family-primary);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--color-primary);
+  } font-weight: bold;
+}
+
 .reference {
   @include mixins.margin(24, "bottom");
   @include typography.body();
