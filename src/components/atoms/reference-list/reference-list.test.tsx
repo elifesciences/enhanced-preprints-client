@@ -22,8 +22,8 @@ describe('ReferenceList', () => {
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();
     expect(screen.getByText('Journal of Neurology')).toBeInTheDocument();
 
-    expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.id).toStrictEqual('c1');
-    expect(screen.getByText('The Role of Estrogen Receptors in Cardiovascular Disease').parentElement?.id).toStrictEqual('c2');
-    expect(screen.getByText('The Theory of Everything').parentElement?.id).toStrictEqual('c3');
+    expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.parentElement?.id).toStrictEqual('c1');
+    expect(screen.getByText('The Role of Estrogen Receptors in Cardiovascular Disease').parentElement?.parentElement?.id).toStrictEqual('c2');
+    expect(screen.getByText('The Theory of Everything').parentElement?.parentElement?.id).toStrictEqual('c3');
   });
 });

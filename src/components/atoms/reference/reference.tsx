@@ -14,6 +14,8 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
   const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
+  const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
+  const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
 
   return (
     <>
@@ -26,18 +28,19 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
         ))}
       </ol>
       { year && <span className="reference__authors_list_suffix">{year}</span> }
-      <span className="reference__title">{reference.title}</span>
+      <span className="reference__title">{linkRef ? <a className="reference__title--link" href={linkRef}>{reference.title}</a> : reference.title}</span>
       <span className="reference__origin">
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>
-      {doiIdentifier && <span className="reference__doi">
+      {(linkRef) && <span className="reference__doi">
         {isReferenceList ?
-          <a href={`https://doi.org/${doiIdentifier.value}`} className="reference__doi_link">
-            https://doi.org/{doiIdentifier.value}
-          </a> : `https://doi.org/${doiIdentifier.value}`}
+          <a href={linkRef} className="reference__doi_link">
+            {linkText}
+          </a>
+          : linkRef}
         </span>
       }
     </>

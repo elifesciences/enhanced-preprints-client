@@ -4,6 +4,13 @@ import { Reference as ReferenceData } from '../../../types';
 import { references } from '../../../utils/mocks';
 
 describe('Reference', () => {
+  const ref: ReferenceData = {
+    type: 'Article',
+    id: 'c1',
+    title: 'Title',
+    authors: [],
+    url: 'http://www.google.com',
+  };
   it('should render all the references passed in as a prop', () => {
     render(<Reference reference={references[0]} isReferenceList={false} />);
 
@@ -11,14 +18,20 @@ describe('Reference', () => {
     expect(screen.getByText('Afshari FS')).toBeInTheDocument();
     expect(screen.getByText('1847')).toBeInTheDocument();
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();
-    expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.id).toStrictEqual('c1');
+    expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum').parentElement?.parentElement?.id).toStrictEqual('c1');
     expect(screen.getByText('2843', { exact: false })).toBeInTheDocument();
+  });
+
+  it('should render the title as a link if URL is present', () => {
+    render(<Reference reference={ref} isReferenceList={false} />);
+
+    expect(screen.getByText('Title')).toHaveAttribute('href', 'http://www.google.com');
   });
 
   it('should be wrapped in a div if isReferenceList is false', () => {
     render(<Reference reference={references[0]} isReferenceList={false} />);
 
-    expect(screen.getByText(references[0].title).parentElement?.tagName).toStrictEqual('DIV');
+    expect(screen.getByText(references[0].title).parentElement?.parentElement?.tagName).toStrictEqual('DIV');
   });
 
   it('should not render the label if the reference has one', () => {
@@ -85,7 +98,7 @@ describe('Reference', () => {
     it('should be wrapped in an li if isReferenceList is true', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);
 
-      expect(screen.getByText(references[0].title).parentElement?.tagName).toStrictEqual('LI');
+      expect(document.getElementById('c1')?.tagName).toStrictEqual('LI');
     });
 
     it('should wrap doi in link if isReferenceList is true', () => {
@@ -99,6 +112,13 @@ describe('Reference', () => {
       render(<Reference reference={references[0]} isReferenceList={true} />);
 
       expect(screen.getByText('1.')).toBeInTheDocument();
+    });
+
+    it('should display URL link if present', () => {
+      render(<Reference reference={ref} isReferenceList={true} />);
+
+      expect(screen.getByText('http://www.google.com').tagName).toStrictEqual('A');
+      expect(screen.getByText('http://www.google.com')).toHaveAttribute('href', 'http://www.google.com');
     });
 
     it('should render the reference name correctly if givenNames is undefined', () => {
