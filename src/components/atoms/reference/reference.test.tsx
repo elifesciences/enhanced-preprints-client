@@ -4,6 +4,13 @@ import { Reference as ReferenceData } from '../../../types';
 import { references } from '../../../utils/mocks';
 
 describe('Reference', () => {
+  const ref: ReferenceData = {
+    type: 'Article',
+    id: 'c1',
+    title: 'Title',
+    authors: [],
+    url: 'http://www.google.com',
+  };
   it('should render all the references passed in as a prop', () => {
     render(<Reference reference={references[0]} isReferenceList={false} />);
 
@@ -16,13 +23,6 @@ describe('Reference', () => {
   });
 
   it('should render the title as a link if URL is present', () => {
-    const ref: ReferenceData = {
-      type: 'Article',
-      id: 'c1',
-      title: 'Title',
-      authors: [],
-      url: 'http://www.google.com',
-    };
     render(<Reference reference={ref} isReferenceList={false} />);
 
     expect(screen.getByText('Title')).toHaveAttribute('href', 'http://www.google.com');
