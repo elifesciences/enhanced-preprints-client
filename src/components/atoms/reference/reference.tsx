@@ -26,7 +26,7 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
         ))}
       </ol>
       { year && <span className="reference__authors_list_suffix">{year}</span> }
-      <span className="reference__title">{reference.title}</span>
+      <span className="reference__title">{reference.url ? <a href={reference.url}>{reference.title}</a> : reference.title}</span>
       <span className="reference__origin">
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
