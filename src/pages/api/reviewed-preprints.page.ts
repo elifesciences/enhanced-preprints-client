@@ -177,7 +177,11 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
     firstPublished: firstPublished ?? published!,
     peerReview,
   } as EnhancedArticleNoContent),
-  indexContent: `${authors?.map((author) => prepareAuthor(author)).join(', ')} ${contentToHtml(content)}`,
+  indexContent: `${peerReview?.evaluationSummary?.text ?? ''}
+    ${peerReview?.reviews.map((review) => review.text).join(',')}
+    ${peerReview?.authorResponse?.text ?? ''}
+    ${authors?.map((author) => prepareAuthor(author)).join(', ')}
+    ${contentToHtml(content)}`,
 });
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
