@@ -8,7 +8,7 @@ type ReferenceBodyProps = {
 
 const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
-export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
+function prepareReference(reference: ReferenceData) {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
@@ -16,6 +16,21 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
+
+  return {
+    referenceJournal,
+    referencePublisher,
+    referenceVolume,
+    year,
+    linkText,
+    linkRef,
+  };
+}
+
+export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
+  const {
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef,
+  } = prepareReference(reference);
 
   return (
     <>
