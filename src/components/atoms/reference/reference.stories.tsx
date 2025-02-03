@@ -25,6 +25,5 @@ export const ReferenceGroupStory: Story = {
 export const ReferenceIsReferenceList: Story = {
   args: {
     reference: references[0],
-    isReferenceList: true,
   },
 };
