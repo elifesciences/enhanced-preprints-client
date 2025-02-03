@@ -21,13 +21,6 @@
   }
 }
 
-.reference {
-  @include mixins.margin(24, "bottom");
-  @include typography.body();
-
-  font-family: var(--font-family-primary);
-}
-
 .reference__label {
   &::after {
     content: " ";

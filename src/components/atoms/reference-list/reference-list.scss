@@ -8,21 +8,5 @@
 
 .reference-list__item {
   @include mixins.margin(24, "bottom");
-  @include typography.body-alternative();
-}
-
-.reference__title {
-  @include typography.author-list-text();
-
-  &::after {
-    content: " ";
-  }
-}
-
-.reference__doi {
-  display: block;
-}
-
-.reference__doi_link {
-  @include typography.link-text();
+  @include typography.body();
 }
