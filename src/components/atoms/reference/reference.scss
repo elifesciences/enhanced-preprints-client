@@ -66,8 +66,13 @@
 }
 
 .reference__doi_link {
-  @include typography.link-text();
+  @include typography.body-small();
 
   color: var(--color-primary);
-  font-weight: normal;
+  font-weight: 600;
+  text-decoration: none;
+
+  :visited {
+    color: var(--color-primary);
+  }
 }

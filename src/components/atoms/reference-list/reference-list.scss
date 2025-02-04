@@ -9,4 +9,6 @@
 .reference-list__item {
   @include mixins.margin(24, "bottom");
   @include typography.body();
+
+  font-family: var(--font-family-primary);
 }
