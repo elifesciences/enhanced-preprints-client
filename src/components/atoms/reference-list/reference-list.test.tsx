@@ -6,6 +6,7 @@ describe('ReferenceList', () => {
   it('should render all the references passed in as a prop', () => {
     render(<ReferenceList references={references} />);
 
+    expect(document.querySelectorAll('.reference-list__item')).toHaveLength(5);
     expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum')).toBeInTheDocument();
     expect(screen.getByText('The Role of Estrogen Receptors in Cardiovascular Disease')).toBeInTheDocument();
     expect(screen.getByText('The Theory of Everything')).toBeInTheDocument();
