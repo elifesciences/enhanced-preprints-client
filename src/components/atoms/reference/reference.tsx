@@ -42,7 +42,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         ))}
       </ol>
       { year && <span className="reference__authors_list_suffix">{year}</span> }
-      <span className="referenfce__title">{linkRef ? <a className="reference__title--link" href={linkRef}>{reference.title}</a> : reference.title}</span>
+      <span className="reference__title">{linkRef ? <a className="reference__title--link" href={linkRef}>{reference.title}</a> : reference.title}</span>
       <span className="reference__origin">
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
