@@ -90,7 +90,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
-      yearPublished: '2019b',
+      yearPublished: '2019c',
       label: '2.',
     },
   },
@@ -113,7 +113,7 @@ export const references: Reference[] = [
       },
     ],
     meta: {
-      yearPublished: '2019a',
+      yearPublished: '2019d',
       label: '1.',
     },
   },
