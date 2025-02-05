@@ -2,7 +2,14 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
+%reference {
+  @include typography.body();
+
+  font-family: var(--font-family-primary);
+}
+
 .reference__title {
+  @extend %reference;
   @include typography.body();
 
   font-family: var(--font-family-primary);
@@ -26,12 +33,16 @@
 }
 
 .reference__label {
+  @extend %reference;
+
   &::after {
     content: " ";
   }
 }
 
 .reference__authors_list {
+  @extend %reference;
+
   display: inline;
   list-style: none;
   padding: 0;
@@ -58,6 +69,7 @@
 }
 
 .reference__doi {
+  @extend %reference;
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
