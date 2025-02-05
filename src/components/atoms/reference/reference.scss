@@ -32,6 +32,10 @@
   }
 }
 
+.reference__origin {
+  @extend %reference;
+}
+
 .reference__label {
   @extend %reference;
 
@@ -60,12 +64,16 @@
   }
 }
 
-.reference__authors_list_suffix::before {
-  content: "(";
-}
+.reference__authors_list_suffix {
+  @extend %reference;
 
-.reference__authors_list_suffix::after {
-  content: ") ";
+  &::before {
+    content: "(";
+  }
+
+  &::after {
+    content: ") ";
+  }
 }
 
 .reference__doi {
