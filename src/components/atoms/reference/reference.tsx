@@ -3,12 +3,11 @@ import './reference.scss';
 
 type ReferenceBodyProps = {
   reference: ReferenceData,
-  isReferenceList: boolean
 };
 
 const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
 
-export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceBodyProps) => {
+function prepareReference(reference: ReferenceData) {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
@@ -17,9 +16,24 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
 
+  return {
+    referenceJournal,
+    referencePublisher,
+    referenceVolume,
+    year,
+    linkText,
+    linkRef,
+  };
+}
+
+export const Reference = ({ reference }: ReferenceBodyProps) => {
+  const {
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef,
+  } = prepareReference(reference);
+
   return (
     <>
-      { (isReferenceList && reference.meta?.label) && <span className="reference__label">{reference.meta.label}</span>}
+      { reference.meta?.label && <span className="reference__label">{reference.meta.label}</span>}
       <ol className="reference__authors_list">
         {reference.authors.map((author, index) => (
           <li key={index} className="reference__author">
@@ -36,18 +50,11 @@ export const ReferenceBody = ({ reference, isReferenceList = false }: ReferenceB
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>
       {(linkRef) && <span className="reference__doi">
-        {isReferenceList ?
-          <a href={linkRef} className="reference__doi_link">
-            {linkText}
-          </a>
-          : linkRef}
+        <a href={linkRef} className="reference__doi_link">
+          {linkText}
+        </a>
         </span>
       }
     </>
   );
 };
-
-export const Reference = ({ reference, isReferenceList = false }: { reference: ReferenceData, isReferenceList: boolean }) => (isReferenceList ?
-  <li className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</li> :
-  <div className="reference" id={reference.id}>{ReferenceBody({ reference, isReferenceList })}</div>
-);

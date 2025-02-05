@@ -2,11 +2,22 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
 
+%reference {
+  @include typography.body();
+
+  font-family: var(--font-family-primary);
+}
+
 .reference__title {
+  @extend %reference;
   @include typography.body();
 
   font-family: var(--font-family-primary);
   font-weight: bold;
+
+  &::after {
+    content: " ";
+  }
 }
 
 .reference__title--link {
@@ -21,20 +32,21 @@
   }
 }
 
-.reference {
-  @include mixins.margin(24, "bottom");
-  @include typography.body();
-
-  font-family: var(--font-family-primary);
+.reference__origin {
+  @extend %reference;
 }
 
 .reference__label {
+  @extend %reference;
+
   &::after {
     content: " ";
   }
 }
 
 .reference__authors_list {
+  @extend %reference;
+
   display: inline;
   list-style: none;
   padding: 0;
@@ -52,24 +64,34 @@
   }
 }
 
-.reference__authors_list_suffix::before {
-  content: "(";
-}
+.reference__authors_list_suffix {
+  @extend %reference;
 
-.reference__authors_list_suffix::after {
-  content: ") ";
+  &::before {
+    content: "(";
+  }
+
+  &::after {
+    content: ") ";
+  }
 }
 
 .reference__doi {
+  @extend %reference;
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
   color: var(--color-text-secondary);
+  display: block;
 }
 
 .reference__doi_link {
   @include typography.body-small();
 
   color: var(--color-primary);
-  font-weight: normal;
+  text-decoration: none;
+
+  :visited {
+    color: var(--color-primary);
+  }
 }
