@@ -19,6 +19,11 @@ type Publisher = {
   },
 };
 
+type Comment = {
+  type: 'Comment',
+  commentAspect: string,
+};
+
 export type Reference = {
   type: 'Article',
   id: string,
@@ -36,6 +41,7 @@ export type Reference = {
     propertyID: string,
     value: string,
   }[],
+  comments?: Array<Comment>,
   meta?: {
     yearPublished?: string,
     label?: string,

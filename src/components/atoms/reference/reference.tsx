@@ -19,6 +19,7 @@ function prepareReference(reference: ReferenceData) {
   );
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
+  const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
 
   return {
     referenceJournal,
@@ -27,12 +28,13 @@ function prepareReference(reference: ReferenceData) {
     year,
     linkText,
     linkRef,
+    comments,
   };
 }
 
 export const Reference = ({ reference }: ReferenceBodyProps) => {
   const {
-    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef,
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, comments,
   } = prepareReference(reference);
 
   return (
@@ -53,6 +55,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
       </span>
+      { comments && <span className="reference__comments">{comments}</span> }
       {(linkRef) && <span className="reference__doi">
         <a href={linkRef} className="reference__doi_link">
           {linkText}
