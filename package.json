@@ -28,7 +28,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:browser": "playwright test",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "chromatic": "chromatic --only-changed --untraced=package.json --untraced=yarn.lock --exit-zero-on-changes"
   },
   "eslintConfig": {
     "extends": [
@@ -87,6 +88,7 @@
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^11.25.2",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
