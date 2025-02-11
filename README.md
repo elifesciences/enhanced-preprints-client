@@ -15,6 +15,10 @@ Then you can install the dependencies via running `yarn`
 
 To run the unit tests, run `yarn test`.
 
+## Running Chromatic visual regression tests
+
+To run the chromatic tests run `yarn chromatic`, to run this script you will need to set an environment variable `CHROMATIC_PROJECT_TOKEN` to the token which is available on the chromatic project management page. 
+
 ## Running the browser tests
 
 To run the browser tests, bring up the application with `docker compose up --wait`
