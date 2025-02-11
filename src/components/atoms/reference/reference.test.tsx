@@ -130,4 +130,36 @@ describe('Reference', () => {
 
     expect(screen.getByText('Given Bugs', { exact: false })).toBeInTheDocument();
   });
+
+  it('should render comment if one is present', () => {
+    const refWithComment = {
+      ...ref,
+      comments: [{
+        type: 'Comment' as const,
+        commentAspect: 'I am a comment',
+      }],
+    };
+    render(<Reference reference={refWithComment} />);
+
+    expect(screen.getByText('I am a comment')).toBeInTheDocument();
+  });
+
+  it('should render multiple comments if more than one is present', () => {
+    const refWithComments = {
+      ...ref,
+      comments: [
+        {
+          type: 'Comment' as const,
+          commentAspect: 'I am a comment',
+        },
+        {
+          type: 'Comment' as const,
+          commentAspect: 'I am a second comment',
+        },
+      ],
+    };
+    render(<Reference reference={refWithComments} />);
+
+    expect(screen.getByText('I am a comment, I am a second comment')).toBeInTheDocument();
+  });
 });

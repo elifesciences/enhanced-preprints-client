@@ -21,3 +21,15 @@ export const ReferenceGroupStory: Story = {
     reference: references[2],
   },
 };
+
+export const ReferenceWithComment: Story = {
+  args: {
+    reference: {
+      ...references[3],
+      comments: [{
+        type: 'Comment',
+        commentAspect: 'In press',
+      }],
+    },
+  },
+};
