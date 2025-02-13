@@ -39,6 +39,12 @@ describe('Reference', () => {
     expect(screen.queryByText('2843', { exact: false })).not.toBeInTheDocument();
   });
 
+  it.failing('should render eLocation id if pageStart is not supplied', () => {
+    render(<Reference reference={{ ...references[0], pageStart: undefined }} />);
+
+    expect(screen.queryByText('AB12345', { exact: false })).toBeInTheDocument();
+  });
+
   it('renders the name when an organisation is the author', () => {
     render(<Reference reference={references[2]} />);
 

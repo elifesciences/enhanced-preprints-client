@@ -22,6 +22,7 @@ export const references: Reference[] = [
     },
     pageEnd: 2843,
     pageStart: 2831,
+    eLocationId: `AB12345`,
     title: 'Resurgent Na currents in four classes of neurons of the cerebellum',
     identifiers: [
       {

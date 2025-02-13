@@ -12,6 +12,7 @@ function prepareReference(reference: ReferenceData) {
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
+  const eLocationId = reference.identifiers?.find((identifier) => identifier.name === 'elocation-id');
   const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
@@ -23,12 +24,13 @@ function prepareReference(reference: ReferenceData) {
     year,
     linkText,
     linkRef,
+    eLocationId,
   };
 }
 
 export const Reference = ({ reference }: ReferenceBodyProps) => {
   const {
-    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef,
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId
   } = prepareReference(reference);
 
   return (
@@ -48,6 +50,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
+        {(!reference.pageStart && eLocationId) && `${reference.eLocationId !==undefined ? `:${reference.eLocationId}` : ''}`}
       </span>
       {(linkRef) && <span className="reference__doi">
         <a href={linkRef} className="reference__doi_link">
