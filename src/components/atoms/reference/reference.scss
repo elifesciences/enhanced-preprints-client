@@ -76,6 +76,14 @@
   }
 }
 
+.reference__comments {
+  @extend %reference;
+
+  &::before {
+    content: " ";
+  }
+}
+
 .reference__doi {
   @extend %reference;
   @include mixins.margin(12 0 36);

@@ -13,9 +13,14 @@ function prepareReference(reference: ReferenceData) {
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
   const eLocationId = reference.identifiers?.find((identifier) => identifier.name === 'elocation-id');
-  const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
+  const year = reference.meta?.yearPublished ?? (
+    reference.datePublished ?
+      new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() :
+      undefined
+  );
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
+  const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
 
   return {
     referenceJournal,
@@ -25,12 +30,13 @@ function prepareReference(reference: ReferenceData) {
     linkText,
     linkRef,
     eLocationId,
+    comments,
   };
 }
 
 export const Reference = ({ reference }: ReferenceBodyProps) => {
   const {
-    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId, comments
   } = prepareReference(reference);
 
   return (
@@ -52,6 +58,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
         {(!reference.pageStart && eLocationId) && `${reference.eLocationId !==undefined ? `:${reference.eLocationId}` : ''}`}
       </span>
+      { comments && <span className="reference__comments">{comments}</span> }
       {(linkRef) && <span className="reference__doi">
         <a href={linkRef} className="reference__doi_link">
           {linkText}

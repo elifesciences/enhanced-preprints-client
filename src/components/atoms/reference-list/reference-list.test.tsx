@@ -15,9 +15,9 @@ describe('ReferenceList', () => {
     expect(screen.getByText('Agopian J')).toBeInTheDocument();
     expect(screen.getByText('the Brain Interfacing Laboratory')).toBeInTheDocument();
 
-    expect(screen.getByText('1847')).toBeInTheDocument();
-    expect(screen.getByText('2020')).toBeInTheDocument();
-    expect(screen.getByText('2021')).toBeInTheDocument();
+    expect(screen.getByText('2019a')).toBeInTheDocument();
+    expect(screen.getByText('2019b')).toBeInTheDocument();
+    expect(screen.getByText('2019c')).toBeInTheDocument();
 
     expect(screen.getByText('Int J Mol Sci')).toBeInTheDocument();
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();

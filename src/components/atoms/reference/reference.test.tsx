@@ -16,7 +16,7 @@ describe('Reference', () => {
 
     expect(screen.getByText('Resurgent Na currents in four classes of neurons of the cerebellum')).toBeInTheDocument();
     expect(screen.getByText('Afshari FS')).toBeInTheDocument();
-    expect(screen.getByText('1847')).toBeInTheDocument();
+    expect(screen.getByText('2019a')).toBeInTheDocument();
     expect(screen.getByText('J. Neurophysiol')).toBeInTheDocument();
     expect(screen.getByText('2843', { exact: false })).toBeInTheDocument();
   });
@@ -119,9 +119,53 @@ describe('Reference', () => {
     expect(screen.getByText('NoGiven').textContent).toStrictEqual('NoGiven');
   });
 
+  it('should render the publishedYear from the meta property if present', () => {
+    render(<Reference reference={references[0]} />);
+
+    expect(screen.getByText('2019a')).toBeInTheDocument();
+  });
+
+  it('should render the year from the datePublished property if not in meta', () => {
+    render(<Reference reference={references[4]} />);
+
+    expect(screen.getByText('1985')).toBeInTheDocument();
+  });
+
   it('should render without a publishedYear', () => {
     render(<Reference reference={references[3]} />);
 
     expect(screen.getByText('Given Bugs', { exact: false })).toBeInTheDocument();
+  });
+
+  it('should render comment if one is present', () => {
+    const refWithComment = {
+      ...ref,
+      comments: [{
+        type: 'Comment' as const,
+        commentAspect: 'I am a comment',
+      }],
+    };
+    render(<Reference reference={refWithComment} />);
+
+    expect(screen.getByText('I am a comment')).toBeInTheDocument();
+  });
+
+  it('should render multiple comments if more than one is present', () => {
+    const refWithComments = {
+      ...ref,
+      comments: [
+        {
+          type: 'Comment' as const,
+          commentAspect: 'I am a comment',
+        },
+        {
+          type: 'Comment' as const,
+          commentAspect: 'I am a second comment',
+        },
+      ],
+    };
+    render(<Reference reference={refWithComments} />);
+
+    expect(screen.getByText('I am a comment, I am a second comment')).toBeInTheDocument();
   });
 });
