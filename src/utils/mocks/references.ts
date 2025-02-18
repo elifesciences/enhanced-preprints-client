@@ -144,5 +144,12 @@ export const references: Reference[] = [
       type: 'Organization',
     },
     title: 'Environmental Physiology and Biochemistry of Insects',
+    identifiers: [
+      {
+        name: 'elocation-id',
+        type: 'PropertyValue',
+        value: 'AB12345',
+      },
+    ],
   },
 ];

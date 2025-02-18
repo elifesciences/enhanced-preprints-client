@@ -38,7 +38,7 @@ export type Reference = {
   identifiers?: {
     type: string,
     name: string,
-    propertyID: string,
+    propertyID?: string,
     value: string,
   }[],
   comments?: Array<Comment>,
