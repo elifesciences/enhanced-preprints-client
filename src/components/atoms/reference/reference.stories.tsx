@@ -33,3 +33,9 @@ export const ReferenceWithComment: Story = {
     },
   },
 };
+
+export const ReferenceWithElocationId: Story = {
+  args: {
+    reference: references[4],
+  },
+};

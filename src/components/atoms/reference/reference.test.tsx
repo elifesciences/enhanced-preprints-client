@@ -39,8 +39,8 @@ describe('Reference', () => {
     expect(screen.queryByText('2843', { exact: false })).not.toBeInTheDocument();
   });
 
-  it.failing('should render eLocation id if pageStart is not supplied', () => {
-    render(<Reference reference={{ ...references[0], pageStart: undefined }} />);
+  it('should render eLocation id if it is supplied and pageStart is not', () => {
+    render(<Reference reference={references[4]} />);
 
     expect(screen.queryByText('AB12345', { exact: false })).toBeInTheDocument();
   });

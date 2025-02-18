@@ -31,7 +31,6 @@ export type Reference = {
   url?: string,
   pageEnd?: number | string,
   pageStart?: number | string,
-  eLocationId?: string,
   authors: Array<Author>,
   datePublished?: string | { type: 'Date', value: string },
   isPartOf?: Publication,
@@ -39,7 +38,7 @@ export type Reference = {
   identifiers?: {
     type: string,
     name: string,
-    propertyID: string,
+    propertyID?: string,
     value: string,
   }[],
   comments?: Array<Comment>,

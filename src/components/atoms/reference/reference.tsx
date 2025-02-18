@@ -12,7 +12,7 @@ function prepareReference(reference: ReferenceData) {
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
-  const eLocationId = reference.identifiers?.find((identifier) => identifier.name === 'elocation-id');
+  const eLocationId = reference.identifiers?.find((identifier) => identifier.name === 'elocation-id')?.value;
   const year = reference.meta?.yearPublished ?? (
     reference.datePublished ?
       new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() :
@@ -36,7 +36,7 @@ function prepareReference(reference: ReferenceData) {
 
 export const Reference = ({ reference }: ReferenceBodyProps) => {
   const {
-    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId, comments
+    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId, comments,
   } = prepareReference(reference);
 
   return (
@@ -56,7 +56,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
         {reference.pageStart && `:${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
-        {(!reference.pageStart && eLocationId) && `${reference.eLocationId !==undefined ? `:${reference.eLocationId}` : ''}`}
+        {(!reference.pageStart && eLocationId) && `:${eLocationId}`}
       </span>
       { comments && <span className="reference__comments">{comments}</span> }
       {(linkRef) && <span className="reference__doi">
