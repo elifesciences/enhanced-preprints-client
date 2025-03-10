@@ -41,6 +41,9 @@ export const SiteHeader = () => {
                   <a href="https://elifesciences.org/" className="main-menu__list_link">Home</a>
                 </li>
                 <li className="main-menu__list_item hidden-wide">
+                  <a href="https://elifesciences.org/browse" className="main-menu__list_link">Browse</a>
+                </li>
+                <li className="main-menu__list_item hidden-wide">
                   <a href="https://elifesciences.org/magazine" className="main-menu__list_link">Magazine</a>
                 </li>
                 <li className="main-menu__list_item hidden-wide">
@@ -83,6 +86,9 @@ export const SiteHeader = () => {
             </li>
             <li className="nav-primary__item">
               <a href="https://elifesciences.org/">Home</a>
+            </li>
+            <li className="nav-primary__item">
+              <a href="https://elifesciences.org/browse">Browse</a>
             </li>
             <li className="nav-primary__item">
               <a href="https://elifesciences.org/magazine">Magazine</a>
