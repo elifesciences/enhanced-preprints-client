@@ -11,6 +11,22 @@ Before getting started, you should have nvm installed on your machine to get the
 
 Then you can install the dependencies via running `yarn`
 
+## How do changes reach prod?
+
+Each push to `master` triggers a GitHub CI build which includes running Chromatic visual regression tests. If there is an expected visual change, the Chromatic tests will fail and will need to be approved manually in the Chromatic UI. The UI can be found via the failed build step on GitHub. Once changes are approved, if applicable, the failed build will need to be rerun.
+
+On push to `master`:
+
+1. GitHub Actions builds and publishes a new container image
+2. Flux image automation (GitOps) updates image used by staging deployment
+3. Renovate bot creates a pull request on [`enhanced-preprints-e2e`](https://github.com/elifesciences/enhanced-preprints-e2e/)
+4. If green, pull request is merged, causing the image to be tagged with the suffix `-approved`
+5. Flux image automation (GitOps) updates image used by prod deployment
+
+To observe the above, you can use the [GitOps Dashboard](https://gitops-dashboard--flux-prod.elifesciences.org/kustomization/details?clusterName=Default&name=journal-team-deployment&namespace=flux-system) and the [Kubernetes Dashboard](https://k8s-dashboard.flux-prod.elifesciences.org/clusters/local) 
+
+A Slack channel `epp-e2e-test-results` is also available for observation.
+
 ## Running the unit tests
 
 To run the unit tests, run `yarn test`.
