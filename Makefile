@@ -5,3 +5,8 @@ dev:
 
 node_modules: package.json yarn.lock
 	yarn install
+
+.PHONY: check
+check: node_modules
+	yarn test
+	yarn lint
