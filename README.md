@@ -25,14 +25,6 @@ To run the browser tests, bring up the application with `docker compose up --wai
 
 When the application is up, run `yarn test:browser`.
 
-## Visual regression
-
-To run visual regression testing, bring up the application with `docker compose up --wait`
-
-When the application is up, run `yarn visual-regression:test`.
-
-To approve changes, use `yarn visual-regression:approve`.
-
 ## Linting Typescript - `yarn lint` or `yarn lint:fix`
 
 To identify issues with Typescript, run `yarn lint`, to attempt to automatically fix the issues run `yarn lint:fix`
