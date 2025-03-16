@@ -3,34 +3,55 @@
   "extends": [
     "config:best-practices"
   ],
-  "dependencyDashboardTitle":"Dependency Dashboard - EPP client",
-  "regexManagers": [
-		{
-			"fileMatch": ["^Dockerfile$"],
-			"matchStrings": ["node_version=(?<currentValue>.*?)-alpine"],
-			"depNameTemplate": "node",
-			"datasourceTemplate": "node",
-			"versioningTemplate": "node"
-		}
-	],
-  "addLabels": ["dependencies"],
+  "dependencyDashboardTitle": "Dependency Dashboard - EPP client",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "^Dockerfile$"
+      ],
+      "matchStrings": [
+        "node_version=(?<currentValue>.*?)-alpine"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node",
+      "versioningTemplate": "node"
+    }
+  ],
+  "addLabels": [
+    "dependencies"
+  ],
   "platformAutomerge": false,
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "automerge": true
     },
     {
-      "packagePatterns": ["^minio"],
-      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$"
+      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$",
+      "matchPackageNames": [
+        "/^minio/"
+      ]
     },
     {
-      "matchPackageNames": ["node"],
-      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "node"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
       "enabled": false
     },
     {
-      "matchPackageNames": ["ghcr.io/elifesciences/epp-image-server", "ghcr.io/elifesciences/enhanced-preprints-server"],
+      "matchPackageNames": [
+        "ghcr.io/elifesciences/epp-image-server",
+        "ghcr.io/elifesciences/enhanced-preprints-server"
+      ],
       "versioning": "regex:^master-(.*)-(?<minor>[\\d]+)\\.(?<patch>[\\d]+)$",
       "automerge": true
     }
