@@ -60,7 +60,7 @@ You can also view a rudimentary mongodb GUI client at [`localhost:8081`](http://
 ### Set the SITE_NAME to allow for site specific overrides
 
 ```bash
-NEXT_PUBLIC_SITE_NAME=elife docker compose up
+NEXT_PUBLIC_SITE_NAME=biophysics-colab docker compose up
 ```
 
 ## Development build with local API - `SERVER_DIR="../your-directory-here" docker compose -f docker-compose.yaml -f docker-compose.localserver.yaml up`
