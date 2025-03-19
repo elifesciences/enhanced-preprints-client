@@ -64,9 +64,12 @@ export const Page = ({
   previousVersionWarningUrl,
 }: PageProps) => {
   const { t } = useTranslation();
-  const processedTimeline = stringsToDates({ timeline }).map(({ name, datePrefix, ...other }) => ({
+  const processedTimeline = stringsToDates({ timeline }).map(({
+    name, version, datePrefix, ...other
+  }) => ({
+    version,
     ...other,
-    ...(name ? { name: t(name) } : {}),
+    ...(name ? { name: t(version === 1 ? `${name}_first_version` : name) } : {}),
     ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
   }));
   const router = useRouter();
