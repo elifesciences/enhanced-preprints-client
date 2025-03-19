@@ -63,7 +63,7 @@ services:
 
   ## EPP server mock
   wiremock:
-    image: wiremock/wiremock:3.9.2-1
+    image: wiremock/wiremock:3.12.1-1@sha256:be850ea239193d9497b264115e7071f1f2605bbff05b41f1fa22799904b2e019
     ports:
       - 3000:3000
     healthcheck:
