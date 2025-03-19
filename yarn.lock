@@ -9553,7 +9553,7 @@ __metadata:
     eslint-plugin-json: "npm:^3.1.0"
     eslint-plugin-no-only-tests: "npm:^3.1.0"
     eslint-plugin-react: "npm:^7.30.1"
-    eslint-plugin-storybook: "npm:^0.10.0"
+    eslint-plugin-storybook: "npm:^0.11.0"
     fetch-mock: "npm:^9.11.0"
     html-react-parser: "npm:^5.1.10"
     husky: "npm:^9.0.11"
@@ -10484,16 +10484,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:^0.10.0":
-  version: 0.10.1
-  resolution: "eslint-plugin-storybook@npm:0.10.1"
+"eslint-plugin-storybook@npm:^0.11.0":
+  version: 0.11.6
+  resolution: "eslint-plugin-storybook@npm:0.11.6"
   dependencies:
     "@storybook/csf": "npm:^0.1.11"
     "@typescript-eslint/utils": "npm:^8.8.1"
     ts-dedent: "npm:^2.2.0"
   peerDependencies:
-    eslint: ">=6"
-  checksum: 10c0/9694b0fa3eb7b4b47a7105cb0356ddb2308555cb8035684e0910966f900bf66525caae14d34e01c21b0135b738221e73877d1a651d5669f3ea4a395cf943b396
+    eslint: ">=8"
+  checksum: 10c0/f9a38832221c5adbddc108602eea1cebb9b538c860023007b60ac34abb7e8ba38b7b2711b8c1c55b0844c7f7df84917c8a7e98c70c9b96e88e84b31dd93ff74f
   languageName: node
   linkType: hard
 
