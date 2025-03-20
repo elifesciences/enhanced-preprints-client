@@ -30,6 +30,10 @@ describe('ReviewsTab', () => {
     expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
   });
 
+  it.todo('renders the participants section when there are participants');
+
+  it.todo('does not render the participants section when there are no participants');
+
   it.each([
     {
       description: 'complete',
