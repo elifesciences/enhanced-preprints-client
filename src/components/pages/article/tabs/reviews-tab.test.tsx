@@ -36,7 +36,18 @@ describe('ReviewsTab', () => {
     expect(container.querySelector('#editors-and-reviewers')).toBeInTheDocument();
   });
 
-  it.todo('does not render the participants section when there are no participants');
+  it.skip('does not render the participants section when there are no participants', () => {
+    const peerReviewNoEditors = {
+      ...peerReview,
+      evaluationSummary: {
+        ...peerReview.evaluationSummary,
+        participants: [],
+      },
+    } as PeerReview;
+    const { container } = render(<ArticleReviewsTab peerReview={peerReviewNoEditors} currentVersion={1} />);
+
+    expect(container.querySelector('#editors-and-reviewers')).not.toBeInTheDocument();
+  });
 
   it.each([
     {
