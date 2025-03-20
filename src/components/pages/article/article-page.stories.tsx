@@ -9,6 +9,7 @@ import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import '../../../i18n';
+import { PeerReview } from '../../../types';
 
 const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',
@@ -130,6 +131,35 @@ export const ArticlePageReviewedReviewsTab: Story = {
     <DefaultLayout>
       <ArticlePage {...args}>
         <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
+};
+
+const peerReviewNoEditors = {
+  ...peerReview,
+  evaluationSummary: {
+    ...peerReview.evaluationSummary,
+    participants: [],
+  },
+} as PeerReview;
+
+export const ArticlePageReviewedNoEditorsReviewsTab: Story = {
+  args: {
+    metaData: {
+      ...metaData,
+      version: '1',
+    },
+    activeTab: 'reviews',
+    tabs,
+    relatedContent,
+    metrics,
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleReviewsTab peerReview={peerReviewNoEditors} currentVersion={1} />
       </ArticlePage>
     </DefaultLayout>
   ),
