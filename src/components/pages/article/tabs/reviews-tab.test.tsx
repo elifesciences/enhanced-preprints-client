@@ -30,7 +30,11 @@ describe('ReviewsTab', () => {
     expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
   });
 
-  it.todo('renders the participants section when there are participants');
+  it('renders the participants section when there are participants', () => {
+    const { container } = render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
+
+    expect(container.querySelector('#editors-and-reviewers')).toBeInTheDocument();
+  });
 
   it.todo('does not render the participants section when there are no participants');
 
