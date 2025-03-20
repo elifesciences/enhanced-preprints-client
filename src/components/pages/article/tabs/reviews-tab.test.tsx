@@ -36,7 +36,7 @@ describe('ReviewsTab', () => {
     expect(container.querySelector('#editors-and-reviewers')).toBeInTheDocument();
   });
 
-  it.skip('does not render the participants section when there are no participants', () => {
+  it('does not render the participants section when there are no participants', () => {
     const peerReviewNoEditors = {
       ...peerReview,
       evaluationSummary: {
