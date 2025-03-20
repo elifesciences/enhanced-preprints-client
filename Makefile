@@ -5,6 +5,7 @@ dev:
 
 node_modules: package.json yarn.lock
 	yarn install
+	touch node_modules
 
 .PHONY: check
 check: node_modules
