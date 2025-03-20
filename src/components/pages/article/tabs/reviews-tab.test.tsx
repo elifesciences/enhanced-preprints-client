@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ArticleReviewsTab } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
 import '../../../../i18n';
+import { PeerReview } from '../../../../types';
 
 describe('ReviewsTab', () => {
   it('renders with reviews tab', () => {
@@ -95,6 +96,22 @@ describe('ReviewsTab', () => {
         {
           href: '#editors-and-reviewers',
           text: 'Editors',
+        },
+      ],
+    },
+    {
+      description: 'without editors',
+      peerReviewExample: {
+        evaluationSummary: {
+          ...peerReview.evaluationSummary,
+          participants: [],
+        },
+        reviews: [],
+      } as PeerReview,
+      expectedJumpToLinks: [
+        {
+          href: '#review-process',
+          text: 'Peer review process',
         },
       ],
     },

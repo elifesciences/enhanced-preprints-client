@@ -10,7 +10,7 @@ export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: 
   const { t } = useTranslation();
   const headings = [
     { id: 'review-process', text: 'Peer review process' },
-    { id: 'editors-and-reviewers', text: t('editors_and_reviewers_title') },
+    ...peerReview.evaluationSummary && peerReview.evaluationSummary.participants.length > 0 ? [{ id: 'editors-and-reviewers', text: t('editors_and_reviewers_title') }] : [],
     ...peerReview.reviews.map((_, index) => (
       { id: `peer-review-${index}`, text: `Reviewer #${index + 1}` }
     )),
