@@ -3846,7 +3846,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/reporters@npm:^29.7.0":
+"@jest/reporters@npm:^29.6.2, @jest/reporters@npm:^29.7.0":
   version: 29.7.0
   resolution: "@jest/reporters@npm:29.7.0"
   dependencies:
@@ -3912,7 +3912,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/test-result@npm:^29.7.0":
+"@jest/test-result@npm:^29.6.4, @jest/test-result@npm:^29.7.0":
   version: 29.7.0
   resolution: "@jest/test-result@npm:29.7.0"
   dependencies:
@@ -8136,7 +8136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.2":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -9560,6 +9560,7 @@ __metadata:
     i18next: "npm:^23.7.19"
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
+    jest-wip-reporter: "npm:^2.1.0"
     moment: "npm:^2.30.1"
     next: "npm:^14.0.4"
     node-mocks-http: "npm:^1.14.1"
@@ -11204,6 +11205,13 @@ __metadata:
   version: 0.2.0
   resolution: "forwarded@npm:0.2.0"
   checksum: 10c0/9b67c3fac86acdbc9ae47ba1ddd5f2f81526fa4c8226863ede5600a3f7c7416ef451f6f1e240a3cc32d0fd79fcfe6beb08fd0da454f360032bde70bf80afbb33
+  languageName: node
+  linkType: hard
+
+"fp-ts@npm:^2.16.1":
+  version: 2.16.9
+  resolution: "fp-ts@npm:2.16.9"
+  checksum: 10c0/704fcc2e792bd17cb653e7b62b5d9d905c04327776df8bf2a1f67e1c6823b06c7c36036345279ac04f0b6b7214ad01f91f109f548e144c9f866a491392fbfbcc
   languageName: node
   linkType: hard
 
@@ -13512,6 +13520,18 @@ __metadata:
     jest-util: "npm:^29.7.0"
     string-length: "npm:^4.0.1"
   checksum: 10c0/ec6c75030562fc8f8c727cb8f3b94e75d831fc718785abfc196e1f2a2ebc9a2e38744a15147170039628a853d77a3b695561ce850375ede3a4ee6037a2574567
+  languageName: node
+  linkType: hard
+
+"jest-wip-reporter@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "jest-wip-reporter@npm:2.1.0"
+  dependencies:
+    "@jest/reporters": "npm:^29.6.2"
+    "@jest/test-result": "npm:^29.6.4"
+    chalk: "npm:^4.1.1"
+    fp-ts: "npm:^2.16.1"
+  checksum: 10c0/8ea1916ac9a7027a153a4e676c8add6931e3b5eba213f5a2b9ce3b0cf6cd105edcaebcbf1881950fdc8043844fe5056f1120b5aff2acf025fe8ff8c609dd2653
   languageName: node
   linkType: hard
 
