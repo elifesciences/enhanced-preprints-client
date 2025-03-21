@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ReferenceList } from './reference-list';
 import { references } from '../../../utils/mocks';
+import '../../../i18n';
 
 const meta: Meta<typeof ReferenceList> = {
   title: 'Atoms/Reference List',

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ReferenceList } from './reference-list';
 import { references } from '../../../utils/mocks';
+import '../../../i18n';
 
 describe('ReferenceList', () => {
   it('should render all the references passed in as a prop', () => {
