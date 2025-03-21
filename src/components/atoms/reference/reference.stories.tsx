@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Reference } from './reference';
 import { references } from '../../../utils/mocks';
+import '../../../i18n';
 
 const meta: Meta<typeof Reference> = {
   title: 'Atoms/Reference',
@@ -13,6 +14,12 @@ type Story = StoryObj<typeof Reference>;
 export const ReferenceStory: Story = {
   args: {
     reference: references[0],
+  },
+};
+
+export const ReferenceBookStory: Story = {
+  args: {
+    reference: references[1],
   },
 };
 

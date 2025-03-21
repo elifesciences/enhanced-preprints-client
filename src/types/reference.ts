@@ -45,5 +45,6 @@ export type Reference = {
   meta?: {
     yearPublished?: string,
     label?: string,
+    publicationType?: string,
   },
 };

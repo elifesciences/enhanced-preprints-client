@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { Reference } from './reference';
 import { Reference as ReferenceData } from '../../../types';
 import { references } from '../../../utils/mocks';
+import '../../../i18n';
 
 describe('Reference', () => {
   const ref: ReferenceData = {
@@ -167,5 +168,11 @@ describe('Reference', () => {
     render(<Reference reference={refWithComments} />);
 
     expect(screen.getByText('I am a comment, I am a second comment')).toBeInTheDocument();
+  });
+
+  it('should render chapter with journal title with "In: " before journal', () => {
+    render(<Reference reference={references[1]} />);
+
+    expect(screen.getByText('In: ', { exact: false })).toBeInTheDocument();
   });
 });

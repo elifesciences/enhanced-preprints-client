@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 
@@ -35,6 +36,8 @@ function prepareReference(reference: ReferenceData) {
 }
 
 export const Reference = ({ reference }: ReferenceBodyProps) => {
+  const { t } = useTranslation();
+
   const {
     referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId, comments,
   } = prepareReference(reference);
@@ -52,6 +55,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
       { year && <span className="reference__authors_list_suffix">{year}</span> }
       <span className="reference__title">{linkRef ? <a className="reference__title--link" href={linkRef}>{reference.title}</a> : reference.title}</span>
       <span className="reference__origin">
+        {referenceJournal && reference.meta?.publicationType === 'book' && <>{t('chapter_in_journal_prefix')}</>}
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
