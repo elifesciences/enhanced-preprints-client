@@ -60,7 +60,7 @@
     ]
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.0.0",
+    "@next/eslint-plugin-next": "^15.0.0",
     "@playwright/test": "^1.29.2",
     "@storybook/addon-a11y": "^8.0.0",
     "@storybook/addon-actions": "^8.0.0",
@@ -92,7 +92,7 @@
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-next": "^14.0.4",
+    "eslint-config-next": "^15.0.0",
     "eslint-plugin-deprecation": "^2.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-json": "^3.1.0",
