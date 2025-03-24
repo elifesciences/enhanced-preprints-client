@@ -41,6 +41,7 @@ const resources = {
       revised: 'Revised by authors',
       not_revised: 'Not revised',
       chapter_in_journal_prefix: 'In: ',
+      page_prefix_in_book: 'pp. ',
     },
     elife: {
       twitter_handle: '@elife',

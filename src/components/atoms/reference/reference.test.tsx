@@ -175,4 +175,10 @@ describe('Reference', () => {
 
     expect(screen.getByText('In: ', { exact: false })).toBeInTheDocument();
   });
+
+  it('should render book page range with pp. prefix', () => {
+    render(<Reference reference={references[1]} />);
+
+    expect(screen.getByText('pp. ', { exact: false })).toBeInTheDocument();
+  });
 });
