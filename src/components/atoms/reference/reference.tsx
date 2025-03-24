@@ -59,7 +59,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
-        {reference.pageStart && `${reference.meta?.publicationType === 'book' ? t('page_prefix_in_book') : ':'}${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
+        {reference.pageStart && `${reference.meta?.publicationType === 'book' && reference.pageEnd ? t('page_prefix_in_book') : ':'}${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
         {(!reference.pageStart && eLocationId) && `:${eLocationId}`}
       </span>
       { comments && <span className="reference__comments">{comments}</span> }
