@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ContentHeader } from './content-header';
+import '../../../i18n';
 
 describe('ContentHeader', () => {
   it('render the Content Header with all of the props passed in', () => {
