@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { Descriptors } from './descriptors';
-import '../../../i18n';
 
 const meta: Meta<typeof Descriptors> = {
   title: 'Atoms/Descriptors',

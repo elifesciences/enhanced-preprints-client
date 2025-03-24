@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
+
 import { ContentHeader } from './content-header';
 import { authors } from '../../../utils/mocks';
-import '../../../i18n';
 
 const meta: Meta<typeof ContentHeader> = {
   title: 'Molecules/ContentHeader',

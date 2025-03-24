@@ -42,7 +42,6 @@ const resources = {
       not_revised: 'Not revised',
       chapter_in_journal_prefix: 'In: ',
       page_prefix_in_book: 'pp. ',
-      doi_url: 'https://doi.org/{{doi}}',
     },
     elife: {
       twitter_handle: '@elife',
@@ -83,7 +82,6 @@ const resources = {
       about_assessments_url: 'https://www.sciencecolab.org/biophysics-colab',
       history_version_title: '$t(reviewed_preprint)',
       editors_and_reviewers_title: 'Curators',
-      doi_url: '',
     },
   },
 };

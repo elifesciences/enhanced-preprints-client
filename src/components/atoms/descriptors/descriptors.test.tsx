@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { Descriptors } from './descriptors';
-import '../../../i18n';
 
 const doi = '10.1101/24601';
 const license = 'license';
