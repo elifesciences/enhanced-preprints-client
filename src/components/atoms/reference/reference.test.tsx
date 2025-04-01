@@ -181,4 +181,10 @@ describe('Reference', () => {
 
     expect(screen.getByText('pp. ', { exact: false })).toBeInTheDocument();
   });
+
+  it('should render editors', () => {
+    render(<Reference reference={references[1]} />);
+
+    expect(screen.getByText(', editors.', { exact: false })).toBeInTheDocument();
+  });
 });

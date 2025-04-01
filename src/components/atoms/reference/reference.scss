@@ -44,19 +44,21 @@
   }
 }
 
-.reference__authors_list {
+.reference__authors_list,
+.reference__editors_list {
   @extend %reference;
 
   display: inline;
   list-style: none;
   padding: 0;
-
-  &::after {
-    content: " ";
-  }
 }
 
-.reference__author {
+.reference__authors_list::after {
+  content: " ";
+}
+
+.reference__author,
+.reference__editor {
   display: inline;
 
   &:not(:first-child)::before {

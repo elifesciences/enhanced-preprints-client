@@ -12,7 +12,7 @@ export const ArticleAndAuthorInformation = ({
   publishedYear,
   versions,
 }: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, publishedYear?: number }) => {
-  const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes.map((note) => note.rid)).flat();
+  const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes?.map((note) => note.rid)).flat();
   const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
 
   return (

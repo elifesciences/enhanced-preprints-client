@@ -40,8 +40,9 @@ const resources = {
       role_curator: 'Curator',
       revised: 'Revised by authors',
       not_revised: 'Not revised',
-      chapter_in_journal_prefix: 'In: ',
-      page_prefix_in_book: 'pp. ',
+      reference_chapter_in_journal_prefix: 'In: ',
+      reference_page_prefix_in_book: 'pp. ',
+      reference_editors_suffix: ', editors.',
     },
     elife: {
       twitter_handle: '@elife',

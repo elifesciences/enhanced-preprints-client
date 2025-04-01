@@ -5,7 +5,7 @@ import './author-list.scss';
 
 const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: AuthorNotesData }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
-  const rids = author.meta?.notes.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
+  const rids = author.meta?.notes?.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
   const notes = rids?.map((rid) => {
     const note = authorNotes.find(({ id }) => id === rid);
     return note ? { text: note.text, label: note.label } : undefined;

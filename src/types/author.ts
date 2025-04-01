@@ -15,11 +15,12 @@ export type Author = {
   }[],
   emails?: string[],
   meta?: {
-    notes: {
+    notes?: {
       type: string,
       rid: string,
       label?: string,
     }[],
+    personGroupAuthor?: string,
   },
 };
 

@@ -22,8 +22,12 @@ function prepareReference(reference: ReferenceData) {
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
+  const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupAuthor !== 'editor');
+  const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupAuthor === 'editor');
 
   return {
+    authors,
+    editors,
     referenceJournal,
     referencePublisher,
     referenceVolume,
@@ -39,14 +43,23 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
   const { t } = useTranslation();
 
   const {
-    referenceJournal, referencePublisher, referenceVolume, year, linkText, linkRef, eLocationId, comments,
+    authors,
+    editors,
+    referenceJournal,
+    referencePublisher,
+    referenceVolume,
+    year,
+    linkText,
+    linkRef,
+    eLocationId,
+    comments,
   } = prepareReference(reference);
 
   return (
     <>
       { reference.meta?.label && <span className="reference__label">{reference.meta.label}</span>}
       <ol className="reference__authors_list">
-        {reference.authors.map((author, index) => (
+        {authors.map((author, index) => (
           <li key={index} className="reference__author">
             {author.type === 'Organization' ? author.name : formatName(author)}
           </li>
@@ -55,11 +68,18 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
       { year && <span className="reference__authors_list_suffix">{year}</span> }
       <span className="reference__title">{linkRef ? <a className="reference__title--link" href={linkRef}>{reference.title}</a> : reference.title}</span>
       <span className="reference__origin">
-        {referenceJournal && reference.meta?.publicationType === 'book' && <>{t('chapter_in_journal_prefix')}</>}
+        {referenceJournal && reference.meta?.publicationType === 'book' && <>{t('reference_chapter_in_journal_prefix')}</>}
+        {editors.length > 0 && <><ol className="reference__editors_list">
+          {editors.map((editor, index) => (
+            <li key={index} className="reference__editor">
+              {editor.type === 'Organization' ? editor.name : formatName(editor)}
+            </li>
+          ))}
+        </ol>{t('reference_editors_suffix')} </>}
         {referenceJournal && <><i>{referenceJournal}</i> </>}
         {referencePublisher && <>{referencePublisher.address && <>{referencePublisher.address.addressLocality}: </>}{referencePublisher.name} </>}
         {referenceVolume && <strong>{referenceVolume}</strong>}
-        {reference.pageStart && `${reference.meta?.publicationType === 'book' && reference.pageEnd ? t('page_prefix_in_book') : ':'}${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
+        {reference.pageStart && `${reference.meta?.publicationType === 'book' && reference.pageEnd ? t('reference_page_prefix_in_book') : ':'}${reference.pageStart}${reference.pageEnd !== undefined ? `–${reference.pageEnd}` : ''}`}
         {(!reference.pageStart && eLocationId) && `:${eLocationId}`}
       </span>
       { comments && <span className="reference__comments">{comments}</span> }
