@@ -34,10 +34,8 @@
       "automerge": true
     },
     {
-      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$",
-      "matchPackageNames": [
-        "/^minio/"
-      ]
+      "packagePatterns": ["^minio"],
+      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$"
     },
     {
       "matchPackageNames": [
