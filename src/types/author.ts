@@ -20,7 +20,7 @@ export type Author = {
       rid: string,
       label?: string,
     }[],
-    personGroupAuthor?: string,
+    personGroupType?: string,
   },
 };
 

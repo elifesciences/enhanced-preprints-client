@@ -22,8 +22,8 @@ function prepareReference(reference: ReferenceData) {
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
-  const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupAuthor !== 'editor');
-  const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupAuthor === 'editor');
+  const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupType !== 'editor');
+  const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupType === 'editor');
 
   return {
     authors,
