@@ -52,6 +52,22 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 
 const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
+const getNameWithVersionSuffix = (
+  name: string,
+  version: number,
+  lastVersion: number,
+): string => {
+  if (version === 1) {
+    return `${name}_first_version`;
+  }
+
+  if (version === lastVersion) {
+    return `${name}_last_version`;
+  }
+
+  return name;
+};
+
 export const Page = ({
   metaData: rawMetaData,
   imgInfo,
@@ -64,12 +80,16 @@ export const Page = ({
   previousVersionWarningUrl,
 }: PageProps) => {
   const { t } = useTranslation();
-  const processedTimeline = stringsToDates({ timeline }).map(({
+  const processedTimeline = stringsToDates({ timeline });
+
+  const processedTimelineWithTranslations = processedTimeline.map(({
     name, version, datePrefix, ...other
   }) => ({
     version,
     ...other,
-    ...(name ? { name: t(version === 1 ? `${name}_first_version` : name) } : {}),
+    ...(name ? {
+      name: t(getNameWithVersionSuffix(name, version, Math.max(...processedTimeline.map((event) => event.version)))),
+    } : {}),
     ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
   }));
   const router = useRouter();
@@ -176,7 +196,7 @@ export const Page = ({
         metaData={metaData}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
-        timeline={processedTimeline}
+        timeline={processedTimelineWithTranslations}
         activeTab={tabName}
       >
         { tabContent }
