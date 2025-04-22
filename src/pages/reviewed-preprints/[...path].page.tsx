@@ -52,22 +52,6 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 
 const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
-const getNameWithVersionSuffix = (
-  name: string,
-  version: number,
-  lastVersion: number,
-): string => {
-  if (version === 1) {
-    return `${name}_first_version`;
-  }
-
-  if (version === lastVersion) {
-    return `${name}_last_version`;
-  }
-
-  return name;
-};
-
 export const Page = ({
   metaData: rawMetaData,
   imgInfo,
@@ -88,7 +72,7 @@ export const Page = ({
     version,
     ...other,
     ...(name ? {
-      name: t(getNameWithVersionSuffix(name, version, Math.max(...processedTimeline.map((event) => event.version)))),
+      name: t(name),
     } : {}),
     ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
   }));

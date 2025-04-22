@@ -78,7 +78,7 @@ describe('generateTimeline', () => {
     expect(timeline).toEqual([
       {
         date: 'Tue Jan 03 2023',
-        name: 'timeline_version_title',
+        name: 'timeline_version_title_first_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
         versionIndicator: 'v1',
@@ -97,14 +97,14 @@ describe('generateTimeline', () => {
 
     expect(timeline).toEqual([
       {
-        name: 'timeline_version_title',
+        name: 'timeline_version_title_last_version',
         url: '/reviewed-preprints/1v2',
         version: 2,
         date: 'Mon Jan 09 2023',
         versionIndicator: 'v2',
       },
       {
-        name: 'timeline_version_title',
+        name: 'timeline_version_title_first_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
         date: 'Tue Jan 03 2023',
@@ -125,7 +125,7 @@ describe('generateTimeline', () => {
 
     expect(timeline).toEqual([
       {
-        name: 'external_timeline_version_title',
+        name: 'external_timeline_version_title_last_version',
         url: 'https://doi.org/doi-123v3',
         version: 3,
         date: 'Thu Feb 09 2023',
@@ -138,7 +138,7 @@ describe('generateTimeline', () => {
         versionIndicator: 'v2',
       },
       {
-        name: 'timeline_version_title',
+        name: 'timeline_version_title_first_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
         date: 'Tue Jan 03 2023',
@@ -167,14 +167,14 @@ describe('generateTimeline', () => {
 
     expect(timeline).toEqual([
       {
-        name: 'external_timeline_version_title',
+        name: 'external_timeline_version_title_last_version',
         url: 'https://doi.org/doi-123v3',
         version: 3,
         date: 'Fri Feb 10 2023',
         datePrefix: 'external_timeline_version_correction_date_prefix',
       },
       {
-        name: 'external_timeline_version_title',
+        name: 'external_timeline_version_title_last_version',
         url: 'https://doi.org/doi-123v3',
         version: 3,
         date: 'Thu Feb 09 2023',
@@ -187,7 +187,7 @@ describe('generateTimeline', () => {
         versionIndicator: 'v2',
       },
       {
-        name: 'timeline_version_title',
+        name: 'timeline_version_title_first_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
         date: 'Tue Jan 03 2023',
