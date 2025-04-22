@@ -99,7 +99,7 @@ export const Page = ({
     ...rawMetaData,
     versionHistory: rawMetaData.versionHistory.map(({ label, version, ...other }) => ({
       ...other,
-      label: t(`${label}${version === 1 ? '_first_version' : ''}`, {
+      label: t(label, {
         version,
       }),
     })),

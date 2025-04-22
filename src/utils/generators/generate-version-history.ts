@@ -5,12 +5,13 @@ import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guar
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = Object.values(version.versions).reduce<VersionHistoryItem[]>((versions, current) => {
+    const versionNo = +current.versionIdentifier;
     if (current.published) {
       versions.push({
-        label: `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`,
+        label: `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title${versionNo === 1 ? '_first_version' : ''}`,
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         date: new Date(current.published).toDateString(),
-        version: +current.versionIdentifier,
+        version: versionNo,
       });
 
       if (isExternalVersionSummary(current) && (current.corrections ?? []).length > 0) {
@@ -18,7 +19,7 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
           label: 'external_history_version_title_updated',
           url: correction.url,
           date: new Date(correction.date).toDateString(),
-          version: +current.versionIdentifier,
+          version: versionNo,
         })));
       }
     }
