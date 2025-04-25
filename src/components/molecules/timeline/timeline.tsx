@@ -23,11 +23,12 @@ export const Timeline = ({ current, events }: TimelineProps) => {
           sortedEvents.map((event, index) => {
             const typeClass = (sortedEvents.length === 1 || (current && current === event.version)) ? (` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
             const statusClass = event.status ? ` review-timeline__event--status-${event.status}` : '';
+            const activeClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
             const hidden = (current && current !== event.version && expanded === false);
             const eventName = event.name ?? 'Reviewed Preprint';
             return (
               <Fragment key={index}>
-                <dt className={`review-timeline__event${typeClass}${statusClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
+                <dt className={`review-timeline__event${typeClass}${activeClass}${statusClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                   {(current && current !== event.version) ? (
                     <a href={event.url} className="review-timeline__event-link">
                       {eventName}
@@ -36,7 +37,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                     eventName
                   )}
                 </dt>
-                <dd className={`review-timeline__detail${typeClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
+                <dd className={`review-timeline__detail${typeClass}${activeClass}${statusClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                   {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
                   {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"

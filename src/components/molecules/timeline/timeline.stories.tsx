@@ -144,6 +144,40 @@ export const EventTimelineWithCurated: Story = {
   },
 };
 
+export const EventTimelineWithStatusValues: Story = {
+  args: {
+    current: 3,
+    events: [
+      {
+        name: 'Curated Preprint',
+        url: '#',
+        date: new Date('2023-03-20'),
+        version: 3,
+        versionIndicator: 'v3',
+        status: 'curated',
+      },
+      {
+        name: 'Revised Preprint',
+        url: '#',
+        date: new Date('2023-03-19'),
+        version: 2,
+        versionIndicator: 'v2',
+        status: 'revised',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18'),
+        version: 1,
+        versionIndicator: 'v1',
+        status: 'reviewed',
+      },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    await timeLineTest(canvasElement, 'Show previous versions', 'Hide previous versions', 3);
+  },
+};
+
 export const EventTimelineWithMultipleVOR: Story = {
   args: {
     current: 2,
