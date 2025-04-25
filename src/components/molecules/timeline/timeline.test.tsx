@@ -95,9 +95,20 @@ describe('Timeline', () => {
   });
 
   it('has the appropriate class for curated item', () => {
+    const event = {
+      url: '#', version: 1, date: new Date('2003-03-26'),
+    };
+
+    render(<Timeline events={[
+      event,
+    ]}
+    />);
+
+    expect(document.querySelector('.review-timeline__event--status-curated')).not.toBeInTheDocument();
+
     render(<Timeline events={[
       {
-        name: 'Curated Preprint', url: '#', version: 1, date: new Date('2003-03-26'), status: 'curated',
+        ...event, status: 'curated',
       },
     ]}
     />);
