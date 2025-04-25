@@ -40,7 +40,14 @@ export const ArticleFullTextTab = (props: Props) => {
           <Abstract content={props.metaData.abstract} />
           <ArticleContent content={props.content} />
           <ReferenceList references={props.metaData.references} />
-          <ArticleAndAuthorInformation authors={props.metaData.authors} authorNotes={props.metaData.authorNotes} versions={props.metaData.versionHistory} license={props.metaData.license} publishedYear={props.metaData.publishedYear} />
+          <ArticleAndAuthorInformation
+            authors={props.metaData.authors}
+            authorNotes={props.metaData.authorNotes}
+            versions={props.metaData.versionHistory}
+            license={props.metaData.license}
+            publishedYear={props.metaData.publishedYear}
+            doi={props.metaData.doi}
+          />
           { props.metrics && <Metrics metrics={props.metrics} /> }
         </div>
       </div>
