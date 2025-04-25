@@ -76,6 +76,26 @@ describe('Timeline', () => {
     expect(screen.getByText('Revised by authors')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
+  it.skip('renders multiple reviewed timeline items, and one curated', () => {
+    render(<Timeline events={[
+      {
+        url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
+      },
+      {
+        url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
+      },
+      {
+        url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
+      },
+    ]}
+    />);
+
+    fireEvent.click(document.getElementsByClassName('review-timeline__expansion')[0]);
+
+    expect(screen.getAllByText('Reviewed Preprint')).toHaveLength(2);
+    expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
+  });
+
   describe('collapsable behaviours', () => {
     const getVisibleDtElements = () => Array.from(document.querySelectorAll('dt')).filter((dt) => dt.style.display !== 'none');
 
