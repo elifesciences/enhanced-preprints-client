@@ -94,7 +94,7 @@ describe('Timeline', () => {
     expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
   });
 
-  it.skip('has the appropriate class for curated item', () => {
+  it('has the appropriate class for curated item', () => {
     render(<Timeline events={[
       {
         name: 'Curated Preprint', url: '#', version: 1, date: new Date('2003-03-26'), status: 'curated',
