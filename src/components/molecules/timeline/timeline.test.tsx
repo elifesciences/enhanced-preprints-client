@@ -94,7 +94,23 @@ describe('Timeline', () => {
     expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
   });
 
-  it('has the appropriate class for curated item', () => {
+  it.each([
+    {
+      status: 'curated',
+      expectedClass: '.review-timeline__event--status-curated',
+    },
+    {
+      status: 'revised',
+      expectedClass: '.review-timeline__event--status-revised',
+    },
+    {
+      status: 'reviewed',
+      expectedClass: '.review-timeline__event--status-reviewed',
+    },
+  ] as {
+    status: 'reviewed' | 'revised' | 'curated',
+    expectedClass: string,
+  }[])('has the appropriate class for status', ({ status, expectedClass }) => {
     const event = {
       url: '#', version: 1, date: new Date('2003-03-26'),
     };
@@ -104,16 +120,17 @@ describe('Timeline', () => {
     ]}
     />);
 
-    expect(document.querySelector('.review-timeline__event--status-curated')).not.toBeInTheDocument();
+    expect(document.querySelector(expectedClass)).not.toBeInTheDocument();
 
     render(<Timeline events={[
       {
-        ...event, status: 'curated',
+        ...event,
+        status,
       },
     ]}
     />);
 
-    expect(document.querySelector('.review-timeline__event--status-curated')).toBeInTheDocument();
+    expect(document.querySelector(expectedClass)).toBeInTheDocument();
   });
 
   describe('collapsable behaviours', () => {
