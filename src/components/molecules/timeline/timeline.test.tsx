@@ -90,8 +90,6 @@ describe('Timeline', () => {
     ]}
     />);
 
-    fireEvent.click(document.getElementsByClassName('review-timeline__expansion')[0]);
-
     expect(screen.getAllByText('Reviewed Preprint')).toHaveLength(2);
     expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
   });
