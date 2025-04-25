@@ -96,6 +96,17 @@ describe('Timeline', () => {
     expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
   });
 
+  it.skip('has the appropriate class for curated item', () => {
+    render(<Timeline events={[
+      {
+        name: 'Curated Preprint', url: '#', version: 1, date: new Date('2003-03-26'), status: 'curated',
+      },
+    ]}
+    />);
+
+    expect(document.querySelector('.review-timeline__event--status-curated')).toBeInTheDocument();
+  });
+
   describe('collapsable behaviours', () => {
     const getVisibleDtElements = () => Array.from(document.querySelectorAll('dt')).filter((dt) => dt.style.display !== 'none');
 
