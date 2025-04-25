@@ -13,7 +13,7 @@ export const ArticleAndAuthorInformation = ({
   publishedYear,
   versions,
   doi,
-}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, publishedYear?: number, doi: string }) => {
+}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, publishedYear?: number, doi?: string }) => {
   const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes?.map((note) => note.rid)).flat();
   const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
 
@@ -23,7 +23,7 @@ export const ArticleAndAuthorInformation = ({
       { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
       { orphanedAuthorNotes.length > 0 && <AuthorNotes authorNotes={orphanedAuthorNotes} /> }
       { versions.length > 0 && <VersionHistory versions={versions} /> }
-      <CiteAllVersions doi={doi}/>
+      { doi && <CiteAllVersions doi={doi}/>}
       { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
     </section>
   );
