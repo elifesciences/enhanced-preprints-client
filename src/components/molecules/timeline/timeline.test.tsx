@@ -76,10 +76,10 @@ describe('Timeline', () => {
     expect(screen.getByText('Revised by authors')).toHaveAttribute('href', '#/reviews#review-process');
   });
 
-  it.skip('renders multiple reviewed timeline items, and one curated', () => {
+  it('renders multiple reviewed timeline items, and one curated', () => {
     render(<Timeline events={[
       {
-        url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
+        name: 'Curated Preprint', url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
       },
       {
         url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
@@ -269,7 +269,7 @@ describe('Timeline', () => {
       it('should show the text "Hide previous versions" when there are more than two entries and the latest is the current', () => {
         render(<Timeline current={3} events={[
           {
-            url: '#', version: 3, date: new Date('2003-03-26'), versionIndicator: 'v3',
+            url: '#', version: 3, date: new Date('2003-03-26'),
           },
           {
             url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2',
