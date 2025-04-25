@@ -140,7 +140,7 @@ export const EventTimelineWithCurated: Story = {
     ],
   },
   play: async ({ canvasElement }) => {
-    await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 3);
+    await timeLineTest(canvasElement, 'Show previous versions', 'Hide previous versions', 3);
   },
 };
 
