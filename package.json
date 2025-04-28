@@ -24,7 +24,7 @@
     "lint:fix": "eslint --fix --ext .tsx,.ts,.json src/ browser-tests/ wiremock",
     "lint-sass": "stylelint **/*.scss",
     "lint-sass:fix": "stylelint --fix **/*.scss",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
     "test:browser": "playwright test",
     "test-storybook": "test-storybook",
