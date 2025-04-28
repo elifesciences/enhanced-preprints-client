@@ -2,6 +2,14 @@
 storybook:
 	yarn storybook
 
+.PHONY: install-playwright
+install-playwright:
+	yarn playwright install
+
+.PHONY: test-storybook
+test-storybook: install-playwright
+	yarn test-storybook
+
 .PHONY: dev
 dev:
 	docker compose up --wait
