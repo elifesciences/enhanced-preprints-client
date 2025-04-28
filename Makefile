@@ -15,4 +15,5 @@ node_modules: package.json yarn.lock
 check: node_modules
 	yarn test
 	yarn lint
+	yarn lint-sass
 	yarn tsc --noEmit
