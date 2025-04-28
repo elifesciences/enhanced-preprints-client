@@ -9556,7 +9556,6 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.12.0"
     fetch-mock: "npm:^9.11.0"
     html-react-parser: "npm:^5.1.10"
-    husky: "npm:^9.0.11"
     i18next: "npm:^23.7.19"
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
@@ -12124,15 +12123,6 @@ __metadata:
   dependencies:
     ms: "npm:^2.0.0"
   checksum: 10c0/f34a2c20161d02303c2807badec2f3b49cbfbbb409abd4f95a07377ae01cfe6b59e3d15ac609cffcd8f2521f0eb37b7e1091acf65da99aa2a4f1ad63c21e7e7a
-  languageName: node
-  linkType: hard
-
-"husky@npm:^9.0.11":
-  version: 9.1.6
-  resolution: "husky@npm:9.1.6"
-  bin:
-    husky: bin.js
-  checksum: 10c0/705673db4a247c1febd9c5df5f6a3519106cf0335845027bb50a15fba9b1f542cb2610932ede96fd08008f6d9f49db0f15560509861808b0031cdc0e7c798bac
   languageName: node
   linkType: hard
 

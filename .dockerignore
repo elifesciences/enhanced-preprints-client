@@ -33,7 +33,6 @@ test-results/**
 
 # Dev tooling
 Makefile
-.husky/**
 .nvmrc
 .swc/**
 .vscode/**
