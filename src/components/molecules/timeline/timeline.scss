@@ -46,6 +46,18 @@
     &.review-timeline__event--revised::before {
       background-color: var(--border-timeline-revised);
     }
+
+    &.review-timeline__event--status-reviewed.review-timeline__event--active::before {
+      background-color: var(--border-timeline-reviewed);
+    }
+
+    &.review-timeline__event--status-revised.review-timeline__event--active::before {
+      background-color: var(--border-timeline-revised);
+    }
+
+    &.review-timeline__event--status-curated.review-timeline__event--active::before {
+      background-color: var(--border-timeline-curated);
+    }
   }
 
   &__event {
@@ -127,6 +139,18 @@
 
     .review-timeline__event--revised & {
       color: var(--link-revised);
+    }
+
+    .review-timeline__event--status-reviewed & {
+      color: var(--link-reviewed);
+    }
+
+    .review-timeline__event--status-revised & {
+      color: var(--link-revised);
+    }
+
+    .review-timeline__event--status-curated & {
+      color: var(--link-curated);
     }
   }
 

@@ -41,6 +41,14 @@
     .review-process--revised & {
       background-color: var(--border-timeline-revised);
     }
+
+    .review-process--status-revised & {
+      background-color: var(--border-timeline-revised);
+    }
+
+    .review-process--status-curated & {
+      background-color: var(--border-timeline-curated);
+    }
   }
 }
 
@@ -60,5 +68,13 @@
 
   .review-process--revised & {
     color: var(--link-revised);
+  }
+
+  .review-process--status-revised & {
+    color: var(--link-revised);
+  }
+
+  .review-process--status-curated & {
+    color: var(--link-curated);
   }
 }
