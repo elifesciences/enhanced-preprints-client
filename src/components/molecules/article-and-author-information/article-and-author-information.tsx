@@ -5,6 +5,7 @@ import { VersionHistory } from '../../atoms/version-history/version-history';
 import { AuthorList } from '../../atoms/author-list/author-list';
 import { AuthorNotes } from '../../atoms/author-notes/author-notes';
 import { CiteAllVersions } from '../../atoms/cite-all-versions/cite-all-versions';
+import { config } from '../../../config';
 
 export const ArticleAndAuthorInformation = ({
   authors,
@@ -23,7 +24,7 @@ export const ArticleAndAuthorInformation = ({
       { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
       { orphanedAuthorNotes.length > 0 && <AuthorNotes authorNotes={orphanedAuthorNotes} /> }
       { versions.length > 0 && <VersionHistory versions={versions} /> }
-      { doi && <CiteAllVersions doi={doi}/>}
+      { config.showCiteAllVersions && doi && <CiteAllVersions doi={doi}/>}
       { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
     </section>
   );
