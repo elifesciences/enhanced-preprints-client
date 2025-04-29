@@ -1,0 +1,5 @@
+@use "../../../sass/generated-content";
+
+.cite-all-versions {
+  @include generated-content.generated-content();
+}
