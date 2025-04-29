@@ -15,7 +15,6 @@ node_modules/**
 !.yarn/releases
 !.yarn/patches
 !.yarn/plugins
-!.yarn/releases
 !.yarn/sdks
 !.yarn/versions
 
@@ -33,7 +32,6 @@ test-results/**
 
 # Dev tooling
 Makefile
-.husky/**
 .nvmrc
 .swc/**
 .vscode/**
