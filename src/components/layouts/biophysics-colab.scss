@@ -26,4 +26,12 @@
   .review-timeline__event--revised .review-timeline__link {
     color: var(--link-reviewed);
   }
+
+  .review-process--revised .review-process__body::before {
+    background-color: var(--border-timeline-reviewed);
+  }
+
+  .review-process--revised .review-process__link {
+    color: var(--link-reviewed);
+  }
 }
