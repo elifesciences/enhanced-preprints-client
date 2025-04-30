@@ -24,7 +24,7 @@ export const ArticleAndAuthorInformation = ({
       { authors.length > 0 && <AuthorList authors={authors} authorNotes={authorNotes} /> }
       { orphanedAuthorNotes.length > 0 && <AuthorNotes authorNotes={orphanedAuthorNotes} /> }
       { versions.length > 0 && <VersionHistory versions={versions} /> }
-      { config.showCiteAllVersions && doi && <CiteAllVersions doi={doi}/>}
+      { config.siteName !== 'biophysics-colab' && doi && <CiteAllVersions doi={doi}/>}
       { license && <Copyright license={license} publishedYear={publishedYear} authors={authors} /> }
     </section>
   );
