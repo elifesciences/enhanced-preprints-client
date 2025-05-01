@@ -18,8 +18,8 @@
     }
   }
 
-  .review-timeline__event.review-timeline__event--revised::before,
-  .review-timeline__detail.review-timeline__event--revised::before {
+  .review-timeline__event--title.review-timeline__event--revised::before,
+  .review-timeline__event--detail.review-timeline__event--revised::before {
     background-color: var(--border-timeline-reviewed);
   }
 
