@@ -20,8 +20,8 @@
 .review-timeline {
   @include mixins.margin(0);
 
-  &__event,
-  &__detail {
+  &__event--title,
+  &__event--detail {
     @include mixins.padding(26, "left");
 
     color: var(--color-text);
@@ -60,7 +60,7 @@
     }
   }
 
-  &__event {
+  &__event--title {
     @include typography.font-size-and-vertical-height(16, 24);
 
     .review-timeline--expanded & {
@@ -69,7 +69,7 @@
       }
     }
 
-    &-link {
+    .review-timeline__event-link {
       color: var(--color-text);
       font-family: var(--font-family-primary);
       text-decoration: none;
@@ -81,11 +81,11 @@
     }
   }
 
-  &__event::before {
+  &__event--title::before {
     border-radius: 6px 6px 0 0;
   }
 
-  &__detail {
+  &__event--detail {
     @include mixins.margin(0);
 
     &::before {
