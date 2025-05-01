@@ -65,7 +65,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>
-      <main className="primary-section">
+      <main className={`primary-section${+props.metaData.version === props.timeline.reduce((a, { version }) => Math.max(a, version), 0) ? ' version--last' : ''}`}>
         <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
           <ul className="tabbed-navigation__tabs">
             {props.tabs.map((tab, index) => (
