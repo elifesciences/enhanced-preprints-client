@@ -34,4 +34,15 @@
   .review-process--revised .review-process__link {
     color: var(--link-reviewed);
   }
+
+  .review-timeline dt:first-of-type.review-timeline__event--active,
+  .review-timeline dd:first-of-type.review-timeline__event--active {
+    &::before {
+      background-color: var(--border-timeline-revised);
+    }
+
+    .review-timeline__link {
+      color: var(--link-revised);
+    }
+  }
 }
