@@ -104,7 +104,7 @@ describe('generateVersionHistory', () => {
       },
       {
         date: 'Tue Jan 03 2023',
-        label: 'history_version_title_first_version',
+        label: 'history_version_title_only_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
       },
@@ -137,7 +137,7 @@ describe('generateVersionHistory', () => {
         version: 1,
       },
       {
-        label: 'history_version_title',
+        label: 'history_version_title_last_version',
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
         version: 2,
@@ -178,7 +178,7 @@ describe('generateVersionHistory', () => {
         version: 2,
       },
       {
-        label: 'external_history_version_title',
+        label: 'external_history_version_title_last_version',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
         version: 3,
@@ -219,7 +219,7 @@ describe('generateVersionHistory', () => {
         version: 2,
       },
       {
-        label: 'external_history_version_title',
+        label: 'external_history_version_title_last_version',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
         version: 3,

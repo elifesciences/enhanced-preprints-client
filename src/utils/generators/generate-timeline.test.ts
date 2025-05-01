@@ -78,7 +78,7 @@ describe('generateTimeline', () => {
     expect(timeline).toEqual([
       {
         date: 'Tue Jan 03 2023',
-        name: 'timeline_version_title_first_version',
+        name: 'timeline_version_title_only_version',
         url: '/reviewed-preprints/1v1',
         version: 1,
         versionIndicator: 'v1',

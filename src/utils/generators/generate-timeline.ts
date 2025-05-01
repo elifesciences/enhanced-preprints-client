@@ -3,22 +3,7 @@ import {
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
-
-const getNameWithVersionSuffix = (
-  name: string,
-  version: number,
-  lastVersion: number,
-): string => {
-  if (version === 1) {
-    return `${name}_first_version`;
-  }
-
-  if (version === lastVersion) {
-    return `${name}_last_version`;
-  }
-
-  return name;
-};
+import { generateNameWithVersionSuffix } from './generate-name-with-version-suffix';
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
   const versionValues = Object.values(version.versions);
@@ -27,7 +12,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
     const versionNo = +current.versionIdentifier;
     if (current.published) {
       events.push({
-        name: getNameWithVersionSuffix(
+        name: generateNameWithVersionSuffix(
           `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
           versionNo,
           lastVersion,
@@ -43,7 +28,7 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
         current.corrections.forEach((correction) => {
           events.push(
             {
-              name: getNameWithVersionSuffix(
+              name: generateNameWithVersionSuffix(
                 'external_timeline_version_title',
                 versionNo,
                 lastVersion,
