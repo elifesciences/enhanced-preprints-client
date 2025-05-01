@@ -96,6 +96,8 @@ const resources = {
       timeline_version_title_only_version: '$t(timeline_version_title_last_version)',
       history_version_title_last_version: '$t(timeline_version_title_last_version)',
       history_version_title_only_version: '$t(timeline_version_title_last_version)',
+      revised: 'Peer Review Information',
+      not_revised: '$t(revised)',
     },
   },
 };
