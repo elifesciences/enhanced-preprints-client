@@ -54,6 +54,7 @@ const tabs = [
 
 const jsxContent = contentToJsx(content);
 const headings = contentToHeadings(content);
+const umbrellaDoi = metaData.doi.replace(/\.\d+$/, '');
 
 export const ArticlePageFullTextTab: Story = {
   args: {
@@ -68,7 +69,7 @@ export const ArticlePageFullTextTab: Story = {
   render: (args) => (
     <DefaultLayout>
       <ArticlePage {...args}>
-        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} umbrellaDoi={umbrellaDoi} />
       </ArticlePage>
     </DefaultLayout>
   ),
@@ -90,7 +91,7 @@ export const ArticlePageFullTextTabNoSummary: Story = {
     return (
       <DefaultLayout>
         <ArticlePage {...args}>
-          <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{ reviews, authorResponse }} content={jsxContent} />
+          <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{ reviews, authorResponse }} content={jsxContent} umbrellaDoi={umbrellaDoi} />
         </ArticlePage>
       </DefaultLayout>
     );
