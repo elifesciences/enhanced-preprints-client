@@ -26,6 +26,7 @@ export const mock85111: EnhancedArticleWithVersions = {
       'Neuroscience',
     ],
     versionDoi: '10.7554/eLife.85111.1',
+    umbrellaDoi: '10.7554/eLife.85111',
     versionIdentifier: '1',
     volume: '12',
   },
@@ -40,6 +41,7 @@ export const mock85111: EnhancedArticleWithVersions = {
       published: new Date('2023-01-25T14:00:00.000Z'),
       sentForReview: new Date('2022-11-29T14:20:30.000Z'),
       versionDoi: '10.7554/eLife.85111.1',
+      umbrellaDoi: '10.7554/eLife.85111',
       versionIdentifier: '1',
     },
     '85111v2': {
@@ -52,6 +54,7 @@ export const mock85111: EnhancedArticleWithVersions = {
       published: new Date('2023-05-10T14:00:00.000Z'),
       sentForReview: new Date('2023-03-23T10:52:45.000Z'),
       versionDoi: '10.7554/eLife.85111.2',
+      umbrellaDoi: '10.7554/eLife.85111',
       versionIdentifier: '2',
     },
     '85111v3': {

@@ -9,6 +9,7 @@ export type MetaData = {
   abstract: Content,
   authors: Author[],
   doi: string,
+  umbrellaDoi?: string,
   msas: string[],
   msid: string,
   pdfUrl?: string,
