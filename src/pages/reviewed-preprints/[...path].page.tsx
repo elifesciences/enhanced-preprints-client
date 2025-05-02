@@ -27,6 +27,7 @@ import { FeaturesData } from '../../features';
 
 type PageProps = {
   siteName?: string,
+  umbrellaDoi?: string,
   metaData: MetaData,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -54,6 +55,7 @@ const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): 
 
 export const Page = ({
   metaData: rawMetaData,
+  umbrellaDoi,
   imgInfo,
   msidWithVersion,
   timeline,
@@ -111,7 +113,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`} umbrellaDoi={umbrellaDoi}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -224,6 +226,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   return {
     props: {
       siteName: config.siteName,
+      ...(config.siteName === undefined || config.siteName === 'elife' ? { umbrellaDoi: articleWithVersions.article.doi.replace(/\.\d+$/, '') } : {}),
       metaData: {
         ...articleWithVersions.article,
         ...articleWithVersions.article.article,
