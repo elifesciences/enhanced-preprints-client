@@ -17,7 +17,6 @@ type Props = {
   peerReview?: PeerReview,
   peerReviewUrl?: string,
   metrics: MetricsType | null,
-  umbrellaDoi?: string,
 };
 
 export const ArticleFullTextTab = (props: Props) => {
@@ -47,7 +46,7 @@ export const ArticleFullTextTab = (props: Props) => {
             versions={props.metaData.versionHistory}
             license={props.metaData.license}
             publishedYear={props.metaData.publishedYear}
-            umbrellaDoi={props.metaData.umbrellaDoi ?? props.umbrellaDoi}
+            umbrellaDoi={props.metaData.umbrellaDoi}
           />
           { props.metrics && <Metrics metrics={props.metrics} /> }
         </div>
