@@ -3,6 +3,8 @@
 @use "../../../sass/mixins";
 
 .assessment {
+  background-color: var(--color-background);
+
   @include mixins.margin(0 -24 36);
   @include mixins.padding(36 24);
   @include typography.assessment-body();
@@ -49,8 +51,6 @@
     @include mixins.margin(0 0 36);
   }
 
-  background-color: var(--color-background);
-
   p.assessment__body {
     @include typography.body-alternative();
   }
@@ -69,13 +69,13 @@
 }
 
 .explanation_link {
-  @include typography.terms-link-text();
-  @include mixins.padding(16, "right");
-
   background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
   color: #0b70b9; // Only being used for review content component
   cursor: pointer;
   vertical-align: middle;
+
+  @include typography.terms-link-text();
+  @include mixins.padding(16, "right");
 
   &__expanded {
     background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
