@@ -72,6 +72,17 @@ To start the application with a local version of the [`EPP API server`](https://
 To be able to see exactly what a production build will look and behave like, but using local services, we have provided an override command. You can use the command above to start the dev environment, but with the app server behaving like production would, for example without javascript and without incremental builds. This is not recommended for development, only for spot checking for differences between a prod build and dev build.
 The app is still available at [`localhost:8080`](http://localhost:8080).
 
+For a better developer experience run:
+
+```bash
+yarn build
+NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+```
+
+Visit [`localhost:3000`](http://localhost:3000).
+
+Once you make changes to the code you will need to run `yarn build` again.
+
 ## Storybook
 
 You can run storybook locally using `yarn storybook`. It should auto-reload as you develop stories or components

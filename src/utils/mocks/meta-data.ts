@@ -4,6 +4,7 @@ import { versionHistory } from './version-history';
 
 export const metaData = {
   doi: '10.1101/2022.04.13.488149',
+  umbrellaDoi: '10.1101/2022.04.13',
   abstract: 'abstract',
   msid: '123456',
   version: '2',

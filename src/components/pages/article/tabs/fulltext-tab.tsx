@@ -46,7 +46,7 @@ export const ArticleFullTextTab = (props: Props) => {
             versions={props.metaData.versionHistory}
             license={props.metaData.license}
             publishedYear={props.metaData.publishedYear}
-            doi={props.metaData.doi}
+            umbrellaDoi={props.metaData.umbrellaDoi}
           />
           { props.metrics && <Metrics metrics={props.metrics} /> }
         </div>
