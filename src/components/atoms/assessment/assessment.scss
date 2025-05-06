@@ -20,11 +20,11 @@
   }
 
   blockquote {
-    @include typography.blockquote();
-    @include mixins.padding(16, "left");
-
     border-left: 1px solid var(--divider);
     margin: 0;
+
+    @include typography.blockquote();
+    @include mixins.padding(16, "left");
 
     p,
     li {
