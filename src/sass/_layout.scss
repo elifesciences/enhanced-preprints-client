@@ -19,11 +19,11 @@
 }
 
 .grid-container {
+  max-width: settings.$max-site-width;
+
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.grid();
   }
-
-  max-width: settings.$max-site-width;
 }
 
 .grid-header {
