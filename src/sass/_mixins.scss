@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:meta";
 @use "settings";
 @use "typography";
 
@@ -13,7 +14,7 @@
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
     padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
-  } @else if $dimension == "" and type_of($size_in_px) == list {
+  } @else if $dimension == "" and meta.type-of($size_in_px) == list {
     $parts-rem: ();
 
     @each $size in $size_in_px {
@@ -29,7 +30,7 @@
 @mixin margin($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
     margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
-  } @else if $dimension == "" and type_of($size_in_px) == list {
+  } @else if $dimension == "" and meta.type-of($size_in_px) == list {
     $parts-rem: ();
 
     @each $size in $size_in_px {
