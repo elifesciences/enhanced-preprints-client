@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "settings";
 
 @mixin font-size($size_in_px) {
@@ -7,7 +8,7 @@
 @mixin font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: 24) {
   @include font-size($font-size-in-px);
 
-  line-height: #{($vertical-height-in-px / $font-size-in-px)};
+  line-height: math.div($vertical-height-in-px, $font-size-in-px);
 }
 
 @mixin badge-text() {
