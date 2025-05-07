@@ -18,12 +18,6 @@
     }
   }
 
-  .nav-secondary {
-    @media only all and (min-width: settings.$breakpoint-large) {
-      margin-top: 16px;
-    }
-  }
-
   .review-timeline__event--title.review-timeline__event--revised::before,
   .review-timeline__event--detail.review-timeline__event--revised::before {
     background-color: var(--border-timeline-reviewed);
