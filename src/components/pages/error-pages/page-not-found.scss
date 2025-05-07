@@ -38,13 +38,12 @@
 }
 
 .error {
+  font-family: var(--font-family-secondary);
+  text-align: center;
+
   @include mixins.padding(72, "top");
   @include mixins.padding(72, "bottom");
   @include mixins.wrapper();
-
-  box-sizing: content-box;
-  font-family: var(--font-family-secondary);
-  text-align: center;
 
   .error__icon {
     @include mixins.padding(48, "bottom");
