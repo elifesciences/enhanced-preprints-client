@@ -12,10 +12,21 @@
   --link-revised: #9c5075;
   --link-curated: #9c5075;
 
+  .site-header-container {
+    justify-content: unset;
+  }
+
   .nav-primary {
-    @media only all and (min-width: settings.$breakpoint-large) {
-      margin-top: 16px;
-    }
+    @include mixins.margin(16, "top");
+    @include mixins.margin(20, "left");
+
+    border-left: var(--border);
+    display: inline-block;
+    height: 24px;
+  }
+
+  .nav-primary__item {
+    display: list-item;
   }
 
   .review-timeline__event--title.review-timeline__event--revised::before,
