@@ -73,6 +73,9 @@ const nextConfig = {
 
     return config;
   },
+  sassOptions: {
+    silenceDeprecations: ["legacy-js-api"],
+  },
 }
 
 module.exports = nextConfig
