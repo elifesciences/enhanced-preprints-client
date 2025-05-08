@@ -4,9 +4,9 @@
 @use "../../../sass/typography";
 
 .article-page {
-  @include settings.container-padding();
-
   margin: 0 auto;
+
+  @include settings.container-padding();
 }
 
 .article-body-container {
