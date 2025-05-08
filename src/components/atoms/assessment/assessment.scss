@@ -3,6 +3,8 @@
 @use "../../../sass/mixins";
 
 .assessment {
+  background-color: var(--color-background);
+
   @include mixins.margin(0 -24 36);
   @include mixins.padding(36 24);
   @include typography.assessment-body();
@@ -48,8 +50,6 @@
   @media only all and (min-width: settings.$breakpoint-medium) {
     @include mixins.margin(0 0 36);
   }
-
-  background-color: var(--color-background);
 
   p.assessment__body {
     @include typography.body-alternative();
