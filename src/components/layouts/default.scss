@@ -3,8 +3,8 @@
 @use "../../sass/settings";
 
 .article-page {
+  margin: 0 auto;
+
   @include settings.container-padding();
   @include mixins.padding(96, "bottom");
-
-  margin: 0 auto;
 }
