@@ -205,6 +205,10 @@
 }
 
 .main-menu__title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
   @include mixins.padding(18, "bottom");
   @include mixins.padding(0, "left");
   @include mixins.margin(30, "top");
@@ -212,10 +216,6 @@
   @media only screen and (min-width: settings.$breakpoint-extra-large) {
     @include mixins.margin(48, "top");
   }
-
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
 }
 
 .main-menu__list {
