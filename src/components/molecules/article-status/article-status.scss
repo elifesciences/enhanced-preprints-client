@@ -21,6 +21,9 @@
 }
 
 .article-actions {
+  list-style: none;
+  margin: 0;
+
   @include mixins.padding(0, "left");
   @include mixins.padding(0, "top");
 
@@ -29,12 +32,11 @@
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-
-  list-style: none;
-  margin: 0;
 }
 
 .article-actions__list-item {
+  display: inline-block;
+
   @include mixins.margin(12, "bottom");
   @include mixins.margin(12, "right");
 
@@ -42,8 +44,6 @@
     @include mixins.margin(0, "right");
     @include mixins.margin(12, "left");
   }
-
-  display: inline-block;
 
   @media only all and (min-width: settings.$breakpoint-large) {
     @include mixins.margin(0, "right");
