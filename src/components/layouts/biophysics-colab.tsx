@@ -24,6 +24,9 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
           alt="Science Colab logo"
           />
       </a>
+      <nav>
+        <a href="/about">About</a>
+      </nav>
     </footer>
   </>
 );
