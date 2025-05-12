@@ -22,7 +22,7 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
     <div className='footer-wrapper'>
       <footer className='footer'>
         <section>
-          <p>Part of</p>
+          <p className='secondary-text'>Part of</p>
           <a href="https://www.sciencecolab.org/">
             <Image
               src={logo}
@@ -57,10 +57,10 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
                 />
             </a>
           </div>
-          <p>
+          <p className='secondary-text'>
             Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
           </p>
-          <p>© 2025 Science Colab</p>
+          <p className='secondary-text'>© 2025 Science Colab</p>
         </section>
       </footer>
     </div>
