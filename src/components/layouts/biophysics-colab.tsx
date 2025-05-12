@@ -30,12 +30,12 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
               className="science-colab-logo"
             />
           </a>
-          <nav>
+          <nav className='footer-action'>
             <a href="/about">About</a>
           </nav>
         </section>
         <section>
-          <p>Contact:</p>
+          <p className='footer-action'>Contact:</p>
           <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
           <div className="socials">
             <a href="https://www.linkedin.com/company/sciencecolab/">
