@@ -19,43 +19,47 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
       </div>
       {children}
     </div>
-    <footer>
-      <p>Part of</p>
-      <a href="https://www.sciencecolab.org/">
-        <Image
-          src={logo}
-          alt="Science Colab logo"
+    <footer className='footer-wrapper'>
+      <section>
+        <p>Part of</p>
+        <a href="https://www.sciencecolab.org/">
+          <Image
+            src={logo}
+            alt="Science Colab logo"
           />
-      </a>
-      <nav>
-        <a href="/about">About</a>
-      </nav>
-      <p>Contact:</p>
-      <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
-      <div className="socials">
-        <a href="https://www.linkedin.com/company/sciencecolab/">
-          <Image
-            src={linkedinLogo}
-            alt="Science colab on Linkedin"
-            />
         </a>
-        <a href="https://twitter.com/BiophysicsColab">
-          <Image
-            src={twitterLogo}
-            alt="Biophysics colab on Twitter"
-            />
-        </a>
-        <a href="https://sciety.org/groups/biophysics-colab">
-          <Image
-            src={scietyLogo}
-            alt="Biophysics colab on Sciety"
-            />
-        </a>
-      </div>
-      <p>
-        Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
-      </p>
-      <p>© 2025 Science Colab</p>
+        <nav>
+          <a href="/about">About</a>
+        </nav>
+      </section>
+      <section>
+        <p>Contact:</p>
+        <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
+        <div className="socials">
+          <a href="https://www.linkedin.com/company/sciencecolab/">
+            <Image
+              src={linkedinLogo}
+              alt="Science colab on Linkedin"
+              />
+          </a>
+          <a href="https://twitter.com/BiophysicsColab">
+            <Image
+              src={twitterLogo}
+              alt="Biophysics colab on Twitter"
+              />
+          </a>
+          <a href="https://sciety.org/groups/biophysics-colab">
+            <Image
+              src={scietyLogo}
+              alt="Biophysics colab on Sciety"
+              />
+          </a>
+        </div>
+        <p>
+          Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
+        </p>
+        <p>© 2025 Science Colab</p>
+      </section>
     </footer>
   </>
 );
