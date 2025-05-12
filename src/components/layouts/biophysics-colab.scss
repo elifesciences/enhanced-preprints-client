@@ -71,6 +71,14 @@
     border-top: var(--border);
   }
 
+  .secondary-text {
+    color: var(--color-text-secondary-dark);
+
+    a {
+      color: inherit;
+    }
+  }
+
   .footer {
     font-family: var(--font-family-primary);
     display: flex;
@@ -96,10 +104,6 @@
         }
       }
     }
-  }
-
-  .secondary-text {
-    color: var(--color-text-secondary-dark);
   }
 
   .footer-action {
