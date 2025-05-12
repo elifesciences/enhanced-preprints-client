@@ -72,6 +72,7 @@
   }
 
   .footer {
+    font-family: var(--font-family-primary);
     display: flex;
     flex-wrap: wrap;
     gap: var(--site-spacing-large);
