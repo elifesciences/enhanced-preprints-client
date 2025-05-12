@@ -85,6 +85,17 @@
       flex-grow: 1;
       max-width: 45ch;
     }
+
+    nav {
+      a {
+        color: var(--link-decoration);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
   }
 
   .secondary-text {
