@@ -27,6 +27,13 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
       <nav>
         <a href="/about">About</a>
       </nav>
+      <p>Contact:</p>
+      <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
+      <div className="socials"></div>
+      <p>
+        Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
+      </p>
+      <p>© 2025 Science Colab</p>
     </footer>
   </>
 );
