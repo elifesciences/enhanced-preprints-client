@@ -69,7 +69,14 @@
 
   .footer-wrapper {
     border-top: var(--border);
+    max-width: 1200px;
     display: flex;
+    justify-content: center;
+    gap: var(--site-spacing-large);
+
+    section {
+      max-width: 45ch;
+    }
   }
 
   .science-colab-logo {
