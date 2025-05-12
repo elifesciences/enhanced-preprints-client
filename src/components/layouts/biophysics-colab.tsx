@@ -36,7 +36,7 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
         </section>
         <section>
           <p className='footer-action'>Contact:</p>
-          <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
+          <a href="mailto:enquiries@sciencecolab.org" className='contact-link'>enquiries@sciencecolab.org</a>
           <div className="socials">
             <a href="https://www.linkedin.com/company/sciencecolab/">
               <Image
