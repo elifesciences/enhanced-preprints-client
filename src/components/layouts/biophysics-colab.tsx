@@ -2,6 +2,9 @@ import { ReactNode } from 'react';
 import './biophysics-colab.scss';
 import Image from 'next/image';
 import logo from '../../../public/science-colab-logo.png';
+import linkedinLogo from '../../../public/linkedin-logo.png';
+import twitterLogo from '../../../public/twitter-logo.png';
+import scietyLogo from '../../../public/sciety-logo.png';
 import { SiteHeaderBiophysicsColab } from '../molecules/site-header/site-header-biophysics-colab';
 
 type Props = {
@@ -29,7 +32,26 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
       </nav>
       <p>Contact:</p>
       <a href="mailto:enquiries@sciencecolab.org">enquiries@sciencecolab.org</a>
-      <div className="socials"></div>
+      <div className="socials">
+        <a href="https://www.linkedin.com/company/sciencecolab/">
+          <Image
+            src={linkedinLogo}
+            alt="Science colab on Linkedin"
+            />
+        </a>
+        <a href="https://twitter.com/BiophysicsColab">
+          <Image
+            src={twitterLogo}
+            alt="Biophysics colab on Twitter"
+            />
+        </a>
+        <a href="https://sciety.org/groups/biophysics-colab">
+          <Image
+            src={scietyLogo}
+            alt="Biophysics colab on Sciety"
+            />
+        </a>
+      </div>
       <p>
         Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
       </p>
