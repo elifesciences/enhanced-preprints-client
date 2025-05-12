@@ -75,12 +75,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--site-spacing-large);
-    padding: 0 var(--site-spacing);
     justify-content: space-evenly;
+    padding: 0 var(--site-spacing);
     margin: 0 auto;
     max-width: 1200px;
 
     section {
+      flex-grow: 1;
       max-width: 45ch;
     }
   }
