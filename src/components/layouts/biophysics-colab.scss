@@ -73,7 +73,9 @@
 
   .footer {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--site-spacing-large);
+    padding: 0 var(--site-spacing);
     justify-content: space-evenly;
     margin: 0 auto;
     max-width: 1200px;
