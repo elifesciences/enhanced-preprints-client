@@ -10,5 +10,5 @@ export default meta;
 type Story = StoryObj<typeof BiophysicsColabLayout>;
 
 export const BiophysicsColabLayoutStory: Story = {
-  render: () => <BiophysicsColabLayout>Hello</BiophysicsColabLayout>,
+  render: () => <div className='site-biophysics-colab'><BiophysicsColabLayout>Hello</BiophysicsColabLayout></div>,
 };
