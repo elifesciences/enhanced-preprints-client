@@ -21,22 +21,26 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
     </div>
     <div className='footer-wrapper'>
       <footer className='footer'>
-        <section>
-          <p className='secondary-text'>Part of</p>
-          <a href="https://www.sciencecolab.org/">
-            <Image
-              src={logo}
-              alt="Science Colab logo"
-              className="science-colab-logo"
-            />
-          </a>
+        <div>
+          <div>
+            <p className='secondary-text'>Part of</p>
+            <a href="https://www.sciencecolab.org/">
+              <Image
+                src={logo}
+                alt="Science Colab logo"
+                className="science-colab-logo"
+              />
+            </a>
+          </div>
           <nav className='footer-action'>
             <a href="/about">About</a>
           </nav>
-        </section>
-        <section>
-          <p className='footer-action'>Contact:</p>
-          <a href="mailto:enquiries@sciencecolab.org" className='contact-link'>enquiries@sciencecolab.org</a>
+        </div>
+        <div>
+          <div>
+            <p className='footer-action'>Contact:</p>
+            <a href="mailto:enquiries@sciencecolab.org" className='contact-link'>enquiries@sciencecolab.org</a>
+          </div>
           <div className="socials">
             <a href="https://www.linkedin.com/company/sciencecolab/">
               <Image
@@ -57,11 +61,13 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
                 />
             </a>
           </div>
-          <p className='secondary-text'>
-            Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
-          </p>
-          <p className='secondary-text'>© 2025 Science Colab</p>
-        </section>
+          <small>
+            <p className='secondary-text'>
+              Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
+            </p>
+            <p className='secondary-text'>© 2025 Science Colab</p>
+          </small>
+        </div>
       </footer>
     </div>
   </>

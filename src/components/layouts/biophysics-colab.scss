@@ -89,7 +89,7 @@
     margin: 0 auto;
     max-width: 1200px;
 
-    section {
+    > * {
       flex-grow: 1;
       max-width: 45ch;
     }
