@@ -1,0 +1,69 @@
+.biophysics-colab-site-footer {
+  border-top: var(--border);
+}
+
+.secondary-text {
+  color: var(--color-text-secondary-dark);
+
+  a {
+    color: inherit;
+  }
+}
+
+.footer {
+  font-family: var(--font-family-primary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--site-spacing-large);
+  justify-content: space-evenly;
+  padding: 0 var(--site-spacing);
+  margin: var(--site-spacing-large) auto;
+  max-width: 1200px;
+
+  * {
+    margin: 0;
+  }
+
+  > * {
+    flex-grow: 1;
+    max-width: 45ch;
+  }
+
+  .footer-column > * + * {
+    margin-top: var(--site-spacing);
+  }
+
+  nav {
+    a {
+      color: var(--link-decoration);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .footer-action {
+    font-weight: bold;
+  }
+
+  .contact-link {
+    color: var(--color-primary);
+  }
+
+  .science-colab-logo {
+    height: 61px;
+    width: 158px;
+  }
+
+  .socials {
+    display: flex;
+    gap: var(--site-spacing);
+
+    img {
+      height: 2rem;
+      width: auto;
+    }
+  }
+}

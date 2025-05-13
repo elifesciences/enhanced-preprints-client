@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { SiteFooter } from './site-footer';
+import { SiteFooter } from './biophysics-colab-site-footer';
 
 const meta: Meta<typeof SiteFooter> = {
   title: 'Molecules/SiteFooter',
