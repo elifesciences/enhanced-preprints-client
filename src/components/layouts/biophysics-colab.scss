@@ -86,12 +86,20 @@
     gap: var(--site-spacing-large);
     justify-content: space-evenly;
     padding: 0 var(--site-spacing);
-    margin: 0 auto;
+    margin: var(--site-spacing-large) auto;
     max-width: 1200px;
+
+    * {
+      margin: 0;
+    }
 
     > * {
       flex-grow: 1;
       max-width: 45ch;
+    }
+
+    .footer-column > * + * {
+      margin-top: var(--site-spacing);
     }
 
     nav {

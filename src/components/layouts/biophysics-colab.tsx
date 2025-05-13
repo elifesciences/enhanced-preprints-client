@@ -21,7 +21,7 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
     </div>
     <div className='footer-wrapper'>
       <footer className='footer'>
-        <div>
+        <div className='footer-column'>
           <div>
             <p className='secondary-text'>Part of</p>
             <a href="https://www.sciencecolab.org/">
@@ -36,7 +36,7 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
             <a href="/about">About</a>
           </nav>
         </div>
-        <div>
+        <div className='footer-column'>
           <div>
             <p className='footer-action'>Contact:</p>
             <a href="mailto:enquiries@sciencecolab.org" className='contact-link'>enquiries@sciencecolab.org</a>
@@ -61,12 +61,12 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
                 />
             </a>
           </div>
-          <small>
+          <div>
             <p className='secondary-text'>
               Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
             </p>
             <p className='secondary-text'>© 2025 Science Colab</p>
-          </small>
+          </div>
         </div>
       </footer>
     </div>
