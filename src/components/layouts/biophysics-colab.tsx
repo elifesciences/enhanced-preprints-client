@@ -61,12 +61,10 @@ export const BiophysicsColabLayout = ({ children }: Props) => (
                 />
             </a>
           </div>
-          <div>
-            <p className='secondary-text'>
-              Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
-            </p>
-            <p className='secondary-text'>© 2025 Science Colab</p>
-          </div>
+          <p className='secondary-text'>
+            Subject to a <a href="https://creativecommons.org/licenses/by/4.0">Creative Commons Attribution license</a>, except where otherwise noted.
+          </p>
+          <p className='secondary-text'>© 2025 Science Colab</p>
         </div>
       </footer>
     </div>
