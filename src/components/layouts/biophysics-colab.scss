@@ -120,6 +120,9 @@
   }
 
   .socials {
+    display: flex;
+    gap: var(--site-spacing);
+
     img {
       height: 2rem;
       width: auto;
