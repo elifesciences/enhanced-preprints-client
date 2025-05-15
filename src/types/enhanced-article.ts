@@ -100,6 +100,7 @@ export type PreprintVersionSummary = {
   preprintPosted: Date,
   sentForReview?: Date,
   published: Date | null,
+  withEvaluationSummary?: boolean,
 };
 
 export type ExternalVersionSummary = {

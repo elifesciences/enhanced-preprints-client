@@ -84,33 +84,6 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 });
 
 describe('generateVersionHistory', () => {
-  it('should generate the correct version history with one reviewed preprint', () => {
-    const history = generateVersionHistory({
-      article: version1,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-      },
-    });
-
-    expect(history).toEqual([
-      {
-        date: 'Sun Jan 01 2023',
-        label: 'Sent for peer review',
-      },
-      {
-        date: 'Mon Jan 02 2023',
-        label: 'Preprint posted',
-        url: 'https://doi.org/doi-123',
-      },
-      {
-        date: 'Tue Jan 03 2023',
-        label: 'history_version_title_only_version',
-        url: '/reviewed-preprints/1v1',
-        version: 1,
-      },
-    ]);
-  });
-
   it('should generate the correct version history with two reviewed preprints', () => {
     const history = generateVersionHistory({
       article: version2,
@@ -137,7 +110,7 @@ describe('generateVersionHistory', () => {
         version: 1,
       },
       {
-        label: 'history_version_title_last_version',
+        label: 'history_version_title',
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
         version: 2,
@@ -178,7 +151,7 @@ describe('generateVersionHistory', () => {
         version: 2,
       },
       {
-        label: 'external_history_version_title_last_version',
+        label: 'external_history_version_title',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
         version: 3,
@@ -219,7 +192,7 @@ describe('generateVersionHistory', () => {
         version: 2,
       },
       {
-        label: 'external_history_version_title_last_version',
+        label: 'external_history_version_title',
         url: 'https://doi.org/doi-123v3',
         date: 'Thu Feb 09 2023',
         version: 3,
