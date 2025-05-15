@@ -144,7 +144,7 @@ export const EventTimelineWithCurated: Story = {
   },
 };
 
-export const EventTimelineWithStatusValues: Story = {
+export const EventTimelineWithEvaluationSummary: Story = {
   args: {
     current: 3,
     events: [
@@ -154,7 +154,7 @@ export const EventTimelineWithStatusValues: Story = {
         date: new Date('2023-03-20'),
         version: 3,
         versionIndicator: 'v3',
-        status: 'curated',
+        withEvaluationSummary: true,
       },
       {
         name: 'Revised Preprint',
@@ -162,14 +162,12 @@ export const EventTimelineWithStatusValues: Story = {
         date: new Date('2023-03-19'),
         version: 2,
         versionIndicator: 'v2',
-        status: 'revised',
       },
       {
         url: '#',
         date: new Date('2023-03-18'),
         version: 1,
         versionIndicator: 'v1',
-        status: 'reviewed',
       },
     ],
   },

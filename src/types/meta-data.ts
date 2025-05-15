@@ -1,8 +1,6 @@
 import { Content } from './content';
 import { Author, AuthorNotesData } from './author';
 import { Reference } from './reference';
-import { PeerReview } from './peer-review';
-import { Heading } from './enhanced-article';
 import { VersionHistoryItem } from './version-history-item';
 
 export type MetaData = {
@@ -22,23 +20,4 @@ export type MetaData = {
   license?: string,
   versionHistory: VersionHistoryItem[],
   authorNotes: AuthorNotesData,
-};
-
-export type VersionedMetaData = {
-  abstract: Content,
-  authors: Author[],
-  doi: string,
-  headings: Heading[],
-  msas: string[],
-  msid: string,
-  pdfUrl?: string,
-  references: Reference[],
-  title: Content;
-  version: string,
-  publishedYear: number,
-  peerReview: PeerReview,
-  status: string,
-  articleType: string,
-  volume?: string,
-  eLocationId?: string,
 };

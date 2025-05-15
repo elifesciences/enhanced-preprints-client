@@ -7,10 +7,8 @@
   --color-primary-dark: #50519b;
   --border-timeline-reviewed: #c93c3d;
   --border-timeline-revised: #9c5075;
-  --border-timeline-curated: #9c5075;
   --link-reviewed: #c93c3d;
   --link-revised: #9c5075;
-  --link-curated: #9c5075;
 
   .site-header-container {
     justify-content: unset;
@@ -44,6 +42,14 @@
 
   .review-process--revised .review-process__link {
     color: var(--link-reviewed);
+  }
+
+  .review-process--with-evaluation-summary .review-process__body::before {
+    background-color: var(--border-timeline-revised);
+  }
+
+  .review-process--with-evaluation-summary .review-process__link {
+    color: var(--link-revised);
   }
 
   .review-timeline dt.review-timeline__event--with-evaluation-summary.review-timeline__event--active,

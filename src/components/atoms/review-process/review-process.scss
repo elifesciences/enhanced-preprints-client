@@ -41,18 +41,6 @@
     .review-process--revised & {
       background-color: var(--border-timeline-revised);
     }
-
-    .review-process--status-reviewed & {
-      background-color: var(--border-timeline-reviewed);
-    }
-
-    .review-process--status-revised & {
-      background-color: var(--border-timeline-revised);
-    }
-
-    .review-process--status-curated & {
-      background-color: var(--border-timeline-curated);
-    }
   }
 }
 
@@ -72,17 +60,5 @@
 
   .review-process--revised & {
     color: var(--link-revised);
-  }
-
-  .review-process--status-reviewed & {
-    color: var(--link-reviewed);
-  }
-
-  .review-process--status-revised & {
-    color: var(--link-revised);
-  }
-
-  .review-process--status-curated & {
-    color: var(--link-curated);
   }
 }

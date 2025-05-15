@@ -94,45 +94,6 @@ describe('Timeline', () => {
     expect(screen.getAllByText('Curated Preprint')).toHaveLength(1);
   });
 
-  it.each([
-    {
-      status: 'curated',
-      expectedClass: '.review-timeline__event--status-curated',
-    },
-    {
-      status: 'revised',
-      expectedClass: '.review-timeline__event--status-revised',
-    },
-    {
-      status: 'reviewed',
-      expectedClass: '.review-timeline__event--status-reviewed',
-    },
-  ] as {
-    status: 'reviewed' | 'revised' | 'curated',
-    expectedClass: string,
-  }[])('has the appropriate class for status', ({ status, expectedClass }) => {
-    const event = {
-      url: '#', version: 1, date: new Date('2003-03-26'),
-    };
-
-    render(<Timeline events={[
-      event,
-    ]}
-    />);
-
-    expect(document.querySelector(expectedClass)).not.toBeInTheDocument();
-
-    render(<Timeline events={[
-      {
-        ...event,
-        status,
-      },
-    ]}
-    />);
-
-    expect(document.querySelector(expectedClass)).toBeInTheDocument();
-  });
-
   describe('collapsable behaviours', () => {
     const getVisibleDtElements = () => Array.from(document.querySelectorAll('dt')).filter((dt) => dt.style.display !== 'none');
 
