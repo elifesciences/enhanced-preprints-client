@@ -95,7 +95,7 @@
   display: block;
 }
 
-.reference__doi_link {
+%reference-link {
   @include typography.body-small();
 
   color: var(--color-primary);
@@ -103,5 +103,18 @@
 
   :visited {
     color: var(--color-primary);
+  }
+}
+
+.reference__doi_link {
+  @extend %reference-link;
+}
+
+.reference__external_link {
+  @extend %reference-link;
+
+  &::before {
+    content: " | ";
+    color: #e0e0e0;
   }
 }

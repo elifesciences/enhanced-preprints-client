@@ -46,3 +46,9 @@ export const ReferenceWithElocationId: Story = {
     reference: references[4],
   },
 };
+
+export const ReferenceWithPubmedLink: Story = {
+  args: {
+    reference: references[0],
+  },
+};

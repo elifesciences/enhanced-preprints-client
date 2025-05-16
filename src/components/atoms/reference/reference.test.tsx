@@ -187,4 +187,11 @@ describe('Reference', () => {
 
     expect(screen.getByText(', editors.', { exact: false })).toBeInTheDocument();
   });
+
+  it('should render PubMed link', () => {
+    render(<Reference reference={references[0]} />);
+
+    expect(screen.getByText('PubMed', { exact: false }).tagName).toStrictEqual('A');
+    expect(screen.getByText('PubMed', { exact: false })).toHaveAttribute('href', 'https://pubmed.ncbi.nlm.nih.gov/24848');
+  });
 });

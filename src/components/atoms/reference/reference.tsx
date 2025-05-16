@@ -13,6 +13,7 @@ function prepareReference(reference: ReferenceData) {
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;
   const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
+  const pmidIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'pmid');
   const eLocationId = reference.identifiers?.find((identifier) => identifier.name === 'elocation-id')?.value;
   const year = reference.meta?.yearPublished ?? (
     reference.datePublished ?
@@ -21,6 +22,8 @@ function prepareReference(reference: ReferenceData) {
   );
   const linkText = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
   const linkRef = doiIdentifier ? `https://doi.org/${doiIdentifier.value}` : reference.url;
+  const pubmedLinkText = pmidIdentifier && 'PubMed';
+  const pubmedLinkRef = pmidIdentifier && `https://pubmed.ncbi.nlm.nih.gov/${pmidIdentifier.value}`;
   const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
   const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupType !== 'editor');
   const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupType === 'editor');
@@ -34,6 +37,8 @@ function prepareReference(reference: ReferenceData) {
     year,
     linkText,
     linkRef,
+    pubmedLinkText,
+    pubmedLinkRef,
     eLocationId,
     comments,
   };
@@ -51,6 +56,8 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
     year,
     linkText,
     linkRef,
+    pubmedLinkText,
+    pubmedLinkRef,
     eLocationId,
     comments,
   } = prepareReference(reference);
@@ -87,6 +94,10 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         <a href={linkRef} className="reference__doi_link">
           {linkText}
         </a>
+        {(pubmedLinkRef) && <a href={pubmedLinkRef} className="reference__external_link">
+          {pubmedLinkText}
+        </a>
+        }
         </span>
       }
     </>
