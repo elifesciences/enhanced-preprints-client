@@ -1,0 +1,3653 @@
+{
+  "article": {
+    "msid": "15102",
+    "doi": "10.63204/15102.3",
+    "id": "15102v3",
+    "versionIdentifier": "3",
+    "versionDoi": "10.63204/15102.3",
+    "article": {
+      "title": "Macromolecular condensation is unlikely to buffer intracellular osmolality",
+      "authors": [
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Dept. Biology University of Iowa, Iowa City, IA 52242"
+            }
+          ],
+          "familyNames": [
+            "Kay"
+          ],
+          "givenNames": [
+            "Alan",
+            "R."
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0003-2888-7574"
+            }
+          ],
+          "meta": {
+            "notes": [
+              {
+                "type": "corresp",
+                "label": "*",
+                "rid": "cor1"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Person",
+          "affiliations": [
+            {
+              "type": "Organization",
+              "name": "Dept. Mathematics, University of Iowa, Iowa City, IA 52242"
+            }
+          ],
+          "familyNames": [
+            "Aminzare"
+          ],
+          "givenNames": [
+            "Zahra"
+          ],
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "propertyID": "https://registry.identifiers.org/registry/orcid",
+              "value": "http://orcid.org/0000-0002-8337-8337"
+            }
+          ]
+        }
+      ],
+      "abstract": [
+        {
+          "type": "Paragraph",
+          "content": [
+            "The flux of water across biological membrane is determined by gradients in transmembrane osmolality and the water permeability of membranes. ",
+            {
+              "type": "Cite",
+              "target": "c33",
+              "content": [
+                "Watson ",
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "et al"
+                  ]
+                },
+                ". (2023)"
+              ]
+            },
+            " have proposed that the reversible formation and disassembly of molecular condensates could act as the primary buffer of cytoplasmic osmolality in the face of changes in extracellular osmolality. In this communication, we show using well-established membrane biophysics, that the water permeability of plasma membranes is likely to overwhelm any cytoplasmic water buffers."
+          ]
+        }
+      ],
+      "licenses": [
+        {
+          "type": "CreativeWork",
+          "url": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "content": [
+            {
+              "type": "Paragraph",
+              "content": [
+                "This pre-print is available under a Creative Commons License (Attribution-NonCommercial-NoDerivs 4.0 International), CC BY-NC-ND 4.0, as described at ",
+                {
+                  "type": "Link",
+                  "target": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+                  "content": [
+                    "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "content": [
+        {
+          "type": "Heading",
+          "id": "s1",
+          "depth": 1,
+          "content": [
+            "Introduction"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The regulation of cytoplasmic osmolality is of immense importance for the normal functioning of all animal cells (",
+            {
+              "type": "Cite",
+              "target": "c15",
+              "content": [
+                "Krogh, 1946"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c17",
+              "content": [
+                "Larsen et al., 2014"
+              ]
+            },
+            "). Recently ",
+            {
+              "type": "Cite",
+              "target": "c33",
+              "content": [
+                "Watson ",
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "et al"
+                  ]
+                },
+                ". (2023)"
+              ]
+            },
+            " proposed that the reversible condensation of macromolecules could serve to buffer changes in cytoplasmic osmolality induced by extracellular changes in osmolality, a claim which may at first blush seem to be feasible. However, we will show that it is inconsistent with what we know about the water permeability of membranes (",
+            {
+              "type": "Cite",
+              "target": "c4",
+              "content": [
+                "Boron and Boulpaep, 2016"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c34",
+              "content": [
+                "Weiss, 1996"
+              ]
+            },
+            "). It is certainly possible that subjecting macromolecules to changes in osmolality could lead to conformational changes that could induce them to bind or release water (",
+            {
+              "type": "Cite",
+              "target": "c10",
+              "content": [
+                "Guttman et al., 1995"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c27",
+              "content": [
+                "Parsegian et al., 2000"
+              ]
+            },
+            "), hence acting as a water buffer (WB). Nevertheless, as we will show, the known water permeability of the plasma membrane will quickly overwhelm any buffering capacity provided by molecular condensates."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Watson ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "et al"
+              ]
+            },
+            "., show that the relationship between macromolecular concentration and solution osmolality can be highly nonlinear ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "in vitro"
+              ]
+            },
+            ". This has been explored extensively by others, and although precisely how this nonlinearity arises is by no means resolved, the phenomenon is not new (",
+            {
+              "type": "Cite",
+              "target": "c1",
+              "content": [
+                "Adair, 1925"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c25",
+              "content": [
+                "Neal et al., 1998"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c36",
+              "content": [
+                "Yousef et al., 1998"
+              ]
+            },
+            "). Consistent with their hypothesis they observed an increase in cytoplasmic condensate formation with a hyperosmotic challenge to cells, while a hypoosmotic change decreased condensation. However, it is their jump from the nonlinearity of osmolality to concluding that macromolecules can serve to buffer the cytoplasmic osmolality that is questionable, since they provide no direct evidence. It is also worth noting that the formation of condensates can be triggered in giant unilamellar vesicles containing polyethylene glycol and dextran by changes in osmolarity (",
+            {
+              "type": "Cite",
+              "target": "c19",
+              "content": [
+                "Li et al., 2008"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "In their paper Watson ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "et al"
+              ]
+            },
+            "., refer to the ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "osmotic potential"
+              ]
+            },
+            " (−Ψ",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "π"
+                  ]
+                }
+              ]
+            },
+            " = ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "iCRT"
+              ]
+            },
+            ", where ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "C"
+              ]
+            },
+            " is the concentration of the solute, ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "i"
+              ]
+            },
+            " the van ‘t Hoff factor, ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "R"
+              ]
+            },
+            " the gas constant, and ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "T"
+              ]
+            },
+            " the absolute temperature) rather than the osmolarity or osmolality of solutions. Since they measure the osmolality of their solutions, which is the number of moles per kilogram of water (",
+            {
+              "type": "Cite",
+              "target": "c3",
+              "content": [
+                "Blaustein et al., 2019"
+              ]
+            },
+            "), we will use this to quantify the osmotic properties of a solution."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Reversible macromolecular water binding could stabilize intracellular osmolality from fluctuations in extracellular osmolality but only if the plasma membrane were water impermeant. However, the authors experiments show clearly that all the cells that they used have some water permeability, and although they do not say it explicitly in the paper, they show it in their animation. Indeed, all animal cells are permeable to water because phospholipid bilayers are very water permeable (",
+            {
+              "type": "Cite",
+              "target": "c7",
+              "content": [
+                "Fettiplace and Haydon, 1980"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c22",
+              "content": [
+                "Mathai et al., 2008"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Heading",
+          "id": "s2",
+          "depth": 1,
+          "content": [
+            "Results"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "To explore how the water permeability of the membrane might be likely to impact the WB hypothesis, we will set up a model cell that incorporates measured values for membrane water permeability. The flux of water across membranes is determined by a very well established physical chemistry relationship that is sometimes called Starling’s equation (",
+            {
+              "type": "Cite",
+              "target": "c21",
+              "content": [
+                "Manning and Kay, 2023"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c34",
+              "content": [
+                "Weiss, 1996"
+              ]
+            },
+            ") for the osmotic volume flux of water is:\n"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            {
+              "type": "ImageObject",
+              "id": "ueqn1",
+              "contentUrl": "15102/v3/content/592450v3_ueqn1.gif",
+              "meta": {
+                "inline": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Where 𝒫",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "f"
+                  ]
+                }
+              ]
+            },
+            " is the osmotic permeability coefficient, Δ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "P"
+              ]
+            },
+            " the hydrostatic pressure difference across the membrane, Δ𝒪 the difference in osmolality across the membrane, and 𝒱",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "w"
+                  ]
+                }
+              ]
+            },
+            " the molar volume of water."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "There is an extensive literature characterizing the 𝒫",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "f"
+                  ]
+                }
+              ]
+            },
+            " of lipid bilayer and plasma membrane permeabilities, with the former ranging from 8.3 x 10",
+            {
+              "type": "Superscript",
+              "content": [
+                "-3"
+              ]
+            },
+            " to 1.6 x 10",
+            {
+              "type": "Superscript",
+              "content": [
+                "-3"
+              ]
+            },
+            " cm s",
+            {
+              "type": "Superscript",
+              "content": [
+                "-1"
+              ]
+            },
+            " (",
+            {
+              "type": "Cite",
+              "target": "c7",
+              "content": [
+                "Fettiplace and Haydon, 1980"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c22",
+              "content": [
+                "Mathai et al., 2008"
+              ]
+            },
+            ") while that of human red blood cells, which contain aquaporins, is approximately 2 x 10",
+            {
+              "type": "Superscript",
+              "content": [
+                "-2"
+              ]
+            },
+            " cm s",
+            {
+              "type": "Superscript",
+              "content": [
+                "-1"
+              ]
+            },
+            " (",
+            {
+              "type": "Cite",
+              "target": "c8",
+              "content": [
+                "Finkelstein, 1987"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "To estimate the impact of the membrane water permeability on a hypothetical WB, we will use the pump-leak model (PLM) that is widely recognized as a mechanism accounting for cell volume stability in the face of extracellular osmotic fluctuations (",
+            {
+              "type": "Cite",
+              "target": "c9",
+              "content": [
+                "Fraser and Huang, 2007"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c12",
+              "content": [
+                "Kay, 2017"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c29",
+              "content": [
+                "Rollin et al., 2023"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c32",
+              "content": [
+                "Tosteson and Hoffman, 1960"
+              ]
+            },
+            "). In this model the action of the Na",
+            {
+              "type": "Superscript",
+              "content": [
+                "+"
+              ]
+            },
+            "/K",
+            {
+              "type": "Superscript",
+              "content": [
+                "+"
+              ]
+            },
+            " ATPase (NKA) stabilizes the cell against the osmotic instability induced by impermeant molecules. The PLM drives the cell to a stable volume, with high intracellular K",
+            {
+              "type": "Superscript",
+              "content": [
+                "+"
+              ]
+            },
+            " and low intracellular Na",
+            {
+              "type": "Superscript",
+              "content": [
+                "+"
+              ]
+            },
+            " and Cl",
+            {
+              "type": "Superscript",
+              "content": [
+                "-"
+              ]
+            },
+            ". If the extracellular osmolality is changed the cell volume will move to a new steady state where the intracellular osmolality matches the extracellular one."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "To simulate the movement of water from putative WBs, we will assume that when the extracellular osmolality is decreased below its steady state value (300 mOsm), water is released at a constant rate. While in the case of an increase in extracellular osmolality, the water is taken up at the same rate by WBs. ",
+            {
+              "type": "Link",
+              "relation": "fig",
+              "target": "#fig1",
+              "content": [
+                "Fig. 1"
+              ]
+            },
+            " shows a simulation for the case of an extracellular osmolality increase (330 mOsm), with and without the WB. As can be seen the WB serves to buffer the change for only a short time, which is determined by the water permeability and the concentration of the condensates. To exaggerate the effect of the WB, we have assumed that the WB represents 10% of the cell volume. The buffering abates in this case when all water has been released from the WB. After that the intracellular osmolality increases until it matches that of the extracellular medium, with the rate being determined by the osmotic permeability coefficient of the membrane, 𝒫",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "f"
+                  ]
+                }
+              ]
+            },
+            ". Even with 𝒫",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "f"
+                  ]
+                }
+              ]
+            },
+            ", 2 x 10",
+            {
+              "type": "Superscript",
+              "content": [
+                "-4"
+              ]
+            },
+            " cm s",
+            {
+              "type": "Superscript",
+              "content": [
+                "-1"
+              ]
+            },
+            ", an order of magnitude less than that of the lowest lipid bilayer permeability, the addition of water to the cytoplasm preserves the osmolarity and volume for a short time (t",
+            {
+              "type": "Subscript",
+              "content": [
+                "B"
+              ]
+            },
+            " ∼54s, ",
+            {
+              "type": "Link",
+              "relation": "fig",
+              "target": "#fig1",
+              "content": [
+                "Fig. 1"
+              ]
+            },
+            "). A smaller change in osmolarity buys more time; an increase in osmolarity to 315 mOsm can resisted for ∼108s. However, with a more realistic value of 𝒫",
+            {
+              "type": "Subscript",
+              "content": [
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "f"
+                  ]
+                }
+              ]
+            },
+            " (",
+            {
+              "type": "Strong",
+              "content": [
+                "1 x 10"
+              ]
+            },
+            {
+              "type": "Superscript",
+              "content": [
+                "-3"
+              ]
+            },
+            " ",
+            {
+              "type": "Strong",
+              "content": [
+                "cm s"
+              ]
+            },
+            {
+              "type": "Superscript",
+              "content": [
+                "-1"
+              ]
+            },
+            ") t",
+            {
+              "type": "Subscript",
+              "content": [
+                "B"
+              ]
+            },
+            " is ∼20s, It is difficult to argue that this provides any protection, since the buffer is quickly swamped by the osmotic flux of water."
+          ]
+        },
+        {
+          "type": "Figure",
+          "id": "fig1",
+          "caption": [
+            {
+              "type": "Heading",
+              "depth": 1,
+              "content": [
+                "Changes in osmolality, volume and voltage induced by an increase in extracellular osmolality in the presence or absence of a WB."
+              ]
+            },
+            {
+              "type": "Paragraph",
+              "content": [
+                "The extracellular solution is initially 147 mM Na",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "+"
+                  ]
+                },
+                ", 3 mM K",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "+"
+                  ]
+                },
+                ", 130 mM Cl",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-"
+                  ]
+                },
+                " and 20 mM impermeant anions (X",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-"
+                  ]
+                },
+                ") (300 mOsm) and changed to 330 mOsm at 1 min. The starting radius of the cell is 3.58 ",
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "μm"
+                  ]
+                },
+                ", and the cell contains 2.6×10",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-14"
+                  ]
+                },
+                " moles of an impermeant molecules with valence -1. The osmotic permeability coefficient, 𝒫",
+                {
+                  "type": "Subscript",
+                  "content": [
+                    {
+                      "type": "Emphasis",
+                      "content": [
+                        "f"
+                      ]
+                    }
+                  ]
+                },
+                " of the membrane is 2 x 10",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-4"
+                  ]
+                },
+                " cm s",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-1"
+                  ]
+                },
+                ". The rate of water release by the WB is 3.3 x 10",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-16"
+                  ]
+                },
+                " L s",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-1"
+                  ]
+                },
+                ". The cell has Na",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "+"
+                  ]
+                },
+                ", K",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "+"
+                  ]
+                },
+                " and Cl",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-"
+                  ]
+                },
+                " leak conductances and a NKA, all with the same parameters as in ",
+                {
+                  "type": "Cite",
+                  "target": "c2",
+                  "content": [
+                    "Aminzare and Kay (2024)"
+                  ]
+                },
+                ". The dashed lines show the responses in the absence of an NKA, with initial radius 3.5 ",
+                {
+                  "type": "Emphasis",
+                  "content": [
+                    "μm"
+                  ]
+                },
+                " and 3.58 x10",
+                {
+                  "type": "Superscript",
+                  "content": [
+                    "-14"
+                  ]
+                },
+                " moles of impermeant molecules. The system of equations was solved using the stiff ordinary differential equation solver ode15s in MATLAB (R2023b)."
+              ]
+            }
+          ],
+          "label": "Fig. 1.",
+          "content": [
+            {
+              "type": "ImageObject",
+              "contentUrl": "15102/v3/content/592450v3_fig1.tif",
+              "meta": {
+                "inline": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "To stabilize the intracellular osmolality in the face of changes in extracellular osmolality, the rate of water release from the WB would have to match the rate of water influx through osmosis, which was done in the simulation in ",
+            {
+              "type": "Link",
+              "relation": "fig",
+              "target": "#fig1",
+              "content": [
+                "Fig. 1"
+              ]
+            },
+            ". If the rate is not exact, it will lead to swings in osmolarity. To see this consider what would happen if the release from a WB were rapid. An increase in extracellular osmolality will trigger a release of water, which will lower the osmolality below its resting value. The osmolality will then increase to match that of the extracellular solution at a rate set by the water permeability of the membrane (data not shown)."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "If instead of a hyperosmotic shock, a hypoosmotic shock of 30 mOsm is imposed on the cell, the kinetics of the relaxation to a new steady state is identical (data not shown), however, buffering ceases when the WB is saturated."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The conclusion that a WB is unlikely to be effective in regulating intracellular osmolarity is not dependent on the assumption of a PLM. To demonstrate this we have simulated a cell which is stabilized by the provision of a high concentration of an extracellular impermeant molecule (",
+            {
+              "type": "Cite",
+              "target": "c2",
+              "content": [
+                "Aminzare and Kay, 2024"
+              ]
+            },
+            ") (20mM and valence −1) and has no NKA. For a 30 mOsm increase in osmolarity with the same parameters as in ",
+            {
+              "type": "Link",
+              "relation": "fig",
+              "target": "#fig1",
+              "content": [
+                "Fig. 1"
+              ]
+            },
+            ", the t",
+            {
+              "type": "Subscript",
+              "content": [
+                "B"
+              ]
+            },
+            " is the same as that for the case where the NKA is active. Notice that the resting potentials and changes in voltage for the active and passive cases are different (see lower panel Fig, 1)."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "There are two scenarios, that go beyond the classical PLM, that could potentially salvage the WB hypothesis, namely, the active transport of water, or the development of a turgor pressure, each of which we will consider in turn. If cells could transport water actively, as has been claimed by some (",
+            {
+              "type": "Cite",
+              "target": "c20",
+              "content": [
+                "Macaulay et al., 2004"
+              ]
+            },
+            "), the Starling equation shows that the operation of the water pump would simply be equivalent to an applied transmembrane pressure. In the case of a hyperosmotic shock, the activation of active water transport into the cell stabilizes the volume and hold the intracellular osmolality at a lower value than the outside (data not shown). However, if this were so, the action of a WB would be unnecessary. Evidence has been presented for the active transport of water (",
+            {
+              "type": "Cite",
+              "target": "c37",
+              "content": [
+                "Zeuthen and Macaulay, 2013"
+              ]
+            },
+            ") however, this has been disputed by others (",
+            {
+              "type": "Cite",
+              "target": "c4",
+              "content": [
+                "Boron and Boulpaep, 2016"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c16",
+              "content": [
+                "Lapointe et al., 2002"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c24",
+              "content": [
+                "Mollajew et al., 2010"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The influx of water driven by an osmolality difference will lead to the development of tension in the membrane that could limit the expansion of the cell (",
+            {
+              "type": "Cite",
+              "target": "c28",
+              "content": [
+                "Rangamani, 2022"
+              ]
+            },
+            "). If the tension is sufficiently high, the pressure developed could counteract the osmotic pressure and preserve a steady state. In this case it is possible for the osmolality of the intracellular solution to be greater than that of the extracellular solution in the steady state. As an example, if the osmolality of the extracellular solution is dropped by 30 mOsm a hydrostatic pressure of 0.75 atm (calculated from the van ‘t Hoff equation) will develop across the membrane. Using Laplace’s law, one can calculate the membrane tension required to sustain this pressure, which would be ∼ 180 mN/m for a spherical cell with a radius of 5 μm. This is greater than the highest membrane tensions that have been encountered (∼0.3 mN/m) (",
+            {
+              "type": "Cite",
+              "target": "c14",
+              "content": [
+                "Kozlov and Chernomordik, 2015"
+              ]
+            },
+            "). Although higher local and transient increases in tension may occur (",
+            {
+              "type": "Cite",
+              "target": "c18",
+              "content": [
+                "Lewis and Grandl, 2015"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c30",
+              "content": [
+                "Shi et al., 2018"
+              ]
+            },
+            "). In these calculations the membrane is assumed to be smooth, however if the membrane is deformed locally by the cytoskeleton, this could reduce the tension. If the cell has a radius of 5 μm, and the membrane has regular, convex hemi-spherical protrusions with radii of 50 nm, tiling the surface, the tension would be 100 times less than that of a smooth membrane. Notice, if an elevated pressure can be sustained, this alone could preserve an osmotic gradient, without the need for a WB."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "In the case of a hyperosmotic shock, the cell would shrink, but there are to the best of our knowledge, no known mechanical mechanisms that could develop a negative pressure to oppose the gradient in osmolality."
+          ]
+        },
+        {
+          "type": "Heading",
+          "id": "s3",
+          "depth": 1,
+          "content": [
+            "Discussion"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Watson ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "et al"
+              ]
+            },
+            ".",
+            {
+              "type": "Emphasis",
+              "content": [
+                "’s"
+              ]
+            },
+            " hypothesis is ingenious and appears plausible at first glance; however, when incorporated into cell models, which allow the osmotic flux of water, it fails to maintain intracellular osmolality in response to extracellular osmolality changes for more than a minute, even assuming an osmotic permeability ten times lower than typical values. A water buffer could preserve the intracellular osmolality of blood cells in transit through the vasa recta (∼10s) in the kidney (",
+            {
+              "type": "Cite",
+              "target": "c26",
+              "content": [
+                "Pallone et al., 1990"
+              ]
+            },
+            "), which occurs approximately every 5 min for a blood cell (",
+            {
+              "type": "Cite",
+              "target": "c6",
+              "content": [
+                "Burton, 2000"
+              ]
+            },
+            "). However, water buffering would be ineffective in countering changes over a few minutes in duration as might occur during hypo- or hypernatremia (",
+            {
+              "type": "Cite",
+              "target": "c31",
+              "content": [
+                "Sterns, 2015"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Watson ",
+            {
+              "type": "Emphasis",
+              "content": [
+                "et al’s"
+              ]
+            },
+            " paper does not consider cell volume regulation, however, if the osmolality of the extracellular saline is changed either the cell volume or the transmembrane pressure must change, or some admixture of the two, because the membrane is permeable to water. Since the plasma membrane is the primary site for water fluxes, one cannot avoid considering changes in volume and pressure, when attempting to make sense of the regulation of the intracellular osmolality. If the WB hypothesis were true, a change in extracellular osmolality should not lead to an immediate change in cell volume, but a volume change should ensue when the water buffer is overwhelmed. If there is no water buffering, there should be a rapid change in volume."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The authors do not consider the PLM, however since it provides the best account of cell volume and osmolality regulation, it is difficult to avoid. As we have shown above, even if the cell is passively stabilized, a WB would be quickly overwhelmed by transmembrane water fluxes. In viewing cellular water fluxes, one cannot sidestep adopting a model. If one assumes that the cell is a closed membrane with a constant volume, if a hypotonic solution bathes the cell, osmosis will drive water in and increase the hydrostatic pressure. If one assumes that the that the plasma membrane is pliant, a decrease in osmolality will lead to the influx of water, and the expansion of volume until the cytoplasmic osmolality matches that outside."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The authors say, “Given the essential roles, high abundance and very large number of different IDR (intrinsically disordered regions)-containing proteins in cells it is impossible to formally prove that rapid changes in the global level of biomolecular condensates enable cells to accommodate acute physiological fluctuations in temperature, osmolality and, presumably, hydrostatic pressure.” However, as we have shown, we are not without means to ward off flawed hypotheses; it is here where theory comes into its own and allows one to assess the likelihood of a hypothesis."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "What may, in part, have led the authors to misconstrue the regulation of cytoplasmic osmolality is shown in their Conclusion, where they say “… changes in condensation occur to minimize the perturbation to thermodynamic equilibrium of the system as a whole.” A live cell is not at thermodynamic equilibrium, since it needs to consume energy to stay alive, however, ion concentrations and the cytoplasmic osmolality may be at steady states, but these are nonequilibrium states. Halting all energetic processes lets the cell relax into a thermodynamic equilibrium, which is just another way of saying that it is dead. One of the key conclusions of years of work on cellular physiology, is that although ion concentrations may appear static, they exist in a nonequilibrium state that is driven by continuous energy dissipation (",
+            {
+              "type": "Cite",
+              "target": "c34",
+              "content": [
+                "Weiss, 1996"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c35",
+              "content": [
+                "Yang et al., 2021"
+              ]
+            },
+            ")."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The authors’ claim in their Conclusion “… that biomolecular condensation is the primary buffer of intracellular water potential” is incorrect, since they have ignored the plasma membrane, which is the primary site of water fluxes into and out of cells. As we have argued there is a considerable body of knowledge on the osmotic permeability of plasma membranes, which is undergirded by a rigorous theoretical foundation that allows one to predict how WBs are likely to operate in the context of a water permeable membrane. All of this shows that WBs are unlikely to provide protection against changes in extracellular osmolality."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "On the experimental side, the authors do not show anything that directly confirms their hypothesis within a live cell. What would be required is that after, say an increase in extracellular osmolality by 30 mOsm, they show that the intracellular osmolality increases rapidly and then is restored quickly to its control value of ∼ 290 mOsm."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "While such experiments currently may not be feasible, there have been attempts to develop genetically encoded osmosensors (",
+            {
+              "type": "Cite",
+              "target": "c13",
+              "content": [
+                "Kleist et al., 2022"
+              ]
+            },
+            "), but it will take time to refine and optimize these sensors. It is also worth noting that a nanoscale fluorescent sensor has been developed to sense the water activity within the air spaces in plant leaves (",
+            {
+              "type": "Cite",
+              "target": "c11",
+              "content": [
+                "Jain et al., 2021"
+              ]
+            },
+            "). However, mounting an investigation of a hypothesis that is unlikely to literally hold much water may be quixotic."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "Although the authors’ hypothesis may be unlikely, their work could serve to call attention to what is a very important question, the contribution of impermeant molecules to the cytoplasmic osmolality. If the intracellular osmolality is ∼ 290 mOsm, about 100 mOsm is contributed by membrane impermeant molecules (",
+            {
+              "type": "Cite",
+              "target": "c12",
+              "content": [
+                "Kay, 2017"
+              ]
+            },
+            "), a significant question is what fraction of this can be attributed to macromolecules and what to small metabolites (",
+            {
+              "type": "Cite",
+              "target": "c5",
+              "content": [
+                "Burton, 1983"
+              ]
+            },
+            "; ",
+            {
+              "type": "Cite",
+              "target": "c23",
+              "content": [
+                "Model et al., 2023"
+              ]
+            },
+            ")?"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "In conclusion, osmosis is likely to be the primary driver of water transport in cells, so that even if there are cytoplasmic water buffers, a transmembrane difference in osmolality will drive a water flux that will override any WBs."
+          ]
+        },
+        {
+          "type": "ThematicBreak"
+        },
+        {
+          "type": "Heading",
+          "depth": 1,
+          "content": [
+            "Acknowledgements"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The authors thank John O’Neill, Emmanuel Derivery, Rachel Edgar, and Joseph Watson, for engaging in an extended email discussion of their paper, Sandipan Chowdhury, Rumiana Dimova, Gerald Manning, Sean Megason, and Aylin Rodan for helpful comments and suggestions on an early version of this paper. The authors are supported by NSF grant 2037828, and ZA by a grant from the Simons Foundation MPS–TSM– 00008005."
+          ]
+        },
+        {
+          "type": "ThematicBreak"
+        },
+        {
+          "type": "Heading",
+          "id": "s4",
+          "depth": 1,
+          "content": [
+            "Author contributions"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "ARK: conceptualization, formal analysis, investigation, writing – original draft, and software."
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "ZA: formal analysis, software, and writing – review and editing"
+          ]
+        },
+        {
+          "type": "ThematicBreak"
+        },
+        {
+          "type": "Heading",
+          "id": "s5",
+          "depth": 1,
+          "content": [
+            "Competing interests"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The authors declare no competing interests."
+          ]
+        },
+        {
+          "type": "ThematicBreak"
+        },
+        {
+          "type": "Heading",
+          "id": "s6",
+          "depth": 1,
+          "content": [
+            "Data availability"
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            "The MATLAB code will be made available on request."
+          ]
+        }
+      ],
+      "references": [
+        {
+          "type": "Article",
+          "id": "c1",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Adair"
+              ],
+              "givenNames": [
+                "G.S."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1925-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Proceedings of the Royal Society of London. Series A, Containing Papers of a Mathematical and Physical Character"
+            },
+            "volumeNumber": "109"
+          },
+          "pageEnd": 300,
+          "pageStart": 292,
+          "title": "The osmotic pressure of haemoglobin in the absence of salts",
+          "meta": {
+            "yearPublished": "1925",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c2",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Aminzare"
+              ],
+              "givenNames": [
+                "Z."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kay"
+              ],
+              "givenNames": [
+                "A.R."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2024-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Journal of General Physiology"
+            },
+            "volumeNumber": "156"
+          },
+          "title": "Mathematical modeling of intracellular osmolarity and cell volume stabilization: The Donnan effect and ion transport",
+          "meta": {
+            "yearPublished": "2024",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c3",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Blaustein"
+              ],
+              "givenNames": [
+                "M.P."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kao"
+              ],
+              "givenNames": [
+                "J.P.Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Matteson"
+              ],
+              "givenNames": [
+                "D.R."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2019-01-01T00:00:00.000Z"
+          },
+          "publisher": {
+            "type": "Organization",
+            "name": "Elsevier/Mosby"
+          },
+          "title": "Cellular Physiology and Neurophysiology",
+          "meta": {
+            "yearPublished": "2019",
+            "publicationType": "book"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c4",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Boron"
+              ],
+              "givenNames": [
+                "W.F."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Boulpaep"
+              ],
+              "givenNames": [
+                "E.L."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2016-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "1312"
+            }
+          ],
+          "publisher": {
+            "type": "Organization",
+            "name": "Elsevier"
+          },
+          "title": "Medical Physiology: A cellular and molecular approach",
+          "meta": {
+            "yearPublished": "2016",
+            "publicationType": "book"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c5",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Burton"
+              ],
+              "givenNames": [
+                "R.F."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1983-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Comp Biochem Physiol, B"
+            },
+            "volumeNumber": "76"
+          },
+          "pageEnd": 671,
+          "pageStart": 663,
+          "title": "The composition of animal cells: solutes contributing to osmotic pressure and charge balance",
+          "meta": {
+            "yearPublished": "1983",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c6",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Burton"
+              ],
+              "givenNames": [
+                "R.F."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2000-01-01T00:00:00.000Z"
+          },
+          "publisher": {
+            "type": "Organization",
+            "name": "Cambridge University Press"
+          },
+          "title": "Physiology by numbers: An encouragement to quantitative thinking",
+          "meta": {
+            "yearPublished": "2000",
+            "publicationType": "book"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c7",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Fettiplace"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Haydon"
+              ],
+              "givenNames": [
+                "D.A."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1980-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Physiol Rev"
+            },
+            "volumeNumber": "60"
+          },
+          "pageEnd": 550,
+          "pageStart": 510,
+          "title": "Water permeability of lipid membranes",
+          "meta": {
+            "yearPublished": "1980",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c8",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Finkelstein"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1987-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "228"
+            }
+          ],
+          "isPartOf": {
+            "type": "CreativeWork",
+            "name": "Theory and Reality"
+          },
+          "publisher": {
+            "type": "Organization",
+            "address": {
+              "type": "PostalAddress",
+              "addressLocality": "New York"
+            },
+            "name": "John Wiley and Sons"
+          },
+          "title": "Water movement through lipid bilayers, pores, and plasma membranes",
+          "meta": {
+            "yearPublished": "1987",
+            "publicationType": "book"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c9",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Fraser"
+              ],
+              "givenNames": [
+                "J.A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Huang"
+              ],
+              "givenNames": [
+                "C."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2007-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Prog. Biophys. Mol. Biol"
+            },
+            "volumeNumber": "94"
+          },
+          "pageEnd": 372,
+          "pageStart": 336,
+          "title": "Quantitative techniques for steady-state calculation and dynamic integrated modelling of membrane potential and intracellular ion concentrations",
+          "meta": {
+            "yearPublished": "2007",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c10",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Guttman"
+              ],
+              "givenNames": [
+                "H.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Anderson"
+              ],
+              "givenNames": [
+                "C.F."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Jr"
+              ],
+              "givenNames": [
+                "M.T.",
+                "Record"
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1995-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "biophs. j"
+            },
+            "volumeNumber": "68"
+          },
+          "pageEnd": 846,
+          "pageStart": 835,
+          "title": "Analyses of thermodynamic data for concentrated hemoglobin solutions using scaled particle theory: implications for a simple two-state model of water in thermodynamic analyses of crowding in vitro and in vivo",
+          "meta": {
+            "yearPublished": "1995",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c11",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Jain"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Liu"
+              ],
+              "givenNames": [
+                "W."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zhu"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Chang"
+              ],
+              "givenNames": [
+                "C.Y.-Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Melkonian"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rockwell"
+              ],
+              "givenNames": [
+                "F.E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Pauli"
+              ],
+              "givenNames": [
+                "D."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Sun"
+              ],
+              "givenNames": [
+                "Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zipfel"
+              ],
+              "givenNames": [
+                "W.R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Holbrook"
+              ],
+              "givenNames": [
+                "N.M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Riha"
+              ],
+              "givenNames": [
+                "S.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Gore"
+              ],
+              "givenNames": [
+                "M.A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Stroock"
+              ],
+              "givenNames": [
+                "A.D."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2021-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "e2008276118"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Proceedings of the National Academy of Sciences"
+            },
+            "volumeNumber": "118"
+          },
+          "title": "A minimally disruptive method for measuring water potential in planta using hydrogel nanoreporters",
+          "meta": {
+            "yearPublished": "2021",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c12",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kay"
+              ],
+              "givenNames": [
+                "A.R."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2017-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Frontiers in Cell and Developmental Biology"
+            },
+            "volumeNumber": "5"
+          },
+          "title": "How Cells can Control their Size by Pumping Ions",
+          "meta": {
+            "yearPublished": "2017",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c13",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kleist"
+              ],
+              "givenNames": [
+                "T.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lin"
+              ],
+              "givenNames": [
+                "I.W."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Xu"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Maksaev"
+              ],
+              "givenNames": [
+                "G."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Sadoine"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Haswell"
+              ],
+              "givenNames": [
+                "E.S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Frommer"
+              ],
+              "givenNames": [
+                "W.B."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Wudick"
+              ],
+              "givenNames": [
+                "M.M."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2022-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "787"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Biomolecules"
+            },
+            "volumeNumber": "12"
+          },
+          "title": "OzTracs: Optical Osmolality Reporters Engineered from Mechanosensitive Ion Channels",
+          "meta": {
+            "yearPublished": "2022",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c14",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kozlov"
+              ],
+              "givenNames": [
+                "M.M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Chernomordik"
+              ],
+              "givenNames": [
+                "L.V."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2015-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Current Opinion in Structural Biology"
+            },
+            "volumeNumber": "33"
+          },
+          "pageEnd": 67,
+          "pageStart": 61,
+          "title": "Membrane tension and membrane fusion",
+          "meta": {
+            "yearPublished": "2015",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c15",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Krogh"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1946-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Proceedings of the Royal Society of London. Series B - Biological Sciences"
+            },
+            "volumeNumber": "133"
+          },
+          "pageEnd": 200,
+          "pageStart": 140,
+          "title": "Croonian Lecture - The active and passive exchanges of inorganic ions through the surfaces of living cells and through living membranes generally",
+          "meta": {
+            "yearPublished": "1946",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c16",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lapointe"
+              ],
+              "givenNames": [
+                "J.Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Gagnon"
+              ],
+              "givenNames": [
+                "M.P."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Gagnon"
+              ],
+              "givenNames": [
+                "D.G."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Bissonnette"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2002-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Biochem Cell Biol"
+            },
+            "volumeNumber": "80"
+          },
+          "pageEnd": 533,
+          "pageStart": 525,
+          "title": "Controversy regarding the secondary active water transport hypothesis",
+          "meta": {
+            "yearPublished": "2002",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c17",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Larsen"
+              ],
+              "givenNames": [
+                "E.H."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Deaton"
+              ],
+              "givenNames": [
+                "L.E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Onken"
+              ],
+              "givenNames": [
+                "H."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "O’Donnell"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Grosell"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Dantzler"
+              ],
+              "givenNames": [
+                "W.H."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Weihrauch"
+              ],
+              "givenNames": [
+                "D."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2014-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Comprehensive Physiology"
+            },
+            "volumeNumber": "4"
+          },
+          "pageEnd": 573,
+          "pageStart": 405,
+          "title": "Osmoregulation and excretion",
+          "meta": {
+            "yearPublished": "2014",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c18",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lewis"
+              ],
+              "givenNames": [
+                "A.H."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Grandl"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2015-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "e12088"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Elife"
+            },
+            "volumeNumber": "4"
+          },
+          "title": "Mechanical sensitivity of Piezo1 ion channels can be tuned by cellular membrane tension",
+          "meta": {
+            "yearPublished": "2015",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c19",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Li"
+              ],
+              "givenNames": [
+                "Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lipowsky"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Dimova"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2008-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Journal of the American Chemical Society"
+            },
+            "volumeNumber": "130"
+          },
+          "pageEnd": 12253,
+          "pageStart": 12252,
+          "title": "Transition from Complete to Partial Wetting within Membrane Compartments",
+          "meta": {
+            "yearPublished": "2008",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c20",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Macaulay"
+              ],
+              "givenNames": [
+                "N."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Hamann"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zeuthen"
+              ],
+              "givenNames": [
+                "T."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2004-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Neuroscience"
+            },
+            "volumeNumber": "129"
+          },
+          "pageEnd": 1042,
+          "pageStart": 1029,
+          "title": "Water transport in the brain: Role of cotransporters",
+          "meta": {
+            "yearPublished": "2004",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c21",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Manning"
+              ],
+              "givenNames": [
+                "G.S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Kay"
+              ],
+              "givenNames": [
+                "A.R."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2023-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "e202313332"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Journal of General Physiology"
+            },
+            "volumeNumber": "155"
+          },
+          "title": "The physical basis of osmosis",
+          "meta": {
+            "yearPublished": "2023",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c22",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mathai"
+              ],
+              "givenNames": [
+                "J.C."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Tristram-Nagle"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Nagle"
+              ],
+              "givenNames": [
+                "J.F."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zeidel"
+              ],
+              "givenNames": [
+                "M.L."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2008-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "The Journal of general physiology"
+            },
+            "volumeNumber": "131"
+          },
+          "pageEnd": 76,
+          "pageStart": 69,
+          "title": "Structural determinants of water permeability through the lipid membrane",
+          "meta": {
+            "yearPublished": "2008",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c23",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Model"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mahajana"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Düsterwald"
+              ],
+              "givenNames": [
+                "K."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Dmitriev"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2023-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Cell Physiol Biochem"
+            },
+            "volumeNumber": "13"
+          },
+          "title": "Nucleic Acids Regulate Intracellular Ions and Membrane Potential",
+          "meta": {
+            "yearPublished": "2023",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c24",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mollajew"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zocher"
+              ],
+              "givenNames": [
+                "F."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Horner"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Wiesner"
+              ],
+              "givenNames": [
+                "B."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Klussmann"
+              ],
+              "givenNames": [
+                "E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Pohl"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2010-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Biophys J"
+            },
+            "volumeNumber": "99"
+          },
+          "pageEnd": 3656,
+          "pageStart": 3647,
+          "title": "Routes of epithelial water flow: aquaporins versus cotransporters",
+          "meta": {
+            "yearPublished": "2010",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c25",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Neal"
+              ],
+              "givenNames": [
+                "B.L."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Asthagiri"
+              ],
+              "givenNames": [
+                "D."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lenhoff"
+              ],
+              "givenNames": [
+                "A.M."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1998-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "biophs. j"
+            },
+            "volumeNumber": "75"
+          },
+          "pageEnd": 2477,
+          "pageStart": 2469,
+          "title": "Molecular Origins of Osmotic Second Virial Coefficients of Proteins",
+          "meta": {
+            "yearPublished": "1998",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c26",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Pallone"
+              ],
+              "givenNames": [
+                "T.L."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Robertson"
+              ],
+              "givenNames": [
+                "C.R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Jamison"
+              ],
+              "givenNames": [
+                "R.L."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1990-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Physiol Rev"
+            },
+            "volumeNumber": "70"
+          },
+          "pageEnd": 920,
+          "pageStart": 885,
+          "title": "Renal medullary microcirculation",
+          "meta": {
+            "yearPublished": "1990",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c27",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Parsegian"
+              ],
+              "givenNames": [
+                "V.A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rand"
+              ],
+              "givenNames": [
+                "R.P."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rau"
+              ],
+              "givenNames": [
+                "D.C."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2000-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Proceedings of the National Academy of Sciences"
+            },
+            "volumeNumber": "97"
+          },
+          "pageEnd": 3992,
+          "pageStart": 3987,
+          "title": "Osmotic stress, crowding, preferential hydration, and binding: A comparison of perspectives",
+          "meta": {
+            "yearPublished": "2000",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c28",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rangamani"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2022-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "183897"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Biochimica et Biophysica Acta (BBA)-Biomembranes"
+            },
+            "volumeNumber": "1864"
+          },
+          "title": "The many faces of membrane tension: Challenges across systems and scales",
+          "meta": {
+            "yearPublished": "2022",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c29",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rollin"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Joanny"
+              ],
+              "givenNames": [
+                "J.F."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Sens"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2023-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Elife"
+            },
+            "volumeNumber": "12"
+          },
+          "title": "Physical basis of the cell size scaling laws",
+          "meta": {
+            "yearPublished": "2023",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c30",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Shi"
+              ],
+              "givenNames": [
+                "Z."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Graber"
+              ],
+              "givenNames": [
+                "Z.T."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Baumgart"
+              ],
+              "givenNames": [
+                "T."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Stone"
+              ],
+              "givenNames": [
+                "H.A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Cohen"
+              ],
+              "givenNames": [
+                "A.E."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2018-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Cell"
+            },
+            "volumeNumber": "175"
+          },
+          "pageEnd": 1779,
+          "pageStart": 1769,
+          "title": "Cell Membranes Resist Flow",
+          "meta": {
+            "yearPublished": "2018",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c31",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Sterns"
+              ],
+              "givenNames": [
+                "R.H."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2015-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "N Engl J Med"
+            },
+            "volumeNumber": "372"
+          },
+          "pageEnd": 65,
+          "pageStart": 55,
+          "title": "Disorders of plasma sodium--causes, consequences, and correction",
+          "meta": {
+            "yearPublished": "2015",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c32",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Tosteson"
+              ],
+              "givenNames": [
+                "D.C."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Hoffman"
+              ],
+              "givenNames": [
+                "J.F."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1960-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "J Gen Physiol"
+            },
+            "volumeNumber": "44"
+          },
+          "pageEnd": 194,
+          "pageStart": 169,
+          "title": "Regulation of cell volume by active cation transport in high and low potassium sheep red cells",
+          "meta": {
+            "yearPublished": "1960",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c33",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Watson"
+              ],
+              "givenNames": [
+                "J.L."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Seinkmane"
+              ],
+              "givenNames": [
+                "E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Styles"
+              ],
+              "givenNames": [
+                "C.T."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mihut"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Krüger"
+              ],
+              "givenNames": [
+                "K."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mcnally"
+              ],
+              "givenNames": [
+                "K.E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Planelles-Herrero"
+              ],
+              "givenNames": [
+                "V.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Dud"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Mccall"
+              ],
+              "givenNames": [
+                "P.M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Barbiero"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Oever"
+              ],
+              "givenNames": [
+                "M.",
+                "Vanden"
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Peak-Chew"
+              ],
+              "givenNames": [
+                "S.Y."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Porebski"
+              ],
+              "givenNames": [
+                "B.T."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "eng"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rzechorzek"
+              ],
+              "givenNames": [
+                "N.M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Wong"
+              ],
+              "givenNames": [
+                "D.C.S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Beale"
+              ],
+              "givenNames": [
+                "A.D."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Stangherlin"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Riggi"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Iwasa"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Morf"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Miliotis"
+              ],
+              "givenNames": [
+                "C."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Guna"
+              ],
+              "givenNames": [
+                "A."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Inglis"
+              ],
+              "givenNames": [
+                "A.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Brugués"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Voorhees"
+              ],
+              "givenNames": [
+                "R.M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Chambers"
+              ],
+              "givenNames": [
+                "J.E."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Meng"
+              ],
+              "givenNames": [
+                "Q.-J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "O’Neill"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Edgar"
+              ],
+              "givenNames": [
+                "R.S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Derivery"
+              ],
+              "givenNames": [
+                "E."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2023-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Nature"
+            },
+            "volumeNumber": "623"
+          },
+          "pageEnd": 852,
+          "pageStart": 842,
+          "title": "Macromolecular condensation buffers intracellular water potential",
+          "meta": {
+            "yearPublished": "2023",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c34",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Weiss"
+              ],
+              "givenNames": [
+                "T.F."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1996-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "693"
+            }
+          ],
+          "publisher": {
+            "type": "Organization",
+            "address": {
+              "type": "PostalAddress",
+              "addressLocality": "Boston, MA"
+            },
+            "name": "MIT Press"
+          },
+          "title": "Cellular Biophysics: Transport, vol 1",
+          "meta": {
+            "yearPublished": "1996",
+            "publicationType": "book"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c35",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Yang"
+              ],
+              "givenNames": [
+                "X."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Heinemann"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Howard"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Huber"
+              ],
+              "givenNames": [
+                "G."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Iyer-Biswas"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Le",
+                "Treut"
+              ],
+              "givenNames": [
+                "G."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Lynch"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Montooth"
+              ],
+              "givenNames": [
+                "K.L."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Needleman"
+              ],
+              "givenNames": [
+                "D.J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Pigolotti"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rodenfels"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Ronceray"
+              ],
+              "givenNames": [
+                "P."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Shankar"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Tavassoly"
+              ],
+              "givenNames": [
+                "I."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Thutupalli"
+              ],
+              "givenNames": [
+                "S."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Titov"
+              ],
+              "givenNames": [
+                "D.V."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Wang"
+              ],
+              "givenNames": [
+                "J."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Foster"
+              ],
+              "givenNames": [
+                "P.J."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2021-01-01T00:00:00.000Z"
+          },
+          "identifiers": [
+            {
+              "type": "PropertyValue",
+              "name": "elocation-id",
+              "value": "e2026786118"
+            }
+          ],
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Proceedings of the National Academy of Sciences"
+            },
+            "volumeNumber": "118"
+          },
+          "title": "Physical bioenergetics: Energy fluxes, budgets, and constraints in cells",
+          "meta": {
+            "yearPublished": "2021",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c36",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Yousef"
+              ],
+              "givenNames": [
+                "M."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Datta"
+              ],
+              "givenNames": [
+                "R."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Rodgers"
+              ],
+              "givenNames": [
+                "V."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "1998-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "Journal of colloid and interface science"
+            },
+            "volumeNumber": "207"
+          },
+          "pageEnd": 282,
+          "pageStart": 273,
+          "title": "Understanding nonidealities of the osmotic pressure of concentrated bovine serum albumin",
+          "meta": {
+            "yearPublished": "1998",
+            "publicationType": "journal"
+          }
+        },
+        {
+          "type": "Article",
+          "id": "c37",
+          "authors": [
+            {
+              "type": "Person",
+              "familyNames": [
+                "Zeuthen"
+              ],
+              "givenNames": [
+                "T."
+              ]
+            },
+            {
+              "type": "Person",
+              "familyNames": [
+                "Macaulay"
+              ],
+              "givenNames": [
+                "N."
+              ]
+            }
+          ],
+          "datePublished": {
+            "type": "Date",
+            "value": "2013-01-01T00:00:00.000Z"
+          },
+          "isPartOf": {
+            "type": "PublicationVolume",
+            "isPartOf": {
+              "type": "Periodical",
+              "name": "WIRES Membrane Transport and Signaling"
+            },
+            "volumeNumber": "1"
+          },
+          "pageEnd": 381,
+          "pageStart": 373,
+          "title": "Transport of water against its concentration gradient: fact or fiction?",
+          "meta": {
+            "yearPublished": "2013",
+            "publicationType": "journal"
+          }
+        }
+      ],
+      "meta": {
+        "authorNotes": [
+          {
+            "type": "fn",
+            "text": "Emails: zahra-aminzare@uiowa.edu"
+          },
+          {
+            "type": "corresp",
+            "id": "cor1",
+            "label": "*",
+            "text": "Author for correspondence alan-kay@uiowa.edu"
+          }
+        ]
+      }
+    },
+    "preprintDoi": "10.1101/2024.05.24.592450",
+    "preprintUrl": "https://www.biorxiv.org/content/10.1101/2024.05.24.592450v3",
+    "preprintPosted": "2025-03-03T00:00:00.000Z",
+    "peerReview": {
+      "evaluationSummary": {
+        "date": "2025-03-14T16:57:27.069Z",
+        "participants": [],
+        "reviewType": "evaluation-summary",
+        "text": "<p><strong>Evaluation Statement (30 January 2025)</strong></p>\n<p>Kay and Aminzare discuss a claim made in a prior publication that macromolecular condensation acts as a water buffering mechanism in cells to compensate for the effects of osmotic shock. The authors argue that, although such a buffer could temporarily maintain a transmembrane osmolality differential, this differential would drive water across the membrane to reach a steady-state in which osmolality within the cell equals osmolality outside the cell. Using the well-established pump-leak model for osmotic water transport, they further show that the timescale at which a water buffer could maintain a modest 10% osmolality differential across the membrane is at most one minute for a typical animal cell.</p>\n<p>Biophysics Colab recommends this study to researchers working on membrane transport, intracellular water buffering, and condensate biology.</p>\n<p>Biophysics Colab has evaluated this study as one that meets the following criteria:</p>\n<ul>\n<li>Rigorous methodology</li>\n<li>Transparent reporting</li>\n<li>Appropriate interpretation</li>\n</ul>\n<p><em>(This evaluation refers to version 3 of this preprint, which has been revised in response to peer review of versions 1 and 2.)</em></p>\n"
+      },
+      "reviews": []
+    },
+    "published": "2025-03-14T00:00:02.000Z",
+    "publishedYear": 2024,
+    "license": "http://creativecommons.org/licenses/by/4.0/"
+  },
+  "versions": {
+    "15102v2": {
+      "msid": "15102",
+      "doi": "10.63204/15102.2",
+      "id": "15102v2",
+      "versionIdentifier": "2",
+      "versionDoi": "10.63204/15102.2",
+      "preprintDoi": "10.1101/2024.05.24.592450",
+      "preprintUrl": "https://www.biorxiv.org/content/10.1101/2024.05.24.592450v2",
+      "preprintPosted": "2025-01-09T00:00:00.000Z",
+      "peerReview": {},
+      "published": "2025-02-14T00:00:01.000Z",
+      "publishedYear": 2024,
+      "license": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "15102v1": {
+      "msid": "15102",
+      "doi": "10.63204/15102.1",
+      "id": "15102v1",
+      "versionIdentifier": "1",
+      "versionDoi": "10.63204/15102.1",
+      "preprintDoi": "10.1101/2024.05.24.592450",
+      "preprintUrl": "https://www.biorxiv.org/content/10.1101/2024.05.24.592450v1",
+      "preprintPosted": "2024-05-28T00:00:00.000Z",
+      "peerReview": {},
+      "published": "2024-10-01T00:00:00.000Z",
+      "publishedYear": 2024,
+      "license": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    "15102v3": {
+      "msid": "15102",
+      "doi": "10.63204/15102.3",
+      "id": "15102v3",
+      "versionIdentifier": "3",
+      "versionDoi": "10.63204/15102.3",
+      "preprintDoi": "10.1101/2024.05.24.592450",
+      "preprintUrl": "https://www.biorxiv.org/content/10.1101/2024.05.24.592450v3",
+      "preprintPosted": "2025-03-03T00:00:02.000Z",
+      "peerReview": {
+        "evaluationSummary": {
+          "date": "2025-03-14T16:57:27.069Z",
+          "participants": [],
+          "reviewType": "evaluation-summary",
+          "text": "<p><strong>Evaluation Statement (30 January 2025)</strong></p>\n<p>Kay and Aminzare discuss a claim made in a prior publication that macromolecular condensation acts as a water buffering mechanism in cells to compensate for the effects of osmotic shock. The authors argue that, although such a buffer could temporarily maintain a transmembrane osmolality differential, this differential would drive water across the membrane to reach a steady-state in which osmolality within the cell equals osmolality outside the cell. Using the well-established pump-leak model for osmotic water transport, they further show that the timescale at which a water buffer could maintain a modest 10% osmolality differential across the membrane is at most one minute for a typical animal cell.</p>\n<p>Biophysics Colab recommends this study to researchers working on membrane transport, intracellular water buffering, and condensate biology.</p>\n<p>Biophysics Colab has evaluated this study as one that meets the following criteria:</p>\n<ul>\n<li>Rigorous methodology</li>\n<li>Transparent reporting</li>\n<li>Appropriate interpretation</li>\n</ul>\n<p><em>(This evaluation refers to version 3 of this preprint, which has been revised in response to peer review of versions 1 and 2.)</em></p>\n"
+        }
+      },
+      "published": "2025-03-14T00:00:00.000Z",
+      "publishedYear": 2024,
+      "license": "http://creativecommons.org/licenses/by/4.0/",
+      "withEvaluationSummary": true
+    },
+    "15102v4": {
+      "msid": "15102",
+      "doi": "10.63204/15102.4",
+      "id": "15102v4",
+      "versionIdentifier": "4",
+      "versionDoi": "10.63204/15102.4",
+      "published": "2025-04-14T00:00:03.000Z",
+      "license": "http://creativecommons.org/licenses/by/4.0/",
+      "withEvaluationSummary": true
+    }
+  }
+}

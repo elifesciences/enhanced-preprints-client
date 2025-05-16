@@ -1,0 +1,12 @@
+{
+    "scenarioName": "15102",
+    "requiredScenarioState": "Started",
+    "request": {
+        "method": "GET",
+        "url": "/api/preprints/15102v2"
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "preprints/15102v2.json"
+    }
+}
