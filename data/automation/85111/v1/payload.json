@@ -5137,6 +5137,12 @@
             "name": "doi",
             "propertyID": "https://registry.identifiers.org/registry/doi",
             "value": "10.1523/JNEUROSCI.01-08-00876.1981"
+          },
+          {
+            "type": "PropertyValue",
+            "name": "pmid",
+            "propertyID": "https://registry.identifiers.org/registry/pmid",
+            "value": "24848"
           }
         ],
         "isPartOf": {

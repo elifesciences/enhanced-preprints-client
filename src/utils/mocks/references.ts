@@ -30,6 +30,12 @@ export const references: Reference[] = [
         propertyID: 'https://registry.identifiers.org/registry/doi',
         value: '10.7554/eLife.16135',
       },
+      {
+        type: 'PropertyValue',
+        name: 'pmid',
+        propertyID: 'https://registry.identifiers.org/registry/pmid',
+        value: '24848',
+      },
     ],
     meta: {
       yearPublished: '2019a',
