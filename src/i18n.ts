@@ -86,6 +86,7 @@ const resources = {
       about_assessments_url: 'https://www.sciencecolab.org/biophysics-colab',
       editors_and_reviewers_title: 'Curators',
       timeline_version_title_with_evaluation_summary: 'Curated Preprint',
+      history_version_title: '$t(reviewed_preprint)',
       history_version_title_with_evaluation_summary: '$t(timeline_version_title_with_evaluation_summary)',
       revised: 'Peer Review Information',
       not_revised: '$t(revised)',
