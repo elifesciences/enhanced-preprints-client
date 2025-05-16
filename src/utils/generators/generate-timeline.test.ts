@@ -45,7 +45,20 @@ const version2: EnhancedArticle = {
   article: exampleArticle,
 };
 
-const version3Summary: VersionSummary = {
+const version3: Omit<EnhancedArticle, 'preprintDoi' | 'preprintUrl' | 'preprintPosted'> = {
+  id: '1v3',
+  versionIdentifier: '3',
+  versionDoi: '10.00001/1v3',
+
+  doi: '10.00001/1',
+  msid: '1',
+
+  sentForReview: new Date('2023-02-06'),
+  published: new Date('2023-02-09'),
+
+  article: exampleArticle,
+};
+const externalVersion3Summary: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
@@ -100,7 +113,7 @@ describe('generateTimeline', () => {
       versions: {
         v1: summariseEnhancedArticleToVersionSummary(version1),
         v2: summariseEnhancedArticleToVersionSummary(version2),
-        v3: version3Summary,
+        v3: externalVersion3Summary,
       },
     });
 
@@ -135,7 +148,7 @@ describe('generateTimeline', () => {
         v1: summariseEnhancedArticleToVersionSummary(version1),
         v2: summariseEnhancedArticleToVersionSummary(version2),
         v3: {
-          ...version3Summary,
+          ...externalVersion3Summary,
           corrections: [
             {
               date: new Date('2023-02-10'),
@@ -157,6 +170,40 @@ describe('generateTimeline', () => {
       {
         name: 'external_timeline_version_title',
         url: 'https://doi.org/doi-123v3',
+        version: 3,
+        date: 'Thu Feb 09 2023',
+      },
+      {
+        name: 'timeline_version_title',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
+        date: 'Mon Jan 09 2023',
+        versionIndicator: 'v2',
+      },
+      {
+        name: 'timeline_version_title_first_version',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        date: 'Tue Jan 03 2023',
+        versionIndicator: 'v1',
+      },
+    ]);
+  });
+
+  it.failing('should generate the correct timeline with an Version of Record', () => {
+    const timeline = generateTimeline({
+      article: version3,
+      versions: {
+        v1: summariseEnhancedArticleToVersionSummary(version1),
+        v2: summariseEnhancedArticleToVersionSummary(version2),
+        v3: summariseEnhancedArticleToVersionSummary(version3),
+      },
+    });
+
+    expect(timeline).toEqual([
+      {
+        name: 'external_timeline_version_title', // TODO: this is a bad name for the translation string
+        url: '/reviewed-preprints/1v3',
         version: 3,
         date: 'Thu Feb 09 2023',
       },
