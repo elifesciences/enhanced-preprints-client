@@ -1,20 +1,21 @@
 import {
-  EnhancedArticleWithVersions, VersionHistoryItem,
+  EnhancedArticleWithVersions,
+  VersionHistoryItem,
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
-import { generateNameWithVersionSuffix } from './generate-name-with-version-suffix';
+import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
 export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
   const versionValues = Object.values(version.versions);
-  const lastVersion = Math.max(...versionValues.map(({ versionIdentifier }) => +versionIdentifier));
   const history: VersionHistoryItem[] = versionValues.reduce<VersionHistoryItem[]>((versions, current) => {
-    const versionNo = +current.versionIdentifier;
     if (current.published) {
+      const versionNo = +current.versionIdentifier;
+      const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
       versions.push({
-        label: generateNameWithVersionSuffix(
+        label: generateNameWithEvaluationSummarySuffix(
           `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`,
           versionNo,
-          lastVersion,
+          withEvaluationSummary,
         ),
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         date: new Date(current.published).toDateString(),

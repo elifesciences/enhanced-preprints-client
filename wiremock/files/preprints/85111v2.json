@@ -10146,7 +10146,8 @@
       "versionDoi": "10.7554/eLife.85111.1",
       "umbrellaDoi": "10.7554/eLife.85111",
       "versionIdentifier": "1",
-      "volume": "12"
+      "volume": "12",
+      "withEvaluationSummary": true
     },
     "85111v2": {
       "doi": "10.7554/eLife.85111.2",
@@ -10167,7 +10168,8 @@
       "versionDoi": "10.7554/eLife.85111.2",
       "umbrellaDoi": "10.7554/eLife.85111",
       "versionIdentifier": "2",
-      "volume": "12"
+      "volume": "12",
+      "withEvaluationSummary": true
     },
     "85111v3": {
       "doi": "10.7554/eLife.85111.3",

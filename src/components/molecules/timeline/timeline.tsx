@@ -22,13 +22,13 @@ export const Timeline = ({ current, events }: TimelineProps) => {
         {
           sortedEvents.map((event, index) => {
             const typeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? (` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
-            const statusEventClass = event.status ? ` review-timeline__event--status-${event.status}` : '';
             const activeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
+            const evaluationSummaryClass = event.withEvaluationSummary ? ' review-timeline__event--with-evaluation-summary' : '';
             const hidden = (current && current !== event.version && expanded === false);
             const eventName = event.name ?? 'Reviewed Preprint';
             return (
               <Fragment key={index}>
-                <dt className={`review-timeline__event review-timeline__event--title${typeEventClass}${activeEventClass}${statusEventClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
+                <dt className={`review-timeline__event review-timeline__event--title${typeEventClass}${activeEventClass}${evaluationSummaryClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                   {(current && current !== event.version) ? (
                     <a href={event.url} className="review-timeline__event-link">
                       {eventName}
@@ -37,7 +37,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                     eventName
                   )}
                 </dt>
-                <dd className={`review-timeline__event review-timeline__event--detail${typeEventClass}${activeEventClass}${statusEventClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
+                <dd className={`review-timeline__event review-timeline__event--detail${typeEventClass}${activeEventClass}${evaluationSummaryClass}`}{...(hidden ? { style: { display: 'none' } } : {})}>
                   {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
                   {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"

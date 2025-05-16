@@ -3,19 +3,19 @@ import {
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
-import { generateNameWithVersionSuffix } from './generate-name-with-version-suffix';
+import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
 export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
   const versionValues = Object.values(version.versions);
-  const lastVersion = Math.max(...versionValues.map(({ versionIdentifier }) => +versionIdentifier));
   const timeline: SerialisedTimelineEvent[] = versionValues.reduce<SerialisedTimelineEvent[]>((events, current) => {
-    const versionNo = +current.versionIdentifier;
     if (current.published) {
+      const versionNo = +current.versionIdentifier;
+      const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
       events.push({
-        name: generateNameWithVersionSuffix(
+        name: generateNameWithEvaluationSummarySuffix(
           `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
           versionNo,
-          lastVersion,
+          withEvaluationSummary,
         ),
         url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
         version: versionNo,
@@ -23,16 +23,13 @@ export const generateTimeline = (version: EnhancedArticleWithVersions): Serialis
         ...(isPreprintVersionSummary(current) ? {
           versionIndicator: `v${versionNo}`,
         } : {}),
+        ...(withEvaluationSummary ? { withEvaluationSummary } : {}),
       });
       if (isExternalVersionSummary(current) && current.corrections) {
         current.corrections.forEach((correction) => {
           events.push(
             {
-              name: generateNameWithVersionSuffix(
-                'external_timeline_version_title',
-                versionNo,
-                lastVersion,
-              ),
+              name: 'external_timeline_version_title',
               url: correction.url,
               version: versionNo,
               date: new Date(correction.date).toDateString(),

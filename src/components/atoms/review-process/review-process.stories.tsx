@@ -13,7 +13,6 @@ type Story = StoryObj<typeof ReviewProcess>;
 export const NotRevisedReviewProcess: Story = {
   args: {
     current: 1,
-    status: 'reviewed',
   },
 };
 
@@ -21,14 +20,12 @@ export const NotRevisedReviewProcessWithAuthorResponse: Story = {
   args: {
     current: 1,
     authorResponse: true,
-    status: 'reviewed',
   },
 };
 
 export const RevisedReviewProcess: Story = {
   args: {
     current: 2,
-    status: 'revised',
   },
 };
 
@@ -48,5 +45,12 @@ export const NotRevisedReviewProcessWithAuthorResponseInferredFromOrder: Story =
 export const RevisedReviewProcessInferredFromOrder: Story = {
   args: {
     current: 2,
+  },
+};
+
+export const RevisedReviewProcessWithEvaluationSummaryInferredFromOrder: Story = {
+  args: {
+    current: 2,
+    evaluationSummary: true,
   },
 };

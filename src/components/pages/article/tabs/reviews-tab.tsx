@@ -21,7 +21,7 @@ export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: 
     <div className="tabbed-navigation__content tabbed-navigation__content--reviews">
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
-        <ReviewProcess current={currentVersion} {...(peerReview.authorResponse ? { authorResponse: true } : {})} />
+        <ReviewProcess current={currentVersion} {...(peerReview.evaluationSummary ? { evaluationSummary: true } : {})} {...(peerReview.authorResponse ? { authorResponse: true } : {})} />
         { peerReview.evaluationSummary && peerReview.evaluationSummary.participants.length > 0 && <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} /> }
         {peerReview.reviews.map((review, index) => (
           <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} doi={review.doi} />

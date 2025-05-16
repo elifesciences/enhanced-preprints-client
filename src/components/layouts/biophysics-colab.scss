@@ -7,10 +7,8 @@
   --color-primary-dark: #50519b;
   --border-timeline-reviewed: #c93c3d;
   --border-timeline-revised: #9c5075;
-  --border-timeline-curated: #9c5075;
   --link-reviewed: #c93c3d;
   --link-revised: #9c5075;
-  --link-curated: #9c5075;
 
   .site-header-container {
     justify-content: unset;
@@ -46,23 +44,21 @@
     color: var(--link-reviewed);
   }
 
-  .review-timeline dt:first-of-type.review-timeline__event--active,
-  .review-timeline dd:first-of-type.review-timeline__event--active {
+  .review-process--with-evaluation-summary .review-process__body::before {
+    background-color: var(--border-timeline-revised);
+  }
+
+  .review-process--with-evaluation-summary .review-process__link {
+    color: var(--link-revised);
+  }
+
+  .review-timeline dt.review-timeline__event--with-evaluation-summary.review-timeline__event--active,
+  .review-timeline dd.review-timeline__event--with-evaluation-summary.review-timeline__event--active {
     &::before {
       background-color: var(--border-timeline-revised);
     }
 
     .review-timeline__link {
-      color: var(--link-revised);
-    }
-  }
-
-  .version--last {
-    .review-process__body::before {
-      background-color: var(--border-timeline-revised);
-    }
-
-    .review-process__link {
       color: var(--link-revised);
     }
   }
