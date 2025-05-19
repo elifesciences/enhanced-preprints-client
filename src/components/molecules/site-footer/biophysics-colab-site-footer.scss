@@ -45,6 +45,12 @@
 
     .footer-action {
       font-weight: bold;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
     }
 
     .contact-link {

@@ -20,7 +20,9 @@ export const BiophysicsColabSiteFooter = () => (
           </a>
         </div>
         <nav className="footer-action">
-          <a href="/about">About</a>
+          <ul>
+            <li><a href="/about">About</a></li>
+          </ul>
         </nav>
       </div>
       <div className="footer-column">
