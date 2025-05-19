@@ -22,6 +22,9 @@ export const BiophysicsColabSiteFooter = () => (
         <nav className="footer-action">
           <ul>
             <li><a href="/about">About</a></li>
+            <li><a href="https://www.sciencecolab.org/privacy-notice">Privacy Notice</a></li>
+            <li><a href="https://www.sciencecolab.org/press-releases">For the Press</a></li>
+            <li><a href="https://www.sciencecolab.org/terms-and-conditions">Terms and Conditions</a></li>
           </ul>
         </nav>
       </div>
