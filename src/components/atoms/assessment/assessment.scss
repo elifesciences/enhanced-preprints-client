@@ -22,11 +22,11 @@
   }
 
   blockquote {
-    @include typography.blockquote();
-    @include mixins.padding(16, "left");
-
     border-left: 1px solid var(--divider);
     margin: 0;
+
+    @include typography.blockquote();
+    @include mixins.padding(16, "left");
 
     p,
     li {
@@ -69,13 +69,17 @@
 }
 
 .explanation_link {
+  background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
+  cursor: pointer;
+  vertical-align: middle;
+
   @include typography.terms-link-text();
   @include mixins.padding(16, "right");
 
-  background: url("../../../images/icons/arrowdown-triangle-blue.svg") no-repeat right;
-  color: #0b70b9; // Only being used for review content component
-  cursor: pointer;
-  vertical-align: middle;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: #0b70b9; // Only being used for review content component
+  }
 
   &__expanded {
     background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
