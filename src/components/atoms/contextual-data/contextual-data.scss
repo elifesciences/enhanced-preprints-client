@@ -3,12 +3,12 @@
 @use "../../../sass/typography";
 
 .contextual-data {
+  line-break: anywhere;
+  list-style: none;
+
   @include mixins.margin(24, "bottom");
   @include mixins.margin(0, "top");
   @include mixins.padding(0, "left");
-
-  line-break: anywhere;
-  list-style: none;
 }
 
 .contextual-data__item {
