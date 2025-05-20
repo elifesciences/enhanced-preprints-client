@@ -93,7 +93,7 @@
 
 @media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
-    @include mixins.padding(0 6%);
+    padding: 0 6%;
 
     display: table;
     display: flex;
@@ -145,12 +145,6 @@
 }
 
 @media only all and (min-width: settings.$breakpoint-medium) {
-  .site-footer__container {
-    @include mixins.padding(0 15);
-
-    padding: 0 6%;
-  }
-
   .footer-navigation {
     @include mixins.padding(72, "bottom");
   }
