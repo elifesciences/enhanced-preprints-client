@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Author, Reference as ReferenceData } from '../../../types';
 import './reference.scss';
+import { generateGoogleScholarLink } from '../../../utils/generators/generate-google-scholar-link';
+import { formatAuthorName } from '../../../utils/formatters';
 
 type ReferenceBodyProps = {
   reference: ReferenceData,
@@ -27,6 +29,14 @@ function prepareReference(reference: ReferenceData) {
   const comments = reference.comments?.map((comment) => comment.commentAspect).join(', ') ?? '';
   const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupType !== 'editor');
   const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupType === 'editor');
+  const { title } = reference;
+  const formattedAuthor = authors.map(formatAuthorName);
+  const googleScholarQuery = {
+    title,
+    author: formattedAuthor,
+    publication_year: year,
+  };
+  const GSLinkRef = generateGoogleScholarLink(googleScholarQuery);
 
   return {
     authors,
@@ -41,6 +51,7 @@ function prepareReference(reference: ReferenceData) {
     pubmedLinkRef,
     eLocationId,
     comments,
+    GSLinkRef,
   };
 }
 
@@ -60,6 +71,7 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
     pubmedLinkRef,
     eLocationId,
     comments,
+    GSLinkRef,
   } = prepareReference(reference);
 
   return (
@@ -102,6 +114,11 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
           {pubmedLinkText}
         </a>
         )}
+        {
+          <a href={GSLinkRef} className="reference__external_link">
+            Google Scholar
+          </a>
+        }
       </span>
       )}
     </>
