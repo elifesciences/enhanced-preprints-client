@@ -3,18 +3,22 @@
 @use "../../../sass/typography";
 
 .button {
-  @include mixins.padding(8 18);
-  @include typography.body-small();
-
   background-color: var(--color-primary);
   border: 0;
   border-radius: 4px;
-  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-weight: bold;
   letter-spacing: 0.2px;
   text-decoration: none;
+
+  @include mixins.padding(8 18);
+  @include typography.body-small();
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: #fff;
+  }
 
   &:hover {
     background-color: var(--color-primary-dark);
