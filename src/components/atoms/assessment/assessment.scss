@@ -80,10 +80,10 @@
   & {
     color: #0b70b9; // Only being used for review content component
   }
+}
 
-  &__expanded {
-    background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
-  }
+.explanation_link__expanded {
+  background: url("../../../images/icons/arrowup-triangle-blue.svg") no-repeat right;
 }
 
 .assessment__fixed_text {
@@ -91,14 +91,12 @@
   @include mixins.margin(24 0);
 }
 
-.assessment-collapsable {
-  &__shown {
-    display: unset;
-  }
+.assessment-collapsable__shown {
+  display: unset;
+}
 
-  &__hidden {
-    display: none;
-  }
+.assessment-collapsable__hidden {
+  display: none;
 }
 
 .ga-review-content_links {
