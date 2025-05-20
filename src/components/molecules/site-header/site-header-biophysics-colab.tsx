@@ -22,7 +22,7 @@ export const SiteHeaderBiophysicsColab = () => (
             <a href="/">Home</a>
           </li>
           <li className="nav-primary__item">
-            <a href="/about">About</a>
+            <a href="/about/">About</a>
           </li>
         </ul>
       </nav>
