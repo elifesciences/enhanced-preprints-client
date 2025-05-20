@@ -44,10 +44,10 @@
 }
 
 .author-list__footnotes_list {
+  list-style: none;
+
   @include mixins.margin(0);
   @include mixins.padding(0);
-
-  list-style: none;
 }
 
 .author-list__footnote {
