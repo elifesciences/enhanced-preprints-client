@@ -34,12 +34,10 @@ const versionSummary2: VersionSummary = {
 const versionSummary3: VersionSummary = {
   id: '1v3',
   versionIdentifier: '3',
-  versionDoi: '10.00001/1v3',
 
   doi: '10.00001/1',
   msid: '1',
 
-  sentForReview: new Date('2023-02-06'),
   published: new Date('2023-02-09'),
 };
 
