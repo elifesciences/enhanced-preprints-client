@@ -90,16 +90,20 @@ export const Reference = ({ reference }: ReferenceBodyProps) => {
         {(!reference.pageStart && eLocationId) && `:${eLocationId}`}
       </span>
       { comments && <span className="reference__comments">{comments}</span> }
-      {(linkRef) && <span className="reference__doi">
+      {(linkRef || pubmedLinkRef) && (
+      <span className="reference__doi">
+        {linkRef && (
         <a href={linkRef} className="reference__doi_link">
           {linkText}
         </a>
-        {(pubmedLinkRef) && <a href={pubmedLinkRef} className="reference__external_link">
+        )}
+        {pubmedLinkRef && (
+        <a href={pubmedLinkRef} className="reference__external_link">
           {pubmedLinkText}
         </a>
-        }
-        </span>
-      }
+        )}
+      </span>
+      )}
     </>
   );
 };

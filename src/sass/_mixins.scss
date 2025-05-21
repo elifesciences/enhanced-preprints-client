@@ -13,7 +13,9 @@
 
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    & {
+      padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    }
   } @else if $dimension == "" and meta.type-of($size_in_px) == list {
     $parts-rem: ();
 
@@ -21,9 +23,13 @@
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
-    padding: $parts-rem;
+    & {
+      padding: $parts-rem;
+    }
   } @else {
-    padding: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    & {
+      padding: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    }
   }
 }
 
