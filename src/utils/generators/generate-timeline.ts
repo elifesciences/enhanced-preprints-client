@@ -1,13 +1,12 @@
 import {
-  EnhancedArticleWithVersions,
+  VersionSummary,
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
-export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
-  const versionValues = Object.values(version.versions);
-  const timeline: SerialisedTimelineEvent[] = versionValues.reduce<SerialisedTimelineEvent[]>((events, current) => {
+export const generateTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
+  const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       const versionNo = +current.versionIdentifier;
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;

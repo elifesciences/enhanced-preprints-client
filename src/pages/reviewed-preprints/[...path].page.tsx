@@ -218,7 +218,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
-  const timeline = generateTimeline(articleWithVersions);
+  const timeline = generateTimeline(Object.values(articleWithVersions.versions));
   const versionHistory = generateVersionHistory(articleWithVersions);
 
   return {

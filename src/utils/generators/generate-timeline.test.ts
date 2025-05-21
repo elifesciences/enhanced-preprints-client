@@ -68,13 +68,10 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 
 describe('generateTimeline', () => {
   it('should generate the correct timeline with two article versions', () => {
-    const timeline = generateTimeline({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-      },
-    });
+    const timeline = generateTimeline([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+    ]);
 
     expect(timeline).toEqual([
       {
@@ -95,14 +92,11 @@ describe('generateTimeline', () => {
   });
 
   it('should generate the correct timeline with an external version summary', () => {
-    const timeline = generateTimeline({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-        v3: version3Summary,
-      },
-    });
+    const timeline = generateTimeline([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+      version3Summary,
+    ]);
 
     expect(timeline).toEqual([
       {
@@ -129,22 +123,19 @@ describe('generateTimeline', () => {
   });
 
   it('should generate the correct timeline with VOR corrections', () => {
-    const timeline = generateTimeline({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-        v3: {
-          ...version3Summary,
-          corrections: [
-            {
-              date: new Date('2023-02-10'),
-              url: 'https://doi.org/doi-123v3',
-            },
-          ],
-        },
+    const timeline = generateTimeline([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+      {
+        ...version3Summary,
+        corrections: [
+          {
+            date: new Date('2023-02-10'),
+            url: 'https://doi.org/doi-123v3',
+          },
+        ],
       },
-    });
+    ]);
 
     expect(timeline).toEqual([
       {
