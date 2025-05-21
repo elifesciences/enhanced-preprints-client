@@ -4,7 +4,6 @@ import { generateVersionHistory } from './generate-version-history';
 const versionSummary1: VersionSummary = {
   id: '1v1',
   versionIdentifier: '1',
-  versionDoi: '10.00001/1v1',
 
   doi: '10.00001/1',
   msid: '1',
@@ -19,7 +18,6 @@ const versionSummary1: VersionSummary = {
 const versionSummary2: VersionSummary = {
   id: '1v2',
   versionIdentifier: '2',
-  versionDoi: '10.00001/1v1',
 
   doi: '10.00001/1',
   msid: '1',
@@ -31,14 +29,14 @@ const versionSummary2: VersionSummary = {
   published: new Date('2023-01-09'),
 };
 
-const versionSummary3: VersionSummary = {
+const externalVersionSummary3: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
 };
 
-const versionSummary3WithCorrections: VersionSummary = {
+const externalVersionSummary3WithCorrections: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
@@ -91,7 +89,7 @@ describe('generateVersionHistory', () => {
     const history = generateVersionHistory([
       versionSummary1,
       versionSummary2,
-      versionSummary3,
+      externalVersionSummary3,
     ]);
 
     expect(history).toEqual([
@@ -129,7 +127,7 @@ describe('generateVersionHistory', () => {
     const history = generateVersionHistory([
       versionSummary1,
       versionSummary2,
-      versionSummary3WithCorrections,
+      externalVersionSummary3WithCorrections,
     ]);
 
     expect(history).toEqual([
