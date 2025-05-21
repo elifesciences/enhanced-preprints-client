@@ -202,8 +202,8 @@ describe('generateTimeline', () => {
 
     expect(timeline).toEqual([
       {
-        name: 'external_timeline_version_title', // TODO: this is a bad name for the translation string
-        url: '/reviewed-preprints/1v3',
+        name: 'vor_timeline_version_title',
+        url: '/articles/1v3',
         version: 3,
         date: 'Thu Feb 09 2023',
       },
