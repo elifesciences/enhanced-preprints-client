@@ -1,17 +1,7 @@
-import { EnhancedArticle, VersionSummary } from '../../types';
-import { ProcessedArticle } from '../../types/enhanced-article';
+import { VersionSummary } from '../../types';
 import { generateVersionHistory } from './generate-version-history';
 
-const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
-  abstract: '',
-  title: '',
-  licenses: [],
-  content: '',
-  headings: [],
-  references: [],
-};
-
-const version1: EnhancedArticle = {
+const versionSummary1: VersionSummary = {
   id: '1v1',
   versionIdentifier: '1',
   versionDoi: '10.00001/1v1',
@@ -24,11 +14,9 @@ const version1: EnhancedArticle = {
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
   published: new Date('2023-01-03'),
-
-  article: exampleArticle,
 };
 
-const version2: EnhancedArticle = {
+const versionSummary2: VersionSummary = {
   id: '1v2',
   versionIdentifier: '2',
   versionDoi: '10.00001/1v1',
@@ -41,18 +29,16 @@ const version2: EnhancedArticle = {
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
   published: new Date('2023-01-09'),
-
-  article: exampleArticle,
 };
 
-const version3Summary: VersionSummary = {
+const versionSummary3: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
 };
 
-const version3SummaryWithCorrections: VersionSummary = {
+const versionSummary3WithCorrections: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
@@ -69,25 +55,11 @@ const version3SummaryWithCorrections: VersionSummary = {
   ],
 };
 
-const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
-  id: article.id,
-  doi: article.doi,
-  msid: article.msid,
-  versionIdentifier: article.versionIdentifier,
-  versionDoi: article.versionDoi,
-
-  preprintDoi: article.preprintDoi,
-  preprintUrl: article.preprintUrl,
-  preprintPosted: article.preprintPosted,
-  sentForReview: article.sentForReview,
-  published: article.published,
-});
-
 describe('generateVersionHistory', () => {
   it('should generate the correct version history with two reviewed preprints', () => {
     const history = generateVersionHistory([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
+      versionSummary1,
+      versionSummary2,
     ]);
 
     expect(history).toEqual([
@@ -117,9 +89,9 @@ describe('generateVersionHistory', () => {
 
   it('should generate the correct version history with an external version summary', () => {
     const history = generateVersionHistory([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
-      version3Summary,
+      versionSummary1,
+      versionSummary2,
+      versionSummary3,
     ]);
 
     expect(history).toEqual([
@@ -155,9 +127,9 @@ describe('generateVersionHistory', () => {
 
   it('should generate the correct version history with an external version summary with corrections', () => {
     const history = generateVersionHistory([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
-      version3SummaryWithCorrections,
+      versionSummary1,
+      versionSummary2,
+      versionSummary3WithCorrections,
     ]);
 
     expect(history).toEqual([

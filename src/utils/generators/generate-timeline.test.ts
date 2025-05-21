@@ -1,17 +1,7 @@
-import { EnhancedArticle, VersionSummary } from '../../types';
-import { ProcessedArticle } from '../../types/enhanced-article';
+import { VersionSummary } from '../../types';
 import { generateTimeline } from './generate-timeline';
 
-const exampleArticle: Omit<ProcessedArticle, 'doi' | 'date'> = {
-  abstract: '',
-  title: '',
-  licenses: [],
-  content: '',
-  headings: [],
-  references: [],
-};
-
-const version1: EnhancedArticle = {
+const versionSummary1: VersionSummary = {
   id: '1v1',
   versionIdentifier: '1',
   versionDoi: '10.00001/1v1',
@@ -24,11 +14,9 @@ const version1: EnhancedArticle = {
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
   published: new Date('2023-01-03'),
-
-  article: exampleArticle,
 };
 
-const version2: EnhancedArticle = {
+const versionSummary2: VersionSummary = {
   id: '1v2',
   versionIdentifier: '2',
   versionDoi: '10.00001/1v1',
@@ -41,36 +29,20 @@ const version2: EnhancedArticle = {
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
   published: new Date('2023-01-09'),
-
-  article: exampleArticle,
 };
 
-const version3Summary: VersionSummary = {
+const versionSummary3: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
   url: 'https://doi.org/doi-123v3',
 };
 
-const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): VersionSummary => ({
-  id: article.id,
-  doi: article.doi,
-  msid: article.msid,
-  versionIdentifier: article.versionIdentifier,
-  versionDoi: article.versionDoi,
-
-  preprintDoi: article.preprintDoi,
-  preprintUrl: article.preprintUrl,
-  preprintPosted: article.preprintPosted,
-  sentForReview: article.sentForReview,
-  published: article.published,
-});
-
 describe('generateTimeline', () => {
   it('should generate the correct timeline with two article versions', () => {
     const timeline = generateTimeline([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
+      versionSummary1,
+      versionSummary2,
     ]);
 
     expect(timeline).toEqual([
@@ -93,9 +65,9 @@ describe('generateTimeline', () => {
 
   it('should generate the correct timeline with an external version summary', () => {
     const timeline = generateTimeline([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
-      version3Summary,
+      versionSummary1,
+      versionSummary2,
+      versionSummary3,
     ]);
 
     expect(timeline).toEqual([
@@ -124,10 +96,10 @@ describe('generateTimeline', () => {
 
   it('should generate the correct timeline with VOR corrections', () => {
     const timeline = generateTimeline([
-      summariseEnhancedArticleToVersionSummary(version1),
-      summariseEnhancedArticleToVersionSummary(version2),
+      versionSummary1,
+      versionSummary2,
       {
-        ...version3Summary,
+        ...versionSummary3,
         corrections: [
           {
             date: new Date('2023-02-10'),
