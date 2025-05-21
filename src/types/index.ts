@@ -14,6 +14,7 @@ export type {
   VersionSummary,
   PreprintVersionSummary,
   ExternalVersionSummary,
+  VORVersionSummary,
   Metrics,
 } from './enhanced-article';
 export type { VersionHistoryItem } from './version-history-item';

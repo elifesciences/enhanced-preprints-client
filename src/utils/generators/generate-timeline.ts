@@ -1,9 +1,27 @@
 import {
   VersionSummary,
 } from '../../types';
-import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
+import {
+  isExternalVersionSummary,
+  isPreprintVersionSummary,
+  isVORVersionSummary,
+} from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
+
+const generateTimelineUrl = (version: VersionSummary): string => {
+  if (isPreprintVersionSummary(version)) {
+    return `/reviewed-preprints/${version.id}`;
+  }
+  if (isVORVersionSummary(version)) {
+    return `/articles/${version.id}`;
+  }
+  if (isExternalVersionSummary(version)) {
+    return version.url;
+  }
+
+  return '';
+};
 
 export const generateTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
   const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
@@ -12,11 +30,11 @@ export const generateTimeline = (versions: VersionSummary[]): SerialisedTimeline
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
       events.push({
         name: generateNameWithEvaluationSummarySuffix(
-          `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
+          `${isVORVersionSummary(current) ? 'vor_' : ''}${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
           versionNo,
           withEvaluationSummary,
         ),
-        url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
+        url: generateTimelineUrl(current),
         version: versionNo,
         date: new Date(current.published).toDateString(),
         ...(isPreprintVersionSummary(current) ? {
