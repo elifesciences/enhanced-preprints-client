@@ -27,7 +27,7 @@ const versionSummary2: VersionSummary = {
   published: new Date('2023-01-09'),
 };
 
-const versionSummary3: VersionSummary = {
+const externalVersionSummary3: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
   published: new Date('2023-02-09'),
@@ -63,7 +63,7 @@ describe('generateTimeline', () => {
     const timeline = generateTimeline([
       versionSummary1,
       versionSummary2,
-      versionSummary3,
+      externalVersionSummary3,
     ]);
 
     expect(timeline).toEqual([
@@ -95,7 +95,7 @@ describe('generateTimeline', () => {
       versionSummary1,
       versionSummary2,
       {
-        ...versionSummary3,
+        ...externalVersionSummary3,
         corrections: [
           {
             date: new Date('2023-02-10'),
