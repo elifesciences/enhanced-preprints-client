@@ -1,17 +1,16 @@
 import {
-  EnhancedArticleWithVersions,
   VersionHistoryItem,
+  VersionSummary,
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
-export const generateVersionHistory = (version: EnhancedArticleWithVersions): VersionHistoryItem[] => {
-  const versionValues = Object.values(version.versions);
-  const history: VersionHistoryItem[] = versionValues.reduce<VersionHistoryItem[]>((versions, current) => {
+export const generateVersionHistory = (versions: VersionSummary[]): VersionHistoryItem[] => {
+  const history: VersionHistoryItem[] = versions.reduce<VersionHistoryItem[]>((events, current) => {
     if (current.published) {
       const versionNo = +current.versionIdentifier;
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
-      versions.push({
+      events.push({
         label: generateNameWithEvaluationSummarySuffix(
           `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`,
           versionNo,
@@ -23,7 +22,7 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
       });
 
       if (isExternalVersionSummary(current) && (current.corrections ?? []).length > 0) {
-        versions.push(...(current.corrections ?? []).map((correction) => ({
+        events.push(...(current.corrections ?? []).map((correction) => ({
           label: 'external_history_version_title_updated',
           url: correction.url,
           date: new Date(correction.date).toDateString(),
@@ -31,10 +30,10 @@ export const generateVersionHistory = (version: EnhancedArticleWithVersions): Ve
         })));
       }
     }
-    return versions;
+    return events;
   }, []);
 
-  const firstVersion = Object.values(version.versions).filter(isPreprintVersionSummary)
+  const firstVersion = versions.filter(isPreprintVersionSummary)
     .reduce((mostRecent, current) => (!mostRecent || new Date(current.preprintPosted).getTime() < new Date(mostRecent.preprintPosted).getTime() ? current : mostRecent));
 
   if (firstVersion.preprintPosted !== undefined) {
