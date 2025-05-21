@@ -85,13 +85,10 @@ const summariseEnhancedArticleToVersionSummary = (article: EnhancedArticle): Ver
 
 describe('generateVersionHistory', () => {
   it('should generate the correct version history with two reviewed preprints', () => {
-    const history = generateVersionHistory({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-      },
-    });
+    const history = generateVersionHistory([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+    ]);
 
     expect(history).toEqual([
       {
@@ -119,14 +116,11 @@ describe('generateVersionHistory', () => {
   });
 
   it('should generate the correct version history with an external version summary', () => {
-    const history = generateVersionHistory({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-        v3: version3Summary,
-      },
-    });
+    const history = generateVersionHistory([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+      version3Summary,
+    ]);
 
     expect(history).toEqual([
       {
@@ -160,14 +154,11 @@ describe('generateVersionHistory', () => {
   });
 
   it('should generate the correct version history with an external version summary with corrections', () => {
-    const history = generateVersionHistory({
-      article: version2,
-      versions: {
-        v1: summariseEnhancedArticleToVersionSummary(version1),
-        v2: summariseEnhancedArticleToVersionSummary(version2),
-        v3: version3SummaryWithCorrections,
-      },
-    });
+    const history = generateVersionHistory([
+      summariseEnhancedArticleToVersionSummary(version1),
+      summariseEnhancedArticleToVersionSummary(version2),
+      version3SummaryWithCorrections,
+    ]);
 
     expect(history).toEqual([
       {
