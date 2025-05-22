@@ -150,7 +150,7 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it.failing('should generate the correct timeline with an Version of Record', () => {
+  it('should generate the correct timeline with an Version of Record', () => {
     const timeline = generateTimeline([
       versionSummary1,
       versionSummary2,
