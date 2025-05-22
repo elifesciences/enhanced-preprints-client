@@ -160,7 +160,7 @@ describe('generateTimeline', () => {
     expect(timeline).toEqual([
       {
         name: 'vor_timeline_version_title',
-        url: '/articles/1v3',
+        url: '/reviewed-preprints/1v3',
         version: 3,
         date: 'Thu Feb 09 2023',
       },
