@@ -10,10 +10,10 @@
 }
 
 .citation__authors_list {
-  @include mixins.padding(0);
-
   display: inline;
   list-style: none;
+
+  @include mixins.padding(0);
 
   &::after {
     content: " ";
