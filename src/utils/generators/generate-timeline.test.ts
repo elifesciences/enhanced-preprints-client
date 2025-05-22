@@ -4,14 +4,12 @@ import { generateTimeline } from './generate-timeline';
 const versionSummary1: VersionSummary = {
   id: '1v1',
   versionIdentifier: '1',
-  versionDoi: '10.00001/1v1',
 
   doi: '10.00001/1',
   msid: '1',
 
   preprintDoi: 'doi-123',
   preprintUrl: 'https://doi.org/doi-123',
-  sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
   published: new Date('2023-01-03'),
 };
@@ -19,7 +17,6 @@ const versionSummary1: VersionSummary = {
 const versionSummary2: VersionSummary = {
   id: '1v2',
   versionIdentifier: '2',
-  versionDoi: '10.00001/1v1',
 
   doi: '10.00001/1',
   msid: '1',
@@ -27,7 +24,6 @@ const versionSummary2: VersionSummary = {
   preprintDoi: 'doi-123v2',
   preprintUrl: 'https://doi.org/doi-123v2',
   preprintPosted: new Date('2023-01-05'),
-  sentForReview: new Date('2023-01-06'),
   published: new Date('2023-01-09'),
 };
 
