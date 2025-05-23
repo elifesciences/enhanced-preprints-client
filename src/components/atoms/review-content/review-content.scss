@@ -10,9 +10,9 @@
   }
 
   .highlighted-term {
-    @include typography.body-alternative();
-
     font-weight: 600;
+
+    @include typography.body-alternative();
   }
 
   p {
@@ -24,11 +24,11 @@
   }
 
   blockquote {
-    @include typography.blockquote();
-    @include mixins.padding(16, "left");
-
     border-left: 1px solid var(--divider);
     margin: 0;
+
+    @include typography.blockquote();
+    @include mixins.padding(16, "left");
 
     p,
     li {
@@ -46,9 +46,9 @@
 }
 
 .review-content_body {
-  @include typography.body();
-
   display: block;
+
+  @include typography.body();
 
   p img {
     max-width: 100%;
