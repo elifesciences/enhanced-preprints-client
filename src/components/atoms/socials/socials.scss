@@ -3,15 +3,15 @@
 @use "../../../sass/mixins";
 
 .socials-sharers {
-  @include mixins.padding(0, "left");
-
   grid-column: 1/13;
   margin: 24px 0;
 
-  li {
-    @include mixins.margin(6 6 6 0);
+  @include mixins.padding(0, "left");
 
+  li {
     display: inline-block;
+
+    @include mixins.margin(6 6 6 0);
 
     @media only all and (min-width: settings.$breakpoint-medium) {
       &:first-child {
@@ -51,15 +51,15 @@
 }
 
 .socials-sharer {
-  @include mixins.margin(0 8);
-  @include mixins.padding(2 0);
-
   display: inline-block;
   height: 24px;
   text-decoration: none;
   text-indent: -10000px;
   transition: 25ms ease-out;
   width: 24px;
+
+  @include mixins.margin(0 8);
+  @include mixins.padding(2 0);
 
   &:first-child {
     margin-left: 0;
