@@ -217,7 +217,7 @@ describe('Reference', () => {
   });
 
   it('should not render Google Scholar link the type of reference is not supported (patent, software)', () => {
-    render(<Reference reference={references[4]} />);
+    render(<Reference reference={references[0]} />);
 
     expect(screen.queryByText('Google Scholar', { exact: false })).not.toBeInTheDocument();
   });
