@@ -12,11 +12,15 @@
 }
 
 .contextual-data__item {
-  @include typography.body-small();
-
-  color: var(--color-text-secondary);
   display: inline;
   white-space: nowrap;
+
+  @include typography.body-small();
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-text-secondary);
+  }
 
   &::after {
     content: " • ";
