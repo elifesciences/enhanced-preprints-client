@@ -9,6 +9,8 @@ export type TimelineProps = {
   events: Array<TimelineEvent>,
 };
 
+const constructEventType = (version: number) => (version > 1 ? 'revised' : 'reviewed');
+
 export const Timeline = ({ current, events }: TimelineProps) => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
@@ -21,7 +23,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
       <dl className={`review-timeline${expanded !== false ? ' review-timeline--expanded' : ''}`} id="review-timeline" aria-label="Version history">
         {
           sortedEvents.map((event, index) => {
-            const typeEventClass = ` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`;
+            const typeEventClass = ` review-timeline__event--${constructEventType(event.version)}`;
             const activeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
             const evaluationSummaryClass = event.withEvaluationSummary ? ' review-timeline__event--with-evaluation-summary' : '';
             const hidden = (current && current !== event.version && expanded === false);
