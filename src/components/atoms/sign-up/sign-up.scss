@@ -3,11 +3,11 @@
 @use "../../../sass/mixins";
 
 .email-cta {
-  @include mixins.padding(48, "top");
-  @include mixins.padding(72, "bottom");
-
   border-top: 1px solid var(--divider);
   text-align: center;
+
+  @include mixins.padding(48, "top");
+  @include mixins.padding(72, "bottom");
 }
 
 .email-cta__container {
@@ -18,13 +18,13 @@
 }
 
 .email-cta__header_text {
-  @include mixins.padding(24, "top");
-  @include mixins.padding(24, "bottom");
-  @include typography.font-size-and-vertical-height(20);
-
   color: var(--color-text);
   font-family: var(--font-family-primary);
   margin: 0;
+
+  @include mixins.padding(24, "top");
+  @include mixins.padding(24, "bottom");
+  @include typography.font-size-and-vertical-height(20);
 }
 
 .email-cta__privacy {
