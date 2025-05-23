@@ -111,29 +111,7 @@ describe('Timeline', () => {
     expect(document.querySelector('dd.review-timeline__event--with-evaluation-summary')).toHaveTextContent('February 23, 2002');
   });
 
-  it('should render a timeline event indicating whether reviewed, revised or version of record --deprecated', () => {
-    render(<Timeline events={[
-      {
-        name: 'Revised preprint', url: '#', version: 2, date: new Date('2001-02-13'), versionIndicator: 'v2',
-      },
-      {
-        name: 'Reviewed preprint', url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
-      },
-    ]}
-    />);
-
-    expect(document.querySelectorAll('dt.review-timeline__event--reviewed')).toHaveLength(1);
-    expect(document.querySelectorAll('dd.review-timeline__event--reviewed')).toHaveLength(1);
-    expect(document.querySelector('dt.review-timeline__event--reviewed')).toHaveTextContent('Reviewed preprint');
-    expect(document.querySelector('dd.review-timeline__event--reviewed')).toHaveTextContent('January 13, 2001');
-
-    expect(document.querySelectorAll('dt.review-timeline__event--revised')).toHaveLength(1);
-    expect(document.querySelectorAll('dd.review-timeline__event--revised')).toHaveLength(1);
-    expect(document.querySelector('dt.review-timeline__event--revised')).toHaveTextContent('Revised preprint');
-    expect(document.querySelector('dd.review-timeline__event--revised')).toHaveTextContent('February 13, 2001');
-  });
-
-  it.failing('should render a timeline event indicating whether reviewed, revised or version of record', () => {
+  it('should render a timeline event indicating whether reviewed, revised or version of record', () => {
     render(<Timeline events={[
       {
         name: 'Version of record', url: '#', version: 3, date: new Date('2002-02-23'), versionIndicator: 'v3', versionOfRecord: true,
