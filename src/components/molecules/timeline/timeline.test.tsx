@@ -94,6 +94,23 @@ describe('Timeline', () => {
     expect(screen.getAllByText('Custom named preprint')).toHaveLength(1);
   });
 
+  it('should render a timeline event with an optional evaluation summary', () => {
+    render(<Timeline events={[
+      {
+        name: 'With evaluation summary', url: '#', version: 2, date: new Date('2002-02-23'), versionIndicator: 'v2', withEvaluationSummary: true,
+      },
+      {
+        url: '#', version: 1, date: new Date('2001-01-13'), versionIndicator: 'v1',
+      },
+    ]}
+    />);
+
+    expect(document.querySelectorAll('dt.review-timeline__event--with-evaluation-summary')).toHaveLength(1);
+    expect(document.querySelectorAll('dd.review-timeline__event--with-evaluation-summary')).toHaveLength(1);
+    expect(document.querySelector('dt.review-timeline__event--with-evaluation-summary')).toHaveTextContent('With evaluation summary');
+    expect(document.querySelector('dd.review-timeline__event--with-evaluation-summary')).toHaveTextContent('February 23, 2002');
+  });
+
   describe('collapsable behaviours', () => {
     const getVisibleDtElements = () => Array.from(document.querySelectorAll('dt')).filter((dt) => dt.style.display !== 'none');
 
