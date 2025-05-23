@@ -2,8 +2,8 @@
 @use "../../../sass/typography";
 
 .article-and-author-information__title {
+  margin: 0;
+
   @include mixins.padding(21, "bottom");
   @include typography.heading-2();
-
-  margin: 0;
 }
