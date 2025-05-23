@@ -3,10 +3,10 @@
 @use "../../../sass/mixins";
 
 .term-list__title {
+  color: var(--color-text-secondary-dark);
+
   @include typography.term-title();
   @include mixins.margin(8, "bottom");
-
-  color: var(--color-text-secondary-dark);
 }
 
 .term-description {
@@ -20,31 +20,35 @@
 }
 
 .terms-list {
-  @include mixins.margin(0, "top");
-  @include mixins.margin(30, "bottom");
-  @include mixins.padding(0, "left");
-
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   list-style: none;
+
+  @include mixins.margin(0, "top");
+  @include mixins.margin(30, "bottom");
+  @include mixins.padding(0, "left");
 }
 
 .term {
-  @include typography.term-list-text();
-  @include mixins.padding(5 10);
-
   align-content: center;
   background-color: var(--color-button);
   border: 0;
   border-radius: 4px;
-  color: var(--color-text);
   display: inline-block;
   font-weight: 600;
   letter-spacing: 0.2px;
   text-align: center;
   text-decoration: none;
   text-transform: none;
+
+  @include typography.term-list-text();
+  @include mixins.padding(5 10);
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-text);
+  }
 
   &__highlighted {
     background-color: var(--color-primary);
