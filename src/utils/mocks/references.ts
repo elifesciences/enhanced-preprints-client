@@ -40,6 +40,7 @@ export const references: Reference[] = [
     meta: {
       yearPublished: '2019a',
       label: '1.',
+      publicationType: 'software',
     },
   },
   {
