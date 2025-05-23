@@ -41,6 +41,7 @@ export const generateTimeline = (versions: VersionSummary[]): SerialisedTimeline
           versionIndicator: `v${versionNo}`,
         } : {}),
         ...(withEvaluationSummary ? { withEvaluationSummary } : {}),
+        ...(isVORVersionSummary(current) ? { versionOfRecord: true } : {}),
       });
       if (isExternalVersionSummary(current) && current.corrections) {
         current.corrections.forEach((correction) => {

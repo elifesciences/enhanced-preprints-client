@@ -6,6 +6,7 @@ export type TimelineEvent = {
   date: Date,
   datePrefix?: string,
   withEvaluationSummary?: true,
+  versionOfRecord?: true,
 };
 
 export type SerialisedTimelineEvent = (Omit<TimelineEvent, 'date'> & { date: string });
