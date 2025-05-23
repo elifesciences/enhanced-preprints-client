@@ -30,14 +30,15 @@ function prepareReference(reference: ReferenceData) {
   const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupType !== 'editor');
   const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupType === 'editor');
   const { title } = reference;
+  const referenceType = reference.meta?.publicationType!;
   const formattedAuthor = authors.map(formatAuthorName);
   const googleScholarQuery = {
     title,
     author: formattedAuthor,
     publication_year: year,
   };
-  const GSLinkRef = generateGoogleScholarLink(googleScholarQuery);
-
+  const GSlinkRefTypes = ['book', 'journal', 'conference', 'preprint', 'report', 'thesis'];
+  const GSLinkRef = (GSlinkRefTypes.includes(referenceType)) && generateGoogleScholarLink(googleScholarQuery);
   return {
     authors,
     editors,
