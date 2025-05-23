@@ -15,7 +15,6 @@ const customJestConfig = {
     '/node_modules/',
     '/browser-tests/',
   ],
-  reporters: ['jest-wip-reporter'],
   resetMocks: true,
 }
 

@@ -35,7 +35,7 @@ jobs:
       - name: Lint SASS
         run: yarn lint-sass
       - name: Unit Test
-        run: yarn test
+        run: yarn test --reporters=jest-wip-reporter
       - name: Production build
         run: yarn build
   test-integration:
