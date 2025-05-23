@@ -3,8 +3,6 @@
 @use "../../../sass/typography";
 
 .previous-version-warning-container {
-  @include mixins.padding(12);
-
   background-color: var(--color-background);
   container-name: warning;
   container-type: inline-size;
@@ -12,26 +10,28 @@
   justify-content: center;
   margin: 0 auto;
 
+  @include mixins.padding(12);
+
   @media only all and (min-width: settings.$breakpoint-medium) {
     width: 100%;
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
+    width: 236px;
+
     @include mixins.margin(-10, "left");
     @include mixins.margin(26, "bottom");
     @include mixins.margin(14, "top");
-
-    width: 236px;
   }
 }
 
 .previous-version-warning {
-  @include mixins.padding(24, "left");
-  @include typography.body-small();
-
   background: url("../../../images/icons/previous-warning.svg") no-repeat 0 0;
   font-weight: 600;
   justify-content: center;
+
+  @include mixins.padding(24, "left");
+  @include typography.body-small();
 
   @container warning (max-width: 480px) {
     display: flex;
@@ -44,20 +44,20 @@
 }
 
 .previous-version-warning__text {
-  @include mixins.margin(8, "left");
-
   display: inline-block;
+
+  @include mixins.margin(8, "left");
 }
 
 .previous-version-warning__link {
-  @include typography.font-size-and-vertical-height(14, 24);
-
   border-radius: 3px;
   color: var(--color-primary-dark);
   cursor: pointer;
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+
+  @include typography.font-size-and-vertical-height(14, 24);
 
   &:hover {
     text-decoration: underline;
