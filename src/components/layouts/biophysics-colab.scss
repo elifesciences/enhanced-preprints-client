@@ -17,12 +17,12 @@
   }
 
   .nav-primary {
-    @include mixins.margin(16, "top");
-    @include mixins.margin(20, "left");
-
     border-left: var(--border);
     display: inline-block;
     height: 24px;
+
+    @include mixins.margin(16, "top");
+    @include mixins.margin(20, "left");
   }
 
   .nav-primary__item {
