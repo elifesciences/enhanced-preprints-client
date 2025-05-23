@@ -20,8 +20,8 @@
 .review-timeline {
   @include mixins.margin(0);
 
-  .review-timeline__event--title,
-  .review-timeline__event--detail {
+  &__event--title,
+  &__event--detail {
     @include mixins.padding(26, "left");
 
     color: var(--color-text);
@@ -48,7 +48,7 @@
     }
   }
 
-  .review-timeline__event--title {
+  &__event--title {
     @include typography.font-size-and-vertical-height(16, 24);
 
     .review-timeline--expanded & {
@@ -69,11 +69,11 @@
     }
   }
 
-  .review-timeline__event--title__event--title::before {
+  &__event--title::before {
     border-radius: 6px 6px 0 0;
   }
 
-  .review-timeline__event--title__event--detail {
+  &__event--detail {
     @include mixins.margin(0);
 
     &::before {
@@ -81,29 +81,29 @@
     }
   }
 
-  .review-timeline__event--title__event--detail__version,
-  .review-timeline__event--title__event--detail__date,
-  .review-timeline__event--title__event--detail__date-prefix {
+  &__version,
+  &__date,
+  &__date-prefix {
     @include typography.body-small();
 
     font-family: var(--font-family-primary);
     font-weight: 600;
   }
 
-  .review-timeline__event--title__event--detail__version::after {
+  &__version::after {
     @include mixins.margin(5, "left");
     @include mixins.margin(5, "right");
 
     content: " • ";
   }
 
-  .review-timeline__event--title__event--detail__date,
-  .review-timeline__event--title__event--detail__date-prefix {
+  &__date,
+  &__date-prefix {
     color: var(--color-text-secondary);
     font-weight: 400;
   }
 
-  .review-timeline__event--title__event--detail__link {
+  &__link {
     @include mixins.padding(3, "bottom");
     @include mixins.padding(3, "top");
     @include typography.font-size-and-vertical-height(14, 20);
@@ -130,7 +130,7 @@
     }
   }
 
-  .review-timeline__event--title__event--detail__expansion {
+  &__expansion {
     @include typography.body-small();
     @include mixins.margin(18, "top");
     @include mixins.padding(0 0 0 26);
