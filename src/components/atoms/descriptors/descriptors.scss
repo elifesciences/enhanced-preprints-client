@@ -3,17 +3,17 @@
 @use "../../../sass/typography";
 
 .descriptors {
-  @include mixins.margin(24, "bottom");
-
   display: flex;
+
+  @include mixins.margin(24, "bottom");
 }
 
 .descriptors__identifiers {
-  @include typography.identifiers-list-text();
-
   list-style: none;
   margin: 0;
   padding: 0;
+
+  @include typography.identifiers-list-text();
 }
 
 .descriptors__identifier {
@@ -24,9 +24,9 @@
   }
 
   a {
-    @include typography.identifiers-list-text();
-
     text-decoration: none;
+
+    @include typography.identifiers-list-text();
 
     .review-content--assessment & {
       color: var(--link-decoration-secondary);
@@ -39,10 +39,10 @@
   padding: 0;
 
   li {
+    display: inline-block;
+
     @include typography.identifiers-list-text();
     @include mixins.margin(0 4);
-
-    display: inline-block;
 
     &:last-child {
       @include mixins.margin(0, "right");
