@@ -6,17 +6,17 @@
 }
 
 .editors-and-reviewers__header {
-  @include typography.heading-2();
-
   margin: 0;
+
+  @include typography.heading-2();
 }
 
 .editors-and-reviewers__list {
-  @include typography.body-alternative();
-  @include mixins.margin(36, "bottom");
-
   list-style: none;
   padding: 0;
+
+  @include typography.body-alternative();
+  @include mixins.margin(36, "bottom");
 }
 
 .editors-and-reviewers__person {
