@@ -27,8 +27,8 @@
     display: list-item;
   }
 
-  .review-timeline__event--title.review-timeline__event--revised::before,
-  .review-timeline__event--detail.review-timeline__event--revised::before {
+  .review-timeline__event--title.review-timeline__event--revised.review-timeline__event--active::before,
+  .review-timeline__event--detail.review-timeline__event--revised.review-timeline__event--active::before {
     background-color: var(--border-timeline-reviewed);
   }
 

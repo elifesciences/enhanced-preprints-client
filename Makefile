@@ -21,7 +21,7 @@ node_modules: package.json yarn.lock
 
 .PHONY: check
 check: node_modules
-	yarn test
+	yarn test --reporters=jest-wip-reporter
 	yarn lint
 	yarn lint-sass
 	yarn tsc --noEmit
