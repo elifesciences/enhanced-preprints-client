@@ -37,7 +37,7 @@ function prepareReference(reference: ReferenceData) {
     author: formattedAuthor,
     publication_year: year,
   };
-  const GSlinkRefTypes = ['book', 'journal', 'conference', 'preprint', 'report', 'thesis'];
+  const GSlinkRefTypes = ['book', 'journal', 'conference', 'preprint', 'report', 'thesis', 'other'];
   const GSLinkRef = (GSlinkRefTypes.includes(referenceType)) && generateGoogleScholarLink(googleScholarQuery);
   return {
     authors,
