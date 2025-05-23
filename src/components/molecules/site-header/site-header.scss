@@ -37,32 +37,32 @@
 
 .nav-primary {
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(20, "left");
-
     border-left: var(--border);
     display: inline-block;
     height: 24px;
+
+    @include mixins.margin(20, "left");
   }
 }
 
 .nav-primary__list {
-  @include mixins.padding(0, "left");
-  @include mixins.padding(0, "top");
-
   display: flex;
   margin: 0;
+
+  @include mixins.padding(0, "left");
+  @include mixins.padding(0, "top");
 }
 
 /* stylelint-disable no-descending-specificity */
 .nav-primary__item {
-  @include typography.font-size-and-vertical-height(14);
-  @include mixins.padding(24, "left");
-
   color: var(--link-decoration);
   display: none;
   font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
+
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.padding(24, "left");
 
   a {
     color: var(--link-decoration);
@@ -85,17 +85,17 @@
 }
 
 .nav-primary__item--first {
-  @include mixins.padding(0, "left");
-
   display: list-item;
 
-  a {
-    @include mixins.padding(48, "right");
+  @include mixins.padding(0, "left");
 
+  a {
     background: url("../../../images/menu/nav-primary-menu-ic.svg") no-repeat right 0;
     background-size: 24px;
     display: block;
     width: 24px;
+
+    @include mixins.padding(48, "right");
 
     &:hover {
       background-image: url("../../../images/menu/nav-primary-menu-blue-ic.svg");
@@ -113,15 +113,15 @@
 }
 
 .nav-secondary {
-  @include mixins.margin(10, "top");
-
   display: none;
 
-  @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.margin(0, "top");
+  @include mixins.margin(10, "top");
 
+  @media only all and (min-width: settings.$breakpoint-large) {
     display: block;
     margin-left: auto;
+
+    @include mixins.margin(0, "top");
   }
 }
 
@@ -133,21 +133,21 @@
 }
 
 .nav-secondary__item {
-  @include typography.font-size-and-vertical-height(14);
-  @include mixins.margin(2, "top");
-  @include mixins.padding(24, "left");
-
   color: var(--link-decoration);
   font-family: var(--font-family-primary);
   font-weight: bold;
   list-style-type: none;
+
+  @include typography.font-size-and-vertical-height(14);
+  @include mixins.margin(2, "top");
+  @include mixins.padding(24, "left");
 }
 
 .nav-secondary__item--search {
-  @include mixins.padding(30, "right");
-
   background: url("../../../images/menu/search.svg") no-repeat right 0;
   background-size: 21px;
+
+  @include mixins.padding(30, "right");
 
   a {
     color: var(--link-decoration);
@@ -160,10 +160,10 @@
 }
 
 .nav-secondary__item--alert {
-  @include mixins.padding(30, "right");
-
   background: url("../../../images/menu/alerts.svg") no-repeat right 0;
   background-size: 21px;
+
+  @include mixins.padding(30, "right");
 
   a {
     color: var(--link-decoration);
@@ -179,8 +179,6 @@
 /* stylelint-enable no-descending-specificity */
 
 .block-button {
-  @include typography.font-size-and-vertical-height(11, 22);
-
   border-radius: 3px;
   color: var(--color-text);
   font-weight: normal;
@@ -189,12 +187,14 @@
   text-transform: uppercase;
   white-space: nowrap;
 
-  &.block-button__variant-one {
-    @include mixins.margin(1, "top");
-    @include mixins.padding(5 9 3 9);
+  @include typography.font-size-and-vertical-height(11, 22);
 
+  &.block-button__variant-one {
     background-color: var(--color-primary);
     color: #fff;
+
+    @include mixins.margin(1, "top");
+    @include mixins.padding(5 9 3 9);
   }
 }
 
@@ -223,13 +223,17 @@
 }
 
 .main-menu__list_item {
+  display: block;
+  font-family: var(--font-family-primary);
+  text-align: left;
+
   @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px, 48);
   @include mixins.padding(24, "bottom");
 
-  display: block;
-  font-family: var(--font-family-primary);
-  line-height: 0;
-  text-align: left;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    line-height: 0;
+  }
 
   @media only screen and (min-width: settings.$breakpoint-large) {
     &.hidden-wide {
@@ -238,9 +242,9 @@
   }
 
   &.end-of-group {
-    @include mixins.margin(24, "bottom");
-
     border-bottom: var(--border);
+
+    @include mixins.margin(24, "bottom");
   }
 
   &:last-child {
@@ -249,11 +253,11 @@
 }
 
 .main-menu__list_link {
-  @include typography.font-size-and-vertical-height(14, 24);
-
   color: var(--color-text);
   font-weight: bold;
   text-decoration: none;
+
+  @include typography.font-size-and-vertical-height(14, 24);
 
   &:hover {
     color: var(--color-primary);
@@ -261,8 +265,6 @@
 }
 
 .main-menu__close_control {
-  @include typography.font-size-and-vertical-height(14, 24);
-
   background: url("../../../images/menu/close.svg") no-repeat 49px 5px;
   background-size: 14px;
   border: none;
@@ -273,6 +275,8 @@
   padding: 0;
   text-align: left;
   width: 68px;
+
+  @include typography.font-size-and-vertical-height(14, 24);
 
   &:hover {
     background-image: url("../../../images/menu/close-blue.svg");
@@ -286,9 +290,9 @@
   }
 
   .site-header__title {
-    @include mixins.margin(30, "bottom");
-
     float: none;
+
+    @include mixins.margin(30, "bottom");
   }
 }
 
@@ -300,8 +304,6 @@
   }
 
   &.main-menu--shown {
-    @include mixins.z-index(4);
-
     background-color: #fff;
     box-sizing: border-box;
     color: var(--color-text);
@@ -316,6 +318,8 @@
     transform: translate3d(3000px, 0, 0);
     width: 100%;
 
+    @include mixins.z-index(4);
+
     @media only screen and (min-width: settings.$breakpoint-large) {
       width: 320px;
     }
@@ -329,13 +333,13 @@
 // Overlay styling
 
 .overlay {
-  @include mixins.z-index(3);
-
   background-color: rgb(0 0 0 / 80%);
   height: 100vh;
   position: fixed;
   top: 0;
   width: 100vw;
+
+  @include mixins.z-index(3);
 }
 
 .to-top-link {
@@ -362,6 +366,9 @@
   &:focus {
     @include mixins.visuallyunhidden();
 
-    position: absolute;
+    /* stylelint-disable-next-line no-duplicate-selectors */
+    & {
+      position: absolute;
+    }
   }
 }
