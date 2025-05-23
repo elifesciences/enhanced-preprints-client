@@ -88,6 +88,18 @@ export type Participant = {
   institution: string,
 };
 
+export type VORVersionSummary = {
+  id: string,
+  msid: string,
+  doi: string,
+  versionIdentifier: string,
+  umbrellaDoi?: string,
+  versionDoi?: string,
+  sentForReview?: Date,
+  published: Date | null,
+  withEvaluationSummary?: boolean,
+};
+
 export type PreprintVersionSummary = {
   id: string,
   msid: string,
@@ -114,7 +126,7 @@ export type ExternalVersionSummary = {
   }[],
 };
 
-export type VersionSummary = PreprintVersionSummary | ExternalVersionSummary;
+export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
 
 export type EnhancedArticle = {
   id: string,
