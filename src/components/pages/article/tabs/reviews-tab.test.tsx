@@ -27,6 +27,7 @@ describe('ReviewsTab', () => {
   it('renders the author response when it is in the peer review', () => {
     render(<ArticleReviewsTab peerReview={peerReview} currentVersion={1} />);
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(screen.getByText(peerReview.authorResponse!.text)).toBeInTheDocument();
   });
 
@@ -143,7 +144,9 @@ describe('ReviewsTab', () => {
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
       {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         href: link.getAttribute('href')!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         text: link.textContent!,
       }
     ));

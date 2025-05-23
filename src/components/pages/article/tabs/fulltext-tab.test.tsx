@@ -78,7 +78,9 @@ describe('FulltextTab', () => {
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
       {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         href: link.getAttribute('href')!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         text: link.textContent!,
       }
     ));
@@ -134,7 +136,9 @@ describe('FulltextTab', () => {
 
     const jumpLinkValues = Array.from(jumpLinks).map((link: Element) => (
       {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         href: link.getAttribute('href')!,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         text: link.textContent!,
       }
     ));

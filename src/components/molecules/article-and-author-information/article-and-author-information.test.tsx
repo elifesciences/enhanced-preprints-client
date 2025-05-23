@@ -49,8 +49,11 @@ describe('ArticleAndAuthorInformation', () => {
     const authorNotesElement = screen.getByText('Author Notes').parentElement;
 
     expect(authorNotesElement).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(authorNotesElement!, 'Generic footnote')).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(authorNotesElement!, 'Generic footnote with an id')).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(queryByText(authorNotesElement!, 'These authors contributed equally')).not.toBeInTheDocument();
   });
 

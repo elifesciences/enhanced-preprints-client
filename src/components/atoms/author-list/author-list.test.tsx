@@ -57,11 +57,17 @@ describe('AuthorList', () => {
     const karaElement = screen.getByText('Kara Zor-el').parentElement;
     const kalElement = screen.getByText('Kal El').parentElement;
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(steveElement!, getByTextMatcher('For correspondence: steve@rogers.avengers'))).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(steveElement!, getByTextMatcher('FAO: steve@rogers.avengers and kara.danvers@katco.com'))).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(karaElement!, getByTextMatcher('For correspondence: kara.danvers@katco.com'))).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(karaElement!, getByTextMatcher('FAO: steve@rogers.avengers and kara.danvers@katco.com'))).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(kalElement!, getByTextMatcher('For correspondence: clark.kent@dailyplanet.com'))).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(getByText(kalElement!, getByTextMatcher('For questions about the multiverse: clark.kent@dailyplanet.com'))).toBeInTheDocument();
   });
 

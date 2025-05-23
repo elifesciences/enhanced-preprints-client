@@ -30,7 +30,7 @@ function prepareReference(reference: ReferenceData) {
   const authors = reference.authors.filter((author) => !author.meta || author.meta?.personGroupType !== 'editor');
   const editors = reference.authors.filter((author) => author.meta && author.meta?.personGroupType === 'editor');
   const { title } = reference;
-  const referenceType = reference.meta?.publicationType!;
+  const referenceType = reference.meta?.publicationType ?? '';
   const formattedAuthor = authors.map(formatAuthorName);
   const googleScholarQuery = {
     title,

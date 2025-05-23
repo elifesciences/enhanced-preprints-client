@@ -8,6 +8,7 @@ describe('authors', () => {
     const { container } = render(<Authors authors={[authors[0]]}/>);
 
     expect(screen.getByText('Steve Rogers')).toBeInTheDocument();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(container.querySelector('.authors-link')!.textContent).toContain('Steve Rogers');
   });
 
