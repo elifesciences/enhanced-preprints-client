@@ -13,9 +13,9 @@
 }
 
 .review-process__container {
-  @include mixins.padding(3, "bottom");
-
   position: relative;
+
+  @include mixins.padding(3, "bottom");
 }
 
 .review-process__body,
@@ -45,13 +45,13 @@
 }
 
 .review-process__link {
-  @include typography.font-size-and-vertical-height(14, 20);
-
   color: var(--link-reviewed);
   display: block;
   font-family: var(--font-family-primary);
   font-weight: 600;
   text-decoration: none;
+
+  @include typography.font-size-and-vertical-height(14, 20);
 
   &:hover {
     text-decoration: underline;
