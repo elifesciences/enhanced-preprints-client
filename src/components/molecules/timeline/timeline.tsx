@@ -42,7 +42,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
                   {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"
                     dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
-                  {typeEventClass && <a className="review-timeline__link"
+                  {activeEventClass && <a className="review-timeline__link"
                     href={`${event.url}/reviews#review-process`}>{event.version > 1 ? t('revised') : t('not_revised')}</a>}
                 </dd>
               </Fragment>
