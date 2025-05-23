@@ -1,23 +1,40 @@
 import {
-  EnhancedArticleWithVersions,
+  VersionSummary,
 } from '../../types';
-import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
+import {
+  isExternalVersionSummary,
+  isPreprintVersionSummary,
+  isVORVersionSummary,
+} from '../type-guards';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
-export const generateTimeline = (version: EnhancedArticleWithVersions): SerialisedTimelineEvent[] => {
-  const versionValues = Object.values(version.versions);
-  const timeline: SerialisedTimelineEvent[] = versionValues.reduce<SerialisedTimelineEvent[]>((events, current) => {
+const generateTimelineUrl = (version: VersionSummary): string => {
+  if (isPreprintVersionSummary(version)) {
+    return `/reviewed-preprints/${version.id}`;
+  }
+  if (isVORVersionSummary(version)) {
+    return `/reviewed-preprints/${version.id}`;
+  }
+  if (isExternalVersionSummary(version)) {
+    return version.url;
+  }
+
+  return '';
+};
+
+export const generateTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
+  const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       const versionNo = +current.versionIdentifier;
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
       events.push({
         name: generateNameWithEvaluationSummarySuffix(
-          `${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
+          `${isVORVersionSummary(current) ? 'vor_' : ''}${isExternalVersionSummary(current) ? 'external_' : ''}timeline_version_title`,
           versionNo,
           withEvaluationSummary,
         ),
-        url: `${isPreprintVersionSummary(current) ? `/reviewed-preprints/${current.id}` : ''}${isExternalVersionSummary(current) ? current.url : ''}`,
+        url: generateTimelineUrl(current),
         version: versionNo,
         date: new Date(current.published).toDateString(),
         ...(isPreprintVersionSummary(current) ? {
