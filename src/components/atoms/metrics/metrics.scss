@@ -26,11 +26,11 @@
 }
 
 .metricsTable__label {
-  @include typography.body();
-
   display: inline;
   flex: 0 0 auto;
   order: 1;
+
+  @include typography.body();
 
   &::before {
     /* stylelint-disable-next-line no-irregular-whitespace */
@@ -39,17 +39,17 @@
 }
 
 .metricsTable__value {
-  @include typography.body();
-  @include mixins.margin(0);
-
   display: inline;
   flex: 0 0 auto;
   font-weight: 600;
   order: 0;
+
+  @include typography.body();
+  @include mixins.margin(0);
 }
 
 .metricsTable__description {
-  @include typography.body-small-alternative();
-
   margin-top: 0;
+
+  @include typography.body-small-alternative();
 }

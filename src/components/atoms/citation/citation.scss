@@ -3,10 +3,10 @@
 @use "../../../sass/typography";
 
 .citation {
+  grid-column: 1/13;
+
   @include mixins.margin(12, "right");
   @include typography.body-small();
-
-  grid-column: 1/13;
 }
 
 .citation__authors_list {
@@ -37,9 +37,9 @@
 }
 
 .citation__title {
-  @include typography.author-list-text();
-
   font-weight: bold;
+
+  @include typography.author-list-text();
 
   &::after {
     content: " ";
@@ -51,9 +51,13 @@
 }
 
 .citation__doi {
+  display: block;
+
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
-  color: var(--color-text-secondary);
-  display: block;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-text-secondary);
+  }
 }

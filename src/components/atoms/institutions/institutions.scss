@@ -6,9 +6,9 @@
   display: none;
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(24, "bottom");
-
     display: block;
+
+    @include mixins.margin(24, "bottom");
   }
 }
 
@@ -24,9 +24,9 @@
 }
 
 .institutions-list__item {
-  @include typography.affiliations-list-text();
-
   display: inline;
+
+  @include typography.affiliations-list-text();
 
   &::after {
     content: " • ";

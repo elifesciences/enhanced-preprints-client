@@ -12,17 +12,17 @@ $image-width: 185;
 }
 
 .investor-logos__item {
-  @include mixins.padding(24);
-
   border-top: 1px solid var(--divider);
+
+  @include mixins.padding(24);
 }
 
 .investor-logos__container {
-  @include mixins.constrain-width($image-width, "max");
-  @include mixins.height($image-height);
-
   margin: auto;
   text-align: center;
+
+  @include mixins.constrain-width($image-width, "max");
+  @include mixins.height($image-height);
 
   @supports (display: flex) {
     align-items: center;

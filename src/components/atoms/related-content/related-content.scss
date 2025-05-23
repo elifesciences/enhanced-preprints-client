@@ -6,16 +6,16 @@
   display: none;
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.padding(24, "bottom");
-    @include mixins.padding(0, "left");
-    @include mixins.padding(24, "top");
-
     border-bottom: var(--border);
     border-top: var(--border);
     display: unset;
     list-style: none;
     margin: 0 0 0 auto;
     width: 100%;
+
+    @include mixins.padding(24, "bottom");
+    @include mixins.padding(0, "left");
+    @include mixins.padding(24, "top");
   }
 }
 

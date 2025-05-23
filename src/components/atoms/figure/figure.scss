@@ -20,21 +20,21 @@
 }
 
 .figure__label {
+  display: block;
+
   @include typography.heading-4();
   @include mixins.margin(12, "bottom");
-
-  display: block;
 }
 
 .figure__caption {
-  @include mixins.margin(12, "bottom");
-  @include typography.font-size-and-vertical-height(14, 24);
-
   -webkit-box-orient: vertical;
   display: -webkit-box;
   font-family: var(--font-family-primary);
   -webkit-line-clamp: 4;
   overflow: hidden;
+
+  @include mixins.margin(12, "bottom");
+  @include typography.font-size-and-vertical-height(14, 24);
 
   h1 {
     @include mixins.margin(0, "top");
@@ -93,7 +93,7 @@
 }
 
 .figure-container {
-  @include mixins.margin(48, "bottom");
-
   border-bottom: 1px solid var(--divider);
+
+  @include mixins.margin(48, "bottom");
 }

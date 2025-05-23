@@ -13,10 +13,10 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
+    grid-template-columns: 1fr;
+
     @include mixins.margin(10, "top");
     @include mixins.margin(0, "right");
-
-    grid-template-columns: 1fr;
   }
 }
 
@@ -61,10 +61,6 @@
 }
 
 .text-field {
-  @include typography.font-size-and-vertical-height(16);
-  @include mixins.padding(11 12);
-  @include mixins.margin(36, "bottom");
-
   border: 1px solid var(--divider);
   box-sizing: border-box;
   color: var(--color-text);
@@ -72,6 +68,10 @@
   grid-column: 1/13;
   grid-row: 1;
   width: 100%;
+
+  @include typography.font-size-and-vertical-height(16);
+  @include mixins.padding(11 12);
+  @include mixins.margin(36, "bottom");
 
   &:focus {
     border: 1px solid black;
@@ -101,11 +101,11 @@
 }
 
 .cite-downloads__list-item {
-  @include mixins.margin(24, "right");
-
   display: flex;
   height: 48px;
   width: fit-content;
+
+  @include mixins.margin(24, "right");
 
   &:empty {
     display: none;
@@ -116,10 +116,10 @@
   }
 
   @media only all and (width <= 618px) {
-    @include mixins.margin(0 0 12 0);
-
     text-align: center;
     width: 100%;
+
+    @include mixins.margin(0 0 12 0);
 
     &:last-child {
       @include mixins.margin(0, "bottom");
@@ -129,11 +129,11 @@
 
 .article-actions-container {
   @media only all and (#{settings.$breakpoint-medium} <= width < #{settings.$breakpoint-large}) {
-    @include mixins.margin(12, "top");
-
     align-items: flex-end;
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    @include mixins.margin(12, "top");
   }
 }

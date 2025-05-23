@@ -13,8 +13,6 @@
 }
 
 .modal-content {
-  @include mixins.padding(36);
-
   background-color: #fff;
   border: 0;
   border-radius: 3px;
@@ -25,27 +23,29 @@
   margin: 0;
   z-index: 200;
 
+  @include mixins.padding(36);
+
   @media only all and (min-width: settings.$breakpoint-small) {
     @include mixins.margin(24);
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
-    @include mixins.margin(180, "top");
-    @include mixins.margin(24, "bottom");
-
     margin-left: auto;
     margin-right: auto;
     max-width: 730px;
+
+    @include mixins.margin(180, "top");
+    @include mixins.margin(24, "bottom");
   }
 
   h6 {
-    @include mixins.padding(0 0 12);
-    @include typography.font-size-and-vertical-height(16, 24);
-
     grid-column: 1/6;
     grid-row: 1;
     justify-self: start;
     margin: 0;
+
+    @include mixins.padding(0 0 12);
+    @include typography.font-size-and-vertical-height(16, 24);
   }
 }
 
@@ -59,9 +59,9 @@
 }
 
 .modal-content__top {
-  @include mixins.padding(24, "bottom");
-
   display: grid;
+
+  @include mixins.padding(24, "bottom");
 }
 
 .modal-content__title {
@@ -71,27 +71,27 @@
 }
 
 .modal-content__warning {
+  display: grid;
+  grid-column: 1/6;
+
   @include mixins.margin(12, "top");
   @include typography.body-small();
 
-  color: var(--color-primary);
-  display: grid;
-  grid-column: 1/6;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-primary);
+  }
 }
 
 .modal-content__show {
-  @include mixins.z-index(1);
-
   opacity: 1;
   overflow-y: scroll;
   visibility: visible;
+
+  @include mixins.z-index(1);
 }
 
 .modal-content__close-button {
-  @include mixins.padding(0 25 0 0);
-  @include mixins.z-index(2);
-  @include typography.font-size-and-vertical-height(16, 24);
-
   background: url("../../../images/actions/close.svg") right 5px no-repeat;
   border: none;
   color: var(--color-text);
@@ -101,6 +101,10 @@
   grid-row: 1;
   height: auto;
   place-self: start end;
+
+  @include mixins.padding(0 25 0 0);
+  @include mixins.z-index(2);
+  @include typography.font-size-and-vertical-height(16, 24);
 }
 
 .downloads-container {
@@ -131,10 +135,10 @@
     }
 
     .modal-content__cite & {
-      @include mixins.margin(36, "bottom");
-
       grid-column: 1/13;
       grid-row: 2;
+
+      @include mixins.margin(36, "bottom");
     }
   }
 }

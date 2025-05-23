@@ -8,17 +8,17 @@
 }
 
 .authors-list {
-  @include mixins.margin(0);
-  @include mixins.padding(0);
-
   display: inline;
   list-style: none;
+
+  @include mixins.margin(0);
+  @include mixins.padding(0);
 }
 
 .authors-list__item {
-  @include typography.author-list-text();
-
   display: inline;
+
+  @include typography.author-list-text();
 
   &::before {
     content: ", ";
@@ -100,21 +100,21 @@
 }
 
 .authors-email__link {
-  @include mixins.padding(26, "right");
-
   background: url("../../../images/icons/email.svg") no-repeat right 2px;
   background-size: 22px;
   display: inline-block;
+
+  @include mixins.padding(26, "right");
 }
 
 .authors-list__expansion {
   display: none;
 
   .authors--collapsible & {
+    cursor: pointer;
+
     @include typography.expansion-text();
     @include typography.font-size-and-vertical-height(16, 24);
-
-    cursor: pointer;
 
     .authors-list__expansion-count {
       display: none;

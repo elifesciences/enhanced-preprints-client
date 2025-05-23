@@ -10,10 +10,10 @@
   }
 
   .error__title {
-    @include mixins.margin(48, "top");
-
     font-family: var(--font-family-primary);
     font-size: 26px;
+
+    @include mixins.margin(48, "top");
   }
 
   .error__message {

@@ -2,18 +2,18 @@
 @use "../../../sass/typography";
 
 .article-flag-list {
-  @include mixins.margin(0, "top");
-  @include mixins.margin(6, "bottom");
-
   list-style: none;
   padding: 0;
+
+  @include mixins.margin(0, "top");
+  @include mixins.margin(6, "bottom");
 }
 
 .article-flag-list__item {
+  display: inline-block;
+
   @include mixins.margin(6, "bottom");
   @include mixins.padding(6, "right");
-
-  display: inline-block;
 
   &::after {
     content: ", ";
