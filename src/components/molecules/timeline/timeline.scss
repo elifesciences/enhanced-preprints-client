@@ -39,11 +39,11 @@
       width: 8px;
     }
 
-    &.review-timeline__event--reviewed::before {
+    &.review-timeline__event--reviewed.review-timeline__event--active::before {
       background-color: var(--border-timeline-reviewed);
     }
 
-    &.review-timeline__event--revised::before {
+    &.review-timeline__event--revised.review-timeline__event--active::before {
       background-color: var(--border-timeline-revised);
     }
   }

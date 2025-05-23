@@ -21,7 +21,7 @@ export const Timeline = ({ current, events }: TimelineProps) => {
       <dl className={`review-timeline${expanded !== false ? ' review-timeline--expanded' : ''}`} id="review-timeline" aria-label="Version history">
         {
           sortedEvents.map((event, index) => {
-            const typeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? (` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`) : '';
+            const typeEventClass = ` review-timeline__event--${event.version > 1 ? 'revised' : 'reviewed'}`;
             const activeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
             const evaluationSummaryClass = event.withEvaluationSummary ? ' review-timeline__event--with-evaluation-summary' : '';
             const hidden = (current && current !== event.version && expanded === false);
