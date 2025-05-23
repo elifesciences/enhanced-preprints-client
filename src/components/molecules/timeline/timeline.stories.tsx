@@ -49,6 +49,21 @@ export const EventTimeline: Story = {
   },
 };
 
+export const EventTimelineVersionOfRecord:Story = {
+  args: {
+    events: [
+      {
+        name: 'Version of Record',
+        date: new Date('2023-03-19'),
+        version: 3,
+        versionIndicator: 'v3',
+        url: '#',
+        versionOfRecord: true,
+      },
+    ],
+  },
+};
+
 export const EventTimelineRevised:Story = {
   args: {
     events: [
