@@ -194,4 +194,31 @@ describe('Reference', () => {
     expect(screen.getByText('PubMed', { exact: false }).tagName).toStrictEqual('A');
     expect(screen.getByText('PubMed', { exact: false })).toHaveAttribute('href', 'https://pubmed.ncbi.nlm.nih.gov/24848');
   });
+
+  it('should render Google Scholar link for appropriate type (e.g. journal, book)', () => {
+    render(<Reference reference={references[1]} />);
+
+    expect(screen.getByText('Google Scholar', { exact: false }).tagName).toStrictEqual('A');
+    expect(
+      screen.getByText('Google Scholar', { exact: false }),
+    ).toHaveAttribute(
+      'href',
+      'https://scholar.google.com/scholar_lookup?' +
+        'title=The+Role+of+Estrogen+Receptors+in+Cardiovascular+Disease&' +
+        'author=L+Aryan&' +
+        'author=D+Younessi&' +
+        'author=M+Zargari&' +
+        'author=S+Banerjee&' +
+        'author=J+Agopian&' +
+        'author=S+Rahman&' +
+        'author=R+Borna&' +
+        'publication_year=2019b',
+    );
+  });
+
+  it('should not render Google Scholar link the type of reference is not supported (patent, software)', () => {
+    render(<Reference reference={references[0]} />);
+
+    expect(screen.queryByText('Google Scholar', { exact: false })).not.toBeInTheDocument();
+  });
 });
