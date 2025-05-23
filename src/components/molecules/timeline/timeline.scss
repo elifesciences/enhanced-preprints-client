@@ -39,6 +39,10 @@
       width: 8px;
     }
 
+    &.review-timeline__event--version-of-record.review-timeline__event--active::before {
+      background-color: var(--border-timeline-version-of-record);
+    }
+
     &.review-timeline__event--reviewed.review-timeline__event--active::before {
       background-color: var(--border-timeline-reviewed);
     }
@@ -119,6 +123,10 @@
     &:hover {
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    .review-timeline__event--version-of-record & {
+      color: var(--link-version-of-record);
     }
 
     .review-timeline__event--reviewed & {
