@@ -23,12 +23,12 @@
 
 .review-timeline__event--title,
 .review-timeline__event--detail {
-  @include mixins.padding(26, "left");
-
   color: var(--color-text);
   font-family: var(--font-family-primary);
   font-weight: 600;
   position: relative;
+
+  @include mixins.padding(26, "left");
 
   &::before {
     background-color: var(--border-timeline);
@@ -89,17 +89,21 @@
 .review-timeline__version,
 .review-timeline__date,
 .review-timeline__date-prefix {
+  font-weight: 600;
+
   @include typography.body-small();
 
-  font-family: var(--font-family-primary);
-  font-weight: 600;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    font-family: var(--font-family-primary);
+  }
 }
 
 .review-timeline__version::after {
+  content: " • ";
+
   @include mixins.margin(5, "left");
   @include mixins.margin(5, "right");
-
-  content: " • ";
 }
 
 .review-timeline__date,
@@ -109,10 +113,6 @@
 }
 
 .review-timeline__link {
-  @include mixins.padding(3, "bottom");
-  @include mixins.padding(3, "top");
-  @include typography.font-size-and-vertical-height(14, 20);
-
   clear: left;
   color: var(--color-text);
   display: block;
@@ -120,6 +120,10 @@
   font-weight: 600;
   text-decoration: none;
   width: max-content;
+
+  @include typography.font-size-and-vertical-height(14, 20);
+  @include mixins.padding(3, "bottom");
+  @include mixins.padding(3, "top");
 
   &:hover {
     text-decoration: underline;
@@ -140,14 +144,14 @@
 }
 
 .review-timeline__expansion {
-  @include typography.body-small();
-  @include mixins.margin(18, "top");
-  @include mixins.padding(0 0 0 26);
-
   background: url("../../../images/icons/arrowdown-triangle.svg") no-repeat 0 10px;
   border: 0;
   cursor: pointer;
   display: block;
+
+  @include typography.body-small();
+  @include mixins.margin(18, "top");
+  @include mixins.padding(0 0 0 26);
 
   &:hover {
     text-decoration: underline;
