@@ -35,7 +35,9 @@
 
 @mixin margin($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
-    margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    & {
+      margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    }
   } @else if $dimension == "" and meta.type-of($size_in_px) == list {
     $parts-rem: ();
 
@@ -43,37 +45,51 @@
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
-    margin: $parts-rem;
+    & {
+      margin: $parts-rem;
+    }
   } @else {
-    margin: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    & {
+      margin: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    }
   }
 }
 
 @mixin wrapper($padding: true) {
-  box-sizing: content-box;
-  margin: auto;
+  & {
+    box-sizing: content-box;
+    margin: auto;
 
-  @include constrain-width(settings.$max-site-width, "max");
+    @include constrain-width(settings.$max-site-width, "max");
+  }
 
   @if $padding {
-    padding-left: var(--site-spacing);
-    padding-right: var(--site-spacing);
+    & {
+      padding-left: var(--site-spacing);
+      padding-right: var(--site-spacing);
+    }
 
     @media only screen and (min-width: settings.$breakpoint-small) {
-      padding-left: var(--site-spacing-large);
-      padding-right: var(--site-spacing-large);
+      & {
+        padding-left: var(--site-spacing-large);
+        padding-right: var(--site-spacing-large);
+      }
     }
   }
 }
 
 @mixin constrain-width($size_in_px, $extreme) {
   @if $extreme == min or $extreme == max {
-    #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    & {
+      #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem);
+    }
   }
 }
 
 @mixin height($size_in_px) {
-  height: calc(($size_in_px / var(--base-font-size)) * 1rem);
+  & {
+    height: calc(($size_in_px / var(--base-font-size)) * 1rem);
+  }
 }
 
 @mixin visuallyhidden() {
@@ -98,5 +114,7 @@
 }
 
 @mixin z-index($value) {
-  z-index: ($value * 10);
+  & {
+    z-index: ($value * 10);
+  }
 }
