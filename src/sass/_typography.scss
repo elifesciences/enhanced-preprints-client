@@ -2,41 +2,53 @@
 @use "settings";
 
 @mixin font-size($size_in_px) {
-  font-size: calc(($size_in_px / var(--base-font-size)) * 1rem);
+  & {
+    font-size: calc(($size_in_px / var(--base-font-size)) * 1rem);
+  }
 }
 
 @mixin font-size-and-vertical-height($font-size-in-px, $vertical-height-in-px: 24) {
-  line-height: math.div($vertical-height-in-px, $font-size-in-px);
-
   @include font-size($font-size-in-px);
+
+  & {
+    line-height: math.div($vertical-height-in-px, $font-size-in-px);
+  }
 }
 
 @mixin badge-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(12, 18);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin author-list-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(16, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin term-list-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(12, 16);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin expansion-text() {
-  color: var(--color-primary);
-  cursor: pointer;
-  font-family: var(--font-family-primary);
-  font-weight: 400;
+  & {
+    color: var(--color-primary);
+    cursor: pointer;
+    font-family: var(--font-family-primary);
+    font-weight: 400;
+  }
 
   &::before {
     color: var(--color-text);
@@ -45,18 +57,22 @@
 }
 
 @mixin affiliations-list-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(14, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin h1() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-
   @include font-size-and-vertical-height(22, 28);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+  }
 
   @media only all and (min-width: settings.$breakpoint-small) {
     @include font-size-and-vertical-height(26, 36);
@@ -68,23 +84,29 @@
 }
 
 @mixin identifiers-list-text() {
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(14, 24);
+
+  & {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin heading-base() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+  }
 }
 
 @mixin heading-1() {
-  line-height: 48px;
-
   @include font-size(36);
   @include heading-base();
+
+  & {
+    line-height: 48px;
+  }
 }
 
 @mixin heading-2() {
@@ -107,54 +129,68 @@
 }
 
 @mixin body() {
-  color: var(--color-text);
-  font-family: var(--font-family-secondary);
-
   @include font-size-and-vertical-height(16, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-secondary);
+  }
 }
 
 @mixin body-small() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(14, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin body-small-alternative() {
-  color: var(--color-text);
-  font-family: var(--font-family-secondary);
-
   @include font-size-and-vertical-height(14, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-secondary);
+  }
 }
 
 @mixin body-alternative() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(16, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin assessment-body() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(16, 28);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin navigation-heading() {
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-  font-weight: 400;
-
   @include font-size-and-vertical-height(14, 26);
+
+  & {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-primary);
+    font-weight: 400;
+  }
 }
 
 @mixin term-title() {
-  color: var(--color-text-secondary-dark);
-  font-family: var(--font-family-primary);
-  font-weight: 400;
-
   @include font-size-and-vertical-height(12, 24);
+
+  & {
+    color: var(--color-text-secondary-dark);
+    font-family: var(--font-family-primary);
+    font-weight: 400;
+  }
 }
 
 @mixin navigation-heading-selected() {
@@ -168,28 +204,34 @@
 }
 
 @mixin msa-link-text() {
-  color: var(--color-primary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-
   @include font-size-and-vertical-height(14, 24);
+
+  & {
+    color: var(--color-primary);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+  }
 }
 
 @mixin related-content-type-text() {
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-primary);
-  font-weight: 400;
-
   @include font-size-and-vertical-height(14, 26);
+
+  & {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-primary);
+    font-weight: 400;
+  }
 }
 
 @mixin related-content-link-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  text-decoration: none;
-
   @include font-size-and-vertical-height(16, 24);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
 
   &:hover {
     color: var(--color-primary);
@@ -197,12 +239,14 @@
 }
 
 @mixin link-text() {
-  color: var(--color-primary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  text-decoration: none;
-
   @include font-size-and-vertical-height(12, 24);
+
+  & {
+    color: var(--color-primary);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
 
   :visited {
     color: var(--color-primary);
@@ -210,12 +254,14 @@
 }
 
 @mixin terms-link-text() {
-  color: var(--color-primary);
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  text-decoration: none;
-
   @include font-size-and-vertical-height(16, 24);
+
+  & {
+    color: var(--color-primary);
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
 
   :visited {
     color: var(--color-primary);
@@ -223,12 +269,16 @@
 }
 
 @mixin assessment-fixed-text() {
-  color: var(--color-text);
-  font-family: var(--font-family-primary);
-
   @include font-size-and-vertical-height(14, 20);
+
+  & {
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+  }
 }
 
 @mixin blockquote() {
-  font-style: italic;
+  & {
+    font-style: italic;
+  }
 }
