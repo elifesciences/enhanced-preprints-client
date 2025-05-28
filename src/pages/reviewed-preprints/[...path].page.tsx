@@ -119,7 +119,7 @@ export const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version}/> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version} versionOfRecord={false} /> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],

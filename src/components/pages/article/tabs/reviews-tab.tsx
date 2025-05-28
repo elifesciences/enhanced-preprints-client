@@ -6,7 +6,7 @@ import { PeerReview } from '../../../../types';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
-export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: PeerReview, currentVersion: number, }) => {
+export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: { peerReview: PeerReview, currentVersion: number, versionOfRecord?: boolean }) => {
   const { t } = useTranslation();
   const headings = [
     { id: 'review-process', text: 'Peer review process' },
@@ -21,7 +21,12 @@ export const ArticleReviewsTab = ({ peerReview, currentVersion }: { peerReview: 
     <div className="tabbed-navigation__content tabbed-navigation__content--reviews">
       <JumpToMenu headings={headings} />
       <div className="article-body-container">
-        <ReviewProcess current={currentVersion} {...(peerReview.evaluationSummary ? { evaluationSummary: true } : {})} {...(peerReview.authorResponse ? { authorResponse: true } : {})} />
+        <ReviewProcess
+          current={currentVersion}
+          {...(peerReview.evaluationSummary ? { evaluationSummary: true } : {})}
+          {...(peerReview.authorResponse ? { authorResponse: true } : {})}
+          {...(versionOfRecord ? { versionOfRecord: true } : {})}
+        />
         { peerReview.evaluationSummary && peerReview.evaluationSummary.participants.length > 0 && <EditorsAndReviewers participants={peerReview.evaluationSummary.participants} /> }
         {peerReview.reviews.map((review, index) => (
           <ReviewContent key={index} id={`peer-review-${index}`} content={review.text} doi={review.doi} />
