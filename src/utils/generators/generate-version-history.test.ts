@@ -15,6 +15,16 @@ const versionSummary1: VersionSummary = {
   published: new Date('2023-01-03'),
 };
 
+const vorVersionSummary: VersionSummary = {
+  id: '1v3',
+  versionIdentifier: '3',
+
+  doi: '10.00001/1',
+  msid: '1',
+
+  published: new Date('2024-01-09'),
+};
+
 const versionSummary2: VersionSummary = {
   id: '1v2',
   versionIdentifier: '2',
@@ -81,6 +91,44 @@ describe('generateVersionHistory', () => {
         url: '/reviewed-preprints/1v2',
         date: 'Mon Jan 09 2023',
         version: 2,
+      },
+    ]);
+  });
+
+  it.failing('should generate the correct version history with two reviewed preprints and a version of record', () => {
+    const history = generateVersionHistory([
+      versionSummary1,
+      versionSummary2,
+      vorVersionSummary,
+    ]);
+
+    expect(history).toEqual([
+      {
+        date: 'Sun Jan 01 2023',
+        label: 'Sent for peer review',
+      },
+      {
+        date: 'Mon Jan 02 2023',
+        label: 'Preprint posted',
+        url: 'https://doi.org/doi-123',
+      },
+      {
+        label: 'history_version_title_first_version',
+        url: '/reviewed-preprints/1v1',
+        date: 'Tue Jan 03 2023',
+        version: 1,
+      },
+      {
+        label: 'history_version_title',
+        url: '/reviewed-preprints/1v2',
+        date: 'Mon Jan 09 2023',
+        version: 2,
+      },
+      {
+        label: 'history_version_of_record_title',
+        url: '/reviewed-preprints/1v3',
+        date: 'Tue Jan 09 2024',
+        version: 3,
       },
     ]);
   });
