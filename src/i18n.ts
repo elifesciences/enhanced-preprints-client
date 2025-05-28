@@ -37,6 +37,7 @@ const resources = {
       history_version_title_first_version: '$t(history_version_title)',
       history_version_title_with_evaluation_summary: '$t(history_version_title)',
       history_version_title_with_evaluation_summary_first_version: '$t(history_version_title_with_evaluation_summary)',
+      history_version_of_record_title: '$t(version_of_record)',
       external_history_version_title: '$t(history_version_title)',
       external_history_version_title_updated: '$t(external_history_version_title)',
       process_url_read_more: 'Read more about $t(publisher_short)’s peer review process.',
