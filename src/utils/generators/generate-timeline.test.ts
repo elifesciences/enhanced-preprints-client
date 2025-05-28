@@ -225,4 +225,39 @@ describe('generateTimeline', () => {
       },
     ]);
   });
+
+  it('should generate the correct timeline with a Version of Record with an evaluation summary', () => {
+    const timeline = generateTimeline([
+      versionSummary1,
+      versionSummary2,
+      {
+        ...versionSummary3,
+        withEvaluationSummary: true,
+      },
+    ]);
+
+    expect(timeline).toEqual([
+      {
+        name: 'vor_timeline_version_title',
+        url: '/reviewed-preprints/1v3',
+        version: 3,
+        date: 'Thu Feb 09 2023',
+        versionOfRecord: true,
+      },
+      {
+        name: 'timeline_version_title',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
+        date: 'Mon Jan 09 2023',
+        versionIndicator: 'v2',
+      },
+      {
+        name: 'timeline_version_title_first_version',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        date: 'Tue Jan 03 2023',
+        versionIndicator: 'v1',
+      },
+    ]);
+  });
 });
