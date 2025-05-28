@@ -6,6 +6,7 @@ type ReviewProcessProps = {
   current?: number;
   evaluationSummary?: boolean,
   authorResponse?: boolean,
+  versionOfRecord?: boolean,
 };
 
 export const ReviewProcess = ({
