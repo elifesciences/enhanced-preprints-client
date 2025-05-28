@@ -41,7 +41,7 @@ describe('Review Process', () => {
     expect(document.querySelectorAll('.review-process--with-evaluation-summary')).toHaveLength(1);
   });
 
-  it.failing('shows the description with a version of record class', () => {
+  it('shows the description with a version of record class', () => {
     render(<ReviewProcess current={1} versionOfRecord={true} />);
 
     expect(document.querySelectorAll('.review-process--version-of-record')).toHaveLength(1);
