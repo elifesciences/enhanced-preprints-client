@@ -33,4 +33,11 @@ describe('Review Process', () => {
 
     expect(screen.getByText('Revised:')).toBeInTheDocument();
   });
+
+  it('shows the not revised description with an evaluation summary class', () => {
+    render(<ReviewProcess current={1} evaluationSummary={true} />);
+
+    expect(document.querySelectorAll('.review-process--reviewed')).toHaveLength(1);
+    expect(document.querySelectorAll('.review-process--with-evaluation-summary')).toHaveLength(1);
+  });
 });
