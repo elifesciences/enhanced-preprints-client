@@ -53,22 +53,25 @@ export const generateVersionHistory = (versions: VersionSummary[]): VersionHisto
     return events;
   }, []);
 
-  const firstVersion = versions.filter(isPreprintVersionSummary)
-    .reduce((mostRecent, current) => (!mostRecent || new Date(current.preprintPosted).getTime() < new Date(mostRecent.preprintPosted).getTime() ? current : mostRecent));
+  const preprintVersionSummaries = versions.filter(isPreprintVersionSummary);
 
-  if (firstVersion.preprintPosted !== undefined) {
-    history.push({
-      date: new Date(firstVersion.preprintPosted).toDateString(),
-      label: 'Preprint posted',
-      url: `https://doi.org/${firstVersion.preprintDoi}`,
-    });
-  }
+  if (preprintVersionSummaries.length > 0) {
+    const firstVersion = preprintVersionSummaries.reduce((mostRecent, current) => (!mostRecent || new Date(current.preprintPosted).getTime() < new Date(mostRecent.preprintPosted).getTime() ? current : mostRecent));
 
-  if (firstVersion.sentForReview !== undefined) {
-    history.push({
-      date: new Date(firstVersion.sentForReview).toDateString(),
-      label: 'Sent for peer review',
-    });
+    if (firstVersion.preprintPosted !== undefined) {
+      history.push({
+        date: new Date(firstVersion.preprintPosted).toDateString(),
+        label: 'Preprint posted',
+        url: `https://doi.org/${firstVersion.preprintDoi}`,
+      });
+    }
+
+    if (firstVersion.sentForReview !== undefined) {
+      history.push({
+        date: new Date(firstVersion.sentForReview).toDateString(),
+        label: 'Sent for peer review',
+      });
+    }
   }
 
   return history.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());

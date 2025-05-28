@@ -95,6 +95,21 @@ describe('generateVersionHistory', () => {
     ]);
   });
 
+  it('should generate the correct version history with one version of record', () => {
+    const history = generateVersionHistory([
+      vorVersionSummary,
+    ]);
+
+    expect(history).toEqual([
+      {
+        label: 'history_version_of_record_title',
+        url: '/reviewed-preprints/1v3',
+        date: 'Tue Jan 09 2024',
+        version: 3,
+      },
+    ]);
+  });
+
   it('should generate the correct version history with two reviewed preprints and a version of record', () => {
     const history = generateVersionHistory([
       versionSummary1,
