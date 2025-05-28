@@ -2,10 +2,18 @@ import {
   VersionHistoryItem,
   VersionSummary,
 } from '../../types';
-import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
+import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../type-guards';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
-const constructHistoryItemLabel = (version: VersionSummary) => `${isExternalVersionSummary(version) ? 'external_' : ''}history_version_title`;
+const constructHistoryItemLabel = (version: VersionSummary) => {
+  if (isVORVersionSummary(version)) {
+    return 'history_version_of_record_title';
+  }
+  if (isExternalVersionSummary(version)) {
+    return 'external_history_version_title';
+  }
+  return 'history_version_title';
+};
 
 export const generateVersionHistory = (versions: VersionSummary[]): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = versions.reduce<VersionHistoryItem[]>((events, current) => {
