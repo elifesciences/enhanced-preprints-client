@@ -16,7 +16,7 @@ const constructHistoryItemLabel = (version: VersionSummary) => {
 };
 
 const constructHistoryItemUrl = (version: VersionSummary) => {
-  if (isPreprintVersionSummary(version)) {
+  if (isPreprintVersionSummary(version) || isVORVersionSummary(version)) {
     return `/reviewed-preprints/${version.id}`;
   }
   if (isExternalVersionSummary(version)) {

@@ -95,7 +95,7 @@ describe('generateVersionHistory', () => {
     ]);
   });
 
-  it.failing('should generate the correct version history with two reviewed preprints and a version of record', () => {
+  it('should generate the correct version history with two reviewed preprints and a version of record', () => {
     const history = generateVersionHistory([
       versionSummary1,
       versionSummary2,
