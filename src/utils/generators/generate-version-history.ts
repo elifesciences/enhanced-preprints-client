@@ -15,7 +15,15 @@ const constructHistoryItemLabel = (version: VersionSummary) => {
   return 'history_version_title';
 };
 
-const constructHistoryItemUrl = (version: VersionSummary) => `${isPreprintVersionSummary(version) ? `/reviewed-preprints/${version.id}` : ''}${isExternalVersionSummary(version) ? version.url : ''}`;
+const constructHistoryItemUrl = (version: VersionSummary) => {
+  if (isPreprintVersionSummary(version)) {
+    return `/reviewed-preprints/${version.id}`;
+  }
+  if (isExternalVersionSummary(version)) {
+    return version.url;
+  }
+  return '';
+};
 
 export const generateVersionHistory = (versions: VersionSummary[]): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = versions.reduce<VersionHistoryItem[]>((events, current) => {
