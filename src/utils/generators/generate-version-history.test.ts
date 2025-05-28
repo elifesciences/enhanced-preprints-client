@@ -262,4 +262,38 @@ describe('generateVersionHistory', () => {
       },
     ]);
   });
+
+  it('should generate the correct version history with one reviewed preprint without evaluation summary and another with', () => {
+    const history = generateVersionHistory([
+      versionSummary1,
+      {
+        ...versionSummary2,
+        withEvaluationSummary: true,
+      },
+    ]);
+
+    expect(history).toEqual([
+      {
+        date: 'Sun Jan 01 2023',
+        label: 'Sent for peer review',
+      },
+      {
+        date: 'Mon Jan 02 2023',
+        label: 'Preprint posted',
+        url: 'https://doi.org/doi-123',
+      },
+      {
+        label: 'history_version_title_first_version',
+        url: '/reviewed-preprints/1v1',
+        date: 'Tue Jan 03 2023',
+        version: 1,
+      },
+      {
+        label: 'history_version_title_with_evaluation_summary',
+        url: '/reviewed-preprints/1v2',
+        date: 'Mon Jan 09 2023',
+        version: 2,
+      },
+    ]);
+  });
 });
