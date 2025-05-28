@@ -100,6 +100,54 @@ describe('generateTimeline', () => {
     ]);
   });
 
+  it('should generate the correct timeline with one reviewed preprint with evaluation summary', () => {
+    const timeline = generateTimeline([
+      {
+        ...versionSummary1,
+        withEvaluationSummary: true,
+      },
+    ]);
+
+    expect(timeline).toEqual([
+      {
+        name: 'timeline_version_title_with_evaluation_summary_first_version',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        date: 'Tue Jan 03 2023',
+        versionIndicator: 'v1',
+        withEvaluationSummary: true,
+      },
+    ]);
+  });
+
+  it('should generate the correct timeline with one reviewed preprint without evaluation summary and another with', () => {
+    const timeline = generateTimeline([
+      versionSummary1,
+      {
+        ...versionSummary2,
+        withEvaluationSummary: true,
+      },
+    ]);
+
+    expect(timeline).toEqual([
+      {
+        name: 'timeline_version_title_with_evaluation_summary',
+        url: '/reviewed-preprints/1v2',
+        version: 2,
+        date: 'Mon Jan 09 2023',
+        versionIndicator: 'v2',
+        withEvaluationSummary: true,
+      },
+      {
+        name: 'timeline_version_title_first_version',
+        url: '/reviewed-preprints/1v1',
+        version: 1,
+        date: 'Tue Jan 03 2023',
+        versionIndicator: 'v1',
+      },
+    ]);
+  });
+
   it('should generate the correct timeline with VOR corrections', () => {
     const timeline = generateTimeline([
       versionSummary1,
