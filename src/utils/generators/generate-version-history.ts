@@ -5,6 +5,8 @@ import {
 import { isExternalVersionSummary, isPreprintVersionSummary } from '../type-guards';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
+const constructHistoryItemLabel = (version: VersionSummary) => `${isExternalVersionSummary(version) ? 'external_' : ''}history_version_title`;
+
 export const generateVersionHistory = (versions: VersionSummary[]): VersionHistoryItem[] => {
   const history: VersionHistoryItem[] = versions.reduce<VersionHistoryItem[]>((events, current) => {
     if (current.published) {
@@ -12,7 +14,7 @@ export const generateVersionHistory = (versions: VersionSummary[]): VersionHisto
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;
       events.push({
         label: generateNameWithEvaluationSummarySuffix(
-          `${isExternalVersionSummary(current) ? 'external_' : ''}history_version_title`,
+          constructHistoryItemLabel(current),
           versionNo,
           withEvaluationSummary,
         ),
