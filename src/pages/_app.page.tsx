@@ -77,6 +77,7 @@ export default function MyApp({ Component, pageProps }: any) {
             })(window,document,'script','dataLayer','${config.gtmId}');`,
           }}></script>
         }
+        <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
       </Head>
       <FeaturesContext.Provider value={features}>
         <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>

@@ -22,5 +22,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
+    <div className='altmetric-embed' data-badge-type='donut' data-doi="10.1038/nature.2012.9872"></div>
   </section>;
 };
