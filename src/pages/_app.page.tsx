@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
@@ -77,8 +78,8 @@ export default function MyApp({ Component, pageProps }: any) {
             })(window,document,'script','dataLayer','${config.gtmId}');`,
           }}></script>
         }
-        <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
       </Head>
+      <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
       <FeaturesContext.Provider value={features}>
         <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
           <LayoutSelector siteName={pageProps.siteName}>
