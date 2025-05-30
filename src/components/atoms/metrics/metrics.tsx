@@ -3,7 +3,12 @@ import { useState, useEffect } from 'react';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
-export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
+type MetricsProps = {
+  metrics: MetricsType;
+  doi: string;
+};
+
+export const Metrics = ({ metrics, doi }: MetricsProps) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
 
   const [isClient, setIsClient] = useState(false);
@@ -29,6 +34,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
-    { isClient && <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi="10.1038/nature.2012.9872"></div>}
+    { isClient && <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi={doi}></div>}
   </section>;
 };
