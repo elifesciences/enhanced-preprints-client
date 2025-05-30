@@ -1,9 +1,16 @@
 import pluralize from 'pluralize';
+import { useState, useEffect } from 'react';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
 export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return <section>
     <h1 id="metrics" className="metrics__title">Metrics</h1>
@@ -22,6 +29,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
-    <div className='altmetric-embed' data-badge-type='donut' data-doi="10.1038/nature.2012.9872"></div>
+    { isClient && <div className='altmetric-embed' data-badge-type='donut' data-doi="10.1038/nature.2012.9872"></div>}
   </section>;
 };
