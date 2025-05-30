@@ -19,12 +19,12 @@
   display: none;
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.margin(24, "right");
-
     display: block;
     flex: 0 0 auto;
     max-width: 180px;
     width: 100%;
+
+    @include mixins.margin(24, "right");
   }
 }
 

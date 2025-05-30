@@ -48,9 +48,9 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.padding(36, "right");
-
     grid-column: 1/10;
+
+    @include mixins.padding(36, "right");
   }
 }
 
@@ -70,9 +70,9 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.padding(36, "right");
-
     grid-column: 1/10;
+
+    @include mixins.padding(36, "right");
   }
 }
 
@@ -90,9 +90,6 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
-    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
-    @include mixins.padding(10, "left");
-
     align-items: end;
     flex-direction: column;
     grid-column: 9/13;
@@ -103,11 +100,14 @@
     place-self: flex-start end;
     position: sticky;
     top: 115px;
+
+    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
+    @include mixins.padding(10, "left");
   }
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
-    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
-
     grid-column: 10/13;
+
+    @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
   }
 }

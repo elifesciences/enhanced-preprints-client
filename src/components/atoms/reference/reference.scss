@@ -5,14 +5,15 @@
 %reference {
   @include typography.body();
 
-  font-family: var(--font-family-primary);
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    font-family: var(--font-family-primary);
+  }
 }
 
 .reference__title {
   @extend %reference;
-  @include typography.body();
 
-  font-family: var(--font-family-primary);
   font-weight: bold;
 
   &::after {
@@ -21,11 +22,15 @@
 }
 
 .reference__title--link {
-  @include typography.body();
-
-  font-family: var(--font-family-primary);
   font-weight: bold;
   text-decoration: none;
+
+  @include typography.body();
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    font-family: var(--font-family-primary);
+  }
 
   &:hover {
     color: var(--color-primary);
@@ -88,18 +93,27 @@
 
 .reference__doi {
   @extend %reference;
+
+  display: block;
+
   @include mixins.margin(12 0 36);
   @include typography.body-small();
 
-  color: var(--color-text-secondary);
-  display: block;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-text-secondary);
+  }
 }
 
 %reference-link {
+  text-decoration: none;
+
   @include typography.body-small();
 
-  color: var(--color-primary);
-  text-decoration: none;
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  & {
+    color: var(--color-primary);
+  }
 
   :visited {
     color: var(--color-primary);
