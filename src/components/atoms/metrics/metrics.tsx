@@ -1,9 +1,13 @@
 import pluralize from 'pluralize';
+import { useSearchParams } from 'next/navigation';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
 export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
+
+  const searchParams = useSearchParams();
+  const displayAltmetrics = searchParams?.get('displayAltmetrics');
 
   return <section>
     <h1 id="metrics" className="metrics__title">Metrics</h1>
@@ -22,5 +26,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
+    { displayAltmetrics ? <p>Display</p> : <p></p> }
   </section>;
 };
