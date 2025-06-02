@@ -48,7 +48,7 @@ export const ArticleFullTextTab = (props: Props) => {
             publishedYear={props.metaData.publishedYear}
             umbrellaDoi={props.metaData.umbrellaDoi}
           />
-          { props.metrics && <Metrics metrics={props.metrics} /> }
+          { props.metrics && <Metrics metrics={props.metrics} doi={props.metaData.umbrellaDoi ? props.metaData.umbrellaDoi : props.metaData.doi} /> }
         </div>
       </div>
     </>

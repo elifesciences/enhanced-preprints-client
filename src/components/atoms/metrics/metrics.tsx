@@ -6,19 +6,20 @@ import './metrics.scss';
 
 type MetricsProps = {
   metrics: MetricsType;
+  doi: string;
 };
 
-export const Metrics = ({ metrics }: MetricsProps) => {
+export const Metrics = ({ metrics, doi }: MetricsProps) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
 
   const searchParams = useSearchParams();
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
 
-  const altMetrics = () => {
+  const altMetrics = (_doi: string) => {
     if (displayAltmetrics) {
       return <div>
         <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
-        <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi='10.7554/eLife.85111'></div>
+        <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi={_doi}></div>
       </div>;
     }
     return null;
@@ -41,6 +42,6 @@ export const Metrics = ({ metrics }: MetricsProps) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
-    { altMetrics() }
+    { altMetrics(doi) }
   </section>;
 };
