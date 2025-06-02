@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
 import { ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import Script from 'next/script';
+import { useSearchParams } from 'next/navigation';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
 import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
@@ -47,6 +49,17 @@ const notoSans = Noto_Sans({
 
 export default function MyApp({ Component, pageProps }: any) {
   const features = pageProps.features ?? useContext(FeaturesContext);
+
+  const searchParams = useSearchParams();
+  const displayAltmetrics = searchParams?.get('displayAltmetrics');
+
+  const mightLoadAltmetricsScript = () => {
+    if (displayAltmetrics) {
+      return <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>;
+    }
+    return null;
+  };
+
   return (
     <>
       <Head>
@@ -78,6 +91,7 @@ export default function MyApp({ Component, pageProps }: any) {
           }}></script>
         }
       </Head>
+      { mightLoadAltmetricsScript() }
       <FeaturesContext.Provider value={features}>
         <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
           <LayoutSelector siteName={pageProps.siteName}>
