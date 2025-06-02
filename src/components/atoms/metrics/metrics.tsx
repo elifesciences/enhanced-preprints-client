@@ -10,7 +10,7 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
   const searchParams = useSearchParams();
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
 
-  const possibleAltMetrics = () => {
+  const altMetrics = () => {
     if (displayAltmetrics) {
       return <div>
         <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
@@ -37,6 +37,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
-    { possibleAltMetrics() }
+    { altMetrics() }
   </section>;
 };
