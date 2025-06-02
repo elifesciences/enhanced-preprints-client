@@ -1,4 +1,5 @@
 import pluralize from 'pluralize';
+import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
@@ -11,7 +12,7 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
 
   const possibleAltMetrics = () => {
     if (displayAltmetrics) {
-      return <p>Display</p>;
+      return <div><Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script><p>Display</p></div>;
     }
     return null;
   };
