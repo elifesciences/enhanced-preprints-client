@@ -12,7 +12,10 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
 
   const possibleAltMetrics = () => {
     if (displayAltmetrics) {
-      return <div><Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script><p>Display</p></div>;
+      return <div>
+        <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
+        <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi='10.7554/eLife.85111'></div>
+      </div>;
     }
     return null;
   };
