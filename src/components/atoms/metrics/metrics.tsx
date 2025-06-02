@@ -4,7 +4,11 @@ import { useSearchParams } from 'next/navigation';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
-export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
+type MetricsProps = {
+  metrics: MetricsType;
+};
+
+export const Metrics = ({ metrics }: MetricsProps) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
 
   const searchParams = useSearchParams();
