@@ -53,3 +53,15 @@
 
   @include typography.body-small-alternative();
 }
+
+.altmetric-embed {
+  a {
+    @include typography.link-text();
+    @include typography.font-size-and-vertical-height(14, 24);
+
+    /* stylelint-disable-next-line no-duplicate-selectors */
+    & {
+      font-weight: normal;
+    }
+  }
+}
