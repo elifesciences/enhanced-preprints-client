@@ -9,6 +9,13 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
   const searchParams = useSearchParams();
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
 
+  const possibleAltMetrics = () => {
+    if (displayAltmetrics) {
+      return <p>Display</p>;
+    }
+    return null;
+  };
+
   return <section>
     <h1 id="metrics" className="metrics__title">Metrics</h1>
     <dl className="metricsTable">
@@ -26,6 +33,6 @@ export const Metrics = ({ metrics }: { metrics: MetricsType }) => {
       </div>
     </dl>
     <p className="metricsTable__description">Views, downloads and citations are aggregated across all versions of this paper published by eLife.</p>
-    { displayAltmetrics ? <p>Display</p> : <p></p> }
+    { possibleAltMetrics() }
   </section>;
 };
