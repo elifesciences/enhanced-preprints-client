@@ -55,6 +55,8 @@
 }
 
 .altmetric-embed {
+  @include mixins.padding(12, "top");
+
   a {
     @include typography.link-text();
     @include typography.font-size-and-vertical-height(14, 24);
