@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import carbonNeutral from '../../../images/logos/carbon-neutral-organisation.png';
 import './footer-main.scss';
 
 /* eslint-disable max-len */
@@ -111,6 +113,18 @@ export const FooterMain = () => (
             <div className="github-link--text">Find us on GitHub</div>
           </a>
         </div>
+        <div className="carbon-neutral-wrapper">
+          <a href="https://www.carbonfootprint.com/" className="carbon-neutral-link">
+            <Image
+              className="investor-logos__img"
+              src={carbonNeutral}
+              alt="Carbon Neutral Organisation carbon footprint standard [TM]"
+              width="300"
+              height="162"
+            />
+          </a>
+        </div>
+
       </div>
 
       <div className="grid-cell">

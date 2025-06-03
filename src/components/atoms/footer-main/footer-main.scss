@@ -73,6 +73,24 @@
   }
 }
 
+.carbon-neutral-wrapper {
+  text-align: center;
+
+  .carbon-neutral-link {
+    @include mixins.margin(0 0 47);
+
+    align-items: center;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    max-width: 247px;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-medium) {
+    text-align: left;
+  }
+}
+
 @media only all and (min-width: settings.$breakpoint-medium) {
   .site-footer__container {
     padding: 0 6%;
