@@ -19,9 +19,17 @@ node_modules: package.json yarn.lock
 	yarn install
 	touch node_modules
 
-.PHONY: check
-check: node_modules
-	yarn test --reporters=jest-wip-reporter
+.PHONY: lint
+lint: node_modules
 	yarn lint
 	yarn lint-sass
+
+.PHONY: lint-fix
+lint-fix: node_modules
+	yarn lint --fix
+	yarn lint-sass --fix
+
+.PHONY: check
+check: node_modules lint
+	yarn test --reporters=jest-wip-reporter
 	yarn tsc --noEmit
