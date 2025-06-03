@@ -121,6 +121,7 @@ export const FooterMain = () => (
               alt="Carbon Neutral Organisation carbon footprint standard [TM]"
               width="300"
               height="162"
+              unoptimized
             />
           </a>
         </div>
