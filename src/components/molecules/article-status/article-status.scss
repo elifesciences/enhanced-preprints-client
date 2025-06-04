@@ -145,7 +145,10 @@
 }
 
 .altmetric-small-section__text {
-  @include mixins.margin(12, "top");
+  font-family: var(--font-family-primary);
+
+  @include typography.font-size-and-vertical-height(14, 20);
+  @include mixins.margin(10, "top");
 }
 
 .see-more-altmetric-details-link {
