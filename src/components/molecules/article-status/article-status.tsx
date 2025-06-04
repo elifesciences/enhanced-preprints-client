@@ -37,7 +37,7 @@ export const ArticleStatus = ({
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
   const altMetrics = () => {
     if (displayAltmetrics) {
-      return <div></div>;
+      return <div className='altmetric-embed' data-badge-type='donut' data-doi='10.7554/eLife.85111'></div>;
     }
     return null;
   };
