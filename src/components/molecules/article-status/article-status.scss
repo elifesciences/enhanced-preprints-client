@@ -137,3 +137,9 @@
     @include mixins.margin(12, "top");
   }
 }
+
+.see-more-altmetric-details-link {
+  text-decoration: none;
+
+  @include typography.navigation-heading-selected();
+}

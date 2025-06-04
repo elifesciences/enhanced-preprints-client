@@ -41,7 +41,7 @@ export const ArticleStatus = ({
       return <section>
         <div className='altmetric-embed' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>
         <p>Altmetric provides a collated score for online attention across various platforms and media.<br/>
-          <a href="#metrics">See more details</a>
+          <a href="#metrics" className='see-more-altmetric-details-link'>See more details</a>
         </p>
       </section>;
     }
