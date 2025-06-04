@@ -153,6 +153,9 @@
 
 .see-more-altmetric-details-link {
   text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-family-primary);
+  font-weight: 600;
 
-  @include typography.navigation-heading-selected();
+  @include typography.font-size-and-vertical-height(14, 26);
 }
