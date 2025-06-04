@@ -38,7 +38,12 @@ export const ArticleStatus = ({
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
   const altMetrics = () => {
     if (displayAltmetrics) {
-      return <div className='altmetric-embed' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>;
+      return <section>
+        <div className='altmetric-embed' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>
+        <p>Altmetric provides a collated score for online attention across various platforms and media.<br/>
+          <a href="#metrics">See more details</a>
+        </p>
+      </section>;
     }
     return null;
   };
