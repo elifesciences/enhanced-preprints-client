@@ -54,3 +54,10 @@ export const RevisedReviewProcessWithEvaluationSummaryInferredFromOrder: Story =
     evaluationSummary: true,
   },
 };
+
+export const VersionOfRecordReviewProcess: Story = {
+  args: {
+    current: 2,
+    versionOfRecord: true,
+  },
+};
