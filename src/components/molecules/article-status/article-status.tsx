@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -31,6 +32,15 @@ export const ArticleStatus = ({
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
+
+  const searchParams = useSearchParams();
+  const displayAltmetrics = searchParams?.get('displayAltmetrics');
+  const altMetrics = () => {
+    if (displayAltmetrics) {
+      return <div></div>;
+    }
+    return null;
+  };
 
   return <div className="article-status">
     <Timeline {...timeline} />
@@ -78,5 +88,6 @@ export const ArticleStatus = ({
         </li>
       </ol>
     </Modal>
+    { altMetrics() }
   </div>;
 };
