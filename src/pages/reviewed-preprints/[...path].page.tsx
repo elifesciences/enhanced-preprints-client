@@ -24,10 +24,12 @@ import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { SerialisedTimelineEvent } from '../../types/article-timeline';
 import { FeaturesData } from '../../features';
+import { isVORVersionSummary } from '../../utils/type-guards';
 
 type PageProps = {
   siteName?: string,
   metaData: MetaData,
+  versionOfRecord?: boolean,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
   timeline: SerialisedTimelineEvent[],
@@ -62,6 +64,7 @@ export const Page = ({
   peerReview,
   metrics,
   previousVersionWarningUrl,
+  versionOfRecord,
 }: PageProps) => {
   const { t } = useTranslation();
   const processedTimeline = stringsToDates({ timeline });
@@ -119,7 +122,7 @@ export const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version} versionOfRecord={false} /> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version} versionOfRecord={versionOfRecord} /> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -221,6 +224,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versions = Object.values(articleWithVersions.versions);
   const timeline = generateTimeline(versions);
   const versionHistory = generateVersionHistory(versions);
+  const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
 
   return {
     props: {
@@ -234,6 +238,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
         versionHistory,
         authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
       },
+      versionOfRecord,
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
