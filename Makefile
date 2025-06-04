@@ -15,6 +15,11 @@ dev:
 	docker compose up --wait
 	@echo 'Visit http://localhost:3001 for dev server'
 
+.PHONY: prod
+prod:
+	yarn build
+	NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+
 node_modules: package.json yarn.lock
 	yarn install
 	touch node_modules
