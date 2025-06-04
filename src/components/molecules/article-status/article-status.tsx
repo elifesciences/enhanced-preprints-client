@@ -38,9 +38,9 @@ export const ArticleStatus = ({
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
   const altMetrics = () => {
     if (displayAltmetrics) {
-      return <section>
+      return <section className='altmetric-small-section'>
         <div className='altmetric-embed' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>
-        <p>Altmetric provides a collated score for online attention across various platforms and media.<br/>
+        <p className='altmetric-small-section__text'>Altmetric provides a collated score for online attention across various platforms and media.<br/>
           <a href="#metrics" className='see-more-altmetric-details-link'>See more details</a>
         </p>
       </section>;

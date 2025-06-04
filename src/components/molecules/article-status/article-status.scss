@@ -138,6 +138,16 @@
   }
 }
 
+.altmetric-small-section {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.altmetric-small-section__text {
+  @include mixins.margin(12, "top");
+}
+
 .see-more-altmetric-details-link {
   text-decoration: none;
 
