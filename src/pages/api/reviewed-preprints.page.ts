@@ -140,7 +140,7 @@ const enhancedArticleNoContentToSnippet = ({
   peerReview,
 }: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
   id: msid,
-  doi: preprintDoi,
+  doi: preprintDoi ?? 'undefined',
   version: +versionIdentifier,
   pdf: pdfUrl,
   status: 'reviewed',
