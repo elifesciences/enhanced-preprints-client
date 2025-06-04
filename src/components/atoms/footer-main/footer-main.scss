@@ -77,13 +77,13 @@
   text-align: center;
 
   .carbon-neutral-link {
-    @include mixins.margin(0 0 47);
-
     align-items: center;
     display: inline-flex;
     flex-flow: row wrap;
     justify-content: center;
     max-width: 247px;
+
+    @include mixins.margin(0 0 47);
   }
 
   @media only all and (min-width: settings.$breakpoint-medium) {
