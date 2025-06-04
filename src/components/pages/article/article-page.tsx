@@ -56,6 +56,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
         <ArticleStatus
           doi={doi}
+          umbrellaDoi={props.metaData.umbrellaDoi}
           pdfUrl={props.metaData.pdfUrl}
           title={contentToText(props.metaData.title)}
           citation={citation}

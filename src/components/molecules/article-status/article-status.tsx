@@ -11,6 +11,7 @@ import { Timeline, TimelineProps } from '../timeline/timeline';
 
 type ArticleStatusProps = {
   doi: string,
+  umbrellaDoi: string | undefined,
   title: string,
   pdfUrl?: string,
   citation: CitationData,
@@ -28,7 +29,7 @@ const formatStringCitation = ({
 };
 
 export const ArticleStatus = ({
-  doi, title, pdfUrl, citation, msid, metrics, timeline,
+  doi, umbrellaDoi, title, pdfUrl, citation, msid, metrics, timeline,
 }: ArticleStatusProps) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
@@ -37,7 +38,7 @@ export const ArticleStatus = ({
   const displayAltmetrics = searchParams?.get('displayAltmetrics');
   const altMetrics = () => {
     if (displayAltmetrics) {
-      return <div className='altmetric-embed' data-badge-type='donut' data-doi='10.7554/eLife.85111'></div>;
+      return <div className='altmetric-embed' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>;
     }
     return null;
   };

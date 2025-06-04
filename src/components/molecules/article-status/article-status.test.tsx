@@ -9,7 +9,7 @@ describe('ArticleStatus', () => {
       events: [{
         version: 2, date: new Date('2024-05-29'), versionIndicator: 'v2', url: '#',
       }],
-    }} pdfUrl='#' doi='www.google.com' title='I am a title' citation={citation} msid="12345"/>);
+    }} pdfUrl='#' doi='www.google.com' umbrellaDoi='10.7554/eLife.85111' title='I am a title' citation={citation} msid="12345"/>);
 
     expect(screen.getByText('Reviewed Preprint')).toBeInTheDocument();
     expect(screen.getByText('v2')).toBeInTheDocument();
