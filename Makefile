@@ -29,6 +29,10 @@ lint-fix: node_modules
 	yarn lint --fix
 	yarn lint-sass --fix
 
+.PHONY: test
+test: node_modules
+	yarn test ${TEST}
+
 .PHONY: check
 check: node_modules lint
 	yarn test --reporters=jest-wip-reporter
