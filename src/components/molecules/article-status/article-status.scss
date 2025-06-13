@@ -139,9 +139,13 @@
 }
 
 .altmetric-small-section {
-  display: flex;
+  display: none;
   gap: 10px;
   justify-content: space-between;
+
+  @media only screen and (min-width: settings.$breakpoint-large) {
+    display: flex;
+  }
 
   .altmetric-embed {
     @include mixins.padding(25, "top");
