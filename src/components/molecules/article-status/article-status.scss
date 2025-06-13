@@ -142,6 +142,10 @@
   display: flex;
   gap: 10px;
   justify-content: space-between;
+
+  .altmetric-embed {
+    @include mixins.padding(25, "top");
+  }
 }
 
 .altmetric-small-section__text {
