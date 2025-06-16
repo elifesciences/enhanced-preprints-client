@@ -168,6 +168,7 @@
   @include typography.font-size-and-vertical-height(14, 26);
 }
 
-.altmetric-hidden + .altmetric-small-section__text {
+.altmetric-hidden + .altmetric-small-section__text,
+.altmetric-embed:empty + .altmetric-small-section__text {
   display: none;
 }
