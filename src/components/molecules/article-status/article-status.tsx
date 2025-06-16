@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { Button } from '../../atoms/button/button';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
@@ -34,19 +33,12 @@ export const ArticleStatus = ({
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCiteModal, setShowCiteModal] = useState(false);
 
-  const searchParams = useSearchParams();
-  const displayAltmetrics = searchParams?.get('displayAltmetrics');
-  const altMetrics = () => {
-    if (displayAltmetrics) {
-      return <section className='altmetric-small-section'>
-        <div className='altmetric-embed' data-hide-less-than='1' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>
-        <p className='altmetric-small-section__text'>Altmetric provides a collated score for online attention across various platforms and media.<br/>
-          <a href="#metrics" className='see-more-altmetric-details-link'>See more details</a>
-        </p>
-      </section>;
-    }
-    return null;
-  };
+  const altMetrics = () => <section className='altmetric-small-section'>
+    <div className='altmetric-embed' data-hide-less-than='1' data-badge-type='donut' data-doi={umbrellaDoi || doi}></div>
+    <p className='altmetric-small-section__text'>Altmetric provides a collated score for online attention across various platforms and media.<br/>
+      <a href="#metrics" className='see-more-altmetric-details-link'>See more details</a>
+    </p>
+  </section>;
 
   return <div className="article-status">
     <Timeline {...timeline} />

@@ -1,6 +1,5 @@
 import pluralize from 'pluralize';
 import Script from 'next/script';
-import { useSearchParams } from 'next/navigation';
 import { Metrics as MetricsType } from '../../../types/enhanced-article';
 import './metrics.scss';
 
@@ -12,18 +11,10 @@ type MetricsProps = {
 export const Metrics = ({ metrics, doi }: MetricsProps) => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
 
-  const searchParams = useSearchParams();
-  const displayAltmetrics = searchParams?.get('displayAltmetrics');
-
-  const altMetrics = (_doi: string) => {
-    if (displayAltmetrics) {
-      return <div>
-        <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
-        <div className='altmetric-embed' data-hide-less-than='1' data-badge-type='medium-donut' data-badge-details='right' data-doi={_doi}></div>
-      </div>;
-    }
-    return null;
-  };
+  const altMetrics = (_doi: string) => <div>
+    <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
+    <div className='altmetric-embed' data-hide-less-than='1' data-badge-type='medium-donut' data-badge-details='right' data-doi={_doi}></div>
+  </div>;
 
   return <section>
     <h1 id="metrics" className="metrics__title">Metrics</h1>
