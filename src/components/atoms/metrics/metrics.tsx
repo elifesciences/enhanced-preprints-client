@@ -19,7 +19,7 @@ export const Metrics = ({ metrics, doi }: MetricsProps) => {
     if (displayAltmetrics) {
       return <div>
         <Script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></Script>
-        <div className='altmetric-embed' data-badge-type='medium-donut' data-badge-details='right' data-doi={_doi}></div>
+        <div className='altmetric-embed' data-hide-less-than='1' data-badge-type='medium-donut' data-badge-details='right' data-doi={_doi}></div>
       </div>;
     }
     return null;
