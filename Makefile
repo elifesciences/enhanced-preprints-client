@@ -12,11 +12,11 @@ test-storybook: install-playwright
 
 .PHONY: dev
 dev:
-	docker compose up --wait
+	docker compose up --build --wait
 	@echo 'Visit http://localhost:3001 for dev server'
 
 .PHONY: prod
-prod:
+prod: node_modules
 	yarn build
 	NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
 
