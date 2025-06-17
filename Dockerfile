@@ -50,11 +50,3 @@ COPY --from=production_deps /opt/epp-client/package.json /opt/epp-client/package
 COPY --from=production_build /opt/epp-client/.next /opt/epp-client/.next
 COPY --from=production_build /opt/epp-client/next.config.js /opt/epp-client/next.config.js
 CMD [ "./node_modules/.bin/next", "start" ]
-
-FROM mcr.microsoft.com/playwright:focal as browser-tests
-WORKDIR /opt/tests
-COPY package.json package.json
-COPY yarn.lock yarn.lock
-COPY playwright.config.ts playwright.config.ts
-RUN yarn
-CMD ["yarn", "test:browser"]
