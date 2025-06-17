@@ -9,6 +9,7 @@ import { contentToText } from '../../../utils/content';
 import { CitationData } from '../../atoms/citation/citation';
 import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
+import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notice';
 
 export type Tab = {
   id: string,
@@ -55,7 +56,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       </div>
       <aside className="side-section">
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
-        {props.retractionNoticeUrl && <div>RETRACTION NOTICE</div>}
+        {props.retractionNoticeUrl && <RetractionNotice/>}
         <ArticleStatus
           doi={doi}
           umbrellaDoi={props.metaData.umbrellaDoi}
