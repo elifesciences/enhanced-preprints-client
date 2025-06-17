@@ -1,17 +1,17 @@
 ARG node_version=20.18-alpine3.19
 
-FROM --platform=$BUILDPLATFORM node:${node_version} as build
+FROM --platform=$BUILDPLATFORM node:${node_version} AS build
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY .yarn/releases .yarn/releases
 COPY package.json yarn.lock .yarnrc.yml .env.yarn ./
 RUN yarn
 
-FROM --platform=$BUILDPLATFORM build as production_build
+FROM --platform=$BUILDPLATFORM build AS production_build
 COPY . .
 RUN yarn build
 
-FROM --platform=$TARGETPLATFORM node:${node_version} as platform_deps
+FROM --platform=$TARGETPLATFORM node:${node_version} AS platform_deps
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY --from=build /opt/epp-client/.yarn/releases .yarn/releases
@@ -23,7 +23,7 @@ COPY --from=build /opt/epp-client/package.json package.json
 COPY --from=build /opt/epp-client/yarn.lock yarn.lock
 RUN yarn
 
-FROM --platform=$TARGETPLATFORM node:${node_version} as production_deps
+FROM --platform=$TARGETPLATFORM node:${node_version} AS production_deps
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY --from=build /opt/epp-client/.yarn/releases .yarn/releases
@@ -37,13 +37,11 @@ COPY --from=build /opt/epp-client/yarn.lock yarn.lock
 RUN yarn workspaces focus --production
 
 
-FROM platform_deps as base
+FROM platform_deps AS dev
 COPY ./ ./
-
-FROM base as dev
 CMD [ "yarn", "start:dev" ]
 
-FROM --platform=$TARGETPLATFORM node:${node_version} as prod
+FROM --platform=$TARGETPLATFORM node:${node_version} AS prod
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY --from=production_deps /opt/epp-client/node_modules /opt/epp-client/node_modules
