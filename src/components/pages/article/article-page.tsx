@@ -56,7 +56,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       </div>
       <aside className="side-section">
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
-        {props.retractionNoticeUrl && <RetractionNotice/>}
+        {props.retractionNoticeUrl && <RetractionNotice url={props.retractionNoticeUrl}/>}
         <ArticleStatus
           doi={doi}
           umbrellaDoi={props.metaData.umbrellaDoi}
