@@ -8,6 +8,7 @@ COPY package.json yarn.lock .yarnrc.yml .env.yarn ./
 RUN yarn
 
 FROM --platform=$BUILDPLATFORM build as production_build
+COPY . .
 RUN yarn build
 
 FROM --platform=$TARGETPLATFORM node:${node_version} as platform_deps
