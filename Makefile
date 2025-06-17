@@ -24,6 +24,11 @@ node_modules: package.json yarn.lock
 	yarn install
 	touch node_modules
 
+.PHONY: clean
+clean:
+	rm -r ./node_modules ./.next
+	docker compose down --volumes --remove-orphans
+
 .PHONY: lint
 lint: node_modules
 	yarn lint
