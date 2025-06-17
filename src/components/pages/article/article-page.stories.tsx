@@ -222,3 +222,26 @@ export const ArticlePageErrorTab: Story = {
     </DefaultLayout>
   ),
 };
+
+export const ArticlePageRetractionNotice: Story = {
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
+  args: {
+    metaData,
+    activeTab: 'fulltext',
+    tabs,
+    relatedContent,
+    metrics,
+    previousVersionWarningUrl: '#',
+    retractionNoticeUrl: '#',
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={peerReview} content={jsxContent} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
+};
