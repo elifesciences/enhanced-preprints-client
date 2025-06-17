@@ -24,6 +24,7 @@ export type ArticlePageProps = {
   activeTab: string,
   tabs: Tab[],
   previousVersionWarningUrl?: string,
+  retractionNoticeUrl?: string,
   timeline: TimelineEvent[],
 };
 
@@ -54,6 +55,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
       </div>
       <aside className="side-section">
         {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
+        {props.retractionNoticeUrl && <div>RETRACTION NOTICE</div>}
         <ArticleStatus
           doi={doi}
           umbrellaDoi={props.metaData.umbrellaDoi}
