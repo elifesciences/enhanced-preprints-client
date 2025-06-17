@@ -11,7 +11,7 @@ test-storybook: install-playwright
 	STORYBOOK_PORT=6106; yarn storybook dev -p $$STORYBOOK_PORT & yarn wait-on http://localhost:$$STORYBOOK_PORT && yarn test-storybook --url http://localhost:$$STORYBOOK_PORT; TEST_EXIT_CODE=$$?; lsof -ti :$$STORYBOOK_PORT | xargs kill -9; exit $$TEST_EXIT_CODE
 
 .PHONY: dev
-dev:
+dev: node_modules
 	docker compose up --build --wait
 	@echo 'Visit http://localhost:3001 for dev server'
 
