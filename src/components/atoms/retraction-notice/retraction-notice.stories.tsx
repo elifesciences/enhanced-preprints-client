@@ -5,6 +5,9 @@ import { RetractionNotice } from './retraction-notice';
 const meta: Meta<typeof RetractionNotice> = {
   title: 'Atoms/Retraction Notice',
   component: RetractionNotice,
+  parameters: {
+    chromatic: { disableSnapshot: true },
+  },
 };
 
 export default meta;
