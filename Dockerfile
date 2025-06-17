@@ -3,7 +3,8 @@ ARG node_version=20.18-alpine3.19
 FROM --platform=$BUILDPLATFORM node:${node_version} as build
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
-COPY ./ ./
+COPY .yarn/releases .yarn/releases
+COPY package.json yarn.lock .yarnrc.yml .env.yarn ./
 RUN yarn
 
 FROM --platform=$BUILDPLATFORM build as production_build
