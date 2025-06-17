@@ -1,0 +1,16 @@
+@use "../../../sass/typography";
+
+.retraction-notice {
+    @include typography.font-size-and-vertical-height(14, 24);
+
+    background-color: var(--color-attention);
+    color: var(--color-white);
+    display: block;
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+    width: 100%;
+
+    a {
+        color: inherit;
+    }
+}
