@@ -1,5 +1,6 @@
 @use "../../../sass/settings";
 @use "../../../sass/typography";
+@use "../../../sass/mixins";
 
 .retraction-notice {
   background: url("../../../images/icons/attention.svg") no-repeat 0 0;
@@ -12,6 +13,7 @@
   justify-content: center;
   width: 100%;
 
+  @include mixins.padding(12);
   @include typography.font-size-and-vertical-height(14, 24);
 
   a {
@@ -19,6 +21,16 @@
   }
 
   @media only all and (min-width: settings.$breakpoint-large) {
+    width: 236px;
     flex-direction: column;
+
+    @include mixins.margin(-10, "left");
+    @include mixins.margin(26, "bottom");
+    @include mixins.margin(14, "top");
+  }
+
+  p {
+    @include mixins.padding(24, "left");
+    @include mixins.margin(0);
   }
 }
