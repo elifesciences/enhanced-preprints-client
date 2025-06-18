@@ -1,6 +1,7 @@
 @use "../../../sass/typography";
 
 .retraction-notice {
+  background: url("../../../images/icons/attention.svg") no-repeat 0 0;
   background-color: var(--color-attention);
   color: var(--color-white);
   display: block;
