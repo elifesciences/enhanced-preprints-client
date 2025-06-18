@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'next/navigation';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
@@ -43,9 +44,14 @@ export const ArticlePage = (props: ArticlePageProps) => {
     doi,
   };
 
+  const searchParams = useSearchParams();
+  const featureFlag = searchParams?.get('featureFlag');
+
   const banner = () => {
-    if (props.retractionNoticeUrl) {
-      return <RetractionNotice url={props.retractionNoticeUrl}/>;
+    if (featureFlag) {
+      if (props.retractionNoticeUrl) {
+        return <RetractionNotice url={props.retractionNoticeUrl}/>;
+      }
     }
     if (props.previousVersionWarningUrl) {
       return <PreviousVersionWarning url={props.previousVersionWarningUrl} />;

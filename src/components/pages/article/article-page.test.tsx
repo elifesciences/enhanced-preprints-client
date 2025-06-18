@@ -12,6 +12,7 @@ import '../../../i18n';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '',
+  useSearchParams: () => null,
 }));
 
 describe('ArticlePage', () => {
