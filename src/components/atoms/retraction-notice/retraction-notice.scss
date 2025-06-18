@@ -29,7 +29,7 @@
   }
 
   p {
-    @include mixins.padding(24, "left");
+    @include mixins.padding(30, "left");
     @include mixins.margin(0);
   }
 
