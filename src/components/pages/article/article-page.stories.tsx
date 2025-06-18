@@ -224,9 +224,6 @@ export const ArticlePageErrorTab: Story = {
 };
 
 export const ArticlePageRetractionNotice: Story = {
-  parameters: {
-    chromatic: { disableSnapshot: true },
-  },
   args: {
     metaData,
     activeTab: 'fulltext',

@@ -43,6 +43,16 @@ export const ArticlePage = (props: ArticlePageProps) => {
     doi,
   };
 
+  const banner = () => {
+    if (props.retractionNoticeUrl) {
+      return <RetractionNotice url={props.retractionNoticeUrl}/>;
+    }
+    if (props.previousVersionWarningUrl) {
+      return <PreviousVersionWarning url={props.previousVersionWarningUrl} />;
+    }
+    return null;
+  };
+
   return (
     <>
       <div className="primary-section-header">
@@ -55,8 +65,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
         />
       </div>
       <aside className="side-section">
-        {props.previousVersionWarningUrl && <PreviousVersionWarning url={props.previousVersionWarningUrl} />}
-        {props.retractionNoticeUrl && <RetractionNotice url={props.retractionNoticeUrl}/>}
+        { banner() }
         <ArticleStatus
           doi={doi}
           umbrellaDoi={props.metaData.umbrellaDoi}
