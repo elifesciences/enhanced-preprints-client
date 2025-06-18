@@ -3,7 +3,6 @@
 @use "../../../sass/mixins";
 
 .retraction-notice {
-  background: url("../../../images/icons/attention.svg") no-repeat 0 0;
   background-color: var(--color-attention);
   color: var(--color-white);
   display: flex;
@@ -32,5 +31,9 @@
   p {
     @include mixins.padding(24, "left");
     @include mixins.margin(0);
+  }
+
+  p:first-child {
+    background: url("../../../images/icons/attention.svg") no-repeat 0 0;
   }
 }
