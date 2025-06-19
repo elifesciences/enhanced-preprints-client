@@ -179,4 +179,19 @@ describe('ArticlePage', () => {
     expect(screen.queryByText('Insight Title')).not.toBeInTheDocument();
     expect(screen.queryByText('Insight article about this article')).not.toBeInTheDocument();
   });
+
+  it('does not render the retraction notice if not passed a retraction notice URL', () => {
+    render(<ArticlePage
+      relatedContent={[]}
+      msidWithVersion="12345v1"
+      metaData={metaData}
+      timeline={timeline}
+      activeTab="figures"
+      tabs={[]}
+    >
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
+    </ArticlePage>);
+
+    expect(screen.queryByText('This article is retracted.')).not.toBeInTheDocument();
+  });
 });
