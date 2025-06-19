@@ -159,6 +159,9 @@ export const Page = ({
       }),
     };
   });
+
+  const retractionNoticeUrl = relatedContent.find((item) => (item.type === 'retraction'))?.url;
+
   return (
     <>
       <Head>
@@ -185,7 +188,7 @@ export const Page = ({
         tabs={tabs}
         timeline={processedTimelineWithTranslations}
         activeTab={tabName}
-        retractionNoticeUrl=""
+        retractionNoticeUrl={retractionNoticeUrl}
       >
         { tabContent }
       </ArticlePage>
