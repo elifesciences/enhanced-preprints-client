@@ -195,7 +195,7 @@ describe('ArticlePage', () => {
     expect(screen.queryByText('This article is retracted.')).not.toBeInTheDocument();
   });
 
-  it.skip('does render the retraction notice if passed a retraction notice URL', () => {
+  it('does render the retraction notice if passed a retraction notice URL', () => {
     render(<ArticlePage
       relatedContent={[]}
       msidWithVersion="12345v1"
