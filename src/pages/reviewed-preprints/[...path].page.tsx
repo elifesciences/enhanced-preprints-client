@@ -185,6 +185,7 @@ export const Page = ({
         tabs={tabs}
         timeline={processedTimelineWithTranslations}
         activeTab={tabName}
+        retractionNoticeUrl=""
       >
         { tabContent }
       </ArticlePage>
