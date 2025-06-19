@@ -194,4 +194,20 @@ describe('ArticlePage', () => {
 
     expect(screen.queryByText('This article is retracted.')).not.toBeInTheDocument();
   });
+
+  it.skip('does render the retraction notice if passed a retraction notice URL', () => {
+    render(<ArticlePage
+      relatedContent={[]}
+      msidWithVersion="12345v1"
+      metaData={metaData}
+      timeline={timeline}
+      activeTab="figures"
+      tabs={[]}
+      retractionNoticeUrl='/an-arbitrary-retraction-notice'
+    >
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
+    </ArticlePage>);
+
+    expect(screen.queryByText('This article is retracted.')).toBeInTheDocument();
+  });
 });
