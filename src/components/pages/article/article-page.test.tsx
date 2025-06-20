@@ -209,5 +209,6 @@ describe('ArticlePage', () => {
     </ArticlePage>);
 
     expect(screen.queryByText('This article is retracted.')).toBeInTheDocument();
+    expect(screen.queryByText('A newer version is available.')).not.toBeInTheDocument();
   });
 });
