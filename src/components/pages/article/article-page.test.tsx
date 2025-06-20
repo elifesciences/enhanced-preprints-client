@@ -209,6 +209,23 @@ describe('ArticlePage', () => {
     </ArticlePage>);
 
     expect(screen.queryByText('This article is retracted.')).toBeInTheDocument();
+  });
+
+  it('only renders the retraction notice if passed a retraction notice URL and a previous version warning URL', () => {
+    render(<ArticlePage
+      relatedContent={[]}
+      msidWithVersion="12345v1"
+      metaData={metaData}
+      timeline={timeline}
+      activeTab="figures"
+      tabs={[]}
+      retractionNoticeUrl='/an-arbitrary-retraction-notice'
+      previousVersionWarningUrl='/an-arbitrary-version'
+    >
+      <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
+    </ArticlePage>);
+
+    expect(screen.queryByText('This article is retracted.')).toBeInTheDocument();
     expect(screen.queryByText('A newer version is available.')).not.toBeInTheDocument();
   });
 });
