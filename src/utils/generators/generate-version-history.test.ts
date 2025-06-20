@@ -103,7 +103,7 @@ describe('generateVersionHistory', () => {
     expect(history).toEqual([
       {
         label: 'history_version_of_record_title',
-        url: '/reviewed-preprints/1v3',
+        url: '/articles/1v3',
         date: 'Tue Jan 09 2024',
         version: 3,
       },
@@ -121,7 +121,7 @@ describe('generateVersionHistory', () => {
     expect(history).toEqual([
       {
         label: 'history_version_of_record_title',
-        url: '/reviewed-preprints/1v3',
+        url: '/articles/1v3',
         date: 'Tue Jan 09 2024',
         version: 3,
       },
@@ -159,7 +159,7 @@ describe('generateVersionHistory', () => {
       },
       {
         label: 'history_version_of_record_title',
-        url: '/reviewed-preprints/1v3',
+        url: '/articles/1v3',
         date: 'Tue Jan 09 2024',
         version: 3,
       },

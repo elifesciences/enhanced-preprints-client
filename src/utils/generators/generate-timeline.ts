@@ -14,7 +14,7 @@ const generateTimelineUrl = (version: VersionSummary): string => {
     return `/reviewed-preprints/${version.id}`;
   }
   if (isVORVersionSummary(version)) {
-    return `/reviewed-preprints/${version.id}`;
+    return `/articles/${version.id}`;
   }
   if (isExternalVersionSummary(version)) {
     return version.url;

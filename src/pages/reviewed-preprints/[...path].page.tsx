@@ -59,6 +59,10 @@ const getRoutePrefix = (router: NextRouter) => {
     return '/previews/';
   }
 
+  if (router.asPath.startsWith('/articles/')) {
+    return '/articles/';
+  }
+
   return '/reviewed-preprints/';
 };
 
