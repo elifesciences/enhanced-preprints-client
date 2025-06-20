@@ -242,6 +242,30 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
 
+  // Redirect VOR articles from reviewed-preprints to articles path.
+  if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
+    const redirectUrl = context.req.url?.replace('/reviewed-preprints/', '/articles/') || `/articles/${id}`;
+    console.log(`Redirect to ${redirectUrl}`); // eslint-disable-line no-console
+    return {
+      redirect: {
+        destination: redirectUrl,
+        permanent: false,
+      },
+    };
+  }
+
+  // Redirect Reviewed Preprints from articles to reviewed-preprints path.
+  if (!versionOfRecord && context.req.url?.startsWith('/articles/')) {
+    const redirectUrl = context.req.url?.replace('/articles/', '/reviewed-preprints/') || `/reviewed-preprints/${id}`;
+    console.log(`Redirect to ${redirectUrl}`); // eslint-disable-line no-console
+    return {
+      redirect: {
+        destination: redirectUrl,
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       siteName: config.siteName,
