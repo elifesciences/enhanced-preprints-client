@@ -54,6 +54,14 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 
 const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
+const getRoutePrefix = (router: NextRouter) => {
+  if (router.asPath.startsWith('/previews/')) {
+    return '/previews/';
+  }
+
+  return '/reviewed-preprints/';
+};
+
 export const Page = ({
   metaData: rawMetaData,
   imgInfo,
@@ -80,7 +88,7 @@ export const Page = ({
     ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
   }));
   const router = useRouter();
-  const routePrefix = router.asPath.startsWith('/previews/') ? '/previews/' : '/reviewed-preprints/';
+  const routePrefix = getRoutePrefix(router);
   const tabLinks = [
     {
       id: 'fulltext',
