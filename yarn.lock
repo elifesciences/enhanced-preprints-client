@@ -9571,7 +9571,6 @@ __metadata:
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
     jest-wip-reporter: "npm:^2.1.0"
-    joi: "npm:^17.13.3"
     moment: "npm:^2.30.1"
     next: "npm:^14.0.4"
     node-mocks-http: "npm:^1.14.1"
