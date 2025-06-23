@@ -4,7 +4,15 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
-const EnhancedArticleWithVersionsSchema = z.object({});
+const EnhancedArticleSchema = z.object({});
+
+const VersionSummarySchema = z.object({});
+
+const EnhancedArticleWithVersionsSchema = z.object({
+  article: EnhancedArticleSchema,
+  versions: z.object({}).catchall(VersionSummarySchema),
+  metrics: z.object({}).optional(),
+});
 
 export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
