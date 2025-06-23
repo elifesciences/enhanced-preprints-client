@@ -4,6 +4,7 @@ import {
   errorNotFoundRequest,
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
+  PublishedEnhancedArticle,
 } from '../reviewed-preprints.page';
 import { VersionSummary } from '../../../types';
 
@@ -26,7 +27,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     res,
     'application/vnd.elife.reviewed-preprint+json; version=1',
     200,
-    enhancedArticleToReviewedPreprintItemResponse(version.article, firstPublished?.published ?? null),
+    enhancedArticleToReviewedPreprintItemResponse(version.article as PublishedEnhancedArticle, firstPublished?.published ?? null),
   );
 };
 

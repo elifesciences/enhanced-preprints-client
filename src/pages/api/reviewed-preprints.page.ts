@@ -155,6 +155,10 @@ const enhancedArticleNoContentToSnippet = ({
   ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
+export type PublishedEnhancedArticle = EnhancedArticle & {
+  published: Date
+};
+
 export const enhancedArticleToReviewedPreprintItemResponse = ({
   msid,
   versionIdentifier,
@@ -165,7 +169,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
   subjects,
   peerReview,
   article: { content, authors },
-}: EnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+}: PublishedEnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
     msid,
     versionIdentifier,
@@ -174,7 +178,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
     article,
     published,
     subjects,
-    firstPublished: firstPublished ?? published!,
+    firstPublished: firstPublished ?? published,
     peerReview,
   } as PublishedEnhancedArticleMetaDataForJournal),
   indexContent: `${peerReview?.evaluationSummary?.text ?? ''}
