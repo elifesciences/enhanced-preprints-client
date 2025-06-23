@@ -31,7 +31,7 @@ node_modules: package.json yarn.lock
 
 .PHONY: clean
 clean:
-	rm -r ./node_modules ./.next
+	rm -rf ./node_modules ./.next
 	docker compose down --volumes --remove-orphans
 
 .PHONY: lint
