@@ -3,8 +3,13 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
-export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+export const fetchVersion = (id: string, preview: boolean = false) => {
+  const fetched = jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+  return fetched as Promise<EnhancedArticleWithVersions>;
+};
+
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
+
 export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
   const url = [
     `${config.apiServer}/api/preprints-no-content?`,
