@@ -8,7 +8,7 @@ import { getSubjects } from '../../components/molecules/article-flag-list/articl
 import { contentToHtml } from '../../utils/content';
 import {
   ElifeAssessment,
-  EnhancedArticleNoContent,
+  PublishedEnhancedArticleMetaDataForJournal,
   PeerReviewEvaluationSummaryOnly,
 } from '../../types/reviewed-preprint-snippet';
 import { findTerms } from '../../utils/terms';
@@ -138,7 +138,7 @@ const enhancedArticleNoContentToSnippet = ({
   subjects,
   firstPublished,
   peerReview,
-}: EnhancedArticleNoContent): ReviewedPreprintSnippet => ({
+}: PublishedEnhancedArticleMetaDataForJournal): ReviewedPreprintSnippet => ({
   id: msid,
   doi: preprintDoi ?? 'undefined',
   version: +versionIdentifier,
@@ -176,7 +176,7 @@ export const enhancedArticleToReviewedPreprintItemResponse = ({
     subjects,
     firstPublished: firstPublished ?? published!,
     peerReview,
-  } as EnhancedArticleNoContent),
+  } as PublishedEnhancedArticleMetaDataForJournal),
   indexContent: `${peerReview?.evaluationSummary?.text ?? ''}
     ${peerReview?.reviews.map((review) => review.text).join(',')}
     ${peerReview?.authorResponse?.text ?? ''}

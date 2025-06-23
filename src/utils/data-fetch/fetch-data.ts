@@ -1,7 +1,7 @@
 import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
-import { EnhancedArticleNoContent } from '../../types/reviewed-preprint-snippet';
+import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
 export const fetchVersion = (id: string, preview: boolean = false) => jsonFetchOrNull<EnhancedArticleWithVersions>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
@@ -23,7 +23,7 @@ export const fetchVersionsNoContent = async (page: number, perPage: number, orde
         throw new Error(`error fetching (${url}): ${response.statusText}`);
       }
 
-      const items = await response.json() as EnhancedArticleNoContent[];
+      const items = await response.json() as PublishedEnhancedArticleMetaDataForJournal[];
 
       const total = response.headers.get('x-total-count')
         ? parseInt(response.headers.get('x-total-count') as string, 10)

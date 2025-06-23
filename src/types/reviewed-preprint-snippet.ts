@@ -40,7 +40,7 @@ export type VersionSummary = Omit<EnhancedArticle, 'article' | 'peerReview'>;
 
 export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummary'>;
 
-export type EnhancedArticleNoContent = VersionSummary & {
+export type PublishedEnhancedArticleMetaDataForJournal = VersionSummary & {
   article: Omit<ProcessedArticle, 'doi' | 'date' | 'content' | 'abstract'>,
   peerReview?: PeerReviewEvaluationSummaryOnly,
   firstPublished: Date,
