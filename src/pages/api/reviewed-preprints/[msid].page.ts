@@ -6,7 +6,11 @@ import {
   enhancedArticleToReviewedPreprintItemResponse,
   PublishedEnhancedArticle,
 } from '../reviewed-preprints.page';
-import { VersionSummary } from '../../../types';
+import { EnhancedArticle, VersionSummary } from '../../../types';
+
+function isPublishedEnhancedArticle(article: EnhancedArticle): article is PublishedEnhancedArticle {
+  return article.published instanceof Date;
+}
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
@@ -23,11 +27,16 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
+  if (!isPublishedEnhancedArticle(version.article)) {
+    errorNotFoundRequest(res);
+    return;
+  }
+
   writeResponse(
     res,
     'application/vnd.elife.reviewed-preprint+json; version=1',
     200,
-    enhancedArticleToReviewedPreprintItemResponse(version.article as PublishedEnhancedArticle, firstPublished?.published ?? null),
+    enhancedArticleToReviewedPreprintItemResponse(version.article, firstPublished?.published ?? null),
   );
 };
 
