@@ -4,7 +4,35 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
-const EnhancedArticleSchema = z.object({});
+const ProcessedArticleSchema = z.object({});
+
+const PeerReviewSchema = z.object({});
+
+const RelatedContentSchema = z.object({});
+
+const EnhancedArticleSchema = z.object({
+  id: z.string(),
+  msid: z.string(),
+  doi: z.string(),
+  versionIdentifier: z.string(),
+  versionDoi: z.string().optional(),
+  umbrellaDoi: z.string().optional(),
+  // When we drop the old article schema from the DB,
+  // we can change ProcessedArticle to exclude these properties and drop `Omit` here
+  article: ProcessedArticleSchema,
+  preprintDoi: z.string().optional(),
+  preprintUrl: z.string().optional(),
+  preprintPosted: z.date().optional(),
+  sentForReview: z.date().optional(),
+  peerReview: PeerReviewSchema.optional(),
+  published: z.date().optional(),
+  publishedYear: z.number().optional(),
+  volume: z.string().optional(),
+  eLocationId: z.string().optional(),
+  subjects: z.array(z.string()).optional(),
+  pdfUrl: z.string().optional(),
+  relatedContent: RelatedContentSchema.optional(),
+});
 
 const VersionSummarySchema = z.object({});
 
