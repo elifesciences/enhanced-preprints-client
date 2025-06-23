@@ -159,6 +159,8 @@ export type PublishedEnhancedArticle = EnhancedArticle & {
   published: Date
 };
 
+export const isPublishedEnhancedArticle = (article: EnhancedArticle): article is PublishedEnhancedArticle => article.published instanceof Date;
+
 export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: PublishedEnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
     ...publishedEnhancedArticle,

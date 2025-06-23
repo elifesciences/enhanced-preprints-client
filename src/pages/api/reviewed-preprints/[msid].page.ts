@@ -2,15 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
+  isPublishedEnhancedArticle,
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
-  PublishedEnhancedArticle,
 } from '../reviewed-preprints.page';
-import { EnhancedArticle, VersionSummary } from '../../../types';
-
-function isPublishedEnhancedArticle(article: EnhancedArticle): article is PublishedEnhancedArticle {
-  return article.published instanceof Date;
-}
+import { VersionSummary } from '../../../types';
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';
