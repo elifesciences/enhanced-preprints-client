@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
-  isPublishedEnhancedArticle,
+  hasPublishedDate,
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
 } from '../reviewed-preprints.page';
@@ -23,7 +23,7 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  if (!isPublishedEnhancedArticle(version.article)) {
+  if (!hasPublishedDate(version.article)) {
     errorNotFoundRequest(res);
     return;
   }

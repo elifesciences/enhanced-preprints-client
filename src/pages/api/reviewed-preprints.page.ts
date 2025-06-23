@@ -155,13 +155,13 @@ const enhancedArticleNoContentToSnippet = ({
   ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
-export type PublishedEnhancedArticle = EnhancedArticle & {
+export type EnhancedArticleWithPublishedDate = EnhancedArticle & {
   published: Date
 };
 
-export const isPublishedEnhancedArticle = (article: EnhancedArticle): article is PublishedEnhancedArticle => article.published instanceof Date;
+export const hasPublishedDate = (article: EnhancedArticle): article is EnhancedArticleWithPublishedDate => article.published instanceof Date;
 
-export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: PublishedEnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: EnhancedArticleWithPublishedDate, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
     ...publishedEnhancedArticle,
     firstPublished: firstPublished ?? publishedEnhancedArticle.published,
