@@ -159,33 +159,16 @@ export type PublishedEnhancedArticle = EnhancedArticle & {
   published: Date
 };
 
-export const enhancedArticleToReviewedPreprintItemResponse = ({
-  msid,
-  versionIdentifier,
-  preprintDoi,
-  pdfUrl,
-  article,
-  published,
-  subjects,
-  peerReview,
-  article: { content, authors },
-}: PublishedEnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: PublishedEnhancedArticle, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
-    msid,
-    versionIdentifier,
-    preprintDoi,
-    pdfUrl,
-    article,
-    published,
-    subjects,
-    firstPublished: firstPublished ?? published,
-    peerReview,
-  } as PublishedEnhancedArticleMetaDataForJournal),
-  indexContent: `${peerReview?.evaluationSummary?.text ?? ''}
-    ${peerReview?.reviews.map((review) => review.text).join(',')}
-    ${peerReview?.authorResponse?.text ?? ''}
-    ${authors?.map((author) => prepareAuthor(author)).join(', ')}
-    ${contentToHtml(content)}`,
+    ...publishedEnhancedArticle,
+    firstPublished: firstPublished ?? publishedEnhancedArticle.published,
+  }),
+  indexContent: `${publishedEnhancedArticle.peerReview?.evaluationSummary?.text ?? ''}
+    ${publishedEnhancedArticle.peerReview?.reviews.map((review) => review.text).join(',')}
+    ${publishedEnhancedArticle.peerReview?.authorResponse?.text ?? ''}
+    ${publishedEnhancedArticle.article.authors?.map((author) => prepareAuthor(author)).join(', ')}
+    ${contentToHtml(publishedEnhancedArticle.article.content)}`,
 });
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
