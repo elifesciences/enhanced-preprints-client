@@ -1,11 +1,16 @@
+import * as z from 'zod/v4';
 import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
-export const fetchVersion = (id: string, preview: boolean = false) => {
-  const fetched = jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
-  return fetched as Promise<EnhancedArticleWithVersions>;
+const EnhancedArticleWithVersionsSchema = z.object({});
+
+export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions> => {
+  const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const validated = EnhancedArticleWithVersionsSchema.parse(fetched);
+  return fetched as EnhancedArticleWithVersions;
 };
 
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
