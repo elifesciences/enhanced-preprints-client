@@ -9,7 +9,7 @@ const EnhancedArticleWithVersionsSchema = z.object({});
 export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const validated = EnhancedArticleWithVersionsSchema.parse(fetched);
+  const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
   return fetched as EnhancedArticleWithVersions;
 };
 
