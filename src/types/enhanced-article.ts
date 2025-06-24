@@ -128,6 +128,8 @@ export type ExternalVersionSummary = {
 
 export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
 
+export type IsoDateString = string & { __brand: 'IsoDateString' };
+
 export type EnhancedArticle = {
   id: string,
   msid: string,
@@ -140,10 +142,10 @@ export type EnhancedArticle = {
   article: Omit<ProcessedArticle, 'doi' | 'date'>,
   preprintDoi?: string,
   preprintUrl?: string,
-  preprintPosted?: string,
-  sentForReview?: string,
+  preprintPosted?: IsoDateString,
+  sentForReview?: IsoDateString,
   peerReview?: PeerReview,
-  published: string | null,
+  published: IsoDateString | null,
   publishedYear?: number,
   volume?: string,
   eLocationId?: string,
