@@ -1,3 +1,4 @@
+import * as z from 'zod/v4';
 import { Content } from './content';
 import { Institution } from './institution';
 import { PeerReview } from './peer-review';
@@ -128,7 +129,7 @@ export type ExternalVersionSummary = {
 
 export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
 
-export type IsoDateString = string & { __brand: 'IsoDateString' };
+export type IsoDateString = string & z.$brand<'IsoDateString'>;
 
 export type EnhancedArticle = {
   id: string,

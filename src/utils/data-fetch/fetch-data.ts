@@ -24,10 +24,10 @@ const EnhancedArticleSchema = z.object({
   article: ProcessedArticleSchema,
   preprintDoi: z.string().optional(),
   preprintUrl: z.string().optional(),
-  preprintPosted: z.coerce.date().optional(),
-  sentForReview: z.coerce.date().optional(),
+  preprintPosted: z.iso.datetime().brand<'IsoDateString'>().optional(),
+  sentForReview: z.iso.datetime().brand<'IsoDateString'>().optional(),
   peerReview: PeerReviewSchema.optional(),
-  published: z.coerce.date().nullable(),
+  published: z.iso.datetime().brand<'IsoDateString'>().nullable(),
   publishedYear: z.number().optional(),
   volume: z.string().optional(),
   eLocationId: z.string().optional(),
@@ -44,11 +44,16 @@ const EnhancedArticleWithVersionsSchema = z.object({
   metrics: ToDoSchema.optional(),
 });
 
-export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions> => {
+export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
-  return fetched as EnhancedArticleWithVersions;
+
+  if (!validated.success) {
+    return null;
+  }
+
+  return validated.data;
 };
 
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
