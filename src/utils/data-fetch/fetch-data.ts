@@ -3,6 +3,7 @@ import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
+import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 
@@ -24,10 +25,10 @@ const EnhancedArticleSchema = z.object({
   article: ProcessedArticleSchema,
   preprintDoi: z.string().optional(),
   preprintUrl: z.string().optional(),
-  preprintPosted: z.iso.datetime().brand<'IsoDateString'>().optional(),
-  sentForReview: z.iso.datetime().brand<'IsoDateString'>().optional(),
+  preprintPosted: IsoDateStringSchema.optional(),
+  sentForReview: IsoDateStringSchema.optional(),
   peerReview: PeerReviewSchema.optional(),
-  published: z.iso.datetime().brand<'IsoDateString'>().nullable(),
+  published: IsoDateStringSchema.nullable(),
   publishedYear: z.number().optional(),
   volume: z.string().optional(),
   eLocationId: z.string().optional(),

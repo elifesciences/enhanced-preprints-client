@@ -129,7 +129,9 @@ export type ExternalVersionSummary = {
 
 export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
 
-export type IsoDateString = string & z.$brand<'IsoDateString'>;
+export const IsoDateStringSchema = z.iso.datetime().brand<'IsoDateString'>();
+
+export type IsoDateString = z.infer<typeof IsoDateStringSchema>;
 
 export type EnhancedArticle = {
   id: string,
