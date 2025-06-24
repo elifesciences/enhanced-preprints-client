@@ -11,7 +11,7 @@ test-storybook: install-playwright
 	STORYBOOK_PORT=6106; yarn storybook dev -p $$STORYBOOK_PORT & yarn wait-on http://localhost:$$STORYBOOK_PORT && yarn test-storybook --url http://localhost:$$STORYBOOK_PORT; TEST_EXIT_CODE=$$?; lsof -ti :$$STORYBOOK_PORT | xargs kill -9; exit $$TEST_EXIT_CODE
 
 .PHONY: test-browser
-test-browser: install-playwright
+test-browser: node_modules install-playwright
 	docker compose up --build --wait
 	yarn playwright test
 
