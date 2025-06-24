@@ -4,11 +4,13 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { ArticleSummary, EnhancedArticleWithVersions } from '../../types';
 import { PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
 
-const ProcessedArticleSchema = z.object({});
+const ToDoSchema = z.any();
 
-const PeerReviewSchema = z.object({});
+const ProcessedArticleSchema = ToDoSchema;
 
-const RelatedContentSchema = z.object({});
+const PeerReviewSchema = ToDoSchema;
+
+const RelatedContentSchema = ToDoSchema;
 
 const EnhancedArticleSchema = z.object({
   id: z.string(),
@@ -34,7 +36,7 @@ const EnhancedArticleSchema = z.object({
   relatedContent: RelatedContentSchema.optional(),
 });
 
-const VersionSummarySchema = z.object({});
+const VersionSummarySchema = ToDoSchema;
 
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,
