@@ -12,6 +12,7 @@ import {
   PeerReviewEvaluationSummaryOnly,
 } from '../../types/reviewed-preprint-snippet';
 import { findTerms } from '../../utils/terms';
+import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',
@@ -159,7 +160,7 @@ export type EnhancedArticleWithPublishedDate = EnhancedArticle & {
   published: Date
 };
 
-export const hasPublishedDate = (article: EnhancedArticle): article is EnhancedArticleWithPublishedDate => article.published !== null;
+export const hasPublishedDate = (article: EnhancedArticle): article is EnhancedArticleWithPublishedDate => IsoDateStringSchema.safeParse(article.published).success;
 
 export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: EnhancedArticleWithPublishedDate, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
