@@ -24,10 +24,10 @@ const EnhancedArticleSchema = z.object({
   article: ProcessedArticleSchema,
   preprintDoi: z.string().optional(),
   preprintUrl: z.string().optional(),
-  preprintPosted: z.date().optional(),
-  sentForReview: z.date().optional(),
+  preprintPosted: z.coerce.date().optional(),
+  sentForReview: z.coerce.date().optional(),
   peerReview: PeerReviewSchema.optional(),
-  published: z.date().optional(),
+  published: z.coerce.date().nullable(),
   publishedYear: z.number().optional(),
   volume: z.string().optional(),
   eLocationId: z.string().optional(),
@@ -41,7 +41,7 @@ const VersionSummarySchema = ToDoSchema;
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,
   versions: z.object({}).catchall(VersionSummarySchema),
-  metrics: z.object({}).optional(),
+  metrics: ToDoSchema.optional(),
 });
 
 export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions> => {
