@@ -156,6 +156,10 @@ const enhancedArticleNoContentToSnippet = ({
   ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
+/**
+ * @deprecated This type is a lie
+ * unable to use its proper type IsoDateString, for now, as it affects multiple places in the code and requires more attention and work
+ */
 export type EnhancedArticleWithPublishedDate = EnhancedArticle & {
   published: Date
 };
