@@ -2750,6 +2750,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.27.6":
+  version: 7.27.6
+  resolution: "@babel/runtime@npm:7.27.6"
+  checksum: 10c0/89726be83f356f511dcdb74d3ea4d873a5f0cf0017d4530cb53aa27380c01ca102d573eff8b8b77815e624b1f8c24e7f0311834ad4fb632c90a770fda00bd4c8
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.18.10, @babel/template@npm:^7.22.5":
   version: 7.22.5
   resolution: "@babel/template@npm:7.22.5"
@@ -9580,7 +9587,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-app-polyfill: "npm:^3.0.0"
     react-dom: "npm:^18.2.0"
-    react-i18next: "npm:^14.0.1"
+    react-i18next: "npm:^15.0.0"
     sass: "npm:^1.54.5"
     storybook: "npm:^8.0.0"
     storybook-dark-mode: "npm:^4.0.0"
@@ -16186,7 +16193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:*, react-i18next@npm:^14.0.1":
+"react-i18next@npm:*":
   version: 14.1.3
   resolution: "react-i18next@npm:14.1.3"
   dependencies:
@@ -16201,6 +16208,27 @@ __metadata:
     react-native:
       optional: true
   checksum: 10c0/a10426585a3bdfecbec5afc7eeb35df8005fa9d47032dd70dea170adb5506c13ea4e5f417a50669f59c547537d1b3a80e638580987f1c1bbc628ddc8f5974ec9
+  languageName: node
+  linkType: hard
+
+"react-i18next@npm:^15.0.0":
+  version: 15.5.3
+  resolution: "react-i18next@npm:15.5.3"
+  dependencies:
+    "@babel/runtime": "npm:^7.27.6"
+    html-parse-stringify: "npm:^3.0.1"
+  peerDependencies:
+    i18next: ">= 23.2.3"
+    react: ">= 16.8.0"
+    typescript: ^5
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+    typescript:
+      optional: true
+  checksum: 10c0/495d98a738e966cd655a378d953e45cfd1a810ccfaf4894a63c37b7a9043e69b55c5e14044d54290c91512e7fa37835c7e4637bfb8d68b6fc88bc493a5ffd9ee
   languageName: node
   linkType: hard
 
