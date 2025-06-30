@@ -155,6 +155,7 @@ export type EnhancedArticle = {
   subjects?: string[],
   pdfUrl?: string,
   relatedContent?: RelatedContent[],
+  license?: string,
 };
 
 export type Metrics = {
