@@ -29,6 +29,7 @@ import { isVORVersionSummary } from '../../utils/type-guards';
 type PageProps = {
   siteName?: string,
   metaData: MetaData,
+  citationDoi?: string,
   versionOfRecord?: boolean,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
@@ -68,6 +69,7 @@ const getRoutePrefix = (router: NextRouter) => {
 
 export const Page = ({
   metaData: rawMetaData,
+  citationDoi,
   imgInfo,
   msidWithVersion,
   timeline,
@@ -193,6 +195,7 @@ export const Page = ({
       </Head>
       <ArticlePage
         previousVersionWarningUrl={makeNullableOptional(previousVersionWarningUrl)}
+        citationDoi={citationDoi}
         metrics={makeNullableOptional(metrics)}
         relatedContent={processedRelatedContent}
         metaData={metaData}
@@ -241,6 +244,17 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const timeline = generateTimeline(versions);
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
+  const metaData = {
+    ...articleWithVersions.article,
+    ...articleWithVersions.article.article,
+    authors: articleWithVersions.article.article.authors || [],
+    msas: articleWithVersions.article.subjects || [],
+    version: articleWithVersions.article.versionIdentifier,
+    versionHistory,
+    authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
+  };
+  const versionOfRecords = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi);
+  const citationDoi = versionOfRecords.reduce((acc, doi) => acc || doi, metaData.doi);
 
   // Redirect VOR articles from reviewed-preprints to articles path.
   if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
@@ -269,15 +283,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   return {
     props: {
       siteName: config.siteName,
-      metaData: {
-        ...articleWithVersions.article,
-        ...articleWithVersions.article.article,
-        authors: articleWithVersions.article.article.authors || [],
-        msas: articleWithVersions.article.subjects || [],
-        version: articleWithVersions.article.versionIdentifier,
-        versionHistory,
-        authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-      },
+      metaData,
+      citationDoi,
       versionOfRecord,
       imgInfo,
       msidWithVersion: id,

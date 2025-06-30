@@ -18,6 +18,7 @@ export type Tab = {
 
 export type ArticlePageProps = {
   metaData: MetaData,
+  citationDoi?: string,
   msidWithVersion: string,
   relatedContent: RelatedContentData[],
   metrics?: Metrics,
@@ -32,6 +33,7 @@ export type ArticlePageProps = {
 export const ArticlePage = (props: ArticlePageProps) => {
   const { t } = useTranslation();
   const { doi } = props.metaData;
+  const citationDoi = props.citationDoi ?? 'wtf';
 
   const citation: CitationData = {
     authors: props.metaData.authors,
@@ -40,7 +42,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
     journal: t('publisher_short'),
     eLocationId: props.metaData.eLocationId,
     title: contentToText(props.metaData.title),
-    doi,
+    doi: citationDoi,
   };
 
   const banner = () => {
