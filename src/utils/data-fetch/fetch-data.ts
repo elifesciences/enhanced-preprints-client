@@ -35,6 +35,7 @@ const EnhancedArticleSchema = z.object({
   subjects: z.array(z.string()).optional(),
   pdfUrl: z.string().optional(),
   relatedContent: RelatedContentSchema.optional(),
+  license: z.string().optional(),
 });
 
 const VersionSummarySchema = ToDoSchema;
