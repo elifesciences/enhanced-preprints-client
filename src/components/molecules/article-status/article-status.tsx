@@ -86,6 +86,6 @@ export const ArticleStatus = ({
         </li>
       </ol>
     </Modal>
-    { altMetrics() }
+    { metrics && altMetrics() }
   </div>;
 };
