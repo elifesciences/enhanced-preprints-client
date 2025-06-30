@@ -183,10 +183,10 @@ export const Page = ({
         <meta name="citation_title" content={contentToText(metaData.title)}/>
         <meta name="citation_publisher" content={t('publisher_long')}/>
         <meta name="citation_journal_title" content={t('publisher_short')}/>
-        <meta name="citation_volume" content={metaData.volume}/>
-        <meta name="citation_id" content={`RP${metaData.msid}`}/>
+        {metaData.volume && <meta name="citation_volume" content={metaData.volume}/>}
+        <meta name="citation_id" content={metaData.eLocationId ?? `RP${metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
-        <meta name="citation_doi" content={metaData.doi}/>
+        <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
         <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
         {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
@@ -254,7 +254,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
   };
   const versionOfRecords = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi);
-  const citationDoi = versionOfRecords.reduce((acc, doi) => acc || doi, metaData.doi);
+  const [citationDoi] = versionOfRecords.length > 0 ? versionOfRecords : [metaData.doi];
 
   // Redirect VOR articles from reviewed-preprints to articles path.
   if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {

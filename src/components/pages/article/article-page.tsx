@@ -33,7 +33,7 @@ export type ArticlePageProps = {
 export const ArticlePage = (props: ArticlePageProps) => {
   const { t } = useTranslation();
   const { doi } = props.metaData;
-  const citationDoi = props.citationDoi ?? 'wtf';
+  const citationDoi = props.citationDoi ?? doi;
 
   const citation: CitationData = {
     authors: props.metaData.authors,
