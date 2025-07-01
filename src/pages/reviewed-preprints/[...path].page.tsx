@@ -253,8 +253,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     versionHistory,
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
   };
-  const versionOfRecords = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi);
-  const citationDoi = versionOfRecords.find((doi) => doi) || metaData.doi;
+  const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || metaData.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
   if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
