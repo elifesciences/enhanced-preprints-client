@@ -168,4 +168,5 @@ export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
   metrics?: Metrics,
+  siteName?: string,
 };

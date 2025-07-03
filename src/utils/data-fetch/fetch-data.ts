@@ -44,6 +44,7 @@ const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,
   versions: z.object({}).catchall(VersionSummarySchema),
   metrics: ToDoSchema.optional(),
+  siteName: z.string().optional(),
 });
 
 export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions | null> => {

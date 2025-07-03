@@ -281,7 +281,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   return {
     props: {
-      siteName: config.siteName,
+      siteName: articleWithVersions.siteName ?? config.siteName,
       metaData,
       citationDoi,
       versionOfRecord,
