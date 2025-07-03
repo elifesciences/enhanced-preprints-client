@@ -32,7 +32,7 @@ node_modules: package.json yarn.lock
 .PHONY: clean
 clean:
 	rm -rf ./node_modules ./.next
-	docker compose down --volumes --remove-orphans
+	docker compose down --volumes --remove-orphans --rmi=all
 
 .PHONY: lint
 lint: node_modules
