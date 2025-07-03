@@ -81,9 +81,11 @@ export default function MyApp({ Component, pageProps }: any) {
       </Head>
       <FeaturesContext.Provider value={features}>
         <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
-          <LayoutSelector siteName={pageProps.siteName}>
-            <Component {...pageProps} />
-          </LayoutSelector>
+          <div className={`site-${pageProps.siteName}`}>
+            <LayoutSelector siteName={pageProps.siteName}>
+              <Component {...pageProps} />
+            </LayoutSelector>
+          </div>
         </I18nextProvider>
       </FeaturesContext.Provider>
     </>
