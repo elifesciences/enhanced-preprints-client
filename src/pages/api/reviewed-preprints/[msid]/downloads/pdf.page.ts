@@ -13,6 +13,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     redirect(pdfUrl);
   } else {
     errorNotFoundRequest(res);
-    return
+    return;
   }
 };

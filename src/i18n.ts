@@ -14,6 +14,7 @@ const resources = {
 
       // Defaults:
       reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
+      pdf_url: '/reviewed-preprints/{{msid}}/downloads/pdf',
       about_assessments_description: (
         'During the peer-review process the editor and reviewers write an assessment that summarises the significance'
         + ' of the findings reported in the article and the strength of the evidence.'
@@ -67,6 +68,7 @@ const resources = {
       ),
       about_assessments_url: 'https://elifesciences.org/about/elife-assessments',
       reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
+      pdf_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}/downloads/pdf',
       related_intro_collection: 'Part of {{type}}',
       related_intro_podcastChapterEpisode: 'Discussed in {{type}}',
       related_type_insight: 'Insight',

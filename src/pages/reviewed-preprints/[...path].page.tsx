@@ -188,7 +188,7 @@ export const Page = ({
         <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
         <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
         <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
-        {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
+        {metaData.pdfUrl && <meta name="citation_pdf_url" content={t('pdf_url', { msid: metaData.msid })}/>}
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
         <meta name="citation_language" content="en"/>
         { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
