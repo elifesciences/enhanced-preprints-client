@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { fetchVersion } from '../../../../../utils/data-fetch';
-import { redirect } from 'next/navigation';
 import { errorNotFoundRequest } from '../../../reviewed-preprints.page';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -10,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const pdfUrl = version?.article.pdfUrl;
 
   if (pdfUrl) {
-    redirect(pdfUrl);
+    res.redirect(307, pdfUrl);
   } else {
     errorNotFoundRequest(res);
     return;
