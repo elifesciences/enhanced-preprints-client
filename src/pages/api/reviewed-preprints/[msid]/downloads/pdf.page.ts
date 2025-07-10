@@ -12,6 +12,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.redirect(307, pdfUrl);
   } else {
     errorNotFoundRequest(res);
-    return;
   }
 };
