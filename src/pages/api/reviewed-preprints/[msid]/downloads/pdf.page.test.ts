@@ -22,8 +22,23 @@ describe('PDF redirect handler', () => {
     fetchMock.resetBehavior();
   });
 
+  test('redirects to pdfUrl if available', async () => {
+    (fetchVersion as jest.Mock).mockResolvedValueOnce({
+      article: {
+        pdfUrl: 'https://example.com/sample.pdf',
+      },
+    });
+
+    await handler(req as unknown as NextApiRequest, res as unknown as NextApiResponse);
+
+    expect(res.statusCode).toBe(307);
+    // eslint-disable-next-line no-underscore-dangle
+    expect(res._getRedirectUrl()).toBe('https://example.com/sample.pdf');
+  });
+
   test('returns 404 if version is not available', async () => {
     (fetchVersion as jest.Mock).mockResolvedValueOnce(null);
+
     await handler(req, res);
 
     expect(res.statusCode).toBe(404);
