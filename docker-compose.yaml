@@ -47,7 +47,7 @@ services:
 
   # Create bucket and upload data
   createbucket:
-    image: minio/mc:RELEASE.2022-12-24T15-21-38Z
+    image: minio/mc:RELEASE.2025-07-16T15-35-03Z@sha256:d5bccfe71e95a34b25d626d86621930342553657e8776833b65ae0bc63cf4928
     depends_on:
       minio:
         condition: service_healthy
