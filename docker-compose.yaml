@@ -28,7 +28,7 @@ services:
 
   ## Minio
   minio:
-    image: minio/minio:RELEASE.2023-01-02T09-40-09Z
+    image: minio/minio:RELEASE.2023-01-02T09-40-09Z@sha256:2e3c9562f1af5f4616c3bd2a152b67bded68e76491fc3b2ad14ea7196fb0d1cd
     healthcheck:
       test: curl http://minio:9000/minio/health/live
       interval: 5s
@@ -47,7 +47,7 @@ services:
 
   # Create bucket and upload data
   createbucket:
-    image: minio/mc:RELEASE.2022-12-24T15-21-38Z
+    image: minio/mc:RELEASE.2022-12-24T15-21-38Z@sha256:43ea3d0717525df374801192e56bbb4d75c5a5e8e24d8bde8c95395a12c58f7a
     depends_on:
       minio:
         condition: service_healthy
@@ -109,7 +109,7 @@ services:
 
   # Expose API and client via proxy
   nginx:
-    image: nginx:latest
+    image: nginx:latest@sha256:33e0bbc7ca9ecf108140af6288c7c9d1ecc77548cbfd3952fd8466a75edefe57
     depends_on:
       wiremock:
         condition: service_healthy
