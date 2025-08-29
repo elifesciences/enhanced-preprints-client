@@ -81,6 +81,11 @@ jobs:
     needs: [test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      packages: write
     outputs:
       client_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
     steps:
