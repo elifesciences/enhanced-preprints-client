@@ -128,7 +128,6 @@ jobs:
           subject-digest: ${{ steps.build-push.outputs.digest }}
           predicate-type: ${{ steps.generate-build-provenance-predicate.outputs.predicate-type }}
           predicate: ${{ steps.generate-build-provenance-predicate.outputs.predicate }}
-          push-to-registry: true
 
   notify-start:
     runs-on: ubuntu-latest
