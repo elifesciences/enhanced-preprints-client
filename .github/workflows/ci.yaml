@@ -106,6 +106,7 @@ jobs:
         with:
           push: true
           provenance: mode=max
+          sbom: true
           load: false
           platforms: linux/amd64,linux/arm64
           target: prod
