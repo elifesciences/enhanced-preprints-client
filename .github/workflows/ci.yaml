@@ -81,6 +81,11 @@ jobs:
     needs: [test, test-integration, test-chromatic]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      packages: write
     outputs:
       client_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
     steps:
@@ -103,6 +108,7 @@ jobs:
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
       - name: Build and push client image
         uses: docker/build-push-action@v5
+        id: push
         with:
           push: true
           load: false
@@ -112,6 +118,12 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-client:latest
             ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
+      - name: Attest client image
+        uses: actions/attest@v2
+        with:
+          subject-name: ghcr.io/elifesciences/enhanced-preprints-client
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
 
   notify-start:
     runs-on: ubuntu-latest
