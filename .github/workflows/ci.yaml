@@ -118,16 +118,11 @@ jobs:
             ghcr.io/elifesciences/enhanced-preprints-client:latest
             ghcr.io/elifesciences/enhanced-preprints-client:${{ github.sha }}
             ghcr.io/elifesciences/enhanced-preprints-client:master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
-      - name: Generate build provenance predicate
-        uses: actions/attest-build-provenance/predicate@v2
-        id: generate-build-provenance-predicate
-      - name: Attest client image
-        uses: actions/attest@v2
+      - name: Generate artefact attestation
+        uses: actions/attest-build-provenance@v1
         with:
           subject-name: ghcr.io/elifesciences/enhanced-preprints-client
           subject-digest: ${{ steps.build-push.outputs.digest }}
-          predicate-type: ${{ steps.generate-build-provenance-predicate.outputs.predicate-type }}
-          predicate: ${{ steps.generate-build-provenance-predicate.outputs.predicate }}
 
   notify-start:
     runs-on: ubuntu-latest
