@@ -23,7 +23,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build preview image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
           cache-from: type=gha
@@ -33,7 +33,7 @@ jobs:
           tags: |
             ${{ env.CLIENT_IMAGE_REPO }}:preview-${{ github.event.number }}
       - name: load preview image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
           target: prod
@@ -51,7 +51,7 @@ jobs:
         id: date
         run: echo "date=$(date --utc +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
       - name: Push preview image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         with:
           context: .
           target: prod
