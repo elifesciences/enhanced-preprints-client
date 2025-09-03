@@ -28,7 +28,7 @@ services:
 
   ## Minio
   minio:
-    image: minio/minio:RELEASE.2023-01-02T09-40-09Z
+    image: minio/minio:RELEASE.2023-12-23T07-19-11Z@sha256:47d5b01cc3020efa39aac112a7cbc919af5fb18f9ebc63bda31683590715c42b
     healthcheck:
       test: curl http://minio:9000/minio/health/live
       interval: 5s
