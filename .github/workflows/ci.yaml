@@ -139,8 +139,8 @@ jobs:
         method: chat.postMessage
         token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         payload: |
-          channel: C06FPSVJPUH
           {
+            "channel": "C06FPSVJPUH",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -250,8 +250,8 @@ jobs:
         token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
-          channel: C06FPSVJPUH
           {
+            "channel": "C06FPSVJPUH",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -361,8 +361,8 @@ jobs:
         token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
-          channel: C06FPSVJPUH
           {
+            "channel": "C06FPSVJPUH",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
