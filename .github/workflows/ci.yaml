@@ -136,6 +136,7 @@ jobs:
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
+        method: chat.postMessage
         channel-id: C06FPSVJPUH
         payload: |
           {
@@ -244,6 +245,7 @@ jobs:
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
+        method: chat.update
         channel-id: C06FPSVJPUH
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
@@ -353,6 +355,7 @@ jobs:
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
+        method: chat.update
         channel-id: C06FPSVJPUH
         update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
