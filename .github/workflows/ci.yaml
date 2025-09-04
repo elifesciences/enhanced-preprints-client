@@ -248,10 +248,10 @@ jobs:
       with:
         method: chat.update
         token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-        update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
             "channel": "C06FPSVJPUH",
+            "ts": "${{ steps.launch_sequence.outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -359,10 +359,10 @@ jobs:
       with:
         method: chat.update
         token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
-        update-ts: ${{ needs['notify-start'].outputs.ts }}
         payload: |
           {
             "channel": "C06FPSVJPUH",
+            "ts": "${{ steps.launch_sequence.outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
