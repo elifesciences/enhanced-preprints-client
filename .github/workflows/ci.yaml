@@ -251,7 +251,7 @@ jobs:
         payload: |
           {
             "channel": "C06FPSVJPUH",
-            "ts": "${{ steps.launch_sequence.outputs.ts }}",
+            "ts": "${{ needs['notify-start'].outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -362,7 +362,7 @@ jobs:
         payload: |
           {
             "channel": "C06FPSVJPUH",
-            "ts": "${{ steps.launch_sequence.outputs.ts }}",
+            "ts": "${{ needs['notify-start'].outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
