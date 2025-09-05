@@ -67,10 +67,11 @@ describe('generateCopyrightYear', () => {
   });
 
   it('should generate the copyright year with multiple versions, some without published date', () => {
-    const versionSummary1WithoutPublished = versionSummary1;
-    delete versionSummary1WithoutPublished.published;
     const copyrightYear = generateCopyrightYear([
-      versionSummary1WithoutPublished,
+      {
+        ...versionSummary1,
+        published: null,
+      },
       versionSummary2,
       versionSummary3,
     ]);
