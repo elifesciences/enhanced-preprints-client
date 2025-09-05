@@ -15,6 +15,7 @@ export const metaData = {
   authorNotes,
   references,
   publishedYear: 2022,
+  copyrightYear: 2022,
   license: 'https://creativecommons.org/licenses/by/4.0/',
   versionHistory,
 };
