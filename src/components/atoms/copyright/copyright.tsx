@@ -3,11 +3,11 @@ import './copyright.scss';
 
 type CopyrightProps = {
   license?: string,
-  publishedYear?: number,
+  copyrightYear?: number,
   authors?: Author[],
 };
 
-export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) => {
+export const Copyright = ({ license, copyrightYear, authors }: CopyrightProps) => {
   let copyrightText;
   let hasCopyright = false;
   let authorName = '';
@@ -55,7 +55,7 @@ export const Copyright = ({ license, publishedYear, authors }: CopyrightProps) =
       {copyrightText &&
         <div id="copyright" className="copyright">
           <h2>Copyright</h2>
-          {hasCopyright && <p>{publishedYear && `© ${publishedYear},`}{authorName && ` ${authorName}`}</p>}
+          {hasCopyright && <p>{copyrightYear && `© ${copyrightYear},`}{authorName && ` ${authorName}`}</p>}
           <p>{copyrightText}</p>
         </div>}
     </>

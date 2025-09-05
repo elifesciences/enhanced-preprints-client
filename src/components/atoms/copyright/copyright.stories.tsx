@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Copyright>;
 export const CopyrightLicenseWithMoreThanTwoAuthors: Story = {
   args: {
     license: 'http://creativecommons.org/licenses/by/4.0/',
-    publishedYear: 2022,
+    copyrightYear: 2022,
     authors,
   },
 };
@@ -22,7 +22,7 @@ export const CopyrightLicenseWithMoreThanTwoAuthors: Story = {
 export const CopyrightLicenseWithTwoAuthors: Story = {
   args: {
     license: 'http://creativecommons.org/licenses/by/4.0/',
-    publishedYear: 2022,
+    copyrightYear: 2022,
     authors: [authors[0], authors[1]],
   },
 };
@@ -30,7 +30,7 @@ export const CopyrightLicenseWithTwoAuthors: Story = {
 export const CopyrightLicenseWithOneAuthor: Story = {
   args: {
     license: 'http://creativecommons.org/licenses/by/4.0/',
-    publishedYear: 2022,
+    copyrightYear: 2022,
     authors: [authors[0]],
   },
 };
