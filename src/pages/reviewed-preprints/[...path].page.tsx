@@ -18,7 +18,7 @@ import { ArticlePage, Tab } from '../../components/pages/article/article-page';
 import {
   contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
-import { generateTimeline, generateVersionHistory } from '../../utils/generators';
+import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
@@ -242,6 +242,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const versions = Object.values(articleWithVersions.versions);
   const timeline = generateTimeline(versions);
+  const copyrightYear = generateCopyrightYear(versions);
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
   const metaData = {
@@ -282,7 +283,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData,
+      metaData: {
+        ...metaData,
+        ...(copyrightYear > 0 ? {
+          copyrightYear,
+        } : {}),
+      },
       citationDoi,
       versionOfRecord,
       imgInfo,

@@ -15,6 +15,7 @@ export type MetaData = {
   title: Content,
   version: string,
   publishedYear?: number,
+  copyrightYear?: number,
   volume?: string,
   eLocationId?: string,
   license?: string,

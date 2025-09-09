@@ -107,7 +107,7 @@ jobs:
         id: commit_sha
         run: echo "commit_sha=${GITHUB_SHA:0:8}" >> $GITHUB_OUTPUT
       - name: Build and push client image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6
         id: build-push
         with:
           push: true
@@ -132,13 +132,15 @@ jobs:
     steps:
     - name: Notify Slack testing started
       id: slack
-      uses: slackapi/slack-github-action@fcfb566f8b0aab22203f066d80ca1d7e4b5d05b3 # v1.27.1
+      uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
-        channel-id: C06FPSVJPUH
+        method: chat.postMessage
+        token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         payload: |
           {
+            "channel": "C06FPSVJPUH",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -240,14 +242,16 @@ jobs:
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack testing results
-      uses: slackapi/slack-github-action@fcfb566f8b0aab22203f066d80ca1d7e4b5d05b3 # v1.27.1
+      uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
-        channel-id: C06FPSVJPUH
-        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        method: chat.update
+        token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         payload: |
           {
+            "channel": "C06FPSVJPUH",
+            "ts": "${{ needs['notify-start'].outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'
@@ -349,14 +353,16 @@ jobs:
     if: always() && github.ref == 'refs/heads/master'
     steps:
     - name: Notify Slack build final message
-      uses: slackapi/slack-github-action@fcfb566f8b0aab22203f066d80ca1d7e4b5d05b3 # v1.27.1
+      uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
       with:
-        channel-id: C06FPSVJPUH
-        update-ts: ${{ needs['notify-start'].outputs.ts }}
+        method: chat.update
+        token: ${{ secrets.SLACK_EPP_GITHUB_BOT_TOKEN }}
         payload: |
           {
+            "channel": "C06FPSVJPUH",
+            "ts": "${{ needs['notify-start'].outputs.ts }}",
             "text": "EPP Client CI: ${{
               (!needs.test.result || !needs.test-integration.result) &&
                 'testing... :sonic:'

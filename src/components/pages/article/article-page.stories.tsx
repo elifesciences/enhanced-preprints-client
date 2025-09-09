@@ -74,6 +74,30 @@ export const ArticlePageFullTextTab: Story = {
   ),
 };
 
+export const ArticlePageFullTextTabWithLicenseAndCopyrightYear: Story = {
+  args: {
+    metaData: {
+      ...metaData,
+      publishedYear: 2022,
+      license: 'https://creativecommons.org/licenses/by/4.0/',
+      copyrightYear: 2021,
+    },
+    activeTab: 'fulltext',
+    tabs,
+    relatedContent,
+    metrics,
+    previousVersionWarningUrl: '#',
+    timeline,
+  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={args.metaData} peerReview={peerReview} content={jsxContent} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
+};
+
 export const ArticlePageFullTextTabNoSummary: Story = {
   args: {
     metaData,
