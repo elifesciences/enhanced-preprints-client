@@ -5,7 +5,7 @@
   "dependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.35.0",
-    "@opentelemetry/api-logs": "^0.200.0",
+    "@opentelemetry/api-logs": "^0.206.0",
     "@vercel/otel": "^1.8.2",
     "crc-32": "^1.2.2",
     "html-react-parser": "^5.1.10",
