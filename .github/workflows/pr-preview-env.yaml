@@ -11,7 +11,7 @@ jobs:
     env:
       CLIENT_IMAGE_REPO: ghcr.io/elifesciences/enhanced-preprints-client
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx

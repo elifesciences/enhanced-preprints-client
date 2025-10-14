@@ -17,7 +17,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
@@ -41,7 +41,7 @@ jobs:
   test-integration:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
@@ -68,7 +68,7 @@ jobs:
   test-chromatic:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0
       - run: yarn
@@ -89,7 +89,7 @@ jobs:
     outputs:
       client_image_tag: master-${{ steps.commit_sha.outputs.commit_sha }}-${{ steps.date.outputs.date }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
