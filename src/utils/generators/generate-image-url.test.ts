@@ -3,7 +3,7 @@ import { generateImageInfo } from './generate-image-url';
 
 describe('generate image url', () => {
   afterEach(() => {
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   it('returns a valid width and height with a correct url', async () => {
@@ -19,7 +19,7 @@ describe('generate image url', () => {
 
     await generateImageInfo('12345');
 
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/2/12345/info.json');
+    expect(fetchMock.callHistory.lastCall()).toStrictEqual('/undefined/2/12345/info.json');
   });
 
   it('throws an error with the correct message when request fails', async () => {

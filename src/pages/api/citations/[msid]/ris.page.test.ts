@@ -19,7 +19,7 @@ describe('citation RIS handler', () => {
 
   afterEach(() => {
     jest.resetAllMocks();
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   test('returns 503 if version is not available', async () => {
@@ -62,6 +62,6 @@ DO  - 10.7554/eLife.321.1`);
     expect(res._getData()).toContain('TI  - Tonight we take over the world!');
     // eslint-disable-next-line no-underscore-dangle
     expect(res._getData()).toContain('DO  - 10.7554/eLife.321.1');
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/321456/ris');
+    expect(fetchMock.callHistory.lastCall()).toStrictEqual('/undefined/api/citations/10.1101/321456/ris');
   });
 });
