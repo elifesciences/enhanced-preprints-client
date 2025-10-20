@@ -4,7 +4,7 @@ services:
 
   ## Image Server
   image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-b65058bd-20250204.1338@sha256:d96ca8dc3bab081a3559ebde4435897c43d88e98fca76090d7cada2579af99fc
+    image: ghcr.io/elifesciences/epp-image-server:master-cc3360dd-20251013.1308@sha256:ceed655c2c46e96f26c843259dc7738cc9820404a0dacdcb6e7197389464cbe2
     depends_on:
       createbucket:
         condition: service_completed_successfully
@@ -28,7 +28,7 @@ services:
 
   ## Minio
   minio:
-    image: minio/minio:RELEASE.2025-07-23T15-54-02Z@sha256:d249d1fb6966de4d8ad26c04754b545205ff15a62e4fd19ebd0f26fa5baacbc0
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
     healthcheck:
       test: curl http://minio:9000/minio/health/live
       interval: 5s
@@ -47,7 +47,7 @@ services:
 
   # Create bucket and upload data
   createbucket:
-    image: minio/mc:RELEASE.2025-07-21T05-28-08Z@sha256:fb8f773eac8ef9d6da0486d5dec2f42f219358bcb8de579d1623d518c9ebd4cc
+    image: minio/mc:RELEASE.2025-08-13T08-35-41Z@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
     depends_on:
       minio:
         condition: service_healthy
@@ -63,7 +63,7 @@ services:
 
   ## EPP server mock
   wiremock:
-    image: wiremock/wiremock:3.12.1-1@sha256:be850ea239193d9497b264115e7071f1f2605bbff05b41f1fa22799904b2e019
+    image: wiremock/wiremock:3.13.1-1@sha256:d61e7720f89483fdef5366843b58d1dfd06bcce5828179c9f2f54de5c28354b0
     ports:
       - 3000:3000
     healthcheck:
