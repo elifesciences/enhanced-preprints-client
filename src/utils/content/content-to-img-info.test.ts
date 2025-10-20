@@ -3,7 +3,7 @@ import { contentToImgInfo } from './content-to-img-info';
 
 describe('content to image info', () => {
   afterEach(() => {
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   it('returns a valid width and height with a correct url', async () => {

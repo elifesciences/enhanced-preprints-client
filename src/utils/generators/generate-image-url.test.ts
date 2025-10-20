@@ -3,7 +3,7 @@ import { generateImageInfo } from './generate-image-url';
 
 describe('generate image url', () => {
   afterEach(() => {
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   it('returns a valid width and height with a correct url', async () => {

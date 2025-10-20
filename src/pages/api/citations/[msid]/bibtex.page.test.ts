@@ -19,7 +19,7 @@ describe('citation BibTeX handler', () => {
 
   afterEach(() => {
     jest.resetAllMocks();
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   test('returns 503 if version is not available', async () => {
