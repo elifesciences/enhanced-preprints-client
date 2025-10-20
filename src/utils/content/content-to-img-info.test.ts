@@ -19,7 +19,7 @@ describe('content to image info', () => {
 
     await contentToImgInfo({ type: 'ImageObject', meta: { inline: false }, contentUrl: '12345' });
 
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/2/12345/info.json');
+    expect(fetchMock.callHistory.lastCall()).toStrictEqual('/undefined/2/12345/info.json');
   });
 
   it('throws an error with the correct message when request fails', async () => {
