@@ -53,7 +53,7 @@ services:
         condition: service_healthy
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc config host add myminio http://minio:9000 minio miniotest;
+      /usr/bin/mc alias set myminio http://minio:9000 minio miniotest;
       /usr/bin/mc mb myminio/eppdata || true;
       /usr/bin/mc mirror /automation-data myminio/eppdata/automation;
       exit 0;
