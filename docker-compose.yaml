@@ -109,7 +109,7 @@ services:
 
   # Expose API and client via proxy
   nginx:
-    image: nginx:latest
+    image: nginx:latest@sha256:b619c34a163ac12f68c1982568a122c4953dbf3126b8dbf0cc2f6fdbfd85de27
     depends_on:
       wiremock:
         condition: service_healthy
