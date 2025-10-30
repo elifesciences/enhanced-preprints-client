@@ -23,7 +23,7 @@ On push to `master`:
 4. If green, pull request is merged, causing the image to be tagged with the suffix `-approved`
 5. Flux image automation (GitOps) updates image used by prod deployment
 
-To observe the above, you can use the [GitOps Dashboard](https://gitops-dashboard--flux-prod.elifesciences.org/kustomization/details?clusterName=Default&name=journal-team-deployment&namespace=flux-system) and the [Kubernetes Dashboard](https://k8s-dashboard.flux-prod.elifesciences.org/clusters/local) 
+To observe the above, you can use the [GitOps Dashboard](https://gitops-dashboard--flux-prod.elifesciences.org/kustomization/details?clusterName=Default&name=journal-team-deployment&namespace=flux-system) and the [Kubernetes Dashboard](https://k8s-dashboard.flux-prod.elifesciences.org/clusters/local)
 
 A Slack channel `epp-e2e-test-results` is also available for observation.
 
@@ -33,7 +33,7 @@ To run the unit tests, run `yarn test`.
 
 ## Running Chromatic visual regression tests
 
-To run the chromatic tests run `yarn chromatic`, to run this script you will need to set an environment variable `CHROMATIC_PROJECT_TOKEN` to the token which is available on the chromatic project management page. 
+To run the chromatic tests run `yarn chromatic`, to run this script you will need to set an environment variable `CHROMATIC_PROJECT_TOKEN` to the token which is available on the chromatic project management page.
 
 ## Running the browser tests
 
@@ -76,7 +76,7 @@ For a better developer experience run:
 
 ```bash
 yarn build
-NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif/2/ yarn start
 ```
 
 Visit [`localhost:3000`](http://localhost:3000).
@@ -91,6 +91,6 @@ You can run storybook locally using `yarn storybook`. It should auto-reload as y
 
 When we are experiencing an issue in production that results in a kaboom then recreating the issue locally can be a quick and effective way to diagnose the problem.
 
-`API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif docker compose up app`
+`API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif/2/ docker compose up app`
 
 Then access client on http://localhost:3001

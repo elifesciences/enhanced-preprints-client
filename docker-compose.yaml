@@ -95,8 +95,8 @@ services:
     environment:
       NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-elife}
       API_SERVER: ${API_SERVER:-http://wiremock:3000}
-      IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif}
-      NEXT_PUBLIC_IMAGE_SERVER: /iiif
+      IIIF_SERVER: ${IIIF_SERVER:-http://image-server:8182/iiif/2/}
+      NEXT_PUBLIC_IMAGE_SERVER: /iiif/2/
       NEXT_PUBLIC_FILES_API_PATH: /api/files
       NEXT_PUBLIC_DISABLE_TERMS: ${NEXT_PUBLIC_DISABLE_TERMS:-false}
 
