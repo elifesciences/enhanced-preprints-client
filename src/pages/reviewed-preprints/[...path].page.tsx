@@ -246,12 +246,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
 
-  if (context.query.pdf_paths) {
-    console.log('feature flag is on');
-  }
+  const pdfUrl = context.query.pdf_paths ? `/reviewed-preprints/${id}/download-pdf` : articleWithVersions.article.pdfUrl;
 
   const metaData = {
     ...articleWithVersions.article,
+    pdfUrl,
     ...articleWithVersions.article.article,
     authors: articleWithVersions.article.article.authors || [],
     msas: articleWithVersions.article.subjects || [],
