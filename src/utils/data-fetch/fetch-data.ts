@@ -49,7 +49,7 @@ const EnhancedArticleWithVersionsSchema = z.object({
 
 export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
 
   if (!validated.success) {

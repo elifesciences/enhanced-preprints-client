@@ -106,7 +106,6 @@ describe('Content to Text', () => {
       }],
     ]);
 
-    // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual('');
   });
 });

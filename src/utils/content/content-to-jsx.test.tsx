@@ -14,7 +14,6 @@ describe('Content to JSX', () => {
   it('returns an array of jsx components and strings if passed an array', () => {
     const result = contentToJsx(['one', 'two', { type: 'Strong', content: 'three' }]);
 
-    // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual(expect.arrayContaining(['one', 'two', <strong key={2}>three</strong>]));
   });
 
@@ -177,7 +176,6 @@ describe('Content to JSX', () => {
       },
     });
 
-    // eslint-disable-next-line @next/next/no-img-element
     expect(result).toStrictEqual(
       <picture id="id">
         <source srcSet="https://placekitten.com/500/300" />
@@ -200,7 +198,6 @@ describe('Content to JSX', () => {
       },
     });
 
-    // eslint-disable-next-line @next/next/no-img-element
     expect(result).toStrictEqual(
       <picture>
         <source srcSet="https://placekitten.com/500/300" />
@@ -227,7 +224,6 @@ describe('Content to JSX', () => {
       { imgInfo: { 'https://placekitten.com/500/300': { width: 42, height: 84 } } },
     );
 
-    // eslint-disable-next-line @next/next/no-img-element
     expect(result).toStrictEqual(
       <picture>
         <source srcSet="https://placekitten.com/500/300" />
@@ -276,7 +272,6 @@ describe('Content to JSX', () => {
       }],
     ]);
 
-    // eslint-disable-next-line react/jsx-key
     expect(result).toStrictEqual([[<Heading key={0} headingLevel={1} maxLevel={undefined} id="h1" content="heading" />]]);
   });
 

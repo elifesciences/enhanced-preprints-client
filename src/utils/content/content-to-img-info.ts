@@ -55,7 +55,7 @@ export const contentToImgInfo = async (content: Content): Promise<Record<string,
       const ret = await acc;
       if (contentUrl) {
         const { height, width } = await generateImageInfo(contentUrl);
-        // eslint-disable-next-line no-param-reassign
+
         ret[contentUrl] = { height, width };
       }
 
