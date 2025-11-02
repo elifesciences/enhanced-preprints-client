@@ -1,13 +1,13 @@
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
-import { MetaData, Metrics, TimelineEvent } from '../../../types';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
+import { type MetaData, type Metrics, type TimelineEvent } from '../../../types';
+import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content';
-import { CitationData } from '../../atoms/citation/citation';
-import { RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
+import { type CitationData } from '../../atoms/citation/citation';
+import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notice';
 

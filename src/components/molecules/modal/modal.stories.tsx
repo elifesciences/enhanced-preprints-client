@@ -1,13 +1,13 @@
 import {
   useState,
 } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { citation, references } from '../../../utils/mocks';
-import { Reference as ReferenceData } from '../../../types';
+import { type Reference as ReferenceData } from '../../../types';
 import { Citation } from '../../atoms/citation/citation';
 
 const meta: Meta<typeof Modal> = {

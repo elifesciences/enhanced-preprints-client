@@ -1,4 +1,4 @@
-import { Institution } from './institution';
+import { type Institution } from './institution';
 
 export type Author = {
   type?: 'Person' | 'Organization',

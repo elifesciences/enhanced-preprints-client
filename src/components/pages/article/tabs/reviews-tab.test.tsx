@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ArticleReviewsTab } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
 import '../../../../i18n';
-import { PeerReview } from '../../../../types';
+import { type PeerReview } from '../../../../types';
 
 describe('ReviewsTab', () => {
   it('renders with reviews tab', () => {

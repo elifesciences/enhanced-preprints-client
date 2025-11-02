@@ -1,6 +1,6 @@
 import { formatDate } from '../../../utils/formatters';
 import './version-history.scss';
-import { VersionHistoryItem } from '../../../types';
+import { type VersionHistoryItem } from '../../../types';
 
 type Props = {
   versions: VersionHistoryItem[]

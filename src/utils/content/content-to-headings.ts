@@ -1,5 +1,5 @@
-import { Content, HeadingContent } from '../../types';
-import { Heading } from '../../components/atoms/jump-to-menu/jump-to-menu';
+import { type Content, type HeadingContent } from '../../types';
+import { type Heading } from '../../components/atoms/jump-to-menu/jump-to-menu';
 
 export const contentToHeadings = (content: Content): Heading[] => {
   if (typeof content === 'string') {

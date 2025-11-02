@@ -4,9 +4,9 @@ import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
-import { Citation, CitationData } from '../../atoms/citation/citation';
-import { ContextualData, ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
-import { Timeline, TimelineProps } from '../timeline/timeline';
+import { Citation, type CitationData } from '../../atoms/citation/citation';
+import { ContextualData, type ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
+import { Timeline, type TimelineProps } from '../timeline/timeline';
 
 type ArticleStatusProps = {
   doi: string,

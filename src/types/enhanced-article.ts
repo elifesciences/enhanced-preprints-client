@@ -1,9 +1,9 @@
 import * as z from 'zod/v4';
-import { Content } from './content';
-import { Institution } from './institution';
-import { PeerReview } from './peer-review';
-import { Reference } from './reference';
-import { RelatedContent } from './related-content';
+import { type Content } from './content';
+import { type Institution } from './institution';
+import { type PeerReview } from './peer-review';
+import { type Reference } from './reference';
+import { type RelatedContent } from './related-content';
 
 export type ArticleDocument = string;
 export type ArticleContent = {

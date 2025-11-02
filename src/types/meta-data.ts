@@ -1,7 +1,7 @@
-import { Content } from './content';
-import { Author, AuthorNotesData } from './author';
-import { Reference } from './reference';
-import { VersionHistoryItem } from './version-history-item';
+import { type Content } from './content';
+import { type Author, type AuthorNotesData } from './author';
+import { type Reference } from './reference';
+import { type VersionHistoryItem } from './version-history-item';
 
 export type MetaData = {
   abstract: Content,

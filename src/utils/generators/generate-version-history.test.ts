@@ -1,4 +1,4 @@
-import { VersionSummary } from '../../types';
+import { type VersionSummary } from '../../types';
 import { generateVersionHistory } from './generate-version-history';
 
 const versionSummary1: VersionSummary = {

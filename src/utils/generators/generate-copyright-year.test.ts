@@ -1,4 +1,4 @@
-import { VersionSummary } from '../../types';
+import { type VersionSummary } from '../../types';
 import { generateCopyrightYear } from './generate-copyright-year';
 
 const versionSummary1: VersionSummary = {

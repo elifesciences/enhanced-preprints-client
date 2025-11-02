@@ -2,7 +2,7 @@ import '../article-page.scss';
 import { useTranslation } from 'react-i18next';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
-import { PeerReview } from '../../../../types';
+import { type PeerReview } from '../../../../types';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 

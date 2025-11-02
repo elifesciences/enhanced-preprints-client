@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
-import { ReactNode, useContext } from 'react';
+import { type ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';

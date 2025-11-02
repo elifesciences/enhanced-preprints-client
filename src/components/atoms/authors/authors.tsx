@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './authors.scss';
-import { Author } from '../../../types';
+import { type Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 
 const authorLimit = 3;

@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { createMocks, createResponse } from 'node-mocks-http';
+import { type NextApiRequest, type NextApiResponse } from 'next';
+import { createMocks, type createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './ris.page';

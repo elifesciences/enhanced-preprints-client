@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { CiteAllVersions } from './cite-all-versions';
 
 const meta: Meta<typeof CiteAllVersions> = {

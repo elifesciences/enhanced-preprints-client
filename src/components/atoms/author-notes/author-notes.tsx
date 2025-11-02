@@ -1,4 +1,4 @@
-import { AuthorNotesData } from '../../../types';
+import { type AuthorNotesData } from '../../../types';
 import './author-notes.scss';
 
 export const AuthorNotes = ({ authorNotes }: { authorNotes: AuthorNotesData }) => (

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleAndAuthorInformation } from './article-and-author-information';
 import { authors, authorNotes, versionHistory } from '../../../utils/mocks';
 

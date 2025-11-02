@@ -1,4 +1,4 @@
-import { Author } from '../../../types';
+import { type Author } from '../../../types';
 import './citation.scss';
 
 export type CitationData = {

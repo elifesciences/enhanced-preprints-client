@@ -1,4 +1,4 @@
-import { EnhancedArticleWithVersions } from '../../types';
+import { type EnhancedArticleWithVersions } from '../../types';
 import { isPreprintVersionSummary } from '../type-guards';
 
 export const getLatestVersionWarningUrl = (articleWithVersions: EnhancedArticleWithVersions): string | null => {

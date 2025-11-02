@@ -1,5 +1,5 @@
-import { Fragment, JSX } from 'react';
-import { Content } from '../../types';
+import { Fragment, type JSX } from 'react';
+import { type Content } from '../../types';
 import { Heading } from '../../components/atoms/heading/heading';
 import { generateImageUrl } from '../generators';
 import { Figure } from '../../components/atoms/figure/figure';

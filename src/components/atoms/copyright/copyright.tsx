@@ -1,4 +1,4 @@
-import { Author } from '../../../types';
+import { type Author } from '../../../types';
 import './copyright.scss';
 
 type CopyrightProps = {

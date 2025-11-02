@@ -1,6 +1,6 @@
 import './abstract.scss';
 import { contentToJsx } from '../../../utils/content';
-import { Content } from '../../../types';
+import { type Content } from '../../../types';
 
 export const Abstract = ({ content }: { content: Content }) => (
   <section className="abstract">

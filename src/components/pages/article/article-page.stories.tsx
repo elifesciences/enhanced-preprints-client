@@ -1,5 +1,5 @@
 import LinkTo from '@storybook/addon-links/react';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import {
   content, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';
@@ -9,7 +9,7 @@ import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import '../../../i18n';
-import { PeerReview } from '../../../types';
+import { type PeerReview } from '../../../types';
 
 const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',

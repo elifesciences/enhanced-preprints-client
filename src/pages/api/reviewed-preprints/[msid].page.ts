@@ -6,7 +6,7 @@ import {
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
 } from '../reviewed-preprints.page';
-import { VersionSummary } from '../../../types';
+import { type VersionSummary } from '../../../types';
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';

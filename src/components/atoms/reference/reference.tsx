@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Author, Reference as ReferenceData } from '../../../types';
+import { type Author, type Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 import { generateGoogleScholarLink } from '../../../utils/generators/generate-google-scholar-link';
 import { formatAuthorName } from '../../../utils/formatters';

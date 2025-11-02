@@ -1,6 +1,6 @@
 import {
-  VersionHistoryItem,
-  VersionSummary,
+  type VersionHistoryItem,
+  type VersionSummary,
 } from '../../types';
 import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../type-guards';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';

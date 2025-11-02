@@ -1,4 +1,4 @@
-import { Author, AuthorNotesData, VersionHistoryItem } from '../../../types';
+import { type Author, type AuthorNotesData, type VersionHistoryItem } from '../../../types';
 import './article-and-author-information.scss';
 import { Copyright } from '../../atoms/copyright/copyright';
 import { VersionHistory } from '../../atoms/version-history/version-history';

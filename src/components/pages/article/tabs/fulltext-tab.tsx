@@ -1,12 +1,12 @@
 import '../article-page.scss';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
-import { Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
-import { MetaData, PeerReview } from '../../../../types';
-import { JSXContent } from '../../../../utils/content';
-import { Metrics as MetricsType } from '../../../../types/enhanced-article';
+import { type MetaData, type PeerReview } from '../../../../types';
+import { type JSXContent } from '../../../../utils/content';
+import { type Metrics as MetricsType } from '../../../../types/enhanced-article';
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { Assessment } from '../../../atoms/assessment/assessment';
 

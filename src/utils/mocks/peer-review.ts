@@ -1,4 +1,4 @@
-import { PeerReview, ReviewType } from '../../types/peer-review';
+import { type PeerReview, ReviewType } from '../../types/peer-review';
 
 export const peerReview: PeerReview = {
   evaluationSummary: {

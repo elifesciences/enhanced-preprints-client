@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { ArticleContent } from './article-content';
 import { content } from '../../../utils/mocks';
 import { contentToJsx } from '../../../utils/content';

@@ -1,5 +1,5 @@
 import {
-  useRef, MouseEvent,
+  useRef, type MouseEvent,
 } from 'react';
 import './modal.scss';
 

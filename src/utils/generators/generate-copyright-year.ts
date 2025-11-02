@@ -1,5 +1,5 @@
 import {
-  VersionSummary,
+  type VersionSummary,
 } from '../../types';
 
 export const generateCopyrightYear = (versions: VersionSummary[]): number => versions.reduce((copyrightYear, version) => {

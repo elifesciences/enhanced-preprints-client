@@ -1,8 +1,8 @@
 import {
-  ExternalVersionSummary,
-  PreprintVersionSummary,
-  VORVersionSummary,
-  VersionSummary,
+  type ExternalVersionSummary,
+  type PreprintVersionSummary,
+  type VORVersionSummary,
+  type VersionSummary,
 } from '../types';
 
 export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');

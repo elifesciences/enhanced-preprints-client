@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './institutions.scss';
-import { Institution } from '../../../types';
+import { type Institution } from '../../../types';
 
 const institutionLimit = 3;
 

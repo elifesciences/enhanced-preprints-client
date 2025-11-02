@@ -77,6 +77,7 @@ module.exports = defineConfig([{
 
         "react/jsx-indent": ["error", 2],
         "react/jsx-indent-props": ["error", 2],
+        "@typescript-eslint/consistent-type-imports": ["error", { "fixStyle": "inline-type-imports" }],
         "@typescript-eslint/no-non-null-assertion": "warn",
     },
 

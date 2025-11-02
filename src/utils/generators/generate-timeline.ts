@@ -1,12 +1,12 @@
 import {
-  VersionSummary,
+  type VersionSummary,
 } from '../../types';
 import {
   isExternalVersionSummary,
   isPreprintVersionSummary,
   isVORVersionSummary,
 } from '../type-guards';
-import { SerialisedTimelineEvent } from '../../types/article-timeline';
+import { type SerialisedTimelineEvent } from '../../types/article-timeline';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
 const generateTimelineUrl = (version: VersionSummary): string => {

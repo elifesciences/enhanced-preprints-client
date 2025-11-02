@@ -1,5 +1,5 @@
-import { EnhancedArticle, ProcessedArticle } from './enhanced-article';
-import { PeerReview } from './peer-review';
+import { type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
+import { type PeerReview } from './peer-review';
 
 export type ElifeAssessmentContent = {
   type: 'paragraph',

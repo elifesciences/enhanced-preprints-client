@@ -1,6 +1,6 @@
-import { GetServerSideProps } from 'next';
+import { type GetServerSideProps } from 'next';
 import { fetchVersions } from '../utils/data-fetch';
-import { ArticleSummary } from '../types';
+import { type ArticleSummary } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { config } from '../config';
 

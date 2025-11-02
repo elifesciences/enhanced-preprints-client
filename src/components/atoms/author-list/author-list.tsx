@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Author, AuthorNotesData } from '../../../types';
+import { type Author, type AuthorNotesData } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
 

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { SiteHeader } from '../molecules/site-header/site-header';
 import { SiteFooter } from '../molecules/site-footer/site-footer';
 import './default.scss';

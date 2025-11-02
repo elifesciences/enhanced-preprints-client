@@ -2,9 +2,9 @@ import './content-header.scss';
 import { Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { Title } from '../../atoms/title/title';
-import { ArticleFlagList, Props as FlagProps } from '../article-flag-list/article-flag-list';
+import { ArticleFlagList, type Props as FlagProps } from '../article-flag-list/article-flag-list';
 import { Institutions } from '../../atoms/institutions/institutions';
-import { Author, Content, Institution } from '../../../types';
+import { type Author, type Content, type Institution } from '../../../types';
 
 export type ContentHeaderProps = FlagProps & {
   authors: Author[];

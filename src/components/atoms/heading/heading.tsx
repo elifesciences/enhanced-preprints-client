@@ -1,5 +1,5 @@
-import { JSX } from 'react';
-import { Content } from '../../../types';
+import { type JSX } from 'react';
+import { type Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content';
 import './heading.scss';
 

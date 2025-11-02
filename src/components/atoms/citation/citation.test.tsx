@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Citation } from './citation';
 import { authors, citation } from '../../../utils/mocks';
-import { Author } from '../../../types';
+import { type Author } from '../../../types';
 
 describe('Citation', () => {
   const authorNames = authors.map((author: Author) => `${author.type === 'Organization' && author.name ? author.name : `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`}`);

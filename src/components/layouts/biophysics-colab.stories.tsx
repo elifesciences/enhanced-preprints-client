@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
 import { BiophysicsColabLayout } from './biophysics-colab';
 
 const meta: Meta<typeof BiophysicsColabLayout> = {

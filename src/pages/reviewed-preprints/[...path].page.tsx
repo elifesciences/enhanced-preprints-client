@@ -1,20 +1,20 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { NextRouter, useRouter } from 'next/router';
-import { JSX, useMemo } from 'react';
+import { type NextRouter, useRouter } from 'next/router';
+import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { config } from '../../config';
 import {
-  Content,
-  MetaData,
-  Metrics,
-  PeerReview,
-  RelatedContent,
-  TimelineEvent,
+  type Content,
+  type MetaData,
+  type Metrics,
+  type PeerReview,
+  type RelatedContent,
+  type TimelineEvent,
 } from '../../types';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
-import { ArticlePage, Tab } from '../../components/pages/article/article-page';
+import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
 import {
   contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
@@ -22,8 +22,8 @@ import { generateCopyrightYear, generateTimeline, generateVersionHistory } from 
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { SerialisedTimelineEvent } from '../../types/article-timeline';
-import { FeaturesData } from '../../features';
+import { type SerialisedTimelineEvent } from '../../types/article-timeline';
+import { type FeaturesData } from '../../features';
 import { isVORVersionSummary } from '../../utils/type-guards';
 
 type PageProps = {

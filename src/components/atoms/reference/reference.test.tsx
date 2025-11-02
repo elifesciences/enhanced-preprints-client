@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Reference } from './reference';
-import { Reference as ReferenceData } from '../../../types';
+import { type Reference as ReferenceData } from '../../../types';
 import { references } from '../../../utils/mocks';
 import '../../../i18n';
 

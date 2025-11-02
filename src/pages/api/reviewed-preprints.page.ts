@@ -2,14 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import moment from 'moment';
 import { fetchVersionsNoContent } from '../../utils/data-fetch';
 import {
-  Author, EnhancedArticle, ReviewedPreprintSnippet,
+  type Author, type EnhancedArticle, type ReviewedPreprintSnippet,
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
 import {
-  ElifeAssessment,
-  PublishedEnhancedArticleMetaDataForJournal,
-  PeerReviewEvaluationSummaryOnly,
+  type ElifeAssessment,
+  type PublishedEnhancedArticleMetaDataForJournal,
+  type PeerReviewEvaluationSummaryOnly,
 } from '../../types/reviewed-preprint-snippet';
 import { findTerms } from '../../utils/terms';
 import { IsoDateStringSchema } from '../../types/enhanced-article';

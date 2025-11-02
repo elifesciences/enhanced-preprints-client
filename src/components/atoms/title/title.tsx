@@ -1,5 +1,5 @@
 import { contentToJsx } from '../../../utils/content';
-import { Content } from '../../../types';
+import { type Content } from '../../../types';
 import './title.scss';
 
 export const Title = ({ title }: { title: Content }) => (
