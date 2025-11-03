@@ -48,6 +48,10 @@ lint-fix: node_modules
 test: node_modules
 	yarn test ${TEST}
 
+.PHONY: watch
+watch: node_modules
+	yarn test --watch ${TEST}
+
 .PHONY: check
 check: node_modules lint
 	yarn test --reporters=jest-wip-reporter
