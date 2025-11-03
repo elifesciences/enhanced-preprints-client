@@ -246,7 +246,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
 
-  const pdfUrl = context.query.pdf_paths ? `/reviewed-preprints/${id}/download-pdf/${id}.pdf` : articleWithVersions.article.pdfUrl;
+  const pdfUrl = context.query.pdf_paths ? `/reviewed-preprints/${id}.pdf` : articleWithVersions.article.pdfUrl;
 
   const metaData = {
     ...articleWithVersions.article,

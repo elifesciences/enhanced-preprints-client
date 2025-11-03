@@ -40,6 +40,11 @@ const nextConfig = {
         destination: '/api/citations/:msid/ris',
       },
       {
+        // Expose path for manuscript pdf download
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).pdf',
+        destination: '/api/downloads/:msid/pdf',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },
