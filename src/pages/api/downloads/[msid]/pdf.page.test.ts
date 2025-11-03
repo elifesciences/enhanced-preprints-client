@@ -1,7 +1,6 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
-import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
