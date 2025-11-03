@@ -18,7 +18,10 @@ test-browser: node_modules install-playwright
 .PHONY: dev
 dev: node_modules
 	docker compose up --build --wait
-	@echo 'Visit http://localhost:3001 for dev server'
+	@echo ""
+	@echo "Visit: "
+	@echo "- http://localhost:8080 - externally routed setup"
+	@echo "- http://localhost:3001 - for accessing client directly, including it's internal API"
 
 .PHONY: prod
 prod: node_modules
