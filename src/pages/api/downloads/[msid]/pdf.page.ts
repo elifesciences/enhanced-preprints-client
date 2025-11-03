@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { msid } = req.query;
@@ -8,5 +9,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  res.status(404).end();
+  const version = await fetchVersion(msid);
+
+  if (!version) {
+    res.status(404).end();
+    return;
+  }
+
+  res.status(200).end();
 };

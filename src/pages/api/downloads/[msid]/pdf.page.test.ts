@@ -1,6 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
+import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
@@ -39,9 +40,21 @@ describe('download PDF handler', () => {
     });
 
     test('returns 404 if version is not available', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(null);
       await handler(req, res);
 
       expect(res.statusCode).toBe(404);
+    });
+
+    test('returns 200 if version is available', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce({
+        article: {
+          pdfUrl: 'https://example.com/sample.pdf',
+        },
+      });
+      await handler(req, res);
+
+      expect(res.statusCode).toBe(200);
     });
   });
 });
