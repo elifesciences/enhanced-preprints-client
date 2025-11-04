@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Readable } from 'stream';
 import { pipeline } from 'stream/promises';
+import type { ReadableStream } from 'stream/web';
 import { fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -37,9 +39,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     res.status(200);
 
-    // @ts-ignore
-    pipeline(fetched.body, res);
+    pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
   } catch (err) {
-    res.status(502).end();
+    if (!res.headersSent) {
+      res.status(502).end();
+    }
   }
 };
