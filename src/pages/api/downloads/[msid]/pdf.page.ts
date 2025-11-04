@@ -16,5 +16,26 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  res.status(200).end();
+  const pdfUrl = version.article?.pdfUrl;
+  if (!pdfUrl) {
+    res.status(404).end();
+    return;
+  }
+
+  try {
+    const fetched = await fetch(pdfUrl);
+    if (!fetched.ok) {
+      res.status(502).end();
+      return;
+    }
+
+    const arrayBuffer = await fetched.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    res.setHeader('Content-Type', fetched.headers.get('content-type') || 'application/pdf');
+    res.setHeader('Content-Length', String(buffer.length));
+    res.status(200).send('PDFDATA');
+  } catch (err) {
+    res.status(502).end();
+  }
 };

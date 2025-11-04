@@ -37,6 +37,7 @@ describe('download PDF handler', () => {
     afterEach(() => {
       jest.resetAllMocks();
       fetchMock.resetBehavior();
+      fetchMock.restore();
     });
 
     test('returns 404 if version is not available', async () => {
@@ -46,15 +47,27 @@ describe('download PDF handler', () => {
       expect(res.statusCode).toBe(404);
     });
 
-    test('returns 200 if version is available', async () => {
+    test('returns 200 with data if version is available', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
         },
       });
+
+      // Mock the external PDF fetch
+      fetchMock.mock('https://example.com/sample.pdf', {
+        status: 200,
+        body: Buffer.from('PDFDATA'),
+        headers: { 'content-type': 'application/pdf' },
+      });
+
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
+      // verify body and headers
+      // eslint-disable-next-line no-underscore-dangle
+      expect(res._getData()).toContain('PDFDATA');
+      expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
     });
   });
 });
