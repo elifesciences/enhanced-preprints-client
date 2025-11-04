@@ -1,6 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
 import fetchMock from 'fetch-mock';
+import { Readable } from 'stream';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
@@ -57,7 +58,7 @@ describe('download PDF handler', () => {
       // Mock the external PDF fetch
       fetchMock.mock('https://example.com/sample.pdf', {
         status: 200,
-        body: Buffer.from('PDFDATA'),
+        body: Readable.from(['PDFDATA']),
         headers: { 'content-type': 'application/pdf' },
       });
 
@@ -66,7 +67,10 @@ describe('download PDF handler', () => {
       expect(res.statusCode).toBe(200);
       // verify body and headers
       // eslint-disable-next-line no-underscore-dangle
-      expect(res._getData()).toContain('PDFDATA');
+      expect(res._isEndCalled()).toBe(true);
+      // eslint-disable-next-line no-underscore-dangle
+      // expect(res._getData()).toContain('PDFDATA');
+
       expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
     });
   });

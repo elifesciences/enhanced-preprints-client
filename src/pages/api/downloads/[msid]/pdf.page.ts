@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { pipeline } from 'stream/promises';
 import { fetchVersion } from '../../../../utils/data-fetch';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -24,17 +25,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const fetched = await fetch(pdfUrl);
-    if (!fetched.ok) {
+    if (!fetched.ok || !fetched.body) {
       res.status(502).end();
       return;
     }
 
-    const arrayBuffer = await fetched.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
     res.setHeader('Content-Type', fetched.headers.get('content-type') || 'application/pdf');
-    res.setHeader('Content-Length', String(buffer.length));
-    res.status(200).send('PDFDATA');
+    const contentLength = fetched.headers.get('content-length');
+    if (contentLength) {
+      res.setHeader('Content-Length', contentLength);
+    }
+    res.status(200);
+
+    // @ts-ignore
+    pipeline(fetched.body, res);
   } catch (err) {
     res.status(502).end();
   }
