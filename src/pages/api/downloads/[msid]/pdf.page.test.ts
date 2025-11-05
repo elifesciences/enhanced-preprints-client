@@ -65,6 +65,7 @@ describe('download PDF handler', () => {
       });
 
       (fetch as jest.Mock).mockResolvedValueOnce({
+        ok: true,
         status: 200,
         body: Readable.from(['PDFDATA']),
         headers: { 'content-type': 'application/pdf' },
