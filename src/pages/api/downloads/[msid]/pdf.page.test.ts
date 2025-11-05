@@ -1,6 +1,5 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
-import fetchMock from 'fetch-mock';
 import { Readable } from 'stream';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
@@ -30,6 +29,10 @@ describe('download PDF handler', () => {
     let req: NextApiRequest;
     let res: NextApiResponse & ReturnType<typeof createResponse>;
 
+    beforeAll(() => {
+      global.fetch = jest.fn();
+    });
+
     beforeEach(() => {
       const mocks: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
         url: '/reviewed-preprints/321.pdf',
@@ -41,6 +44,10 @@ describe('download PDF handler', () => {
 
     afterEach(() => {
       jest.resetAllMocks();
+    });
+
+    afterAll(() => {
+      (global.fetch as jest.Mock).mockRestore();
     });
 
     test('returns 404 if version is not available', async () => {
@@ -57,8 +64,7 @@ describe('download PDF handler', () => {
         },
       });
 
-      // Mock the external PDF fetch
-      fetchMock.mock('https://example.com/sample.pdf', {
+      (fetch as jest.Mock).mockResolvedValueOnce({
         status: 200,
         body: Readable.from(['PDFDATA']),
         headers: { 'content-type': 'application/pdf' },
