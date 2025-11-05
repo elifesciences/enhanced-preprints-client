@@ -27,18 +27,20 @@ describe('download PDF handler', () => {
   });
 
   describe('Handling PDF requests', () => {
-    const {
-      req,
-      res,
-    }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
-      url: '/reviewed-preprints/321.pdf',
-      query: { msid: '321' },
+    let req: NextApiRequest;
+    let res: NextApiResponse & ReturnType<typeof createResponse>;
+
+    beforeEach(() => {
+      const mocks: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
+        url: '/reviewed-preprints/321.pdf',
+        query: { msid: '321' },
+      });
+      req = mocks.req;
+      res = mocks.res;
     });
 
     afterEach(() => {
       jest.resetAllMocks();
-      fetchMock.resetBehavior();
-      fetchMock.restore();
     });
 
     test('returns 404 if version is not available', async () => {
@@ -68,10 +70,17 @@ describe('download PDF handler', () => {
       // verify body and headers
       // eslint-disable-next-line no-underscore-dangle
       expect(res._isEndCalled()).toBe(true);
-      // eslint-disable-next-line no-underscore-dangle
+
       // expect(res._getData()).toContain('PDFDATA');
 
       expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
+    });
+
+    test('returns 502 when unexpected error occurs', async () => {
+      (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
+      await handler(req, res);
+
+      expect(res.statusCode).toBe(502);
     });
   });
 });
