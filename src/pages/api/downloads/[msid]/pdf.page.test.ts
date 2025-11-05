@@ -1,6 +1,6 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
-import { Readable } from 'stream';
+import { ReadableStream } from 'stream/web';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
@@ -67,8 +67,8 @@ describe('download PDF handler', () => {
       (fetch as jest.Mock).mockResolvedValueOnce({
         ok: true,
         status: 200,
-        body: Readable.from(['PDFDATA']),
-        headers: { 'content-type': 'application/pdf' },
+        body: ReadableStream.from(['PDFDATA']),
+        headers: new Headers({ 'content-type': 'application/pdf' }),
       });
 
       await handler(req, res);
