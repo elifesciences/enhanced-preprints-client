@@ -17,8 +17,6 @@ describe('download PDF handler', () => {
     }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
       url: '/reviewed-preprints/321.pdf',
       query: { msid: ['321'] },
-    }, {
-      eventEmitter: EventEmitter
     });
 
     test('returns 400 if nextjs passes a non-string query msid', async () => {
@@ -40,6 +38,8 @@ describe('download PDF handler', () => {
       const mocks: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
         url: '/reviewed-preprints/321.pdf',
         query: { msid: '321' },
+      }, {
+        eventEmitter: EventEmitter,
       });
       req = mocks.req;
       res = mocks.res;
