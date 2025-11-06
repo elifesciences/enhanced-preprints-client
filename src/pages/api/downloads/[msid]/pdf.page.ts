@@ -39,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     res.status(200);
 
-    pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
+    await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
   } catch (err) {
     if (!res.headersSent) {
       res.status(502).end();

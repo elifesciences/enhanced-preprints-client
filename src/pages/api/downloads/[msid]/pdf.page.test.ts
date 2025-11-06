@@ -1,6 +1,7 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
 import { ReadableStream } from 'stream/web';
+import EventEmitter from 'events';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
@@ -16,6 +17,8 @@ describe('download PDF handler', () => {
     }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
       url: '/reviewed-preprints/321.pdf',
       query: { msid: ['321'] },
+    }, {
+      eventEmitter: EventEmitter
     });
 
     test('returns 400 if nextjs passes a non-string query msid', async () => {
@@ -70,7 +73,6 @@ describe('download PDF handler', () => {
         body: ReadableStream.from(['PDFDATA']),
         headers: new Headers({ 'content-type': 'application/pdf' }),
       });
-
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
