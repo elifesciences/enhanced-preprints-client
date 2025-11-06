@@ -7218,18 +7218,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/otel@npm:^1.8.2":
-  version: 1.10.0
-  resolution: "@vercel/otel@npm:1.10.0"
+"@vercel/otel@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "@vercel/otel@npm:2.1.0"
   peerDependencies:
-    "@opentelemetry/api": ^1.7.0
-    "@opentelemetry/api-logs": "*"
-    "@opentelemetry/instrumentation": "*"
-    "@opentelemetry/resources": ^1.19.0
-    "@opentelemetry/sdk-logs": "*"
-    "@opentelemetry/sdk-metrics": ^1.19.0
-    "@opentelemetry/sdk-trace-base": ^1.19.0
-  checksum: 10c0/1e5e058176c9dc7d8468942254e9b23d69676bc93085e3e3ebab5e01ae6528726cb52ee13e309f464c5ebc2448fb3fcf35ac39617db3a5484d2bf8755cc3feba
+    "@opentelemetry/api": ">=1.9.0 <2.0.0"
+    "@opentelemetry/api-logs": ">=0.200.0 <0.300.0"
+    "@opentelemetry/instrumentation": ">=0.200.0 <0.300.0"
+    "@opentelemetry/resources": ">=2.0.0 <3.0.0"
+    "@opentelemetry/sdk-logs": ">=0.200.0 <0.300.0"
+    "@opentelemetry/sdk-metrics": ">=2.0.0 <3.0.0"
+    "@opentelemetry/sdk-trace-base": ">=2.0.0 <3.0.0"
+  checksum: 10c0/48880dc8abdfe20f8a7da125bfae2b2dfccdc52dce22401a59092f45a319c71c8eb28bea2d1e36276d62b7571a3639822fda4754bb1639fb32f9d84896b74635
   languageName: node
   linkType: hard
 
@@ -10276,7 +10276,7 @@ __metadata:
     "@types/react-i18next": "npm:^8.1.0"
     "@typescript-eslint/eslint-plugin": "npm:7.18.0"
     "@typescript-eslint/parser": "npm:7.18.0"
-    "@vercel/otel": "npm:^1.8.2"
+    "@vercel/otel": "npm:^2.0.0"
     babel-plugin-named-exports-order: "npm:^0.0.2"
     chromatic: "npm:^11.25.2"
     crc-32: "npm:^1.2.2"
