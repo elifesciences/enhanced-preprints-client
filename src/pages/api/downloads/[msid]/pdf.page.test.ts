@@ -79,8 +79,8 @@ describe('download PDF handler', () => {
       // verify body and headers
       // eslint-disable-next-line no-underscore-dangle
       expect(res._isEndCalled()).toBe(true);
-
-      // expect(res._getData()).toContain('PDFDATA');
+      // eslint-disable-next-line no-underscore-dangle
+      expect(res._getBuffer().toString()).toContain('PDFDATA');
 
       expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
     });
