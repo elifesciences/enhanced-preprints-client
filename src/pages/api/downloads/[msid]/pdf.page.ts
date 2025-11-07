@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Readable } from 'stream';
 import { pipeline } from 'stream/promises';
 import type { ReadableStream } from 'stream/web';
+import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { i18n } from '../../../../i18n';
 
@@ -27,7 +28,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    const fetched = await fetch(pdfUrl, { headers: { accept: 'application/pdf' } });
+    const requestHeaders: IncomingHttpHeaders = req.headers;
+    const headers: Record<string, string> = {};
+    Object.entries(requestHeaders).forEach(([key, value]) => {
+      if (typeof value === 'string') {
+        headers[key] = value;
+      }
+    });
+    const requestInit: RequestInit = { headers };
+    const fetched = await fetch(pdfUrl, requestInit);
     if (!fetched.ok || !fetched.body) {
       res.status(502).end();
       return;
