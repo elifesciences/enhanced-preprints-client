@@ -87,6 +87,8 @@ describe('download PDF handler', () => {
       expect(res.getHeader('Content-Disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
     });
 
+    test.todo('returns a canonical URL in the response header');
+
     test('returns 502 when unexpected error occurs', async () => {
       (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
       await handler(req, res);
