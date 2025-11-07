@@ -13,7 +13,8 @@ const resources = {
       about_assessments_url: '#', // link to about assessments
 
       // Defaults:
-      reviewed_preprints_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
+      canonical_url: '/reviewed-preprints/{{msid}}', // link to reviewed preprints
+      reviewed_preprints_url: '$t(canonical_url)',
       about_assessments_description: (
         'During the peer-review process the editor and reviewers write an assessment that summarises the significance'
         + ' of the findings reported in the article and the strength of the evidence.'
@@ -66,7 +67,7 @@ const resources = {
         + ' evidence (on a scale ranging from exceptional to inadequate).'
       ),
       about_assessments_url: 'https://elifesciences.org/about/elife-assessments',
-      reviewed_preprints_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
+      canonical_url: 'https://elifesciences.org/reviewed-preprints/{{msid}}',
       related_intro_collection: 'Part of {{type}}',
       related_intro_podcastChapterEpisode: 'Discussed in {{type}}',
       related_type_insight: 'Insight',

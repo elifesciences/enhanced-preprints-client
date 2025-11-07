@@ -3,6 +3,7 @@ import { Readable } from 'stream';
 import { pipeline } from 'stream/promises';
 import type { ReadableStream } from 'stream/web';
 import { fetchVersion } from '../../../../utils/data-fetch';
+import { i18n } from '../../../../i18n';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -38,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.setHeader('Content-Length', contentLength);
     }
     res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
-    res.setHeader('Link', `<https://elifesciences.org/reviewed-preprints/${version.article.msid}>; rel="canonical"`);
+    res.setHeader('Link', `<${i18n.t('canonical_url', { msid: version.article.msid })}>; rel="canonical"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
