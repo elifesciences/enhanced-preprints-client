@@ -250,7 +250,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const metaData = {
     ...articleWithVersions.article,
-    pdfUrl,
+    ...(pdfUrl ? { pdfUrl } : {}),
     ...articleWithVersions.article.article,
     authors: articleWithVersions.article.article.authors || [],
     msas: articleWithVersions.article.subjects || [],
