@@ -35,9 +35,7 @@ describe('download PDF handler', () => {
       req = createRequest({
         url: '/reviewed-preprints/321.pdf',
         query: { msid: '321' },
-        headers: {
-          accept: 'application/pdf',
-        },
+        headers: {},
       });
       res = createResponse({
         eventEmitter: EventEmitter,
@@ -116,6 +114,7 @@ describe('download PDF handler', () => {
     });
 
     test('passes appropriate request headers to pdf source', async () => {
+      req.headers = { accept: 'application/pdf' };
       const msid = '321';
       const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
