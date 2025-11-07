@@ -83,8 +83,8 @@ describe('download PDF handler', () => {
       // eslint-disable-next-line no-underscore-dangle
       expect(res._getBuffer().toString()).toContain(pdfData);
 
-      expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
-      expect(res.getHeader('Content-Disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
+      expect(res.getHeader('content-type')).toBe('application/pdf');
+      expect(res.getHeader('content-disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
     });
 
     test('returns a canonical URL in the response header', async () => {
@@ -109,7 +109,7 @@ describe('download PDF handler', () => {
 
       expect(res.statusCode).toBe(200);
 
-      expect(res.getHeader('Link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
+      expect(res.getHeader('link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
     });
 
     test('returns 502 when unexpected error occurs', async () => {
