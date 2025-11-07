@@ -57,18 +57,21 @@ describe('download PDF handler', () => {
     });
 
     test('returns 200 with data if version is available', async () => {
+      const msid = '321';
+      const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
-          msid: '321',
-          versionIdentifier: '1',
+          msid,
+          versionIdentifier,
         },
       });
 
+      const pdfData = 'PDFDATA';
       (fetch as jest.Mock).mockResolvedValueOnce({
         ok: true,
         status: 200,
-        body: ReadableStream.from(['PDFDATA']),
+        body: ReadableStream.from([pdfData]),
         headers: new Headers({ 'content-type': 'application/pdf' }),
       });
       await handler(req, res);
@@ -78,11 +81,10 @@ describe('download PDF handler', () => {
       // eslint-disable-next-line no-underscore-dangle
       expect(res._isEndCalled()).toBe(true);
       // eslint-disable-next-line no-underscore-dangle
-      expect(res._getBuffer().toString()).toContain('PDFDATA');
+      expect(res._getBuffer().toString()).toContain(pdfData);
 
       expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
-      // 'Content-Disposition', `attachment; filename="${req.params.filename}"`
-      expect(res.getHeader('Content-Disposition')).toBe('attachment; filename="321-v1.pdf"');
+      expect(res.getHeader('Content-Disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
     });
 
     test('returns 502 when unexpected error occurs', async () => {
