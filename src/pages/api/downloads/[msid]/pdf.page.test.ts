@@ -87,7 +87,30 @@ describe('download PDF handler', () => {
       expect(res.getHeader('Content-Disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
     });
 
-    test.todo('returns a canonical URL in the response header');
+    test.failing('returns a canonical URL in the response header', async () => {
+      const msid = '321';
+      const versionIdentifier = '1';
+      (fetchVersion as jest.Mock).mockResolvedValueOnce({
+        article: {
+          pdfUrl: 'https://example.com/sample.pdf',
+          msid,
+          versionIdentifier,
+        },
+      });
+
+      const pdfData = 'PDFDATA';
+      (fetch as jest.Mock).mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        body: ReadableStream.from([pdfData]),
+        headers: new Headers({ 'content-type': 'application/pdf' }),
+      });
+      await handler(req, res);
+
+      expect(res.statusCode).toBe(200);
+
+      expect(res.getHeader('Link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
+    });
 
     test('returns 502 when unexpected error occurs', async () => {
       (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
