@@ -115,7 +115,7 @@ describe('download PDF handler', () => {
       expect(res.getHeader('link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
     });
 
-    test.failing('passes appropriate request headers to pdf source', async () => {
+    test('passes appropriate request headers to pdf source', async () => {
       const msid = '321';
       const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
@@ -126,13 +126,13 @@ describe('download PDF handler', () => {
         },
       });
 
-      let upstreamResponse: RequestInit = {};
+      let upstreamHeaders: HeadersInit = {};
       (fetch as jest.Mock).mockImplementationOnce((url: string, request: RequestInit) => {
-        upstreamResponse = request;
+        upstreamHeaders = request.headers ?? {};
       });
       await handler(req, res);
 
-      expect(upstreamResponse.headers?.keys).toContain('accept');
+      expect(Object.keys(upstreamHeaders)).toContain('accept');
     });
 
     test.todo('returns appropriate response headers from pdf source');

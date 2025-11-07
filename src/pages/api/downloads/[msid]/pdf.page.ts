@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    const fetched = await fetch(pdfUrl);
+    const fetched = await fetch(pdfUrl, { headers: { accept: 'application/pdf' } });
     if (!fetched.ok || !fetched.body) {
       res.status(502).end();
       return;
