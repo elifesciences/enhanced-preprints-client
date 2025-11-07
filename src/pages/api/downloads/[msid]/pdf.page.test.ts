@@ -60,6 +60,8 @@ describe('download PDF handler', () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
+          msid: '321',
+          versionIdentifier: '1',
         },
       });
 
@@ -79,6 +81,8 @@ describe('download PDF handler', () => {
       expect(res._getBuffer().toString()).toContain('PDFDATA');
 
       expect(res.getHeader('Content-Type') || res.getHeader('content-type')).toBe('application/pdf');
+      // 'Content-Disposition', `attachment; filename="${req.params.filename}"`
+      expect(res.getHeader('Content-Disposition')).toBe('attachment; filename="321-v1.pdf"');
     });
 
     test('returns 502 when unexpected error occurs', async () => {

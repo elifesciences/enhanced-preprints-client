@@ -37,6 +37,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (contentLength) {
       res.setHeader('Content-Length', contentLength);
     }
+    res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
