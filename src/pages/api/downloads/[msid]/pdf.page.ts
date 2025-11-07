@@ -38,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.setHeader('Content-Length', contentLength);
     }
     res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
+    res.setHeader('Link', `<https://elifesciences.org/reviewed-preprints/${version.article.msid}>; rel="canonical"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);

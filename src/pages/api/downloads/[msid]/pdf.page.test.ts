@@ -87,7 +87,7 @@ describe('download PDF handler', () => {
       expect(res.getHeader('Content-Disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
     });
 
-    test.failing('returns a canonical URL in the response header', async () => {
+    test('returns a canonical URL in the response header', async () => {
       const msid = '321';
       const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
