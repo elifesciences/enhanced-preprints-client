@@ -1,5 +1,5 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
-import { createMocks, type createResponse } from 'node-mocks-http';
+import { createRequest, createResponse } from 'node-mocks-http';
 import { ReadableStream } from 'stream/web';
 import EventEmitter from 'events';
 import { fetchVersion } from '../../../../utils/data-fetch';
@@ -11,16 +11,13 @@ jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
 
 describe('download PDF handler', () => {
   describe('Handling unexpected types passed by next.js', () => {
-    const {
-      req,
-      res,
-    }: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
-      url: '/reviewed-preprints/321.pdf',
-      query: { msid: ['321'] },
-    });
-
     test('returns 400 if nextjs passes a non-string query msid', async () => {
-      await handler(req, res);
+      const invalidReq: NextApiRequest = createRequest({
+        url: '/reviewed-preprints/321.pdf',
+        query: { msid: ['321'] },
+      });
+      const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+      await handler(invalidReq, res);
 
       expect(res.statusCode).toBe(400);
     });
@@ -35,14 +32,13 @@ describe('download PDF handler', () => {
     });
 
     beforeEach(() => {
-      const mocks: { req: NextApiRequest; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({
+      req = createRequest({
         url: '/reviewed-preprints/321.pdf',
         query: { msid: '321' },
-      }, {
+      });
+      res = createResponse({
         eventEmitter: EventEmitter,
       });
-      req = mocks.req;
-      res = mocks.res;
     });
 
     afterEach(() => {
