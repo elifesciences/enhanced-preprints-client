@@ -112,6 +112,10 @@ describe('download PDF handler', () => {
       expect(res.getHeader('link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
     });
 
+    test.todo('passes appropriate request headers to pdf source');
+
+    test.todo('returns appropriate response headers from pdf source');
+
     test('returns 502 when unexpected error occurs', async () => {
       (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
       await handler(req, res);
