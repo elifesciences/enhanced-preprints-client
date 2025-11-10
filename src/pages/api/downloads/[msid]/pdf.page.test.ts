@@ -25,6 +25,9 @@ describe('download PDF handler', () => {
 
   describe('Handling PDF requests', () => {
     let req: NextApiRequest;
+    const msid = '321';
+    const versionIdentifier = '1';
+
     let res: NextApiResponse & ReturnType<typeof createResponse>;
 
     beforeAll(() => {
@@ -34,7 +37,7 @@ describe('download PDF handler', () => {
     beforeEach(() => {
       req = createRequest({
         url: '/reviewed-preprints/321.pdf',
-        query: { msid: '321' },
+        query: { msid },
         headers: {},
       });
       res = createResponse({
@@ -58,8 +61,6 @@ describe('download PDF handler', () => {
     });
 
     test('returns 200 with data if version is available', async () => {
-      const msid = '321';
-      const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
@@ -89,8 +90,6 @@ describe('download PDF handler', () => {
     });
 
     test('returns a canonical URL in the response header', async () => {
-      const msid = '321';
-      const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
@@ -115,8 +114,6 @@ describe('download PDF handler', () => {
 
     test('passes appropriate request headers related to client caching or referral to the pdf source', async () => {
       req.headers = { accept: 'application/pdf' };
-      const msid = '321';
-      const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
@@ -136,8 +133,6 @@ describe('download PDF handler', () => {
 
     test('does not pass request headers unrelated to client caching or referral to the pdf source', async () => {
       req.headers = { host: 'arbitraryhost.com' };
-      const msid = '321';
-      const versionIdentifier = '1';
       (fetchVersion as jest.Mock).mockResolvedValueOnce({
         article: {
           pdfUrl: 'https://example.com/sample.pdf',
