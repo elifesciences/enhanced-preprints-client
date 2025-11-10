@@ -133,19 +133,32 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).not.toContain('host');
     });
 
-    test.failing('returns appropriate response headers related to client caching or referral from the pdf source', async () => {
+    test.failing('returns appropriate response headers from the pdf source', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+      const appropriateResponseHeaders = {
+        etag: 'arbitraryETagValue',
+        expires: 'arbitraryDateAsString',
+        'last-modified': 'arbitraryDateAsString2',
+        'cache-control': 'arbitraryCacheControlValue',
+        date: 'arbitraryDateAsString3',
+        vary: 'arbitraryVaryValue',
+      };
       const pdfData = 'PDFDATA';
       (fetch as jest.Mock).mockResolvedValueOnce({
         ok: true,
         status: 200,
         body: ReadableStream.from([pdfData]),
-        headers: new Headers({ 'content-type': 'application/pdf', etag: 'arbitraryETagValue' }),
+        headers: new Headers({ 'content-type': 'application/pdf', ...appropriateResponseHeaders }),
       });
 
       await handler(req, res);
 
-      expect(res.getHeader('ETag')).toBe('arbitraryETagValue');
+      expect(res.getHeader('etag')).toBe('arbitraryETagValue');
+      expect(res.getHeader('expires')).toBe('arbitraryDateAsString');
+      expect(res.getHeader('last-modified')).toBe('arbitraryDateAsString2');
+      expect(res.getHeader('cache-control')).toBe('arbitraryCacheControlValue');
+      expect(res.getHeader('date')).toBe('arbitraryDateAsString3');
+      expect(res.getHeader('vary')).toBe('arbitraryVaryValue');
     });
 
     test.todo('does not return response headers unrelated to client caching or referral from the pdf source');
