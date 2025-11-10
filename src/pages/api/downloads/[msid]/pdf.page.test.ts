@@ -163,7 +163,21 @@ describe('download PDF handler', () => {
       expect(res.getHeader('vary')).toBe('arbitraryVaryValue');
     });
 
-    test.todo('does not return response headers unrelated to client caching or referral from the pdf source');
+    test('does not return inappropriate response headers from the pdf source', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+      const inappropriateResponseHeaders = {
+        'x-arbitrary-header': 'arbitraryHeaderValue',
+      };
+
+      (fetch as jest.Mock).mockResolvedValueOnce({
+        ...simplePdfResponse,
+        headers: new Headers({ 'content-type': 'application/pdf', ...inappropriateResponseHeaders }),
+      });
+
+      await handler(req, res);
+
+      expect(res.getHeader('x-arbitrary-header')).toBeUndefined();
+    });
 
     test('returns 502 when unexpected error occurs', async () => {
       (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
