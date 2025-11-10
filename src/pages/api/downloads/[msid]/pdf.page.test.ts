@@ -134,7 +134,7 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).toContain('accept');
     });
 
-    test.failing('does not pass request headers unrelated to client caching to the pdf source', async () => {
+    test('does not pass request headers unrelated to client caching to the pdf source', async () => {
       req.headers = { host: 'arbitraryhost.com' };
       const msid = '321';
       const versionIdentifier = '1';

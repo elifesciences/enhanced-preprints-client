@@ -30,8 +30,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const requestHeaders: IncomingHttpHeaders = req.headers;
     const headers: Record<string, string> = {};
+    const whitelistedRequestsHeaders = [
+      'accept',
+      'cache-control',
+      'if-modified-since',
+      'if-none-match',
+      'referer',
+    ];
+
     Object.entries(requestHeaders).forEach(([key, value]) => {
-      if (typeof value === 'string') {
+      if (typeof value === 'string' && whitelistedRequestsHeaders.includes(key)) {
         headers[key] = value;
       }
     });
