@@ -133,7 +133,20 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).not.toContain('host');
     });
 
-    test.todo('returns appropriate response headers related to client caching or referral from the pdf source');
+    test.failing('returns appropriate response headers related to client caching or referral from the pdf source', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+      const pdfData = 'PDFDATA';
+      (fetch as jest.Mock).mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        body: ReadableStream.from([pdfData]),
+        headers: new Headers({ 'content-type': 'application/pdf', etag: 'arbitraryETagValue' }),
+      });
+
+      await handler(req, res);
+
+      expect(res.getHeader('ETag')).toBe('arbitraryETagValue');
+    });
 
     test.todo('does not return response headers unrelated to client caching or referral from the pdf source');
 
