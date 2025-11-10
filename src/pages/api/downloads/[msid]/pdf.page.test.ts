@@ -27,6 +27,13 @@ describe('download PDF handler', () => {
     let req: NextApiRequest;
     const msid = '321';
     const versionIdentifier = '1';
+    const version = {
+      article: {
+        pdfUrl: 'https://example.com/sample.pdf',
+        msid,
+        versionIdentifier,
+      },
+    };
 
     let res: NextApiResponse & ReturnType<typeof createResponse>;
 
@@ -61,13 +68,7 @@ describe('download PDF handler', () => {
     });
 
     test('returns 200 with data if version is available', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce({
-        article: {
-          pdfUrl: 'https://example.com/sample.pdf',
-          msid,
-          versionIdentifier,
-        },
-      });
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       const pdfData = 'PDFDATA';
       (fetch as jest.Mock).mockResolvedValueOnce({
@@ -90,13 +91,7 @@ describe('download PDF handler', () => {
     });
 
     test('returns a canonical URL in the response header', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce({
-        article: {
-          pdfUrl: 'https://example.com/sample.pdf',
-          msid,
-          versionIdentifier,
-        },
-      });
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       const pdfData = 'PDFDATA';
       (fetch as jest.Mock).mockResolvedValueOnce({
@@ -114,13 +109,7 @@ describe('download PDF handler', () => {
 
     test('passes appropriate request headers related to client caching or referral to the pdf source', async () => {
       req.headers = { accept: 'application/pdf' };
-      (fetchVersion as jest.Mock).mockResolvedValueOnce({
-        article: {
-          pdfUrl: 'https://example.com/sample.pdf',
-          msid,
-          versionIdentifier,
-        },
-      });
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       let upstreamHeaders: HeadersInit = {};
       (fetch as jest.Mock).mockImplementationOnce((url: string, request: RequestInit) => {
@@ -133,13 +122,7 @@ describe('download PDF handler', () => {
 
     test('does not pass request headers unrelated to client caching or referral to the pdf source', async () => {
       req.headers = { host: 'arbitraryhost.com' };
-      (fetchVersion as jest.Mock).mockResolvedValueOnce({
-        article: {
-          pdfUrl: 'https://example.com/sample.pdf',
-          msid,
-          versionIdentifier,
-        },
-      });
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       let upstreamHeaders: HeadersInit = {};
       (fetch as jest.Mock).mockImplementationOnce((url: string, request: RequestInit) => {
