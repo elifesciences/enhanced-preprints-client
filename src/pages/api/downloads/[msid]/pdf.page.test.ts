@@ -133,7 +133,7 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).not.toContain('host');
     });
 
-    test.failing('returns appropriate response headers from the pdf source', async () => {
+    test('returns appropriate response headers from the pdf source', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
       const appropriateResponseHeaders = {
         etag: 'arbitraryETagValue',

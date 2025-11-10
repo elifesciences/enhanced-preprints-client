@@ -57,6 +57,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (contentLength) {
       res.setHeader('Content-Length', contentLength);
     }
+    const whitelistedResponseHeaders = [
+      'etag',
+      'last-modified',
+      'cache-control',
+      'date',
+      'expires',
+      'vary',
+    ];
+
+    Array.from(fetched.headers.entries())
+      .filter(([key]) => whitelistedResponseHeaders.includes(key))
+      .forEach(([key, value]) => res.setHeader(key, value));
     res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
     res.setHeader('Link', `<${i18n.t('canonical_url', { msid: version.article.msid })}>; rel="canonical"`);
     res.status(200);
