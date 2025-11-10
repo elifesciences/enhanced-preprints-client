@@ -5,6 +5,13 @@ import EventEmitter from 'events';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 
+type SimplePdfResponse = {
+  ok: boolean;
+  status: number;
+  headers: Headers;
+  body: ReadableStream;
+};
+
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
@@ -34,6 +41,8 @@ describe('download PDF handler', () => {
         versionIdentifier,
       },
     };
+    const pdfData = 'PDFDATA';
+    let simplePdfResponse: SimplePdfResponse;
 
     let res: NextApiResponse & ReturnType<typeof createResponse>;
 
@@ -50,6 +59,13 @@ describe('download PDF handler', () => {
       res = createResponse({
         eventEmitter: EventEmitter,
       });
+
+      simplePdfResponse = {
+        ok: true,
+        status: 200,
+        body: ReadableStream.from([pdfData]),
+        headers: new Headers({ 'content-type': 'application/pdf' }),
+      };
     });
 
     afterEach(() => {
@@ -70,13 +86,7 @@ describe('download PDF handler', () => {
     test('returns 200 with data if version is available', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
-      const pdfData = 'PDFDATA';
-      (fetch as jest.Mock).mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        body: ReadableStream.from([pdfData]),
-        headers: new Headers({ 'content-type': 'application/pdf' }),
-      });
+      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
@@ -93,13 +103,7 @@ describe('download PDF handler', () => {
     test('returns a canonical URL in the response header', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
-      const pdfData = 'PDFDATA';
-      (fetch as jest.Mock).mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        body: ReadableStream.from([pdfData]),
-        headers: new Headers({ 'content-type': 'application/pdf' }),
-      });
+      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
@@ -143,11 +147,9 @@ describe('download PDF handler', () => {
         date: 'arbitraryDateAsString3',
         vary: 'arbitraryVaryValue',
       };
-      const pdfData = 'PDFDATA';
+
       (fetch as jest.Mock).mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        body: ReadableStream.from([pdfData]),
+        ...simplePdfResponse,
         headers: new Headers({ 'content-type': 'application/pdf', ...appropriateResponseHeaders }),
       });
 
