@@ -134,7 +134,26 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).toContain('accept');
     });
 
-    test.todo('does not pass request headers unrelated to client caching to the pdf source');
+    test.failing('does not pass request headers unrelated to client caching to the pdf source', async () => {
+      req.headers = { host: 'arbitraryhost.com' };
+      const msid = '321';
+      const versionIdentifier = '1';
+      (fetchVersion as jest.Mock).mockResolvedValueOnce({
+        article: {
+          pdfUrl: 'https://example.com/sample.pdf',
+          msid,
+          versionIdentifier,
+        },
+      });
+
+      let upstreamHeaders: HeadersInit = {};
+      (fetch as jest.Mock).mockImplementationOnce((url: string, request: RequestInit) => {
+        upstreamHeaders = request.headers ?? {};
+      });
+      await handler(req, res);
+
+      expect(Object.keys(upstreamHeaders)).not.toContain('host');
+    });
 
     test.todo('returns appropriate response headers related to client caching from the pdf source');
 
