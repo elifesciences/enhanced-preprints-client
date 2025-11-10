@@ -83,21 +83,25 @@ describe('download PDF handler', () => {
       expect(res.statusCode).toBe(404);
     });
 
-    test('returns 200 with data if version is available', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+    describe('if version data is available', () => {
+      beforeEach(() => {
+        (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+      });
 
-      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
-      await handler(req, res);
+      test('returns 200 with data', async () => {
+        (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
+        await handler(req, res);
 
-      expect(res.statusCode).toBe(200);
-      // verify body and headers
-      // eslint-disable-next-line no-underscore-dangle
-      expect(res._isEndCalled()).toBe(true);
-      // eslint-disable-next-line no-underscore-dangle
-      expect(res._getBuffer().toString()).toContain(pdfData);
+        expect(res.statusCode).toBe(200);
+        // verify body and headers
+        // eslint-disable-next-line no-underscore-dangle
+        expect(res._isEndCalled()).toBe(true);
+        // eslint-disable-next-line no-underscore-dangle
+        expect(res._getBuffer().toString()).toContain(pdfData);
 
-      expect(res.getHeader('content-type')).toBe('application/pdf');
-      expect(res.getHeader('content-disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
+        expect(res.getHeader('content-type')).toBe('application/pdf');
+        expect(res.getHeader('content-disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
+      });
     });
 
     test('returns a canonical URL in the response header', async () => {
