@@ -38,11 +38,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       'referer',
     ];
 
-    Object.entries(requestHeaders).forEach(([key, value]) => {
-      if (typeof value === 'string' && whitelistedRequestsHeaders.includes(key)) {
-        headers[key] = value;
-      }
-    });
+    Object.entries(requestHeaders)
+      .filter(([key]) => whitelistedRequestsHeaders.includes(key))
+      .forEach(([key, value]) => {
+        if (typeof value === 'string') {
+          headers[key] = value;
+        }
+      });
     const requestInit: RequestInit = { headers };
     const fetched = await fetch(pdfUrl, requestInit);
     if (!fetched.ok || !fetched.body) {
