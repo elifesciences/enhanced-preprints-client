@@ -113,7 +113,7 @@ describe('download PDF handler', () => {
       expect(res.getHeader('link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
     });
 
-    test('passes appropriate request headers to pdf source to aid client caching', async () => {
+    test('passes appropriate request headers related to client caching to the pdf source', async () => {
       req.headers = { accept: 'application/pdf' };
       const msid = '321';
       const versionIdentifier = '1';
@@ -134,7 +134,11 @@ describe('download PDF handler', () => {
       expect(Object.keys(upstreamHeaders)).toContain('accept');
     });
 
-    test.todo('returns appropriate response headers from pdf source to aid client caching');
+    test.todo('does not pass request headers unrelated to client caching to the pdf source');
+
+    test.todo('returns appropriate response headers related to client caching from the pdf source');
+
+    test.todo('does not return response headers unrelated to client caching from the pdf source');
 
     test('returns 502 when unexpected error occurs', async () => {
       (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Unexpected error'));
