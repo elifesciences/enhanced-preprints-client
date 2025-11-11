@@ -64,7 +64,10 @@ describe('download PDF handler', () => {
         ok: true,
         status: 200,
         body: ReadableStream.from([pdfData]),
-        headers: new Headers({ 'content-type': 'application/pdf' }),
+        headers: new Headers({
+          'content-type': 'application/pdf',
+          'content-length': String(pdfData.length),
+        }),
       };
     });
 
@@ -101,6 +104,7 @@ describe('download PDF handler', () => {
 
         expect(res.getHeader('content-type')).toBe('application/pdf');
         expect(res.getHeader('content-disposition')).toBe(`attachment; filename="${msid}-v${versionIdentifier}.pdf"`);
+        expect(res.getHeader('content-length')).toBe(pdfData.length.toString());
       });
     });
 
