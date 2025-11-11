@@ -9,6 +9,8 @@ Before getting started, you should have nvm installed on your machine to get the
 `nvm install`
 `nvm use`
 
+We depend on corepack, you can enable it via `corepack enable`.
+
 Then you can install the dependencies via running `yarn`
 
 ## How do changes reach prod?
