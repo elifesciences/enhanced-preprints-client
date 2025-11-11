@@ -25,6 +25,7 @@ import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { type SerialisedTimelineEvent } from '../../types/article-timeline';
 import { type FeaturesData } from '../../features';
 import { isVORVersionSummary } from '../../utils/type-guards';
+import { getPdfUrl } from '../../utils/get-pdf-url';
 
 type PageProps = {
   siteName?: string,
@@ -246,7 +247,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
 
-  const pdfUrl = context.query.pdf_paths ? `/reviewed-preprints/${id}.pdf` : articleWithVersions.article.pdfUrl;
+  const pdfUrl = context.query.pdf_paths ? getPdfUrl(id) : articleWithVersions.article.pdfUrl;
 
   const metaData = {
     ...articleWithVersions.article,
