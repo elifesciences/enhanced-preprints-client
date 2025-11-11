@@ -1,4 +1,4 @@
-import { getPdfUrl } from "./get-pdf-url";
+import { getPdfUrl } from './get-pdf-url';
 
 describe('getPdfUrl', () => {
   it('should return pdf_url with msid replaced', () => {
