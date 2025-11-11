@@ -5,7 +5,7 @@ jest.mock('next/navigation', () => ({
   usePathname: () => mockPathName,
 }));
 
-describe('isPdfRout', () => {
+describe('isPdfRoute', () => {
   it('returns true if the route ends in /pdf', () => {
     mockPathName = 'foo.bar/pdf';
     const result = isPdfRoute();
