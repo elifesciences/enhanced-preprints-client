@@ -3,6 +3,14 @@ import { getPdfUrl } from './get-pdf-url';
 describe('getPdfUrl', () => {
   const msid = '12345';
 
+  it('uses the manuscript ID in the basename of the PDF URL', () => {
+    const vorUrl = getPdfUrl(msid, true);
+    const notVorUrl = getPdfUrl(msid, false);
+
+    expect(vorUrl.endsWith(`${msid}.pdf`)).toBe(true);
+    expect(notVorUrl.endsWith(`${msid}.pdf`)).toBe(true);
+  });
+
   describe('when the article version is not a version of record', () => {
     it('uses the "/reviewed-preprints" prefix', () => {
       const isVor = false;
