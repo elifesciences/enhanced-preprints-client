@@ -57,5 +57,5 @@ watch: node_modules
 
 .PHONY: check
 check: node_modules lint
-	yarn test --reporters=jest-wip-reporter
 	yarn tsc --noEmit
+	yarn test --reporters=jest-wip-reporter
