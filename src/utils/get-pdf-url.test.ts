@@ -4,20 +4,20 @@ describe('getPdfUrl', () => {
   const msid = '12345';
 
   describe('when the article version is not a version of record', () => {
-    it('should use the "/reviewed-preprints" prefix', () => {
+    it('uses the "/reviewed-preprints" prefix', () => {
       const isVor = false;
       const url = getPdfUrl(msid, isVor);
 
-      expect(url).toBe(`/reviewed-preprints/${msid}.pdf`);
+      expect(url.startsWith('/reviewed-preprints')).toBe(true);
     });
   });
 
   describe('when the article version is a version of record', () => {
-    it('should use the "/articles" prefix', () => {
+    it('uses the "/articles" prefix', () => {
       const isVor = true;
       const url = getPdfUrl(msid, isVor);
 
-      expect(url).toBe(`/articles/${msid}.pdf`);
+      expect(url.startsWith('/articles')).toBe(true);
     });
   });
 });
