@@ -1,1 +1,2 @@
-export const getPdfUrl = (msid: string) => `/reviewed-preprints/${msid}.pdf`;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const getPdfUrl = (msid: string, isVor?: boolean) => `/reviewed-preprints/${msid}.pdf`;
