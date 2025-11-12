@@ -4,9 +4,7 @@ import { pipeline } from 'stream/promises';
 import type { ReadableStream } from 'stream/web';
 import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
-import { i18n } from '../../../../i18n';
-
-const getCanonicalUrl = (msid: string) => i18n.t('canonical_url', { msid });
+import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
