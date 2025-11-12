@@ -6,6 +6,8 @@ import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { i18n } from '../../../../i18n';
 
+const getCanonicalUrl = (msid: string) => i18n.t('canonical_url', { msid });
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { msid } = req.query;
@@ -70,7 +72,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .filter(([key]) => whitelistedResponseHeaders.includes(key))
       .forEach(([key, value]) => res.setHeader(key, value));
     res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
-    res.setHeader('Link', `<${i18n.t('canonical_url', { msid: version.article.msid })}>; rel="canonical"`);
+    res.setHeader('Link', `<${getCanonicalUrl(version.article.msid)}>; rel="canonical"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
