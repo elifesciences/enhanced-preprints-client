@@ -1,6 +1,7 @@
 export const getPdfUrl = (msid: string, isVor: boolean) => {
+  let prefix = '/reviewed-preprints';
   if (isVor) {
-    return `/articles/${msid}.pdf`;
+    prefix = '/articles';
   }
-  return `/reviewed-preprints/${msid}.pdf`;
+  return `${prefix}/${msid}.pdf`;
 };
