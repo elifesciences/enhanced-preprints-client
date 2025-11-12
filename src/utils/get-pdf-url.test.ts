@@ -20,6 +20,12 @@ describe('getPdfUrl', () => {
   });
 
   describe('when the article version is a version of record', () => {
-    it.todo('should use the "/articles" prefix');
+    it('should use the "/articles" prefix', () => {
+      const msid = '12345';
+      const isVor = true;
+      const url = getPdfUrl(msid, isVor);
+
+      expect(url).toBe('/articles/12345.pdf');
+    });
   });
 });
