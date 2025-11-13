@@ -34,7 +34,12 @@ describe('getCanonicalUrl', () => {
     });
 
     describe('when a canonical domain is configured', () => {
-      it.todo('returns a full url with protocol and domain');
+      const canonicalDomain = 'https://elifesciences.org';
+      const expectedCanonicalUrl = `${canonicalDomain}/articles/${msid}`;
+      const fullCanonicalUrl = getCanonicalUrl(msid, isVor, canonicalDomain);
+      it('returns a full url with protocol and domain', () => {
+        expect(fullCanonicalUrl).toBe(expectedCanonicalUrl);
+      });
     });
   });
 });
