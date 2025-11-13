@@ -18,7 +18,7 @@ describe('getCanonicalUrl', () => {
   });
 
   describe('when the article version is a version of record', () => {
-    it.failing('uses the "/articles" prefix', () => {
+    it('uses the "/articles" prefix', () => {
       const isVor = true;
       const canonicalUrl = getCanonicalUrl(msid, isVor);
       expect(canonicalUrl.startsWith('/articles')).toBe(true);
