@@ -18,13 +18,15 @@ describe('getCanonicalUrl', () => {
   });
 
   describe('when the article version is a version of record', () => {
+    const isVor = true;
+    const canonicalUrl = getCanonicalUrl(msid, isVor);
     it('uses the "/articles" prefix', () => {
-      const isVor = true;
-      const canonicalUrl = getCanonicalUrl(msid, isVor);
       expect(canonicalUrl.startsWith('/articles')).toBe(true);
     });
 
-    it.todo('uses the manuscript ID in the final segment of canonical URL');
+    it('uses the manuscript ID in the final segment of canonical URL', () => {
+      expect(canonicalUrl.endsWith(`/${msid}`)).toBe(true);
+    });
 
     describe('when a canonical domain is configured', () => {
       it.todo('returns a full url with protocol and domain');
