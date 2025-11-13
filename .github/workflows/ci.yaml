@@ -72,7 +72,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: yarn
-      - uses: chromaui/action@v11
+      - uses: chromaui/action@ac86f2ff0a458ffbce7b40698abd44c0fa34d4b6 # v13
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
