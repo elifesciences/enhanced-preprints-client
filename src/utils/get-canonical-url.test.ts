@@ -4,7 +4,7 @@ describe('getCanonicalUrl', () => {
   describe('when the article version is not a version of record', () => {
     const msid = '12345';
     const canonicalUrl = getCanonicalUrl(msid);
-    it.failing('uses the "/reviewed-preprints" prefix', () => {
+    it('uses the "/reviewed-preprints" prefix', () => {
       expect(canonicalUrl.startsWith('/reviewed-preprints')).toBe(true);
     });
     it('uses the manuscript ID in the final segment of canonical URL', () => {
