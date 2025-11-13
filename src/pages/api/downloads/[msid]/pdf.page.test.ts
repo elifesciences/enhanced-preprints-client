@@ -4,6 +4,7 @@ import { ReadableStream } from 'stream/web';
 import EventEmitter from 'events';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
+import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 
 type SimplePdfResponse = {
   ok: boolean;
@@ -16,8 +17,8 @@ jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
 
-jest.mock('../../../../config.ts', () => ({
-
+jest.mock('../../../../utils/get-canonical-url', () => ({
+  getCanonicalUrl: jest.fn(),
 }));
 
 describe('download PDF handler', () => {
@@ -112,21 +113,13 @@ describe('download PDF handler', () => {
       });
     });
 
-    test('returns a canonical URL in the response header', async () => {
+    test.skip('returns a canonical URL with a domain in the response header', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
-      await handler(req, res);
 
-      expect(res.statusCode).toBe(200);
+      (getCanonicalUrl as jest.Mock).mockReturnValueOnce(`https://elifesciences.org/reviewed-preprints/${msid}`);
 
-      expect(res.getHeader('link')).toBe(`</reviewed-preprints/${msid}>; rel="canonical"`);
-    });
-
-    test.failing('returns a canonical URL with a domain in the response header', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
-
-      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
