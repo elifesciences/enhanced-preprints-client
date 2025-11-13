@@ -21,22 +21,22 @@ describe('getPdfUrl', () => {
   });
 
   describe('when the article version is a version of record', () => {
+    const isVor = true;
+    const domain = 'https://elifesciences.org';
+
     it('uses the "/articles" prefix', () => {
-      const isVor = true;
       const url = getPdfUrl(msid, isVor);
 
       expect(url.startsWith('/articles')).toBe(true);
     });
-  });
 
-  describe('when a canonical domain is configured', () => {
-    it('should return a full url with protocol and domain', () => {
-      const isVor = true;
-      const domain = 'https://elifesciences.org';
-      const url = getPdfUrl(msid, isVor, domain);
-
+    describe('when the canonical domain is configured', () => {
       const expectedUrl = `https://elifesciences.org/articles/${msid}.pdf`;
-      expect(url).toBe(expectedUrl);
+      it('should return a full url with protocol and domain', () => {
+        const url = getPdfUrl(msid, isVor, domain);
+
+        expect(url).toBe(expectedUrl);
+      });
     });
   });
 });
