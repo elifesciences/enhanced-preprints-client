@@ -1,9 +1,10 @@
 import { getCanonicalUrl } from './get-canonical-url';
 
 describe('getCanonicalUrl', () => {
+  const msid = '12345';
   describe('when the article version is not a version of record', () => {
-    const msid = '12345';
-    const canonicalUrl = getCanonicalUrl(msid);
+    const isVor = false;
+    const canonicalUrl = getCanonicalUrl(msid, isVor);
     it('uses the "/reviewed-preprints" prefix', () => {
       expect(canonicalUrl.startsWith('/reviewed-preprints')).toBe(true);
     });
@@ -17,7 +18,11 @@ describe('getCanonicalUrl', () => {
   });
 
   describe('when the article version is a version of record', () => {
-    it.todo('uses the "/articles" prefix');
+    it.failing('uses the "/articles" prefix', () => {
+      const isVor = true;
+      const canonicalUrl = getCanonicalUrl(msid, isVor);
+      expect(canonicalUrl.startsWith('/articles')).toBe(true);
+    });
 
     it.todo('uses the manuscript ID in the final segment of canonical URL');
 

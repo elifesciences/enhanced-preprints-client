@@ -1,1 +1,2 @@
-export const getCanonicalUrl = (msid: string) => `/reviewed-preprints/${msid}`;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const getCanonicalUrl = (msid: string, isVor?: boolean) => `/reviewed-preprints/${msid}`;
