@@ -10259,7 +10259,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.12.0"
     fetch-mock: "npm:^9.11.0"
     html-react-parser: "npm:^5.1.10"
-    i18next: "npm:^23.7.19"
+    i18next: "npm:^25.0.0"
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
     jest-wip-reporter: "npm:^2.1.0"
@@ -12829,12 +12829,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:*, i18next@npm:^23.7.19":
+"i18next@npm:*":
   version: 23.16.4
   resolution: "i18next@npm:23.16.4"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
   checksum: 10c0/b016d98bb8a11fa16e2598897b0ea388b664e28e38acbd7e6580ce8ff300a9b4c66eb849883b1c36dbee9800abb830887293adbb1e598b679ea29006a3bc6af9
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^25.0.0":
+  version: 25.6.2
+  resolution: "i18next@npm:25.6.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.27.6"
+  peerDependencies:
+    typescript: ^5
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10c0/8e9ac1c4ea8efb04209733e595a4be86361466a2ea2ac7d244770cc73ffad80224da132b38de50aa7cb2b23d4061ce562f81e0e00abad8efd539d9a0c0e19ba2
   languageName: node
   linkType: hard
 
