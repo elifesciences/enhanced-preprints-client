@@ -16,6 +16,10 @@ jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
 
+jest.mock('../../../../config.ts', () => ({
+
+}));
+
 describe('download PDF handler', () => {
   describe('Handling unexpected types passed by next.js', () => {
     test('returns 400 if nextjs passes a non-string query msid', async () => {
@@ -108,7 +112,18 @@ describe('download PDF handler', () => {
       });
     });
 
-    test.failing('returns a canonical URL in the response header', async () => {
+    test('returns a canonical URL in the response header', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+
+      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
+      await handler(req, res);
+
+      expect(res.statusCode).toBe(200);
+
+      expect(res.getHeader('link')).toBe(`</reviewed-preprints/${msid}>; rel="canonical"`);
+    });
+
+    test.failing('returns a canonical URL with a domain in the response header', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
