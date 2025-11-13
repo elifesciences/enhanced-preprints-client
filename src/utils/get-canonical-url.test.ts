@@ -13,7 +13,11 @@ describe('getCanonicalUrl', () => {
     });
 
     describe('when a canonical domain is configured', () => {
-      it.todo('returns a full url with protocol and domain');
+      const expectedCanonicalUrl = `https://elifesciences.org/reviewed-preprints/${msid}`;
+      const fullCanonicalUrl = getCanonicalUrl(msid, isVor);
+      it.failing('returns a full url with protocol and domain', () => {
+        expect(fullCanonicalUrl).toBe(expectedCanonicalUrl);
+      });
     });
   });
 
