@@ -30,9 +30,10 @@ describe('getPdfUrl', () => {
   });
 
   describe('when a canonical domain is configured', () => {
-    it.failing('should return a full url with protocol and domain', () => {
+    it('should return a full url with protocol and domain', () => {
       const isVor = true;
-      const url = getPdfUrl(msid, isVor);
+      const domain = 'https://elifesciences.org';
+      const url = getPdfUrl(msid, isVor, domain);
 
       const expectedUrl = `https://elifesciences.org/articles/${msid}.pdf`;
       expect(url).toBe(expectedUrl);
