@@ -15,6 +15,7 @@ type Config = {
   articleCacheAge: string,
   disallowRobots: boolean,
   disableTerms: boolean,
+  tenantDomain?: string,
 };
 
 export const config: Config = {
@@ -29,4 +30,5 @@ export const config: Config = {
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
   disallowRobots: !!process.env.DISALLOW_ROBOTS,
   disableTerms: !!process.env.NEXT_PUBLIC_DISABLE_TERMS && ['all', 'true'].includes(process.env.NEXT_PUBLIC_DISABLE_TERMS),
+  tenantDomain: process.env.TENANT_DOMAIN,
 };
