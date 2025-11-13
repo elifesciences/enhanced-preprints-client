@@ -1,7 +1,7 @@
-export const getCanonicalUrl = (msid: string, isVor?: boolean) => {
+export const getCanonicalUrl = (msid: string, isVor?: boolean, domain?: string) => {
   let prefix = '/reviewed-preprints';
   if (isVor) {
     prefix = '/articles';
   }
-  return `${prefix}/${msid}`;
+  return `${domain ?? ''}${prefix}/${msid}`;
 };
