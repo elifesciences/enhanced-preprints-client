@@ -28,4 +28,8 @@ describe('getPdfUrl', () => {
       expect(url.startsWith('/articles')).toBe(true);
     });
   });
+
+  describe('when a canonical domain is configured', () => {
+    it.todo('should return a full url with protocol and domain');
+  });
 });
