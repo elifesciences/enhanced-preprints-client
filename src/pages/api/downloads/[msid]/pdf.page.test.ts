@@ -113,7 +113,7 @@ describe('download PDF handler', () => {
       });
     });
 
-    test.skip('returns a canonical URL with a domain in the response header', async () => {
+    test.failing('returns a canonical URL with a domain in the response header', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
@@ -125,6 +125,8 @@ describe('download PDF handler', () => {
       expect(res.statusCode).toBe(200);
 
       expect(res.getHeader('link')).toBe(`<https://elifesciences.org/reviewed-preprints/${msid}>; rel="canonical"`);
+
+      expect(getCanonicalUrl).toHaveBeenCalledWith(msid, false, undefined);
     });
 
     test('passes appropriate request headers related to client caching or referral to the pdf source', async () => {
