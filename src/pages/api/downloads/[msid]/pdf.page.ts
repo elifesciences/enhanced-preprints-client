@@ -5,6 +5,7 @@ import type { ReadableStream } from 'stream/web';
 import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
+import { config } from '../../../../config';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -70,7 +71,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .filter(([key]) => whitelistedResponseHeaders.includes(key))
       .forEach(([key, value]) => res.setHeader(key, value));
     res.setHeader('Content-Disposition', `attachment; filename="${version.article.msid}-v${version.article.versionIdentifier}.pdf"`);
-    res.setHeader('Link', `<${getCanonicalUrl(version.article.msid)}>; rel="canonical"`);
+    res.setHeader('Link', `<${getCanonicalUrl(version.article.msid, false, config.tenantDomain)}>; rel="canonical"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);

@@ -113,7 +113,7 @@ describe('download PDF handler', () => {
       });
     });
 
-    test.failing('returns a canonical URL with a domain in the response header', async () => {
+    test('returns a canonical URL for the reviewed preprint in the response header', async () => {
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
