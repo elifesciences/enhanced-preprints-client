@@ -17,7 +17,7 @@ describe('getPdfUrl', () => {
 
     describe('when the canonical domain is configured', () => {
       const expectedUrl = `https://elifesciences.org/reviewed-preprints/${msid}.pdf`;
-      it('should return a full url with protocol and domain', () => {
+      it('returns a full url with protocol and domain', () => {
         const canonicalUrl = getPdfUrl(msid, isVor, domain);
 
         expect(canonicalUrl).toBe(expectedUrl);
@@ -39,7 +39,7 @@ describe('getPdfUrl', () => {
 
     describe('when the canonical domain is configured', () => {
       const expectedUrl = `https://elifesciences.org/articles/${msid}.pdf`;
-      it('should return a full url with protocol and domain', () => {
+      it('returns a full url with protocol and domain', () => {
         const canonicalUrl = getPdfUrl(msid, isVor, domain);
 
         expect(canonicalUrl).toBe(expectedUrl);
