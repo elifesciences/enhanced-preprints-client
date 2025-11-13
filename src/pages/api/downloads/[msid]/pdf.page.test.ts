@@ -129,6 +129,22 @@ describe('download PDF handler', () => {
       expect(getCanonicalUrl).toHaveBeenCalledWith(msid, false, undefined);
     });
 
+    test.failing('returns a canonical URL for the VOR in the response header', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+
+      (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
+
+      (getCanonicalUrl as jest.Mock).mockReturnValueOnce(`https://elifesciences.org/articles/${msid}`);
+
+      await handler(req, res);
+
+      expect(res.statusCode).toBe(200);
+
+      expect(res.getHeader('link')).toBe(`<https://elifesciences.org/articles/${msid}>; rel="canonical"`);
+
+      expect(getCanonicalUrl).toHaveBeenCalledWith(msid, true, undefined);
+    });
+
     test('passes appropriate request headers related to client caching or referral to the pdf source', async () => {
       req.headers = { accept: 'application/pdf' };
       (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
