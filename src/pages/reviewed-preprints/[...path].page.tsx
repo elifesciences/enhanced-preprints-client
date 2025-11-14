@@ -26,6 +26,7 @@ import { type SerialisedTimelineEvent } from '../../types/article-timeline';
 import { type FeaturesData } from '../../features';
 import { isVORVersionSummary } from '../../utils/type-guards';
 import { getPdfUrl } from '../../utils/get-pdf-url';
+import { isVor } from '../../utils/is-vor';
 
 type PageProps = {
   siteName?: string,
@@ -245,7 +246,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const timeline = generateTimeline(versions);
   const copyrightYear = generateCopyrightYear(versions);
   const versionHistory = generateVersionHistory(versions);
-  const versionOfRecord = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
+  const versionOfRecord = isVor(articleWithVersions);
 
   const pdfUrl = context.query.pdf_paths ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : articleWithVersions.article.pdfUrl;
 
