@@ -248,7 +248,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = isVor(articleWithVersions);
 
-  const pdfUrl = context.query.pdf_paths ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : articleWithVersions.article.pdfUrl;
+  const pdfUrl = getPdfUrl(id, versionOfRecord, config.tenantDomain);
 
   const metaData = {
     ...articleWithVersions.article,
