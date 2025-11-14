@@ -5,6 +5,7 @@ import EventEmitter from 'events';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
+import { isVor } from '../../../../utils/is-vor';
 
 type SimplePdfResponse = {
   ok: boolean;
@@ -19,6 +20,10 @@ jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
 
 jest.mock('../../../../utils/get-canonical-url', () => ({
   getCanonicalUrl: jest.fn(),
+}));
+
+jest.mock('../../../../utils/is-vor', () => ({
+  isVor: jest.fn(),
 }));
 
 describe('download PDF handler', () => {
@@ -127,6 +132,8 @@ describe('download PDF handler', () => {
 
       (getCanonicalUrl as jest.Mock).mockReturnValueOnce(`https://elifesciences.org/reviewed-preprints/${msid}`);
 
+      (isVor as jest.Mock).mockReturnValueOnce(false);
+
       await handler(req, res);
 
       expect(res.statusCode).toBe(200);
@@ -137,23 +144,13 @@ describe('download PDF handler', () => {
     });
 
     test('returns a canonical URL for the VOR in the response header', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce({
-        article: {
-          ...version.article,
-          versionIdentifier: '2',
-        },
-        versions: {
-          ...version.versions,
-          // eslint-disable-next-line quote-props
-          '2': {
-            versionIdentifier: '2',
-          },
-        },
-      });
+      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
 
       (getCanonicalUrl as jest.Mock).mockReturnValueOnce(`https://elifesciences.org/articles/${msid}`);
+
+      (isVor as jest.Mock).mockReturnValueOnce(true);
 
       await handler(req, res);
 
