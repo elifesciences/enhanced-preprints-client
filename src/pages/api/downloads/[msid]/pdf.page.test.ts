@@ -45,6 +45,13 @@ describe('download PDF handler', () => {
         msid,
         versionIdentifier,
       },
+      versions: {
+        // eslint-disable-next-line quote-props
+        '1': {
+          versionIdentifier: '1',
+          preprintPosted: '2022-01-01',
+        },
+      },
     };
     const pdfData = 'PDFDATA';
     let simplePdfResponse: SimplePdfResponse;
