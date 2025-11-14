@@ -6,7 +6,7 @@ import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { config } from '../../../../config';
-import { isVORVersionSummary } from '../../../../utils/type-guards';
+import { isVor } from '../../../../utils/is-vor';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -68,14 +68,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       'vary',
     ];
 
-    const versions = Object.values(articleWithVersions.versions);
-    const isVor = Object.values(versions).some((version) => version.versionIdentifier === articleWithVersions.article.versionIdentifier && isVORVersionSummary(version));
-
     Array.from(fetched.headers.entries())
       .filter(([key]) => whitelistedResponseHeaders.includes(key))
       .forEach(([key, value]) => res.setHeader(key, value));
     res.setHeader('Content-Disposition', `attachment; filename="${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf"`);
-    res.setHeader('Link', `<${getCanonicalUrl(articleWithVersions.article.msid, isVor, config.tenantDomain)}>; rel="canonical"`);
+    res.setHeader('Link', `<${getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain)}>; rel="canonical"`);
     res.status(200);
 
     await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
