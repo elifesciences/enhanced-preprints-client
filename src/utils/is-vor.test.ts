@@ -4,7 +4,8 @@ import { mock85111 } from './mocks/enhanced-article-with-versions';
 describe('isVor', () => {
   describe('Given a version that is not a Version of Record', () => {
     it('should return false', () => {
-      expect(isVor(mock85111)).toBe(false);
+      const articleVersionNotVor = mock85111;
+      expect(isVor(articleVersionNotVor)).toBe(false);
     });
   });
   describe('Given a version that is a Version of Record', () => {
