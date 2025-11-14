@@ -136,8 +136,20 @@ describe('download PDF handler', () => {
       expect(getCanonicalUrl).toHaveBeenCalledWith(msid, false, undefined);
     });
 
-    test.failing('returns a canonical URL for the VOR in the response header', async () => {
-      (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
+    test('returns a canonical URL for the VOR in the response header', async () => {
+      (fetchVersion as jest.Mock).mockResolvedValueOnce({
+        article: {
+          ...version.article,
+          versionIdentifier: '2',
+        },
+        versions: {
+          ...version.versions,
+          // eslint-disable-next-line quote-props
+          '2': {
+            versionIdentifier: '2',
+          },
+        },
+      });
 
       (fetch as jest.Mock).mockResolvedValueOnce(simplePdfResponse);
 
