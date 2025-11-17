@@ -26,11 +26,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(404).end();
       return;
     }
+    const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
+
     await proxyUrlToResponse(
       pdfUrl,
       res,
       req,
-      `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`,
+      downloadFilename,
       getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain),
       'application/pdf',
     );
