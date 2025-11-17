@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(404).end();
       return;
     }
-    proxyUrlToResponse(pdfUrl);
+    proxyUrlToResponse(pdfUrl, res);
 
     const requestHeaders: IncomingHttpHeaders = req.headers;
     const headers: Record<string, string> = {};
