@@ -35,7 +35,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       req,
       downloadFilename,
       canonicalUrl,
-      'application/pdf',
     );
   } catch (err) {
     if (!res.headersSent) {
