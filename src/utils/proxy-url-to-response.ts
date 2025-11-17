@@ -10,6 +10,7 @@ export const proxyUrlToResponse = async (
   req: NextApiRequest,
   contentDispositionFilename: string,
   canonicalUrl: string,
+  defaultContentType: string,
 ) => {
   const requestHeaders: IncomingHttpHeaders = req.headers;
   const headers: Record<string, string> = {};
@@ -35,7 +36,7 @@ export const proxyUrlToResponse = async (
     return;
   }
 
-  res.setHeader('Content-Type', fetched.headers.get('content-type') || 'application/pdf');
+  res.setHeader('Content-Type', fetched.headers.get('content-type') || defaultContentType);
   const contentLength = fetched.headers.get('content-length');
   if (contentLength) {
     res.setHeader('Content-Length', contentLength);

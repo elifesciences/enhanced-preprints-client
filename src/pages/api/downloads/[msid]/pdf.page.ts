@@ -32,6 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       req,
       `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`,
       getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain),
+      'application/pdf',
     );
   } catch (err) {
     if (!res.headersSent) {
