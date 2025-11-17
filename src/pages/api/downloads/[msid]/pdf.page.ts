@@ -1,7 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Readable } from 'stream';
-import { pipeline } from 'stream/promises';
-import type { ReadableStream } from 'stream/web';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { config } from '../../../../config';
@@ -29,35 +26,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(404).end();
       return;
     }
-    const fetched = await proxyUrlToResponse(pdfUrl, res, req);
-
-    if (!fetched.ok || !fetched.body) {
-      res.status(502).end();
-      return;
-    }
-
-    res.setHeader('Content-Type', fetched.headers.get('content-type') || 'application/pdf');
-    const contentLength = fetched.headers.get('content-length');
-    if (contentLength) {
-      res.setHeader('Content-Length', contentLength);
-    }
-    const whitelistedResponseHeaders = [
-      'etag',
-      'last-modified',
-      'cache-control',
-      'date',
-      'expires',
-      'vary',
-    ];
-
-    Array.from(fetched.headers.entries())
-      .filter(([key]) => whitelistedResponseHeaders.includes(key))
-      .forEach(([key, value]) => res.setHeader(key, value));
-    res.setHeader('Content-Disposition', `attachment; filename="${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf"`);
-    res.setHeader('Link', `<${getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain)}>; rel="canonical"`);
-    res.status(200);
-
-    await pipeline(Readable.fromWeb(fetched.body as ReadableStream), res);
+    await proxyUrlToResponse(
+      pdfUrl,
+      res,
+      req,
+      `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`,
+      getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain),
+    );
   } catch (err) {
     if (!res.headersSent) {
       res.status(502).end();
