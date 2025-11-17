@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { Readable } from 'stream';
 import { pipeline } from 'stream/promises';
 import type { ReadableStream } from 'stream/web';
-import { type IncomingHttpHeaders } from 'node:http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { config } from '../../../../config';
@@ -30,27 +29,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(404).end();
       return;
     }
-    proxyUrlToResponse(pdfUrl, res);
+    const fetched = await proxyUrlToResponse(pdfUrl, res, req);
 
-    const requestHeaders: IncomingHttpHeaders = req.headers;
-    const headers: Record<string, string> = {};
-    const whitelistedRequestsHeaders = [
-      'accept',
-      'cache-control',
-      'if-modified-since',
-      'if-none-match',
-      'referer',
-    ];
-
-    Object.entries(requestHeaders)
-      .filter(([key]) => whitelistedRequestsHeaders.includes(key))
-      .forEach(([key, value]) => {
-        if (typeof value === 'string') {
-          headers[key] = value;
-        }
-      });
-    const requestInit: RequestInit = { headers };
-    const fetched = await fetch(pdfUrl, requestInit);
     if (!fetched.ok || !fetched.body) {
       res.status(502).end();
       return;
