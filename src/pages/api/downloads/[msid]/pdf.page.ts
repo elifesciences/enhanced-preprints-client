@@ -8,6 +8,9 @@ import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { config } from '../../../../config';
 import { isVor } from '../../../../utils/is-vor';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const proxyUrlToResponse = (url: string) => {};
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { msid } = req.query;
@@ -29,6 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(404).end();
       return;
     }
+    proxyUrlToResponse(pdfUrl);
 
     const requestHeaders: IncomingHttpHeaders = req.headers;
     const headers: Record<string, string> = {};
