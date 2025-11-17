@@ -27,13 +27,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
     const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
+    const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
 
     await proxyUrlToResponse(
       pdfUrl,
       res,
       req,
       downloadFilename,
-      getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain),
+      canonicalUrl,
       'application/pdf',
     );
   } catch (err) {
