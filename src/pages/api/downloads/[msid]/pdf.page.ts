@@ -29,13 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
     const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
 
-    await proxyUrlToResponse(
-      pdfUrl,
-      res,
-      req,
-      downloadFilename,
-      canonicalUrl,
-    );
+    await proxyUrlToResponse(pdfUrl, res, req, downloadFilename, canonicalUrl);
   } catch (err) {
     if (!res.headersSent) {
       res.status(502).end();
