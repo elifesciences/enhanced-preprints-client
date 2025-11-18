@@ -40,7 +40,9 @@ describe('proxyUrlToResponse', () => {
       defaultUpstreamResponse = {
         ok: true,
         body: ReadableStream.from([data]),
-        headers: new Headers(),
+        headers: new Headers({
+          'x-client-caching-unrelated-header': 'arbitrary header value',
+        }),
       };
 
       (fetch as jest.Mock).mockResolvedValueOnce(defaultUpstreamResponse);
@@ -48,7 +50,11 @@ describe('proxyUrlToResponse', () => {
     it.todo('copies appropriate request headers related to client caching to the upstream request');
     it.todo('does not copy request headers unrelated to client caching to the upstream request');
     it.todo('copies appropriate upstream response headers related to client caching to the response');
-    it.todo('does not copy upstream response headers unrelated to client caching to the response');
+    it('does not copy upstream response headers unrelated to client caching to the response', async () => {
+      await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
+
+      expect(res.getHeader('x-client-caching-unrelated-header')).toBeUndefined();
+    });
 
     it('sets the response status to 200 and streams the data', async () => {
       await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
