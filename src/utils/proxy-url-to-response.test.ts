@@ -5,6 +5,8 @@ import { ReadableStream } from 'stream/web';
 import { proxyUrlToResponse } from './proxy-url-to-response';
 
 describe('proxyUrlToResponse', () => {
+  const arbitraryUrl = 'arbitrary url';
+  const data = 'arbitrary data';
   let req: NextApiRequest;
   let res: NextApiResponse & ReturnType<typeof createResponse>;
 
@@ -20,7 +22,7 @@ describe('proxyUrlToResponse', () => {
 
     (fetch as jest.Mock).mockResolvedValueOnce({
       ok: true,
-      body: ReadableStream.from(['']),
+      body: ReadableStream.from([data]),
       headers: new Headers(),
     });
   });
@@ -30,7 +32,13 @@ describe('proxyUrlToResponse', () => {
     it.todo('does not copy request headers unrelated to client caching to the upstream request');
     it.todo('copies appropriate upstream response headers related to client caching to the response');
     it.todo('does not copy upstream response headers unrelated to client caching to the response');
-    it.todo('sets the response status to 200 and streams the data');
+    it('sets the response status to 200 and streams the data', async () => {
+      await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
+
+      expect(res.statusCode).toBe(200);
+      // eslint-disable-next-line no-underscore-dangle
+      expect(res._getBuffer().toString()).toBe(data);
+    });
   });
 
   describe('when given a canonical URL', () => {
