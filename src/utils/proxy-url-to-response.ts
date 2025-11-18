@@ -6,8 +6,8 @@ import type { ReadableStream } from 'stream/web';
 
 export const proxyUrlToResponse = async (
   url: string,
-  res: NextApiResponse,
   req: NextApiRequest,
+  res: NextApiResponse,
   contentDispositionFilename: string,
   canonicalUrl: string,
 ) => {

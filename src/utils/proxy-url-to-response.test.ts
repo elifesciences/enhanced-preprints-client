@@ -36,7 +36,7 @@ describe('proxyUrlToResponse', () => {
   describe('when given a canonical URL', () => {
     it('sets the link header with canonical-url on the response', async () => {
       const canonicalUrl = 'canonical url';
-      await proxyUrlToResponse('arbitrary url', res, req, 'arbitrary filename', canonicalUrl);
+      await proxyUrlToResponse('arbitrary url', req, res, 'arbitrary filename', canonicalUrl);
 
       expect(res.getHeader('link')).toBe(`<${canonicalUrl}>; rel="canonical"`);
     });
@@ -47,7 +47,7 @@ describe('proxyUrlToResponse', () => {
       const filename = 'filename.txt';
       const contentDispositionHeader = `attachment; filename="${filename}"`;
 
-      await proxyUrlToResponse('arbitrary url', res, req, filename, 'arbitrary string');
+      await proxyUrlToResponse('arbitrary url', req, res, filename, 'arbitrary string');
 
       expect(res.getHeader('content-disposition')).toBe(contentDispositionHeader);
     });
