@@ -22,6 +22,23 @@ describe('download XML handler', () => {
   });
 
   describe('handling XML requests', () => {
+    const msid = 'arbitrary-msid';
+    const versionIdentifier = '1';
+    const version = {
+      article: {
+        pdfUrl: 'https://example.com/sample.pdf',
+        msid,
+        versionIdentifier,
+      },
+      versions: {
+        // eslint-disable-next-line quote-props
+        '1': {
+          versionIdentifier: '1',
+          preprintPosted: '2022-01-01',
+        },
+      },
+    };
+    const xmlData = 'arbitrary xml';
     describe('when the msid is invalid', () => {
       it('returns 404', async () => {
         (fetchVersion as jest.Mock).mockResolvedValueOnce(null);
@@ -38,10 +55,9 @@ describe('download XML handler', () => {
 
     describe('when the msid is valid', () => {
       it.skip('returns 200 with the data', async () => {
-        const xmlData = 'arbitrary xml';
-        (fetchVersion as jest.Mock).mockResolvedValueOnce({});
+        (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
         const req: NextApiRequest = createRequest({
-          query: { msid: 'arbitrary-msid' },
+          query: { msid },
         });
         const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
 
