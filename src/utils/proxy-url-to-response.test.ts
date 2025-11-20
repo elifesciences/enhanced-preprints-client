@@ -47,7 +47,13 @@ describe('proxyUrlToResponse', () => {
 
       (fetch as jest.Mock).mockResolvedValueOnce(defaultUpstreamResponse);
     });
-    it.todo('copies appropriate request headers related to client caching to the upstream request');
+    it('copies appropriate request headers related to client caching to the upstream request', async () => {
+      req.headers = { accept: 'application/pdf' };
+
+      await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
+
+      expect(fetch).toHaveBeenCalledWith(arbitraryUrl, { headers: req.headers });
+    });
     it.todo('does not copy request headers unrelated to client caching to the upstream request');
     it.todo('copies appropriate upstream response headers related to client caching to the response');
     it('does not copy upstream response headers unrelated to client caching to the response', async () => {
