@@ -6,7 +6,6 @@ describe('download XML handler', () => {
   describe('Handling unexpected types passed by next.js', () => {
     it('returns 400 if nextjs passes a non-string query msid', async () => {
       const invalidReq: NextApiRequest = createRequest({
-        url: '/reviewed-preprints/321.xml',
         query: { msid: ['321'] },
       });
       const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
