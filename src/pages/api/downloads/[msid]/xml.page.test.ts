@@ -1,6 +1,20 @@
+import { type NextApiResponse, type NextApiRequest } from 'next';
+import { createRequest, createResponse } from 'node-mocks-http';
+import handler from './xml.page';
+
 describe('download XML handler', () => {
   describe('Handling unexpected types passed by next.js', () => {
-    it.todo('returns 400 if nextjs passes a non-string query msid');
+    it('returns 400 if nextjs passes a non-string query msid', async () => {
+      const invalidReq: NextApiRequest = createRequest({
+        url: '/reviewed-preprints/321.xml',
+        query: { msid: ['321'] },
+      });
+      const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+
+      await handler(invalidReq, res);
+
+      expect(res.statusCode).toBe(400);
+    });
   });
 
   describe('handling XML requests', () => {
