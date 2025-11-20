@@ -37,7 +37,20 @@ describe('download XML handler', () => {
     });
 
     describe('when the msid is valid', () => {
-      it.todo('returns 200 with the data');
+      it.skip('returns 200 with the data', async () => {
+        const xmlData = 'arbitrary xml';
+        (fetchVersion as jest.Mock).mockResolvedValueOnce({});
+        const req: NextApiRequest = createRequest({
+          query: { msid: 'arbitrary-msid' },
+        });
+        const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+
+        await handler(req, res);
+
+        expect(res.statusCode).toBe(200);
+        // eslint-disable-next-line no-underscore-dangle
+        expect(res._getBuffer().toString()).toContain(xmlData);
+      });
       it.todo('sets a canonical url');
       it.todo('sets a header to advise browsers to download the file');
     });
