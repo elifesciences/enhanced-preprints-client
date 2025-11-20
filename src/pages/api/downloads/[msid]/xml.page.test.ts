@@ -19,7 +19,16 @@ describe('download XML handler', () => {
 
   describe('handling XML requests', () => {
     describe('when the msid is invalid', () => {
-      it.todo('returns 404');
+      it.failing('returns 404', async () => {
+        const req: NextApiRequest = createRequest({
+          query: { msid: 'invalid-msid' },
+        });
+        const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+
+        await handler(req, res);
+
+        expect(res.statusCode).toBe(404);
+      });
     });
 
     describe('when the msid is valid', () => {
