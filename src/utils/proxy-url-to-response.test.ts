@@ -7,6 +7,7 @@ import { proxyUrlToResponse } from './proxy-url-to-response';
 describe('proxyUrlToResponse', () => {
   const arbitraryUrl = 'arbitrary url';
   const data = 'arbitrary data';
+  const etag = 'arbitrary etag';
   let req: NextApiRequest;
   let res: NextApiResponse & ReturnType<typeof createResponse>;
 
@@ -41,12 +42,14 @@ describe('proxyUrlToResponse', () => {
         ok: true,
         body: ReadableStream.from([data]),
         headers: new Headers({
+          etag,
           'x-client-caching-unrelated-header': 'arbitrary header value',
         }),
       };
 
       (fetch as jest.Mock).mockResolvedValueOnce(defaultUpstreamResponse);
     });
+
     it('copies appropriate request headers related to client caching to the upstream request', async () => {
       req.headers = { accept: 'application/pdf' };
 
@@ -54,13 +57,20 @@ describe('proxyUrlToResponse', () => {
 
       expect(fetch).toHaveBeenCalledWith(arbitraryUrl, { headers: req.headers });
     });
+
     it('does not copy request headers unrelated to client caching to the upstream request', async () => {
       req.headers = { 'x-foo': 'arbitrary header value', accept: 'application/pdf' };
       await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
 
       expect(fetch).toHaveBeenCalledWith(arbitraryUrl, { headers: { accept: 'application/pdf' } });
     });
-    it.todo('copies appropriate upstream response headers related to client caching to the response');
+
+    it('copies appropriate upstream response headers related to client caching to the response', async () => {
+      await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
+
+      expect(res.getHeader('etag')).toBe(etag);
+    });
+
     it('does not copy upstream response headers unrelated to client caching to the response', async () => {
       await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
 
