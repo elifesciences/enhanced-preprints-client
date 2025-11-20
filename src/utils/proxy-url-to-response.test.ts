@@ -54,7 +54,12 @@ describe('proxyUrlToResponse', () => {
 
       expect(fetch).toHaveBeenCalledWith(arbitraryUrl, { headers: req.headers });
     });
-    it.todo('does not copy request headers unrelated to client caching to the upstream request');
+    it('does not copy request headers unrelated to client caching to the upstream request', async () => {
+      req.headers = { 'x-foo': 'arbitrary header value', accept: 'application/pdf' };
+      await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
+
+      expect(fetch).toHaveBeenCalledWith(arbitraryUrl, { headers: { accept: 'application/pdf' } });
+    });
     it.todo('copies appropriate upstream response headers related to client caching to the response');
     it('does not copy upstream response headers unrelated to client caching to the response', async () => {
       await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
