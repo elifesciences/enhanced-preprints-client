@@ -1,6 +1,11 @@
 import { type NextApiResponse, type NextApiRequest } from 'next';
 import { createRequest, createResponse } from 'node-mocks-http';
+import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './xml.page';
+
+jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
+  fetchVersion: jest.fn(),
+}));
 
 describe('download XML handler', () => {
   describe('Handling unexpected types passed by next.js', () => {
@@ -18,7 +23,8 @@ describe('download XML handler', () => {
 
   describe('handling XML requests', () => {
     describe('when the msid is invalid', () => {
-      it.failing('returns 404', async () => {
+      it('returns 404', async () => {
+        (fetchVersion as jest.Mock).mockResolvedValueOnce(null);
         const req: NextApiRequest = createRequest({
           query: { msid: 'invalid-msid' },
         });
