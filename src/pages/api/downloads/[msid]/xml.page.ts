@@ -22,6 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.xml`;
   const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
+  const upstreamXmlUrl = `${config.apiServer}/api/files/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/article-transformed.xml`;
 
-  await proxyUrlToResponse('foo', req, res, downloadFilename, canonicalUrl);
+  await proxyUrlToResponse(upstreamXmlUrl, req, res, downloadFilename, canonicalUrl);
 };
