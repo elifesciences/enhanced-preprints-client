@@ -4,6 +4,7 @@
     "config:best-practices",
     ":preserveSemverRanges"
   ],
+  "assigneesFromCodeOwners": true,
   "dependencyDashboardTitle": "Dependency Dashboard - EPP client",
   "customManagers": [
     {
