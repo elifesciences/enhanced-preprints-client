@@ -5,6 +5,8 @@ import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
 import { config } from '../../../../config';
 
+const generateArticleXmlUri = (msid: string, versionIdentifier: string) => `${config.apiServer}/api/files/${msid}/v${versionIdentifier}/article-transformed.xml`;
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { msid } = req.query;
 
@@ -22,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.xml`;
   const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
-  const upstreamXmlUrl = `${config.apiServer}/api/files/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/article-transformed.xml`;
+  const upstreamXmlUrl = generateArticleXmlUri(articleWithVersions.article.msid, articleWithVersions.article.versionIdentifier);
 
   await proxyUrlToResponse(upstreamXmlUrl, req, res, downloadFilename, canonicalUrl);
 };
