@@ -27,6 +27,7 @@ import { type FeaturesData } from '../../features';
 import { isVORVersionSummary } from '../../utils/type-guards';
 import { getPdfUrl } from '../../utils/get-pdf-url';
 import { isVor } from '../../utils/is-vor';
+import { getXmlUrl } from '../../utils/get-xml-url';
 
 type PageProps = {
   siteName?: string,
@@ -252,7 +253,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const pdfUrl = articleWithVersions.article.pdfUrl ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
   const urlParts = context.req.url?.split('/') ?? [];
   const prefix = urlParts[1] ?? '';
-  const xmlUrl = `${config.tenantDomain}/${prefix}/${id}.xml`;
+  const xmlUrl = getXmlUrl(id, prefix, config.tenantDomain);
 
   const metaData = {
     ...articleWithVersions.article,
