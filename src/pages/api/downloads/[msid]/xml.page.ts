@@ -4,8 +4,7 @@ import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
 import { config } from '../../../../config';
-
-const generateArticleXmlUri = (msid: string, versionIdentifier: string) => `${config.apiServer}/api/files/${msid}/v${versionIdentifier}/article-transformed.xml`;
+import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { msid } = req.query;
