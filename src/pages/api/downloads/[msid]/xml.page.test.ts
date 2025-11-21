@@ -96,7 +96,15 @@ describe('download XML handler', () => {
 
   describe('handling unexpected errors', () => {
     describe('when an unexpected error occurs', () => {
-      it.todo('returns status 502');
+      it.failing('returns status 502', async () => {
+        (fetchVersion as jest.Mock).mockRejectedValueOnce(new Error('Arbitrary unexpected error.'));
+        const req: NextApiRequest = createRequest({ query: { msid: '12345' } });
+        const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+
+        await handler(req, res);
+
+        expect(res.statusCode).toBe(502);
+      });
     });
   });
 });
