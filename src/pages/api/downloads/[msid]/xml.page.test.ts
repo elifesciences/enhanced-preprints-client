@@ -3,6 +3,7 @@ import { createRequest, createResponse } from 'node-mocks-http';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './xml.page';
 import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
+import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
@@ -10,6 +11,10 @@ jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
 
 jest.mock('../../../../utils/proxy-url-to-response', () => ({
   proxyUrlToResponse: jest.fn(),
+}));
+
+jest.mock('../../../../utils/generators/generate-article-xml-uri', () => ({
+  generateArticleXmlUri: jest.fn(),
 }));
 
 describe('download XML handler', () => {
@@ -59,7 +64,7 @@ describe('download XML handler', () => {
     });
 
     describe('when the msid is valid', () => {
-      it.skip('returns 200 with the data from a correct XML url', async () => {
+      it('returns 200 with the data from a correct XML url', async () => {
         (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
         (proxyUrlToResponse as jest.Mock).mockImplementationOnce((
           _url,
@@ -69,6 +74,9 @@ describe('download XML handler', () => {
           res.write(Buffer.from(xmlData));
           res.end();
         });
+        const articleXmlUri = 'example.com';
+        (generateArticleXmlUri as jest.Mock).mockReturnValueOnce(articleXmlUri);
+
         const req: NextApiRequest = createRequest({
           query: { msid },
         });
@@ -79,7 +87,7 @@ describe('download XML handler', () => {
         expect(res.statusCode).toBe(200);
         // eslint-disable-next-line no-underscore-dangle
         expect(res._getBuffer().toString()).toContain(xmlData);
-        expect(proxyUrlToResponse).toHaveBeenCalledWith(expect.anything(), req, res, expect.anything(), expect.anything());
+        expect(proxyUrlToResponse).toHaveBeenCalledWith(articleXmlUri, req, res, expect.anything(), expect.anything());
       });
       it.todo('sets a canonical url');
       it.todo('sets a header to advise browsers to download the file');
