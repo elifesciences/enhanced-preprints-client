@@ -108,7 +108,10 @@ describe('download XML handler', () => {
         await handler(req, res);
         expect(proxyUrlToResponse).toHaveBeenCalledWith(expect.anything(), req, res, expect.anything(), canonicalUrl);
       });
-      it.todo('sets a header to advise browsers to download the file');
+      it('sets a header to advise browsers to download the file', async () => {
+        await handler(req, res);
+        expect(proxyUrlToResponse).toHaveBeenCalledWith(expect.anything(), req, res, `${msid}-v${versionIdentifier}.xml`, expect.anything());
+      });
     });
   });
 
