@@ -1,4 +1,13 @@
+import { generateArticleXmlUri } from './generate-article-xml-uri';
+
 describe('generateArticleXmlUri', () => {
-  it.todo('includes article manuscript ID');
-  it.todo('includes article version');
+  const msid = 'arbitrarymsid';
+  const versionIdentifier = 'arbitraryVersion';
+  const articleXmlUri = generateArticleXmlUri(msid, versionIdentifier);
+  it('includes article manuscript ID', () => {
+    expect(articleXmlUri).toContain(msid);
+  });
+  it('includes article version', () => {
+    expect(articleXmlUri).toContain(versionIdentifier);
+  });
 });
