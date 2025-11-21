@@ -11,6 +11,7 @@ export type MetaData = {
   msas: string[],
   msid: string,
   pdfUrl?: string,
+  xmlUrl: string,
   references: Reference[],
   title: Content,
   version: string,

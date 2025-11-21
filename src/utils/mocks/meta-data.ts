@@ -9,6 +9,7 @@ export const metaData = {
   msid: '123456',
   version: '2',
   pdfUrl: '#',
+  xmlUrl: '#',
   msas: ['Mad Science', 'Alchemy'],
   title: 'This is a title',
   authors,

@@ -191,6 +191,7 @@ export const Page = ({
         <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
         <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
         {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
+        <meta name="x-xml-url" content={metaData.xmlUrl}/>
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
         <meta name="citation_language" content="en"/>
         { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
@@ -249,10 +250,14 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionOfRecord = isVor(articleWithVersions);
 
   const pdfUrl = articleWithVersions.article.pdfUrl ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
+  const urlParts = context.req.url?.split('/') ?? [];
+  const prefix = urlParts[1] ?? '';
+  const xmlUrl = `/${prefix}/${id}.xml`;
 
   const metaData = {
     ...articleWithVersions.article,
     ...(pdfUrl ? { pdfUrl } : {}),
+    xmlUrl,
     ...articleWithVersions.article.article,
     authors: articleWithVersions.article.article.authors || [],
     msas: articleWithVersions.article.subjects || [],
