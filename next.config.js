@@ -42,6 +42,11 @@ const nextConfig = {
         destination: '/api/downloads/:msid/pdf',
       },
       {
+        // Expose path for manuscript xml download
+        source: '/reviewed-preprints/:msid(\\d+v{0,1}\\d*).xml',
+        destination: '/api/downloads/:msid/xml',
+      },
+      {
         source: '/ping',
         destination: '/api/ping',
       },
