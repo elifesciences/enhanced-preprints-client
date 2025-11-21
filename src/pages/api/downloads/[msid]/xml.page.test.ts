@@ -4,6 +4,7 @@ import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './xml.page';
 import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
 import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
+import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),
@@ -15,6 +16,10 @@ jest.mock('../../../../utils/proxy-url-to-response', () => ({
 
 jest.mock('../../../../utils/generators/generate-article-xml-uri', () => ({
   generateArticleXmlUri: jest.fn(),
+}));
+
+jest.mock('../../../../utils/get-canonical-url', () => ({
+  getCanonicalUrl: jest.fn(),
 }));
 
 describe('download XML handler', () => {
@@ -64,24 +69,34 @@ describe('download XML handler', () => {
     });
 
     describe('when the msid is valid', () => {
-      it('returns 200 with the data from a correct XML url', async () => {
+      const canonicalUrl = 'arbitraryUrl';
+      const articleXmlUri = 'example.com';
+      let req: NextApiRequest;
+      let res: NextApiResponse & ReturnType<typeof createResponse>;
+      beforeEach(() => {
         (fetchVersion as jest.Mock).mockResolvedValueOnce(version);
         (proxyUrlToResponse as jest.Mock).mockImplementationOnce((
           _url,
           _req,
-          res: NextApiResponse,
+          response,
         ) => {
-          res.write(Buffer.from(xmlData));
-          res.end();
+          response.write(Buffer.from(xmlData));
+          response.end();
         });
-        const articleXmlUri = 'example.com';
+        (getCanonicalUrl as jest.Mock).mockReturnValueOnce(canonicalUrl);
         (generateArticleXmlUri as jest.Mock).mockReturnValueOnce(articleXmlUri);
 
-        const req: NextApiRequest = createRequest({
+        req = createRequest({
           query: { msid },
         });
-        const res: NextApiResponse & ReturnType<typeof createResponse> = createResponse();
+        res = createResponse();
+      });
 
+      afterEach(() => {
+        jest.resetAllMocks();
+      });
+
+      it('returns 200 with the data from a correct XML url', async () => {
         await handler(req, res);
 
         expect(res.statusCode).toBe(200);
@@ -89,7 +104,10 @@ describe('download XML handler', () => {
         expect(res._getBuffer().toString()).toContain(xmlData);
         expect(proxyUrlToResponse).toHaveBeenCalledWith(articleXmlUri, req, res, expect.anything(), expect.anything());
       });
-      it.todo('sets a canonical url');
+      it('sets a canonical url', async () => {
+        await handler(req, res);
+        expect(proxyUrlToResponse).toHaveBeenCalledWith(expect.anything(), req, res, expect.anything(), canonicalUrl);
+      });
       it.todo('sets a header to advise browsers to download the file');
     });
   });
