@@ -251,9 +251,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionOfRecord = isVor(articleWithVersions);
 
   const pdfUrl = articleWithVersions.article.pdfUrl ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
-  const urlParts = context.req.url?.split('/') ?? [];
-  const prefix = urlParts[1] ?? '';
-  const xmlUrl = getXmlUrl(id, prefix, config.tenantDomain);
+  const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
   const metaData = {
     ...articleWithVersions.article,
