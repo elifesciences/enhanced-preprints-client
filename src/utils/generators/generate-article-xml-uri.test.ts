@@ -10,7 +10,7 @@ describe('generateArticleXmlUri', () => {
   it('includes article version', () => {
     expect(articleXmlUri).toContain(versionIdentifier);
   });
-  it('the basename is article-transformed.xml', () => {
-    expect(articleXmlUri.endsWith('article-transformed.xml')).toBe(true);
+  it('the basename is article-source.xml', () => {
+    expect(articleXmlUri.endsWith('article-source.xml')).toBe(true);
   });
 });
