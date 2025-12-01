@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { generateImageInfo, generateImageUrl } from './generate-image-url';
+import { generateImageInfo, generateImageUrl, generateImageUrlSized } from './generate-image-url';
 
 let mockConfig: object | any = {};
 
@@ -60,5 +60,18 @@ describe('generateImageUrl', () => {
     const url = generateImageUrl('bar');
 
     expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/2/bar/full/max/0/default.jpg');
+  });
+});
+
+
+describe('generateImageUrlSized', () => {
+  it('uses the config imageServer to generate image url if config is set', async () => {
+    mockConfig = {
+      imageServer: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrlSized('bar', 42);
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/2/bar/full/42,/0/default.jpg');
   });
 });
