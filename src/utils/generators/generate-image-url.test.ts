@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { generateImageInfo } from './generate-image-url';
+import { generateImageInfo, generateImageUrl } from './generate-image-url';
 
 let mockConfig: object | any = {};
 
@@ -48,5 +48,17 @@ describe('generateImageInfo', () => {
     await expect(async () => generateImageInfo('bar'))
       .rejects
       .toThrow('Image info fetch failed with status 404');
+  });
+});
+
+describe('generateImageUrl', () => {
+  it('uses the config imageServer to generate image url if config is set', async () => {
+    mockConfig = {
+      imageServer: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrl('bar');
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/2/bar/full/max/0/default.jpg');
   });
 });
