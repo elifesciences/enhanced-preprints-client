@@ -61,7 +61,6 @@ describe('generateImageInfo', () => {
       .toThrow('Image info fetch failed with status 404');
   });
 
-
   it('prioritises the config iiifUrl over iiifServer', async () => {
     mockConfig = {
       iiifServer: 'http://random-previous-config-iiif-server/iiif',
@@ -107,7 +106,6 @@ describe('generateImageUrl', () => {
     expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/bar/full/max/0/default.jpg');
   });
 });
-
 
 describe('generateImageUrlSized', () => {
   it('uses the config imageServer to generate image url if config is set', async () => {
