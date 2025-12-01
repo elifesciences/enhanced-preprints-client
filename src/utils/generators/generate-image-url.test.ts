@@ -49,6 +49,30 @@ describe('generateImageInfo', () => {
       .rejects
       .toThrow('Image info fetch failed with status 404');
   });
+
+  it('uses the config iiifUrl to fetch iiif info if config is set', async () => {
+    mockConfig = {
+      iiifUrl: 'http://random-iiif-server/iiif',
+    };
+    fetchMock.once('http://random-iiif-server/iiif/bar/info.json', 404);
+
+    await expect(async () => generateImageInfo('bar'))
+      .rejects
+      .toThrow('Image info fetch failed with status 404');
+  });
+
+
+  it('prioritises the config iiifUrl over iiifServer', async () => {
+    mockConfig = {
+      iiifServer: 'http://random-previous-config-iiif-server/iiif',
+      iiifUrl: 'http://random-iiif-server/iiif',
+    };
+    fetchMock.once('http://random-iiif-server/iiif/bar/info.json', 404);
+
+    await expect(async () => generateImageInfo('bar'))
+      .rejects
+      .toThrow('Image info fetch failed with status 404');
+  });
 });
 
 describe('generateImageUrl', () => {
@@ -60,6 +84,27 @@ describe('generateImageUrl', () => {
     const url = generateImageUrl('bar');
 
     expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/2/bar/full/max/0/default.jpg');
+  });
+
+  it('uses the config iiifPublicUrl to generate image url if config is set', async () => {
+    mockConfig = {
+      iiifPublicUrl: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrl('bar');
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/bar/full/max/0/default.jpg');
+  });
+
+  it('prioritises the config iiifPublicUrl over imageServer', async () => {
+    mockConfig = {
+      imageServer: 'http://random-previous-config-iiif-server/iiif',
+      iiifPublicUrl: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrl('bar');
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/bar/full/max/0/default.jpg');
   });
 });
 
@@ -73,5 +118,26 @@ describe('generateImageUrlSized', () => {
     const url = generateImageUrlSized('bar', 42);
 
     expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/2/bar/full/42,/0/default.jpg');
+  });
+
+  it('uses the config iiifPublicUrl to generate image url if config is set', async () => {
+    mockConfig = {
+      iiifPublicUrl: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrlSized('bar', 42);
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/bar/full/42,/0/default.jpg');
+  });
+
+  it('prioritises the config iiifPublicUrl over imageServer', async () => {
+    mockConfig = {
+      imageServer: 'http://random-previous-config-iiif-server/iiif',
+      iiifPublicUrl: 'http://arbitrary-iiif-server/iiif-prefix',
+    };
+
+    const url = generateImageUrlSized('bar', 42);
+
+    expect(url).toBe('http://arbitrary-iiif-server/iiif-prefix/bar/full/42,/0/default.jpg');
   });
 });
