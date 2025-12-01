@@ -1,9 +1,18 @@
 import fetchMock from 'fetch-mock';
 import { generateImageInfo } from './generate-image-url';
 
-describe('generate image url', () => {
+let mockConfig: object | any = {};
+
+jest.mock('../../config', () => ({
+  get config() {
+    return mockConfig;
+  },
+}));
+
+describe('generateImageInfo', () => {
   afterEach(() => {
     fetchMock.resetBehavior();
+    mockConfig = {};
   });
 
   it('returns a valid width and height with a correct url', async () => {
@@ -24,6 +33,17 @@ describe('generate image url', () => {
 
   it('throws an error with the correct message when request fails', async () => {
     fetchMock.once(/.*/, 404);
+
+    await expect(async () => generateImageInfo('bar'))
+      .rejects
+      .toThrow('Image info fetch failed with status 404');
+  });
+
+  it('uses the config iiifServer to fetch iiif info if config is set', async () => {
+    mockConfig = {
+      iiifServer: 'http://random-iiif-server/iiif',
+    };
+    fetchMock.once('http://random-iiif-server/iiif/2/bar/info.json', 404);
 
     await expect(async () => generateImageInfo('bar'))
       .rejects
