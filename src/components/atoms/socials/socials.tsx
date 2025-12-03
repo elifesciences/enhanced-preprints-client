@@ -25,13 +25,13 @@ export const Socials = ({
   return (
     <ul className="socials-sharers">
       <li>
-        <a className="socials-sharer bluesky" href={blueskyUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Bluesky">
-          BlueSky
+        <a className="socials-sharer email" href={emailUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
+          Email
         </a>
       </li>
       <li>
-        <a className="socials-sharer email" href={emailUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
-          Email
+        <a className="socials-sharer bluesky" href={blueskyUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Bluesky">
+          BlueSky
         </a>
       </li>
       <li>
