@@ -20,9 +20,15 @@ export const Socials = ({
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
   const mastodonUrl = `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`;
+  const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
 
   return (
     <ul className="socials-sharers">
+      <li>
+        <a className="socials-sharer bluesky" href={blueskyUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Bluesky">
+          BlueSky
+        </a>
+      </li>
       <li>
         <a className="socials-sharer email" href={emailUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
           Email
