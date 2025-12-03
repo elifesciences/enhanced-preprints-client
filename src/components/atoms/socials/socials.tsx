@@ -21,6 +21,7 @@ export const Socials = ({
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
   const mastodonUrl = `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`;
   const blueskyUrl = `https://bsky.app/intent/compose?text=${encodedTitle}%20${encodedUrl}`;
+  const threadsUrl = `https://threads.net/intent/post?text=${encodedTitle}&url=${encodedUrl}`;
 
   return (
     <ul className="socials-sharers">
@@ -31,17 +32,12 @@ export const Socials = ({
       </li>
       <li>
         <a className="socials-sharer bluesky" href={blueskyUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Bluesky">
-          BlueSky
+          Bluesky
         </a>
       </li>
       <li>
         <a className="socials-sharer twitter" href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Twitter">
           Twitter
-        </a>
-      </li>
-      <li>
-        <a className="socials-sharer facebook" href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Facebook">
-          Facebook
         </a>
       </li>
       <li>
@@ -57,6 +53,16 @@ export const Socials = ({
       <li>
         <a className="socials-sharer mastodon" href={mastodonUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Mastodon via Toot">
           Mastodon
+        </a>
+      </li>
+      <li>
+        <a className="socials-sharer threads" href={threadsUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Threads">
+          Threads
+        </a>
+      </li>
+      <li>
+        <a className="socials-sharer facebook" href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Facebook">
+          Facebook
         </a>
       </li>
     </ul>
