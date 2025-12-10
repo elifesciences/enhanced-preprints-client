@@ -14,6 +14,7 @@ export const Socials = ({
   const encodedTitle = encodeURIComponent(title);
   const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
   const blueskyEncodedTitle = encodeURIComponent(t('In {{bluesky_handle}}: ', { bluesky_handle: t('bluesky_handle') }));
+  const threadsEncodedTitle = encodeURIComponent(t('In {{threads_handle}}: ', { threads_handle: t('threads_handle') }));
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
   const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
@@ -22,7 +23,7 @@ export const Socials = ({
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
   const mastodonUrl = `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`;
   const blueskyUrl = `https://bsky.app/intent/compose?text=${blueskyEncodedTitle}${encodedTitle}%20${encodedUrl}`;
-  const threadsUrl = `https://threads.net/intent/post?text=${encodedTitle}&url=${encodedUrl}`;
+  const threadsUrl = `https://threads.net/intent/post?text=${threadsEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
 
   return (
     <ul className="socials-sharers">

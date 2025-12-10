@@ -8,6 +8,7 @@ const resources = {
       // Placeholders:
       twitter_handle: 'Twitter handle',
       bluesky_handle: 'Bluesky handle',
+      threads_handle: 'Threads handle',
       publisher_short: 'Publisher short name',
       publisher_long: 'Publisher long name',
       process_url: '#', // link to review process
@@ -60,6 +61,7 @@ const resources = {
     elife: {
       twitter_handle: '@elife',
       bluesky_handle: '@eLife.bsky.social',
+      threads_handle: '@elifesciences',
       publisher_short: 'eLife',
       publisher_long: 'eLife Sciences Publications Limited',
       process_url: 'https://elifesciences.org/about/peer-review',
