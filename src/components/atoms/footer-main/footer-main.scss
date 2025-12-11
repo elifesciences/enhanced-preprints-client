@@ -237,6 +237,6 @@
   .social-links__list_item {
     padding: 0;
 
-    @include mixins.padding(24, "right");
+    @include mixins.padding(12, "right");
   }
 }
