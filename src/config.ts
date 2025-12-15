@@ -29,8 +29,8 @@ export const config: Config = {
   imageServer: process.env.NEXT_PUBLIC_IMAGE_SERVER,
   // deprecated: use iiifUrl
   iiifServer: process.env.IIIF_SERVER,
-  iiifPublicUrl: process.env.NEXT_PUBLIC_IMAGE_SERVER,
-  iiifUrl: process.env.NEXT_PUBLIC_IMAGE_SERVER,
+  iiifPublicUrl: process.env.NEXT_PUBLIC_IIIF_URL,
+  iiifUrl: process.env.IIIF_URL,
   gtmId: process.env.NEXT_PUBLIC_GTM_ID,
   cookiebotId: process.env.NEXT_PUBLIC_COOKIEBOT_ID,
   articleCacheAge: process.env.ARTICLE_CACHE_AGE || '1800',
