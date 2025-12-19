@@ -102,7 +102,7 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
         return '';
       }
 
-      // eslint-disable-next-line no-case-declarations
+       
       const additionalProps: Record<string, number> = {};
 
       if (options?.imgInfo && options?.imgInfo[content.contentUrl] !== undefined) {

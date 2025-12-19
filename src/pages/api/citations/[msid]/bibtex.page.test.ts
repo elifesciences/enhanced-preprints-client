@@ -27,7 +27,7 @@ describe('citation BibTeX handler', () => {
     await handler(req, res);
 
     expect(res.statusCode).toBe(503);
-    // eslint-disable-next-line no-underscore-dangle
+     
     expect(res._getData()).toBe('Unable to retrieve citation 321.bib');
   });
 
@@ -49,9 +49,9 @@ describe('citation BibTeX handler', () => {
     expect(res.statusCode).toBe(200);
     expect(res.getHeader('Content-Type')).toBe('application/x-bibtex');
     expect(res.getHeader('Content-Disposition')).toBe('attachment; filename=321.bib');
-    // eslint-disable-next-line no-underscore-dangle
+     
     expect(res._getData()).toContain('title = {Tonight we take over the world!}');
-    // eslint-disable-next-line no-underscore-dangle
+     
     expect(res._getData()).toContain('doi = {10.7554/eLife.321.1}');
     expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/321456/bibtex');
   });
