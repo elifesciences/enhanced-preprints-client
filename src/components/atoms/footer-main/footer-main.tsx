@@ -70,7 +70,7 @@ export const FooterMain = () => (
             </li>
             <li className="social-links__list_item">
               <a href="https://twitter.com/elife" className="social-links__list_link" aria-label="Twitter">
-                <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <svg width="28" height="28" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg">
                   <g id="x-28-footer" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                     <rect id="Rectangle" x="0" y="0" width="28" height="28"></rect>
                     <path d="M16.0929883,12.5202067 L24.2829833,3 L22.3422167,3 L15.230845,11.2662617 L9.55101333,3 L3,3 L11.58902,15.5000517 L3,25.48345 L4.94087667,25.48345 L12.4506683,16.7539967 L18.4489867,25.48345 L25,25.48345 L16.0925117,12.5202067 L16.0929883,12.5202067 Z M13.4346917,15.61018 L12.564445,14.3654567 L5.64020167,4.461064 L8.621275,4.461064 L14.20922,12.454225 L15.0794667,13.6989483 L22.3431333,24.0888333 L19.36206,24.0888333 L13.4346917,15.6106567 L13.4346917,15.61018 Z" id="Shape" fill="#212121" fillRule="nonzero"></path>
