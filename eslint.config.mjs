@@ -1,28 +1,30 @@
-const {
-    defineConfig,
-    globalIgnores,
-} = require("eslint/config");
+import { defineConfig, globalIgnores } from "eslint/config";
 
-const tsParser = require("@typescript-eslint/parser");
-const typescriptEslint = require("@typescript-eslint/eslint-plugin");
-const noOnlyTests = require("eslint-plugin-no-only-tests");
-const { fixupPluginRules } = require("@eslint/compat");
-const deprecationPlugin = require('eslint-plugin-deprecation');
-const nextPlugin = require("@next/eslint-plugin-next");
-const js = require("@eslint/js");
-const importPlugin = require("eslint-plugin-import");
+import tsParser from "@typescript-eslint/parser";
+import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import noOnlyTests from "eslint-plugin-no-only-tests";
+import { fixupPluginRules } from "@eslint/compat";
+import deprecationPlugin from "eslint-plugin-deprecation";
+import nextPlugin from "@next/eslint-plugin-next";
+import js from "@eslint/js";
+import importPlugin from "eslint-plugin-import";
+import stylistic from '@stylistic/eslint-plugin';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const {
-    FlatCompat,
-} = require("@eslint/eslintrc");
+import { FlatCompat } from "@eslint/eslintrc";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
     recommendedConfig: js.configs.recommended,
     allConfig: js.configs.all
 });
-
-module.exports = defineConfig([{
+export default defineConfig([{
     languageOptions: {
         parser: tsParser,
 
@@ -36,8 +38,8 @@ module.exports = defineConfig([{
         "no-only-tests": noOnlyTests,
         "deprecation": fixupPluginRules(deprecationPlugin),
         "next": fixupPluginRules(nextPlugin),
-        "import": importPlugin
-
+        "import": importPlugin,
+        "@stylistic": stylistic
     },
     extends: compat.extends(
         "plugin:react/recommended",
@@ -48,11 +50,11 @@ module.exports = defineConfig([{
         "plugin:@next/next/core-web-vitals",
     ),
     rules: {
-        "eol-last": ["error", "always"],
+        "@stylistic/eol-last": ["error", "always"],
         "deprecation/deprecation": "warn",
         "import/prefer-default-export": 0,
 
-        "max-len": ["error", {
+        "@stylistic/max-len": ["error", {
             "code": 240,
         }],
 
@@ -69,14 +71,14 @@ module.exports = defineConfig([{
             "peerDependencies": true,
         }],
 
-        "operator-linebreak": 0,
+        "@stylistic/operator-linebreak": 0,
 
         "no-only-tests/no-only-tests": ["error", {
             "focus": ["only"],
         }],
 
-        "react/jsx-indent": ["error", 2],
-        "react/jsx-indent-props": ["error", 2],
+        "@stylistic/jsx-indent": ["error", 2],
+        "@stylistic/jsx-indent-props": ["error", 2],
         "@typescript-eslint/consistent-type-imports": ["error", { "fixStyle": "inline-type-imports" }],
         "@typescript-eslint/no-non-null-assertion": "warn",
     },
