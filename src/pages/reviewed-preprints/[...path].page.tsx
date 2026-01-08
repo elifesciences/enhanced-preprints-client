@@ -217,7 +217,7 @@ export const Page = ({
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
-    console.log('no path'); // eslint-disable-line no-console
+    console.log('no path');  
     return { notFound: true };
   }
 
@@ -227,7 +227,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const id = idParts.join('/');
 
   if (id === undefined) {
-    console.log('no id in path'); // eslint-disable-line no-console
+    console.log('no id in path');  
     return { notFound: true };
   }
 
@@ -236,7 +236,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
   if (!articleWithVersions) {
-    console.log(`Article version not found (${id})`); // eslint-disable-line no-console
+    console.log(`Article version not found (${id})`);  
     return { notFound: true };
   }
 
@@ -269,7 +269,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // Redirect VOR articles from reviewed-preprints to articles path.
   if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
     const redirectUrl = context.req.url?.replace('/reviewed-preprints/', '/articles/') || `/articles/${id}`;
-    console.log(`Redirect to ${redirectUrl}`); // eslint-disable-line no-console
+    console.log(`Redirect to ${redirectUrl}`);  
     return {
       redirect: {
         destination: redirectUrl,
@@ -281,7 +281,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   // Redirect Reviewed Preprints from articles to reviewed-preprints path.
   if (!versionOfRecord && context.req.url?.startsWith('/articles/')) {
     const redirectUrl = context.req.url?.replace('/articles/', '/reviewed-preprints/') || `/reviewed-preprints/${id}`;
-    console.log(`Redirect to ${redirectUrl}`); // eslint-disable-line no-console
+    console.log(`Redirect to ${redirectUrl}`);  
     return {
       redirect: {
         destination: redirectUrl,

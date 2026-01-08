@@ -46,7 +46,7 @@ describe('download XML handler', () => {
         versionIdentifier,
       },
       versions: {
-        // eslint-disable-next-line quote-props
+         
         '1': {
           versionIdentifier: '1',
           preprintPosted: '2022-01-01',
@@ -100,7 +100,7 @@ describe('download XML handler', () => {
         await handler(req, res);
 
         expect(res.statusCode).toBe(200);
-        // eslint-disable-next-line no-underscore-dangle
+         
         expect(res._getBuffer().toString()).toContain(xmlData);
         expect(proxyUrlToResponse).toHaveBeenCalledWith(articleXmlUri, req, res, expect.anything(), expect.anything());
       });

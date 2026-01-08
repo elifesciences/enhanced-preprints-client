@@ -10,6 +10,7 @@ const { fixupPluginRules } = require("@eslint/compat");
 const deprecationPlugin = require('eslint-plugin-deprecation');
 const nextPlugin = require("@next/eslint-plugin-next");
 const js = require("@eslint/js");
+const importPlugin = require("eslint-plugin-import");
 
 const {
     FlatCompat,
@@ -35,11 +36,10 @@ module.exports = defineConfig([{
         "no-only-tests": noOnlyTests,
         "deprecation": fixupPluginRules(deprecationPlugin),
         "next": fixupPluginRules(nextPlugin),
+        "import": importPlugin
 
     },
     extends: compat.extends(
-        "airbnb/base",
-        "airbnb-typescript/base",
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:storybook/recommended",

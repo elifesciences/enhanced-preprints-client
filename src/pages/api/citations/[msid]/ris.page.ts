@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (!version) {
     const error = `Unable to retrieve citation ${filename}`;
-    console.error(error); // eslint-disable-line no-console
+    console.error(error);  
     res.status(503).send(error);
     return;
   }
