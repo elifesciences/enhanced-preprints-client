@@ -12,18 +12,18 @@ export const Socials = ({
   const { t } = useTranslation();
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
-  const blueskyEncodedTitle = encodeURIComponent(t('In {{bluesky_handle}}: ', { bluesky_handle: t('bluesky_handle') }));
-  const threadsEncodedTitle = encodeURIComponent(t('In {{threads_handle}}: ', { threads_handle: t('threads_handle') }));
+  const twitterEncodedHandle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
+  const blueskyEncodedHandle = encodeURIComponent(t('In {{bluesky_handle}}: ', { bluesky_handle: t('bluesky_handle') }));
+  const threadsEncodedHandle = encodeURIComponent(t('In {{threads_handle}}: ', { threads_handle: t('threads_handle') }));
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
-  const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
+  const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedHandle}${encodedTitle}&url=${encodedUrl}`;
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
   const mastodonUrl = `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`;
-  const blueskyUrl = `https://bsky.app/intent/compose?text=${blueskyEncodedTitle}${encodedTitle}%20${encodedUrl}`;
-  const threadsUrl = `https://threads.net/intent/post?text=${threadsEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
+  const blueskyUrl = `https://bsky.app/intent/compose?text=${blueskyEncodedHandle}${encodedTitle}%20${encodedUrl}`;
+  const threadsUrl = `https://threads.net/intent/post?text=${threadsEncodedHandle}${encodedTitle}&url=${encodedUrl}`;
 
   return (
     <ul className="socials-sharers">
