@@ -12,45 +12,59 @@ export const Socials = ({
   const { t } = useTranslation();
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);
-  const twitterEncodedTitle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
+  const twitterEncodedHandle = encodeURIComponent(t('In {{twitter_handle}}: ', { twitter_handle: t('twitter_handle') }));
+  const blueskyEncodedHandle = encodeURIComponent(t('In {{bluesky_handle}}: ', { bluesky_handle: t('bluesky_handle') }));
+  const threadsEncodedHandle = encodeURIComponent(t('In {{threads_handle}}: ', { threads_handle: t('threads_handle') }));
   const encodedUrl = encodeURIComponent(doiUrl);
   const emailUrl = `mailto:?subject=${encodedTitle}&body=${encodedUrl}`;
-  const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedTitle}${encodedTitle}&url=${encodedUrl}`;
+  const twitterUrl = `https://twitter.com/intent/tweet/?text=${twitterEncodedHandle}${encodedTitle}&url=${encodedUrl}`;
   const facebookUrl = `https://facebook.com/sharer/sharer.php?u=${encodedUrl}`;
   const linkedinUrl = `https://www.linkedin.com/shareArticle?title=${encodedTitle}&url=${encodedUrl}`;
   const redditUrl = `https://reddit.com/submit/?title=${encodedTitle}&url=${encodedUrl}`;
   const mastodonUrl = `https://toot.kytta.dev/?text=${encodedTitle}%20${encodedUrl}`;
+  const blueskyUrl = `https://bsky.app/intent/compose?text=${blueskyEncodedHandle}${encodedTitle}%20${encodedUrl}`;
+  const threadsUrl = `https://threads.net/intent/post?text=${threadsEncodedHandle}${encodedTitle}&url=${encodedUrl}`;
 
   return (
     <ul className="socials-sharers">
       <li>
-        <a className="socials-sharer email" href={emailUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Email">
+        <a className="socials-sharer email" href={emailUrl} rel="noopener noreferrer" aria-label="Share by Email">
           Email
         </a>
       </li>
       <li>
-        <a className="socials-sharer twitter" href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Twitter">
+        <a className="socials-sharer bluesky" href={blueskyUrl} rel="noopener noreferrer" aria-label="Share by Bluesky">
+          Bluesky
+        </a>
+      </li>
+      <li>
+        <a className="socials-sharer twitter" href={twitterUrl} rel="noopener noreferrer" aria-label="Share by Twitter">
           Twitter
         </a>
       </li>
       <li>
-        <a className="socials-sharer facebook" href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Facebook">
-          Facebook
-        </a>
-      </li>
-      <li>
-        <a className="socials-sharer linkedin" href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by LinkedIn">
+        <a className="socials-sharer linkedin" href={linkedinUrl} rel="noopener noreferrer" aria-label="Share by LinkedIn">
           LinkedIn
         </a>
       </li>
       <li>
-        <a className="socials-sharer reddit" href={redditUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Reddit">
+        <a className="socials-sharer reddit" href={redditUrl} rel="noopener noreferrer" aria-label="Share by Reddit">
           Reddit
         </a>
       </li>
       <li>
-        <a className="socials-sharer mastodon" href={mastodonUrl} target="_blank" rel="noopener noreferrer" aria-label="Share by Mastodon via Toot">
+        <a className="socials-sharer mastodon" href={mastodonUrl} rel="noopener noreferrer" aria-label="Share by Mastodon via Toot">
           Mastodon
+        </a>
+      </li>
+      <li>
+        <a className="socials-sharer threads" href={threadsUrl} rel="noopener noreferrer" aria-label="Share by Threads">
+          Threads
+        </a>
+      </li>
+      <li>
+        <a className="socials-sharer facebook" href={facebookUrl} rel="noopener noreferrer" aria-label="Share by Facebook">
+          Facebook
         </a>
       </li>
     </ul>
