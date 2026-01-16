@@ -216,8 +216,18 @@ export const Page = ({
 };
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
-  if (context.params === undefined || context.params.path === undefined) {
+  if (context.params === undefined || context.params.path === undefined  || context.params.type === undefined) {
     console.log('no path');
+    return { notFound: true };
+  }
+
+  if (typeof context.params.type !== 'string') {
+    console.log('invalid type');
+    return { notFound: true };
+  }
+
+  if (!['articles', 'reviewed-preprints', 'previews'].includes(context.params.type)) {
+    console.log('invalid type');
     return { notFound: true };
   }
 
