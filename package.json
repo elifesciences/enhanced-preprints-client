@@ -20,9 +20,9 @@
     "zod": "^4.0.0"
   },
   "scripts": {
-    "build": "next build",
-    "start": "next start",
-    "start:dev": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build --webpack",
+    "start": "next start --webpack",
+    "start:dev": "NODE_OPTIONS='--inspect' next dev --webpack",
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts,.json src/ browser-tests/ wiremock/",
     "lint:fix": "eslint --fix --ext .tsx,.ts,.json src/ browser-tests/ wiremock",
