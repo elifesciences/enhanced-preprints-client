@@ -222,12 +222,12 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   }
 
   if (typeof context.params.type !== 'string') {
-    console.log('invalid type');
+    console.log('param should be single string, array given');
     return { notFound: true };
   }
 
   if (!['articles', 'reviewed-preprints', 'previews'].includes(context.params.type)) {
-    console.log('invalid type');
+    console.log(`invalid type (${context.params.type}) given on route: ${context.req.url}`);
     return { notFound: true };
   }
 
