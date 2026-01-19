@@ -1,7 +1,9 @@
-var path = require("path");
+const { withGlobalCss } = require('next-global-css');
+
+const withGlobalCssConfig = withGlobalCss();
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withGlobalCssConfig({
   reactStrictMode: true,
   rewrites: async () => ({
     beforeFiles: [
@@ -43,7 +45,7 @@ const nextConfig = {
       },
       {
         source: '/robots.txt',
-        destination: '/api/robots'
+        destination: '/api/robots',
       }
     ],
     fallback: [
@@ -55,25 +57,9 @@ const nextConfig = {
   }),
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   assetPrefix: '/reviewed-preprints',
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-
-    // This removes the modular CSS requirement, allowing us to use regular SCSS imports in components
-    config.module.rules.forEach((rule) => {
-      const { oneOf } = rule;
-      if (oneOf) {
-        oneOf.forEach((one) => {
-          if (!`${one.issuer?.and}`.includes('_app')) return;
-          one.issuer.and = [path.resolve(__dirname)];
-        });
-      }
-    });
-
-    return config;
-  },
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
   },
-}
+});
 
-module.exports = nextConfig
+module.exports = nextConfig;
