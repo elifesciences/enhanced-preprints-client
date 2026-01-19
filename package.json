@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "next build --webpack",
-    "start": "next start --webpack",
+    "start": "next start",
     "start:dev": "NODE_OPTIONS='--inspect' next dev --webpack",
     "test": "jest",
     "lint": "eslint --ext .tsx,.ts,.json src/ browser-tests/ wiremock/",
