@@ -2,7 +2,7 @@ export const parameters = {
   nextjs: {
     appDirectory: true,
   },
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: {  },
   layout: 'fullscreen',
   controls: {
     matchers: {
@@ -52,3 +52,4 @@ export const parameters = {
     },
   },
 }
+export const tags = ['autodocs'];
