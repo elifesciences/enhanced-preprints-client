@@ -7,7 +7,6 @@ const tsParser = require("@typescript-eslint/parser");
 const typescriptEslint = require("@typescript-eslint/eslint-plugin");
 const noOnlyTests = require("eslint-plugin-no-only-tests");
 const { fixupPluginRules } = require("@eslint/compat");
-const deprecationPlugin = require('eslint-plugin-deprecation');
 const nextPlugin = require("@next/eslint-plugin-next");
 const js = require("@eslint/js");
 const importPlugin = require("eslint-plugin-import");
@@ -34,7 +33,6 @@ module.exports = defineConfig([{
     plugins: {
         "@typescript-eslint": typescriptEslint,
         "no-only-tests": noOnlyTests,
-        "deprecation": fixupPluginRules(deprecationPlugin),
         "next": fixupPluginRules(nextPlugin),
         "import": importPlugin
 
@@ -49,7 +47,7 @@ module.exports = defineConfig([{
     ),
     rules: {
         "eol-last": ["error", "always"],
-        "deprecation/deprecation": "warn",
+        "@typescript-eslint/no-deprecated": "warn",
         "import/prefer-default-export": 0,
 
         "max-len": ["error", {
