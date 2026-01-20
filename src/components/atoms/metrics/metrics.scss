@@ -61,7 +61,7 @@
     @include typography.link-text();
     @include typography.font-size-and-vertical-height(14, 24);
 
-    /* stylelint-disable-next-line no-duplicate-selectors */
+    /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
     & {
       font-weight: normal;
     }

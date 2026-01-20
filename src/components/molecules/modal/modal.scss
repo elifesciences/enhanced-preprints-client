@@ -77,7 +77,7 @@
   @include mixins.margin(12, "top");
   @include typography.body-small();
 
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
   & {
     color: var(--color-primary);
   }

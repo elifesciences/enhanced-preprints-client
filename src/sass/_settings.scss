@@ -57,7 +57,9 @@ $breakpoint-extra-large: 1200px;
     padding-right: var(--site-spacing);
 
     @media only screen and (min-width: $breakpoint-small) {
+      /* stylelint-disable-next-line no-invalid-position-declaration */
       padding-left: calc(var(--site-spacing) * 2);
+      /* stylelint-disable-next-line no-invalid-position-declaration */
       padding-right: calc(var(--site-spacing) * 2);
     }
   }

@@ -76,7 +76,7 @@
   @include typography.terms-link-text();
   @include mixins.padding(16, "right");
 
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
   & {
     color: #0b70b9; // Only being used for review content component
   }
