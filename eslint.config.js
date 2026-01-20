@@ -41,7 +41,7 @@ module.exports = defineConfig([{
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:storybook/recommended",
-        "plugin:json/recommended",
+        "plugin:json/recommended-legacy",
         "plugin:@next/next/recommended",
         "plugin:@next/next/core-web-vitals",
     ),
