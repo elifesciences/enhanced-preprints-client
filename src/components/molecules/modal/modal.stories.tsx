@@ -1,8 +1,8 @@
 import {
   useState,
 } from 'react';
-import { type Meta, type StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
+import { expect, userEvent, within } from 'storybook/test';
 import { Modal } from './modal';
 import { Socials } from '../../atoms/socials/socials';
 import { Clipboard } from '../../atoms/clipboard/clipboard';

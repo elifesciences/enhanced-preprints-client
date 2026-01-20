@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ArticleAndAuthorInformation } from './article-and-author-information';
 import { authors, authorNotes, versionHistory } from '../../../utils/mocks';
 
@@ -16,7 +16,7 @@ export const ArticleAndAuthorsInformation: Story = {
     authorNotes,
     versions: versionHistory,
   },
-  storyName: 'Article and Author Information',
+  name: 'Article and Author Information',
 };
 
 export const ArticleAndAuthorsInformationWithLicense: Story = {
@@ -27,5 +27,5 @@ export const ArticleAndAuthorsInformationWithLicense: Story = {
     license: 'http://creativecommons.org/licenses/by/4.0/',
     copyrightYear: 2021,
   },
-  storyName: 'Article and Author Information',
+  name: 'Article and Author Information',
 };
