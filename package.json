@@ -99,7 +99,6 @@
     "chromatic": "^13.0.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^14.0.4",
-    "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
