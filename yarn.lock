@@ -4359,15 +4359,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/i18next@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "@types/i18next@npm:13.0.0"
-  dependencies:
-    i18next: "npm:*"
-  checksum: 10c0/e089bf1f725d8ee7a1d38f80c8ef6a8907de33e1289a03ec9bd42fd5fbfa3202a1166ec941ed92101ecf592d9355502b6009961aaf1fa2e6341b567882e2595f
-  languageName: node
-  linkType: hard
-
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0, @types/istanbul-lib-coverage@npm:^2.0.1, @types/istanbul-lib-coverage@npm:^2.0.6":
   version: 2.0.6
   resolution: "@types/istanbul-lib-coverage@npm:2.0.6"
@@ -4471,15 +4462,6 @@ __metadata:
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/8b416551c60bb6bd8ec10e198c957910cfb271bc3922463040b0d57cf4739cdcd24b13224f8d68f10318926e1ec3cd69af0af79f0291b599a992f8c80d47f1eb
-  languageName: node
-  linkType: hard
-
-"@types/react-i18next@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "@types/react-i18next@npm:8.1.0"
-  dependencies:
-    react-i18next: "npm:*"
-  checksum: 10c0/0c62831244a2fb3a71880586dabfbbf4ab91a0ddd494b36e371b1443f9b884ebeb0019bee17636140ee2f8e0b20a47d200971b34ecab933b357fc7e4d81241ca
   languageName: node
   linkType: hard
 
@@ -7577,13 +7559,11 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.0.0"
     "@testing-library/react": "npm:^16.0.0"
     "@testing-library/user-event": "npm:^14.0.0"
-    "@types/i18next": "npm:^13.0.0"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^24.0.0"
     "@types/pluralize": "npm:^0.0.33"
     "@types/react": "npm:^18.2.45"
     "@types/react-dom": "npm:^18.2.18"
-    "@types/react-i18next": "npm:^8.1.0"
     "@typescript-eslint/eslint-plugin": "npm:^8.50.0"
     "@typescript-eslint/parser": "npm:^8.50.0"
     "@typescript-eslint/typescript-estree": "npm:^8.49.0"
@@ -9631,7 +9611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:*, i18next@npm:^25.0.0":
+"i18next@npm:^25.0.0":
   version: 25.6.3
   resolution: "i18next@npm:25.6.3"
   dependencies:
@@ -13627,7 +13607,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:*, react-i18next@npm:^15.0.0":
+"react-i18next@npm:^15.0.0":
   version: 15.7.3
   resolution: "react-i18next@npm:15.7.3"
   dependencies:
