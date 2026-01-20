@@ -28,6 +28,8 @@ jobs:
           cache: yarn
       - name: yarn install
         run: yarn
+      - name: Production build
+        run: yarn build
       - name: TSC
         run: yarn tsc --noEmit
       - name: Lint
@@ -36,8 +38,6 @@ jobs:
         run: yarn lint-sass
       - name: Unit Test
         run: yarn test --reporters=jest-wip-reporter
-      - name: Production build
-        run: yarn build
   test-integration:
     runs-on: ubuntu-latest
     steps:
