@@ -1,5 +1,5 @@
 import LinkTo from '@storybook/addon-links/react';
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import {
   content, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';

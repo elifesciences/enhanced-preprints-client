@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import '../../../i18n';
 
 import { EditorsAndReviewers } from './editors-and-reviewers';

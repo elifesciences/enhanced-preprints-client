@@ -37,14 +37,14 @@ module.exports = defineConfig([{
         "import": importPlugin
 
     },
-    extends: compat.extends(
-        "plugin:react/recommended",
-        "plugin:react/jsx-runtime",
-        "plugin:storybook/recommended",
-        "plugin:json/recommended-legacy",
-        "plugin:@next/next/recommended",
-        "plugin:@next/next/core-web-vitals",
-    ),
+    extends: [
+        ...compat.extends("plugin:react/recommended"),
+        ...compat.extends("plugin:react/jsx-runtime"),
+        ...compat.extends("plugin:storybook/recommended"),
+        ...compat.extends("plugin:json/recommended-legacy"),
+        ...compat.extends("plugin:@next/next/recommended"),
+        ...compat.extends("plugin:@next/next/core-web-vitals")
+    ],
     rules: {
         "eol-last": ["error", "always"],
         "@typescript-eslint/no-deprecated": "warn",

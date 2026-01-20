@@ -1,5 +1,5 @@
-import { type Meta, type StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
+import { expect, userEvent, within } from 'storybook/test';
 import { Institutions } from './institutions';
 
 const meta: Meta<typeof Institutions> = {

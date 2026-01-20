@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { SiteHeaderBiophysicsColab } from './site-header-biophysics-colab';
 
 const meta: Meta<typeof SiteHeaderBiophysicsColab> = {
