@@ -5,14 +5,18 @@
 
 @mixin grid() {
   @supports (display: grid) {
+    /* stylelint-disable-next-line no-invalid-position-declaration */
     display: grid;
-    grid-column-gap: var(--grid-gutter);
+    /* stylelint-disable-next-line no-invalid-position-declaration */
+    column-gap: var(--grid-gutter);
+    /* stylelint-disable-next-line no-invalid-position-declaration */
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
 @mixin padding($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       padding-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
     }
@@ -23,10 +27,12 @@
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       padding: $parts-rem;
     }
   } @else {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       padding: calc(($size_in_px / var(--base-font-size)) * 1rem);
     }
@@ -35,6 +41,7 @@
 
 @mixin margin($size_in_px, $dimension: "") {
   @if $dimension == top or $dimension == right or $dimension == bottom or $dimension == left {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       margin-#{$dimension}: calc(($size_in_px / var(--base-font-size)) * 1rem);
     }
@@ -45,10 +52,12 @@
       $parts-rem: list.append($parts-rem, calc(($size / var(--base-font-size)) * 1rem), "space");
     }
 
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       margin: $parts-rem;
     }
   } @else {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       margin: calc(($size_in_px / var(--base-font-size)) * 1rem);
     }
@@ -56,6 +65,7 @@
 }
 
 @mixin wrapper($padding: true) {
+  /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
   & {
     box-sizing: content-box;
     margin: auto;
@@ -64,12 +74,14 @@
   }
 
   @if $padding {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       padding-left: var(--site-spacing);
       padding-right: var(--site-spacing);
     }
 
     @media only screen and (min-width: settings.$breakpoint-small) {
+      /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
       & {
         padding-left: var(--site-spacing-large);
         padding-right: var(--site-spacing-large);
@@ -80,6 +92,7 @@
 
 @mixin constrain-width($size_in_px, $extreme) {
   @if $extreme == min or $extreme == max {
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       #{$extreme}-width: calc(($size_in_px / var(--base-font-size)) * 1rem);
     }
@@ -87,6 +100,7 @@
 }
 
 @mixin height($size_in_px) {
+  /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
   & {
     height: calc(($size_in_px / var(--base-font-size)) * 1rem);
   }
@@ -94,6 +108,7 @@
 
 @mixin visuallyhidden() {
   border: 0;
+  /* stylelint-disable-next-line property-no-deprecated */
   clip: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
@@ -105,6 +120,7 @@
 }
 
 @mixin visuallyunhidden() {
+  /* stylelint-disable-next-line property-no-deprecated */
   clip: auto;
   height: auto;
   margin: 0;
@@ -114,6 +130,7 @@
 }
 
 @mixin z-index($value) {
+  /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
   & {
     z-index: ($value * 10);
   }

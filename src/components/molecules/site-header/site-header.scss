@@ -230,7 +230,7 @@
   @include typography.font-size-and-vertical-height(settings.$font-size-base-in-px, 48);
   @include mixins.padding(24, "bottom");
 
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
   & {
     line-height: 0;
   }
@@ -366,7 +366,7 @@
   &:focus {
     @include mixins.visuallyunhidden();
 
-    /* stylelint-disable-next-line no-duplicate-selectors */
+    /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
     & {
       position: absolute;
     }

@@ -6,7 +6,6 @@
 .article-body-container {
   min-width: 0;
   overflow-wrap: break-word;
-  word-wrap: break-word;
 
   @media only all and (min-width: settings.$breakpoint-extra-large) {
     margin-left: 36px;
@@ -85,7 +84,7 @@
 
   @include typography.body();
 
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
   & {
     color: var(--color-text-secondary);
     font-family: var(--font-family-primary);

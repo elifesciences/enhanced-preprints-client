@@ -15,7 +15,7 @@
   @include mixins.padding(8 18);
   @include typography.body-small();
 
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* stylelint-disable-next-line no-duplicate-selectors, block-no-redundant-nested-style-rules */
   & {
     color: #fff;
   }
