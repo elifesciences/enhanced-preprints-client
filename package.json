@@ -123,7 +123,7 @@
     "stylelint-selector-bem-pattern": "^4.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.0",
-    "wait-on": "^8.0.3",
+    "wait-on": "^9.0.0",
     "webpack": "^5.74.0"
   },
   "packageManager": "yarn@4.12.0"
