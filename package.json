@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.7",
-    "@chromatic-com/storybook": "^3",
+    "@chromatic-com/storybook": "^5.0.0",
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.1",
