@@ -26,6 +26,7 @@ const msaNames: Record<string, string> = {
   'Microbiology and Infectious Disease': 'microbiology-infectious-disease',
   Neuroscience: 'neuroscience',
   'Physics of Living Systems': 'physics-living-systems',
+  'Physiology': 'physiology',
   'Plant Biology': 'plant-biology',
   'Stem Cells and Regenerative Medicine': 'stem-cells-regenerative-medicine',
   'Structural Biology and Molecular Biophysics': 'structural-biology-molecular-biophysics',
