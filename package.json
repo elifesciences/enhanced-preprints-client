@@ -113,7 +113,7 @@
     "prop-types": "^15.8.1",
     "react-app-polyfill": "^3.0.0",
     "sass": "^1.54.5",
-    "storybook": "8.6.15",
+    "storybook": "8.6.17",
     "storybook-dark-mode": "^4.0.0",
     "stylelint": "^16.23.0",
     "stylelint-config-standard": "^39.0.0",
