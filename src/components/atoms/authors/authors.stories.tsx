@@ -1,5 +1,5 @@
-import { type Meta, type StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
+import { expect, userEvent, within } from 'storybook/test';
 
 import { Authors } from './authors';
 import { authors } from '../../../utils/mocks';

@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { SiteHeader } from './site-header';
 
 const meta: Meta<typeof SiteHeader> = {

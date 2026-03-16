@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { Clipboard } from './clipboard';
 
 const meta: Meta<typeof Clipboard> = {

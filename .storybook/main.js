@@ -5,11 +5,10 @@ module.exports = {
 
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
-    "storybook-dark-mode",
-    "@chromatic-com/storybook"
+    "@storybook-community/storybook-dark-mode",
+    "@chromatic-com/storybook",
+    "@storybook/addon-docs"
   ],
 
   "framework": {

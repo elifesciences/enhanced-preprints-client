@@ -1,4 +1,4 @@
-import { type StoryFn, type Meta } from '@storybook/react';
+import { type StoryFn, type Meta } from '@storybook/nextjs';
 import { DefaultLayout } from './default';
 
 export default {

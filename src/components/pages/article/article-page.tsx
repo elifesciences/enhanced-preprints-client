@@ -13,7 +13,7 @@ import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notic
 
 export type Tab = {
   id: string,
-  linkElement: ReactElement,
+  linkElement: ReactElement<any>,
 };
 
 export type ArticlePageProps = {

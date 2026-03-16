@@ -11,16 +11,15 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: 'white',
-    values: [
-      {
+    options: {
+      white: {
         name: 'white',
         value: '#fff',
-      },
-    ]
+      }
+    }
   },
   viewport: {
-    viewports: {
+    options: {
       small: {
         name: 'Small 480px',
         styles: {
@@ -53,3 +52,9 @@ export const parameters = {
   },
 }
 export const tags = ['autodocs'];
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'white'
+  }
+};

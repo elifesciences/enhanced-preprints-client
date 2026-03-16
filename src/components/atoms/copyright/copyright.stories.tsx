@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 
 import { Copyright } from './copyright';
 import { authors } from '../../../utils/mocks';
