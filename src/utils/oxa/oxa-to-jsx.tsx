@@ -10,10 +10,9 @@ export type Options = {
   filesApiPath?: string,
   hostedFileMatcher?: (path: string) => boolean,
 };
-type NodeType = string | 'Text';
 
 type OxaNode = {
-  type: NodeType // Required: The node type identifier
+  type: string // Required: The node type identifier
   id?: string // Optional: Unique identifier for referencing
   classes?: Array<string> // Optional: Styling or semantic classes
   // biome-ignore lint/suspicious/noExplicitAny: We don't know all K/V
@@ -21,10 +20,20 @@ type OxaNode = {
   children?: Array<OxaNode> // Optional: Nested content nodes
 };
 
+type InlineOxaNode = OxaNode & {
+  value: string
+}
 
-export const oxaToJsx = (content?: OxaNode, options?: Options, index?: number): JSXContent => {
+type TextOxaNode = InlineOxaNode & {
+  type: 'Text'
+}
+
+export const oxaToJsx = (content?: TextOxaNode, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
+  }
+  if (content.type === 'Text') {
+    return content.value;
   }
   return '';
 };
