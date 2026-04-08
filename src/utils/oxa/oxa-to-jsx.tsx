@@ -58,6 +58,9 @@ export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, 
   if (content.type === 'Text') {
     return content.value;
   }
+  if (content.type === 'InlineImage') {
+    return <img src={content.url}></img>
+  }
   if (content.type === 'Heading') {
     const level = content.level > 6 ? 6 : content.level < 1 ? 1 : content.level as 1 | 2 | 3 | 4 | 5 | 6;
     return <Heading id={content.id ?? ''} headingLevel={level} content={oxaToJsx(content.children)}></Heading>

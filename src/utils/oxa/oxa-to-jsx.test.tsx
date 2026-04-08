@@ -17,7 +17,7 @@ describe('OXA to JSX', () => {
     expect(result).toStrictEqual(<Heading id={'h1'} content={'Introduction'} headingLevel={1}/>);
   });
 
-  it.failing('returns an imgJSX element when passed an InlineImage OXA node', () => {
+  it('returns an imgJSX element when passed an InlineImage OXA node', () => {
     const result = oxaToJsx({ "type": "InlineImage", url: "example.com"});
 
     expect(result).toStrictEqual(<img src="example.com"></img>);
