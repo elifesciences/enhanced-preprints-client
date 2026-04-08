@@ -5,7 +5,7 @@ import { oxaToJsx } from './oxa-to-jsx';
 
 describe('OXA to JSX', () => {
   it('returns the string unchanged if passed a simple string', () => {
-    const result = oxaToJsx('foo');
+    const result = oxaToJsx({ type: 'Text', value: 'foo' });
 
     expect(result).toStrictEqual('foo');
     expect(typeof result).toBe('string');
