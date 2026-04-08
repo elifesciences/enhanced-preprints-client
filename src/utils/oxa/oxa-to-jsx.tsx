@@ -12,5 +12,10 @@ export type Options = {
 };
 
 export const oxaToJsx = (content?: string, options?: Options, index?: number): JSXContent => {
-      return '';
-  };
+  if (typeof content === 'undefined') {
+    return '';
+  }
+  if (typeof content === 'string') {
+    return content;
+  }
+};

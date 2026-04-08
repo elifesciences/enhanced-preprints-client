@@ -4,7 +4,7 @@ import { Figure } from '../../components/atoms/figure/figure';
 import { oxaToJsx } from './oxa-to-jsx';
 
 describe('OXA to JSX', () => {
-  it.failing('returns the string unchanged if passed a simple string', () => {
+  it('returns the string unchanged if passed a simple string', () => {
     const result = oxaToJsx('foo');
 
     expect(result).toStrictEqual('foo');
