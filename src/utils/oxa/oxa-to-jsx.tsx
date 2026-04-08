@@ -17,7 +17,7 @@ type OxaNode = {
   classes?: Array<string> // Optional: Styling or semantic classes
   // biome-ignore lint/suspicious/noExplicitAny: We don't know all K/V
   data?: Record<string, any> // Optional: Arbitrary metadata
-  children?: Array<OxaNode> // Optional: Nested content nodes
+  children?: Array<OxaNode | TextOxaNode> // Optional: Nested content nodes
 };
 
 type InlineOxaNode = OxaNode & {
@@ -28,7 +28,12 @@ type TextOxaNode = InlineOxaNode & {
   type: 'Text'
 }
 
-export const oxaToJsx = (content?: TextOxaNode, options?: Options, index?: number): JSXContent => {
+type HeadingOxaNode = OxaNode & {
+  type: 'Heading'
+  level: number
+};
+
+export const oxaToJsx = (content?: TextOxaNode | HeadingOxaNode, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
     return '';
   }

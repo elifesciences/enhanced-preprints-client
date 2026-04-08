@@ -11,18 +11,16 @@ describe('OXA to JSX', () => {
     expect(typeof result).toBe('string');
   });
 
+  it.failing('returns the expected Heading JSXElement when passed a Heading OXA node', () => {
+    const result = oxaToJsx({ "type": "Heading", "level": 1, "children": [{ "type": "Text", "value": "Introduction" }] });
+
+    expect(result).toStrictEqual(<Heading id={'h1'} content={'Introduction'} headingLevel={1} maxLevel={undefined}/>);
+  });
+
   // it('returns an array of jsx components and strings if passed an array', () => {
   //   const result = contentToJsx(['one', 'two', { type: 'Strong', content: 'three' }]);
 
   //   expect(result).toStrictEqual(expect.arrayContaining(['one', 'two', <strong key={2}>three</strong>]));
-  // });
-
-  // it('generates the expected html when passed a Heading', () => {
-  //   const result = contentToJsx({
-  //     type: 'Heading', depth: 1, content: 'heading', id: 'h1',
-  //   });
-
-  //   expect(result).toStrictEqual(<Heading id={'h1'} content={'heading'} headingLevel={1} maxLevel={undefined}/>);
   // });
 
   // it('generates the expected html when passed a Cite (including using page fragment target)', () => {
