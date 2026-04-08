@@ -21,14 +21,19 @@ type CommonOxaNodeProperties = {
   children?: Array<CommonOxaNodeProperties> // Optional: Nested content nodes
 };
 
-type InlineOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
+type TextOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
   type: 'Text'
   value: string
 }
 
-type TextOxaNode = InlineOxaNode & {
-  type: 'Text'
+type InlineImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
+  type: "InlineImage"
+  url: string
+  alt?: string
+  encodingFormat?: string
 }
+
+type InlineOxaNode = TextOxaNode | InlineImageOxaNode;
 
 type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
   type: 'Heading'
