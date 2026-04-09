@@ -35,13 +35,20 @@ type InlineImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
 
 type InlineOxaNode = TextOxaNode | InlineImageOxaNode;
 
+type ImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
+  type: "Image"
+  url: string
+  alt?: string
+  encodingFormat?: string
+}
+
 type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
   type: 'Heading'
   level: number
   children: Array<InlineOxaNode>
 };
 
-type OxaNode = TextOxaNode | HeadingOxaNode | InlineOxaNode;
+type OxaNode = TextOxaNode | HeadingOxaNode | InlineOxaNode | ImageOxaNode;
 
 export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {

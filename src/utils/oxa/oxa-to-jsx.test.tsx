@@ -23,6 +23,12 @@ describe('OXA to JSX', () => {
     expect(result).toStrictEqual(<img src="example.com"></img>);
   })
 
+  it.failing('returns an imgJSX element when passed an Image OXA node', () => {
+    const result = oxaToJsx({ "type": "Image", url: "example.com"});
+
+    expect(result).toStrictEqual(<img src="example.com"></img>);
+  })
+
   // it('returns an array of jsx components and strings if passed an array', () => {
   //   const result = contentToJsx(['one', 'two', { type: 'Strong', content: 'three' }]);
 
