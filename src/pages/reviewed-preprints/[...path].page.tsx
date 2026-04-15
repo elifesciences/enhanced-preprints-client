@@ -131,7 +131,7 @@ export const Page = ({
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { headingLevelOffset: 1, hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -147,7 +147,7 @@ export const Page = ({
         <ArticleFullTextTab
           metrics={null}
           headings={headings}
-          content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
+          content={contentToJsx(content, { headingLevelOffset: 1, imgInfo: imgInfo ?? undefined, removePictureTag: true })}
           metaData={metaData}
           peerReview={peerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>

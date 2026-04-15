@@ -4,7 +4,7 @@ import { type Content } from '../../../types';
 
 export const Abstract = ({ content }: { content: Content }) => (
   <section className="abstract">
-    <h1 id="abstract">Abstract</h1>
+    <h2 id="abstract">Abstract</h2>
     {contentToJsx(content)}
   </section>
 );

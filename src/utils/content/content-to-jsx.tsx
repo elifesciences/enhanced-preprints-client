@@ -10,6 +10,7 @@ type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
 export type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
+  headingLevelOffset?: number,
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
   removeLinkTag?: boolean,
@@ -63,8 +64,11 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
   }
 
   switch (content.type) {
-    case 'Heading':
-      return <Heading key={index} id={content.id} content={content.content} headingLevel={content.depth} maxLevel={options?.maxHeadingLevel}/>;
+    case 'Heading': {
+      const offset = options?.headingLevelOffset ?? 0;
+      const headingLevel = Math.min(6, content.depth + offset) as 1 | 2 | 3 | 4 | 5 | 6;
+      return <Heading key={index} id={content.id} content={content.content} headingLevel={headingLevel} maxLevel={options?.maxHeadingLevel}/>;
+    }
     case 'Cite':
       return <Fragment key={index}><a href={`#${content.target}`}>{ contentToJsx(content.content, options)}</a></Fragment>;
     case 'CiteGroup':
