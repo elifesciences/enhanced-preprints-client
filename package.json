@@ -107,7 +107,7 @@
     "prop-types": "^15.8.1",
     "react-app-polyfill": "^3.0.0",
     "sass": "^1.54.5",
-    "storybook": "9.1.17",
+    "storybook": "9.1.19",
     "stylelint": "^16.23.0",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-config-standard-scss": "^16.0.0",
