@@ -23,8 +23,7 @@ describe('OXA to JSX', () => {
     expect(result).toStrictEqual(<img src="example.com"></img>);
   })
 
-  it
-  ('returns an imgJSX element when passed an Image OXA node', () => {
+  it('returns an imgJSX element when passed an Image OXA node', () => {
     const result = oxaToJsx({ "type": "Image", url: "example.com"});
 
     expect(result).toStrictEqual(<img src="example.com"></img>);
@@ -97,14 +96,14 @@ describe('OXA to JSX', () => {
   //   });
   // });
 
-  it.failing('generates the expected html when passed a Paragraph', () => {
+  it('generates the expected html when passed a Paragraph', () => {
     const result = oxaToJsx({
       type: 'Paragraph',
       children: [{ type: 'Text', value: 'I am a paragraph' }],
     });
 
-  //   expect(result).toStrictEqual(<p>I am a paragraph</p>);
-  // });
+    expect(result).toStrictEqual(<p>I am a paragraph</p>);
+  });
 
   // it('generates the expected html when passed a Emphasis', () => {
   //   const result = contentToJsx({
@@ -115,14 +114,14 @@ describe('OXA to JSX', () => {
   //   expect(result).toStrictEqual(<em>I am emphasised</em>);
   // });
 
-  // it('generates the expected html when passed a Strong', () => {
-  //   const result = contentToJsx({
-  //     type: 'Strong',
-  //     content: 'I am strong',
-  //   });
+  it('generates the expected html when passed a Strong', () => {
+    const result = oxaToJsx({
+      type: 'Strong',
+      children: [{ type: 'Text', value: 'I am strong' }],
+    });
 
-  //   expect(result).toStrictEqual(<strong>I am strong</strong>);
-  // });
+    expect(result).toStrictEqual(<strong>I am strong</strong>);
+  });
 
   // it('generates the expected html when passed a NontextualAnnotation', () => {
   //   const result = contentToJsx({

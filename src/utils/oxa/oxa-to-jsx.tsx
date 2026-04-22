@@ -1,6 +1,6 @@
 import { type JSX } from 'react';
 import { Heading } from '../../components/atoms/heading/heading';
-import type { Block, Inline, Paragraph, Text } from 'oxa-types';
+import type { Block, Inline, Paragraph, Strong, Text } from 'oxa-types';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -44,7 +44,7 @@ type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
   children: Array<InlineOxaNode>
 };
 
-type OxaNode = Text | HeadingOxaNode | InlineOxaNode | ImageOxaNode | Paragraph;
+type OxaNode = Text | Strong | HeadingOxaNode | InlineOxaNode | ImageOxaNode | Paragraph;
 
 export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
@@ -68,6 +68,15 @@ export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, 
   if (content.type === 'Image') {
     return <img src={content.url}></img>;
   }
+
+  if (content.type === 'Strong') {
+    return <strong>{oxaToJsx(content.children)}</strong>;
+  }
+
+  if (content.type === 'Paragraph') {
+    return <p>{oxaToJsx(content.children)}</p>;
+  }
+  
   if (content.type === 'Heading') {
     const level = content.level > 6 ? 6 : content.level < 1 ? 1 : content.level as 1 | 2 | 3 | 4 | 5 | 6;
     return <Heading id={content.id ?? ''} headingLevel={level} content={oxaToJsx(content.children)}></Heading>
