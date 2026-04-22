@@ -23,7 +23,8 @@ describe('OXA to JSX', () => {
     expect(result).toStrictEqual(<img src="example.com"></img>);
   })
 
-  it('returns an imgJSX element when passed an Image OXA node', () => {
+  it
+  ('returns an imgJSX element when passed an Image OXA node', () => {
     const result = oxaToJsx({ "type": "Image", url: "example.com"});
 
     expect(result).toStrictEqual(<img src="example.com"></img>);
@@ -47,7 +48,7 @@ describe('OXA to JSX', () => {
 
   // describe('Link', () => {
   //   it('generates the expected html when passed a Link', () => {
-  //     const result = contentToJsx({
+  //     const result = oxaToJsx({
   //       type: 'Link',
   //       content: 'I am a link',
   //       target: 'http://www.google.com',
@@ -96,11 +97,11 @@ describe('OXA to JSX', () => {
   //   });
   // });
 
-  // it('generates the expected html when passed a Paragraph', () => {
-  //   const result = contentToJsx({
-  //     type: 'Paragraph',
-  //     content: 'I am a paragraph',
-  //   });
+  it.failing('generates the expected html when passed a Paragraph', () => {
+    const result = oxaToJsx({
+      type: 'Paragraph',
+      children: [{ type: 'Text', value: 'I am a paragraph' }],
+    });
 
   //   expect(result).toStrictEqual(<p>I am a paragraph</p>);
   // });

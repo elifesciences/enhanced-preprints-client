@@ -44,7 +44,7 @@ type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
   children: Array<InlineOxaNode>
 };
 
-type OxaNode = Text | HeadingOxaNode | InlineOxaNode | ImageOxaNode;
+type OxaNode = Text | HeadingOxaNode | InlineOxaNode | ImageOxaNode | Paragraph;
 
 export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {
