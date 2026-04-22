@@ -1,5 +1,6 @@
 import { type JSX } from 'react';
 import { Heading } from '../../components/atoms/heading/heading';
+import type { Block, Inline, Paragraph, Text } from 'oxa-types';
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -21,11 +22,6 @@ type CommonOxaNodeProperties = {
   children?: Array<CommonOxaNodeProperties> // Optional: Nested content nodes
 };
 
-type TextOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
-  type: 'Text'
-  value: string
-}
-
 type InlineImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
   type: "InlineImage"
   url: string
@@ -33,7 +29,7 @@ type InlineImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
   encodingFormat?: string
 }
 
-type InlineOxaNode = TextOxaNode | InlineImageOxaNode;
+type InlineOxaNode = Text | InlineImageOxaNode;
 
 type ImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
   type: "Image"
@@ -48,7 +44,7 @@ type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
   children: Array<InlineOxaNode>
 };
 
-type OxaNode = TextOxaNode | HeadingOxaNode | InlineOxaNode | ImageOxaNode;
+type OxaNode = Text | HeadingOxaNode | InlineOxaNode | ImageOxaNode;
 
 export const oxaToJsx = (content?: OxaNode | Array<OxaNode>, options?: Options, index?: number): JSXContent => {
   if (typeof content === 'undefined') {

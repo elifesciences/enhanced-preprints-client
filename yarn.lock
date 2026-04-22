@@ -7314,6 +7314,7 @@ __metadata:
     next: "npm:15.5.9"
     node-fetch: "npm:2"
     node-mocks-http: "npm:^1.14.1"
+    oxa-types: "npm:^0.1.0"
     pluralize: "npm:^8.0.0"
     postcss: "npm:^8.5.6"
     prettier: "npm:^3.0.3"
@@ -12358,6 +12359,13 @@ __metadata:
     object-keys: "npm:^1.1.1"
     safe-push-apply: "npm:^1.0.0"
   checksum: 10c0/6dfeb3455bff92ec3f16a982d4e3e65676345f6902d9f5ded1d8265a6318d0200ce461956d6d1c70053c7fe9f9fe65e552faac03f8140d37ef0fdd108e67013a
+  languageName: node
+  linkType: hard
+
+"oxa-types@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "oxa-types@npm:0.1.0"
+  checksum: 10c0/851a905137c2307f6da9aae87d4636512e6e938ddb760492985bc734c859d45cdf50df3e9f302071105ca60c3e3c879306908b13b0798819ac24b30adfd3d6ab
   languageName: node
   linkType: hard
 
