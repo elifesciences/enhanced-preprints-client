@@ -1,6 +1,7 @@
 import { type JSX } from 'react';
 import { Heading } from '../../components/atoms/heading/heading';
 import type { Block, Inline, Paragraph, Strong, Text } from 'oxa-types';
+import type { Heading as HeadingOxaNode } from 'oxa-types'; 
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
@@ -37,12 +38,6 @@ type ImageOxaNode = Omit<CommonOxaNodeProperties, 'type'> & {
   alt?: string
   encodingFormat?: string
 }
-
-type HeadingOxaNode = Omit<CommonOxaNodeProperties, 'children'> & {
-  type: 'Heading'
-  level: number
-  children: Array<InlineOxaNode>
-};
 
 type OxaNode = Text | Strong | HeadingOxaNode | InlineOxaNode | ImageOxaNode | Paragraph;
 
