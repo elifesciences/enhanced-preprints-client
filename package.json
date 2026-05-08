@@ -108,7 +108,7 @@
     "react-app-polyfill": "^3.0.0",
     "sass": "^1.54.5",
     "storybook": "9.1.19",
-    "stylelint": "^16.23.0",
+    "stylelint": "^17.0.0",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-config-standard-scss": "^16.0.0",
     "stylelint-order": "^7.0.0",
