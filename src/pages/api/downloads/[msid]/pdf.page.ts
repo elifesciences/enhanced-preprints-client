@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
-    const pdfUrl = config.tenantDomain === 'https://staging--epp.elifesciences.org' && config.filesApiPath
+    const pdfUrl = config.siteName === 'elife' && config.filesApiPath
       ? `${config.filesApiPath}/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/content/elife-preprint-${downloadFilename}`
       : articleWithVersions.article?.pdfUrl;
     if (!pdfUrl) {
