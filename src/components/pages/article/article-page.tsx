@@ -60,7 +60,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
 
   return (
     <>
-      {(renderOxaDocument && doi.includes('85111')) ? <p>Oxa document</p> : <p></p>}
+      {(renderOxaDocument && doi.includes('85111')) ? <p>Oxa document</p> : ''}
       <div className="primary-section-header">
         <ContentHeader
           doi={doi}
