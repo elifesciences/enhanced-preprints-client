@@ -290,6 +290,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     };
   }
 
+  if (context.query["oxa-document"] && articleWithVersions.article.doi.includes('85111')) {
+    console.log('feature flag is on');
+  }
+
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
