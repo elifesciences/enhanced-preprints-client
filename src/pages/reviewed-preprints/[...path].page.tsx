@@ -240,6 +240,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const oxaArticleContent = articleWithVersions.article.article.content;
+
   const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
@@ -316,7 +318,10 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   if (context.query["oxa-document"] && articleWithVersions.article.doi.includes('85111')) {
     console.log('feature flag is on');
     return {
-      props: articlePageProps,
+      props: {
+        ...articlePageProps,
+        content: oxaArticleContent,
+      },
     };
   }
 
