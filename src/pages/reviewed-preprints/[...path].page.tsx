@@ -240,7 +240,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const oxaArticleContent = articleWithVersions.article.article.content;
+  const oxaArticleContent = "";
 
   const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
 
