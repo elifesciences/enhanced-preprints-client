@@ -10,7 +10,6 @@ import { type CitationData } from '../../atoms/citation/citation';
 import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notice';
-import { useSearchParams } from 'next/navigation';
 
 export type Tab = {
   id: string,
@@ -32,8 +31,6 @@ export type ArticlePageProps = {
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
-  const searchParams = useSearchParams();
-  const renderOxaDocument = searchParams?.get('oxa-document');
   const { t } = useTranslation();
   const { doi } = props.metaData;
   const citationDoi = props.citationDoi ?? doi;
@@ -60,7 +57,6 @@ export const ArticlePage = (props: ArticlePageProps) => {
 
   return (
     <>
-      {(renderOxaDocument && doi.includes('85111')) ? <p>Oxa document</p> : ''}
       <div className="primary-section-header">
         <ContentHeader
           doi={doi}
