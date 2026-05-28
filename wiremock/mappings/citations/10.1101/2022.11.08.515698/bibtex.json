@@ -2,14 +2,14 @@
   "scenarioName": "123",
   "requiredScenarioState": "Started",
   "request": {
-      "method": "GET",
-      "url": "/api/citations/10.1101/123456/bibtex"
+    "method": "GET",
+    "urlPath": "/api/citations/10.1101/123456/bibtex"
   },
   "response": {
-      "status": 200,
-      "headers": {
-        "Content-Type": "application/x-bibtex"
-      },
-      "bodyFileName": "citations/10.1101/123456/123.bib"
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/x-bibtex"
+    },
+    "bodyFileName": "citations/10.1101/123456/123.bib"
   }
 }
