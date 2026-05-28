@@ -62,7 +62,7 @@ export const fetchVersion = async (id: string, preview: boolean = false): Promis
 };
 
 export const fetchOxaVersion = async (id: string, preview: boolean = false): Promise<ProcessedArticle['oxaContent'] | null> => {
-  const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+  const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}?oxa=true${preview ? '&previews=true' : ''}`);
 
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
 
