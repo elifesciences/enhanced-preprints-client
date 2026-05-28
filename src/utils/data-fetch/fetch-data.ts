@@ -1,3 +1,4 @@
+import { content } from './../mocks/content';
 import * as z from 'zod/v4';
 import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
@@ -47,7 +48,7 @@ const EnhancedArticleWithVersionsSchema = z.object({
   siteName: z.string().optional(),
 });
 
-export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions | null> => {
+export const fetchVersion = async (id: string, preview: boolean = false): Promise<EnhancedArticleWithVersions | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
@@ -57,6 +58,18 @@ export const fetchVersion = async (id: string, preview: boolean = false):Promise
   }
 
   return validated.data;
+};
+
+export const fetchOxaVersion = async (id: string, preview: boolean = false): Promise<string | null> => {
+  const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+
+  const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
+
+  if (!validated.success) {
+    return null;
+  }
+
+  return validated.data.article.article.content;
 };
 
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
