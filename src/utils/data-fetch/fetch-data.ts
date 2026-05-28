@@ -8,7 +8,9 @@ import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 
-const ProcessedArticleSchema = ToDoSchema;
+const ProcessedArticleSchema = ToDoSchema.and(z.object({
+  oxaDocument: z.any().optional(),
+}));
 
 const PeerReviewSchema = ToDoSchema;
 
