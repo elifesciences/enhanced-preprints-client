@@ -23,6 +23,10 @@ dev: node_modules
 	@echo "- http://localhost:8080 - externally routed setup"
 	@echo "- http://localhost:3001 - for accessing client directly, including it's internal API"
 
+.PHONY: dev-logs
+dev-logs:
+	docker compose logs -f app
+
 .PHONY: prod
 prod: node_modules
 	yarn build

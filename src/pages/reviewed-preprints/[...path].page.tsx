@@ -240,6 +240,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
+  const oxaArticleContent = "";
+
   const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
@@ -290,29 +292,41 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     };
   }
 
+  const articlePageProps = {
+        siteName: articleWithVersions.siteName ?? config.siteName,
+        metaData: {
+          ...metaData,
+          ...(copyrightYear > 0 ? {
+            copyrightYear,
+          } : {}),
+        },
+        citationDoi,
+        versionOfRecord,
+        imgInfo,
+        msidWithVersion: id,
+        content: articleWithVersions.article.article.content,
+        timeline,
+        relatedContent: articleWithVersions.article.relatedContent ?? [],
+        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+        metrics: articleWithVersions.metrics ?? null,
+        previousVersionWarningUrl,
+        features: {
+          showElifeTerms: !config.disableTerms,
+        },
+      };
+
+  if (context.query["oxa-document"] && articleWithVersions.article.doi.includes('85111')) {
+    console.log('feature flag is on');
+    return {
+      props: {
+        ...articlePageProps,
+        content: oxaArticleContent,
+      },
+    };
+  }
+
   return {
-    props: {
-      siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: {
-        ...metaData,
-        ...(copyrightYear > 0 ? {
-          copyrightYear,
-        } : {}),
-      },
-      citationDoi,
-      versionOfRecord,
-      imgInfo,
-      msidWithVersion: id,
-      content: articleWithVersions.article.article.content,
-      timeline,
-      relatedContent: articleWithVersions.article.relatedContent ?? [],
-      peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-      metrics: articleWithVersions.metrics ?? null,
-      previousVersionWarningUrl,
-      features: {
-        showElifeTerms: !config.disableTerms,
-      },
-    },
+    props: articlePageProps,
   };
 };
 
