@@ -57,6 +57,7 @@ export type ProcessedArticle = {
   abstract: ArticleAbstract,
   licenses: License[],
   content: Content,
+  oxaContent?: Content,
   headings: Heading[],
   references: Reference[],
   meta?: {

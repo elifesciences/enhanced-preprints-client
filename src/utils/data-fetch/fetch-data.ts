@@ -1,15 +1,14 @@
-import { content } from './../mocks/content';
 import * as z from 'zod/v4';
 import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { type ArticleSummary, type EnhancedArticleWithVersions } from '../../types';
 import { type PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
-import { IsoDateStringSchema } from '../../types/enhanced-article';
+import { IsoDateStringSchema, type ProcessedArticle } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema.and(z.object({
-  oxaDocument: z.any().optional(),
+  oxaContent: z.any().optional(),
 }));
 
 const PeerReviewSchema = ToDoSchema;
@@ -62,7 +61,7 @@ export const fetchVersion = async (id: string, preview: boolean = false): Promis
   return validated.data;
 };
 
-export const fetchOxaVersion = async (id: string, preview: boolean = false): Promise<string | null> => {
+export const fetchOxaVersion = async (id: string, preview: boolean = false): Promise<ProcessedArticle['oxaContent'] | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
@@ -71,7 +70,15 @@ export const fetchOxaVersion = async (id: string, preview: boolean = false): Pro
     return null;
   }
 
-  return validated.data.article.article.content;
+  if (validated.data.article.article.oxaContent) {
+    return validated.data.article.article.oxaContent;
+  }
+
+  if (validated.data.article.article.oxaContent === undefined) {
+    return '';
+  }
+
+  return '';
 };
 
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);

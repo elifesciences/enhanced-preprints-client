@@ -243,7 +243,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
 
   const oxaArticleContent = await fetchOxaVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
 
-  if (!oxaArticleContent) {
+  if (oxaArticleContent === null || oxaArticleContent === undefined) {
     console.log(`OXA article version not found (${id})`);  
     return { notFound: true };
   }
