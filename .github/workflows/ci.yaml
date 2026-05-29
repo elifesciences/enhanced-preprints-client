@@ -31,11 +31,9 @@ jobs:
       - name: Production build
         run: yarn build
       - name: TSC
-        run: yarn tsc --noEmit
+        run: make compile-typescript
       - name: Lint
-        run: yarn lint
-      - name: Lint SASS
-        run: yarn lint-sass
+        run: make lint
       - name: Unit Test
         run: yarn test --reporters=jest-wip-reporter
   test-integration:

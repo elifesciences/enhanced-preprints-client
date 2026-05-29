@@ -41,9 +41,13 @@ clean:
 	rm -rf ./node_modules ./.next
 	docker compose down --volumes --remove-orphans --rmi=all
 
+.PHONY: compile-typescript
+compile-typescript:
+	yarn tsc --noEmit
+
 .PHONY: watch-typescript
 watch-typescript:
-	tsc --watch --noEmit 
+	yarn tsc --watch --noEmit 
 
 .PHONY: lint
 lint: node_modules
