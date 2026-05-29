@@ -4,7 +4,12 @@ import { isPreprintVersionSummary } from '../type-guards';
 export const getLatestVersionWarningUrl = (articleWithVersions: EnhancedArticleWithVersions): string | null => {
   const publishedDesc = Object.values(articleWithVersions.versions) // get the versions in an array
     .filter((ver) => ver.published && new Date(ver.published).getTime() <= (new Date()).getTime()) // get only the versions that have been published
-    .sort((a, b) => new Date(a.published!).getTime() - new Date(b.published!).getTime()) // sort them by published date
+    .sort((a, b) => {
+      if (!a.published || !b.published) {
+        return 0;
+      }
+      return new Date(a.published).getTime() - new Date(b.published).getTime();
+    }) // sort them by published date
     .reverse();
 
   const latestVersion = publishedDesc[0];
