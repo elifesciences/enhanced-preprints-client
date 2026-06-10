@@ -258,15 +258,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = isVor(articleWithVersions);
 
-  let pdfUrl = null;
-  if (config.siteName === 'elife') {
-    // elife does not rely on the article.pdfUrl anymore
-    pdfUrl = getPdfUrl(id, versionOfRecord, config.tenantDomain);
-  } else if (articleWithVersions.article.pdfUrl) {
-    // if it's not elife and articleWithVersions.article.pdfUrl is set
-    pdfUrl = getPdfUrl(id, versionOfRecord, config.tenantDomain);
-  }
-
+  const pdfUrl = articleWithVersions.article.pdfUrl ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
   const metaData = {
