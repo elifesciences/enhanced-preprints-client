@@ -7,9 +7,7 @@ import { IsoDateStringSchema, type ProcessedArticle } from '../../types/enhanced
 
 const ToDoSchema = z.any();
 
-const ProcessedArticleSchema = ToDoSchema.and(z.object({
-  oxaContent: z.any().optional(),
-}));
+const ProcessedArticleSchema = ToDoSchema;
 
 const PeerReviewSchema = ToDoSchema;
 
@@ -59,26 +57,6 @@ export const fetchVersion = async (id: string, preview: boolean = false): Promis
   }
 
   return validated.data;
-};
-
-export const fetchOxaVersion = async (id: string, preview: boolean = false): Promise<ProcessedArticle['oxaContent'] | null> => {
-  const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}?oxa=true${preview ? '&previews=true' : ''}`);
-
-  const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
-
-  if (!validated.success) {
-    return null;
-  }
-
-  if (validated.data.article.article.oxaContent) {
-    return validated.data.article.article.oxaContent;
-  }
-
-  if (validated.data.article.article.oxaContent === undefined) {
-    return '';
-  }
-
-  return '';
 };
 
 export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);

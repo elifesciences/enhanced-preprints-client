@@ -28,7 +28,6 @@ import { isVORVersionSummary } from '../../utils/type-guards';
 import { getPdfUrl } from '../../utils/get-pdf-url';
 import { isVor } from '../../utils/is-vor';
 import { getXmlUrl } from '../../utils/get-xml-url';
-import { fetchOxaVersion } from '../../utils/data-fetch/fetch-data';
 
 type PageProps = {
   siteName?: string,
@@ -241,13 +240,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     return { notFound: true };
   }
 
-  const oxaArticleContent = await fetchOxaVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
-
-  if (oxaArticleContent === null || oxaArticleContent === undefined) {
-    console.log(`OXA article version not found (${id})`);  
-    return { notFound: true };
-  }
-
   const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
 
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
@@ -321,16 +313,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
           showElifeTerms: !config.disableTerms,
         },
       };
-
-  if (context.query["oxa-document"] && articleWithVersions.article.doi.includes('85111')) {
-    console.log('feature flag is on');
-    return {
-      props: {
-        ...articlePageProps,
-        content: oxaArticleContent,
-      },
-    };
-  }
 
   return {
     props: articlePageProps,
