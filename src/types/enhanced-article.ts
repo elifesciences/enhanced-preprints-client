@@ -38,7 +38,6 @@ export type Heading = {
   id: string,
   text: Content,
 };
-export type PublicationType = 'CreativeWork' | 'Periodical' | 'PublicationIssue' | 'PublicationVolume';
 
 export type ProcessedArticle = {
   doi: string,
