@@ -11,6 +11,14 @@ type Identifier = {
   value: string,
 };
 
+type Author = {
+  familyNames: string[],
+  givenNames?: string[],
+  affiliations?: Institution[],
+  emails?: string[],
+  identifiers?: Identifier[],
+};
+
 type License = {
   type: string,
   url?: string,
@@ -21,14 +29,6 @@ export type ArticleDocument = string;
 export type ArticleContent = {
   doi: string,
   document: ArticleDocument,
-};
-
-export type Author = {
-  familyNames: string[],
-  givenNames?: string[],
-  affiliations?: Institution[],
-  emails?: string[],
-  identifiers?: Identifier[],
 };
 
 export type Heading = {
