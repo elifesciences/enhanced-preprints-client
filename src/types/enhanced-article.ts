@@ -11,7 +11,6 @@ export type ArticleContent = {
   document: ArticleDocument,
 };
 
-export type ArticleTitle = Content;
 export type ArticleAbstract = Content;
 
 export type Identifier = {
@@ -41,7 +40,7 @@ export type Heading = {
 
 export type ProcessedArticle = {
   doi: string,
-  title: ArticleTitle,
+  title: Content,
   date: Date,
   authors?: Author[],
   abstract: ArticleAbstract,
@@ -62,7 +61,7 @@ export type ProcessedArticle = {
 export type ArticleSummary = {
   id: string,
   doi: string,
-  title: ArticleTitle,
+  title: Content,
   date: Date | null,
 };
 
