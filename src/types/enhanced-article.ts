@@ -5,6 +5,12 @@ import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
 
+type Identifier = {
+  type: 'PropertyValue',
+  propertyID: 'https://registry.identifiers.org/registry/orcid',
+  value: string,
+};
+
 type License = {
   type: string,
   url?: string,
@@ -15,12 +21,6 @@ export type ArticleDocument = string;
 export type ArticleContent = {
   doi: string,
   document: ArticleDocument,
-};
-
-export type Identifier = {
-  type: 'PropertyValue',
-  propertyID: 'https://registry.identifiers.org/registry/orcid',
-  value: string,
 };
 
 export type Author = {
