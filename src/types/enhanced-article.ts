@@ -5,6 +5,12 @@ import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
 
+type License = {
+  type: string,
+  url?: string,
+  content?: Content,
+};
+
 export type ArticleDocument = string;
 export type ArticleContent = {
   doi: string,
@@ -23,12 +29,6 @@ export type Author = {
   affiliations?: Institution[],
   emails?: string[],
   identifiers?: Identifier[],
-};
-
-export type License = {
-  type: string,
-  url?: string,
-  content?: Content,
 };
 
 export type Heading = {
