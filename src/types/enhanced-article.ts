@@ -13,9 +13,6 @@ export type ArticleContent = {
 
 export type ArticleTitle = Content;
 export type ArticleAbstract = Content;
-export type Address = {
-  addressCountry?: string,
-};
 
 export type Identifier = {
   type: 'PropertyValue',
