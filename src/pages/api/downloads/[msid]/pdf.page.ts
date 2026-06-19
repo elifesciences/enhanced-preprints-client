@@ -21,12 +21,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    const pdfUrl = articleWithVersions.article?.pdfUrl;
+    const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
+    const pdfUrl = config.siteName === 'elife' && config.filesApiPath
+        ? `${config.filesApiPath}/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/content/elife-preprint-${downloadFilename}`
+        : articleWithVersions.article?.pdfUrl;
     if (!pdfUrl) {
       res.status(404).end();
       return;
     }
-    const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
     const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
 
     await proxyUrlToResponse(pdfUrl, req, res, downloadFilename, canonicalUrl);

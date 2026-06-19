@@ -3,7 +3,7 @@ import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { type ArticleSummary, type EnhancedArticleWithVersions } from '../../types';
 import { type PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
-import { IsoDateStringSchema } from '../../types/enhanced-article';
+import { IsoDateStringSchema, type ProcessedArticle } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 
@@ -47,7 +47,7 @@ const EnhancedArticleWithVersionsSchema = z.object({
   siteName: z.string().optional(),
 });
 
-export const fetchVersion = async (id: string, preview: boolean = false):Promise<EnhancedArticleWithVersions | null> => {
+export const fetchVersion = async (id: string, preview: boolean = false): Promise<EnhancedArticleWithVersions | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
 
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);

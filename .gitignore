@@ -44,3 +44,4 @@ next-env.d.ts
 
 # storybook
 debug-storybook.log
+.idea/

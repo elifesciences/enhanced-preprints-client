@@ -250,7 +250,8 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = isVor(articleWithVersions);
 
-  const pdfUrl = articleWithVersions.article.pdfUrl ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
+  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
+
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
   const metaData = {
@@ -290,29 +291,31 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
     };
   }
 
+  const articlePageProps = {
+        siteName: articleWithVersions.siteName ?? config.siteName,
+        metaData: {
+          ...metaData,
+          ...(copyrightYear > 0 ? {
+            copyrightYear,
+          } : {}),
+        },
+        citationDoi,
+        versionOfRecord,
+        imgInfo,
+        msidWithVersion: id,
+        content: articleWithVersions.article.article.content,
+        timeline,
+        relatedContent: articleWithVersions.article.relatedContent ?? [],
+        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+        metrics: articleWithVersions.metrics ?? null,
+        previousVersionWarningUrl,
+        features: {
+          showElifeTerms: !config.disableTerms,
+        },
+      };
+
   return {
-    props: {
-      siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: {
-        ...metaData,
-        ...(copyrightYear > 0 ? {
-          copyrightYear,
-        } : {}),
-      },
-      citationDoi,
-      versionOfRecord,
-      imgInfo,
-      msidWithVersion: id,
-      content: articleWithVersions.article.article.content,
-      timeline,
-      relatedContent: articleWithVersions.article.relatedContent ?? [],
-      peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-      metrics: articleWithVersions.metrics ?? null,
-      previousVersionWarningUrl,
-      features: {
-        showElifeTerms: !config.disableTerms,
-      },
-    },
+    props: articlePageProps,
   };
 };
 

@@ -78,7 +78,7 @@ For a better developer experience run:
 
 ```bash
 yarn build
-NEXT_PUBLIC_SITE_NAME=elife API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+NEXT_PUBLIC_SITE_NAME=elife NEXT_PUBLIC_FILES_API_PATH=https://prod--epp.elifesciences.org/api/files API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
 ```
 
 Visit [`localhost:3000`](http://localhost:3000).

@@ -3,7 +3,7 @@
     "requiredScenarioState": "Started",
     "request": {
         "method": "GET",
-        "url": "/api/preprints/15102v1"
+        "urlPath": "/api/preprints/15102v1"
     },
     "response": {
         "status": 200,
