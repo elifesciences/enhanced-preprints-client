@@ -74,12 +74,6 @@ export type ArticleSummary = {
   date: Date | null,
 };
 
-export type Participant = {
-  name: string,
-  role: string,
-  institution: string,
-};
-
 export type VORVersionSummary = {
   id: string,
   msid: string,
