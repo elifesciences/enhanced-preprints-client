@@ -40,13 +40,6 @@ export type Heading = {
 };
 export type PublicationType = 'CreativeWork' | 'Periodical' | 'PublicationIssue' | 'PublicationVolume';
 
-export type Publication = {
-  type: PublicationType,
-  name?: string,
-  volumeNumber?: number,
-  isPartOf?: Publication,
-};
-
 export type ProcessedArticle = {
   doi: string,
   title: ArticleTitle,
