@@ -11,8 +11,6 @@ export type ArticleContent = {
   document: ArticleDocument,
 };
 
-export type ArticleAbstract = Content;
-
 export type Identifier = {
   type: 'PropertyValue',
   propertyID: 'https://registry.identifiers.org/registry/orcid',
@@ -43,7 +41,7 @@ export type ProcessedArticle = {
   title: Content,
   date: Date,
   authors?: Author[],
-  abstract: ArticleAbstract,
+  abstract: Content,
   licenses: License[],
   content: Content,
   headings: Heading[],
