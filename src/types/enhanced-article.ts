@@ -74,12 +74,6 @@ export type ArticleSummary = {
   date: Date | null,
 };
 
-export enum ReviewType {
-  EvaluationSummary = 'evaluation-summary',
-  Review = 'review-article',
-  AuthorResponse = 'reply',
-}
-
 export type Participant = {
   name: string,
   role: string,
