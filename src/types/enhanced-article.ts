@@ -39,6 +39,7 @@ export type Heading = {
   text: Content,
 };
 export type PublicationType = 'CreativeWork' | 'Periodical' | 'PublicationIssue' | 'PublicationVolume';
+
 export type Publication = {
   type: PublicationType,
   name?: string,
@@ -73,7 +74,6 @@ export type ArticleSummary = {
   date: Date | null,
 };
 
-export type ReviewText = string;
 export enum ReviewType {
   EvaluationSummary = 'evaluation-summary',
   Review = 'review-article',
