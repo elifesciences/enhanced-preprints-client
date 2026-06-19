@@ -25,11 +25,6 @@ type License = {
   content?: Content,
 };
 
-export type ArticleContent = {
-  doi: string,
-  document: string,
-};
-
 export type Heading = {
   id: string,
   text: Content,
