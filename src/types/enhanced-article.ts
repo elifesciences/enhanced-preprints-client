@@ -5,7 +5,7 @@ import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
 
-type Author = {
+type ProcessedArticleAuthor = {
   familyNames: string[],
   givenNames?: string[],
   affiliations?: Institution[],
@@ -32,7 +32,7 @@ export type ProcessedArticle = {
   doi: string,
   title: Content,
   date: Date,
-  authors?: Author[],
+  authors?: ProcessedArticleAuthor[],
   abstract: Content,
   licenses: License[],
   content: Content,
