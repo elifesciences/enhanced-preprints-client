@@ -5,18 +5,16 @@ import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
 
-type Identifier = {
-  type: 'PropertyValue',
-  propertyID: 'https://registry.identifiers.org/registry/orcid',
-  value: string,
-};
-
 type Author = {
   familyNames: string[],
   givenNames?: string[],
   affiliations?: Institution[],
   emails?: string[],
-  identifiers?: Identifier[],
+  identifiers?: {
+    type: 'PropertyValue',
+    propertyID: 'https://registry.identifiers.org/registry/orcid',
+    value: string,
+  }[],
 };
 
 type License = {
