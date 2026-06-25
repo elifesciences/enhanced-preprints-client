@@ -36,11 +36,9 @@ export type ReviewedPreprintSnippet = {
   }[],
 } & ElifeAssessment;
 
-export type VersionSummary = Omit<EnhancedArticle, 'article' | 'peerReview'>;
-
 export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummary'>;
 
-export type PublishedEnhancedArticleMetaDataForJournal = VersionSummary & {
+export type PublishedEnhancedArticleMetaDataForJournal = Omit<EnhancedArticle, 'article' | 'peerReview'> & {
   article: Omit<ProcessedArticle, 'doi' | 'date' | 'content' | 'abstract'>,
   peerReview?: PeerReviewEvaluationSummaryOnly,
   published: Date,
