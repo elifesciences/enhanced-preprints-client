@@ -1,4 +1,4 @@
-import { type PeerReview, ReviewType } from '../../types/peer-review';
+import { type PeerReview } from '../../types/peer-review';
 
 export const peerReview: PeerReview = {
   evaluationSummary: {
@@ -10,7 +10,7 @@ export const peerReview: PeerReview = {
         role: 'senior-editor',
       },
     ],
-    reviewType: ReviewType.EvaluationSummary,
+    reviewType: 'evaluation-summary',
     text: 'This paper is important and is very convincing',
     doi: '10.7554/eLife.81090.sa0',
   },
@@ -24,7 +24,7 @@ export const peerReview: PeerReview = {
           role: 'peer-reviewer',
         },
       ],
-      reviewType: ReviewType.EvaluationSummary,
+      reviewType: 'evaluation-summary',
       text: 'Well done, Stephen.',
       doi: '10.7554/eLife.81090.sa1',
     },
@@ -37,7 +37,7 @@ export const peerReview: PeerReview = {
           role: 'peer-reviewer',
         },
       ],
-      reviewType: ReviewType.EvaluationSummary,
+      reviewType: 'evaluation-summary',
       text: 'Strange as the author, I am a scientist not a wizard.',
       doi: '10.7554/eLife.81090.sa2',
     },
@@ -51,7 +51,7 @@ export const peerReview: PeerReview = {
         role: 'author',
       },
     ],
-    reviewType: ReviewType.EvaluationSummary,
+    reviewType: 'evaluation-summary',
     text: 'I thank you for the review and take it as irrefutable proof and that I more intelligent that Tony.',
     doi: '10.7554/eLife.81090.sa3',
   },
