@@ -25,7 +25,7 @@ type License = {
   content?: Content,
 };
 
-export type Heading = {
+type Heading = {
   id: string,
   text: Content,
 };
