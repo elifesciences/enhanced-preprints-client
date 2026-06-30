@@ -3,7 +3,7 @@ import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { type ArticleSummary, type EnhancedArticleWithVersions } from '../../types';
 import { type PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
-import { IsoDateStringSchema, type ProcessedArticle } from '../../types/enhanced-article';
+import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 
