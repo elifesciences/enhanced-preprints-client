@@ -1,7 +1,7 @@
 import { type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
 import { type PeerReview } from './peer-review';
 
-export type ElifeAssessmentContent = {
+type ElifeAssessmentContent = {
   type: 'paragraph',
   text: string,
 }[];

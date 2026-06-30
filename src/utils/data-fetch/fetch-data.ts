@@ -1,8 +1,11 @@
 import * as z from 'zod/v4';
 import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
-import { type ArticleSummary, type EnhancedArticleWithVersions } from '../../types';
-import { type PublishedEnhancedArticleMetaDataForJournal } from '../../types/reviewed-preprint-snippet';
+import {
+  type ArticleSummary,
+  type EnhancedArticleWithVersions,
+  type PublishedEnhancedArticleMetaDataForJournal
+} from '../../types';
 import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
