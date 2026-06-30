@@ -10,6 +10,7 @@ import {
   type Metrics,
   type PeerReview,
   type RelatedContent,
+  type SerialisedTimelineEvent,
   type TimelineEvent,
 } from '../../types';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
@@ -22,7 +23,6 @@ import { generateCopyrightYear, generateTimeline, generateVersionHistory } from 
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { type SerialisedTimelineEvent } from '../../types/article-timeline';
 import { type FeaturesData } from '../../features';
 import { isVORVersionSummary } from '../../utils/type-guards';
 import { getPdfUrl } from '../../utils/get-pdf-url';

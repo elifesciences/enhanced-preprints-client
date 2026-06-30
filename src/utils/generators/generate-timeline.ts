@@ -1,4 +1,5 @@
 import {
+  type SerialisedTimelineEvent,
   type VersionSummary,
 } from '../../types';
 import {
@@ -6,7 +7,6 @@ import {
   isPreprintVersionSummary,
   isVORVersionSummary,
 } from '../type-guards';
-import { type SerialisedTimelineEvent } from '../../types/article-timeline';
 import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
 const generateTimelineUrl = (version: VersionSummary): string => {
