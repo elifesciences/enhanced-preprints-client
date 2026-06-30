@@ -1,21 +1,9 @@
 import * as z from 'zod/v4';
 import { type Content } from './content';
-import { type Institution } from './institution';
 import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
-
-type ProcessedArticleAuthor = {
-  familyNames: string[],
-  givenNames?: string[],
-  affiliations?: Institution[],
-  emails?: string[],
-  identifiers?: {
-    type: 'PropertyValue',
-    propertyID: 'https://registry.identifiers.org/registry/orcid',
-    value: string,
-  }[],
-};
+import { type Author } from './author';
 
 type License = {
   type: string,
@@ -32,7 +20,7 @@ export type ProcessedArticle = {
   doi: string,
   title: Content,
   date: Date,
-  authors?: ProcessedArticleAuthor[],
+  authors?: Author[],
   abstract: Content,
   licenses: License[],
   content: Content,
