@@ -1,5 +1,5 @@
 import { type Content } from '../../types';
-import { type ImageObjectContent } from '../../types/content';
+import { type ImageObjectContent } from '../../types';
 import { generateImageInfo } from '../generators';
 
 const isImageObject = (content: Content): content is ImageObjectContent => {

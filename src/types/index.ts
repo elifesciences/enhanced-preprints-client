@@ -1,6 +1,6 @@
 export type { SerialisedTimelineEvent, TimelineEvent } from './article-timeline';
 export type { Author, AuthorNotesData } from './author';
-export type { Content, FigureContent, HeadingContent } from './content';
+export type { Content, HeadingContent, ImageObjectContent, ListContent } from './content';
 export type { Institution } from './institution';
 export type { MetaData } from './meta-data';
 export type { PeerReview } from './peer-review';
