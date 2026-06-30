@@ -34,27 +34,11 @@ type CiteGroupContent = {
   items: CiteContent[],
 };
 
-export type HeadingContent = DecoratedContent & {
-  type: 'Heading',
-  id: string,
-  depth: 1 | 2 | 3 | 4 | 5 | 6,
-};
-
 type FigureContent = DecoratedContent & {
   type: 'Figure',
   id?: string,
   caption?: Content,
   label?: string,
-};
-
-export type ImageObjectContent = {
-  type: 'ImageObject',
-  id?: string,
-  contentUrl?: string,
-  content?: Content
-  meta: {
-    inline: boolean,
-  },
 };
 
 type EmphasisContent = DecoratedContent & {
@@ -73,6 +57,17 @@ type ListItemContent = DecoratedContent & {
   type: 'ListItem',
 };
 
+type ClaimContent = DecoratedContent & {
+  type: 'Claim',
+  claimType?: 'Statement' | 'Theorem' | 'Lemma' | 'Proof' | 'Postulate' | 'Hypothesis' | 'Proposition' | 'Corollary',
+  label?: Content,
+  title?: Content,
+};
+
+type ThematicBreak = {
+  type: 'ThematicBreak',
+};
+
 export const listType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'] as const;
 export type ListContent = {
   type: 'List',
@@ -83,15 +78,20 @@ export type ListContent = {
   }
 };
 
-type ClaimContent = DecoratedContent & {
-  type: 'Claim',
-  claimType?: 'Statement' | 'Theorem' | 'Lemma' | 'Proof' | 'Postulate' | 'Hypothesis' | 'Proposition' | 'Corollary',
-  label?: Content,
-  title?: Content,
+export type HeadingContent = DecoratedContent & {
+  type: 'Heading',
+  id: string,
+  depth: 1 | 2 | 3 | 4 | 5 | 6,
 };
 
-type ThematicBreak = {
-  type: 'ThematicBreak',
+export type ImageObjectContent = {
+  type: 'ImageObject',
+  id?: string,
+  contentUrl?: string,
+  content?: Content
+  meta: {
+    inline: boolean,
+  },
 };
 
 type ContentPart =
