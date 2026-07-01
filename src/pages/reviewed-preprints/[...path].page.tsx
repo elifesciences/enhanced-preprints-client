@@ -70,6 +70,7 @@ const getRoutePrefix = (router: NextRouter) => {
   return '/reviewed-preprints/';
 };
 
+// ts-unused-exports:disable-next-line
 export const Page = ({
   metaData: rawMetaData,
   citationDoi,
@@ -215,6 +216,7 @@ export const Page = ({
   );
 };
 
+// ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path');  
@@ -319,4 +321,5 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (context:
   };
 };
 
+// ts-unused-exports:disable-next-line
 export default Page;

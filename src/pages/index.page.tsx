@@ -10,6 +10,8 @@ type PageProps = {
   articles?: ArticleSummary[]
   previews?: ArticleSummary[]
 };
+
+// ts-unused-exports:disable-next-line
 export const App = ({ ids, articles, previews }: PageProps) => (
   <main className="primary-section">
     <div className="article-body-container">
@@ -35,6 +37,7 @@ export const App = ({ ids, articles, previews }: PageProps) => (
   </main>
 );
 
+// ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   const versions = (await fetchVersions()).items.sort((a, b) => (a.id > b.id ? 1 : -1));
   const articles = versions.filter((version) => (version.date));
@@ -48,4 +51,5 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   };
 };
 
+// ts-unused-exports:disable-next-line
 export default App;
