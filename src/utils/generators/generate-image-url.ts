@@ -2,12 +2,6 @@ import { config } from '../../config';
 
 const generateLegacyImageUrl = (contentImageId: string): string => (config.imageServer ? `${config.imageServer}/2/${encodeURIComponent(contentImageId)}/full/max/0/default.jpg` : contentImageId);
 
-const generateLegacyImageUrlSized = (contentImageId: string, size: number): string => {
-  if (!config.imageServer) return contentImageId;
-
-  return `${config.imageServer}/2/${encodeURIComponent(contentImageId)}/full/${size},/0/default.jpg`;
-};
-
 const generateLegacyImageInfo = async (contentImageId: string): Promise<{ width: number, height: number }> => {
   const infoUrl = `${config.iiifServer}/2/${encodeURIComponent(contentImageId)}/info.json`;
   const imageInfo = await fetch(infoUrl);

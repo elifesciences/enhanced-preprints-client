@@ -32,6 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
 
     await proxyUrlToResponse(pdfUrl, req, res, downloadFilename, canonicalUrl);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     if (!res.headersSent) {
       res.status(502).end();

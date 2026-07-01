@@ -27,6 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const upstreamXmlUrl = generateArticleXmlUri(articleWithVersions.article.msid, articleWithVersions.article.versionIdentifier);
 
     await proxyUrlToResponse(upstreamXmlUrl, req, res, downloadFilename, canonicalUrl);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     res.status(502).send('Gateway Error');
   }
