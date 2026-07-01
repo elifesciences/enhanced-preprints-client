@@ -115,6 +115,7 @@
     "stylelint-prettier": "^5.0.0",
     "stylelint-selector-bem-pattern": "^4.0.0",
     "ts-node": "^10.9.1",
+    "ts-unused-exports": "^11.0.1",
     "typescript": "^5.0.0",
     "wait-on": "^9.0.0",
     "webpack": "^5.74.0"
