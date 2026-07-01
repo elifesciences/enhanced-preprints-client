@@ -54,7 +54,7 @@ check-unused-exports: node_modules
 	yarn ts-unused-exports tsconfig.json --excludePathsFromReport=\\.stories\\. --silent
 
 .PHONY: lint
-lint: node_modules
+lint: node_modules check-unused-exports
 	yarn lint
 	yarn lint-sass
 
