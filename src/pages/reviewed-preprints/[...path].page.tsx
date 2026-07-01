@@ -3,31 +3,31 @@ import Head from 'next/head';
 import { type NextRouter, useRouter } from 'next/router';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
+import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { config } from '../../config';
+import { type FeaturesData } from '../../features';
 import {
-  type Content,
   type MetaData,
   type Metrics,
   type PeerReview,
   type RelatedContent,
   type SerialisedTimelineEvent,
   type TimelineEvent,
+  type Content,
 } from '../../types';
-import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
-import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
 import {
   contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
-import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
-import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
+import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { formatAuthorName } from '../../utils/formatters';
-import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { type FeaturesData } from '../../features';
-import { isVORVersionSummary } from '../../utils/type-guards';
+import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
 import { getPdfUrl } from '../../utils/get-pdf-url';
-import { isVor } from '../../utils/is-vor';
 import { getXmlUrl } from '../../utils/get-xml-url';
+import { isVor } from '../../utils/is-vor';
+import { makeNullableOptional } from '../../utils/make-nullable-optional';
+import { isVORVersionSummary } from '../../utils/type-guards';
 
 type PageProps = {
   siteName?: string,

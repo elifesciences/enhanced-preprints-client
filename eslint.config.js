@@ -53,6 +53,20 @@ module.exports = defineConfig([{
             "code": 240,
         }],
 
+        "import/order": ["error", {
+            alphabetize: {
+                order: "asc",
+            },
+            groups: [
+                "builtin",
+                "external",
+                "internal",
+                "index",
+                "sibling",
+                "parent",
+            ],
+        }],
+
         "import/extensions": 0,
         "import/no-duplicates": "error",
 

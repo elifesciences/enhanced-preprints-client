@@ -1,5 +1,5 @@
-import { type EnhancedArticleWithVersions } from '../../types';
 import { getLatestVersionWarningUrl } from './get-latest-version-warning-url';
+import { type EnhancedArticleWithVersions } from '../../types';
 import { mock85111 } from '../mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {

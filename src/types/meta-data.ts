@@ -1,5 +1,5 @@
-import { type Content } from './content';
 import { type Author, type AuthorNotesData } from './author';
+import { type Content } from './content';
 import { type Reference } from './reference';
 import { type VersionHistoryItem } from './version-history-item';
 

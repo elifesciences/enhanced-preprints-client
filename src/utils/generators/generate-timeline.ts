@@ -1,3 +1,4 @@
+import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 import {
   type SerialisedTimelineEvent,
   type VersionSummary,
@@ -7,7 +8,6 @@ import {
   isPreprintVersionSummary,
   isVORVersionSummary,
 } from '../type-guards';
-import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 
 const generateTimelineUrl = (version: VersionSummary): string => {
   if (isPreprintVersionSummary(version)) {

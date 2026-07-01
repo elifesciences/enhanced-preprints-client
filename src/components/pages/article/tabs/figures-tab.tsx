@@ -1,7 +1,7 @@
 import '../article-page.scss';
-import { Heading } from '../../../atoms/heading/heading';
-import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { type JSXContent } from '../../../../utils/content';
+import { ArticleContent } from '../../../atoms/article-content/article-content';
+import { Heading } from '../../../atoms/heading/heading';
 
 export const ArticleFiguresTab = ({ content }: { content: JSXContent }) => (
   <div className="tabbed-navigation__content tabbed-navigation__content--figures">

@@ -1,6 +1,6 @@
 import { getByText, render, screen } from '@testing-library/react';
-import { type Author } from '../../../types';
 import { AuthorList } from './author-list';
+import { type Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import { authors, authorNotes } from '../../../utils/mocks';
 

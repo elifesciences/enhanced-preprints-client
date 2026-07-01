@@ -1,9 +1,9 @@
 import * as z from 'zod/v4';
+import { type Author } from './author';
 import { type Content } from './content';
 import { type PeerReview } from './peer-review';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
-import { type Author } from './author';
 
 type License = {
   type: string,

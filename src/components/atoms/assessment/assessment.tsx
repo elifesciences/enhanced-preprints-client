@@ -1,13 +1,13 @@
 import './assessment.scss';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TermsList } from '../terms-list/terms-list';
+import { FeaturesContext } from '../../../features';
+import { isPdfRoute } from '../../../utils/isPdfRoute';
 import {
   findTerms, highlightTerms, significanceTerms, strengthTerms,
 } from '../../../utils/terms';
 import { Descriptors } from '../descriptors/descriptors';
-import { isPdfRoute } from '../../../utils/isPdfRoute';
-import { FeaturesContext } from '../../../features';
+import { TermsList } from '../terms-list/terms-list';
 
 type Props = { content: string, doi?: string };
 export const Assessment = ({ content, doi }: Props) => {

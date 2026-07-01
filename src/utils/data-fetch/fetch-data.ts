@@ -1,6 +1,6 @@
 import * as z from 'zod/v4';
-import { config } from '../../config';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
+import { config } from '../../config';
 import {
   type ArticleSummary,
   type EnhancedArticleWithVersions,

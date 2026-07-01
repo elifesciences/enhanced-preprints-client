@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { type VersionSummary } from '../../../types';
 import { fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
@@ -6,7 +7,6 @@ import {
   writeResponse,
   enhancedArticleToReviewedPreprintItemResponse,
 } from '../reviewed-preprints.page';
-import { type VersionSummary } from '../../../types';
 
 const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const msid = (Array.isArray(req.query.msid) ? req.query.msid[0] : req.query.msid) ?? '';

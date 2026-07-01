@@ -1,14 +1,14 @@
+import { type Meta, type StoryObj } from '@storybook/nextjs';
 import {
   useState,
 } from 'react';
-import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { expect, userEvent, within } from 'storybook/test';
 import { Modal } from './modal';
-import { Socials } from '../../atoms/socials/socials';
-import { Clipboard } from '../../atoms/clipboard/clipboard';
-import { citation, references } from '../../../utils/mocks';
 import { type Reference as ReferenceData } from '../../../types';
+import { citation, references } from '../../../utils/mocks';
 import { Citation } from '../../atoms/citation/citation';
+import { Clipboard } from '../../atoms/clipboard/clipboard';
+import { Socials } from '../../atoms/socials/socials';
 
 const meta: Meta<typeof Modal> = {
   title: 'Molecules/Modal',

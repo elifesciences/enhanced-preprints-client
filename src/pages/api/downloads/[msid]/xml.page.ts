@@ -1,10 +1,10 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
+import { config } from '../../../../config';
 import { fetchVersion } from '../../../../utils/data-fetch';
-import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
+import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
-import { config } from '../../../../config';
-import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
+import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { msid } = req.query;

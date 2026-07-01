@@ -1,9 +1,9 @@
 import '../article-page.scss';
 import { useTranslation } from 'react-i18next';
-import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
-import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { type PeerReview } from '../../../../types';
+import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
 export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: { peerReview: PeerReview, currentVersion: number, versionOfRecord?: boolean }) => {

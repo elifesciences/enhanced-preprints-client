@@ -1,9 +1,9 @@
+import EventEmitter from 'events';
+import { ReadableStream } from 'stream/web';
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createRequest, createResponse } from 'node-mocks-http';
-import { ReadableStream } from 'stream/web';
-import EventEmitter from 'events';
-import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './pdf.page';
+import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
 
