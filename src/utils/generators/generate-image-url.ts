@@ -29,13 +29,6 @@ export const generateImageUrl = (contentImageId: string): string => {
   return `${config.iiifPublicUrl?.replace(/\/$/, '')}/${encodeURIComponent(contentImageId)}/full/max/0/default.jpg`;
 };
 
-export const generateImageUrlSized = (contentImageId: string, size: number): string => {
-  if (!config.iiifPublicUrl) {
-    return generateLegacyImageUrlSized(contentImageId, size);
-  }
-  return `${config.iiifPublicUrl?.replace(/\/$/, '')}/${encodeURIComponent(contentImageId)}/full/${size},/0/default.jpg`;
-};
-
 export const generateImageInfo = async (contentImageId: string): Promise<{ width: number, height: number }> => {
   if (!config.iiifUrl) {
     return generateLegacyImageInfo(contentImageId);
