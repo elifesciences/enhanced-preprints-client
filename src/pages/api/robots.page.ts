@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 
+// ts-unused-exports:disable-next-line
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const disallowList = [
     'Disallow: /previews/',

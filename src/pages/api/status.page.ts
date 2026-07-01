@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 
+// ts-unused-exports:disable-next-line
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const status = {
     code: 200,

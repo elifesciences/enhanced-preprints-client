@@ -36,4 +36,5 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 };
 
+// ts-unused-exports:disable-next-line
 export default async (req: NextApiRequest, res: NextApiResponse) => serverApi(req, res);

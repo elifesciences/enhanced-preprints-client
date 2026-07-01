@@ -6,6 +6,7 @@ import {
 } from 'next/document';
 import { config } from '../config';
 
+// ts-unused-exports:disable-next-line
 export default function Document() {
   return (
     <Html lang="en-US">

@@ -28,14 +28,14 @@ type ReviewedPreprintListResponse = {
   items: ReviewedPreprintSnippet[],
 };
 
-const prepareAuthor = (author: Author) : string => {
+const prepareAuthor = (author: Author): string => {
   const givenNames = (author.givenNames ?? []).join(' ');
   const familyNames = (author.familyNames ?? []).join(' ');
 
   return `${givenNames}${familyNames ? ' ' : ''}${familyNames}`;
 };
 
-const prepareAuthorLine = (authors: Author[]) : undefined | string => {
+const prepareAuthorLine = (authors: Author[]): undefined | string => {
   if (authors.length === 0) {
     return;
   }
@@ -54,10 +54,10 @@ const prepareAuthorLine = (authors: Author[]) : undefined | string => {
     authorLine.push(prepareAuthor(authors[authors.length - 1]));
   }
 
-  return [authorLine.slice(0, 2).join(', '), authorLine.length > 2 ? authorLine[2] : null].filter((a) => a !== null).join(authors.length > 3 ? ' ... ' : ', ');  
+  return [authorLine.slice(0, 2).join(', '), authorLine.length > 2 ? authorLine[2] : null].filter((a) => a !== null).join(authors.length > 3 ? ' ... ' : ', ');
 };
 
-export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse) : void => {
+export const writeResponse = (res: NextApiResponse, contentType: string, statusCode: 200 | 400 | 404, message: BadRequestMessage | ReviewedPreprintListResponse | ReviewedPreprintItemResponse): void => {
   res
     .writeHead(statusCode, {
       'Content-Type': contentType,
@@ -67,7 +67,7 @@ export const writeResponse = (res: NextApiResponse, contentType: string, statusC
     .end(JSON.stringify(message));
 };
 
-const errorBadRequest = (res: NextApiResponse, message: string) : void => {
+const errorBadRequest = (res: NextApiResponse, message: string): void => {
   writeResponse(res, 'application/problem+json', 400, {
     title: 'bad request',
     detail: message,
@@ -109,7 +109,7 @@ const getAssessment = (peerReview: PeerReviewEvaluationSummaryOnly): ElifeAssess
   };
 };
 
-export const errorNotFoundRequest = (res: NextApiResponse) : void => {
+export const errorNotFoundRequest = (res: NextApiResponse): void => {
   writeResponse(res, 'application/json', 404, {
     title: 'not found',
   });
@@ -117,7 +117,7 @@ export const errorNotFoundRequest = (res: NextApiResponse) : void => {
 
 type Param = string | Number | Array<string | Number> | null;
 
-const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null) : Param => req.query[key] ?? defaultValue;
+const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null): Param => req.query[key] ?? defaultValue;
 
 const toIsoStringWithoutMilliseconds = (date: Date): string => {
   const year = date.getUTCFullYear();
@@ -227,4 +227,5 @@ const serverApi = async (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
+// ts-unused-exports:disable-next-line
 export default async (req: NextApiRequest, res: NextApiResponse) => serverApi(req, res);
