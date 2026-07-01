@@ -11,8 +11,7 @@ type PageProps = {
   previews?: ArticleSummary[]
 };
 
-// ts-unused-exports:disable-next-line
-export const App = ({ ids, articles, previews }: PageProps) => (
+const App = ({ ids, articles, previews }: PageProps) => (
   <main className="primary-section">
     <div className="article-body-container">
       <Heading id="articles" headingLevel={2} content="Articles:" />

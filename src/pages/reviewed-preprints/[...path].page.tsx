@@ -70,8 +70,7 @@ const getRoutePrefix = (router: NextRouter) => {
   return '/reviewed-preprints/';
 };
 
-// ts-unused-exports:disable-next-line
-export const Page = ({
+const Page = ({
   metaData: rawMetaData,
   citationDoi,
   imgInfo,
