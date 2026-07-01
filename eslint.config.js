@@ -48,6 +48,7 @@ module.exports = defineConfig([{
     rules: {
         "eol-last": ["error", "always"],
         "@typescript-eslint/no-deprecated": "warn",
+        "@typescript-eslint/no-unused-vars": "warn",
         "import/prefer-default-export": 0,
 
         "max-len": ["error", {
