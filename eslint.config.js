@@ -34,8 +34,7 @@ module.exports = defineConfig([{
         "@typescript-eslint": typescriptEslint,
         "no-only-tests": noOnlyTests,
         "next": fixupPluginRules(nextPlugin),
-        "import": importPlugin
-
+        "import": importPlugin,
     },
     extends: [
         ...compat.extends("plugin:react/recommended"),
@@ -43,19 +42,19 @@ module.exports = defineConfig([{
         ...compat.extends("plugin:storybook/recommended"),
         ...compat.extends("plugin:json/recommended-legacy"),
         ...compat.extends("plugin:@next/next/recommended"),
-        ...compat.extends("plugin:@next/next/core-web-vitals")
+        ...compat.extends("plugin:@next/next/core-web-vitals"),
     ],
     rules: {
         "eol-last": ["error", "always"],
         "@typescript-eslint/no-deprecated": "warn",
         "@typescript-eslint/no-unused-vars": "error",
-        "import/prefer-default-export": 0,
-
+        "import/prefer-default-export": 0, 
         "max-len": ["error", {
             "code": 240,
         }],
 
         "import/extensions": 0,
+        "import/no-duplicates": "error",
 
         "import/no-extraneous-dependencies": ["error", {
             "devDependencies": [
