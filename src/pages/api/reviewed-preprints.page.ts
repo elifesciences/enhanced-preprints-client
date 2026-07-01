@@ -8,11 +8,11 @@ import {
   type PeerReviewEvaluationSummaryOnly,
   type PublishedEnhancedArticleMetaDataForJournal,
   type ReviewedPreprintSnippet,
+  IsoDateStringSchema,
 } from '../../types';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../utils/content';
 import { findTerms } from '../../utils/terms';
-import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 type BadRequestMessage = {
   title: 'bad request' | 'not found',

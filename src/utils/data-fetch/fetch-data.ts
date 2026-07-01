@@ -4,9 +4,9 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import {
   type ArticleSummary,
   type EnhancedArticleWithVersions,
-  type PublishedEnhancedArticleMetaDataForJournal
+  type PublishedEnhancedArticleMetaDataForJournal,
+  IsoDateStringSchema,
 } from '../../types';
-import { IsoDateStringSchema } from '../../types/enhanced-article';
 
 const ToDoSchema = z.any();
 

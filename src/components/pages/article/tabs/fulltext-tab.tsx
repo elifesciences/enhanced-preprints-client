@@ -4,9 +4,12 @@ import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-me
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
-import { type MetaData, type PeerReview } from '../../../../types';
+import {
+  type MetaData,
+  type Metrics as MetricsType,
+  type PeerReview,
+} from '../../../../types';
 import { type JSXContent } from '../../../../utils/content';
-import { type Metrics as MetricsType } from '../../../../types/enhanced-article';
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { Assessment } from '../../../atoms/assessment/assessment';
 
