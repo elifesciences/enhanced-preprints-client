@@ -6,7 +6,7 @@ import { ArticleFlagList, type Props as FlagProps } from '../article-flag-list/a
 import { Institutions } from '../../atoms/institutions/institutions';
 import { type Author, type Content, type Institution } from '../../../types';
 
-export type ContentHeaderProps = FlagProps & {
+type ContentHeaderProps = FlagProps & {
   authors: Author[];
   doi: string;
   title: Content;
