@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 import { generateImageInfo, generateImageUrl } from './generate-image-url';
 
-let mockConfig: object | any = {};
+let mockConfig: object = {};
 
 jest.mock('../../config', () => ({
   get config() {

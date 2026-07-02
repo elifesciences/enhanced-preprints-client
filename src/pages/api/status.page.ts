@@ -10,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     statusItems: { summariesApi: true },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   const summaries = await fetch(`${config.apiServer}/api/preprints`).then((response) => response.json()).catch((error) => error);
 
   if (summaries?.items?.length >= 0) {
