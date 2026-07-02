@@ -29,7 +29,7 @@ import { isVor } from '../../utils/is-vor';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { isVORVersionSummary } from '../../utils/type-guards';
 
-type PageProps = {
+type ServerSideProps = {
   siteName?: string,
   metaData: MetaData,
   citationDoi?: string,
@@ -71,7 +71,7 @@ const getRoutePrefix = (router: NextRouter) => {
 };
 
 // ts-unused-exports:disable-next-line
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path');  
     return { notFound: true };
@@ -187,7 +187,7 @@ const Page = ({
   metrics,
   previousVersionWarningUrl,
   versionOfRecord,
-}: PageProps) => {
+}: ServerSideProps) => {
   const { t } = useTranslation();
   const processedTimeline = stringsToDates({ timeline });
 
