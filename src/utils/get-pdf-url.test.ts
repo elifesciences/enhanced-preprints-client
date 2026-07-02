@@ -46,4 +46,14 @@ describe('getPdfUrl', () => {
       });
     });
   });
+
+  describe('when the article is a preview', () => {
+    const isVor = false;
+    const previewURL = 'https://thisIsTheArticlePreviewURL.com';
+
+    it('uses the previewUrl if specified', () => {
+      const url = getPdfUrl(msid, isVor, domain, previewURL);
+      expect(url).toBe(previewURL);
+    });
+  })
 });
