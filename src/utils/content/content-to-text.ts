@@ -19,6 +19,18 @@ export const contentToText = (content: Content): string => {
     case 'Superscript':
     case 'Subscript':
       return contentToText(content.content);
+    case 'Heading':
+    case 'Date':
+    case 'Link':
+    case 'Cite':
+    case 'CiteGroup':
+    case 'Figure':
+    case 'ImageObject':
+    case 'ListItem':
+    case 'List':
+    case 'Claim':
+    case 'ThematicBreak':
+      return '';
     default:
       return '';
   }
