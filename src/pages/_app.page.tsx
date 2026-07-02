@@ -9,20 +9,18 @@ import { FeaturesContext } from '../features';
 import { i18n } from '../i18n';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
-  switch (siteName) {
-    case 'biophysics-colab':
-      return (
-        <BiophysicsColabLayout>
-          {children}
-        </BiophysicsColabLayout>
+  if (siteName === 'biophysics-colab') {
+    return (
+      <BiophysicsColabLayout>
+        {children}
+      </BiophysicsColabLayout>
       );
-    default:
-      return (
-        <DefaultLayout>
-          {children}
-        </DefaultLayout>
+  } 
+    return (
+      <DefaultLayout>
+        {children}
+      </DefaultLayout>
       );
-  }
 };
 
 const notoSerif = Noto_Serif({
