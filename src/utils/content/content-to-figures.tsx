@@ -11,10 +11,9 @@ export const contentToFigures = (content: Content): Content => {
   if (Array.isArray(content)) {
     return content.map((part) => contentToFigures(part));
   }
-  switch (content.type) {
-    case 'Figure':
-      return content;
-    default:
-      return '';
+  if (content.type === 'Figure') {
+    return content;
+  } else {
+    return '';
   }
 };
