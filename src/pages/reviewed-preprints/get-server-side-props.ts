@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
-  const metaData = {
+  const metaData: MetaData = {
     ...articleWithVersions.article,
     ...(pdfUrl ? { pdfUrl } : {}),
     xmlUrl,
@@ -83,6 +83,14 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     versionHistory,
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
   };
+
+  const enhancedMetaData = {
+    ...metaData,
+    ...(copyrightYear > 0 ? {
+      copyrightYear,
+    } : {}),
+  };
+
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || metaData.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
@@ -111,12 +119,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const articlePageProps = {
         siteName: articleWithVersions.siteName ?? config.siteName,
-        metaData: {
-          ...metaData,
-          ...(copyrightYear > 0 ? {
-            copyrightYear,
-          } : {}),
-        },
+        metaData: enhancedMetaData,
         citationDoi,
         versionOfRecord,
         imgInfo,
