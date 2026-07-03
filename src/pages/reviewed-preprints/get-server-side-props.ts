@@ -91,7 +91,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
   };
 
-  const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || metaData.doi;
+  const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || articleWithVersions.article.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
   if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
