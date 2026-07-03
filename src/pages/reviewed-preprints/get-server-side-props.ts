@@ -33,6 +33,13 @@ export type ServerSideProps = {
   features: FeaturesData,
 };
 
+const constructEnhancedMetaData = (metaData: MetaData, copyrightYear: number) => ({
+  ...metaData,
+  ...(copyrightYear > 0 ? {
+    copyrightYear,
+  } : {}),
+});
+
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
     console.log('no path');
@@ -84,13 +91,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
   };
 
-  const enhancedMetaData = {
-    ...metaData,
-    ...(copyrightYear > 0 ? {
-      copyrightYear,
-    } : {}),
-  };
-
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || metaData.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
@@ -118,22 +118,22 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   }
 
   const articlePageProps = {
-        siteName: articleWithVersions.siteName ?? config.siteName,
-        metaData: enhancedMetaData,
-        citationDoi,
-        versionOfRecord,
-        imgInfo,
-        msidWithVersion: id,
-        content: articleWithVersions.article.article.content,
-        timeline,
-        relatedContent: articleWithVersions.article.relatedContent ?? [],
-        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-        metrics: articleWithVersions.metrics ?? null,
-        previousVersionWarningUrl,
-        features: {
-          showElifeTerms: !config.disableTerms,
-        },
-      };
+    siteName: articleWithVersions.siteName ?? config.siteName,
+    metaData: constructEnhancedMetaData(metaData, copyrightYear),
+    citationDoi,
+    versionOfRecord,
+    imgInfo,
+    msidWithVersion: id,
+    content: articleWithVersions.article.article.content,
+    timeline,
+    relatedContent: articleWithVersions.article.relatedContent ?? [],
+    peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+    metrics: articleWithVersions.metrics ?? null,
+    previousVersionWarningUrl,
+    features: {
+      showElifeTerms: !config.disableTerms,
+    },
+  };
 
   return {
     props: articlePageProps,
