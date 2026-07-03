@@ -43,7 +43,7 @@ const getRoutePrefix = (router: NextRouter) => {
 };
 
 const Page = ({
-  metaData: rawMetaData,
+  metaData,
   citationDoi,
   imgInfo,
   msidWithVersion,
@@ -87,9 +87,9 @@ const Page = ({
 
   const headings = contentToHeadings(content);
   const figures = contentToFigures(content);
-  const metaData = {
-    ...rawMetaData,
-    versionHistory: rawMetaData.versionHistory.map(({ label, version, ...other }) => ({
+  const metaDataWithVersionHistory = {
+    ...metaData,
+    versionHistory: metaData.versionHistory.map(({ label, version, ...other }) => ({
       ...other,
       label: t(label, {
         version,
@@ -97,13 +97,13 @@ const Page = ({
     })),
   };
 
-  const hostedFileMatcher = (path: string) => path.startsWith(`${metaData.msid}/v${metaData.version}/`);
+  const hostedFileMatcher = (path: string) => path.startsWith(`${metaDataWithVersionHistory.msid}/v${metaDataWithVersionHistory.version}/`);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaDataWithVersionHistory} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -111,7 +111,7 @@ const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version} versionOfRecord={versionOfRecord} /> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaDataWithVersionHistory.version} versionOfRecord={versionOfRecord} /> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -120,7 +120,7 @@ const Page = ({
           metrics={null}
           headings={headings}
           content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
-          metaData={metaData}
+          metaData={metaDataWithVersionHistory}
           peerReview={peerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
@@ -154,27 +154,27 @@ const Page = ({
   return (
     <>
       <Head>
-        <title>{contentToText(metaData.title)}</title>
-        <meta name="citation_title" content={contentToText(metaData.title)}/>
+        <title>{contentToText(metaDataWithVersionHistory.title)}</title>
+        <meta name="citation_title" content={contentToText(metaDataWithVersionHistory.title)}/>
         <meta name="citation_publisher" content={t('publisher_long')}/>
         <meta name="citation_journal_title" content={t('publisher_short')}/>
-        {metaData.volume && <meta name="citation_volume" content={metaData.volume}/>}
-        <meta name="citation_id" content={metaData.eLocationId ?? `RP${metaData.msid}`}/>
-        <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
-        <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
-        {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
-        <meta name="citation_xml_url" content={metaData.xmlUrl}/>
-        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
+        {metaDataWithVersionHistory.volume && <meta name="citation_volume" content={metaDataWithVersionHistory.volume}/>}
+        <meta name="citation_id" content={metaDataWithVersionHistory.eLocationId ?? `RP${metaDataWithVersionHistory.msid}`}/>
+        <meta name="citation_abstract" content={contentToText(metaDataWithVersionHistory.abstract)}/>
+        <meta name="citation_doi" content={citationDoi ?? metaDataWithVersionHistory.doi}/>
+        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaDataWithVersionHistory.version)}/>
+        {metaDataWithVersionHistory.pdfUrl && <meta name="citation_pdf_url" content={metaDataWithVersionHistory.pdfUrl}/>}
+        <meta name="citation_xml_url" content={metaDataWithVersionHistory.xmlUrl}/>
+        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaDataWithVersionHistory.msid })}/>
         <meta name="citation_language" content="en"/>
-        { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
+        { metaDataWithVersionHistory.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
         previousVersionWarningUrl={makeNullableOptional(previousVersionWarningUrl)}
         citationDoi={citationDoi}
         metrics={makeNullableOptional(metrics)}
         relatedContent={processedRelatedContent}
-        metaData={metaData}
+        metaData={metaDataWithVersionHistory}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
         timeline={processedTimelineWithTranslations}
