@@ -35,7 +35,13 @@ export type ServerSideProps = {
   features: FeaturesData,
 };
 
-const getMetaData = (articleWithVersions: EnhancedArticleWithVersions, pdfUrl: string | null, xmlUrl: string, versionHistory: VersionHistoryItem[]) => ({
+const constructMetaData = (
+    articleWithVersions: EnhancedArticleWithVersions,
+    pdfUrl: string | null,
+    xmlUrl: string,
+    versionHistory: VersionHistoryItem[],
+    copyrightYear: number,
+) => ({
   ...articleWithVersions.article,
   ...(pdfUrl ? { pdfUrl } : {}),
   xmlUrl,
@@ -45,10 +51,6 @@ const getMetaData = (articleWithVersions: EnhancedArticleWithVersions, pdfUrl: s
   version: articleWithVersions.article.versionIdentifier,
   versionHistory,
   authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-});
-
-const constructEnhancedMetaData = (metaData: MetaData, copyrightYear: number) => ({
-  ...metaData,
   ...(copyrightYear > 0 ? {
     copyrightYear,
   } : {}),
@@ -93,8 +95,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
-  const metaData: MetaData = getMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory);
-
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || articleWithVersions.article.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
@@ -123,7 +123,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const articlePageProps = {
     siteName: articleWithVersions.siteName ?? config.siteName,
-    metaData: constructEnhancedMetaData(metaData, copyrightYear),
+    metaData: constructMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory, copyrightYear),
     citationDoi,
     versionOfRecord,
     imgInfo,
