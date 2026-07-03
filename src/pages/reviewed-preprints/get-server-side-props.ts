@@ -8,6 +8,8 @@ import {
   type RelatedContent,
   type SerialisedTimelineEvent,
   type Content,
+  type EnhancedArticleWithVersions,
+  type VersionHistoryItem,
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
@@ -32,6 +34,18 @@ export type ServerSideProps = {
   previousVersionWarningUrl: string | null,
   features: FeaturesData,
 };
+
+const getMetaData = (articleWithVersions: EnhancedArticleWithVersions, pdfUrl: string | null, xmlUrl: string, versionHistory: VersionHistoryItem[]) => ({
+  ...articleWithVersions.article,
+  ...(pdfUrl ? { pdfUrl } : {}),
+  xmlUrl,
+  ...articleWithVersions.article.article,
+  authors: articleWithVersions.article.article.authors || [],
+  msas: articleWithVersions.article.subjects || [],
+  version: articleWithVersions.article.versionIdentifier,
+  versionHistory,
+  authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
+});
 
 const constructEnhancedMetaData = (metaData: MetaData, copyrightYear: number) => ({
   ...metaData,
@@ -79,17 +93,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
-  const metaData: MetaData = {
-    ...articleWithVersions.article,
-    ...(pdfUrl ? { pdfUrl } : {}),
-    xmlUrl,
-    ...articleWithVersions.article.article,
-    authors: articleWithVersions.article.article.authors || [],
-    msas: articleWithVersions.article.subjects || [],
-    version: articleWithVersions.article.versionIdentifier,
-    versionHistory,
-    authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-  };
+  const metaData: MetaData = getMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory);
 
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || articleWithVersions.article.doi;
 
