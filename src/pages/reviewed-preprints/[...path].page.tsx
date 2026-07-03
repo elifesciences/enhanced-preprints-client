@@ -7,7 +7,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { config } from '../../config';
-import { type SerialisedTimelineEvent, type TimelineEvent } from '../../types';
+import { type MetaData, type SerialisedTimelineEvent, type TimelineEvent } from '../../types';
 import {
   contentToText, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
@@ -87,7 +87,7 @@ const Page = ({
 
   const headings = contentToHeadings(content);
   const figures = contentToFigures(content);
-  const metaDataWithVersionHistory = {
+  const metaDataWithVersionHistory: MetaData = {
     ...metaData,
     versionHistory: metaData.versionHistory.map(({ label, version, ...other }) => ({
       ...other,
