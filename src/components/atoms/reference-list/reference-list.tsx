@@ -1,6 +1,6 @@
+import { type Reference as ReferenceData } from '../../../types';
 import { Heading } from '../heading/heading';
 import './reference-list.scss';
-import { type Reference as ReferenceData } from '../../../types';
 import { Reference } from '../reference/reference';
 
 export const ReferenceList = ({ references }: { references: ReferenceData[] }) => (

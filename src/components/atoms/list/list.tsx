@@ -1,4 +1,4 @@
-import { type ListContent } from '../../../types/content';
+import { type ListContent } from '../../../types';
 import { contentToJsx, type Options } from '../../../utils/content';
 import './list.scss';
 

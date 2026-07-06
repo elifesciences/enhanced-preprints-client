@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
-import { formatDate } from '../../../utils/formatters';
 import { type TimelineEvent } from '../../../types';
+import { formatDate } from '../../../utils/formatters';
 
 export type TimelineProps = {
   current?: number;

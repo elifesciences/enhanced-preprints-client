@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { authors } from '../../../utils/mocks';
 import { Authors } from './authors';
 import { generateAuthorId } from '../../../utils/generators';
+import { authors } from '../../../utils/mocks';
 
 describe('authors', () => {
   it('should render correctly a list of authors', () => {

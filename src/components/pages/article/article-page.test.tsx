@@ -2,12 +2,12 @@ import {
   render, screen, cleanup, fireEvent,
 } from '@testing-library/react';
 import { ArticlePage } from './article-page';
-import { ArticleStatus } from '../../molecules/article-status/article-status';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
+import { contentToText } from '../../../utils/content';
 import {
   metaData, peerReview, timeline, citation, relatedContent,
 } from '../../../utils/mocks';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
-import { contentToText } from '../../../utils/content';
+import { ArticleStatus } from '../../molecules/article-status/article-status';
 import '../../../i18n';
 
 jest.mock('next/navigation', () => ({

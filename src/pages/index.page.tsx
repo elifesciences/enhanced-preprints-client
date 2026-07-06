@@ -1,8 +1,8 @@
 import { type GetServerSideProps } from 'next';
-import { fetchVersions } from '../utils/data-fetch';
-import { type ArticleSummary } from '../types';
 import { Heading } from '../components/atoms/heading/heading';
 import { config } from '../config';
+import { type ArticleSummary } from '../types';
+import { fetchVersions } from '../utils/data-fetch';
 
 type PageProps = {
   siteName?: string,
@@ -10,7 +10,8 @@ type PageProps = {
   articles?: ArticleSummary[]
   previews?: ArticleSummary[]
 };
-export const App = ({ ids, articles, previews }: PageProps) => (
+
+const App = ({ ids, articles, previews }: PageProps) => (
   <main className="primary-section">
     <div className="article-body-container">
       <Heading id="articles" headingLevel={2} content="Articles:" />
@@ -35,6 +36,7 @@ export const App = ({ ids, articles, previews }: PageProps) => (
   </main>
 );
 
+// ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   const versions = (await fetchVersions()).items.sort((a, b) => (a.id > b.id ? 1 : -1));
   const articles = versions.filter((version) => (version.date));
@@ -48,4 +50,5 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   };
 };
 
+// ts-unused-exports:disable-next-line
 export default App;

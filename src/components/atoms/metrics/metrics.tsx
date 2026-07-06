@@ -1,6 +1,6 @@
-import pluralize from 'pluralize';
 import Script from 'next/script';
-import { type Metrics as MetricsType } from '../../../types/enhanced-article';
+import pluralize from 'pluralize';
+import { type Metrics as MetricsType } from '../../../types';
 import './metrics.scss';
 
 type MetricsProps = {

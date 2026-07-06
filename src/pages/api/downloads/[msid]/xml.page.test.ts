@@ -1,10 +1,10 @@
 import { type NextApiResponse, type NextApiRequest } from 'next';
 import { createRequest, createResponse } from 'node-mocks-http';
-import { fetchVersion } from '../../../../utils/data-fetch';
 import handler from './xml.page';
-import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
+import { fetchVersion } from '../../../../utils/data-fetch';
 import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
+import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
 
 jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
   fetchVersion: jest.fn(),

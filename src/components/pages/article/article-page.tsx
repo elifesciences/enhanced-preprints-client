@@ -1,22 +1,22 @@
 import { type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArticleStatus } from '../../molecules/article-status/article-status';
-import { ContentHeader } from '../../molecules/content-header/content-header';
 import './article-page.scss';
-import { type MetaData, type Metrics, type TimelineEvent } from '../../../types';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
+import { type MetaData, type Metrics, type TimelineEvent } from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { type CitationData } from '../../atoms/citation/citation';
-import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
+import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notice';
+import { ArticleStatus } from '../../molecules/article-status/article-status';
+import { ContentHeader } from '../../molecules/content-header/content-header';
 
 export type Tab = {
   id: string,
   linkElement: ReactElement<any>,
 };
 
-export type ArticlePageProps = {
+type ArticlePageProps = {
   metaData: MetaData,
   citationDoi?: string,
   msidWithVersion: string,

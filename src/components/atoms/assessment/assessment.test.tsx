@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { significanceTerms, strengthTerms } from '../../../utils/terms';
 import { Assessment } from './assessment';
+import { significanceTerms, strengthTerms } from '../../../utils/terms';
 import '../../../i18n';
 
 let mockPathName = '';

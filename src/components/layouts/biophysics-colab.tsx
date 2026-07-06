@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import './biophysics-colab.scss';
-import { SiteHeaderBiophysicsColab } from '../molecules/site-header/site-header-biophysics-colab';
 import { BiophysicsColabSiteFooter } from '../molecules/site-footer/biophysics-colab-site-footer';
+import { SiteHeaderBiophysicsColab } from '../molecules/site-header/site-header-biophysics-colab';
 
 type Props = {
   children: ReactNode;

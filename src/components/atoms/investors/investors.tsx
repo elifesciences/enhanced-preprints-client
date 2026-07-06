@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import './investors.scss';
 import hhmi from '../../../images/investors/hhmi.svg';
-import wellcome from '../../../images/investors/wellcome.svg';
-import max from '../../../images/investors/max.svg';
 import kaw from '../../../images/investors/kaw.svg';
+import max from '../../../images/investors/max.svg';
+import wellcome from '../../../images/investors/wellcome.svg';
 
 export const Investors = () => (
   <ol className="investor-logos" role="list" aria-label="eLife is funded by these organisations">

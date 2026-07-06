@@ -1,14 +1,17 @@
 import '../article-page.scss';
-import { ArticleContent } from '../../../atoms/article-content/article-content';
-import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import {
+  type MetaData,
+  type Metrics as MetricsType,
+  type PeerReview,
+} from '../../../../types';
+import { type JSXContent } from '../../../../utils/content';
 import { Abstract } from '../../../atoms/abstract/abstract';
+import { ArticleContent } from '../../../atoms/article-content/article-content';
+import { Assessment } from '../../../atoms/assessment/assessment';
+import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { Metrics } from '../../../atoms/metrics/metrics';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
-import { type MetaData, type PeerReview } from '../../../../types';
-import { type JSXContent } from '../../../../utils/content';
-import { type Metrics as MetricsType } from '../../../../types/enhanced-article';
-import { Metrics } from '../../../atoms/metrics/metrics';
-import { Assessment } from '../../../atoms/assessment/assessment';
 
 type Props = {
   headings: Heading[],

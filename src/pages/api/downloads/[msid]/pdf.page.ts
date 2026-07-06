@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { config } from '../../../../config';
 import { fetchVersion } from '../../../../utils/data-fetch';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
-import { config } from '../../../../config';
 import { isVor } from '../../../../utils/is-vor';
 import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';
 
@@ -32,6 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const canonicalUrl = getCanonicalUrl(articleWithVersions.article.msid, isVor(articleWithVersions), config.tenantDomain);
 
     await proxyUrlToResponse(pdfUrl, req, res, downloadFilename, canonicalUrl);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     if (!res.headersSent) {
       res.status(502).end();

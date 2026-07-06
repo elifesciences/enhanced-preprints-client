@@ -1,50 +1,21 @@
-import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { type NextRouter, useRouter } from 'next/router';
 import { type JSX, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { config } from '../../config';
-import {
-  type Content,
-  type MetaData,
-  type Metrics,
-  type PeerReview,
-  type RelatedContent,
-  type TimelineEvent,
-} from '../../types';
-import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
-import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
-import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
-import {
-  contentToText, contentToImgInfo, contentToFigures, contentToJsx, contentToHeadings,
-} from '../../utils/content';
-import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
+import { getServerSideProps, type ServerSideProps } from './get-server-side-props';
 import { ErrorMessages } from '../../components/atoms/error-messages/error-messages';
+import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
+import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
+import { config } from '../../config';
+import { type MetaData, type SerialisedTimelineEvent, type TimelineEvent } from '../../types';
+import {
+  contentToText, contentToFigures, contentToJsx, contentToHeadings,
+} from '../../utils/content';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
-import { type SerialisedTimelineEvent } from '../../types/article-timeline';
-import { type FeaturesData } from '../../features';
-import { isVORVersionSummary } from '../../utils/type-guards';
-import { getPdfUrl } from '../../utils/get-pdf-url';
-import { isVor } from '../../utils/is-vor';
-import { getXmlUrl } from '../../utils/get-xml-url';
-import { fetchOxaVersion } from '../../utils/data-fetch/fetch-data';
 
-type PageProps = {
-  siteName?: string,
-  metaData: MetaData,
-  citationDoi?: string,
-  versionOfRecord?: boolean,
-  imgInfo: Record<string, { width: number, height: number }> | null,
-  msidWithVersion: string,
-  timeline: SerialisedTimelineEvent[],
-  relatedContent: RelatedContent[],
-  content: Content,
-  peerReview: PeerReview | null,
-  metrics: Metrics | null,
-  previousVersionWarningUrl: string | null,
-  features: FeaturesData,
-};
+// ts-unused-exports:disable-next-line
+export { getServerSideProps };
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
@@ -71,8 +42,8 @@ const getRoutePrefix = (router: NextRouter) => {
   return '/reviewed-preprints/';
 };
 
-export const Page = ({
-  metaData: rawMetaData,
+const Page = ({
+  metaData,
   citationDoi,
   imgInfo,
   msidWithVersion,
@@ -83,7 +54,7 @@ export const Page = ({
   metrics,
   previousVersionWarningUrl,
   versionOfRecord,
-}: PageProps) => {
+}: ServerSideProps) => {
   const { t } = useTranslation();
   const processedTimeline = stringsToDates({ timeline });
 
@@ -116,9 +87,9 @@ export const Page = ({
 
   const headings = contentToHeadings(content);
   const figures = contentToFigures(content);
-  const metaData = {
-    ...rawMetaData,
-    versionHistory: rawMetaData.versionHistory.map(({ label, version, ...other }) => ({
+  const metaDataWithVersionHistory: MetaData = {
+    ...metaData,
+    versionHistory: metaData.versionHistory.map(({ label, version, ...other }) => ({
       ...other,
       label: t(label, {
         version,
@@ -126,13 +97,13 @@ export const Page = ({
     })),
   };
 
-  const hostedFileMatcher = (path: string) => path.startsWith(`${metaData.msid}/v${metaData.version}/`);
+  const hostedFileMatcher = (path: string) => path.startsWith(`${metaDataWithVersionHistory.msid}/v${metaDataWithVersionHistory.version}/`);
 
   const subPages: { [key: string]: { tabLinks: Tab[], content: () => JSX.Element } } = {
     fulltext: {
       tabLinks,
       // eslint-disable-next-line max-len
-      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
+      content: () => <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaDataWithVersionHistory} peerReview={peerReview ?? undefined} peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>,
     },
     figures: {
       tabLinks,
@@ -140,7 +111,7 @@ export const Page = ({
     },
     reviews: {
       tabLinks,
-      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaData.version} versionOfRecord={versionOfRecord} /> : <ErrorMessages/>),
+      content: () => (peerReview ? <ArticleReviewsTab peerReview={peerReview} currentVersion={+metaDataWithVersionHistory.version} versionOfRecord={versionOfRecord} /> : <ErrorMessages/>),
     },
     pdf: {
       tabLinks: [],
@@ -149,7 +120,7 @@ export const Page = ({
           metrics={null}
           headings={headings}
           content={contentToJsx(content, { imgInfo: imgInfo ?? undefined, removePictureTag: true })}
-          metaData={metaData}
+          metaData={metaDataWithVersionHistory}
           peerReview={peerReview ?? undefined}
           peerReviewUrl={`${routePrefix}${msidWithVersion}/reviews#tab-content`}/>
         {subPages.reviews.content()}
@@ -183,27 +154,27 @@ export const Page = ({
   return (
     <>
       <Head>
-        <title>{contentToText(metaData.title)}</title>
-        <meta name="citation_title" content={contentToText(metaData.title)}/>
+        <title>{contentToText(metaDataWithVersionHistory.title)}</title>
+        <meta name="citation_title" content={contentToText(metaDataWithVersionHistory.title)}/>
         <meta name="citation_publisher" content={t('publisher_long')}/>
         <meta name="citation_journal_title" content={t('publisher_short')}/>
-        {metaData.volume && <meta name="citation_volume" content={metaData.volume}/>}
-        <meta name="citation_id" content={metaData.eLocationId ?? `RP${metaData.msid}`}/>
-        <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
-        <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
-        {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
-        <meta name="citation_xml_url" content={metaData.xmlUrl}/>
-        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
+        {metaDataWithVersionHistory.volume && <meta name="citation_volume" content={metaDataWithVersionHistory.volume}/>}
+        <meta name="citation_id" content={metaDataWithVersionHistory.eLocationId ?? `RP${metaDataWithVersionHistory.msid}`}/>
+        <meta name="citation_abstract" content={contentToText(metaDataWithVersionHistory.abstract)}/>
+        <meta name="citation_doi" content={citationDoi ?? metaDataWithVersionHistory.doi}/>
+        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaDataWithVersionHistory.version)}/>
+        {metaDataWithVersionHistory.pdfUrl && <meta name="citation_pdf_url" content={metaDataWithVersionHistory.pdfUrl}/>}
+        <meta name="citation_xml_url" content={metaDataWithVersionHistory.xmlUrl}/>
+        <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaDataWithVersionHistory.msid })}/>
         <meta name="citation_language" content="en"/>
-        { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
+        { metaDataWithVersionHistory.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
       <ArticlePage
         previousVersionWarningUrl={makeNullableOptional(previousVersionWarningUrl)}
         citationDoi={citationDoi}
         metrics={makeNullableOptional(metrics)}
         relatedContent={processedRelatedContent}
-        metaData={metaData}
+        metaData={metaDataWithVersionHistory}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
         timeline={processedTimelineWithTranslations}
@@ -216,126 +187,5 @@ export const Page = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<PageProps> = async (context: GetServerSidePropsContext) => {
-  if (context.params === undefined || context.params.path === undefined) {
-    console.log('no path');  
-    return { notFound: true };
-  }
-
-  const idParts = [...context.params?.path as string[]];
-
-  if (idParts.length >= 2 && ['fulltext', 'figures', 'reviews', 'pdf'].includes(idParts[idParts.length - 1])) idParts.pop();
-  const id = idParts.join('/');
-
-  if (id === undefined) {
-    console.log('no id in path');  
-    return { notFound: true };
-  }
-
-  context.res.setHeader('Cache-Control', `public, max-age=${config.articleCacheAge}`);
-
-  const articleWithVersions = await fetchVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
-
-  if (!articleWithVersions) {
-    console.log(`Article version not found (${id})`);  
-    return { notFound: true };
-  }
-
-  const oxaArticleContent = await fetchOxaVersion(id, config.showPreviews || context.req.url?.startsWith('/previews'));
-
-  if (oxaArticleContent === null || oxaArticleContent === undefined) {
-    console.log(`OXA article version not found (${id})`);  
-    return { notFound: true };
-  }
-
-  const previousVersionWarningUrl = getLatestVersionWarningUrl(articleWithVersions);
-
-  const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
-
-  const versions = Object.values(articleWithVersions.versions);
-  const timeline = generateTimeline(versions);
-  const copyrightYear = generateCopyrightYear(versions);
-  const versionHistory = generateVersionHistory(versions);
-  const versionOfRecord = isVor(articleWithVersions);
-
-  const previewPdfUrl = context.req.url?.startsWith('/previews') ? articleWithVersions.article.pdfUrl : undefined;
-  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, versionOfRecord, config.tenantDomain, previewPdfUrl) : null;
-
-  const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
-
-  const metaData = {
-    ...articleWithVersions.article,
-    ...(pdfUrl ? { pdfUrl } : {}),
-    xmlUrl,
-    ...articleWithVersions.article.article,
-    authors: articleWithVersions.article.article.authors || [],
-    msas: articleWithVersions.article.subjects || [],
-    version: articleWithVersions.article.versionIdentifier,
-    versionHistory,
-    authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-  };
-  const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || metaData.doi;
-
-  // Redirect VOR articles from reviewed-preprints to articles path.
-  if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
-    const redirectUrl = context.req.url?.replace('/reviewed-preprints/', '/articles/') || `/articles/${id}`;
-    console.log(`Redirect to ${redirectUrl}`);  
-    return {
-      redirect: {
-        destination: redirectUrl,
-        permanent: false,
-      },
-    };
-  }
-
-  // Redirect Reviewed Preprints from articles to reviewed-preprints path.
-  if (!versionOfRecord && context.req.url?.startsWith('/articles/')) {
-    const redirectUrl = context.req.url?.replace('/articles/', '/reviewed-preprints/') || `/reviewed-preprints/${id}`;
-    console.log(`Redirect to ${redirectUrl}`);  
-    return {
-      redirect: {
-        destination: redirectUrl,
-        permanent: false,
-      },
-    };
-  }
-
-  const articlePageProps = {
-        siteName: articleWithVersions.siteName ?? config.siteName,
-        metaData: {
-          ...metaData,
-          ...(copyrightYear > 0 ? {
-            copyrightYear,
-          } : {}),
-        },
-        citationDoi,
-        versionOfRecord,
-        imgInfo,
-        msidWithVersion: id,
-        content: articleWithVersions.article.article.content,
-        timeline,
-        relatedContent: articleWithVersions.article.relatedContent ?? [],
-        peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-        metrics: articleWithVersions.metrics ?? null,
-        previousVersionWarningUrl,
-        features: {
-          showElifeTerms: !config.disableTerms,
-        },
-      };
-
-  if (context.query["oxa-document"] && articleWithVersions.article.doi.includes('85111')) {
-    console.log('feature flag is on');
-    return {
-      props: {
-        ...articlePageProps,
-        content: oxaArticleContent,
-      },
-    };
-  }
-
-  return {
-    props: articlePageProps,
-  };
-};
-
+// ts-unused-exports:disable-next-line
 export default Page;

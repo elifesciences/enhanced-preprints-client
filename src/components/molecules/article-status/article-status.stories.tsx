@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
-import { citation, metrics } from '../../../utils/mocks';
 import { ArticleStatus } from './article-status';
+import { citation, metrics } from '../../../utils/mocks';
 import '../../../i18n';
 
 const meta: Meta<typeof ArticleStatus> = {

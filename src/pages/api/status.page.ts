@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../config';
 
+// ts-unused-exports:disable-next-line
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const status = {
     code: 200,
@@ -9,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     statusItems: { summariesApi: true },
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   const summaries = await fetch(`${config.apiServer}/api/preprints`).then((response) => response.json()).catch((error) => error);
 
   if (summaries?.items?.length >= 0) {

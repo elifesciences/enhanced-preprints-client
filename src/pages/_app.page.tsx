@@ -1,28 +1,26 @@
-import Head from 'next/head';
 import { Noto_Serif, Noto_Sans } from 'next/font/google';
+import Head from 'next/head';
 import { type ReactNode, useContext } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
 import { DefaultLayout } from '../components/layouts/default';
 import { config } from '../config';
-import { BiophysicsColabLayout } from '../components/layouts/biophysics-colab';
-import { i18n } from '../i18n';
 import { FeaturesContext } from '../features';
+import { i18n } from '../i18n';
 
 const LayoutSelector = ({ siteName, children }: { siteName?: string, children: ReactNode }) => {
-  switch (siteName) {
-    case 'biophysics-colab':
-      return (
-        <BiophysicsColabLayout>
-          {children}
-        </BiophysicsColabLayout>
+  if (siteName === 'biophysics-colab') {
+    return (
+      <BiophysicsColabLayout>
+        {children}
+      </BiophysicsColabLayout>
       );
-    default:
-      return (
-        <DefaultLayout>
-          {children}
-        </DefaultLayout>
+  } 
+    return (
+      <DefaultLayout>
+        {children}
+      </DefaultLayout>
       );
-  }
 };
 
 const notoSerif = Noto_Serif({

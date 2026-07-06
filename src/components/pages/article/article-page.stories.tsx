@@ -1,15 +1,15 @@
 import LinkTo from '@storybook/addon-links/react';
 import { type Meta, type StoryObj } from '@storybook/nextjs';
+import { ArticlePage } from './article-page';
+import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
+import '../../../i18n';
+import { type PeerReview } from '../../../types';
+import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import {
   content, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';
-import { ArticlePage } from './article-page';
-import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
-import { DefaultLayout } from '../../layouts/default';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
-import { contentToHeadings, contentToJsx } from '../../../utils/content';
-import '../../../i18n';
-import { type PeerReview } from '../../../types';
+import { DefaultLayout } from '../../layouts/default';
 
 const meta: Meta<typeof ArticlePage> = {
   title: 'Pages/Article Page',

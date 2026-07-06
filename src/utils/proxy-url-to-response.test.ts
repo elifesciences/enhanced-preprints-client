@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
+import { ReadableStream } from 'stream/web';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { createRequest, createResponse } from 'node-mocks-http';
-import { ReadableStream } from 'stream/web';
 import { proxyUrlToResponse } from './proxy-url-to-response';
 
 describe('proxyUrlToResponse', () => {

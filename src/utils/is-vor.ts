@@ -1,5 +1,5 @@
-import { type EnhancedArticleWithVersions } from '../types';
 import { isVORVersionSummary } from './type-guards';
+import { type EnhancedArticleWithVersions } from '../types';
 
 export const isVor = (articleWithVersions: EnhancedArticleWithVersions) => {
   const versions = Object.values(articleWithVersions.versions);

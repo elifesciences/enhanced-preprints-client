@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import logo from '../../../../public/science-colab-logo.png';
 import linkedinLogo from '../../../../public/linkedin-logo.png';
-import twitterLogo from '../../../../public/twitter-logo.png';
+import logo from '../../../../public/science-colab-logo.png';
 import scietyLogo from '../../../../public/sciety-logo.png';
+import twitterLogo from '../../../../public/twitter-logo.png';
 import './biophysics-colab-site-footer.scss';
 
 export const BiophysicsColabSiteFooter = () => (

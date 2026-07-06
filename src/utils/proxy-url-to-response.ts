@@ -1,8 +1,8 @@
 import { type IncomingHttpHeaders } from 'node:http';
-import { type NextApiRequest, type NextApiResponse } from 'next';
-import { pipeline } from 'stream/promises';
 import { Readable } from 'stream';
+import { pipeline } from 'stream/promises';
 import type { ReadableStream } from 'stream/web';
+import { type NextApiRequest, type NextApiResponse } from 'next';
 
 export const proxyUrlToResponse = async (
   url: string,

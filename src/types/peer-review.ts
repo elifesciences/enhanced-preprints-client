@@ -1,9 +1,3 @@
-export enum ReviewType {
-  EvaluationSummary = 'evaluation-summary',
-  Review = 'review-article',
-  AuthorResponse = 'reply',
-}
-
 type Participant = {
   name: string,
   role: string,
@@ -13,7 +7,7 @@ type Participant = {
 type Evaluation = {
   date: Date,
   doi?: string,
-  reviewType: ReviewType,
+  reviewType: 'evaluation-summary' | 'review-article' | 'reply',
   text: string,
   participants: Participant[],
 };

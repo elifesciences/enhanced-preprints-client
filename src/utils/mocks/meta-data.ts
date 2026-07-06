@@ -1,5 +1,5 @@
-import { references } from './references';
 import { authors, authorNotes } from './authors';
+import { references } from './references';
 import { versionHistory } from './version-history';
 
 export const metaData = {

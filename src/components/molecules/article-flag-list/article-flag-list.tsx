@@ -5,7 +5,7 @@ export type Props = {
   msas: string[],
 };
 
-export type Subject = {
+type Subject = {
   id: string,
   name: string,
 };

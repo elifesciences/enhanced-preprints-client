@@ -1,10 +1,10 @@
 import { type Author, type AuthorNotesData, type VersionHistoryItem } from '../../../types';
 import './article-and-author-information.scss';
-import { Copyright } from '../../atoms/copyright/copyright';
-import { VersionHistory } from '../../atoms/version-history/version-history';
 import { AuthorList } from '../../atoms/author-list/author-list';
 import { AuthorNotes } from '../../atoms/author-notes/author-notes';
 import { CiteAllVersions } from '../../atoms/cite-all-versions/cite-all-versions';
+import { Copyright } from '../../atoms/copyright/copyright';
+import { VersionHistory } from '../../atoms/version-history/version-history';
 
 export const ArticleAndAuthorInformation = ({
   authors,

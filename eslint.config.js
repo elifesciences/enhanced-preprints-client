@@ -34,8 +34,7 @@ module.exports = defineConfig([{
         "@typescript-eslint": typescriptEslint,
         "no-only-tests": noOnlyTests,
         "next": fixupPluginRules(nextPlugin),
-        "import": importPlugin
-
+        "import": importPlugin,
     },
     extends: [
         ...compat.extends("plugin:react/recommended"),
@@ -43,18 +42,36 @@ module.exports = defineConfig([{
         ...compat.extends("plugin:storybook/recommended"),
         ...compat.extends("plugin:json/recommended-legacy"),
         ...compat.extends("plugin:@next/next/recommended"),
-        ...compat.extends("plugin:@next/next/core-web-vitals")
+        ...compat.extends("plugin:@next/next/core-web-vitals"),
     ],
     rules: {
         "eol-last": ["error", "always"],
+        "no-unreachable": "error",
         "@typescript-eslint/no-deprecated": "warn",
-        "import/prefer-default-export": 0,
-
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-unsafe-return": "error",
+        "@typescript-eslint/switch-exhaustiveness-check": "warn",
+        "import/prefer-default-export": 0, 
         "max-len": ["error", {
             "code": 240,
         }],
 
+        "import/order": ["error", {
+            alphabetize: {
+                order: "asc",
+            },
+            groups: [
+                "builtin",
+                "external",
+                "internal",
+                "index",
+                "sibling",
+                "parent",
+            ],
+        }],
+
         "import/extensions": 0,
+        "import/no-duplicates": "error",
 
         "import/no-extraneous-dependencies": ["error", {
             "devDependencies": [
