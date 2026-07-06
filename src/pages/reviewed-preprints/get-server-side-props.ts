@@ -91,7 +91,8 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   const versionHistory = generateVersionHistory(versions);
   const versionOfRecord = isVor(articleWithVersions);
 
-  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, versionOfRecord, config.tenantDomain) : null;
+  const previewPdfUrl = context.req.url?.startsWith('/previews') ? articleWithVersions.article.pdfUrl : undefined;
+  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, versionOfRecord, config.tenantDomain, previewPdfUrl) : null;
 
   const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
 
