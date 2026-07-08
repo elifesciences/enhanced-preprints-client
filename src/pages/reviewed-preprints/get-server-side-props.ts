@@ -13,7 +13,6 @@ import {
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
-import { getPdfUrl } from '../../utils/get-pdf-url';
 import { getXmlUrl } from '../../utils/get-xml-url';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
@@ -68,10 +67,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   const copyrightYear = generateCopyrightYear(versions);
   const versionHistory = generateVersionHistory(versions);
   const isVersionOfRecord = isVor(articleWithVersions);
-  const isPreviewUrl = context.req.url?.startsWith('/previews');
-
-  const previewPdfUrl = isPreviewUrl ? articleWithVersions.article.pdfUrl : undefined;
-  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, isVersionOfRecord, config.tenantDomain, previewPdfUrl) : null;
+  const isPreviewUrl = context.req.url?.startsWith('/previews') ?? false;
 
   const xmlUrl = getXmlUrl(id, isVersionOfRecord, config.tenantDomain);
 
@@ -105,7 +101,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: constructMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory, copyrightYear),
+      metaData: constructMetaData(articleWithVersions, xmlUrl, versionHistory, copyrightYear, isPreviewUrl, id),
       citationDoi,
       versionOfRecord: isVersionOfRecord,
       imgInfo,
