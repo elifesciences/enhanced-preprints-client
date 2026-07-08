@@ -67,17 +67,17 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   const timeline = generateTimeline(versions);
   const copyrightYear = generateCopyrightYear(versions);
   const versionHistory = generateVersionHistory(versions);
-  const versionOfRecord = isVor(articleWithVersions);
+  const isVersionOfRecord = isVor(articleWithVersions);
 
   const previewPdfUrl = context.req.url?.startsWith('/previews') ? articleWithVersions.article.pdfUrl : undefined;
-  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, versionOfRecord, config.tenantDomain, previewPdfUrl) : null;
+  const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(id, isVersionOfRecord, config.tenantDomain, previewPdfUrl) : null;
 
-  const xmlUrl = getXmlUrl(id, versionOfRecord, config.tenantDomain);
+  const xmlUrl = getXmlUrl(id, isVersionOfRecord, config.tenantDomain);
 
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || articleWithVersions.article.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
-  if (versionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
+  if (isVersionOfRecord && context.req.url?.startsWith('/reviewed-preprints/')) {
     const redirectUrl = context.req.url?.replace('/reviewed-preprints/', '/articles/') || `/articles/${id}`;
     console.log(`Redirect to ${redirectUrl}`);
     return {
@@ -89,7 +89,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   }
 
   // Redirect Reviewed Preprints from articles to reviewed-preprints path.
-  if (!versionOfRecord && context.req.url?.startsWith('/articles/')) {
+  if (!isVersionOfRecord && context.req.url?.startsWith('/articles/')) {
     const redirectUrl = context.req.url?.replace('/articles/', '/reviewed-preprints/') || `/reviewed-preprints/${id}`;
     console.log(`Redirect to ${redirectUrl}`);
     return {
@@ -106,7 +106,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
       siteName: articleWithVersions.siteName ?? config.siteName,
       metaData: constructMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory, copyrightYear),
       citationDoi,
-      versionOfRecord,
+      versionOfRecord: isVersionOfRecord,
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
