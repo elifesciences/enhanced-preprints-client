@@ -4,6 +4,15 @@ import { config } from '../../../config';
 import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 
+const buildCopyrightYearProperty = (copyrightYear: number) => {
+    if (copyrightYear > 0) {
+        return ({
+            copyrightYear,
+        })
+    }
+    return {};
+};
+
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
     versionHistory: VersionHistoryItem[],
@@ -25,8 +34,6 @@ export const constructMetaData = (
         version: articleWithVersions.article.versionIdentifier,
         versionHistory,
         authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-        ...(copyrightYear > 0 ? {
-            copyrightYear,
-        } : {}),
+        ...buildCopyrightYearProperty(copyrightYear),
     }
 };
