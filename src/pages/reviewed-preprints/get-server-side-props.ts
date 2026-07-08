@@ -1,4 +1,5 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
+import { constructMetaData } from './construct-meta-data';
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {
@@ -8,8 +9,6 @@ import {
   type RelatedContent,
   type SerialisedTimelineEvent,
   type Content,
-  type EnhancedArticleWithVersions,
-  type VersionHistoryItem,
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
@@ -34,27 +33,6 @@ export type ServerSideProps = {
   previousVersionWarningUrl: string | null,
   features: FeaturesData,
 };
-
-const constructMetaData = (
-  articleWithVersions: EnhancedArticleWithVersions,
-  pdfUrl: string | null,
-  xmlUrl: string,
-  versionHistory: VersionHistoryItem[],
-  copyrightYear: number,
-) => ({
-  ...articleWithVersions.article,
-  ...(pdfUrl ? { pdfUrl } : {}),
-  xmlUrl,
-  ...articleWithVersions.article.article,
-  authors: articleWithVersions.article.article.authors || [],
-  msas: articleWithVersions.article.subjects || [],
-  version: articleWithVersions.article.versionIdentifier,
-  versionHistory,
-  authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
-  ...(copyrightYear > 0 ? {
-    copyrightYear,
-  } : {}),
-});
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (context: GetServerSidePropsContext) => {
   if (context.params === undefined || context.params.path === undefined) {
