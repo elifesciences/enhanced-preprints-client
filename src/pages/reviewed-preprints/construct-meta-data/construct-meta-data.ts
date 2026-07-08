@@ -1,9 +1,10 @@
+import { t } from "i18next";
 import { generateCopyrightYear } from "./generate-copyright-year";
 import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type EnhancedArticleWithVersions } from "../../../types";
+import { type VersionHistoryItem, type EnhancedArticleWithVersions } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 
 const buildCopyrightYearProperty = (copyrightYear: number) => {
@@ -13,6 +14,15 @@ const buildCopyrightYearProperty = (copyrightYear: number) => {
         })
     }
     return {};
+};
+
+const constructVersionHistory = (history: VersionHistoryItem[]) => {
+    return history.map(({ label, version, ...other }) => ({
+        ...other,
+        label: t(label, {
+            version,
+        }),
+    }));
 };
 
 export const constructMetaData = (
@@ -34,7 +44,7 @@ export const constructMetaData = (
         authors: articleWithVersions.article.article.authors || [],
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
-        versionHistory,
+        versionHistory: constructVersionHistory(versionHistory),
         authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
         ...buildCopyrightYearProperty(copyrightYear),
     }

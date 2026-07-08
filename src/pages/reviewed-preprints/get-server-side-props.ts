@@ -1,7 +1,6 @@
-import {t} from "i18next";
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import { constructMetaData } from './construct-meta-data';
-import {constructTimeline} from "./construct-timeline/construct-timeline";
+import { constructTimeline } from "./construct-timeline/construct-timeline";
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {
@@ -92,21 +91,10 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     };
   }
 
-  const metaData = constructMetaData(articleWithVersions, isPreviewUrl, id);
-  const metaDataWithVersionHistory: MetaData = {
-    ...metaData,
-    versionHistory: metaData.versionHistory.map(({ label, version, ...other }) => ({
-      ...other,
-      label: t(label, {
-        version,
-      }),
-    })),
-  };
-
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: metaDataWithVersionHistory,
+      metaData: constructMetaData(articleWithVersions, isPreviewUrl, id),
       citationDoi,
       versionOfRecord: isVersionOfRecord,
       imgInfo,
