@@ -1,5 +1,5 @@
 import { generateVersionHistory } from './generate-version-history';
-import { type VersionSummary } from '../../types';
+import { type VersionSummary } from '../../../types';
 
 const versionSummary1: VersionSummary = {
   id: '1v1',

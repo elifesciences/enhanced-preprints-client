@@ -1,9 +1,9 @@
-import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 import {
   type VersionHistoryItem,
   type VersionSummary,
-} from '../../types';
-import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../type-guards';
+} from '../../../types';
+import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
+import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../../../utils/type-guards';
 
 const constructHistoryItemLabel = (version: VersionSummary) => {
   if (isVORVersionSummary(version)) {
