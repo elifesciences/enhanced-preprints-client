@@ -13,7 +13,6 @@ import {
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { generateCopyrightYear, generateTimeline, generateVersionHistory } from '../../utils/generators';
-import { getXmlUrl } from '../../utils/get-xml-url';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
 
@@ -69,8 +68,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   const isVersionOfRecord = isVor(articleWithVersions);
   const isPreviewUrl = context.req.url?.startsWith('/previews') ?? false;
 
-  const xmlUrl = getXmlUrl(id, isVersionOfRecord, config.tenantDomain);
-
   const citationDoi = Object.values(versions).filter((version) => isVORVersionSummary(version)).map(({ doi }) => doi).find((doi) => doi) || articleWithVersions.article.doi;
 
   // Redirect VOR articles from reviewed-preprints to articles path.
@@ -101,7 +98,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: constructMetaData(articleWithVersions, xmlUrl, versionHistory, copyrightYear, isPreviewUrl, id),
+      metaData: constructMetaData(articleWithVersions, versionHistory, copyrightYear, isPreviewUrl, id),
       citationDoi,
       versionOfRecord: isVersionOfRecord,
       imgInfo,

@@ -1,11 +1,11 @@
 import { getPdfUrl } from "./get-pdf-url";
 import { config } from '../../../config';
 import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../../types";
+import { getXmlUrl } from "../../../utils/get-xml-url";
 import { isVor } from "../../../utils/is-vor";
 
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
-    xmlUrl: string,
     versionHistory: VersionHistoryItem[],
     copyrightYear: number,
     isPreviewUrl: boolean,
@@ -13,6 +13,7 @@ export const constructMetaData = (
 ) => {
     const previewPdfUrl = isPreviewUrl ? articleWithVersions.article.pdfUrl : undefined;
     const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(msid, isVor(articleWithVersions), config.tenantDomain, previewPdfUrl) : null;
+    const xmlUrl = getXmlUrl(msid, isVor(articleWithVersions), config.tenantDomain);
 
     return {
         ...articleWithVersions.article,
