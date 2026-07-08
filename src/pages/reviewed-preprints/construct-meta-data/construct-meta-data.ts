@@ -1,7 +1,8 @@
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../../types";
+import { type EnhancedArticleWithVersions } from "../../../types";
+import {generateVersionHistory} from "../../../utils/generators";
 import { isVor } from "../../../utils/is-vor";
 
 const buildCopyrightYearProperty = (copyrightYear: number) => {
@@ -15,7 +16,6 @@ const buildCopyrightYearProperty = (copyrightYear: number) => {
 
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
-    versionHistory: VersionHistoryItem[],
     copyrightYear: number,
     isPreviewUrl: boolean,
     msid: string
@@ -23,6 +23,8 @@ export const constructMetaData = (
     const previewPdfUrl = isPreviewUrl ? articleWithVersions.article.pdfUrl : undefined;
     const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(msid, isVor(articleWithVersions), config.tenantDomain, previewPdfUrl) : null;
     const xmlUrl = getXmlUrl(msid, isVor(articleWithVersions), config.tenantDomain);
+    const versionHistory = generateVersionHistory(Object.values(articleWithVersions.versions));
+
 
     return {
         ...articleWithVersions.article,
