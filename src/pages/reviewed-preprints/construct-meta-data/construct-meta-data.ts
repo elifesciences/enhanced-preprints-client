@@ -1,9 +1,9 @@
+import { generateCopyrightYear } from "./generate-copyright-year";
 import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
 import { type EnhancedArticleWithVersions } from "../../../types";
-import { generateCopyrightYear } from "../../../utils/generators";
 import { isVor } from "../../../utils/is-vor";
 
 const buildCopyrightYearProperty = (copyrightYear: number) => {

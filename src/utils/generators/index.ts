@@ -1,4 +1,3 @@
 export { generateAuthorId } from './generate-author-id';
-export { generateCopyrightYear } from './generate-copyright-year';
 export { generateImageInfo, generateImageUrl } from './generate-image-url';
 export { generateTimeline } from './generate-timeline';
