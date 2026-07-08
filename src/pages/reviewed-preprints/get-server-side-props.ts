@@ -1,5 +1,5 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
-import { constructMetaData } from './construct-meta-data';
+import { constructMetaData } from './construct-meta-data/construct-meta-data';
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {

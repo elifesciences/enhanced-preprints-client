@@ -1,7 +1,7 @@
-import { config } from '../../config';
-import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../types";
-import { getPdfUrl } from "../../utils/get-pdf-url";
-import { isVor } from "../../utils/is-vor";
+import { getPdfUrl } from "./get-pdf-url";
+import { config } from '../../../config';
+import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../../types";
+import { isVor } from "../../../utils/is-vor";
 
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
