@@ -36,11 +36,11 @@ export type ServerSideProps = {
 };
 
 const constructMetaData = (
-    articleWithVersions: EnhancedArticleWithVersions,
-    pdfUrl: string | null,
-    xmlUrl: string,
-    versionHistory: VersionHistoryItem[],
-    copyrightYear: number,
+  articleWithVersions: EnhancedArticleWithVersions,
+  pdfUrl: string | null,
+  xmlUrl: string,
+  versionHistory: VersionHistoryItem[],
+  copyrightYear: number,
 ) => ({
   ...articleWithVersions.article,
   ...(pdfUrl ? { pdfUrl } : {}),
@@ -122,25 +122,24 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     };
   }
 
-  const articlePageProps = {
-    siteName: articleWithVersions.siteName ?? config.siteName,
-    metaData: constructMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory, copyrightYear),
-    citationDoi,
-    versionOfRecord,
-    imgInfo,
-    msidWithVersion: id,
-    content: articleWithVersions.article.article.content,
-    timeline,
-    relatedContent: articleWithVersions.article.relatedContent ?? [],
-    peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
-    metrics: articleWithVersions.metrics ?? null,
-    previousVersionWarningUrl,
-    features: {
-      showElifeTerms: !config.disableTerms,
-    },
-  };
 
   return {
-    props: articlePageProps,
+    props: {
+      siteName: articleWithVersions.siteName ?? config.siteName,
+      metaData: constructMetaData(articleWithVersions, pdfUrl, xmlUrl, versionHistory, copyrightYear),
+      citationDoi,
+      versionOfRecord,
+      imgInfo,
+      msidWithVersion: id,
+      content: articleWithVersions.article.article.content,
+      timeline,
+      relatedContent: articleWithVersions.article.relatedContent ?? [],
+      peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
+      metrics: articleWithVersions.metrics ?? null,
+      previousVersionWarningUrl,
+      features: {
+        showElifeTerms: !config.disableTerms,
+      },
+    }
   };
 };
