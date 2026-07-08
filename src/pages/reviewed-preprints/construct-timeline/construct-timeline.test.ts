@@ -1,5 +1,5 @@
-import { generateTimeline } from './generate-timeline';
-import { type VersionSummary } from '../../types';
+import { constructTimeline } from './construct-timeline';
+import { type VersionSummary } from '../../../types';
 
 const versionSummary1: VersionSummary = {
   id: '1v1',
@@ -44,9 +44,9 @@ const externalVersionSummary3: VersionSummary = {
   url: 'https://doi.org/doi-123v3',
 };
 
-describe('generateTimeline', () => {
-  it('should generate the correct timeline with two article versions', () => {
-    const timeline = generateTimeline([
+describe('constructTimeline', () => {
+  it('should construct the correct timeline with two article versions', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       versionSummary2,
     ]);
@@ -69,8 +69,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with an external version summary', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with an external version summary', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       versionSummary2,
       externalVersionSummary3,
@@ -100,8 +100,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with one reviewed preprint with evaluation summary', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with one reviewed preprint with evaluation summary', () => {
+    const timeline = constructTimeline([
       {
         ...versionSummary1,
         withEvaluationSummary: true,
@@ -120,8 +120,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with one reviewed preprint without evaluation summary and another with', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with one reviewed preprint without evaluation summary and another with', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       {
         ...versionSummary2,
@@ -148,8 +148,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with VOR corrections', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with VOR corrections', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       versionSummary2,
       {
@@ -194,8 +194,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with a Version of Record', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with a Version of Record', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       versionSummary2,
       versionSummary3,
@@ -226,8 +226,8 @@ describe('generateTimeline', () => {
     ]);
   });
 
-  it('should generate the correct timeline with a Version of Record with an evaluation summary', () => {
-    const timeline = generateTimeline([
+  it('should construct the correct timeline with a Version of Record with an evaluation summary', () => {
+    const timeline = constructTimeline([
       versionSummary1,
       versionSummary2,
       {

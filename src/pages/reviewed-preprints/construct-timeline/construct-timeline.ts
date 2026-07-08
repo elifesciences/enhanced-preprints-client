@@ -1,13 +1,13 @@
-import { generateNameWithEvaluationSummarySuffix } from './generate-name-with-evaluation-summary-suffix';
 import {
   type SerialisedTimelineEvent,
   type VersionSummary,
-} from '../../types';
+} from '../../../types';
+import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
 import {
   isExternalVersionSummary,
   isPreprintVersionSummary,
   isVORVersionSummary,
-} from '../type-guards';
+} from '../../../utils/type-guards';
 
 const generateTimelineUrl = (version: VersionSummary): string => {
   if (isPreprintVersionSummary(version)) {
@@ -23,7 +23,7 @@ const generateTimelineUrl = (version: VersionSummary): string => {
   return '';
 };
 
-export const generateTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
+export const constructTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
   const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
     if (current.published) {
       const versionNo = +current.versionIdentifier;

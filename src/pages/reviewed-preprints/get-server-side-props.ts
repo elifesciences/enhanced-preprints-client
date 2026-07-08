@@ -1,5 +1,6 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import { constructMetaData } from './construct-meta-data';
+import {constructTimeline} from "./construct-timeline/construct-timeline";
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {
@@ -12,7 +13,6 @@ import {
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
-import { generateTimeline } from '../../utils/generators';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
 
@@ -62,7 +62,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   const imgInfo = context.req.url?.endsWith('/pdf') ? await contentToImgInfo(articleWithVersions.article.article.content) : null;
 
   const versions = Object.values(articleWithVersions.versions);
-  const timeline = generateTimeline(versions);
   const isVersionOfRecord = isVor(articleWithVersions);
   const isPreviewUrl = context.req.url?.startsWith('/previews') ?? false;
 
@@ -102,7 +101,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
-      timeline,
+      timeline: constructTimeline(Object.values(articleWithVersions.versions)),
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
