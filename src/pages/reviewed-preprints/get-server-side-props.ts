@@ -12,7 +12,7 @@ import {
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
-import { generateCopyrightYear, generateTimeline } from '../../utils/generators';
+import { generateTimeline } from '../../utils/generators';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
 
@@ -63,7 +63,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
 
   const versions = Object.values(articleWithVersions.versions);
   const timeline = generateTimeline(versions);
-  const copyrightYear = generateCopyrightYear(versions);
   const isVersionOfRecord = isVor(articleWithVersions);
   const isPreviewUrl = context.req.url?.startsWith('/previews') ?? false;
 
@@ -97,7 +96,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
-      metaData: constructMetaData(articleWithVersions, copyrightYear, isPreviewUrl, id),
+      metaData: constructMetaData(articleWithVersions, isPreviewUrl, id),
       citationDoi,
       versionOfRecord: isVersionOfRecord,
       imgInfo,
