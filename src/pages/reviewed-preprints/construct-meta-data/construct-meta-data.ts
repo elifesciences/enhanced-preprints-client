@@ -1,7 +1,7 @@
 import { getPdfUrl } from "./get-pdf-url";
+import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
 import { type EnhancedArticleWithVersions, type VersionHistoryItem } from "../../../types";
-import { getXmlUrl } from "../../../utils/get-xml-url";
 import { isVor } from "../../../utils/is-vor";
 
 export const constructMetaData = (
