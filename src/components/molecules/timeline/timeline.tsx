@@ -50,7 +50,7 @@ export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineP
                   {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
                   {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"
-                    dateTime={event.date}>{formatDate(new Date(event.date))}</time>
+                    dateTime={new Date(event.date).toISOString()}>{formatDate(new Date(event.date))}</time>
                   {activeEventClass && <a className="review-timeline__link"
                     href={`${event.url}/reviews#review-process`}>{event.version > 1 ? t('revised') : t('not_revised')}</a>}
                 </dd>
