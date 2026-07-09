@@ -1,3 +1,3 @@
 import { type Author } from '../../types';
 
-export const formatAuthorName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${(givenNames ?? []).join(' ')} ${(familyNames ?? []).join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`.trim();
+export const formatAuthorName = ({ givenNames, familyNames, honorificSuffix }: Author): string => `${(givenNames ?? []).join(' ')} ${(familyNames ?? []).join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`.trim();

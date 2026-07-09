@@ -1,4 +1,4 @@
-export const getCanonicalUrl = (msid: string, isVor?: boolean, domain?: string) => {
+export const getCanonicalUrl = (msid: string, isVor?: boolean, domain?: string): string => {
   const prefix = isVor ? 'articles' : 'reviewed-preprints';
   return `${domain ?? ''}/${prefix}/${msid}`;
 };

@@ -1,4 +1,4 @@
-export const getPdfUrl = (msid: string, isVor: boolean, domain?: string, previewUrl?: string) => {
+export const getPdfUrl = (msid: string, isVor: boolean, domain?: string, previewUrl?: string): string => {
   if (previewUrl) {
     return previewUrl;
   }
