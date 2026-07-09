@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
-import { type MetaData, type Metrics, type TimelineEvent } from '../../../types';
+import {type MetaData, type Metrics, SerialisedTimelineEvent, type TimelineEvent} from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
@@ -28,6 +28,7 @@ type ArticlePageProps = {
   previousVersionWarningUrl?: string,
   retractionNoticeUrl?: string,
   timeline: TimelineEvent[],
+  timelineWithDatesAsAString?: SerialisedTimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {
@@ -76,7 +77,7 @@ export const ArticlePage = (props: ArticlePageProps) => {
           citation={citation}
           msid={props.metaData.msid}
           {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
-          timeline={{ events: props.timeline, current: +props.metaData.version }}
+          timeline={{ events: props.timeline, current: +props.metaData.version, eventsWithDateAsAString: props.timelineWithDatesAsAString }}
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>

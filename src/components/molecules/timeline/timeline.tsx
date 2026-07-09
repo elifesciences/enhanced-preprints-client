@@ -1,12 +1,13 @@
 import { Fragment, useEffect, useState } from 'react';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
-import { type TimelineEvent } from '../../../types';
+import {SerialisedTimelineEvent, type TimelineEvent} from '../../../types';
 import { formatDate } from '../../../utils/formatters';
 
 export type TimelineProps = {
   current?: number;
   events: Array<TimelineEvent>,
+  eventsWithDateAsAString?: Array<SerialisedTimelineEvent>,
 };
 
 const constructEventType = (version: number, versionOfRecord: boolean) => {
