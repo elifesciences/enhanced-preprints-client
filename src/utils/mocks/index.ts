@@ -7,4 +7,5 @@ export { citation } from './citation';
 export { relatedContent } from './related-content';
 export { metrics } from './metrics';
 export { timeline } from './timeline';
+export { timelineWithDatesAsAString } from './timeline-with-dates-as-a-string';
 export { versionHistory } from './version-history';

@@ -28,6 +28,14 @@ export const Status: Story = {
           date: new Date('2024-05-30'),
         },
       ],
+      eventsWithDateAsAString: [
+        {
+          url: '#',
+          version: 1,
+          versionIndicator: 'v1',
+          date: new Date('2024-05-30').toString(),
+        },
+      ],
     },
   },
 };

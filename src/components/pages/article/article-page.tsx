@@ -28,7 +28,7 @@ type ArticlePageProps = {
   previousVersionWarningUrl?: string,
   retractionNoticeUrl?: string,
   timeline: TimelineEvent[],
-  timelineWithDatesAsAString?: SerialisedTimelineEvent[],
+  timelineWithDatesAsAString: SerialisedTimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps) => {

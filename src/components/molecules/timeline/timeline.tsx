@@ -7,7 +7,7 @@ import { formatDate } from '../../../utils/formatters';
 export type TimelineProps = {
   current?: number;
   events: Array<TimelineEvent>,
-  eventsWithDateAsAString?: Array<SerialisedTimelineEvent>,
+  eventsWithDateAsAString: Array<SerialisedTimelineEvent>,
 };
 
 const constructEventType = (version: number, versionOfRecord: boolean) => {
@@ -17,7 +17,8 @@ const constructEventType = (version: number, versionOfRecord: boolean) => {
   return version > 1 ? 'revised' : 'reviewed';
 };
 
-export const Timeline = ({ current, events }: TimelineProps) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineProps) => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
   const { t } = useTranslation();

@@ -53,7 +53,7 @@ module.exports = defineConfig([{
         "@typescript-eslint/switch-exhaustiveness-check": "warn",
         "import/prefer-default-export": 0, 
         "max-len": ["error", {
-            "code": 240,
+            "code": 260,
         }],
 
         "import/order": ["error", {
