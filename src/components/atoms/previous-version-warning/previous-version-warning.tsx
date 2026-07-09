@@ -1,6 +1,7 @@
+import { type JSX } from 'react';
 import './previous-version-warning.scss';
 
-export const PreviousVersionWarning = ({ url }: { url: string }) => (
+export const PreviousVersionWarning = ({ url }: { url: string }): JSX.Element => (
   <div className="previous-version-warning-container">
     <div className="previous-version-warning">
       <span className="previous-version-warning__text">A newer version is available.</span>

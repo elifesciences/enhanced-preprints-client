@@ -1,4 +1,5 @@
 import './editors-and-reviewers.scss';
+import { type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type Participant = {
@@ -7,7 +8,7 @@ type Participant = {
   institution?: string,
 };
 
-export const EditorsAndReviewers = ({ participants }: { participants: Participant[] }) => {
+export const EditorsAndReviewers = ({ participants }: { participants: Participant[] }): JSX.Element => {
   const { t } = useTranslation();
   return (
     <section className="editors-and-reviewers">

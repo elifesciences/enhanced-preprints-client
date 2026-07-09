@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, type JSX } from 'react';
 import './figure.scss';
 
 export const Figure = ({
   id, content, caption, label,
-}: { content: React.ReactNode, id?: string, caption?: React.ReactNode, label?: string }) => {
+}: { content: React.ReactNode, id?: string, caption?: React.ReactNode, label?: string }): JSX.Element => {
   const captionRef = useRef<HTMLElement>(null);
   const [expanded, setExpanded] = useState(false);
   const [showButton, setShowButton] = useState(false);

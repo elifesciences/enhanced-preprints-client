@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { type Author } from '../../../types';
 import './citation.scss';
 
@@ -13,7 +14,7 @@ export type CitationData = {
 
 const formatName = (author: Author) => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
 
-export const Citation = ({ citation }: { citation: CitationData }) => (
+export const Citation = ({ citation }: { citation: CitationData }): JSX.Element => (
   <div className="citation">
     <ol className="citation__authors_list">
       {citation.authors.map((author, index) => (

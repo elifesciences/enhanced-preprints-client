@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { type Author } from '../../../types';
 import './copyright.scss';
 
@@ -7,7 +8,7 @@ type CopyrightProps = {
   authors?: Author[],
 };
 
-export const Copyright = ({ license, copyrightYear, authors }: CopyrightProps) => {
+export const Copyright = ({ license, copyrightYear, authors }: CopyrightProps): JSX.Element => {
   let copyrightText;
   let hasCopyright = false;
   let authorName = '';

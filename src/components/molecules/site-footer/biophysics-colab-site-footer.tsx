@@ -1,11 +1,12 @@
 import Image from 'next/image';
+import { type JSX } from 'react';
 import linkedinLogo from '../../../../public/linkedin-logo.png';
 import logo from '../../../../public/science-colab-logo.png';
 import scietyLogo from '../../../../public/sciety-logo.png';
 import twitterLogo from '../../../../public/twitter-logo.png';
 import './biophysics-colab-site-footer.scss';
 
-export const BiophysicsColabSiteFooter = () => (
+export const BiophysicsColabSiteFooter = (): JSX.Element => (
   <div className="biophysics-colab-site-footer">
     <footer className="footer">
       <div className="footer-column">

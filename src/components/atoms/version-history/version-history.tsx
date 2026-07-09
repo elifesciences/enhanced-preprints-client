@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { type VersionHistoryItem } from '../../../types';
 import { formatDate } from '../../../utils/formatters';
 import './version-history.scss';
@@ -6,7 +7,7 @@ type Props = {
   versions: VersionHistoryItem[]
 };
 
-export const VersionHistory = ({ versions }: Props) => (
+export const VersionHistory = ({ versions }: Props): JSX.Element => (
   <div id="version-history" className="version-history">
     <h2>Version history</h2>
     <ul>

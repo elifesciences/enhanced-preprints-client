@@ -1,4 +1,5 @@
 import './content-header.scss';
+import { type JSX } from 'react';
 import { type Author, type Content, type Institution } from '../../../types';
 import { Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
@@ -21,7 +22,7 @@ export const ContentHeader = ({
   authors,
   doi,
   license,
-}: ContentHeaderProps) => {
+}: ContentHeaderProps): JSX.Element => {
   const processedInstitutions = authors
     .flatMap((author) => author.affiliations)
     .filter(filterInstitutions)

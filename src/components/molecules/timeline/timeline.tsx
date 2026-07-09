@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, type JSX } from 'react';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
 import {type SerialisedTimelineEvent, type TimelineEvent} from '../../../types';
@@ -17,7 +17,7 @@ const constructEventType = (version: number, versionOfRecord: boolean) => {
   return version > 1 ? 'revised' : 'reviewed';
 };
 
-export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineProps) => {
+export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineProps): JSX.Element => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
   const sortedEventsWithDateAsAString = eventsWithDateAsAString.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);

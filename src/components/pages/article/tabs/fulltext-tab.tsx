@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import '../article-page.scss';
 import {
   type MetaData,
@@ -22,7 +23,7 @@ type Props = {
   metrics: MetricsType | null,
 };
 
-export const ArticleFullTextTab = (props: Props) => {
+export const ArticleFullTextTab = (props: Props): JSX.Element => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...props.headings,

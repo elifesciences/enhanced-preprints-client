@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import './socials.scss';
 
@@ -8,7 +9,7 @@ type SocialsProps = {
 
 export const Socials = ({
   doi, title,
-}: SocialsProps) => {
+}: SocialsProps): JSX.Element => {
   const { t } = useTranslation();
   const doiUrl = `https://doi.org/${doi}`;
   const encodedTitle = encodeURIComponent(title);

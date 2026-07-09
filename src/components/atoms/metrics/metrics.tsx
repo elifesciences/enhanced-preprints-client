@@ -1,5 +1,6 @@
 import Script from 'next/script';
 import pluralize from 'pluralize';
+import { type JSX } from 'react';
 import { type Metrics as MetricsType } from '../../../types';
 import './metrics.scss';
 
@@ -8,7 +9,7 @@ type MetricsProps = {
   doi: string;
 };
 
-export const Metrics = ({ metrics, doi }: MetricsProps) => {
+export const Metrics = ({ metrics, doi }: MetricsProps): JSX.Element => {
   const metricsFormatter = new Intl.NumberFormat('en-GB', { useGrouping: true });
 
   const altMetrics = (_doi: string) => <div>

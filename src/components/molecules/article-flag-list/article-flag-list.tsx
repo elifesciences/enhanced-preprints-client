@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { ArticleFlag } from '../../atoms/article-flag/article-flag';
 import './article-flag-list.scss';
 
@@ -34,7 +35,7 @@ const msaNames: Record<string, string> = {
 
 const msaURLs: Record<string, string> = Object.fromEntries(Object.entries(msaNames).map(([name, id]) => [name, `https://elifesciences.org/subjects/${id}`]));
 
-export const ArticleFlagList = ({ msas }: Props) => {
+export const ArticleFlagList = ({ msas }: Props): JSX.Element => {
   if (msas.length === 0) {
     return <></>;
   }

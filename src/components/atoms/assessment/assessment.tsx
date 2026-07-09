@@ -1,5 +1,5 @@
 import './assessment.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FeaturesContext } from '../../../features';
 import { isPdfRoute } from '../../../utils/isPdfRoute';
@@ -10,7 +10,7 @@ import { Descriptors } from '../descriptors/descriptors';
 import { TermsList } from '../terms-list/terms-list';
 
 type Props = { content: string, doi?: string };
-export const Assessment = ({ content, doi }: Props) => {
+export const Assessment = ({ content, doi }: Props): JSX.Element => {
   const { t } = useTranslation();
   const features = useContext(FeaturesContext);
 

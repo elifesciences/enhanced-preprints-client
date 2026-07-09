@@ -1,8 +1,9 @@
 import './error-messages.scss';
 import Image from 'next/image';
+import { type JSX } from 'react';
 import MissingImage from '../../../images/errors/404.svg';
 
-export const ErrorMessages = () => (
+export const ErrorMessages = (): JSX.Element => (
   <div className="error-container">
     <Image src={MissingImage} width="64" height="157" alt="We're on it" className="error__icon" />
     <h2 className="error__title">We&apos;re looking into it</h2>

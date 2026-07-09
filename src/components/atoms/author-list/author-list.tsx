@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, type JSX } from 'react';
 import { type Author, type AuthorNotesData } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
@@ -57,7 +57,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
 
 export const AuthorList = ({
   authors, authorNotes,
-}: { authors: Author[], authorNotes: AuthorNotesData }) => (
+}: { authors: Author[], authorNotes: AuthorNotesData }): JSX.Element => (
   <>
     <h3 className="author-list__title">Author information</h3>
     <ol className="author-list">

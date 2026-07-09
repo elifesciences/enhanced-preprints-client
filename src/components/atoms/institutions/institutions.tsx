@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type JSX } from 'react';
 import './institutions.scss';
 import { type Institution } from '../../../types';
 
 const institutionLimit = 3;
 
-export const Institutions = ({ institutions }: { institutions: Institution[] }) => {
+export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);

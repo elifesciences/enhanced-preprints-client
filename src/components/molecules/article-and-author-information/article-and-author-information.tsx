@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { type Author, type AuthorNotesData, type VersionHistoryItem } from '../../../types';
 import './article-and-author-information.scss';
 import { AuthorList } from '../../atoms/author-list/author-list';
@@ -13,7 +14,7 @@ export const ArticleAndAuthorInformation = ({
   copyrightYear,
   versions,
   umbrellaDoi,
-}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }) => {
+}: { authors: Author[], authorNotes: AuthorNotesData, versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }): JSX.Element => {
   const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes?.map((note) => note.rid)).flat();
   const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
 

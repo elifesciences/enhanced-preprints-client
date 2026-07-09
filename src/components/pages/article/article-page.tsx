@@ -1,4 +1,4 @@
-import { type ReactElement } from 'react';
+import { type JSX, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
@@ -31,7 +31,7 @@ type ArticlePageProps = {
   timelineWithDatesAsAString: SerialisedTimelineEvent[],
 };
 
-export const ArticlePage = (props: ArticlePageProps) => {
+export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
   const { t } = useTranslation();
   const { doi } = props.metaData;
   const citationDoi = props.citationDoi ?? doi;

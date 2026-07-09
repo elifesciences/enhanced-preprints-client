@@ -1,9 +1,10 @@
+import { type JSX } from 'react';
 import { type Reference as ReferenceData } from '../../../types';
 import { Heading } from '../heading/heading';
 import './reference-list.scss';
 import { Reference } from '../reference/reference';
 
-export const ReferenceList = ({ references }: { references: ReferenceData[] }) => (
+export const ReferenceList = ({ references }: { references: ReferenceData[] }): JSX.Element => (
   <section>
     <Heading id="references" headingLevel={1} content="References" />
     <ul className="reference-list">

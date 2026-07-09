@@ -1,5 +1,6 @@
 import './review-process.scss';
 import parse from 'html-react-parser';
+import { type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 
 type ReviewProcessProps = {
@@ -11,7 +12,7 @@ type ReviewProcessProps = {
 
 export const ReviewProcess = ({
   current, evaluationSummary, authorResponse, versionOfRecord,
-}: ReviewProcessProps) => {
+}: ReviewProcessProps): JSX.Element => {
   const { t } = useTranslation();
   const type = current && current > 1 ? 'revised' : 'reviewed';
   const evaluationSummaryClass = evaluationSummary ? ' review-process--with-evaluation-summary' : '';

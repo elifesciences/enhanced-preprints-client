@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { type JSX } from 'react';
 import './site-header.scss';
 import logo from '../../../../public/biophysics-colab-logo.png';
 
-export const SiteHeaderBiophysicsColab = () => (
+export const SiteHeaderBiophysicsColab = (): JSX.Element => (
   <div className="site-header">
     <div className="site-header-container">
       <a href="/" className="site-header__logo_link">

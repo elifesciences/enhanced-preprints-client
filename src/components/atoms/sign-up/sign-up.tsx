@@ -1,7 +1,8 @@
+import { type JSX } from 'react';
 import './sign-up.scss';
 import { Button } from '../../atoms/button/button';
 
-export const SignUp = () => (
+export const SignUp = (): JSX.Element => (
   <section className="email-cta">
     <div className="email-cta__container">
       <header className="email-cta__header">

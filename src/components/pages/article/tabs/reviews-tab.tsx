@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import '../article-page.scss';
 import { useTranslation } from 'react-i18next';
 import { type PeerReview } from '../../../../types';
@@ -6,7 +7,7 @@ import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
-export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: { peerReview: PeerReview, currentVersion: number, versionOfRecord?: boolean }) => {
+export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: { peerReview: PeerReview, currentVersion: number, versionOfRecord?: boolean }): JSX.Element => {
   const { t } = useTranslation();
   const headings = [
     { id: 'review-process', text: 'Peer review process' },

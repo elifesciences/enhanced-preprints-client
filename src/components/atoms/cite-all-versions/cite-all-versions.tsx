@@ -1,10 +1,11 @@
 import './cite-all-versions.scss';
+import { type JSX } from 'react';
 
 type Props = {
   doi: string
 };
 
-export const CiteAllVersions = ({ doi }: Props) => (
+export const CiteAllVersions = ({ doi }: Props): JSX.Element => (
   <>
     <div id="cite-all-versions" className="cite-all-versions">
       <h2>Cite all versions</h2>

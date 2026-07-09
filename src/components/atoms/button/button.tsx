@@ -1,4 +1,5 @@
 import './button.scss';
+import { type JSX } from 'react';
 import { classNameVariant } from '../../../utils/class-name-variant';
 
 export const buttonIconNames: Array<string> = ['download', 'share', 'citation', 'follow'];
@@ -16,7 +17,7 @@ type ButtonProps = {
 
 export const Button = ({
   text, iconName, url, variant, onClick, download, rel,
-}: ButtonProps) => (
+}: ButtonProps): JSX.Element => (
   <a className={`button${classNameVariant(iconName, ' button--icon', '-')}${classNameVariant(variant, ' button')}`} href={url} onClick={onClick} download={download} rel={rel}>
     {text}
   </a>

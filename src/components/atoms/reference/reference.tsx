@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import { type Author, type Reference as ReferenceData } from '../../../types';
 import './reference.scss';
@@ -56,7 +57,7 @@ function prepareReference(reference: ReferenceData) {
   };
 }
 
-export const Reference = ({ reference }: ReferenceBodyProps) => {
+export const Reference = ({ reference }: ReferenceBodyProps): JSX.Element => {
   const { t } = useTranslation();
 
   const {

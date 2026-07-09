@@ -1,3 +1,4 @@
+import { type JSX } from 'react';
 import './related-content.scss';
 
 export type RelatedContentData = {
@@ -12,7 +13,7 @@ type RelatedContentProps = {
   articles: RelatedContentData[]
 };
 
-export const RelatedContent = ({ articles }: RelatedContentProps) => (
+export const RelatedContent = ({ articles }: RelatedContentProps): JSX.Element => (
   <ul className="related-content">
     {articles.map(({
       type, content, title, url,
