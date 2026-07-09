@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
-import {type MetaData, type Metrics, SerialisedTimelineEvent, type TimelineEvent} from '../../../types';
+import {type MetaData, type Metrics, type SerialisedTimelineEvent, type TimelineEvent} from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
