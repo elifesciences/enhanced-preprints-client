@@ -28,7 +28,7 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
   return undefined;
 };
 
-const stringsToDates = ({ timeline }: { timeline: SerialisedTimelineEvent[] }): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
+const stringsToDates = (timeline: SerialisedTimelineEvent[]): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
 const getRoutePrefix = (router: NextRouter) => {
   if (router.asPath.startsWith('/previews/')) {
@@ -56,7 +56,7 @@ const Page = ({
   versionOfRecord,
 }: ServerSideProps) => {
   const { t } = useTranslation();
-  const processedTimeline = stringsToDates({ timeline });
+  const processedTimeline = stringsToDates(timeline);
 
   const processedTimelineWithTranslations = processedTimeline.map(({
     name, version, datePrefix, ...other
