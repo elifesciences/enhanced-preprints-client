@@ -17,9 +17,9 @@ const constructEventType = (version: number, versionOfRecord: boolean) => {
   return version > 1 ? 'revised' : 'reviewed';
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineProps) => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
+  const sortedEventsWithDateAsAString = eventsWithDateAsAString.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
   const { t } = useTranslation();
 
@@ -29,7 +29,7 @@ export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineP
     <div className="review-timeline-container">
       <dl className={`review-timeline${expanded !== false ? ' review-timeline--expanded' : ''}`} id="review-timeline" aria-label="Version history">
         {
-          sortedEvents.map((event, index) => {
+          sortedEventsWithDateAsAString.map((event, index) => {
             const typeEventClass = ` review-timeline__event--${constructEventType(event.version, event.versionOfRecord ?? false)}`;
             const activeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
             const evaluationSummaryClass = event.withEvaluationSummary ? ' review-timeline__event--with-evaluation-summary' : '';
@@ -50,7 +50,7 @@ export const Timeline = ({ current, events, eventsWithDateAsAString }: TimelineP
                   {event.versionIndicator && <span className="review-timeline__version">{event.versionIndicator}</span>}
                   {event.datePrefix && <span className="review-timeline__date-prefix">{event.datePrefix}</span>}
                   <time className="review-timeline__date"
-                    dateTime={event.date.toISOString()}>{formatDate(event.date)}</time>
+                    dateTime={event.date}>{formatDate(new Date(event.date))}</time>
                   {activeEventClass && <a className="review-timeline__link"
                     href={`${event.url}/reviews#review-process`}>{event.version > 1 ? t('revised') : t('not_revised')}</a>}
                 </dd>
