@@ -7,7 +7,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { config } from '../../config';
-import { type SerialisedTimelineEvent, type TimelineEvent } from '../../types';
+import { type TimelineEvent } from '../../types';
 import {
   contentToText, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
@@ -27,8 +27,6 @@ const getPublishedDate = (events: TimelineEvent[], currentVersion: number): stri
 
   return undefined;
 };
-
-const stringsToDates = (timeline: SerialisedTimelineEvent[]): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
 
 const getRoutePrefix = (router: NextRouter) => {
   if (router.asPath.startsWith('/previews/')) {
@@ -56,9 +54,8 @@ const Page = ({
   versionOfRecord,
 }: ServerSideProps) => {
   const { t } = useTranslation();
-  const processedTimeline = stringsToDates(timeline);
 
-  const processedTimelineWithTranslations = processedTimeline.map(({
+  const processedTimelineWithTranslations = timeline.map(({
     name, version, datePrefix, ...other
   }) => ({
     version,
@@ -153,7 +150,7 @@ const Page = ({
         <meta name="citation_id" content={metaData.eLocationId ?? `RP${metaData.msid}`}/>
         <meta name="citation_abstract" content={contentToText(metaData.abstract)}/>
         <meta name="citation_doi" content={citationDoi ?? metaData.doi}/>
-        <meta name="citation_publication_date" content={getPublishedDate(processedTimeline, +metaData.version)}/>
+        <meta name="citation_publication_date" content={getPublishedDate(timeline, +metaData.version)}/>
         {metaData.pdfUrl && <meta name="citation_pdf_url" content={metaData.pdfUrl}/>}
         <meta name="citation_xml_url" content={metaData.xmlUrl}/>
         <meta name="citation_fulltext_html_url" content={t('reviewed_preprints_url', { msid: metaData.msid })}/>
