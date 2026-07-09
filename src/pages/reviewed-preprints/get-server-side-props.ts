@@ -9,7 +9,7 @@ import {
   type PeerReview,
   type RelatedContent,
   type SerialisedTimelineEvent,
-  type Content, type TimelineEvent,
+  type Content,
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
@@ -23,7 +23,7 @@ export type ServerSideProps = {
   versionOfRecord?: boolean,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
-  timeline: TimelineEvent[],
+  timeline: SerialisedTimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,
@@ -91,8 +91,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
     };
   }
 
-  const stringsToDates = (timeline: SerialisedTimelineEvent[]): TimelineEvent[] => timeline.map((event) => ({ ...event, date: new Date(event.date) }));
-
   return {
     props: {
       siteName: articleWithVersions.siteName ?? config.siteName,
@@ -102,7 +100,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
-      timeline: stringsToDates(constructTimeline(Object.values(articleWithVersions.versions))),
+      timeline: constructTimeline(Object.values(articleWithVersions.versions)),
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,
