@@ -46,6 +46,14 @@ export const EventTimeline: Story = {
         url: '#',
       },
     ],
+    eventsWithDateAsAString: [
+      {
+        date: new Date('2023-03-18').toString(),
+        version: 1,
+        versionIndicator: 'v1',
+        url: '#',
+      },
+    ],
   },
 };
 
@@ -61,6 +69,16 @@ export const EventTimelineVersionOfRecord:Story = {
         versionOfRecord: true,
       },
     ],
+    eventsWithDateAsAString: [
+      {
+        name: 'Version of Record',
+        date: new Date('2023-03-19').toString(),
+        version: 3,
+        versionIndicator: 'v3',
+        url: '#',
+        versionOfRecord: true,
+      },
+    ],
   },
 };
 
@@ -69,6 +87,14 @@ export const EventTimelineRevised:Story = {
     events: [
       {
         date: new Date('2023-03-19'),
+        version: 2,
+        versionIndicator: 'v2',
+        url: '#',
+      },
+    ],
+    eventsWithDateAsAString: [
+      {
+        date: new Date('2023-03-19').toString(),
         version: 2,
         versionIndicator: 'v2',
         url: '#',
@@ -90,6 +116,20 @@ export const EventTimelineRevisedWithPrevious: Story = {
       {
         url: '#',
         date: new Date('2023-03-18'),
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ],
+    eventsWithDateAsAString: [
+      {
+        url: '#',
+        date: new Date('2023-03-19').toString(),
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18').toString(),
         version: 1,
         versionIndicator: 'v1',
       },
@@ -123,6 +163,26 @@ export const EventTimelineRevisedWithSubsequent: Story = {
         versionIndicator: 'v1',
       },
     ],
+    eventsWithDateAsAString: [
+      {
+        name: 'Version of Record',
+        url: '#',
+        date: new Date('2023-03-20').toString(),
+        version: 3,
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-19').toString(),
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18').toString(),
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ],
   },
   play: async ({ canvasElement }) => {
     await timeLineTest(canvasElement, 'Show all versions', 'Hide all versions', 3);
@@ -149,6 +209,27 @@ export const EventTimelineWithCurated: Story = {
       {
         url: '#',
         date: new Date('2023-03-18'),
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ],
+    eventsWithDateAsAString: [
+      {
+        name: 'Curated Preprint',
+        url: '#',
+        date: new Date('2023-03-20').toString(),
+        version: 3,
+        versionIndicator: 'v3',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-19').toString(),
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18').toString(),
         version: 1,
         versionIndicator: 'v1',
       },
@@ -185,6 +266,29 @@ export const EventTimelineWithEvaluationSummary: Story = {
         versionIndicator: 'v1',
       },
     ],
+    eventsWithDateAsAString: [
+      {
+        name: 'Curated Preprint',
+        url: '#',
+        date: new Date('2023-03-20').toString(),
+        version: 3,
+        versionIndicator: 'v3',
+        withEvaluationSummary: true,
+      },
+      {
+        name: 'Revised Preprint',
+        url: '#',
+        date: new Date('2023-03-19').toString(),
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18').toString(),
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ],
   },
   play: async ({ canvasElement }) => {
     await timeLineTest(canvasElement, 'Show previous versions', 'Hide previous versions', 3);
@@ -217,6 +321,33 @@ export const EventTimelineWithMultipleVOR: Story = {
       {
         url: '#',
         date: new Date('2023-03-18'),
+        version: 1,
+        versionIndicator: 'v1',
+      },
+    ],
+    eventsWithDateAsAString: [
+      {
+        name: 'Version of Record',
+        url: '#',
+        date: new Date('2023-03-21').toString(),
+        datePrefix: 'Updated ',
+        version: 4,
+      },
+      {
+        name: 'Version of Record',
+        url: '#',
+        date: new Date('2023-03-20').toString(),
+        version: 3,
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-19').toString(),
+        version: 2,
+        versionIndicator: 'v2',
+      },
+      {
+        url: '#',
+        date: new Date('2023-03-18').toString(),
         version: 1,
         versionIndicator: 'v1',
       },
