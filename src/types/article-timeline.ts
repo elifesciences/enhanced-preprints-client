@@ -1,4 +1,4 @@
-export type TimelineEvent = {
+type TimelineEvent = {
   name?: string,
   url: string,
   version: number,
