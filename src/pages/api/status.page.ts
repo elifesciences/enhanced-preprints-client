@@ -1,9 +1,15 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiHandler } from 'next';
 import { config } from '../../config';
 
-// ts-unused-exports:disable-next-line
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const status = {
+type StatusResponse = {
+  code: number;
+  status: string;
+  preprints: number;
+  statusItems: { summariesApi: boolean };
+};
+
+const handler: NextApiHandler<StatusResponse> = async (req, res) => {
+  const status: StatusResponse = {
     code: 200,
     status: 'OK',
     preprints: 0,
@@ -22,3 +28,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.status(status.code).json(status);
 };
+
+// ts-unused-exports:disable-next-line
+export default handler;
