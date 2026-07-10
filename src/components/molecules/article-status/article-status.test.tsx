@@ -6,9 +6,6 @@ import '../../../i18n';
 describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
     render(<ArticleStatus timeline={{
-      events: [{
-        version: 2, date: new Date('2024-05-29'), versionIndicator: 'v2', url: '#',
-      }],
       eventsWithDateAsAString: [{
         version: 2, date: new Date('2024-05-29').toString(), versionIndicator: 'v2', url: '#',
       }],

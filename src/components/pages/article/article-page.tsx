@@ -77,7 +77,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
           citation={citation}
           msid={props.metaData.msid}
           {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
-          timeline={{ events: props.timeline, current: +props.metaData.version, eventsWithDateAsAString: props.timelineWithDatesAsAString }}
+          timeline={{ current: +props.metaData.version, eventsWithDateAsAString: props.timelineWithDatesAsAString }}
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>

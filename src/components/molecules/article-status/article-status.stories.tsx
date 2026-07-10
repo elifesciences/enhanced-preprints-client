@@ -20,14 +20,6 @@ export const Status: Story = {
     msid: '12345',
     metrics,
     timeline: {
-      events: [
-        {
-          url: '#',
-          version: 1,
-          versionIndicator: 'v1',
-          date: new Date('2024-05-30'),
-        },
-      ],
       eventsWithDateAsAString: [
         {
           url: '#',
