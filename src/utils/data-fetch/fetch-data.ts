@@ -62,9 +62,18 @@ export const fetchVersion = async (id: string, preview: boolean = false): Promis
   return validated.data;
 };
 
-export const fetchVersions = () => jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`);
+export const fetchVersions = (): Promise<{ items: ArticleSummary[], total: number }> => (
+  jsonFetch<{ items: ArticleSummary[], total: number }>(`${config.apiServer}/api/preprints`)
+);
 
-export const fetchVersionsNoContent = async (page: number, perPage: number, order: 'asc' | 'desc', useDate: 'default' | 'published', startDate: string, endDate: string) => {
+export const fetchVersionsNoContent = async (
+  page: number,
+  perPage: number,
+  order: 'asc' | 'desc',
+  useDate: 'default' | 'published',
+  startDate: string,
+  endDate: string,
+): Promise<{ total: number, items: PublishedEnhancedArticleMetaDataForJournal[] }> => {
   const url = [
     `${config.apiServer}/api/preprints-no-content?`,
     [

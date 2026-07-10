@@ -10,7 +10,7 @@ export const proxyUrlToResponse = async (
   res: NextApiResponse,
   contentDispositionFilename: string,
   canonicalUrl: string,
-) => {
+): Promise<void> => {
   const requestHeaders: IncomingHttpHeaders = req.headers;
   const headers: Record<string, string> = {};
   const whitelistedRequestsHeaders = [
