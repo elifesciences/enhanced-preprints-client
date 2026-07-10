@@ -6,7 +6,7 @@ import '../../../i18n';
 import { type PeerReview } from '../../../types';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import {
-  content, metaData, metrics, peerReview, relatedContent, timeline, timelineWithDatesAsAString,
+  content, metaData, metrics, peerReview, relatedContent, timelineWithDatesAsAString,
 } from '../../../utils/mocks';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { DefaultLayout } from '../../layouts/default';
@@ -63,7 +63,6 @@ export const ArticlePageFullTextTab: Story = {
     relatedContent,
     metrics,
     previousVersionWarningUrl: '#',
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -88,7 +87,6 @@ export const ArticlePageFullTextTabWithLicenseAndCopyrightYear: Story = {
     relatedContent,
     metrics,
     previousVersionWarningUrl: '#',
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -108,7 +106,6 @@ export const ArticlePageFullTextTabNoSummary: Story = {
     relatedContent,
     metrics,
     previousVersionWarningUrl: '#',
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => {
@@ -131,7 +128,6 @@ export const ArticlePageFiguresTab: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -153,7 +149,6 @@ export const ArticlePageReviewedReviewsTab: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -183,7 +178,6 @@ export const ArticlePageReviewedNoEditorsReviewsTab: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -202,7 +196,6 @@ export const ArticlePageRevisedReviewsTab: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -221,7 +214,6 @@ export const ArticlePageRevisedReviewsTabNoSummary: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => {
@@ -244,7 +236,6 @@ export const ArticlePageErrorTab: Story = {
     tabs,
     relatedContent,
     metrics,
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (
@@ -265,7 +256,6 @@ export const ArticlePageRetractionNotice: Story = {
     metrics,
     previousVersionWarningUrl: '#',
     retractionNoticeUrl: '#',
-    timeline,
     timelineWithDatesAsAString,
   },
   render: (args) => (

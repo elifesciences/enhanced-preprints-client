@@ -58,17 +58,6 @@ const Page = ({
   const { t } = useTranslation();
   const processedTimeline = stringsToDates(timeline);
 
-  const processedTimelineWithTranslations = processedTimeline.map(({
-    name, version, datePrefix, ...other
-  }) => ({
-    version,
-    ...other,
-    ...(name ? {
-      name: t(name),
-    } : {}),
-    ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
-  }));
-
   const processedTimelineWithDateAsAStringWithTranslations = timeline.map(({
     name, version, datePrefix, ...other
   }) => ({
@@ -180,7 +169,6 @@ const Page = ({
         metaData={metaData}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
-        timeline={processedTimelineWithTranslations}
         timelineWithDatesAsAString={processedTimelineWithDateAsAStringWithTranslations}
         activeTab={tabName}
         retractionNoticeUrl={retractionNoticeUrl}
