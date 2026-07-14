@@ -1,6 +1,6 @@
 import { t } from 'i18next';
+import { type TimelineEvent } from "./timeline-event";
 import {
-  type TimelineEvent,
   type VersionSummary,
 } from '../../../types';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
