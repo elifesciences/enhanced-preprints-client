@@ -22,4 +22,5 @@ export type MetaData = {
   license?: string,
   versionHistory: VersionHistoryItem[],
   authorNotes: AuthorNotesData,
+  publicationDate?: string,
 };

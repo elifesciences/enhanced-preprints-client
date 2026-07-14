@@ -4,8 +4,20 @@ import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type VersionHistoryItem, type EnhancedArticleWithVersions } from "../../../types";
+import { type VersionHistoryItem, type EnhancedArticleWithVersions, type TimelineEvent } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
+import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
+
+const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
+    const publishedEvent = events.find(({ version }) => version === currentVersion);
+
+    if (publishedEvent) {
+        const date = new Date(publishedEvent.date);
+        return `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
+    }
+
+    return undefined;
+};
 
 const buildCopyrightYearProperty = (copyrightYear: number) => {
     if (copyrightYear > 0) {
@@ -47,5 +59,6 @@ export const constructMetaData = (
         versionHistory: constructVersionHistory(versionHistory),
         authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
         ...buildCopyrightYearProperty(copyrightYear),
+        publicationDate: getPublishedDate(translateTimeline(constructTimeline(Object.values(articleWithVersions.versions))), +articleWithVersions.article.versionIdentifier),
     }
 };
