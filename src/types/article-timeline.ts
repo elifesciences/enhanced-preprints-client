@@ -1,4 +1,4 @@
-export type SerialisedTimelineEvent = {
+export type TimelineEvent = {
   name?: string,
   url: string,
   version: number,

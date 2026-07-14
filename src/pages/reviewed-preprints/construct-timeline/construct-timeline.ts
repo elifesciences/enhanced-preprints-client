@@ -1,6 +1,6 @@
 import { t } from 'i18next';
 import {
-  type SerialisedTimelineEvent,
+  type TimelineEvent,
   type VersionSummary,
 } from '../../../types';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
@@ -24,7 +24,7 @@ const generateTimelineUrl = (version: VersionSummary): string => {
   return '';
 };
 
-export const translateTimeline = (timeline: SerialisedTimelineEvent[]) => timeline.map(({
+export const translateTimeline = (timeline: TimelineEvent[]) => timeline.map(({
   name, version, datePrefix, ...other
 }) => ({
   version,
@@ -35,8 +35,8 @@ export const translateTimeline = (timeline: SerialisedTimelineEvent[]) => timeli
   ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
 }));
 
-export const constructTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
-  const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
+export const constructTimeline = (versions: VersionSummary[]): TimelineEvent[] => {
+  const timeline: TimelineEvent[] = versions.reduce<TimelineEvent[]>((events, current) => {
     if (current.published) {
       const versionNo = +current.versionIdentifier;
       const withEvaluationSummary = (isPreprintVersionSummary(current) && current.withEvaluationSummary) ?? false;

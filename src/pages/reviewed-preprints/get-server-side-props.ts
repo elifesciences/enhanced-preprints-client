@@ -8,7 +8,7 @@ import {
   type Metrics,
   type PeerReview,
   type RelatedContent,
-  type SerialisedTimelineEvent,
+  type TimelineEvent,
   type Content,
 } from '../../types';
 import { contentToImgInfo } from '../../utils/content';
@@ -23,7 +23,7 @@ export type ServerSideProps = {
   versionOfRecord?: boolean,
   imgInfo: Record<string, { width: number, height: number }> | null,
   msidWithVersion: string,
-  timeline: SerialisedTimelineEvent[],
+  timeline: TimelineEvent[],
   relatedContent: RelatedContent[],
   content: Content,
   peerReview: PeerReview | null,

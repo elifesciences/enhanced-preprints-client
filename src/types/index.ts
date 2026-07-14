@@ -1,4 +1,4 @@
-export type { SerialisedTimelineEvent } from './article-timeline';
+export type { TimelineEvent } from './article-timeline';
 export type { Author, AuthorNotesData } from './author';
 export type { Content, HeadingContent, ImageObjectContent, ListContent } from './content';
 export type { Institution } from './institution';

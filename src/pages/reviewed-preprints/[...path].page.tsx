@@ -7,7 +7,7 @@ import { ErrorMessages } from '../../components/atoms/error-messages/error-messa
 import { ArticlePage, type Tab } from '../../components/pages/article/article-page';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../components/pages/article/tabs';
 import { config } from '../../config';
-import { type SerialisedTimelineEvent } from '../../types';
+import { type TimelineEvent } from '../../types';
 import {
   contentToText, contentToFigures, contentToJsx, contentToHeadings,
 } from '../../utils/content';
@@ -17,7 +17,7 @@ import { makeNullableOptional } from '../../utils/make-nullable-optional';
 // ts-unused-exports:disable-next-line
 export { getServerSideProps };
 
-const getPublishedDate = (events: SerialisedTimelineEvent[], currentVersion: number): string | undefined => {
+const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
   const publishedEvent = events.find(({ version }) => version === currentVersion);
 
   if (publishedEvent) {
