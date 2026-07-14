@@ -1,12 +1,12 @@
 import { Fragment, useEffect, useState, type JSX } from 'react';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
-import {type TimelineEvent } from '../../../types';
 import { formatDate } from '../../../utils/formatters';
+import { type ArticlePageProps } from "../../pages/article/article-page";
 
 export type TimelineProps = {
   current?: number;
-  events: Array<TimelineEvent>,
+  events: ArticlePageProps['timeline'],
 };
 
 const constructEventType = (version: number, versionOfRecord: boolean) => {

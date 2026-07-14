@@ -2,7 +2,8 @@ import { type JSX, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
-import {type MetaData, type Metrics, type TimelineEvent } from '../../../types';
+import {type ServerSideProps} from "../../../pages/reviewed-preprints/get-server-side-props";
+import {type MetaData, type Metrics } from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
@@ -16,7 +17,7 @@ export type Tab = {
   linkElement: ReactElement<any>,
 };
 
-type ArticlePageProps = {
+export type ArticlePageProps = {
   metaData: MetaData,
   citationDoi?: string,
   msidWithVersion: string,
@@ -27,7 +28,7 @@ type ArticlePageProps = {
   tabs: Tab[],
   previousVersionWarningUrl?: string,
   retractionNoticeUrl?: string,
-  timeline: TimelineEvent[],
+  timeline: ServerSideProps['timeline'],
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
