@@ -55,17 +55,6 @@ const Page = ({
 }: ServerSideProps) => {
   const { t } = useTranslation();
 
-  const processedTimelineWithDateAsAStringWithTranslations = timeline.map(({
-    name, version, datePrefix, ...other
-  }) => ({
-    version,
-    ...other,
-    ...(name ? {
-      name: t(name),
-    } : {}),
-    ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
-  }));
-
   const router = useRouter();
   const routePrefix = getRoutePrefix(router);
   const tabLinks = [
@@ -166,7 +155,7 @@ const Page = ({
         metaData={metaData}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
-        timelineWithDatesAsAString={processedTimelineWithDateAsAStringWithTranslations}
+        timelineWithDatesAsAString={timeline}
         activeTab={tabName}
         retractionNoticeUrl={retractionNoticeUrl}
       >

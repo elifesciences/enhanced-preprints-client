@@ -1,6 +1,6 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import { constructMetaData } from './construct-meta-data';
-import { constructTimeline } from "./construct-timeline/construct-timeline";
+import { constructTimeline, translateTimeline } from "./construct-timeline/construct-timeline";
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {
@@ -100,7 +100,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
       imgInfo,
       msidWithVersion: id,
       content: articleWithVersions.article.article.content,
-      timeline: constructTimeline(Object.values(articleWithVersions.versions)),
+      timeline: translateTimeline(constructTimeline(Object.values(articleWithVersions.versions))),
       relatedContent: articleWithVersions.article.relatedContent ?? [],
       peerReview: articleWithVersions.article.peerReview ?? null, // cast to null because undefined isn't a JSON value
       metrics: articleWithVersions.metrics ?? null,

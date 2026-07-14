@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import {
   type SerialisedTimelineEvent,
   type VersionSummary,
@@ -22,6 +23,17 @@ const generateTimelineUrl = (version: VersionSummary): string => {
 
   return '';
 };
+
+export const translateTimeline = (timeline: SerialisedTimelineEvent[]) => timeline.map(({
+  name, version, datePrefix, ...other
+}) => ({
+  version,
+  ...other,
+  ...(name ? {
+    name: t(name),
+  } : {}),
+  ...(datePrefix ? { datePrefix: t(datePrefix) } : {}),
+}));
 
 export const constructTimeline = (versions: VersionSummary[]): SerialisedTimelineEvent[] => {
   const timeline: SerialisedTimelineEvent[] = versions.reduce<SerialisedTimelineEvent[]>((events, current) => {
