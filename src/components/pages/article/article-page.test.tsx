@@ -5,7 +5,7 @@ import { ArticlePage } from './article-page';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../utils/content';
 import {
-  metaData, peerReview, citation, relatedContent, timelineWithDatesAsAString,
+  metaData, peerReview, citation, relatedContent, timeline,
 } from '../../../utils/mocks';
 import { ArticleStatus } from '../../molecules/article-status/article-status';
 import '../../../i18n';
@@ -17,19 +17,19 @@ jest.mock('next/navigation', () => ({
 
 describe('ArticlePage', () => {
   it('renders correctly', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="fulltext" tabs={[]} previousVersionWarningUrl="http://latest.version">
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="fulltext" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with figures tab', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleFiguresTab content={''} />
     </ArticlePage>)).not.toThrow();
   });
 
   it('renders with reviews tab', () => {
-    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="reviews" tabs={[]} previousVersionWarningUrl="http://latest.version">
+    expect(() => render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="reviews" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleReviewsTab peerReview={peerReview} currentVersion={1} />
     </ArticlePage>)).not.toThrow();
   });
@@ -49,7 +49,7 @@ describe('ArticlePage', () => {
         linkElement: <a href={'/reviewed-preprints/12345v1/reviews#tab-content'}>Peer review</a>,
       },
     ];
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="fulltext" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="fulltext" tabs={tabs} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
@@ -62,7 +62,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="figures" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="figures" tabs={tabs} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
@@ -71,7 +71,7 @@ describe('ArticlePage', () => {
     expect(screen.getByText('Peer review').parentElement?.classList.value).not.toContain('tab-label--active');
 
     cleanup();
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="reviews" tabs={tabs} previousVersionWarningUrl="http://latest.version">
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="reviews" tabs={tabs} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
@@ -84,7 +84,7 @@ describe('ArticlePage', () => {
     const expectedDoi = '10.7554/eLife.123456.1';
     const encodedExpectedDoi = encodeURIComponent(expectedDoi);
     const { container } = render(
-      <ArticleStatus doi={expectedDoi} umbrellaDoi="10.7554/eLife.85111" pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} timeline={{ eventsWithDateAsAString: timelineWithDatesAsAString }} msid="12345"/>,
+      <ArticleStatus doi={expectedDoi} umbrellaDoi="10.7554/eLife.85111" pdfUrl={metaData.pdfUrl} title={contentToText(metaData.title)} citation={citation} timeline={{ events: timeline }} msid="12345"/>,
     );
 
     fireEvent.click(screen.getByText('Share'));
@@ -97,7 +97,7 @@ describe('ArticlePage', () => {
   });
 
   it('renders related content', () => {
-    render(<ArticlePage relatedContent={relatedContent} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
+    render(<ArticlePage relatedContent={relatedContent} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
@@ -107,7 +107,7 @@ describe('ArticlePage', () => {
   });
 
   it('renders metrics if present', () => {
-    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timelineWithDatesAsAString={timelineWithDatesAsAString} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
+    render(<ArticlePage relatedContent={[]} msidWithVersion="12345v1" metaData={metaData} timeline={timeline} activeTab="figures" tabs={[]} previousVersionWarningUrl="http://latest.version">
       <ArticleFullTextTab headings={[]} content={''} peerReview={peerReview} metaData={metaData} metrics={null} />
     </ArticlePage>);
 
@@ -123,7 +123,7 @@ describe('ArticlePage', () => {
         relatedContent={[]}
         msidWithVersion="12345v1"
         metaData={{ ...metaData, authors: [] }}
-        timelineWithDatesAsAString={timelineWithDatesAsAString}
+        timeline={timeline}
         activeTab="figures"
         tabs={[]}
       >
@@ -143,7 +143,7 @@ describe('ArticlePage', () => {
         relatedContent={[]}
         msidWithVersion="12345v1"
         metaData={{ ...metaData, authors: [] }}
-        timelineWithDatesAsAString={timelineWithDatesAsAString}
+        timeline={timeline}
         activeTab="pdf"
         tabs={[]}
         previousVersionWarningUrl="http://latest.version"
@@ -163,7 +163,7 @@ describe('ArticlePage', () => {
         relatedContent={relatedContent}
         msidWithVersion="12345v1"
         metaData={{ ...metaData, authors: [] }}
-        timelineWithDatesAsAString={timelineWithDatesAsAString}
+        timeline={timeline}
         activeTab="pdf"
         tabs={[]}
         previousVersionWarningUrl="http://latest.version"
@@ -182,7 +182,7 @@ describe('ArticlePage', () => {
       relatedContent={[]}
       msidWithVersion="12345v1"
       metaData={metaData}
-      timelineWithDatesAsAString={timelineWithDatesAsAString}
+      timeline={timeline}
       activeTab="figures"
       tabs={[]}
     >
@@ -197,7 +197,7 @@ describe('ArticlePage', () => {
       relatedContent={[]}
       msidWithVersion="12345v1"
       metaData={metaData}
-      timelineWithDatesAsAString={timelineWithDatesAsAString}
+      timeline={timeline}
       activeTab="figures"
       tabs={[]}
       retractionNoticeUrl='/an-arbitrary-retraction-notice'
@@ -213,7 +213,7 @@ describe('ArticlePage', () => {
       relatedContent={[]}
       msidWithVersion="12345v1"
       metaData={metaData}
-      timelineWithDatesAsAString={timelineWithDatesAsAString}
+      timeline={timeline}
       activeTab="figures"
       tabs={[]}
       retractionNoticeUrl='/an-arbitrary-retraction-notice'

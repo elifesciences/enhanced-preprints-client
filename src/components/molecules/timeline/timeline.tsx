@@ -6,7 +6,7 @@ import { formatDate } from '../../../utils/formatters';
 
 export type TimelineProps = {
   current?: number;
-  eventsWithDateAsAString: Array<SerialisedTimelineEvent>,
+  events: Array<SerialisedTimelineEvent>,
 };
 
 const constructEventType = (version: number, versionOfRecord: boolean) => {
@@ -16,20 +16,20 @@ const constructEventType = (version: number, versionOfRecord: boolean) => {
   return version > 1 ? 'revised' : 'reviewed';
 };
 
-export const Timeline = ({ current, eventsWithDateAsAString }: TimelineProps): JSX.Element => {
-  const sortedEventsWithDateAsAString = eventsWithDateAsAString.sort((a, b) => b.version - a.version);
+export const Timeline = ({ current, events }: TimelineProps): JSX.Element => {
+  const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
   const { t } = useTranslation();
 
   useEffect(() => setExpanded(false), []);
-  const expansionText = `${expanded ? 'Hide' : 'Show'} ${sortedEventsWithDateAsAString.length > 1 && sortedEventsWithDateAsAString[0].version === current ? `previous version${sortedEventsWithDateAsAString.length > 2 ? 's' : ''}` : 'all versions'}`;
+  const expansionText = `${expanded ? 'Hide' : 'Show'} ${sortedEvents.length > 1 && sortedEvents[0].version === current ? `previous version${sortedEvents.length > 2 ? 's' : ''}` : 'all versions'}`;
   return (
     <div className="review-timeline-container">
       <dl className={`review-timeline${expanded !== false ? ' review-timeline--expanded' : ''}`} id="review-timeline" aria-label="Version history">
         {
-          sortedEventsWithDateAsAString.map((event, index) => {
+          sortedEvents.map((event, index) => {
             const typeEventClass = ` review-timeline__event--${constructEventType(event.version, event.versionOfRecord ?? false)}`;
-            const activeEventClass = (sortedEventsWithDateAsAString.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
+            const activeEventClass = (sortedEvents.length === 1 || (current && current === event.version)) ? ' review-timeline__event--active' : '';
             const evaluationSummaryClass = event.withEvaluationSummary ? ' review-timeline__event--with-evaluation-summary' : '';
             const hidden = (current && current !== event.version && expanded === false);
             const eventName = event.name ?? 'Reviewed Preprint';
@@ -57,7 +57,7 @@ export const Timeline = ({ current, eventsWithDateAsAString }: TimelineProps): J
           })
         }
       </dl>
-      {(sortedEventsWithDateAsAString.length > 1 && expanded !== null) &&
+      {(sortedEvents.length > 1 && expanded !== null) &&
       <button aria-controls="review-timeline" aria-expanded={expanded}
         className={`review-timeline__expansion${expanded ? ' review-timeline__expansion--expanded' : ''}`}
         onClick={() => setExpanded(!expanded)}>{expansionText}</button>}

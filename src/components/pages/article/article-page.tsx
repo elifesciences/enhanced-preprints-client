@@ -27,7 +27,7 @@ type ArticlePageProps = {
   tabs: Tab[],
   previousVersionWarningUrl?: string,
   retractionNoticeUrl?: string,
-  timelineWithDatesAsAString: SerialisedTimelineEvent[],
+  timeline: SerialisedTimelineEvent[],
 };
 
 export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
@@ -76,7 +76,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
           citation={citation}
           msid={props.metaData.msid}
           {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
-          timeline={{ current: +props.metaData.version, eventsWithDateAsAString: props.timelineWithDatesAsAString }}
+          timeline={{ current: +props.metaData.version, events: props.timeline }}
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>

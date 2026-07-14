@@ -155,7 +155,7 @@ const Page = ({
         metaData={metaData}
         msidWithVersion={msidWithVersion}
         tabs={tabs}
-        timelineWithDatesAsAString={timeline}
+        timeline={timeline}
         activeTab={tabName}
         retractionNoticeUrl={retractionNoticeUrl}
       >

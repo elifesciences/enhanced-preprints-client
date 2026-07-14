@@ -1,4 +1,4 @@
-export const timelineWithDatesAsAString = [
+export const timeline = [
     {
         name: 'Version of Record',
         url: '#',

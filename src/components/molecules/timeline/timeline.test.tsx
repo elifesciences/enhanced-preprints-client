@@ -7,7 +7,7 @@ describe('Timeline', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('13/01/2001');
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
       },
@@ -24,7 +24,7 @@ describe('Timeline', () => {
 
   it('may have a timeline item with a name', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         name: 'New name', url: '#', version: 1, date: new Date('2001-01-13').toString(),
       },
@@ -38,7 +38,7 @@ describe('Timeline', () => {
 
   it('may have a timeline item with a date prefix', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         datePrefix: 'Updated', url: '#', version: 1, date: new Date('2001-01-13').toString(),
       },
@@ -52,7 +52,7 @@ describe('Timeline', () => {
 
   it('has an appropriate aria-label', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
       },
@@ -66,7 +66,7 @@ describe('Timeline', () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString')
       .mockReturnValueOnce('14/02/2002');
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         url: '#', version: 2, date: new Date('2002-02-14').toString(), versionIndicator: 'v2',
       },
@@ -83,7 +83,7 @@ describe('Timeline', () => {
 
   it('renders multiple reviewed timeline items, and one custom named item', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         name: 'Custom named preprint', url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
       },
@@ -102,7 +102,7 @@ describe('Timeline', () => {
 
   it('should render a timeline event with an optional evaluation summary', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         name: 'With evaluation summary', url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2', withEvaluationSummary: true,
       },
@@ -120,7 +120,7 @@ describe('Timeline', () => {
 
   it('should render a timeline event indicating whether reviewed, revised or version of record', () => {
     render(<Timeline
-      eventsWithDateAsAString={[
+      events={[
       {
         name: 'Version of record', url: '#', version: 3, date: new Date('2002-02-23').toString(), versionIndicator: 'v3', versionOfRecord: true,
       },
@@ -154,7 +154,7 @@ describe('Timeline', () => {
 
     it('should not show the expand text when there is only one entry', () => {
       render(<Timeline
-        eventsWithDateAsAString={[
+        events={[
         {
           url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
         },
@@ -166,7 +166,7 @@ describe('Timeline', () => {
 
     it('should show the expand text when there is more than one entry', () => {
       render(<Timeline
-        eventsWithDateAsAString={[
+        events={[
         {
           url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
         },
@@ -182,7 +182,7 @@ describe('Timeline', () => {
     it('should expand when the text is clicked', () => {
       render(<Timeline
         current={2}
-        eventsWithDateAsAString={[
+        events={[
             {
               url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
             },
@@ -203,7 +203,7 @@ describe('Timeline', () => {
     it('should collapse when the text is clicked', () => {
       render(<Timeline
         current={2}
-        eventsWithDateAsAString={[
+        events={[
         {
           url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
         },
@@ -225,7 +225,7 @@ describe('Timeline', () => {
     it('should notify screen readers of expansion', () => {
       render(<Timeline
         current={2}
-        eventsWithDateAsAString={[
+        events={[
         {
           url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
         },
@@ -252,7 +252,7 @@ describe('Timeline', () => {
       it('should show the text "Show all versions" when there are more than one entries and the latest is not the current', () => {
         render(<Timeline
           current={1}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
           },
@@ -268,7 +268,7 @@ describe('Timeline', () => {
       it('should show the text "Show previous version" when there are two entries and the latest is the current', () => {
         render(<Timeline
           current={2}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
           },
@@ -284,7 +284,7 @@ describe('Timeline', () => {
       it('should show the text "Show previous versions" when there are more than two entries and the latest is the current', () => {
         render(<Timeline
           current={3}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
           },
@@ -305,7 +305,7 @@ describe('Timeline', () => {
       it('should show the text "Hide all versions" when there are more than one entries and the latest is not the current', () => {
         render(<Timeline
           current={1}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
           },
@@ -323,7 +323,7 @@ describe('Timeline', () => {
       it('should show the text "Hide previous version" when there are two entries and the latest is the current', () => {
         render(<Timeline
           current={2}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
           },
@@ -341,7 +341,7 @@ describe('Timeline', () => {
       it('should show the text "Hide previous versions" when there are more than two entries and the latest is the current', () => {
         render(<Timeline
           current={3}
-          eventsWithDateAsAString={[
+          events={[
           {
             url: '#', version: 3, date: new Date('2003-03-26').toString(),
           },
@@ -377,7 +377,7 @@ describe('Timeline', () => {
     it('should display the correct entry regardless of input order', () => {
       render(<Timeline
         current={3}
-        eventsWithDateAsAString={entriesWithDatesAsAString}
+        events={entriesWithDatesAsAString}
       />);
 
       expect(screen.getByText('March 26, 2003')).toBeInTheDocument();
@@ -386,7 +386,7 @@ describe('Timeline', () => {
     it('should display the entries in the correct order when expanded', () => {
       render(<Timeline
         current={3}
-        eventsWithDateAsAString={entriesWithDatesAsAString}
+        events={entriesWithDatesAsAString}
       />);
 
       fireEvent.click(document.getElementsByClassName('review-timeline__expansion')[0]);

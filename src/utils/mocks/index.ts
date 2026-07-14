@@ -6,5 +6,5 @@ export { references } from './references';
 export { citation } from './citation';
 export { relatedContent } from './related-content';
 export { metrics } from './metrics';
-export { timelineWithDatesAsAString } from './timeline-with-dates-as-a-string';
+export { timeline } from './timeline';
 export { versionHistory } from './version-history';

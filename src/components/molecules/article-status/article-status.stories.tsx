@@ -20,7 +20,7 @@ export const Status: Story = {
     msid: '12345',
     metrics,
     timeline: {
-      eventsWithDateAsAString: [
+      events: [
         {
           url: '#',
           version: 1,
