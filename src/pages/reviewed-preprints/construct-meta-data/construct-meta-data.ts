@@ -6,7 +6,7 @@ import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
 import { type VersionHistoryItem, type EnhancedArticleWithVersions } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
-import {type TimelineEvent} from "../construct-timeline";
+import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
