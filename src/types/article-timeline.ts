@@ -1,12 +1,10 @@
-type TimelineEvent = {
+export type SerialisedTimelineEvent = {
   name?: string,
   url: string,
   version: number,
   versionIndicator?: string,
-  date: Date,
+  date: string,
   datePrefix?: string,
   withEvaluationSummary?: true,
   versionOfRecord?: true,
 };
-
-export type SerialisedTimelineEvent = (Omit<TimelineEvent, 'date'> & { date: string });
