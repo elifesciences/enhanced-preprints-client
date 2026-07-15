@@ -23,10 +23,3 @@ export type Author = {
     personGroupType?: string,
   },
 };
-
-export type AuthorNotesData = {
-  type: string,
-  text: string,
-  id?: string,
-  label?: string,
-}[];

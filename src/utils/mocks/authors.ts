@@ -1,6 +1,7 @@
-import { type Author, type AuthorNotesData } from '../../types';
+import { type FulltextTabProps } from '../../components/pages/article/tabs/fulltext-tab';
+import { type Author } from '../../types';
 
-export const authorNotes: AuthorNotesData = [
+export const authorNotes: FulltextTabProps['metaData']['authorNotes'] = [
   {
     type: 'corresp',
     id: 'cor1',

@@ -14,7 +14,7 @@ import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
 import { type ArticlePageProps } from '../article-page';
 
-type Props = {
+export type FulltextTabProps = {
   headings: Heading[],
   metaData: ArticlePageProps['metaData'],
   content: JSXContent,
@@ -23,7 +23,7 @@ type Props = {
   metrics: MetricsType | null,
 };
 
-export const ArticleFullTextTab = (props: Props): JSX.Element => {
+export const ArticleFullTextTab = (props: FulltextTabProps): JSX.Element => {
   const headings = [
     { id: 'abstract', text: 'Abstract' },
     ...props.headings,

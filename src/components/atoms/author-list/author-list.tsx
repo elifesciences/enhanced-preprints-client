@@ -1,9 +1,10 @@
 import { Fragment, type JSX } from 'react';
-import { type Author, type AuthorNotesData } from '../../../types';
+import { type Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
+import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
-const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: AuthorNotesData }) => {
+const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: FulltextTabProps['metaData']['authorNotes'] }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
   const rids = author.meta?.notes?.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
   const notes = rids?.map((rid) => {
@@ -57,7 +58,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
 
 export const AuthorList = ({
   authors, authorNotes,
-}: { authors: Author[], authorNotes: AuthorNotesData }): JSX.Element => (
+}: { authors: Author[], authorNotes: FulltextTabProps['metaData']['authorNotes'] }): JSX.Element => (
   <>
     <h3 className="author-list__title">Author information</h3>
     <ol className="author-list">

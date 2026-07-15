@@ -4,10 +4,17 @@ import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference, type AuthorNotesData } from "../../../types";
+import { type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
+
+type AuthorNotesData = {
+  type: string,
+  text: string,
+  id?: string,
+  label?: string,
+}[];
 
 export type MetaData = {
     abstract: Content,
