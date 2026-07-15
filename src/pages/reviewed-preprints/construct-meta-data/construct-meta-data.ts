@@ -13,10 +13,10 @@ import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
 
 type AuthorNotesData = {
-  type: string,
-  text: string,
-  id?: string,
-  label?: string,
+    type: string,
+    text: string,
+    id?: string,
+    label?: string,
 }[];
 
 export type MetaData = {
@@ -81,13 +81,14 @@ export const constructMetaData = (
     const xmlUrl = getXmlUrl(msid, isVor(articleWithVersions), config.tenantDomain);
     const versionHistory = generateVersionHistory(Object.values(articleWithVersions.versions));
     const copyrightYear = generateCopyrightYear(Object.values(articleWithVersions.versions));
+    const authors = articleWithVersions.article.article.authors || [];
 
     return {
         ...articleWithVersions.article,
         ...(pdfUrl ? { pdfUrl } : {}),
         xmlUrl,
         ...articleWithVersions.article.article,
-        authors: articleWithVersions.article.article.authors || [],
+        authors,
         institutions: [],
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
