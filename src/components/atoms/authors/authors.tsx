@@ -1,12 +1,12 @@
 import { useEffect, useState, type JSX } from 'react';
 import './authors.scss';
-import { type Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
+import { type ArticlePageProps } from '../../pages/article/article-page';
 
 const authorLimit = 3;
 const authorLimits = [authorLimit, 10];
 
-export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
+export const Authors = ({ authors }: { authors: ArticlePageProps['metaData']['authors'] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);
