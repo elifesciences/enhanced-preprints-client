@@ -4,7 +4,7 @@ import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type VersionHistoryItem, type EnhancedArticleWithVersions } from "../../../types";
+import { type VersionHistoryItem, type EnhancedArticleWithVersions, type MetaData } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
@@ -42,7 +42,7 @@ export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
     isPreviewUrl: boolean,
     msid: string
-) => {
+): MetaData => {
     const previewPdfUrl = isPreviewUrl ? articleWithVersions.article.pdfUrl : undefined;
     const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(msid, isVor(articleWithVersions), config.tenantDomain, previewPdfUrl) : null;
     const xmlUrl = getXmlUrl(msid, isVor(articleWithVersions), config.tenantDomain);
