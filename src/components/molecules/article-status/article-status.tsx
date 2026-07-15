@@ -1,9 +1,10 @@
 import { useState, type JSX } from 'react';
 import { Button } from '../../atoms/button/button';
-import { Citation, type CitationData } from '../../atoms/citation/citation';
+import { Citation } from '../../atoms/citation/citation';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { ContextualData, type ContextualDataProps } from '../../atoms/contextual-data/contextual-data';
 import { Socials } from '../../atoms/socials/socials';
+import { type CitationData } from '../../pages/article/article-page';
 import { Modal } from '../modal/modal';
 import './article-status.scss';
 import { Timeline, type TimelineProps } from '../timeline/timeline';

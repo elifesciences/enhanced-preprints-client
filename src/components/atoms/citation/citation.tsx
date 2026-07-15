@@ -1,18 +1,8 @@
 import { type JSX } from 'react';
-import { type Author } from '../../../types';
 import './citation.scss';
+import { type CitationData } from '../../pages/article/article-page';
 
-export type CitationData = {
-  authors: Author[],
-  year?: number,
-  volume?: string,
-  journal: string,
-  eLocationId?: string,
-  title: string,
-  doi: string,
-};
-
-const formatName = (author: Author) => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
+const formatName = (author: CitationData['authors'][number]) => `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`;
 
 export const Citation = ({ citation }: { citation: CitationData }): JSX.Element => (
   <div className="citation">
