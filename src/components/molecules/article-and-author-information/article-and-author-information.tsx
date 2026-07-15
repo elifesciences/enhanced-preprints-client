@@ -1,5 +1,5 @@
 import { type JSX } from 'react';
-import { type Author, type VersionHistoryItem } from '../../../types';
+import { type VersionHistoryItem } from '../../../types';
 import './article-and-author-information.scss';
 import { AuthorList } from '../../atoms/author-list/author-list';
 import { AuthorNotes } from '../../atoms/author-notes/author-notes';
@@ -15,7 +15,7 @@ export const ArticleAndAuthorInformation = ({
   copyrightYear,
   versions,
   umbrellaDoi,
-}: { authors: Author[], authorNotes: FulltextTabProps['metaData']['authorNotes'], versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }): JSX.Element => {
+}: { authors: FulltextTabProps['metaData']['authors'], authorNotes: FulltextTabProps['metaData']['authorNotes'], versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }): JSX.Element => {
   const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes?.map((note) => note.rid)).flat();
   const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
 

@@ -1,11 +1,11 @@
 import { type JSX } from 'react';
-import { type Author } from '../../../types';
 import './copyright.scss';
+import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
 type CopyrightProps = {
   license?: string,
   copyrightYear?: number,
-  authors?: Author[],
+  authors?: FulltextTabProps['metaData']['authors'],
 };
 
 export const Copyright = ({ license, copyrightYear, authors }: CopyrightProps): JSX.Element => {
