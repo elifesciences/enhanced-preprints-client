@@ -71,6 +71,9 @@ const constructVersionHistory = (history: VersionHistoryItem[]) => {
     }));
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const constructInstitutions = (authors: Author[])=> [];
+
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,
     isPreviewUrl: boolean,
@@ -89,7 +92,7 @@ export const constructMetaData = (
         xmlUrl,
         ...articleWithVersions.article.article,
         authors,
-        institutions: [],
+        institutions: constructInstitutions(authors),
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
         versionHistory: constructVersionHistory(versionHistory),
