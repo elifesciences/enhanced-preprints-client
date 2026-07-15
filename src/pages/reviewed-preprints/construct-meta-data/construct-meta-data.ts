@@ -4,10 +4,32 @@ import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type VersionHistoryItem, type EnhancedArticleWithVersions, type MetaData } from "../../../types";
+import { type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference, type AuthorNotesData } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
+
+export type MetaData = {
+    abstract: Content,
+    authors: Author[],
+    doi: string,
+    umbrellaDoi?: string,
+    msas: string[],
+    msid: string,
+    pdfUrl?: string,
+    xmlUrl: string,
+    references: Reference[],
+    title: Content,
+    version: string,
+    publishedYear?: number,
+    copyrightYear?: number,
+    volume?: string,
+    eLocationId?: string,
+    license?: string,
+    versionHistory: VersionHistoryItem[],
+    authorNotes: AuthorNotesData,
+    publicationDate?: string,
+};
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
     const publishedEvent = events.find(({ version }) => version === currentVersion);

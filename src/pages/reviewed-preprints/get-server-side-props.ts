@@ -1,11 +1,10 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
-import { constructMetaData } from './construct-meta-data';
-import {type TimelineEvent} from "./construct-timeline";
+import { constructMetaData, type MetaData } from './construct-meta-data';
+import { type TimelineEvent } from "./construct-timeline";
 import { constructTimeline, translateTimeline } from "./construct-timeline/construct-timeline";
 import { config } from '../../config';
 import { type FeaturesData } from '../../features';
 import {
-  type MetaData,
   type Metrics,
   type PeerReview,
   type RelatedContent,

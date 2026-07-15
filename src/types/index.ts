@@ -1,7 +1,6 @@
 export type { Author, AuthorNotesData } from './author';
 export type { Content, HeadingContent, ImageObjectContent, ListContent } from './content';
 export type { Institution } from './institution';
-export type { MetaData } from './meta-data';
 export type { PeerReview } from './peer-review';
 export type { Reference } from './reference';
 export type { RelatedContent } from './related-content';

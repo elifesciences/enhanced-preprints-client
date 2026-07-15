@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
 import {type ServerSideProps} from "../../../pages/reviewed-preprints/get-server-side-props";
-import {type MetaData, type Metrics } from '../../../types';
+import { type Metrics } from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
@@ -18,7 +18,7 @@ export type Tab = {
 };
 
 export type ArticlePageProps = {
-  metaData: MetaData,
+  metaData: ServerSideProps['metaData'],
   citationDoi?: string,
   msidWithVersion: string,
   relatedContent: RelatedContentData[],

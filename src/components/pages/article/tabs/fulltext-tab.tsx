@@ -1,7 +1,6 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
 import {
-  type MetaData,
   type Metrics as MetricsType,
   type PeerReview,
 } from '../../../../types';
@@ -13,10 +12,11 @@ import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-me
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
+import { type ArticlePageProps } from '../article-page';
 
 type Props = {
   headings: Heading[],
-  metaData: MetaData,
+  metaData: ArticlePageProps['metaData'],
   content: JSXContent,
   peerReview?: PeerReview,
   peerReviewUrl?: string,
