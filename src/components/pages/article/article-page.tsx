@@ -74,6 +74,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
           authors={props.metaData.authors}
           title={props.metaData.title}
           license={props.metaData.license}
+          institutions={props.metaData.institutions}
         />
       </div>
       <aside className="side-section">

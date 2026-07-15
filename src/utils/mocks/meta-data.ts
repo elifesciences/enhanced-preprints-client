@@ -13,6 +13,7 @@ export const metaData = {
   msas: ['Mad Science', 'Alchemy'],
   title: 'This is a title',
   authors,
+  institutions: [],
   authorNotes,
   references,
   publishedYear: 2022,

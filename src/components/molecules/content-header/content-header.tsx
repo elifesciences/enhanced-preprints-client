@@ -13,6 +13,7 @@ type ContentHeaderProps = FlagProps & {
   doi: string;
   title: Content;
   license: string | undefined;
+  institutions: Institution[],
 };
 
 const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
@@ -23,6 +24,8 @@ export const ContentHeader = ({
   authors,
   doi,
   license,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  institutions,
 }: ContentHeaderProps): JSX.Element => {
   const processedInstitutions = authors
     .flatMap((author) => author.affiliations)

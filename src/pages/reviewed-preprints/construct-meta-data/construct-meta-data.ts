@@ -4,7 +4,10 @@ import { generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
-import { type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference } from "../../../types";
+import {
+    type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference,
+    type Institution
+} from "../../../types";
 import { isVor } from "../../../utils/is-vor";
 import { type TimelineEvent } from "../construct-timeline";
 import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
@@ -19,6 +22,7 @@ type AuthorNotesData = {
 export type MetaData = {
     abstract: Content,
     authors: Author[],
+    institutions: Institution[],
     doi: string,
     umbrellaDoi?: string,
     msas: string[],
@@ -84,6 +88,7 @@ export const constructMetaData = (
         xmlUrl,
         ...articleWithVersions.article.article,
         authors: articleWithVersions.article.article.authors || [],
+        institutions: [],
         msas: articleWithVersions.article.subjects || [],
         version: articleWithVersions.article.versionIdentifier,
         versionHistory: constructVersionHistory(versionHistory),
