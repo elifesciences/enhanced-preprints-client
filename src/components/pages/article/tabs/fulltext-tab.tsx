@@ -1,9 +1,6 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
-import {
-  type Metrics as MetricsType,
-  type PeerReview,
-} from '../../../../types';
+import { type PeerReview } from '../../../../types';
 import { type JSXContent } from '../../../../utils/content';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
@@ -20,7 +17,7 @@ export type FulltextTabProps = {
   content: JSXContent,
   peerReview?: PeerReview,
   peerReviewUrl?: string,
-  metrics: MetricsType | null,
+  metrics: ArticlePageProps['metrics'] | null,
 };
 
 export const ArticleFullTextTab = (props: FulltextTabProps): JSX.Element => {
