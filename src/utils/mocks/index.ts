@@ -8,3 +8,4 @@ export { relatedContent } from './related-content';
 export { metrics } from './metrics';
 export { timeline } from './timeline';
 export { versionHistory } from './version-history';
+export { institutions } from './institutions';

@@ -1,4 +1,5 @@
 import { authors, authorNotes } from './authors';
+import { institutions } from './institutions';
 import { references } from './references';
 import { versionHistory } from './version-history';
 
@@ -13,7 +14,7 @@ export const metaData = {
   msas: ['Mad Science', 'Alchemy'],
   title: 'This is a title',
   authors,
-  institutions: [],
+  institutions,
   authorNotes,
   references,
   publishedYear: 2022,
