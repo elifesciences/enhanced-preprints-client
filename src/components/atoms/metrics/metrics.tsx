@@ -1,11 +1,11 @@
 import Script from 'next/script';
 import pluralize from 'pluralize';
 import { type JSX } from 'react';
-import { type Metrics as MetricsType } from '../../../types';
 import './metrics.scss';
+import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
 type MetricsProps = {
-  metrics: MetricsType;
+  metrics: NonNullable<FulltextTabProps['metrics']>;
   doi: string;
 };
 
