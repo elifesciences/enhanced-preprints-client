@@ -71,8 +71,17 @@ const constructVersionHistory = (history: VersionHistoryItem[]) => {
     }));
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const constructInstitutions = (authors: Author[])=> [];
+const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
+
+const constructInstitutions = (authors: Author[]) => authors
+    .flatMap((author) => author.affiliations)
+    .filter(filterInstitutions)
+    .reduce<Institution[]>((deduped, current) => {
+        if (!deduped.find((ins) => ins.name === current.name && ins.address?.addressCountry === current.address?.addressCountry)) {
+            deduped.push(current);
+        }
+        return deduped;
+    }, []);
 
 export const constructMetaData = (
     articleWithVersions: EnhancedArticleWithVersions,

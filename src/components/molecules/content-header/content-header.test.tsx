@@ -18,7 +18,7 @@ describe('ContentHeader', () => {
         doi={'10.1101/123456'}
         title={'title'}
         license={'license'}
-        institutions={[]} />,
+        institutions={[{ name: 'X-Men', address: { addressCountry: 'West Chester' } }]} />,
     );
 
     expect(screen.getByText('msa1')).toBeInTheDocument();
