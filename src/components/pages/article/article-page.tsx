@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
 import {type ServerSideProps} from "../../../pages/reviewed-preprints/get-server-side-props";
-import { type Metrics } from '../../../types';
 import { contentToText } from '../../../utils/content';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
@@ -31,7 +30,7 @@ export type ArticlePageProps = {
   citationDoi?: string,
   msidWithVersion: string,
   relatedContent: RelatedContentData[],
-  metrics?: Metrics,
+  metrics?: NonNullable<ServerSideProps['metrics']>,
   children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
