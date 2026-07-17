@@ -1,11 +1,11 @@
 import { t } from "i18next";
 import { generateCopyrightYear } from "./generate-copyright-year";
-import { generateVersionHistory } from "./generate-version-history";
+import { type VersionHistoryItem, generateVersionHistory } from "./generate-version-history";
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
 import {
-    type VersionHistoryItem, type EnhancedArticleWithVersions, type Content, type Author, type Reference,
+    type EnhancedArticleWithVersions, type Content, type Author, type Reference,
     type Institution
 } from "../../../types";
 import { isVor } from "../../../utils/is-vor";

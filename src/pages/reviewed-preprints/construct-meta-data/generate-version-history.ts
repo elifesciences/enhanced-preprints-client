@@ -1,9 +1,13 @@
-import {
-  type VersionHistoryItem,
-  type VersionSummary,
-} from '../../../types';
+import { type VersionSummary } from '../../../types';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
 import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../../../utils/type-guards';
+
+export type VersionHistoryItem = {
+  label: string,
+  date: string,
+  url?: string,
+  version?: number,
+};
 
 const constructHistoryItemLabel = (version: VersionSummary) => {
   if (isVORVersionSummary(version)) {

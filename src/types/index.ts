@@ -21,4 +21,3 @@ export type {
   Metrics,
 } from './enhanced-article';
 export { IsoDateStringSchema } from './enhanced-article';
-export type { VersionHistoryItem } from './version-history-item';
