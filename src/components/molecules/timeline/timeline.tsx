@@ -2,11 +2,19 @@ import { Fragment, useEffect, useState, type JSX } from 'react';
 import './timeline.scss';
 import { useTranslation } from 'react-i18next';
 import { formatDate } from '../../../utils/formatters';
-import { type ArticlePageProps } from "../../pages/article/article-page";
 
 export type TimelineProps = {
   current?: number;
-  events: ArticlePageProps['timeline'],
+  timelineEvents: {
+    name?: string,
+    url: string,
+    version: number,
+    versionIndicator?: string,
+    date: string,
+    datePrefix?: string,
+    withEvaluationSummary?: boolean,
+    versionOfRecord?: boolean,
+  }[],
 };
 
 const constructEventType = (version: number, versionOfRecord: boolean) => {
@@ -16,7 +24,7 @@ const constructEventType = (version: number, versionOfRecord: boolean) => {
   return version > 1 ? 'revised' : 'reviewed';
 };
 
-export const Timeline = ({ current, events }: TimelineProps): JSX.Element => {
+export const Timeline = ({ current, timelineEvents: events }: TimelineProps): JSX.Element => {
   const sortedEvents = events.sort((a, b) => b.version - a.version);
   const [expanded, setExpanded] = useState<boolean | null>(null);
   const { t } = useTranslation();

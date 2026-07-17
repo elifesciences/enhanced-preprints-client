@@ -1,8 +1,11 @@
 import { type JSX } from 'react';
 import './author-notes.scss';
-import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
-export const AuthorNotes = ({ authorNotes }: { authorNotes: FulltextTabProps['metaData']['authorNotes'] }): JSX.Element => (
+type AuthorNotesProps = {
+  authorNotes: { text: string }[],
+};
+
+export const AuthorNotes = ({ authorNotes }: AuthorNotesProps): JSX.Element => (
   (
     <div className="author-notes">
       <h3 className="author-notes__title">Author Notes</h3>

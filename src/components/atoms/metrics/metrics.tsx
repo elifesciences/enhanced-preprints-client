@@ -2,11 +2,14 @@ import Script from 'next/script';
 import pluralize from 'pluralize';
 import { type JSX } from 'react';
 import './metrics.scss';
-import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
 type MetricsProps = {
-  metrics: NonNullable<FulltextTabProps['metrics']>;
-  doi: string;
+  metrics: {
+    views: number,
+    downloads: number,
+    citations: number,
+  },
+  doi: string,
 };
 
 export const Metrics = ({ metrics, doi }: MetricsProps): JSX.Element => {

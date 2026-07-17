@@ -1,10 +1,46 @@
 import { Fragment, type JSX } from 'react';
-import { type Author } from '../../../types';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
-import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
-const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNotes: FulltextTabProps['metaData']['authorNotes'] }) => {
+type AuthorData = {
+  type?: 'Person' | 'Organization',
+  name?: string,
+  givenNames?: string[],
+  familyNames?: string[],
+  honorificSuffix?: string,
+  emails?: string[],
+  identifiers?: {
+    type?: string,
+    propertyID?: string,
+    value: string,
+  }[],
+  affiliations?: {
+    name: string,
+    address?: {
+      addressCountry: string,
+    },
+  }[],
+  meta?: {
+    notes?: {
+      type: string,
+      rid: string,
+    }[],
+  },
+};
+
+type AuthorNoteData = {
+  type: string,
+  text: string,
+  id?: string,
+  label?: string,
+};
+
+type AuthorListProps = {
+  authors: AuthorData[],
+  authorNotes: AuthorNoteData[],
+}
+
+const AuthorInformation = ({ author, authorNotes }: { author: AuthorData, authorNotes: AuthorNoteData[] }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
   const rids = author.meta?.notes?.filter(({ type }) => type === 'fn').map(({ rid }) => rid);
   const notes = rids?.map((rid) => {
@@ -58,7 +94,7 @@ const AuthorInformation = ({ author, authorNotes }: { author: Author, authorNote
 
 export const AuthorList = ({
   authors, authorNotes,
-}: { authors: Author[], authorNotes: FulltextTabProps['metaData']['authorNotes'] }): JSX.Element => (
+}: AuthorListProps): JSX.Element => (
   <>
     <h3 className="author-list__title">Author information</h3>
     <ol className="author-list">

@@ -1,10 +1,16 @@
 import { useEffect, useState, type JSX } from 'react';
 import './institutions.scss';
-import { type ContentHeaderProps } from '../../molecules/content-header/content-header';
+
+type Institution = {
+  name: string,
+  address?: {
+    addressCountry?: string,
+  },
+};
 
 const institutionLimit = 3;
 
-export const Institutions = ({ institutions }: { institutions: ContentHeaderProps['institutions'] }): JSX.Element => {
+export const Institutions = ({ institutions }: { institutions: Institution[] }): JSX.Element => {
   const [expanded, setExpanded] = useState<boolean | null>(null);
 
   useEffect(() => setExpanded(false), []);

@@ -38,7 +38,7 @@ const timeLineTest = async (canvasElement: HTMLElement, expandText: string, coll
 
 export const EventTimeline: Story = {
   args: {
-    events: [
+    timelineEvents: [
       {
         date: new Date('2023-03-18').toString(),
         version: 1,
@@ -51,7 +51,7 @@ export const EventTimeline: Story = {
 
 export const EventTimelineVersionOfRecord:Story = {
   args: {
-    events: [
+    timelineEvents: [
       {
         name: 'Version of Record',
         date: new Date('2023-03-19').toString(),
@@ -66,7 +66,7 @@ export const EventTimelineVersionOfRecord:Story = {
 
 export const EventTimelineRevised:Story = {
   args: {
-    events: [
+    timelineEvents: [
       {
         date: new Date('2023-03-19').toString(),
         version: 2,
@@ -80,7 +80,7 @@ export const EventTimelineRevised:Story = {
 export const EventTimelineRevisedWithPrevious: Story = {
   args: {
     current: 2,
-    events: [
+    timelineEvents: [
       {
         url: '#',
         date: new Date('2023-03-19').toString(),
@@ -103,7 +103,7 @@ export const EventTimelineRevisedWithPrevious: Story = {
 export const EventTimelineRevisedWithSubsequent: Story = {
   args: {
     current: 2,
-    events: [
+    timelineEvents: [
       {
         name: 'Version of Record',
         url: '#',
@@ -132,7 +132,7 @@ export const EventTimelineRevisedWithSubsequent: Story = {
 export const EventTimelineWithCurated: Story = {
   args: {
     current: 3,
-    events: [
+    timelineEvents: [
       {
         name: 'Curated Preprint',
         url: '#',
@@ -162,7 +162,7 @@ export const EventTimelineWithCurated: Story = {
 export const EventTimelineWithEvaluationSummary: Story = {
   args: {
     current: 3,
-    events: [
+    timelineEvents: [
       {
         name: 'Curated Preprint',
         url: '#',
@@ -194,7 +194,7 @@ export const EventTimelineWithEvaluationSummary: Story = {
 export const EventTimelineWithMultipleVOR: Story = {
   args: {
     current: 2,
-    events: [
+    timelineEvents: [
       {
         name: 'Version of Record',
         url: '#',

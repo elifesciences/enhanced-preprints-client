@@ -4,6 +4,7 @@ import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
 import {type ServerSideProps} from "../../../pages/reviewed-preprints/get-server-side-props";
 import { contentToText } from '../../../utils/content';
+import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';
 import { RetractionNotice } from '../../atoms/retraction-notice/retraction-notice';
@@ -13,16 +14,6 @@ import { ContentHeader } from '../../molecules/content-header/content-header';
 export type Tab = {
   id: string,
   linkElement: ReactElement<any>,
-};
-
-export type CitationData = {
-  authors: ServerSideProps['metaData']['authors'],
-  year?: number,
-  volume?: string,
-  journal: string,
-  eLocationId?: string,
-  title: string,
-  doi: string,
 };
 
 export type ArticlePageProps = {
@@ -86,7 +77,7 @@ export const ArticlePage = (props: ArticlePageProps): JSX.Element => {
           citation={citation}
           msid={props.metaData.msid}
           {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
-          timeline={{ current: +props.metaData.version, events: props.timeline }}
+          timeline={{ current: +props.metaData.version, timelineEvents: props.timeline }}
         />
         {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
       </aside>

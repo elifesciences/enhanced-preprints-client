@@ -8,7 +8,7 @@ import { Title } from '../../atoms/title/title';
 import { type ArticlePageProps } from '../../pages/article/article-page';
 import { ArticleFlagList, type Props as FlagProps } from '../article-flag-list/article-flag-list';
 
-export type ContentHeaderProps = FlagProps & {
+type ContentHeaderProps = FlagProps & {
   authors: ArticlePageProps['metaData']['authors'];
   doi: string;
   title: Content;

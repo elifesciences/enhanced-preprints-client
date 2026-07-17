@@ -6,7 +6,7 @@ import '../../../i18n';
 describe('ArticleStatus', () => {
   it('renders the article status and type if passed in', () => {
     render(<ArticleStatus timeline={{
-      events: [{
+      timelineEvents: [{
         version: 2, date: new Date('2024-05-29').toString(), versionIndicator: 'v2', url: '#',
       }],
     }} pdfUrl='#' doi='www.google.com' umbrellaDoi='10.7554/eLife.85111' title='I am a title' citation={citation} msid="12345"/>);
