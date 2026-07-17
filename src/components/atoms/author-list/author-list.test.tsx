@@ -1,12 +1,11 @@
 import { getByText, render, screen } from '@testing-library/react';
-import { AuthorList } from './author-list';
-import { type Author } from '../../../types';
+import { type AuthorData, AuthorList } from './author-list';
 import { generateAuthorId } from '../../../utils/generators';
 import { authors, authorNotes } from '../../../utils/mocks';
 
-const getName = ({ givenNames, familyNames, honorificSuffix }: Author) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
-const getFirstAffiliation = ({ affiliations }: Author): string => (affiliations ? affiliations[0].name : '');
-const getAffiliationAndAuthor = (author: Author) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
+const getName = ({ givenNames, familyNames, honorificSuffix }: AuthorData) => `${givenNames && givenNames.join(' ')} ${familyNames && familyNames.join(' ')}${honorificSuffix ? ` ${honorificSuffix}` : ''}`;
+const getFirstAffiliation = ({ affiliations }: AuthorData): string => (affiliations ? affiliations[0].name : '');
+const getAffiliationAndAuthor = (author: AuthorData) => ({ name: getName(author), affiliation: getFirstAffiliation(author) });
 const getByTextMatcher = (text: string) => (_: any, element: Element | null) => element?.textContent === text;
 
 describe('AuthorList', () => {
