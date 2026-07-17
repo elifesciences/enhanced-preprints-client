@@ -2,7 +2,7 @@ import { type JSX } from 'react';
 import { formatDate } from '../../../utils/formatters';
 import './version-history.scss';
 
-type VersionHistoryProps = {
+export type VersionHistoryProps = {
   versions: {
     label: string,
     date: string,
