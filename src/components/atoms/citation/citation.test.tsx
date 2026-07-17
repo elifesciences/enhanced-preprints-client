@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { Citation } from './citation';
-import { type Author } from '../../../types';
+import { Citation, type CitationData } from './citation';
 import { authors, citation } from '../../../utils/mocks';
 
 describe('Citation', () => {
-  const authorNames = authors.map((author: Author) => `${author.type === 'Organization' && author.name ? author.name : `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`}`);
+  const authorNames = authors.map((
+    author: CitationData['authors'][number]
+  ) => `${author.type === 'Organization' && author.name ? author.name : `${(author.givenNames ?? []).join(' ')} ${(author.familyNames ?? []).join(' ')}`}`);
 
   it.each(authorNames)('renders author: %s', (author) => {
     render(<Citation citation={citation} />);
