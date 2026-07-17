@@ -1,7 +1,7 @@
 import { useEffect, useState, type JSX } from 'react';
 import './institutions.scss';
 
-type Institution = {
+export type Institution = {
   name: string,
   address?: {
     addressCountry?: string,

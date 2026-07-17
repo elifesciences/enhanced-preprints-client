@@ -16,7 +16,7 @@ export type Tab = {
   linkElement: ReactElement<any>,
 };
 
-export type ArticlePageProps = {
+type ArticlePageProps = {
   metaData: ServerSideProps['metaData'],
   citationDoi?: string,
   msidWithVersion: string,

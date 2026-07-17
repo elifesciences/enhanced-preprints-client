@@ -1,19 +1,18 @@
 import './content-header.scss';
 import { type JSX } from 'react';
 import { type Content } from '../../../types';
-import { Authors } from '../../atoms/authors/authors';
+import { type Author, Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
-import { Institutions } from '../../atoms/institutions/institutions';
+import { type Institution, Institutions } from '../../atoms/institutions/institutions';
 import { Title } from '../../atoms/title/title';
-import { type ArticlePageProps } from '../../pages/article/article-page';
 import { ArticleFlagList, type Props as FlagProps } from '../article-flag-list/article-flag-list';
 
 type ContentHeaderProps = FlagProps & {
-  authors: ArticlePageProps['metaData']['authors'];
+  authors: Author[];
   doi: string;
   title: Content;
   license: string | undefined;
-  institutions: ArticlePageProps['metaData']['institutions'],
+  institutions: Institution[],
 };
 
 export const ContentHeader = ({

@@ -2,7 +2,7 @@ import { useEffect, useState, type JSX } from 'react';
 import './authors.scss';
 import { generateAuthorId } from '../../../utils/generators';
 
-type Author = {
+export type Author = {
   type?: 'Person' | 'Organization',
   name?: string,
   givenNames?: string[],

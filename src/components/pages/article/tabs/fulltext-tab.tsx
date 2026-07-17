@@ -1,5 +1,6 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
+import { type ServerSideProps } from '../../../../pages/reviewed-preprints/get-server-side-props';
 import { type PeerReview } from '../../../../types';
 import { type JSXContent } from '../../../../utils/content';
 import { Abstract } from '../../../atoms/abstract/abstract';
@@ -9,15 +10,14 @@ import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-me
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
-import { type ArticlePageProps } from '../article-page';
 
 export type FulltextTabProps = {
   headings: Heading[],
-  metaData: ArticlePageProps['metaData'],
+  metaData: ServerSideProps['metaData'],
   content: JSXContent,
   peerReview?: PeerReview,
   peerReviewUrl?: string,
-  metrics: ArticlePageProps['metrics'] | null,
+  metrics: NonNullable<ServerSideProps['metrics']> | null,
 };
 
 export const ArticleFullTextTab = (props: FulltextTabProps): JSX.Element => {

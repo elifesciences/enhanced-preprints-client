@@ -2,7 +2,7 @@ import { Fragment, type JSX } from 'react';
 import { generateAuthorId } from '../../../utils/generators';
 import './author-list.scss';
 
-type AuthorData = {
+export type AuthorData = {
   type?: 'Person' | 'Organization',
   name?: string,
   givenNames?: string[],
@@ -28,7 +28,7 @@ type AuthorData = {
   },
 };
 
-type AuthorNoteData = {
+export type AuthorNoteData = {
   type: string,
   text: string,
   id?: string,

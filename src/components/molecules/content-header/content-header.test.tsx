@@ -10,9 +10,6 @@ describe('ContentHeader', () => {
           {
             givenNames: ['Jean'],
             familyNames: ['Gray'],
-            affiliations: [
-              { name: 'X-Men', address: { addressCountry: 'West Chester' } },
-            ],
           },
         ]}
         doi={'10.1101/123456'}

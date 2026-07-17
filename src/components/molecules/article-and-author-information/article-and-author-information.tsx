@@ -1,12 +1,11 @@
 import { type JSX } from 'react';
 import { type VersionHistoryItem } from '../../../types';
 import './article-and-author-information.scss';
-import { AuthorList } from '../../atoms/author-list/author-list';
+import { type AuthorData, type AuthorNoteData, AuthorList } from '../../atoms/author-list/author-list';
 import { AuthorNotes } from '../../atoms/author-notes/author-notes';
 import { CiteAllVersions } from '../../atoms/cite-all-versions/cite-all-versions';
 import { Copyright } from '../../atoms/copyright/copyright';
 import { VersionHistory } from '../../atoms/version-history/version-history';
-import { type FulltextTabProps } from '../../pages/article/tabs/fulltext-tab';
 
 export const ArticleAndAuthorInformation = ({
   authors,
@@ -15,7 +14,7 @@ export const ArticleAndAuthorInformation = ({
   copyrightYear,
   versions,
   umbrellaDoi,
-}: { authors: FulltextTabProps['metaData']['authors'], authorNotes: FulltextTabProps['metaData']['authorNotes'], versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }): JSX.Element => {
+}: { authors: AuthorData[], authorNotes: AuthorNoteData[], versions: VersionHistoryItem[], license?: string, copyrightYear?: number, umbrellaDoi?: string }): JSX.Element => {
   const rids = authors.filter((author) => author.meta?.notes).map((author) => author.meta?.notes?.map((note) => note.rid)).flat();
   const orphanedAuthorNotes = authorNotes.filter((note) => !rids.includes(note.id));
 
