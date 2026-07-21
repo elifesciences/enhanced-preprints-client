@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ArticleReviewsTab } from './reviews-tab';
-import { type PeerReview } from '../../../../types';
+import { ArticleReviewsTab, type ArticleReviewTabProps } from './reviews-tab';
 import { peerReview } from '../../../../utils/mocks';
 import '../../../../i18n';
 
@@ -44,7 +43,7 @@ describe('ReviewsTab', () => {
         ...peerReview.evaluationSummary,
         participants: [],
       },
-    } as PeerReview;
+    } as ArticleReviewTabProps['peerReview'];
     const { container } = render(<ArticleReviewsTab peerReview={peerReviewNoEditors} currentVersion={1} />);
 
     expect(container.querySelector('#editors-and-reviewers')).not.toBeInTheDocument();
@@ -127,7 +126,7 @@ describe('ReviewsTab', () => {
           participants: [],
         },
         reviews: [],
-      } as PeerReview,
+      } as ArticleReviewTabProps['peerReview'],
       expectedJumpToLinks: [
         {
           href: '#review-process',

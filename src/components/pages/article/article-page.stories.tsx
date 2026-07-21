@@ -2,8 +2,8 @@ import LinkTo from '@storybook/addon-links/react';
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
+import { type ArticleReviewTabProps } from './tabs/reviews-tab';
 import '../../../i18n';
-import { type PeerReview } from '../../../types';
 import { contentToHeadings, contentToJsx } from '../../../utils/content';
 import {
   content, metaData, metrics, peerReview, relatedContent, timeline,
@@ -108,17 +108,13 @@ export const ArticlePageFullTextTabNoSummary: Story = {
     previousVersionWarningUrl: '#',
     timeline,
   },
-  render: (args) => {
-    const { reviews, authorResponse } = peerReview;
-
-    return (
-      <DefaultLayout>
-        <ArticlePage {...args}>
-          <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{ reviews, authorResponse }} content={jsxContent} />
-        </ArticlePage>
-      </DefaultLayout>
-    );
-  },
+  render: (args) => (
+    <DefaultLayout>
+      <ArticlePage {...args}>
+        <ArticleFullTextTab metrics={metrics} headings={headings} metaData={metaData} peerReview={{}} content={jsxContent} />
+      </ArticlePage>
+    </DefaultLayout>
+  ),
 };
 
 export const ArticlePageFiguresTab: Story = {
@@ -166,7 +162,7 @@ const peerReviewNoEditors = {
     ...peerReview.evaluationSummary,
     participants: [],
   },
-} as PeerReview;
+} as ArticleReviewTabProps['peerReview'];
 
 export const ArticlePageReviewedNoEditorsReviewsTab: Story = {
   args: {

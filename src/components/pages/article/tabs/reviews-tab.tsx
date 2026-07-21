@@ -6,7 +6,7 @@ import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
-type ArticleReviewTabProps = {
+export type ArticleReviewTabProps = {
   peerReview: {
     evaluationSummary?: {
       text: string,
