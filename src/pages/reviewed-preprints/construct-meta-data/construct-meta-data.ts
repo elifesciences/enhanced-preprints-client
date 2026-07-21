@@ -40,7 +40,6 @@ export type MetaData = {
     versionHistory: VersionHistoryItem[],
     authorNotes: AuthorNotesData,
     publicationDate?: string,
-    referencesNew: Reference[],
 };
 
 const getPublishedDate = (events: TimelineEvent[], currentVersion: number): string | undefined => {
@@ -109,6 +108,5 @@ export const constructMetaData = (
         authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
         ...buildCopyrightYearProperty(copyrightYear),
         publicationDate: getPublishedDate(translateTimeline(constructTimeline(Object.values(articleWithVersions.versions))), +articleWithVersions.article.versionIdentifier),
-        referencesNew: articleWithVersions.article.article.references,
     }
 };
