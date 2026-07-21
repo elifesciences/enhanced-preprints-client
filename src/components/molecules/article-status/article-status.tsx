@@ -19,7 +19,7 @@ type ArticleStatusProps = {
   timeline: TimelineProps,
 };
 
-const formatStringCitation = ({
+export const formatStringCitation = ({
   authors, doi, eLocationId, journal, title, volume, year,
 }: CitationData): string => {
   const authorsList = authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${(author.familyNames ?? []).join(' ')} ${(author.givenNames ?? []).join(' ')}`, '');

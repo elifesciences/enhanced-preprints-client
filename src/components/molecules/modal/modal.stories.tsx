@@ -4,11 +4,11 @@ import {
 } from 'react';
 import { expect, userEvent, within } from 'storybook/test';
 import { Modal } from './modal';
-import { type Reference as ReferenceData } from '../../../types';
-import { citation, references } from '../../../utils/mocks';
+import { citation } from '../../../utils/mocks';
 import { Citation } from '../../atoms/citation/citation';
 import { Clipboard } from '../../atoms/clipboard/clipboard';
 import { Socials } from '../../atoms/socials/socials';
+import { formatStringCitation } from '../article-status/article-status';
 
 const meta: Meta<typeof Modal> = {
   title: 'Molecules/Modal',
@@ -73,22 +73,13 @@ export const ModalShare: Story = {
   },
 };
 
-const formatReference = (reference: ReferenceData): string => {
-  const authors = reference.authors.reduce((previous, author) => `${previous}${previous !== '' ? ', ' : ''}${(author.familyNames ?? []).join(' ')} ${(author.givenNames ?? []).join(' ')}`, '');
-  const year = reference.datePublished ? new Date(typeof reference.datePublished === 'string' ? reference.datePublished : reference.datePublished.value).getUTCFullYear() : undefined;
-  const journal = reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
-  const doiIdentifier = reference.identifiers?.find((identifier) => identifier.name === 'doi');
-
-  return `${authors} (${year}) ${reference.title}${journal ? ` ${journal}` : ''}${doiIdentifier ? `\n\nhttps://doi.org/${doiIdentifier.value}` : ''}`;
-};
-
 export const ModalCite: Story = {
   args: {
     modalTitle: 'Cite this article',
     modalLayout: 'cite',
     children: (<>
       <Citation citation={citation} />
-      <Clipboard text={formatReference(references[0])} />
+      <Clipboard text={formatStringCitation(citation)} />
     </>),
   },
   play: async ({ canvasElement }) => {
@@ -112,7 +103,7 @@ export const ModalCiteWithWarning: Story = {
     modalWarning: 'Warning text',
     children: (<>
       <Citation citation={citation} />
-      <Clipboard text={formatReference(references[0])} />
+      <Clipboard text={formatStringCitation(citation)} />
     </>),
   },
   play: async ({ canvasElement }) => {
