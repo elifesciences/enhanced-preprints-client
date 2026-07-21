@@ -1,13 +1,36 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
 import { useTranslation } from 'react-i18next';
-import { type PeerReview } from '../../../../types';
 import { EditorsAndReviewers } from '../../../atoms/editors-and-reviewers/editors-and-reviewers';
 import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { ReviewContent } from '../../../atoms/review-content/review-content';
 import { ReviewProcess } from '../../../atoms/review-process/review-process';
 
-export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: { peerReview: PeerReview, currentVersion: number, versionOfRecord?: boolean }): JSX.Element => {
+type ArticleReviewTabProps = {
+  peerReview: {
+    evaluationSummary?: {
+      text: string,
+      doi?: string,
+      participants: {
+        name: string,
+        role: string,
+        institution?: string,
+      }[],
+    },
+    reviews: {
+      text: string,
+      doi?: string,
+    }[],
+    authorResponse?: {
+      text: string,
+      doi?: string,
+    },
+  },
+  currentVersion: number,
+  versionOfRecord?: boolean,
+};
+
+export const ArticleReviewsTab = ({ peerReview, currentVersion, versionOfRecord }: ArticleReviewTabProps): JSX.Element => {
   const { t } = useTranslation();
   const headings = [
     { id: 'review-process', text: 'Peer review process' },
