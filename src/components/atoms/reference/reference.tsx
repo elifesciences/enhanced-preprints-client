@@ -1,17 +1,61 @@
 import { type JSX } from 'react';
 import { useTranslation } from 'react-i18next';
-import { type Author, type Reference as ReferenceData } from '../../../types';
 import './reference.scss';
 import { formatAuthorName } from '../../../utils/formatters';
 import { generateGoogleScholarLink } from '../../../utils/generators/generate-google-scholar-link';
 
 type ReferenceBodyProps = {
-  reference: ReferenceData,
+  reference: ReferenceProps,
 };
 
-const formatName = (author: Author) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
+type ReferenceAuthorData = {
+  type?: 'Person' | 'Organization',
+  name?: string,
+  givenNames?: string[],
+  familyNames?: string[],
+  honorificSuffix?: string,
+  meta?: {
+    personGroupType?: string,
+  },
+};
 
-function prepareReference(reference: ReferenceData) {
+type ReferencePublication = {
+  name?: string,
+  volumeNumber?: number | string,
+  isPartOf?: ReferencePublication,
+};
+
+export type ReferenceProps = {
+  title: string,
+  url?: string,
+  pageStart?: number | string,
+  pageEnd?: number | string,
+  authors: ReferenceAuthorData[],
+  datePublished?: string | { value: string },
+  isPartOf?: ReferencePublication,
+  publisher?: {
+    name: string,
+    address?: {
+      addressLocality: string,
+    },
+  },
+  identifiers?: {
+    name: string,
+    value: string,
+  }[],
+  comments?: {
+    commentAspect: string,
+  }[],
+  meta?: {
+    yearPublished?: string,
+    label?: string,
+    publicationType?: string,
+  },
+};
+
+const formatName = (author: ReferenceAuthorData) => `${author.familyNames ? author.familyNames?.join(' ') : ''} ${author.givenNames ? author.givenNames?.join(' ') : ''}`.trim();
+
+function prepareReference(reference: ReferenceProps) {
   const referenceJournal = reference.isPartOf?.isPartOf?.isPartOf?.name ?? reference.isPartOf?.isPartOf?.name ?? reference.isPartOf?.name;
   const referencePublisher = reference.publisher;
   const referenceVolume = reference.isPartOf?.isPartOf?.volumeNumber ?? reference.isPartOf?.volumeNumber;

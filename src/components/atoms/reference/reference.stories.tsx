@@ -34,7 +34,6 @@ export const ReferenceWithComment: Story = {
     reference: {
       ...references[3],
       comments: [{
-        type: 'Comment',
         commentAspect: 'In press',
       }],
     },

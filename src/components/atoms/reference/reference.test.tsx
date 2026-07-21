@@ -1,13 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { Reference } from './reference';
-import { type Reference as ReferenceData } from '../../../types';
+import { Reference, type ReferenceProps } from './reference';
 import { references } from '../../../utils/mocks';
 import '../../../i18n';
 
 describe('Reference', () => {
-  const ref: ReferenceData = {
-    type: 'Article',
-    id: 'c1',
+  const ref: ReferenceProps = {
     title: 'Title',
     authors: [],
     url: 'http://www.google.com',
@@ -79,16 +76,13 @@ describe('Reference', () => {
     ],
   )('renders the name and locality of the publisher', (referenceWithPublisher, expectedJournalAndPublisher) => {
     const prepareReference = {
-      type: 'Article',
-      id: 'c5',
       authors: [],
       datePublished: {
-        type: 'Date',
         value: '1985',
       },
       title: 'Environmental Physiology and Biochemistry of Insects',
       ...referenceWithPublisher,
-    } as ReferenceData;
+    } as ReferenceProps;
     render(<Reference reference={prepareReference} />);
 
     expect(screen.getByText(expectedJournalAndPublisher)).toBeInTheDocument();
