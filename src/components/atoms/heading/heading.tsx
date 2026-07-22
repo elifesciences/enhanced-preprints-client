@@ -8,11 +8,10 @@ type HeadingProps = {
   headingLevel: 1 | 2 | 3 | 4 | 5 | 6,
   maxLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   id: string,
-  className?: string,
 };
 
 export const Heading = ({
-  headingLevel, maxLevel, content, id, className,
+  headingLevel, maxLevel, content, id,
 }: HeadingProps): JSX.Element => {
   if (maxLevel && headingLevel < maxLevel) {
     return Heading({
@@ -20,11 +19,10 @@ export const Heading = ({
       maxLevel,
       content,
       id,
-      className,
     });
   }
 
-  const normalisedClassName = className || `heading-${headingLevel}`;
+  const normalisedClassName = `heading-${headingLevel}`;
   switch (headingLevel) {
     case 1:
       return <h1 id={id} className={normalisedClassName}>{contentToJsx(content)}</h1>;
