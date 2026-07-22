@@ -1,6 +1,5 @@
 import { type JSX } from 'react';
-import { type ListContent } from '../../../types';
-import { contentToJsx, type Options } from '../../../utils/content';
+import { contentToJsx, type ListContent, type Options } from '../../../content';
 import './list.scss';
 
 export const List = ({ content, options }: { content: ListContent, options?: Options }): JSX.Element => {

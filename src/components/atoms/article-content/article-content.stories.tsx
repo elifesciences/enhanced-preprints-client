@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ArticleContent } from './article-content';
-import { contentToJsx } from '../../../utils/content';
-import { content } from '../../../utils/mocks';
+import { contentToJsx } from '../../../content';
+import { content } from '../../../content/mock';
 
 const meta: Meta<typeof ArticleContent> = {
   title: 'Atoms/ArticleContent',

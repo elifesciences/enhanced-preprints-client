@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { Abstract } from './abstract';
-import { content } from '../../../utils/mocks';
+import { content } from '../../../content/mock';
 
 const meta: Meta<typeof Abstract> = {
   title: 'Atoms/Abstract',

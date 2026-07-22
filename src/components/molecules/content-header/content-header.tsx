@@ -1,6 +1,6 @@
 import './content-header.scss';
 import { type JSX } from 'react';
-import { type Content } from '../../../types';
+import { type Content } from '../../../content';
 import { type Author, Authors } from '../../atoms/authors/authors';
 import { Descriptors } from '../../atoms/descriptors/descriptors';
 import { type Institution, Institutions } from '../../atoms/institutions/institutions';

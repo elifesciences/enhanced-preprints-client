@@ -1,3 +1,5 @@
+export type { Content, ListContent } from './content';
+export { listType } from './content';
 export { contentToFigures } from './content-to-figures';
 export { contentToHeadings } from './content-to-headings';
 export { contentToHtml } from './content-to-html';

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { Figure } from './figure';
-import { contentToJsx } from '../../../utils/content';
+import { contentToJsx } from '../../../content';
 
 const meta: Meta<typeof Figure> = {
   title: 'Atoms/Figure',

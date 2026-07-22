@@ -1,8 +1,9 @@
 import { render } from '@testing-library/react';
 import { ArticleFullTextTab } from './fulltext-tab';
-import { contentToJsx } from '../../../../utils/content';
-import { metaData, peerReview, content } from '../../../../utils/mocks';
+import { contentToJsx } from '../../../../content';
+import { content } from '../../../../content/mock';
 import '../../../../i18n';
+import { metaData, peerReview } from '../../../../utils/mocks';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '',

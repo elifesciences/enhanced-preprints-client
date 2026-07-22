@@ -1,6 +1,5 @@
 import { type JSX } from 'react';
-import { type Content } from '../../../types';
-import { contentToJsx } from '../../../utils/content';
+import { contentToJsx, type Content } from '../../../content';
 import './title.scss';
 
 export const Title = ({ title }: { title: Content }): JSX.Element => (

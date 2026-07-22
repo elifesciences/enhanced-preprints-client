@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { ArticleFiguresTab } from './figures-tab';
-import { contentToFigures, contentToJsx } from '../../../../utils/content';
-import { content } from '../../../../utils/mocks';
+import { contentToFigures, contentToJsx } from '../../../../content';
+import { content } from '../../../../content/mock';
 
 describe('FiguresTab', () => {
   it('renders with figures tab', () => {

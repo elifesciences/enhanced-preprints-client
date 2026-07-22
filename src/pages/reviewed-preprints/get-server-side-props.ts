@@ -3,14 +3,13 @@ import { constructMetaData, type MetaData } from './construct-meta-data';
 import { type TimelineEvent } from "./construct-timeline";
 import { constructTimeline, translateTimeline } from "./construct-timeline/construct-timeline";
 import { config } from '../../config';
+import { contentToImgInfo, type Content } from '../../content';
 import { type FeaturesData } from '../../features';
 import {
   type Metrics,
   type PeerReview,
   type RelatedContent,
-  type Content,
 } from '../../types';
-import { contentToImgInfo } from '../../utils/content';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';

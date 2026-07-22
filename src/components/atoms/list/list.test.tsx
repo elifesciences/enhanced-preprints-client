@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { List } from './list';
-import { listType } from '../../../types/content';
+import { listType } from '../../../content';
 
 describe('List', () => {
   it('renders with the provided item', () => {

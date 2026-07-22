@@ -1,6 +1,6 @@
 import ReactDOMServer from 'react-dom/server';
+import { type Content } from './content';
 import { contentToJsx } from './content-to-jsx';
-import { type Content } from '../../types';
 
 export const contentToHtml = (content: Content): string => {
   const jsx = <>
