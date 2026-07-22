@@ -1,5 +1,4 @@
 import { type GetServerSideProps } from 'next';
-import { Heading } from '../components/atoms/heading/heading';
 import { config } from '../config';
 import { type ArticleSummary } from '../types';
 import { fetchVersions } from '../utils/data-fetch';
@@ -14,7 +13,7 @@ type PageProps = {
 const App = ({ ids, articles, previews }: PageProps) => (
   <main className="primary-section">
     <div className="article-body-container">
-      <Heading id="articles" headingLevel={2} content="Articles:" />
+      <h2 id="articles" className="heading-2">Articles:</h2>
       <ul>
         {ids && ids
           .map((id, index) => <li key={index}><a href={`/reviewed-preprints/${id}`}>{id}</a></li>)
@@ -25,7 +24,7 @@ const App = ({ ids, articles, previews }: PageProps) => (
       </ul>
 
       {previews && <>
-        <Heading id="previews" headingLevel={2} content="Previews:" />
+        <h2 id="previews" className="heading-2">Previews:</h2>
         <ul>
           {previews
             .map(({ id }, index) => <li key={index}><a href={`/previews/${id}`}>{id}</a></li>)
