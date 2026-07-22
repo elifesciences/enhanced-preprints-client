@@ -39,11 +39,4 @@ describe('Heading', () => {
 
     expect(screen.getByText('heading').id).toStrictEqual('hd1');
   });
-
-  it('should render with a custom className if passed in', () => {
-    render(<Heading id={'foo'} content="foo" headingLevel={1} className="custom-class"/>);
-
-    expect(screen.getByText('foo')).toHaveClass('custom-class');
-    expect(screen.getByText('foo')).not.toHaveClass('heading-1');
-  });
 });

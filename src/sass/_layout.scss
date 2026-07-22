@@ -1,5 +1,6 @@
 @use "settings";
 @use "mixins";
+@use "typography";
 
 *::before,
 *::after {
@@ -111,4 +112,22 @@
 
     @include mixins.z-index(3); // Added for the modal to be above the sticky navigation
   }
+}
+
+h1 {
+  @include typography.heading-2();
+}
+
+h2 {
+  @include typography.heading-3();
+}
+
+h3 {
+  @include typography.heading-4();
+}
+
+h4,
+h5,
+h6 {
+  @include typography.heading-5();
 }
