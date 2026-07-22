@@ -24,19 +24,20 @@ export const Heading = ({
     });
   }
 
+  const normalisedClassName = className || `heading-${headingLevel}`;
   switch (headingLevel) {
     case 1:
-      return <h1 id={id}>{contentToJsx(content)}</h1>;
+      return <h1 id={id} className={normalisedClassName}>{contentToJsx(content)}</h1>;
     case 2:
-      return <h2 id={id}>{contentToJsx(content)}</h2>;
+      return <h2 id={id} className={normalisedClassName}>{contentToJsx(content)}</h2>;
     case 3:
-      return <h3 id={id}>{contentToJsx(content)}</h3>;
+      return <h3 id={id} className={normalisedClassName}>{contentToJsx(content)}</h3>;
     case 4:
-      return <h4 id={id}>{contentToJsx(content)}</h4>;
+      return <h4 id={id} className={normalisedClassName}>{contentToJsx(content)}</h4>;
     case 5:
-      return <h5 id={id}>{contentToJsx(content)}</h5>;
+      return <h5 id={id} className={normalisedClassName}>{contentToJsx(content)}</h5>;
     case 6:
     default:
-      return <h6 id={id}>{contentToJsx(content)}</h6>;
+      return <h6 id={id} className={normalisedClassName}>{contentToJsx(content)}</h6>;
   }
 };
