@@ -1,10 +1,45 @@
 import { Fragment, type JSX } from 'react';
 import { contentToText } from './content-to-text';
 import { Figure } from '../../components/atoms/figure/figure';
-import { Heading } from '../../components/atoms/heading/heading';
 import { List } from '../../components/atoms/list/list';
 import { type Content } from '../../types';
 import { generateImageUrl } from '../generators';
+
+type Heading = {
+  content: Content,
+  headingLevel: 1 | 2 | 3 | 4 | 5 | 6,
+  maxLevel?: 1 | 2 | 3 | 4 | 5 | 6,
+  id: string,
+};
+
+export const Heading = ({
+  headingLevel, maxLevel, content, id,
+}: Heading): JSX.Element => {
+  if (maxLevel && headingLevel < maxLevel) {
+    return Heading({
+      headingLevel: maxLevel,
+      maxLevel,
+      content,
+      id,
+    });
+  }
+
+  switch (headingLevel) {
+    case 1:
+      return <h1 id={id}>{contentToJsx(content)}</h1>;
+    case 2:
+      return <h2 id={id}>{contentToJsx(content)}</h2>;
+    case 3:
+      return <h3 id={id}>{contentToJsx(content)}</h3>;
+    case 4:
+      return <h4 id={id}>{contentToJsx(content)}</h4>;
+    case 5:
+      return <h5 id={id}>{contentToJsx(content)}</h5>;
+    case 6:
+    default:
+      return <h6 id={id}>{contentToJsx(content)}</h6>;
+  }
+};
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
