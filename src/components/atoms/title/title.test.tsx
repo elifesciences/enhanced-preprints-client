@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Title } from './title';
-import { type Content } from '../../../types';
+import { type Content } from '../../../content';
 
 describe('Title', () => {
   it('should render the title with a string passed into the title prop', () => {

@@ -1,4 +1,4 @@
-import { type Content, type HeadingContent } from '../types';
+import { type Content, type HeadingContent } from './content';
 
 export type Heading = {
   id: string,

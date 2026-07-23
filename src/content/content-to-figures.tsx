@@ -1,4 +1,4 @@
-import { type Content } from '../types';
+import { type Content } from './content';
 
 export const contentToFigures = (content: Content): Content => {
   if (typeof content === 'undefined') {

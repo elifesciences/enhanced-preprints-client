@@ -6,3 +6,4 @@ export { contentToImgInfo } from './content-to-img-info';
 export { contentToJsx } from './content-to-jsx';
 export type { JSXContent } from './content-to-jsx';
 export { contentToText } from './content-to-text';
+export type { Content, ListContent } from './content';

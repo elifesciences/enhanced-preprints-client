@@ -1,5 +1,5 @@
+import { type Content } from './content';
 import { contentToHtml } from './content-to-html';
-import { type Content } from '../types';
 
 describe('Content to HTML', () => {
   it('returns the string unchanged if passed a simple string', () => {

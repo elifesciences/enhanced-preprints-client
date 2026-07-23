@@ -1,4 +1,4 @@
-import { type Content, type ImageObjectContent } from '../types';
+import { type Content, type ImageObjectContent } from './content';
 import { generateImageInfo } from '../utils/generators';
 
 const isImageObject = (content: Content): content is ImageObjectContent => {

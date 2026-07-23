@@ -4,8 +4,9 @@ import { type VersionHistoryItem, generateVersionHistory } from "./generate-vers
 import { getPdfUrl } from "./get-pdf-url";
 import { getXmlUrl } from "./get-xml-url";
 import { config } from '../../../config';
+import { type Content } from "../../../content"
 import {
-    type EnhancedArticleWithVersions, type Content, type Author, type Reference,
+    type EnhancedArticleWithVersions, type Author, type Reference,
     type Institution
 } from "../../../types";
 import { isVor } from "../../../utils/is-vor";
