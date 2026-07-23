@@ -1,11 +1,11 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
 import { type ServerSideProps } from '../../../../pages/reviewed-preprints/get-server-side-props';
-import { type JSXContent } from '../../../../utils/content';
+import { type Heading, type JSXContent } from '../../../../utils/content';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Assessment } from '../../../atoms/assessment/assessment';
-import { type Heading, JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
 import { Metrics } from '../../../atoms/metrics/metrics';
 import { ReferenceList } from '../../../atoms/reference-list/reference-list';
 import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import { type Heading, JumpToMenu } from './jump-to-menu';
+import { JumpToMenu } from './jump-to-menu';
+import { type Heading } from '../../../utils/content/content-to-headings';
 
 const headings = [
   { id: 's1', text: 'heading 1' },

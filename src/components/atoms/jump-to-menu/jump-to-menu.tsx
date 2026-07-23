@@ -1,15 +1,14 @@
 import { useEffect, useState, type JSX } from 'react';
-import { type Content } from '../../../types';
 import { contentToJsx } from '../../../utils/content';
 import './jump-to-menu.scss';
+import { type Heading } from '../../../utils/content/content-to-headings';
 import { throttle } from '../../../utils/throttle';
 
-export type Heading = {
-  id: string,
-  text: Content,
+type JumpToMenuProps = {
+  headings: Heading[],
 };
 
-export const JumpToMenu = ({ headings }: { headings: Heading[] }): JSX.Element => {
+export const JumpToMenu = ({ headings }: JumpToMenuProps): JSX.Element => {
   const [active, setActive] = useState(0);
   const [jumping, setJumping] = useState(false);
 
