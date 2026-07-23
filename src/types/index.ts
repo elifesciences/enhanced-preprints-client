@@ -1,5 +1,5 @@
 export type { Author } from './author';
-export type { Content, HeadingContent, ImageObjectContent, ListContent } from './content';
+export type { Content, HeadingContent, ImageObjectContent } from './content';
 export type { Institution } from './institution';
 export type { PeerReview } from './peer-review';
 export type { Reference } from './reference';
