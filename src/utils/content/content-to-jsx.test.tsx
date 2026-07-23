@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import { contentToJsx, Heading } from './content-to-jsx';
 import { Figure } from '../../components/atoms/figure/figure';
+import { listType } from '../../types/content';
 
 describe('Content to JSX', () => {
   it('returns the string unchanged if passed a simple string', () => {
@@ -297,6 +298,34 @@ describe('Content to JSX', () => {
 
     expect(document.querySelector('ul')).toBeInTheDocument();
     expect(document.querySelector('li')).toHaveTextContent('foo');
+  });
+
+  it('renders an ordered list when specified', () => {
+    render(contentToJsx({
+      type: 'List',
+      order: 'Ascending',
+      items: [],
+    }));
+
+    expect(document.querySelector('ol')).toBeInTheDocument();
+  });
+
+  describe('list-type specified', () => {
+    it.each(listType.map((item) => ({ type: item })))('with $type specified the class list-$type is added to the list', ({ type }) => {
+      render(contentToJsx({
+        type: 'List',
+        order: 'Ascending',
+        items: [
+          {
+            type: 'ListItem',
+            content: 'foo',
+          },
+        ],
+        meta: { listType: type },
+      }));
+
+      expect(document.querySelector('ol')).toHaveClass(`list-${type}`);
+    });
   });
 
   it('generates sections from thematic breaks', () => {
