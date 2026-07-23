@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { ArticleFullTextTab } from './fulltext-tab';
-import { contentToJsx } from '../../../../utils/content';
+import { contentToJsx } from '../../../../content';
 import { metaData, peerReview, content } from '../../../../utils/mocks';
 import '../../../../i18n';
 

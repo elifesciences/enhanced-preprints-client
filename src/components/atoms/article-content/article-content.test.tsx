@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { ArticleContent } from './article-content';
-import { contentToJsx } from '../../../utils/content';
+import { contentToJsx } from '../../../content';
 
 describe('ArticleContent', () => {
   it('renders with a simple string content', async () => {

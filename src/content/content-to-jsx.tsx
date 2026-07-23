@@ -1,8 +1,8 @@
 import { Fragment, type JSX } from 'react';
 import { contentToText } from './content-to-text';
-import { Figure } from '../../components/atoms/figure/figure';
-import { type Content } from '../../types';
-import { generateImageUrl } from '../generators';
+import { Figure } from '../components/atoms/figure/figure';
+import { type Content } from '../types';
+import { generateImageUrl } from '../utils/generators';
 
 type Heading = {
   content: Content,

@@ -9,7 +9,7 @@ import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from '../../
 import { config } from '../../config';
 import {
   contentToText, contentToFigures, contentToJsx, contentToHeadings,
-} from '../../utils/content';
+} from '../../content';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 

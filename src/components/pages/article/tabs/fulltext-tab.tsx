@@ -1,7 +1,7 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
+import { type Heading, type JSXContent } from '../../../../content';
 import { type ServerSideProps } from '../../../../pages/reviewed-preprints/get-server-side-props';
-import { type Heading, type JSXContent } from '../../../../utils/content';
 import { Abstract } from '../../../atoms/abstract/abstract';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 import { Assessment } from '../../../atoms/assessment/assessment';

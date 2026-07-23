@@ -3,7 +3,7 @@ import {
 } from '@testing-library/react';
 import { ArticlePage } from './article-page';
 import { ArticleFiguresTab, ArticleFullTextTab, ArticleReviewsTab } from './tabs';
-import { contentToText } from '../../../utils/content';
+import { contentToText } from '../../../content';
 import {
   metaData, peerReview, citation, relatedContent, timeline,
 } from '../../../utils/mocks';

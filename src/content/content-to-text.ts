@@ -1,4 +1,4 @@
-import { type Content } from '../../types';
+import { type Content } from '../types';
 
 export const contentToText = (content: Content): string => {
   if (typeof content === 'undefined') {

@@ -1,7 +1,7 @@
 import { useEffect, useState, type JSX } from 'react';
-import { contentToJsx } from '../../../utils/content';
+import { contentToJsx } from '../../../content';
 import './jump-to-menu.scss';
-import { type Heading } from '../../../utils/content/content-to-headings';
+import { type Heading } from '../../../content/content-to-headings';
 import { throttle } from '../../../utils/throttle';
 
 type JumpToMenuProps = {

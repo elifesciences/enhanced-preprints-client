@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
+import { contentToJsx } from '../../content';
 import { type ListContent } from '../../types';
-import { contentToJsx } from '../../utils/content';
 import '../../sass/_generated-content.scss';
 
 const ListPreview = ({ content }: { content: ListContent }) => <>{contentToJsx(content)}</>;

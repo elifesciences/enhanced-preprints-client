@@ -1,5 +1,5 @@
-import { type Content, type ImageObjectContent } from '../../types';
-import { generateImageInfo } from '../generators';
+import { type Content, type ImageObjectContent } from '../types';
+import { generateImageInfo } from '../utils/generators';
 
 const isImageObject = (content: Content): content is ImageObjectContent => {
   if (typeof content === 'undefined') {

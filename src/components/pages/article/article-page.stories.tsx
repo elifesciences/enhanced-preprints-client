@@ -4,7 +4,7 @@ import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { type ArticleReviewTabProps } from './tabs/reviews-tab';
 import '../../../i18n';
-import { contentToHeadings, contentToJsx } from '../../../utils/content';
+import { contentToHeadings, contentToJsx } from '../../../content';
 import {
   content, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';

@@ -1,6 +1,6 @@
 import { type JSX } from 'react';
 import '../article-page.scss';
-import { type JSXContent } from '../../../../utils/content';
+import { type JSXContent } from '../../../../content';
 import { ArticleContent } from '../../../atoms/article-content/article-content';
 
 export const ArticleFiguresTab = ({ content }: { content: JSXContent }): JSX.Element => (
