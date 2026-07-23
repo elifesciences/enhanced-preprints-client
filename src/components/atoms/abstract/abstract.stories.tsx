@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { Abstract } from './abstract';
-import { content } from '../../../utils/mocks';
+import { contentMock } from '../../../utils/mocks';
 
 const meta: Meta<typeof Abstract> = {
   title: 'Atoms/Abstract',
@@ -10,5 +10,5 @@ export default meta;
 type Story = StoryObj<typeof Abstract>;
 
 export const Article: Story = {
-  args: { content },
+  args: { content: contentMock },
 };

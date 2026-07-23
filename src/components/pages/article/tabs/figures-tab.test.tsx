@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
 import { ArticleFiguresTab } from './figures-tab';
 import { contentToFigures, contentToJsx } from '../../../../content';
-import { content } from '../../../../utils/mocks';
+import { contentMock } from '../../../../utils/mocks';
 
 describe('FiguresTab', () => {
   it('renders with figures tab', () => {
-    expect(() => render(<ArticleFiguresTab content={contentToJsx(contentToFigures(content))}/>)).not.toThrow();
+    expect(() => render(<ArticleFiguresTab content={contentToJsx(contentToFigures(contentMock))}/>)).not.toThrow();
   });
 
   it('renders every figure and table from the content', () => {
-    const { container } = render(<ArticleFiguresTab content={contentToJsx(contentToFigures(content))}/>);
+    const { container } = render(<ArticleFiguresTab content={contentToJsx(contentToFigures(contentMock))}/>);
 
     const figures = Array.from(container.querySelectorAll('.article-body figure'));
     const ids = figures.map(({ id }) => id);

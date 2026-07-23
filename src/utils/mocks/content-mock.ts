@@ -2,7 +2,7 @@
 import { Content } from '../../content';
 import placeholderImg from './placeholder.png';
 
-export const content: Content = [
+export const contentMock: Content = [
   {
     type: 'Heading',
     id: 's1',

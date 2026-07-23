@@ -6,7 +6,7 @@ import { type ArticleReviewTabProps } from './tabs/reviews-tab';
 import '../../../i18n';
 import { contentToHeadings, contentToJsx } from '../../../content';
 import {
-  content, metaData, metrics, peerReview, relatedContent, timeline,
+  contentMock, metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { DefaultLayout } from '../../layouts/default';
@@ -52,8 +52,8 @@ const tabs = [
   },
 ];
 
-const jsxContent = contentToJsx(content);
-const headings = contentToHeadings(content);
+const jsxContent = contentToJsx(contentMock);
+const headings = contentToHeadings(contentMock);
 
 export const ArticlePageFullTextTab: Story = {
   args: {

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { ArticleFullTextTab } from './fulltext-tab';
 import { contentToJsx } from '../../../../content';
-import { metaData, peerReview, content } from '../../../../utils/mocks';
+import { metaData, peerReview, contentMock } from '../../../../utils/mocks';
 import '../../../../i18n';
 
 jest.mock('next/navigation', () => ({
@@ -10,11 +10,11 @@ jest.mock('next/navigation', () => ({
 
 describe('FulltextTab', () => {
   it('renders with fulltext tab', () => {
-    expect(() => render(<ArticleFullTextTab metrics={null} headings={[]} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
+    expect(() => render(<ArticleFullTextTab metrics={null} headings={[]} content={contentToJsx(contentMock)} metaData={metaData} peerReview={peerReview}/>)).not.toThrow();
   });
 
   it('renders content in fulltext tab', () => {
-    const { container } = render(<ArticleFullTextTab metrics={null} headings={[]} content={contentToJsx(content)} metaData={metaData} peerReview={peerReview}/>);
+    const { container } = render(<ArticleFullTextTab metrics={null} headings={[]} content={contentToJsx(contentMock)} metaData={metaData} peerReview={peerReview}/>);
     expect(container.querySelector('.article-body > h1')).toHaveTextContent('Introduction');
   });
 
