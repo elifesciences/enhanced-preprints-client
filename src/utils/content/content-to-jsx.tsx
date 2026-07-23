@@ -1,7 +1,6 @@
 import { Fragment, type JSX } from 'react';
 import { contentToText } from './content-to-text';
 import { Figure } from '../../components/atoms/figure/figure';
-import { List } from '../../components/atoms/list/list';
 import { type Content } from '../../types';
 import { generateImageUrl } from '../generators';
 
@@ -43,7 +42,7 @@ export const Heading = ({
 
 type JSXContentPart = string | JSX.Element | Array<JSXContentPart>;
 export type JSXContent = JSXContentPart | Array<JSXContentPart>;
-export type Options = {
+type Options = {
   maxHeadingLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   imgInfo?: Record<string, { width: number, height: number }>,
   removePictureTag?: boolean,
@@ -163,8 +162,12 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       }
     case 'ListItem':
       return <li key={index}>{ contentToJsx(content.content, options)}</li>;
-    case 'List':
-      return <List content={content} options={options}/>;
+    case 'List': {
+      const className = content.meta ? `list-${content.meta.listType}` : '';
+      return content.order === 'Ascending' ?
+        <ol key={index} className={className}>{ contentToJsx(content.items, options) }</ol> :
+        <ul key={index} className={className}>{ contentToJsx(content.items, options) }</ul>;
+    }
     case 'Claim':
       return (
         <section key={index}>
