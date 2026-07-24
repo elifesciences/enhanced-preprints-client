@@ -15,6 +15,5 @@ export type {
   PreprintVersionSummary,
   ExternalVersionSummary,
   VORVersionSummary,
-  Metrics,
 } from './enhanced-article';
 export { IsoDateStringSchema } from './enhanced-article';

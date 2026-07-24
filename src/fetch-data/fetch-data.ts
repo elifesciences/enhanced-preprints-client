@@ -1,5 +1,6 @@
 import * as z from 'zod/v4';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
+import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
 import { RelatedContentSchema } from './related-content';
 import { config } from '../config';
@@ -40,12 +41,6 @@ const EnhancedArticleSchema = z.object({
 });
 
 const VersionSummarySchema = ToDoSchema;
-
-const MetricsSchema = z.object({
-  views: z.number(),
-  downloads: z.number(),
-  citations: z.number(),
-});
 
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,

@@ -2,6 +2,7 @@ import * as z from 'zod/v4';
 import { type Author } from './author';
 import { type Reference } from './reference';
 import { type Content } from '../content';
+import { type Metrics } from '../fetch-data/metrics';
 import { type PeerReview } from '../fetch-data/peer-review';
 import { type RelatedContent } from '../fetch-data/related-content';
 
@@ -112,11 +113,6 @@ export type EnhancedArticle = {
   license?: string,
 };
 
-export type Metrics = {
-  views: number,
-  downloads: number,
-  citations: number,
-};
 
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
