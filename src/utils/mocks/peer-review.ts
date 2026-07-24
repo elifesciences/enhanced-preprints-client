@@ -1,8 +1,9 @@
+import { type IsoDateString } from '../../types/enhanced-article';
 import { type PeerReview } from '../../types/peer-review';
 
 export const peerReview: PeerReview = {
   evaluationSummary: {
-    date: new Date('2022-01-02'),
+    date: new Date('2022-01-02').toISOString() as IsoDateString,
     participants: [
       {
         institution: 'Somewhere',
@@ -16,7 +17,7 @@ export const peerReview: PeerReview = {
   },
   reviews: [
     {
-      date: new Date('2022-01-02'),
+      date: new Date('2022-01-02').toISOString() as IsoDateString,
       participants: [
         {
           institution: 'Stark Industries',
@@ -29,7 +30,7 @@ export const peerReview: PeerReview = {
       doi: '10.7554/eLife.81090.sa1',
     },
     {
-      date: new Date('2022-01-03'),
+      date: new Date('2022-01-03').toISOString() as IsoDateString,
       participants: [
         {
           institution: 'S.H.I.E.L.D',
@@ -43,7 +44,7 @@ export const peerReview: PeerReview = {
     },
   ],
   authorResponse: {
-    date: new Date('2022-01-02'),
+    date: new Date('2022-01-02').toISOString() as IsoDateString,
     participants: [
       {
         institution: 'Somewhere',

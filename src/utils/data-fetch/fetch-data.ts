@@ -15,7 +15,7 @@ const ProcessedArticleSchema = ToDoSchema;
 const ParticipantSchema = ToDoSchema;
 
 const EvaluationSchema = z.object({
-  date: z.date(),
+  date: IsoDateStringSchema,
   doi: z.string().optional(),
   reviewType: z.union([z.literal('evaluation-summary'), z.literal('review-article'), z.literal('reply')]),
   text: z.string(),

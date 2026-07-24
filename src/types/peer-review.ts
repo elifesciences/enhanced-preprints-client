@@ -1,3 +1,5 @@
+import { type IsoDateString } from "./enhanced-article";
+
 type Participant = {
   name: string,
   role: string,
@@ -5,7 +7,7 @@ type Participant = {
 };
 
 type Evaluation = {
-  date: Date,
+  date: IsoDateString,
   doi?: string,
   reviewType: 'evaluation-summary' | 'review-article' | 'reply',
   text: string,
