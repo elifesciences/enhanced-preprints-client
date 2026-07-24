@@ -9,7 +9,7 @@ type Participant = {
 type Evaluation = {
   date: IsoDateString,
   doi?: string,
-  reviewType: 'evaluation-summary' | 'review-article' | 'reply',
+  reviewType: 'evaluation-summary' | 'review-article' | 'reply' | 'author-response',
   text: string,
   participants: Participant[],
 };
