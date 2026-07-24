@@ -1,6 +1,6 @@
 import { getLatestVersionWarningUrl } from './get-latest-version-warning-url';
-import { type EnhancedArticleWithVersions } from '../../types';
-import { mock85111 } from '../mocks/enhanced-article-with-versions';
+import { type EnhancedArticleWithVersions } from '../types';
+import { mock85111 } from '../utils/mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {
   it('single version', () => {

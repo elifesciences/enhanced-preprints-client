@@ -3,7 +3,7 @@ import { ReadableStream } from 'stream/web';
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createRequest, createResponse } from 'node-mocks-http';
 import handler from './pdf.page';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion } from '../../../../fetch-data';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
 
@@ -14,7 +14,7 @@ type SimplePdfResponse = {
   body: ReadableStream;
 };
 
-jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
+jest.mock('../../../../fetch-data/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
 

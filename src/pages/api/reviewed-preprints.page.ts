@@ -2,6 +2,7 @@ import moment from 'moment';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../content';
+import { fetchVersionsNoContent } from '../../fetch-data';
 import {
   type Author,
   type ElifeAssessment,
@@ -11,7 +12,6 @@ import {
   type ReviewedPreprintSnippet,
   IsoDateStringSchema,
 } from '../../types';
-import { fetchVersionsNoContent } from '../../utils/data-fetch';
 import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {

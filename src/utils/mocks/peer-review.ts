@@ -1,5 +1,5 @@
+import { type PeerReview } from '../../fetch-data/peer-review';
 import { type IsoDateString } from '../../types/enhanced-article';
-import { type PeerReview } from '../data-fetch/peer-review';
 
 export const peerReview: PeerReview = {
   evaluationSummary: {

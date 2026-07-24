@@ -1,5 +1,5 @@
-import { type EnhancedArticleWithVersions } from '../../types';
-import { isPreprintVersionSummary } from '../type-guards';
+import { type EnhancedArticleWithVersions } from '../types';
+import { isPreprintVersionSummary } from '../utils/type-guards';
 
 export const getLatestVersionWarningUrl = (articleWithVersions: EnhancedArticleWithVersions): string | null => {
   const publishedDesc = Object.values(articleWithVersions.versions) // get the versions in an array

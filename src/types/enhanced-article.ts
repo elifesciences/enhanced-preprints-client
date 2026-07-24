@@ -3,7 +3,7 @@ import { type Author } from './author';
 import { type Reference } from './reference';
 import { type RelatedContent } from './related-content';
 import { type Content } from '../content';
-import { type PeerReview } from '../utils/data-fetch/peer-review';
+import { type PeerReview } from '../fetch-data/peer-review';
 
 type License = {
   type: string,

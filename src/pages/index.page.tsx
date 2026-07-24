@@ -1,7 +1,7 @@
 import { type GetServerSideProps } from 'next';
 import { config } from '../config';
+import { fetchVersions } from '../fetch-data';
 import { type ArticleSummary } from '../types';
-import { fetchVersions } from '../utils/data-fetch';
 
 type PageProps = {
   siteName?: string,

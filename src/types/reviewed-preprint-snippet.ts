@@ -1,5 +1,5 @@
 import { type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
-import { type PeerReview } from '../utils/data-fetch/peer-review';
+import { type PeerReview } from '../fetch-data/peer-review';
 
 type ElifeAssessmentContent = {
   type: 'paragraph',

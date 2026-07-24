@@ -1,6 +1,6 @@
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { config } from '../../../../config';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion } from '../../../../fetch-data';
 import { generateArticleXmlUri } from '../../../../utils/generators/generate-article-xml-uri';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';

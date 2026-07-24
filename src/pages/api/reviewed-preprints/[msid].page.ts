@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { fetchVersion } from '../../../fetch-data';
 import { type VersionSummary } from '../../../types';
-import { fetchVersion } from '../../../utils/data-fetch';
 import {
   errorNotFoundRequest,
   hasPublishedDate,

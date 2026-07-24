@@ -2,9 +2,9 @@ import fetchMock from 'fetch-mock';
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
 import handler from './bibtex.page';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion } from '../../../../fetch-data';
 
-jest.mock('../../../../utils/data-fetch/fetch-data', () => ({
+jest.mock('../../../../fetch-data/fetch-data', () => ({
   fetchVersion: jest.fn(),
 }));
 

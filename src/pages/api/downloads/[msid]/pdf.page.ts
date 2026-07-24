@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../../config';
-import { fetchVersion } from '../../../../utils/data-fetch';
+import { fetchVersion } from '../../../../fetch-data';
 import { getCanonicalUrl } from '../../../../utils/get-canonical-url';
 import { isVor } from '../../../../utils/is-vor';
 import { proxyUrlToResponse } from '../../../../utils/proxy-url-to-response';

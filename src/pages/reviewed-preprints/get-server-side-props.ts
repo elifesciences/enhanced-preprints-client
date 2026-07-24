@@ -5,12 +5,12 @@ import { constructTimeline, translateTimeline } from "./construct-timeline/const
 import { config } from '../../config';
 import { contentToImgInfo, type Content } from '../../content';
 import { type FeaturesData } from '../../features';
+import { fetchVersion, getLatestVersionWarningUrl } from '../../fetch-data';
+import { type PeerReview } from '../../fetch-data/peer-review';
 import {
   type Metrics,
   type RelatedContent,
 } from '../../types';
-import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
-import { type PeerReview } from '../../utils/data-fetch/peer-review';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
 

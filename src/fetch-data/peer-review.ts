@@ -1,7 +1,7 @@
 import * as z from 'zod/v4';
 import {
     IsoDateStringSchema,
-} from '../../types';
+} from '../types';
 
 const ParticipantSchema = z.object({
     name: z.string(),

@@ -1,13 +1,13 @@
 import * as z from 'zod/v4';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { PeerReviewSchema } from './peer-review';
-import { config } from '../../config';
+import { config } from '../config';
 import {
   type ArticleSummary,
   type EnhancedArticleWithVersions,
   type PublishedEnhancedArticleMetaDataForJournal,
   IsoDateStringSchema,
-} from '../../types';
+} from '../types';
 
 const ToDoSchema = z.any();
 
