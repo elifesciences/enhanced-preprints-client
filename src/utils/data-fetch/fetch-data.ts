@@ -12,7 +12,13 @@ const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
 
-const PeerReviewSchema = ToDoSchema;
+const EvaluationSchema = ToDoSchema;
+
+const PeerReviewSchema = z.object({
+  evaluationSummary: EvaluationSchema.optional(),
+  reviews: z.array(EvaluationSchema),
+  authorResponse: EvaluationSchema.optional(),
+});
 
 const RelatedContentSchema = ToDoSchema;
 
