@@ -13,7 +13,13 @@ const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
 
-const RelatedContentSchema = ToDoSchema;
+const RelatedContentSchema = z.object({
+  type: z.string(),
+  title: z.string(),
+  url: z.string(),
+  content: z.string().optional(),
+  imageUrl: z.string().optional(),
+});
 
 const EnhancedArticleSchema = z.object({
   id: z.string(),
@@ -36,7 +42,7 @@ const EnhancedArticleSchema = z.object({
   eLocationId: z.string().optional(),
   subjects: z.array(z.string()).optional(),
   pdfUrl: z.string().optional(),
-  relatedContent: RelatedContentSchema.optional(),
+  relatedContent: z.array(RelatedContentSchema).optional(),
   license: z.string().optional(),
 });
 
