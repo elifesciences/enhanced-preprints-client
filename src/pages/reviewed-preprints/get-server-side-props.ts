@@ -7,10 +7,10 @@ import { contentToImgInfo, type Content } from '../../content';
 import { type FeaturesData } from '../../features';
 import {
   type Metrics,
-  type PeerReview,
   type RelatedContent,
 } from '../../types';
 import { fetchVersion, getLatestVersionWarningUrl } from '../../utils/data-fetch';
+import { type PeerReview } from '../../utils/data-fetch/peer-review';
 import { isVor } from '../../utils/is-vor';
 import { isVORVersionSummary } from '../../utils/type-guards';
 

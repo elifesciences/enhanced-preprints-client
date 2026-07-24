@@ -1,5 +1,6 @@
 import * as z from 'zod/v4';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
+import { PeerReviewSchema } from './peer-review';
 import { config } from '../../config';
 import {
   type ArticleSummary,
@@ -11,26 +12,6 @@ import {
 const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
-
-const ParticipantSchema = z.object({
-  name: z.string(),
-  role: z.string(),
-  institution: z.string().optional(),
-});
-
-const EvaluationSchema = z.object({
-  date: IsoDateStringSchema,
-  doi: z.string().optional(),
-  reviewType: z.union([z.literal('evaluation-summary'), z.literal('review-article'), z.literal('reply'), z.literal('author-response')]),
-  text: z.string(),
-  participants: z.array(ParticipantSchema),
-});
-
-const PeerReviewSchema = z.object({
-  evaluationSummary: EvaluationSchema.optional(),
-  reviews: z.array(EvaluationSchema),
-  authorResponse: EvaluationSchema.optional(),
-});
 
 const RelatedContentSchema = ToDoSchema;
 
