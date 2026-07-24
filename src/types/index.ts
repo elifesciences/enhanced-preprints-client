@@ -1,7 +1,6 @@
 export type { Author } from './author';
 export type { Institution } from './institution';
 export type { Reference } from './reference';
-export type { RelatedContent } from './related-content';
 export type {
   ReviewedPreprintSnippet,
   ElifeAssessment,

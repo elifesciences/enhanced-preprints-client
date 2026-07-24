@@ -1,6 +1,7 @@
 import * as z from 'zod/v4';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { PeerReviewSchema } from './peer-review';
+import { RelatedContentSchema } from './related-content';
 import { config } from '../config';
 import {
   type ArticleSummary,
@@ -12,14 +13,6 @@ import {
 const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
-
-const RelatedContentSchema = z.object({
-  type: z.string(),
-  title: z.string(),
-  url: z.string(),
-  content: z.string().optional(),
-  imageUrl: z.string().optional(),
-});
 
 const EnhancedArticleSchema = z.object({
   id: z.string(),
