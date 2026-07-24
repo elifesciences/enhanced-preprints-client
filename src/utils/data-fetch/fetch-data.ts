@@ -19,7 +19,7 @@ const EvaluationSchema = z.object({
   doi: z.string().optional(),
   reviewType: z.union([z.literal('evaluation-summary'), z.literal('review-article'), z.literal('reply')]),
   text: z.string(),
-  participants: ParticipantSchema,
+  participants: z.array(ParticipantSchema),
 });
 
 const PeerReviewSchema = z.object({
