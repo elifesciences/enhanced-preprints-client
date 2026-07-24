@@ -12,7 +12,15 @@ const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
 
-const EvaluationSchema = ToDoSchema;
+const ParticipantSchema = ToDoSchema;
+
+const EvaluationSchema = z.object({
+  date: z.date(),
+  doi: z.string().optional(),
+  reviewType: z.union([z.literal('evaluation-summary'), z.literal('review-article'), z.literal('reply')]),
+  text: z.string(),
+  participants: ParticipantSchema,
+});
 
 const PeerReviewSchema = z.object({
   evaluationSummary: EvaluationSchema.optional(),
