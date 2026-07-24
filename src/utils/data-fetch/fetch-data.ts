@@ -12,7 +12,11 @@ const ToDoSchema = z.any();
 
 const ProcessedArticleSchema = ToDoSchema;
 
-const ParticipantSchema = ToDoSchema;
+const ParticipantSchema = z.object({
+  name: z.string(),
+  role: z.string(),
+  institution: z.string().optional(),
+});
 
 const EvaluationSchema = z.object({
   date: IsoDateStringSchema,
