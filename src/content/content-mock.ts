@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Content } from '../../content';
+import { Content } from './content';
 import placeholderImg from './placeholder.png';
 
 export const contentMock: Content = [

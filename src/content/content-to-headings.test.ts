@@ -1,5 +1,5 @@
 import { contentToHeadings } from './content-to-headings';
-import { contentMock as mockContent } from '../utils/mocks';
+import { contentMock } from '../content';
 
 describe('Content to Headings', () => {
   it('handles content without headings', () => {
@@ -71,7 +71,7 @@ describe('Content to Headings', () => {
   });
 
   it('should convert complex example', () => {
-    const result = contentToHeadings(mockContent);
+    const result = contentToHeadings(contentMock);
 
     expect(result).toStrictEqual([
       {

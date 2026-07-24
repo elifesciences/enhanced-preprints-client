@@ -1,6 +1,5 @@
 export { authors, authorNotes } from './authors';
 export { metaData } from './meta-data';
-export { contentMock } from './content-mock';
 export { peerReview } from './peer-review';
 export { references } from './references';
 export { citation } from './citation';

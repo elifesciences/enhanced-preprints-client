@@ -4,9 +4,9 @@ import { ArticlePage } from './article-page';
 import { ArticleFullTextTab, ArticleFiguresTab, ArticleReviewsTab } from './tabs';
 import { type ArticleReviewTabProps } from './tabs/reviews-tab';
 import '../../../i18n';
-import { contentToHeadings, contentToJsx } from '../../../content';
+import { contentToHeadings, contentToJsx, contentMock } from '../../../content';
 import {
-  contentMock, metaData, metrics, peerReview, relatedContent, timeline,
+  metaData, metrics, peerReview, relatedContent, timeline,
 } from '../../../utils/mocks';
 import { ErrorMessages } from '../../atoms/error-messages/error-messages';
 import { DefaultLayout } from '../../layouts/default';

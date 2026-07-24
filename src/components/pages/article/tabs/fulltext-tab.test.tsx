@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { ArticleFullTextTab } from './fulltext-tab';
-import { contentToJsx } from '../../../../content';
-import { metaData, peerReview, contentMock } from '../../../../utils/mocks';
+import { contentToJsx, contentMock } from '../../../../content';
+import { metaData, peerReview } from '../../../../utils/mocks';
 import '../../../../i18n';
 
 jest.mock('next/navigation', () => ({
