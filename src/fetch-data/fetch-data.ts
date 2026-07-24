@@ -41,10 +41,16 @@ const EnhancedArticleSchema = z.object({
 
 const VersionSummarySchema = ToDoSchema;
 
+const MetricsSchema = z.object({
+  views: z.number(),
+  downloads: z.number(),
+  citations: z.number(),
+});
+
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,
   versions: z.object({}).catchall(VersionSummarySchema),
-  metrics: ToDoSchema.optional(),
+  metrics: MetricsSchema.optional(),
   siteName: z.string().optional(),
 });
 
