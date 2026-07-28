@@ -1,7 +1,7 @@
+import { type VORVersionSummary } from '../fetch-data/fetch-data';
 import {
   type ExternalVersionSummary,
   type PreprintVersionSummary,
-  type VORVersionSummary,
   type VersionSummary,
 } from '../types';
 

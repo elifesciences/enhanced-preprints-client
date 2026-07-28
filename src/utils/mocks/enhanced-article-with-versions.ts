@@ -92,7 +92,7 @@ export const vorArticleVersion = {
       preprintDoi: '10.1101/2022.11.08.515698',
       preprintUrl: 'https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2',
       published: new Date('2023-01-25T14:00:00.000Z').toISOString() as IsoDateString,
-      sentForReview: new Date('2022-11-29T14:20:30.000Z'),
+      sentForReview: new Date('2022-11-29T14:20:30.000Z').toISOString() as IsoDateString,
       versionDoi: '10.7554/eLife.85111.1',
       umbrellaDoi: '10.7554/eLife.85111',
       versionIdentifier: '1',

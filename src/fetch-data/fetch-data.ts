@@ -53,6 +53,9 @@ const VORVersionSummarySchema = z.object({
   published: z.union([IsoDateStringSchema, z.null()]),
   withEvaluationSummary: z.boolean().optional(),
 });
+
+export type VORVersionSummary = z.infer<typeof VORVersionSummarySchema>;
+
 const VersionSummarySchema = z.union([ExternalVersionSummarySchema, PreprintVersionSummarySchema, VORVersionSummarySchema]);
 
 const EnhancedArticleWithVersionsSchema = z.object({
