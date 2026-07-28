@@ -40,7 +40,10 @@ const EnhancedArticleSchema = z.object({
   license: z.string().optional(),
 });
 
-const VersionSummarySchema = ToDoSchema;
+const ExternalVersionSummarySchema = ToDoSchema;
+const PreprintVersionSummarySchema = ToDoSchema;
+const VORVersionSummarySchema = ToDoSchema;
+const VersionSummarySchema = z.union([ExternalVersionSummarySchema, PreprintVersionSummarySchema, VORVersionSummarySchema]);
 
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,
