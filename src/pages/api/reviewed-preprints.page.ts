@@ -120,15 +120,7 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null): Param => req.query[key] ?? defaultValue;
 
-const toIsoStringWithoutMilliseconds = (date: Date): string => {
-  const year = date.getUTCFullYear();
-  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-  const day = date.getUTCDate().toString().padStart(2, '0');
-  const hours = date.getUTCHours().toString().padStart(2, '0');
-  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-  const seconds = date.getUTCSeconds().toString().padStart(2, '0');
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
-};
+const removeMilliseconds = (input: IsoDateString): string => input.split('.')[0] + 'Z'
 
 const enhancedArticleNoContentToSnippet = ({
   msid,
@@ -141,21 +133,21 @@ const enhancedArticleNoContentToSnippet = ({
   firstPublished,
   peerReview,
 }: PublishedEnhancedArticleMetaDataForJournal): ReviewedPreprintSnippet => ({
-  id: msid,
-  doi: preprintDoi ?? 'undefined',
-  version: +versionIdentifier,
-  pdf: pdfUrl,
-  status: 'reviewed',
-  authorLine: prepareAuthorLine(article.authors || []),
-  title: contentToHtml(article.title),
-  published: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
-  reviewedDate: toIsoStringWithoutMilliseconds(new Date(firstPublished)),
-  versionDate: toIsoStringWithoutMilliseconds(new Date(published)),
-  statusDate: toIsoStringWithoutMilliseconds(new Date(published)),
-  stage: 'published',
-  subjects: getSubjects(subjects || []),
-  ...(peerReview ? getAssessment(peerReview) : {}),
-});
+    id: msid,
+    doi: preprintDoi ?? 'undefined',
+    version: +versionIdentifier,
+    pdf: pdfUrl,
+    status: 'reviewed',
+    authorLine: prepareAuthorLine(article.authors || []),
+    title: contentToHtml(article.title),
+    published: removeMilliseconds(firstPublished),
+    reviewedDate: removeMilliseconds(firstPublished),
+    versionDate: removeMilliseconds(published),
+    statusDate: removeMilliseconds(published),
+    stage: 'published',
+    subjects: getSubjects(subjects || []),
+    ...(peerReview ? getAssessment(peerReview) : {}),
+  });
 
 type EnhancedArticleWithPublishedDate = EnhancedArticle & {
   published: IsoDateString
