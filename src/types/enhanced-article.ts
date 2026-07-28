@@ -56,7 +56,16 @@ export type VORVersionSummary = {
   withEvaluationSummary?: boolean,
 };
 
-export type PreprintVersionSummary = VORVersionSummary & {
+export type PreprintVersionSummary = {
+  id: string,
+  msid: string,
+  doi: string,
+  versionIdentifier: string,
+  umbrellaDoi?: string,
+  versionDoi?: string,
+  sentForReview?: Date,
+  published: Date | null,
+  withEvaluationSummary?: boolean,
   preprintDoi: string,
   preprintUrl: string,
   preprintPosted: Date,
