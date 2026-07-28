@@ -52,7 +52,7 @@ export type PreprintVersionSummary = {
   versionIdentifier: string,
   umbrellaDoi?: string,
   versionDoi?: string,
-  sentForReview?: Date,
+  sentForReview?: IsoDateString,
   published: IsoDateString | null,
   withEvaluationSummary?: boolean,
   preprintDoi: string,
