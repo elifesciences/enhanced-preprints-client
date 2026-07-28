@@ -1,4 +1,4 @@
-import { type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
+import { type IsoDateString, type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
 import { type PeerReview } from '../fetch-data/peer-review';
 
 type ElifeAssessmentContent = {
@@ -41,6 +41,6 @@ export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummar
 export type PublishedEnhancedArticleMetaDataForJournal = Omit<EnhancedArticle, 'article' | 'peerReview'> & {
   article: Omit<ProcessedArticle, 'doi' | 'date' | 'content' | 'abstract'>,
   peerReview?: PeerReviewEvaluationSummaryOnly,
-  published: Date,
-  firstPublished: Date,
+  published: IsoDateString,
+  firstPublished: IsoDateString,
 };

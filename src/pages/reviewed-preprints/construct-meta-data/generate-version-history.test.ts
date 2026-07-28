@@ -1,5 +1,6 @@
 import { generateVersionHistory } from './generate-version-history';
 import { type VersionSummary } from '../../../types';
+import { type IsoDateString } from '../../../types/enhanced-article';
 
 const versionSummary1: VersionSummary = {
   id: '1v1',
@@ -12,7 +13,7 @@ const versionSummary1: VersionSummary = {
   preprintUrl: 'https://doi.org/doi-123',
   sentForReview: new Date('2023-01-01'),
   preprintPosted: new Date('2023-01-02'),
-  published: new Date('2023-01-03'),
+  published: new Date('2023-01-03').toISOString() as IsoDateString,
 };
 
 const vorVersionSummary: VersionSummary = {
@@ -22,7 +23,7 @@ const vorVersionSummary: VersionSummary = {
   doi: '10.00001/1',
   msid: '1',
 
-  published: new Date('2024-01-09'),
+  published: new Date('2024-01-09').toISOString() as IsoDateString,
 };
 
 const versionSummary2: VersionSummary = {
@@ -36,20 +37,20 @@ const versionSummary2: VersionSummary = {
   preprintUrl: 'https://doi.org/doi-123v2',
   preprintPosted: new Date('2023-01-05'),
   sentForReview: new Date('2023-01-06'),
-  published: new Date('2023-01-09'),
+  published: new Date('2023-01-09').toISOString() as IsoDateString,
 };
 
 const externalVersionSummary3: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
-  published: new Date('2023-02-09'),
+  published: new Date('2023-02-09').toISOString() as IsoDateString,
   url: 'https://doi.org/doi-123v3',
 };
 
 const externalVersionSummary3WithCorrections: VersionSummary = {
   doi: 'doi-123v3',
   versionIdentifier: '3',
-  published: new Date('2023-02-09'),
+  published: new Date('2023-02-09').toISOString() as IsoDateString,
   url: 'https://doi.org/doi-123v3',
   corrections: [
     {

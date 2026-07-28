@@ -12,6 +12,7 @@ import {
   type ReviewedPreprintSnippet,
   IsoDateStringSchema,
 } from '../../types';
+import { type IsoDateString } from '../../types/enhanced-article';
 import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {
@@ -156,17 +157,13 @@ const enhancedArticleNoContentToSnippet = ({
   ...(peerReview ? getAssessment(peerReview) : {}),
 });
 
-/**
- * @deprecated This type is a lie
- * unable to use its proper type IsoDateString, for now, as it affects multiple places in the code and requires more attention and work
- */
 type EnhancedArticleWithPublishedDate = EnhancedArticle & {
-  published: Date
+  published: IsoDateString
 };
 
 export const hasPublishedDate = (article: EnhancedArticle): article is EnhancedArticleWithPublishedDate => IsoDateStringSchema.safeParse(article.published).success;
 
-export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: EnhancedArticleWithPublishedDate, firstPublished: Date | null): ReviewedPreprintItemResponse => ({
+export const enhancedArticleToReviewedPreprintItemResponse = (publishedEnhancedArticle: EnhancedArticleWithPublishedDate, firstPublished: IsoDateString | null): ReviewedPreprintItemResponse => ({
   ...enhancedArticleNoContentToSnippet({
     ...publishedEnhancedArticle,
     firstPublished: firstPublished ?? publishedEnhancedArticle.published,

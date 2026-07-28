@@ -1,5 +1,6 @@
 import { getLatestVersionWarningUrl } from './get-latest-version-warning-url';
 import { type EnhancedArticleWithVersions } from '../types';
+import { type IsoDateString } from '../types/enhanced-article';
 import { mock85111 } from '../utils/mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {
@@ -118,7 +119,7 @@ describe('getLatestVersion', () => {
         '85111v3': {
           ...mock85111.versions['85111v3'],
           // Tomorrow, tomorrow, I love ya, tomorrow
-          published: new Date(new Date().setDate(new Date().getDate() + 1)),
+          published: new Date(new Date().setDate(new Date().getDate() + 1)).toISOString() as IsoDateString,
         },
       },
     };

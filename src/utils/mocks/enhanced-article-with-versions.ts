@@ -39,7 +39,7 @@ export const mock85111: EnhancedArticleWithVersions = {
       preprintDoi: '10.1101/2022.11.08.515698',
       preprintPosted: new Date('2022-11-22T00:00:00.000Z'),
       preprintUrl: 'https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2',
-      published: new Date('2023-01-25T14:00:00.000Z'),
+      published: new Date('2023-01-25T14:00:00.000Z').toISOString() as IsoDateString,
       sentForReview: new Date('2022-11-29T14:20:30.000Z'),
       versionDoi: '10.7554/eLife.85111.1',
       umbrellaDoi: '10.7554/eLife.85111',
@@ -52,7 +52,7 @@ export const mock85111: EnhancedArticleWithVersions = {
       preprintDoi: '10.1101/2022.11.08.515698',
       preprintPosted: new Date('2023-03-20T00:00:00.000Z'),
       preprintUrl: 'https://www.biorxiv.org/content/10.1101/2022.11.08.515698v3',
-      published: new Date('2023-05-10T14:00:00.000Z'),
+      published: new Date('2023-05-10T14:00:00.000Z').toISOString() as IsoDateString,
       sentForReview: new Date('2023-03-23T10:52:45.000Z'),
       versionDoi: '10.7554/eLife.85111.2',
       umbrellaDoi: '10.7554/eLife.85111',
@@ -61,7 +61,7 @@ export const mock85111: EnhancedArticleWithVersions = {
     '85111v3': {
       doi: '10.7554/eLife.85111.3',
       versionIdentifier: '3',
-      published: new Date('2023-06-07T00:00:00.000Z'),
+      published: new Date('2023-06-07T00:00:00.000Z').toISOString() as IsoDateString,
       url: 'https://elifesciences.org/articles/85111v1',
       corrections: [
         {
@@ -91,7 +91,7 @@ export const vorArticleVersion = {
       msid: '85111',
       preprintDoi: '10.1101/2022.11.08.515698',
       preprintUrl: 'https://www.biorxiv.org/content/10.1101/2022.11.08.515698v2',
-      published: new Date('2023-01-25T14:00:00.000Z'),
+      published: new Date('2023-01-25T14:00:00.000Z').toISOString() as IsoDateString,
       sentForReview: new Date('2022-11-29T14:20:30.000Z'),
       versionDoi: '10.7554/eLife.85111.1',
       umbrellaDoi: '10.7554/eLife.85111',

@@ -52,7 +52,7 @@ export type VORVersionSummary = {
   umbrellaDoi?: string,
   versionDoi?: string,
   sentForReview?: Date,
-  published: Date | null,
+  published: IsoDateString | null,
   withEvaluationSummary?: boolean,
 };
 
@@ -64,7 +64,7 @@ export type PreprintVersionSummary = {
   umbrellaDoi?: string,
   versionDoi?: string,
   sentForReview?: Date,
-  published: Date | null,
+  published: IsoDateString | null,
   withEvaluationSummary?: boolean,
   preprintDoi: string,
   preprintUrl: string,
@@ -74,7 +74,7 @@ export type PreprintVersionSummary = {
 export type ExternalVersionSummary = {
   doi: string,
   versionIdentifier: string,
-  published: Date | null,
+  published: IsoDateString | null,
   url: string,
   corrections?: {
     date: Date,
