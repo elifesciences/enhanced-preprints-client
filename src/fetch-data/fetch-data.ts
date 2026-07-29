@@ -40,7 +40,16 @@ const EnhancedArticleSchema = z.object({
   license: z.string().optional(),
 });
 
-const ExternalVersionSummarySchema = ToDoSchema;
+const ExternalVersionSummarySchema = z.object({
+  doi: z.string(),
+  versionIdentifier: z.string(),
+  published: z.union([IsoDateStringSchema, z.null()]),
+  url: z.string(),
+  corrections: z.array(z.object({
+    date: IsoDateStringSchema,
+    url: z.string()
+  })).optional(),
+});
 
 const PreprintVersionSummarySchema = z.object({
   id: z.string(),
