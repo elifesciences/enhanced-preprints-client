@@ -20,6 +20,37 @@ const compat = new FlatCompat({
   allConfig: js.configs.all
 });
 
+const sharedRules = {
+  'no-unreachable': 'error',
+  '@typescript-eslint/no-unused-vars': 'error',
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
+  '@stylistic/eol-last': ['error', 'always'],
+  '@stylistic/max-len': ['error', {
+    'code': 260,
+  }],
+  '@stylistic/quotes': ['error', 'single'],
+  '@stylistic/indent': ['error', 2],
+  '@stylistic/operator-linebreak': 0,
+
+  'import/order': ['error', {
+    alphabetize: {
+      order: 'asc',
+    },
+    groups: [
+      'builtin',
+      'external',
+      'internal',
+      'index',
+      'sibling',
+      'parent',
+    ],
+  }],
+
+  'import/no-duplicates': 'error',
+  'import/no-cycle': 'error',
+};
+
 export default defineConfig([{
   files: [
     'src/*.tsx', 'src/**/*.tsx', 'src/*.ts', 'src/**/*.ts', 'src/*.json', 'src/**/*.json',
@@ -50,37 +81,13 @@ export default defineConfig([{
     ...compat.extends('plugin:@next/next/core-web-vitals'),
   ],
   rules: {
-    '@stylistic/eol-last': ['error', 'always'],
-    'no-unreachable': 'error',
+    ...sharedRules,
     '@typescript-eslint/no-deprecated': 'warn',
-    '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     'import/prefer-default-export': 0,
     '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
-    '@stylistic/max-len': ['error', {
-      'code': 260,
-    }],
-
-    '@stylistic/quotes': ['error', 'single'],
-
-    'import/order': ['error', {
-      alphabetize: {
-        order: 'asc',
-      },
-      groups: [
-        'builtin',
-        'external',
-        'internal',
-        'index',
-        'sibling',
-        'parent',
-      ],
-    }],
-
     'import/extensions': 0,
-    'import/no-duplicates': 'error',
-    'import/no-cycle': 'error',
 
     'import/no-extraneous-dependencies': ['error', {
       'devDependencies': [
@@ -93,17 +100,12 @@ export default defineConfig([{
       'peerDependencies': true,
     }],
 
-    '@stylistic/operator-linebreak': 0,
-    '@stylistic/indent': ['error', 2],
-
     'no-only-tests/no-only-tests': ['error', {
       'focus': ['only'],
     }],
 
     'react/jsx-indent': ['error', 2],
     'react/jsx-indent-props': ['error', 2],
-    '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
-    '@typescript-eslint/no-non-null-assertion': 'warn',
   },
 
   settings: {
@@ -132,34 +134,7 @@ export default defineConfig([{
     '@stylistic': stylistic,
   },
   rules: {
-    'no-unreachable': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-non-null-assertion': 'warn',
-    '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
-    '@stylistic/eol-last': ['error', 'always'],
-    '@stylistic/max-len': ['error', {
-      'code': 260,
-    }],
-    '@stylistic/quotes': ['error', 'single'],
-    '@stylistic/indent': ['error', 2],
-    '@stylistic/operator-linebreak': 0,
-
-    'import/order': ['error', {
-      alphabetize: {
-        order: 'asc',
-      },
-      groups: [
-        'builtin',
-        'external',
-        'internal',
-        'index',
-        'sibling',
-        'parent',
-      ],
-    }],
-
-    'import/no-duplicates': 'error',
-    'import/no-cycle': 'error',
+    ...sharedRules,
   },
 }, globalIgnores([
   '**/.eslintrc.js',
