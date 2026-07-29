@@ -94,6 +94,7 @@ module.exports = defineConfig([{
         }],
 
         "@stylistic/operator-linebreak": 0,
+        "@stylistic/indent": ["error", 2],
 
         "no-only-tests/no-only-tests": ["error", {
             "focus": ["only"],

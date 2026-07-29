@@ -133,21 +133,21 @@ const enhancedArticleNoContentToSnippet = ({
   firstPublished,
   peerReview,
 }: PublishedEnhancedArticleMetaDataForJournal): ReviewedPreprintSnippet => ({
-    id: msid,
-    doi: preprintDoi ?? 'undefined',
-    version: +versionIdentifier,
-    pdf: pdfUrl,
-    status: 'reviewed',
-    authorLine: prepareAuthorLine(article.authors || []),
-    title: contentToHtml(article.title),
-    published: removeMilliseconds(firstPublished),
-    reviewedDate: removeMilliseconds(firstPublished),
-    versionDate: removeMilliseconds(published),
-    statusDate: removeMilliseconds(published),
-    stage: 'published',
-    subjects: getSubjects(subjects || []),
-    ...(peerReview ? getAssessment(peerReview) : {}),
-  });
+  id: msid,
+  doi: preprintDoi ?? 'undefined',
+  version: +versionIdentifier,
+  pdf: pdfUrl,
+  status: 'reviewed',
+  authorLine: prepareAuthorLine(article.authors || []),
+  title: contentToHtml(article.title),
+  published: removeMilliseconds(firstPublished),
+  reviewedDate: removeMilliseconds(firstPublished),
+  versionDate: removeMilliseconds(published),
+  statusDate: removeMilliseconds(published),
+  stage: 'published',
+  subjects: getSubjects(subjects || []),
+  ...(peerReview ? getAssessment(peerReview) : {}),
+});
 
 type EnhancedArticleWithPublishedDate = EnhancedArticle & {
   published: IsoDateString

@@ -23,8 +23,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const downloadFilename = `${articleWithVersions.article.msid}-v${articleWithVersions.article.versionIdentifier}.pdf`;
     const pdfUrl = config.siteName === 'elife' && config.filesApiPath
-        ? `${config.filesApiPath}/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/content/elife-preprint-${downloadFilename}`
-        : articleWithVersions.article?.pdfUrl;
+      ? `${config.filesApiPath}/${articleWithVersions.article.msid}/v${articleWithVersions.article.versionIdentifier}/content/elife-preprint-${downloadFilename}`
+      : articleWithVersions.article?.pdfUrl;
     if (!pdfUrl) {
       res.status(404).end();
       return;
