@@ -8,10 +8,10 @@ describe('Timeline', () => {
       .mockReturnValueOnce('13/01/2001');
     render(<Timeline
       timelineEvents={[
-      {
-        url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-      },
-    ]}
+        {
+          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+        },
+      ]}
     />);
 
     const firstItem = screen.getByText('January 13, 2001');
@@ -25,10 +25,10 @@ describe('Timeline', () => {
   it('may have a timeline item with a name', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        name: 'New name', url: '#', version: 1, date: new Date('2001-01-13').toString(),
-      },
-    ]}
+        {
+          name: 'New name', url: '#', version: 1, date: new Date('2001-01-13').toString(),
+        },
+      ]}
     />);
 
     const firstItem = screen.getByText('January 13, 2001');
@@ -39,10 +39,10 @@ describe('Timeline', () => {
   it('may have a timeline item with a date prefix', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        datePrefix: 'Updated', url: '#', version: 1, date: new Date('2001-01-13').toString(),
-      },
-    ]}
+        {
+          datePrefix: 'Updated', url: '#', version: 1, date: new Date('2001-01-13').toString(),
+        },
+      ]}
     />);
 
     const firstItem = screen.getByText('January 13, 2001');
@@ -53,10 +53,10 @@ describe('Timeline', () => {
   it('has an appropriate aria-label', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-      },
-    ]}
+        {
+          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+        },
+      ]}
     />);
 
     expect(document.querySelector('#review-timeline')).toHaveAttribute('aria-label', 'Version history');
@@ -67,10 +67,10 @@ describe('Timeline', () => {
       .mockReturnValueOnce('14/02/2002');
     render(<Timeline
       timelineEvents={[
-      {
-        url: '#', version: 2, date: new Date('2002-02-14').toString(), versionIndicator: 'v2',
-      },
-    ]}
+        {
+          url: '#', version: 2, date: new Date('2002-02-14').toString(), versionIndicator: 'v2',
+        },
+      ]}
     />);
 
     const firstItem = screen.getByText('February 14, 2002');
@@ -84,16 +84,16 @@ describe('Timeline', () => {
   it('renders multiple reviewed timeline items, and one custom named item', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        name: 'Custom named preprint', url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
-      },
-      {
-        url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-      },
-      {
-        url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-      },
-    ]}
+        {
+          name: 'Custom named preprint', url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
+        },
+        {
+          url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+        },
+        {
+          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+        },
+      ]}
     />);
 
     expect(screen.getAllByText('Reviewed Preprint')).toHaveLength(2);
@@ -103,13 +103,13 @@ describe('Timeline', () => {
   it('should render a timeline event with an optional evaluation summary', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        name: 'With evaluation summary', url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2', withEvaluationSummary: true,
-      },
-      {
-        url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-      },
-    ]}
+        {
+          name: 'With evaluation summary', url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2', withEvaluationSummary: true,
+        },
+        {
+          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+        },
+      ]}
     />);
 
     expect(document.querySelectorAll('dt.review-timeline__event--with-evaluation-summary')).toHaveLength(1);
@@ -121,16 +121,16 @@ describe('Timeline', () => {
   it('should render a timeline event indicating whether reviewed, revised or version of record', () => {
     render(<Timeline
       timelineEvents={[
-      {
-        name: 'Version of record', url: '#', version: 3, date: new Date('2002-02-23').toString(), versionIndicator: 'v3', versionOfRecord: true,
-      },
-      {
-        name: 'Revised preprint', url: '#', version: 2, date: new Date('2001-02-13').toString(), versionIndicator: 'v2',
-      },
-      {
-        name: 'Reviewed preprint', url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-      },
-    ]}
+        {
+          name: 'Version of record', url: '#', version: 3, date: new Date('2002-02-23').toString(), versionIndicator: 'v3', versionOfRecord: true,
+        },
+        {
+          name: 'Revised preprint', url: '#', version: 2, date: new Date('2001-02-13').toString(), versionIndicator: 'v2',
+        },
+        {
+          name: 'Reviewed preprint', url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+        },
+      ]}
     />);
 
     expect(document.querySelectorAll('dt.review-timeline__event--reviewed')).toHaveLength(1);
@@ -155,10 +155,10 @@ describe('Timeline', () => {
     it('should not show the expand text when there is only one entry', () => {
       render(<Timeline
         timelineEvents={[
-        {
-          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-        },
-      ]}
+          {
+            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+          },
+        ]}
       />);
 
       expect(document.querySelector('.review-timeline__expansion')).not.toBeInTheDocument();
@@ -167,13 +167,13 @@ describe('Timeline', () => {
     it('should show the expand text when there is more than one entry', () => {
       render(<Timeline
         timelineEvents={[
-        {
-          url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-        },
-        {
-          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-        },
-      ]}
+          {
+            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+          },
+          {
+            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+          },
+        ]}
       />);
 
       expect(document.querySelector('.review-timeline__expansion')).toBeInTheDocument();
@@ -183,13 +183,13 @@ describe('Timeline', () => {
       render(<Timeline
         current={2}
         timelineEvents={[
-            {
-              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-            },
-            {
-              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-            },
-          ]}
+          {
+            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+          },
+          {
+            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+          },
+        ]}
 
       />);
 
@@ -204,13 +204,13 @@ describe('Timeline', () => {
       render(<Timeline
         current={2}
         timelineEvents={[
-        {
-          url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-        },
-        {
-          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-        },
-      ]}
+          {
+            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+          },
+          {
+            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+          },
+        ]}
       />);
 
       fireEvent.click(screen.getByText('Show previous version'));
@@ -226,13 +226,13 @@ describe('Timeline', () => {
       render(<Timeline
         current={2}
         timelineEvents={[
-        {
-          url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-        },
-        {
-          url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-        },
-      ]}
+          {
+            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+          },
+          {
+            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+          },
+        ]}
       />);
 
       const expandButton = document.querySelector('.review-timeline__expansion');
@@ -253,13 +253,13 @@ describe('Timeline', () => {
         render(<Timeline
           current={1}
           timelineEvents={[
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         expect(screen.getByText('Show all versions')).toBeInTheDocument();
@@ -269,13 +269,13 @@ describe('Timeline', () => {
         render(<Timeline
           current={2}
           timelineEvents={[
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         expect(screen.getByText('Show previous version')).toBeInTheDocument();
@@ -285,16 +285,16 @@ describe('Timeline', () => {
         render(<Timeline
           current={3}
           timelineEvents={[
-          {
-            url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
-          },
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 3, date: new Date('2003-03-26').toString(), versionIndicator: 'v3',
+            },
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         expect(screen.getByText('Show previous versions')).toBeInTheDocument();
@@ -306,13 +306,13 @@ describe('Timeline', () => {
         render(<Timeline
           current={1}
           timelineEvents={[
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         fireEvent.click(screen.getByText('Show all versions'));
@@ -324,13 +324,13 @@ describe('Timeline', () => {
         render(<Timeline
           current={2}
           timelineEvents={[
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         fireEvent.click(screen.getByText('Show previous version'));
@@ -342,16 +342,16 @@ describe('Timeline', () => {
         render(<Timeline
           current={3}
           timelineEvents={[
-          {
-            url: '#', version: 3, date: new Date('2003-03-26').toString(),
-          },
-          {
-            url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
-          },
-          {
-            url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
-          },
-        ]}
+            {
+              url: '#', version: 3, date: new Date('2003-03-26').toString(),
+            },
+            {
+              url: '#', version: 2, date: new Date('2002-02-23').toString(), versionIndicator: 'v2',
+            },
+            {
+              url: '#', version: 1, date: new Date('2001-01-13').toString(), versionIndicator: 'v1',
+            },
+          ]}
         />);
 
         fireEvent.click(screen.getByText('Show previous versions'));

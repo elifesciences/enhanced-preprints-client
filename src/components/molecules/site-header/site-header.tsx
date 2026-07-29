@@ -32,7 +32,7 @@ export const SiteHeader = (): JSX.Element => {
                 alt="eLife logo"
                 width="80"
                 height="30"
-                  />
+              />
               <button className="main-menu__close_control" id="mainMenuCloseControl" onClick={() => setShowMenu(false)}>Close</button>
             </div>
             <nav className="main-menu__container" role="navigation">

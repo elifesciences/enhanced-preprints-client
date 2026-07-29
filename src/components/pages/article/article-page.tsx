@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './article-page.scss';
 import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from './tabs';
 import { contentToText } from '../../../content';
-import {type ServerSideProps} from "../../../pages/reviewed-preprints/get-server-side-props";
+import {type ServerSideProps} from '../../../pages/reviewed-preprints/get-server-side-props';
 import { type CitationData } from '../../atoms/citation/citation';
 import { PreviousVersionWarning } from '../../atoms/previous-version-warning/previous-version-warning';
 import { type RelatedContentData, RelatedContent } from '../../atoms/related-content/related-content';

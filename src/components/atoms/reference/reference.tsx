@@ -149,23 +149,23 @@ export const Reference = ({ reference }: ReferenceBodyProps): JSX.Element => {
       </span>
       { comments && <span className="reference__comments">{comments}</span> }
       {(linkRef || pubmedLinkRef || GSLinkRef) && (
-      <span className="reference__doi">
-        {linkRef && (
-        <a href={linkRef} className="reference__doi_link">
-          {linkText}
-        </a>
-        )}
-        {pubmedLinkRef && (
-        <a href={pubmedLinkRef} className="reference__external_link">
-          {pubmedLinkText}
-        </a>
-        )}
-        {GSLinkRef &&
+        <span className="reference__doi">
+          {linkRef && (
+            <a href={linkRef} className="reference__doi_link">
+              {linkText}
+            </a>
+          )}
+          {pubmedLinkRef && (
+            <a href={pubmedLinkRef} className="reference__external_link">
+              {pubmedLinkText}
+            </a>
+          )}
+          {GSLinkRef &&
           <a href={GSLinkRef} className="reference__external_link">
             Google Scholar
           </a>
-        }
-      </span>
+          }
+        </span>
       )}
     </>
   );

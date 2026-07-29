@@ -30,4 +30,4 @@ export const ContentHeader = ({
     <Institutions institutions={institutions}/>
     <Descriptors doi={doi} license={license} />
   </header>
-  );
+);

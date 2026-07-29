@@ -14,13 +14,13 @@ const LayoutSelector = ({ siteName, children }: { siteName?: string, children: R
       <BiophysicsColabLayout>
         {children}
       </BiophysicsColabLayout>
-      );
+    );
   } 
-    return (
-      <DefaultLayout>
-        {children}
-      </DefaultLayout>
-      );
+  return (
+    <DefaultLayout>
+      {children}
+    </DefaultLayout>
+  );
 };
 
 const notoSerif = Noto_Serif({

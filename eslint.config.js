@@ -24,7 +24,7 @@ const compat = new FlatCompat({
 
 module.exports = defineConfig([{
   files: [
-    'src/.*.tsx', 'src/**/.*.tsx', 'src/*.ts', 'src/**/*.ts', 'src/*.json', 'src/**/*.json',
+    'src/*.tsx', 'src/**/*.tsx', 'src/*.ts', 'src/**/*.ts', 'src/*.json', 'src/**/*.json',
     'browser-tests/*.tsx', 'browser-tests/**/*.tsx', 'browser-tests/*.ts', 'browser-tests/**/*.ts', 'browser-tests/*.json', 'browser-tests/**/*.json',
     'wiremock/*.tsx', 'wiremock/**/*.tsx', 'wiremock/*.ts', 'wiremock/**/*.ts', 'wiremock/*.json', 'wiremock/**/*.json',
   ],

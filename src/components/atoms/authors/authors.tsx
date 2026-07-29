@@ -47,8 +47,8 @@ export const Authors = ({ authors }: { authors: Author[] }): JSX.Element => {
       {(authors.length > authorLimit && expanded !== null) &&
         <span className="authors-list__expansion" onClick={() => setExpanded(!expanded)}>
           show{!expanded ? authorLimits.map(
-          (limit, index) => <span key={index} aria-hidden="true" className={`authors-list__expansion-count authors-list__expansion-count-${limit}`}> {authors.length - limit}</span>,
-        ) : ''} {expanded ? 'less' : 'more'}</span>}
+            (limit, index) => <span key={index} aria-hidden="true" className={`authors-list__expansion-count authors-list__expansion-count-${limit}`}> {authors.length - limit}</span>,
+          ) : ''} {expanded ? 'less' : 'more'}</span>}
     </div>
   );
 };
