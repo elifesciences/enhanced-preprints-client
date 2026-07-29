@@ -1,6 +1,5 @@
-import { isExternalVersionSummary, isPreprintVersionSummary, type VersionSummary } from '../../../fetch-data/version-summary';
+import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary, type VersionSummary } from '../../../fetch-data/version-summary';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
-import { isVORVersionSummary } from '../../../utils/type-guards';
 
 export type VersionHistoryItem = {
   label: string,

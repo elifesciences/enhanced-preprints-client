@@ -9,8 +9,8 @@ import { fetchVersion, getLatestVersionWarningUrl } from '../../fetch-data';
 import { type Metrics } from '../../fetch-data/metrics';
 import { type PeerReview } from '../../fetch-data/peer-review';
 import { type RelatedContent } from '../../fetch-data/related-content';
+import { isVORVersionSummary } from '../../fetch-data/version-summary';
 import { isVor } from '../../utils/is-vor';
-import { isVORVersionSummary } from '../../utils/type-guards';
 
 export type ServerSideProps = {
   siteName?: string,
