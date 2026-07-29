@@ -1,7 +1,7 @@
 import { type GetServerSideProps, type GetServerSidePropsContext } from 'next';
 import { constructMetaData, type MetaData } from './construct-meta-data';
-import { type TimelineEvent } from "./construct-timeline";
-import { constructTimeline, translateTimeline } from "./construct-timeline/construct-timeline";
+import { type TimelineEvent } from './construct-timeline';
+import { constructTimeline, translateTimeline } from './construct-timeline/construct-timeline';
 import { config } from '../../config';
 import { contentToImgInfo, type Content } from '../../content';
 import { type FeaturesData } from '../../features';

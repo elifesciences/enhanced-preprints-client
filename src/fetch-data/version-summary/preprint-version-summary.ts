@@ -1,5 +1,5 @@
-import z from "zod";
-import { IsoDateStringSchema } from "../../types";
+import z from 'zod';
+import { IsoDateStringSchema } from '../../types';
 
 export const PreprintVersionSummarySchema = z.object({
     id: z.string(),

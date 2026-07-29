@@ -62,6 +62,7 @@ module.exports = defineConfig([{
         "@stylistic/max-len": ["error", {
             "code": 260,
         }],
+        "@stylistic/quotes": ["error", "single"],
 
         "import/order": ["error", {
             alphabetize: {
@@ -109,6 +110,15 @@ module.exports = defineConfig([{
             version: "detect",
         },
     },
+}, {
+    files: [
+      'src/*.json', 'src/**/*.json',
+      'browser-tests/*.json', 'browser-tests/**/*.json',
+      'wiremock/*.json', 'wiremock/**/*.json',
+    ],
+    rules: {
+        "@stylistic/quotes": "off",
+    },
 }, globalIgnores([
     "**/.eslintrc.js",
     "**/next.config.js",
@@ -116,4 +126,5 @@ module.exports = defineConfig([{
     "**/next-env.d.ts",
     "**/playwright.config.ts",
     "**/jest.config.js",
+    "**/.yarn/"
 ])]);

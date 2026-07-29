@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import { type TimelineEvent } from "./timeline-event";
+import { type TimelineEvent } from './timeline-event';
 import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary, type VersionSummary } from '../../../fetch-data/version-summary';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
 

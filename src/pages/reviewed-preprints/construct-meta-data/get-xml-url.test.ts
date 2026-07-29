@@ -1,4 +1,4 @@
-import { getXmlUrl } from "./get-xml-url";
+import { getXmlUrl } from './get-xml-url';
 
 
 describe('getXmlUrl', () => {

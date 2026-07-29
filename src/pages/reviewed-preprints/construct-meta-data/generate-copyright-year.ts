@@ -1,4 +1,4 @@
-import { type VersionSummary } from "../../../fetch-data/version-summary";
+import { type VersionSummary } from '../../../fetch-data/version-summary';
 
 
 export const generateCopyrightYear = (versions: VersionSummary[]): number => versions.reduce((copyrightYear, version) => {

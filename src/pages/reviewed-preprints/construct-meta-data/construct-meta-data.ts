@@ -1,17 +1,17 @@
-import { t } from "i18next";
-import { generateCopyrightYear } from "./generate-copyright-year";
-import { type VersionHistoryItem, generateVersionHistory } from "./generate-version-history";
-import { getPdfUrl } from "./get-pdf-url";
-import { getXmlUrl } from "./get-xml-url";
+import { t } from 'i18next';
+import { generateCopyrightYear } from './generate-copyright-year';
+import { type VersionHistoryItem, generateVersionHistory } from './generate-version-history';
+import { getPdfUrl } from './get-pdf-url';
+import { getXmlUrl } from './get-xml-url';
 import { config } from '../../../config';
-import { type Content } from "../../../content"
+import { type Content } from '../../../content'
 import {
     type EnhancedArticleWithVersions, type Author, type Reference,
     type Institution
-} from "../../../types";
-import { isVor } from "../../../utils/is-vor";
-import { type TimelineEvent } from "../construct-timeline";
-import { constructTimeline, translateTimeline } from "../construct-timeline/construct-timeline";
+} from '../../../types';
+import { isVor } from '../../../utils/is-vor';
+import { type TimelineEvent } from '../construct-timeline';
+import { constructTimeline, translateTimeline } from '../construct-timeline/construct-timeline';
 
 type AuthorNotesData = {
     type: string,

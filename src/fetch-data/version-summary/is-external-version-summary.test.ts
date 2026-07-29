@@ -1,5 +1,5 @@
-import {isExternalVersionSummary} from "./is-external-version-summary";
-import {type IsoDateString} from "../../types/enhanced-article";
+import {isExternalVersionSummary} from './is-external-version-summary';
+import {type IsoDateString} from '../../types/enhanced-article';
 
 const externalVersionSummary = {
     doi: '10.7554/eLife.85111.3',
