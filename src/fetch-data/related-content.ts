@@ -8,5 +8,4 @@ export const RelatedContentSchema = z.object({
   imageUrl: z.string().optional(),
 });
 
-
 export type RelatedContent = z.infer<typeof RelatedContentSchema>;

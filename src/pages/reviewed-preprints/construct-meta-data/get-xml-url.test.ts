@@ -1,6 +1,5 @@
 import { getXmlUrl } from './get-xml-url';
 
-
 describe('getXmlUrl', () => {
   const msid = '12345';
   const domain = 'https://elifesciences.org';

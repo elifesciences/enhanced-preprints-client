@@ -54,9 +54,11 @@ export default defineConfig([{
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
     'import/prefer-default-export': 0,
+    '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
     '@stylistic/max-len': ['error', {
       'code': 260,
     }],
+
     '@stylistic/quotes': ['error', 'single'],
 
     'import/order': ['error', {

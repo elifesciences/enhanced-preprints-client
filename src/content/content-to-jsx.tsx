@@ -135,7 +135,6 @@ export const contentToJsx = (content?: Content, options?: Options, index?: numbe
       if (!content.contentUrl) {
         return '';
       }
-
        
       const additionalProps: Record<string, number> = {};
 

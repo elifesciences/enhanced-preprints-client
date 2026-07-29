@@ -70,7 +70,6 @@ export type EnhancedArticle = {
   license?: string,
 };
 
-
 export type EnhancedArticleWithVersions = {
   article: EnhancedArticle,
   versions: Record<string, VersionSummary>,
