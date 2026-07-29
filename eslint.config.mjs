@@ -1,28 +1,23 @@
-const { fixupPluginRules } = require('@eslint/compat');
-const {
-  FlatCompat,
-} = require('@eslint/eslintrc');
-const js = require('@eslint/js');
-const nextPlugin = require('@next/eslint-plugin-next');
-const stylistic = require('@stylistic/eslint-plugin');
-const typescriptEslint = require('@typescript-eslint/eslint-plugin');
-const tsParser = require('@typescript-eslint/parser');
-const {
-  defineConfig,
-  globalIgnores,
-} = require('eslint/config');
+import { fixupPluginRules } from '@eslint/compat';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import nextPlugin from '@next/eslint-plugin-next';
+import stylistic from '@stylistic/eslint-plugin';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
-const importPlugin = require('eslint-plugin-import');
-const noOnlyTests = require('eslint-plugin-no-only-tests');
+import importPlugin from 'eslint-plugin-import';
+import noOnlyTests from 'eslint-plugin-no-only-tests';
 
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all
 });
 
-module.exports = defineConfig([{
+export default defineConfig([{
   files: [
     'src/*.tsx', 'src/**/*.tsx', 'src/*.ts', 'src/**/*.ts', 'src/*.json', 'src/**/*.json',
     'browser-tests/*.tsx', 'browser-tests/**/*.tsx', 'browser-tests/*.ts', 'browser-tests/**/*.ts', 'browser-tests/*.json', 'browser-tests/**/*.json',
@@ -121,10 +116,10 @@ module.exports = defineConfig([{
     '@stylistic/quotes': 'off',
   },
 }, {
-  files: ['eslint.config.js'],
+  files: ['eslint.config.mjs'],
   languageOptions: {
     parser: tsParser,
-    sourceType: 'commonjs',
+    sourceType: 'module',
   },
   plugins: {
     '@typescript-eslint': typescriptEslint,
