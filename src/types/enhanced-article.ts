@@ -51,7 +51,7 @@ export type ExternalVersionSummary = {
   published: IsoDateString | null,
   url: string,
   corrections?: {
-    date: Date,
+    date: IsoDateString,
     url: string,
   }[],
 };

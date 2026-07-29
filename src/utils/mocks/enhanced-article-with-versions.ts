@@ -65,11 +65,11 @@ export const mock85111: EnhancedArticleWithVersions = {
       url: 'https://elifesciences.org/articles/85111v1',
       corrections: [
         {
-          date: new Date('2023-06-20'),
+          date: new Date('2023-06-20').toISOString() as IsoDateString,
           url: 'https://elifesciences.org/articles/85111v2',
         },
         {
-          date: new Date('2023-08-4'),
+          date: new Date('2023-08-4').toISOString() as IsoDateString,
           url: 'https://elifesciences.org/articles/85111v3',
         },
       ],

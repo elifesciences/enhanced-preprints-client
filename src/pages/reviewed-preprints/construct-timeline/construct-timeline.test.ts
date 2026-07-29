@@ -157,7 +157,7 @@ describe('constructTimeline', () => {
         ...externalVersionSummary3,
         corrections: [
           {
-            date: new Date('2023-02-10'),
+            date: new Date('2023-02-10').toISOString() as IsoDateString,
             url: 'https://doi.org/doi-123v3',
           },
         ],

@@ -54,11 +54,11 @@ const externalVersionSummary3WithCorrections: VersionSummary = {
   url: 'https://doi.org/doi-123v3',
   corrections: [
     {
-      date: new Date('2023-02-10'),
+      date: new Date('2023-02-10').toISOString() as IsoDateString,
       url: 'https://elifesciences.org/articles/1v1',
     },
     {
-      date: new Date('2023-02-11'),
+      date: new Date('2023-02-11').toISOString() as IsoDateString,
       url: 'https://elifesciences.org/articles/1v2',
     },
   ],
