@@ -51,6 +51,8 @@ const ExternalVersionSummarySchema = z.object({
   })).optional(),
 });
 
+export type ExternalVersionSummary = z.infer<typeof ExternalVersionSummarySchema>;
+
 const PreprintVersionSummarySchema = z.object({
   id: z.string(),
   msid: z.string(),
