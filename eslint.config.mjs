@@ -26,37 +26,20 @@ const sharedPlugins = {
 };
 
 const sharedRules = {
-  'no-unreachable': 'error',
-  '@typescript-eslint/no-unused-vars': 'error',
-  '@typescript-eslint/no-non-null-assertion': 'warn',
-  '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
   '@stylistic/eol-last': ['error', 'always'],
+  '@stylistic/indent': ['error', 2],
   '@stylistic/max-len': ['error', {
     'code': 260,
   }],
-  '@stylistic/quotes': ['error', 'single'],
-  '@stylistic/indent': ['error', 2],
-  '@stylistic/operator-linebreak': 0,
-
-  'import/order': ['error', {
-    alphabetize: {
-      order: 'asc',
-    },
-    groups: [
-      'builtin',
-      'external',
-      'internal',
-      'index',
-      'sibling',
-      'parent',
-    ],
-  }],
-
-  'import/no-duplicates': 'error',
-  'import/no-cycle': 'error',
-  'import/prefer-default-export': 0,
   '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
+  '@stylistic/operator-linebreak': 0,
+  '@stylistic/quotes': ['error', 'single'],
+  '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  '@typescript-eslint/no-unused-vars': 'error',
   'import/extensions': 0,
+  'import/no-cycle': 'error',
+  'import/no-duplicates': 'error',
 
   'import/no-extraneous-dependencies': ['error', {
     'devDependencies': [
@@ -69,6 +52,23 @@ const sharedRules = {
 
     'peerDependencies': true,
   }],
+
+  'import/order': ['error', {
+    alphabetize: {
+      order: 'asc',
+    },
+    groups: [
+      'builtin',
+      'external',
+      'index',
+      'internal',
+      'sibling',
+      'parent',
+    ],
+  }],
+
+  'import/prefer-default-export': 0,
+  'no-unreachable': 'error',
 };
 
 export default defineConfig([{
