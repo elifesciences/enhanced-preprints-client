@@ -21,7 +21,6 @@ type Heading = {
 export type ProcessedArticle = {
   doi: string,
   title: Content,
-  date: Date,
   authors?: Author[],
   abstract: Content,
   licenses: License[],
@@ -58,7 +57,7 @@ export type EnhancedArticle = {
   umbrellaDoi?: string,
   // When we drop the old article schema from the DB,
   // we can change ProcessedArticle to exclude these properties and drop `Omit` here
-  article: Omit<ProcessedArticle, 'doi' | 'date'>,
+  article: Omit<ProcessedArticle, 'doi'>,
   preprintDoi?: string,
   preprintUrl?: string,
   preprintPosted?: IsoDateString,
