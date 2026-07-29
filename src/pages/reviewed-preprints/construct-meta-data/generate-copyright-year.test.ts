@@ -1,5 +1,5 @@
 import { generateCopyrightYear } from './generate-copyright-year';
-import { type VersionSummary } from '../../../types';
+import { type VersionSummary } from '../../../fetch-data/fetch-data';
 import { type IsoDateString } from '../../../types/enhanced-article';
 
 const versionSummary1: VersionSummary = {

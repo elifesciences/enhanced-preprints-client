@@ -70,6 +70,8 @@ const PreprintVersionSummarySchema = z.object({
 
 export type PreprintVersionSummary = z.infer<typeof PreprintVersionSummarySchema>;
 
+export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
+
 const VORVersionSummarySchema = z.object({
   id: z.string(),
   msid: z.string(),

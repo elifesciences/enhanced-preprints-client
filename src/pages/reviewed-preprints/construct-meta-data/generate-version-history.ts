@@ -1,4 +1,4 @@
-import { type VersionSummary } from '../../../types';
+import { type VersionSummary } from '../../../fetch-data/fetch-data';
 import { generateNameWithEvaluationSummarySuffix } from '../../../utils/generators/generate-name-with-evaluation-summary-suffix';
 import { isExternalVersionSummary, isPreprintVersionSummary, isVORVersionSummary } from '../../../utils/type-guards';
 

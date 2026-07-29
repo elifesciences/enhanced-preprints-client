@@ -1,7 +1,4 @@
-import { type ExternalVersionSummary, type PreprintVersionSummary, type VORVersionSummary } from '../fetch-data/fetch-data';
-import {
-  type VersionSummary,
-} from '../types';
+import { type VersionSummary, type ExternalVersionSummary, type PreprintVersionSummary, type VORVersionSummary } from '../fetch-data/fetch-data';
 
 export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
 export const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');
