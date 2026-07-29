@@ -8,7 +8,10 @@ import tsParser from '@typescript-eslint/parser';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 import importPlugin from 'eslint-plugin-import';
+import jsonPlugin from 'eslint-plugin-json';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
+import reactPlugin from 'eslint-plugin-react';
+import storybookPlugin from 'eslint-plugin-storybook';
 
 
 const compat = new FlatCompat({
@@ -39,10 +42,10 @@ export default defineConfig([{
     '@stylistic': stylistic,
   },
   extends: [
-    ...compat.extends('plugin:react/recommended'),
-    ...compat.extends('plugin:react/jsx-runtime'),
-    ...compat.extends('plugin:storybook/recommended'),
-    ...compat.extends('plugin:json/recommended-legacy'),
+    reactPlugin.configs.flat.recommended,
+    reactPlugin.configs.flat['jsx-runtime'],
+    ...storybookPlugin.configs['flat/recommended'],
+    jsonPlugin.configs.recommended,
     ...compat.extends('plugin:@next/next/recommended'),
     ...compat.extends('plugin:@next/next/core-web-vitals'),
   ],
