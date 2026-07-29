@@ -57,6 +57,8 @@ const PreprintVersionSummarySchema = z.object({
   preprintPosted: IsoDateStringSchema,
 });
 
+export type PreprintVersionSummary = z.infer<typeof PreprintVersionSummarySchema>;
+
 const VORVersionSummarySchema = z.object({
   id: z.string(),
   msid: z.string(),

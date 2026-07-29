@@ -2,7 +2,7 @@ import * as z from 'zod/v4';
 import { type Author } from './author';
 import { type Reference } from './reference';
 import { type Content } from '../content';
-import { type VORVersionSummary } from '../fetch-data/fetch-data';
+import { type PreprintVersionSummary, type VORVersionSummary } from '../fetch-data/fetch-data';
 import { type Metrics } from '../fetch-data/metrics';
 import { type PeerReview } from '../fetch-data/peer-review';
 import { type RelatedContent } from '../fetch-data/related-content';
@@ -43,21 +43,6 @@ export type ArticleSummary = {
   doi: string,
   title: Content,
   date: Date | null,
-};
-
-export type PreprintVersionSummary = {
-  id: string,
-  msid: string,
-  doi: string,
-  versionIdentifier: string,
-  umbrellaDoi?: string,
-  versionDoi?: string,
-  sentForReview?: IsoDateString,
-  published: IsoDateString | null,
-  withEvaluationSummary?: boolean,
-  preprintDoi: string,
-  preprintUrl: string,
-  preprintPosted: IsoDateString,
 };
 
 export type ExternalVersionSummary = {

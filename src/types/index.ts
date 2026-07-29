@@ -12,7 +12,6 @@ export type {
   EnhancedArticleWithVersions,
   ArticleSummary,
   VersionSummary,
-  PreprintVersionSummary,
   ExternalVersionSummary,
 } from './enhanced-article';
 export { IsoDateStringSchema } from './enhanced-article';
