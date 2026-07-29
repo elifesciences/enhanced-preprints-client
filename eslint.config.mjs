@@ -13,7 +13,6 @@ import noOnlyTests from 'eslint-plugin-no-only-tests';
 import reactPlugin from 'eslint-plugin-react';
 import storybookPlugin from 'eslint-plugin-storybook';
 
-
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
@@ -49,6 +48,21 @@ const sharedRules = {
 
   'import/no-duplicates': 'error',
   'import/no-cycle': 'error',
+  'import/prefer-default-export': 0,
+  '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
+  'import/extensions': 0,
+
+  'import/no-extraneous-dependencies': ['error', {
+    'devDependencies': [
+      '**/*.stories.*',
+      '**/.storybook/**/*.*',
+      '**/*.test.*',
+      '**/browser-tests/**/*.*',
+      'eslint.config.mjs',
+    ],
+
+    'peerDependencies': true,
+  }],
 };
 
 export default defineConfig([{
@@ -85,20 +99,6 @@ export default defineConfig([{
     '@typescript-eslint/no-deprecated': 'warn',
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'warn',
-    'import/prefer-default-export': 0,
-    '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
-    'import/extensions': 0,
-
-    'import/no-extraneous-dependencies': ['error', {
-      'devDependencies': [
-        '**/*.stories.*',
-        '**/.storybook/**/*.*',
-        '**/*.test.*',
-        '**/browser-tests/**/*.*',
-      ],
-
-      'peerDependencies': true,
-    }],
 
     'no-only-tests/no-only-tests': ['error', {
       'focus': ['only'],
