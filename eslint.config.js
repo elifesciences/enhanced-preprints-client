@@ -109,5 +109,4 @@ module.exports = defineConfig([{
     "**/next-env.d.ts",
     "**/playwright.config.ts",
     "**/jest.config.js",
-    "**/.next/",
 ])]);
