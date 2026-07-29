@@ -41,7 +41,22 @@ const EnhancedArticleSchema = z.object({
 });
 
 const ExternalVersionSummarySchema = ToDoSchema;
-const PreprintVersionSummarySchema = ToDoSchema;
+
+const PreprintVersionSummarySchema = z.object({
+  id: z.string(),
+  msid: z.string(),
+  doi: z.string(),
+  versionIdentifier: z.string(),
+  umbrellaDoi: z.string().optional(),
+  versionDoi: z.string().optional(),
+  sentForReview: IsoDateStringSchema.optional(),
+  published: z.union([IsoDateStringSchema, z.null()]),
+  withEvaluationSummary: z.boolean().optional(),
+  preprintDoi: z.string(),
+  preprintUrl: z.string(),
+  preprintPosted: IsoDateStringSchema,
+});
+
 const VORVersionSummarySchema = z.object({
   id: z.string(),
   msid: z.string(),
