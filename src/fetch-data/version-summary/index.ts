@@ -3,5 +3,5 @@ export {
     type VersionSummary,
     VersionSummarySchema,
 } from './version-summary';
-export { isExternalVersionSummary } from './external-version-summary';
-export { isPreprintVersionSummary } from './preprint-version-summary';
+export { isExternalVersionSummary } from './is-external-version-summary';
+export { isPreprintVersionSummary } from './is-preprint-version-summary';

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import type { VersionSummary } from "./version-summary";
 import { IsoDateStringSchema } from "../../types";
 
 export const ExternalVersionSummarySchema = z.object({
@@ -14,5 +13,3 @@ export const ExternalVersionSummarySchema = z.object({
 });
 
 export type ExternalVersionSummary = z.infer<typeof ExternalVersionSummarySchema>;
-
-export const isExternalVersionSummary = (version: VersionSummary): version is ExternalVersionSummary => Object.hasOwn(version, 'url');

@@ -1,5 +1,4 @@
 import z from "zod";
-import { type VersionSummary } from "./version-summary";
 import { IsoDateStringSchema } from "../../types";
 
 export const PreprintVersionSummarySchema = z.object({
@@ -18,5 +17,3 @@ export const PreprintVersionSummarySchema = z.object({
 });
 
 export type PreprintVersionSummary = z.infer<typeof PreprintVersionSummarySchema>;
-
-export const isPreprintVersionSummary = (version: VersionSummary): version is PreprintVersionSummary => Object.hasOwn(version, 'preprintPosted');
