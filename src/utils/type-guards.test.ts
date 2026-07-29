@@ -1,4 +1,5 @@
-import { isExternalVersionSummary, isPreprintVersionSummary } from './type-guards';
+import { isPreprintVersionSummary } from './type-guards';
+import {isExternalVersionSummary} from "../fetch-data/version-summary";
 import { type IsoDateString } from '../types/enhanced-article';
 
 const externalVersionSummary = {
