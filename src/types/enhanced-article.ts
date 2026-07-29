@@ -19,7 +19,6 @@ type Heading = {
 };
 
 export type ProcessedArticle = {
-  doi: string,
   title: Content,
   authors?: Author[],
   abstract: Content,
@@ -55,9 +54,7 @@ export type EnhancedArticle = {
   versionIdentifier: string,
   versionDoi?: string,
   umbrellaDoi?: string,
-  // When we drop the old article schema from the DB,
-  // we can change ProcessedArticle to exclude these properties and drop `Omit` here
-  article: Omit<ProcessedArticle, 'doi'>,
+  article: ProcessedArticle,
   preprintDoi?: string,
   preprintUrl?: string,
   preprintPosted?: IsoDateString,

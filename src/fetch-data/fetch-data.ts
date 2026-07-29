@@ -23,8 +23,6 @@ const EnhancedArticleSchema = z.object({
   versionIdentifier: z.string(),
   versionDoi: z.string().optional(),
   umbrellaDoi: z.string().optional(),
-  // When we drop the old article schema from the DB,
-  // we can change ProcessedArticle to exclude these properties and drop `Omit` here
   article: ProcessedArticleSchema,
   preprintDoi: z.string().optional(),
   preprintUrl: z.string().optional(),

@@ -39,7 +39,7 @@ export type ReviewedPreprintSnippet = {
 export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummary'>;
 
 export type PublishedEnhancedArticleMetaDataForJournal = Omit<EnhancedArticle, 'article' | 'peerReview'> & {
-  article: Omit<ProcessedArticle, 'doi' | 'content' | 'abstract'>,
+  article: Omit<ProcessedArticle, 'content' | 'abstract'>,
   peerReview?: PeerReviewEvaluationSummaryOnly,
   published: IsoDateString,
   firstPublished: IsoDateString,
