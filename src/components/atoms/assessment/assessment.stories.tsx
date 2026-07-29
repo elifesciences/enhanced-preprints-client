@@ -17,7 +17,7 @@ async function collapseTest(canvasElement: HTMLElement) {
 
   await userEvent.click(canvas.getByText('Read more about this assessment'));
   await expect(canvas.getByText('Show less')).toBeInTheDocument();
-  /* eslint-disable-next-line max-len */
+  /* eslint-disable-next-line @stylistic/max-len */
   await expect(canvas.getByText('During the peer-review process the editor and reviewers write an eLife assessment that summarises the significance of the findings reported in the article (on a scale ranging from landmark to useful) and the strength of the evidence (on a scale ranging from exceptional to inadequate).')).toBeVisible();
 }
 

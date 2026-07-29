@@ -10,6 +10,7 @@ const { fixupPluginRules } = require("@eslint/compat");
 const nextPlugin = require("@next/eslint-plugin-next");
 const js = require("@eslint/js");
 const importPlugin = require("eslint-plugin-import");
+const stylistic = require("@stylistic/eslint-plugin");
 
 const {
     FlatCompat,
@@ -40,6 +41,7 @@ module.exports = defineConfig([{
         "no-only-tests": noOnlyTests,
         "next": fixupPluginRules(nextPlugin),
         "import": importPlugin,
+        "@stylistic": stylistic,
     },
     extends: [
         ...compat.extends("plugin:react/recommended"),
@@ -50,14 +52,14 @@ module.exports = defineConfig([{
         ...compat.extends("plugin:@next/next/core-web-vitals"),
     ],
     rules: {
-        "eol-last": ["error", "always"],
+        "@stylistic/eol-last": ["error", "always"],
         "no-unreachable": "error",
         "@typescript-eslint/no-deprecated": "warn",
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/no-unsafe-return": "error",
         "@typescript-eslint/switch-exhaustiveness-check": "warn",
-        "import/prefer-default-export": 0, 
-        "max-len": ["error", {
+        "import/prefer-default-export": 0,
+        "@stylistic/max-len": ["error", {
             "code": 260,
         }],
 
@@ -90,7 +92,7 @@ module.exports = defineConfig([{
             "peerDependencies": true,
         }],
 
-        "operator-linebreak": 0,
+        "@stylistic/operator-linebreak": 0,
 
         "no-only-tests/no-only-tests": ["error", {
             "focus": ["only"],

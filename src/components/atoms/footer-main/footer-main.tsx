@@ -3,7 +3,7 @@ import { type JSX } from 'react';
 import carbonNeutral from '../../../images/logos/carbon-neutral-organisation.png';
 import './footer-main.scss';
 
-/* eslint-disable max-len */
+/* eslint-disable @stylistic/max-len */
 
 export const FooterMain = (): JSX.Element => (
   <footer className="site-footer">
