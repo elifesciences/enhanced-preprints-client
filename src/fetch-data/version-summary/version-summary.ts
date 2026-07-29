@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IsoDateStringSchema } from "../types";
+import { IsoDateStringSchema } from "../../types";
 
 const ExternalVersionSummarySchema = z.object({
     doi: z.string(),

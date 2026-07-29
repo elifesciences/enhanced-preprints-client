@@ -3,7 +3,7 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
 import { RelatedContentSchema } from './related-content';
-import {VersionSummarySchema} from "./version-summary";
+import { VersionSummarySchema } from './version-summary';
 import { config } from '../config';
 import {
   type ArticleSummary,
