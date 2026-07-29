@@ -3,6 +3,7 @@ import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
 import { RelatedContentSchema } from './related-content';
+import {VersionSummarySchema} from "./version-summary";
 import { config } from '../config';
 import {
   type ArticleSummary,
@@ -39,54 +40,6 @@ const EnhancedArticleSchema = z.object({
   relatedContent: z.array(RelatedContentSchema).optional(),
   license: z.string().optional(),
 });
-
-const ExternalVersionSummarySchema = z.object({
-  doi: z.string(),
-  versionIdentifier: z.string(),
-  published: z.union([IsoDateStringSchema, z.null()]),
-  url: z.string(),
-  corrections: z.array(z.object({
-    date: IsoDateStringSchema,
-    url: z.string()
-  })).optional(),
-});
-
-export type ExternalVersionSummary = z.infer<typeof ExternalVersionSummarySchema>;
-
-const PreprintVersionSummarySchema = z.object({
-  id: z.string(),
-  msid: z.string(),
-  doi: z.string(),
-  versionIdentifier: z.string(),
-  umbrellaDoi: z.string().optional(),
-  versionDoi: z.string().optional(),
-  sentForReview: IsoDateStringSchema.optional(),
-  published: z.union([IsoDateStringSchema, z.null()]),
-  withEvaluationSummary: z.boolean().optional(),
-  preprintDoi: z.string(),
-  preprintUrl: z.string(),
-  preprintPosted: IsoDateStringSchema,
-});
-
-export type PreprintVersionSummary = z.infer<typeof PreprintVersionSummarySchema>;
-
-export type VersionSummary = VORVersionSummary | PreprintVersionSummary | ExternalVersionSummary;
-
-const VORVersionSummarySchema = z.object({
-  id: z.string(),
-  msid: z.string(),
-  doi: z.string(),
-  versionIdentifier: z.string(),
-  umbrellaDoi: z.string().optional(),
-  versionDoi: z.string().optional(),
-  sentForReview: IsoDateStringSchema.optional(),
-  published: z.union([IsoDateStringSchema, z.null()]),
-  withEvaluationSummary: z.boolean().optional(),
-});
-
-export type VORVersionSummary = z.infer<typeof VORVersionSummarySchema>;
-
-const VersionSummarySchema = z.union([ExternalVersionSummarySchema, PreprintVersionSummarySchema, VORVersionSummarySchema]);
 
 const EnhancedArticleWithVersionsSchema = z.object({
   article: EnhancedArticleSchema,

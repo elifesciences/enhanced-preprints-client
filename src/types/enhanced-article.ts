@@ -2,10 +2,10 @@ import * as z from 'zod/v4';
 import { type Author } from './author';
 import { type Reference } from './reference';
 import { type Content } from '../content';
-import { type VersionSummary } from '../fetch-data/fetch-data';
 import { type Metrics } from '../fetch-data/metrics';
 import { type PeerReview } from '../fetch-data/peer-review';
 import { type RelatedContent } from '../fetch-data/related-content';
+import { type VersionSummary } from '../fetch-data/version-summary';
 
 type License = {
   type: string,
