@@ -19,6 +19,12 @@ const compat = new FlatCompat({
   allConfig: js.configs.all
 });
 
+const sharedPlugins = {
+  '@typescript-eslint': typescriptEslint,
+  'import': importPlugin,
+  '@stylistic': stylistic,
+};
+
 const sharedRules = {
   'no-unreachable': 'error',
   '@typescript-eslint/no-unused-vars': 'error',
@@ -80,11 +86,9 @@ export default defineConfig([{
   },
 
   plugins: {
-    '@typescript-eslint': typescriptEslint,
+    ...sharedPlugins,
     'no-only-tests': noOnlyTests,
     'next': fixupPluginRules(nextPlugin),
-    'import': importPlugin,
-    '@stylistic': stylistic,
   },
   extends: [
     reactPlugin.configs.flat.recommended,
@@ -129,9 +133,7 @@ export default defineConfig([{
     sourceType: 'module',
   },
   plugins: {
-    '@typescript-eslint': typescriptEslint,
-    'import': importPlugin,
-    '@stylistic': stylistic,
+    ...sharedPlugins,
   },
   rules: {
     ...sharedRules,
