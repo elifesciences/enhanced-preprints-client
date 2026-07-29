@@ -11,7 +11,7 @@ const versionSummary1: VersionSummary = {
 
   preprintDoi: 'doi-123',
   preprintUrl: 'https://doi.org/doi-123',
-  preprintPosted: new Date('2023-01-02'),
+  preprintPosted: new Date('2023-01-02').toISOString() as IsoDateString,
   published: new Date('2023-01-03').toISOString() as IsoDateString,
 };
 
@@ -24,7 +24,7 @@ const versionSummary2: VersionSummary = {
 
   preprintDoi: 'doi-123v2',
   preprintUrl: 'https://doi.org/doi-123v2',
-  preprintPosted: new Date('2023-01-05'),
+  preprintPosted: new Date('2023-01-05').toISOString() as IsoDateString,
   published: new Date('2023-01-09').toISOString() as IsoDateString,
 };
 

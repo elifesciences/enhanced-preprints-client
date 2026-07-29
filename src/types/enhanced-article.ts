@@ -57,7 +57,7 @@ export type PreprintVersionSummary = {
   withEvaluationSummary?: boolean,
   preprintDoi: string,
   preprintUrl: string,
-  preprintPosted: Date,
+  preprintPosted: IsoDateString,
 };
 
 export type ExternalVersionSummary = {
