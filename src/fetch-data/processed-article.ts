@@ -25,7 +25,15 @@ const PublicationSchema: z.ZodType<PublicationShape> = z.object({
   isPartOf: z.lazy(() => PublicationSchema).optional(),
 });
 
-const PublisherSchema = ToDoSchema;
+const PublisherSchema = z.object({
+  type: z.literal('Organization'),
+  name: z.string(),
+  address: z.object({
+    type: z.literal('PostalAddress'),
+    addressLocality: z.string(),
+  }).optional(),
+});
+
 const CommentSchema = ToDoSchema;
 const ReferenceSchema = z.object({
   type: z.literal('Article'),
