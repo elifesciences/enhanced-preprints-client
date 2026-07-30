@@ -63,14 +63,12 @@ const buildCopyrightYearProperty = (copyrightYear: number) => {
   return {};
 };
 
-const constructVersionHistory = (history: VersionHistoryItem[]) => {
-  return history.map(({ label, version, ...other }) => ({
-    ...other,
-    label: t(label, {
-      version,
-    }),
-  }));
-};
+const constructVersionHistory = (history: VersionHistoryItem[]) => history.map(({ label, version, ...other }) => ({
+  ...other,
+  label: t(label, {
+    version,
+  }),
+}));
 
 const filterInstitutions = (institution: Institution | undefined): institution is Institution => institution !== undefined;
 
