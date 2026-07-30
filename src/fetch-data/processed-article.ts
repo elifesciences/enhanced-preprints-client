@@ -34,7 +34,11 @@ const PublisherSchema = z.object({
   }).optional(),
 });
 
-const CommentSchema = ToDoSchema;
+const CommentSchema = z.object({
+  type: z.literal('Comment'),
+  commentAspect: z.string(),
+});
+
 const ReferenceSchema = z.object({
   type: z.literal('Article'),
   id: z.string(),
