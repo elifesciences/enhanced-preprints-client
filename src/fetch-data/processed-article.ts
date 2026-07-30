@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 const ToDoSchema = z.any();
 
@@ -9,7 +9,36 @@ const LicenseSchema = z.object({
   url: z.string().optional(),
   content: ContentSchema.optional(),
 });
-const ReferenceSchema = ToDoSchema;
+const PublicationSchema = ToDoSchema;
+const PublisherSchema = ToDoSchema;
+const CommentSchema = ToDoSchema;
+const ReferenceSchema = z.object({
+  type: z.literal('Article'),
+  id: z.string(),
+  title: z.string(),
+  url: z.string().optional(),
+  pageEnd: z.union([z.number(), z.string()]).optional(),
+  pageStart: z.union([z.number(), z.string()]).optional(),
+  authors: z.array(AuthorSchema),
+  datePublished: z.union([z.string(), z.object({
+    type: z.literal('Date'),
+    value: z.string(),
+  })]).optional(),
+  isPartOf: PublicationSchema.optional(),
+  publisher: PublisherSchema.optional(),
+  identifiers: z.array(z.object({
+    type: z.string(),
+    name: z.string(),
+    propertyID: z.string().optional(),
+    value: z.string(),
+  })).optional(),
+  comments: z.array(CommentSchema).optional(),
+  meta: z.object({
+    yearPublished: z.string().optional(),
+    label: z.string().optional(),
+    publicationType: z.string().optional(),
+  }).optional(),
+});
 
 export const ProcessedArticleSchema = z.object({
   title: ContentSchema,
