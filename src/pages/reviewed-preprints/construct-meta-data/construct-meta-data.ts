@@ -4,7 +4,7 @@ import { type VersionHistoryItem, generateVersionHistory } from './generate-vers
 import { getPdfUrl } from './get-pdf-url';
 import { getXmlUrl } from './get-xml-url';
 import { config } from '../../../config';
-import { type Content } from '../../../content'
+import { type Content } from '../../../content';
 import {
   type EnhancedArticleWithVersions, type Author, type Reference,
   type Institution
@@ -58,7 +58,7 @@ const buildCopyrightYearProperty = (copyrightYear: number) => {
   if (copyrightYear > 0) {
     return ({
       copyrightYear,
-    })
+    });
   }
   return {};
 };
@@ -109,5 +109,5 @@ export const constructMetaData = (
     authorNotes: articleWithVersions.article.article.meta?.authorNotes || [],
     ...buildCopyrightYearProperty(copyrightYear),
     publicationDate: getPublishedDate(translateTimeline(constructTimeline(Object.values(articleWithVersions.versions))), +articleWithVersions.article.versionIdentifier),
-  }
+  };
 };

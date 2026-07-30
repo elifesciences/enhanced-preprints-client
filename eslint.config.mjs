@@ -28,6 +28,7 @@ const sharedRules = {
   '@typescript-eslint/consistent-type-imports': ['error', { 'fixStyle': 'inline-type-imports' }],
   '@typescript-eslint/no-non-null-assertion': 'warn',
   '@typescript-eslint/no-unused-vars': 'error',
+  '@stylistic/semi': ['error', 'always'],
   'import/extensions': 0,
   'import/no-cycle': 'error',
   'import/no-duplicates': 'error',
@@ -109,6 +110,7 @@ export default defineConfig([{
   ],
   rules: {
     '@stylistic/quotes': 'off',
+    '@stylistic/semi': 'off',
   },
 }, {
   files: ['eslint.config.mjs'],

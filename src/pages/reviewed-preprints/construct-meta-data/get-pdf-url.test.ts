@@ -55,5 +55,5 @@ describe('getPdfUrl', () => {
       const url = getPdfUrl(msid, isVor, domain, previewURL);
       expect(url).toBe(previewURL);
     });
-  })
+  });
 });

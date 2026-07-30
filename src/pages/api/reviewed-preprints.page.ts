@@ -119,7 +119,7 @@ type Param = string | Number | Array<string | Number> | null;
 
 const queryParam = (req: NextApiRequest, key: string, defaultValue: Param = null): Param => req.query[key] ?? defaultValue;
 
-const removeMilliseconds = (input: IsoDateString): string => input.split('.')[0] + 'Z'
+const removeMilliseconds = (input: IsoDateString): string => input.split('.')[0] + 'Z';
 
 const enhancedArticleNoContentToSnippet = ({
   msid,

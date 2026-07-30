@@ -38,7 +38,7 @@ export type AuthorNoteData = {
 type AuthorListProps = {
   authors: AuthorData[],
   authorNotes: AuthorNoteData[],
-}
+};
 
 const AuthorInformation = ({ author, authorNotes }: { author: AuthorData, authorNotes: AuthorNoteData[] }) => {
   const orcids = (author.identifiers ?? []).filter(({ type, propertyID }) => type === 'orcid' || (type === 'PropertyValue' && propertyID === 'https://registry.identifiers.org/registry/orcid'));
