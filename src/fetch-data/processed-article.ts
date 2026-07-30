@@ -9,7 +9,22 @@ const LicenseSchema = z.object({
   url: z.string().optional(),
   content: ContentSchema.optional(),
 });
-const PublicationSchema = ToDoSchema;
+
+interface PublicationShape {
+  type: 'PublicationVolume' | 'Periodical';
+  name?: string;
+  volumeNumber?: number | string;
+  issueNumber?: number;
+  isPartOf?: PublicationShape;
+}
+const PublicationSchema: z.ZodType<PublicationShape> = z.object({
+  type: z.union([z.literal('PublicationVolume'), z.literal('Periodical')]),
+  name: z.string().optional(),
+  volumeNumber: z.union([z.number(), z.string()]).optional(),
+  issueNumber: z.number().optional(),
+  isPartOf: z.lazy(() => PublicationSchema).optional(),
+});
+
 const PublisherSchema = ToDoSchema;
 const CommentSchema = ToDoSchema;
 const ReferenceSchema = z.object({
