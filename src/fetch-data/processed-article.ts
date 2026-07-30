@@ -65,11 +65,6 @@ const PublisherSchema = z.object({
   }).optional(),
 });
 
-const CommentSchema = z.object({
-  type: z.literal('Comment'),
-  commentAspect: z.string(),
-});
-
 const ReferenceSchema = z.object({
   type: z.literal('Article'),
   id: z.string(),
@@ -90,7 +85,10 @@ const ReferenceSchema = z.object({
     propertyID: z.string().optional(),
     value: z.string(),
   })).optional(),
-  comments: z.array(CommentSchema).optional(),
+  comments: z.array(z.object({
+    type: z.literal('Comment'),
+    commentAspect: z.string(),
+  })).optional(),
   meta: z.object({
     yearPublished: z.string().optional(),
     label: z.string().optional(),
