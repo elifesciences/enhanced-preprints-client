@@ -54,8 +54,8 @@ check-unused-exports: node_modules
 	yarn ts-unused-exports tsconfig.json --excludePathsFromReport=\\.stories\\. --silent
 
 .PHONY: check-circular-dependencies
-check-circular-dependencies:
-	madge --circular --extensions ts,tsx src/
+check-circular-dependencies: node_modules
+	yarn madge --circular --extensions ts,tsx src/
 
 .PHONY: lint
 lint: node_modules check-unused-exports
