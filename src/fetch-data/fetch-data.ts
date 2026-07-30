@@ -2,6 +2,7 @@ import * as z from 'zod/v4';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
+import {ProcessedArticleSchema} from './processed-article';
 import { RelatedContentSchema } from './related-content';
 import { VersionSummarySchema } from './version-summary';
 import { config } from '../config';
@@ -11,34 +12,6 @@ import {
   type PublishedEnhancedArticleMetaDataForJournal,
   IsoDateStringSchema,
 } from '../types';
-
-const ToDoSchema = z.any();
-
-const ContentSchema = ToDoSchema;
-const AuthorSchema = ToDoSchema;
-const LicenseSchema = z.object({
-  type: z.string(),
-  url: z.string().optional(),
-  content: ContentSchema.optional(),
-});
-const ReferenceSchema = ToDoSchema;
-
-const ProcessedArticleSchema = z.object({
-  title: ContentSchema,
-  authors: z.array(AuthorSchema).optional(),
-  abstract: ContentSchema,
-  licenses: z.array(LicenseSchema),
-  content: ContentSchema,
-  references: z.array(ReferenceSchema),
-  meta: z.object({
-    authorNotes: z.array(z.object({
-      type: z.string(),
-      id: z.string().optional(),
-      text: z.string(),
-      label: z.string().optional(),
-    })).optional(),
-  }).optional(),
-});
 
 const EnhancedArticleSchema = z.object({
   id: z.string(),
