@@ -1,6 +1,6 @@
 import { generateVersionHistory } from './generate-version-history';
 import { type VersionSummary } from '../../../fetch-data/version-summary';
-import { type IsoDateString } from '../../../types/enhanced-article';
+import { type IsoDateString } from '../../../types';
 
 const versionSummary1: VersionSummary = {
   id: '1v1',

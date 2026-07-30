@@ -11,8 +11,7 @@ import {
   type PublishedEnhancedArticleMetaDataForJournal,
   type ReviewedPreprintSnippet,
   IsoDateStringSchema,
-} from '../../types';
-import { type IsoDateString } from '../../types/enhanced-article';
+  type IsoDateString } from '../../types';
 import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {

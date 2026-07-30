@@ -12,4 +12,4 @@ export type {
   EnhancedArticleWithVersions,
   ArticleSummary,
 } from './enhanced-article';
-export { IsoDateStringSchema } from './enhanced-article';
+export { IsoDateStringSchema, type IsoDateString } from './iso-date-string';

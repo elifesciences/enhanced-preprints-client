@@ -1,5 +1,5 @@
-import {isPreprintVersionSummary} from './is-preprint-version-summary';
-import type {IsoDateString} from '../../types/enhanced-article';
+import { isPreprintVersionSummary } from './is-preprint-version-summary';
+import type { IsoDateString } from '../../types';
 
 const externalVersionSummary = {
   doi: '10.7554/eLife.85111.3',

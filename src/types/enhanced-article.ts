@@ -1,5 +1,5 @@
-import * as z from 'zod/v4';
 import { type Author } from './author';
+import { type IsoDateString } from './iso-date-string';
 import { type Reference } from './reference';
 import { type Content } from '../content';
 import { type Metrics } from '../fetch-data/metrics';
@@ -42,10 +42,6 @@ export type ArticleSummary = {
   title: Content,
   date: Date | null,
 };
-
-export const IsoDateStringSchema = z.iso.datetime().brand<'IsoDateString'>();
-
-export type IsoDateString = z.infer<typeof IsoDateStringSchema>;
 
 export type EnhancedArticle = {
   id: string,
