@@ -53,6 +53,10 @@ watch-typescript:
 check-unused-exports: node_modules
 	yarn ts-unused-exports tsconfig.json --excludePathsFromReport=\\.stories\\. --silent
 
+.PHONY: check-circular-dependencies
+check-circular-dependenceies:
+	madge --circular --extensions ts,tsx src/
+
 .PHONY: lint
 lint: node_modules check-unused-exports
 	yarn lint
