@@ -13,18 +13,12 @@ type License = {
   content?: Content,
 };
 
-type Heading = {
-  id: string,
-  text: Content,
-};
-
 export type ProcessedArticle = {
   title: Content,
   authors?: Author[],
   abstract: Content,
   licenses: License[],
   content: Content,
-  headings: Heading[],
   references: Reference[],
   meta?: {
     authorNotes?: {

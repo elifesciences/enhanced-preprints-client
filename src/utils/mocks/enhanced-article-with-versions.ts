@@ -1,4 +1,4 @@
-import { type EnhancedArticleWithVersions , type IsoDateString } from '../../types';
+import { type EnhancedArticleWithVersions, type IsoDateString } from '../../types';
 
 export const mock85111: EnhancedArticleWithVersions = {
   article: {
@@ -9,7 +9,6 @@ export const mock85111: EnhancedArticleWithVersions = {
       content: 'content',
       references: [],
       licenses: [],
-      headings: [],
     },
     doi: '10.7554/eLife.85111.1',
     eLocationId: 'RP85111',
