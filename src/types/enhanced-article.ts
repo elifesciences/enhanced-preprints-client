@@ -29,7 +29,7 @@ export type ProcessedArticle = {
   meta?: {
     authorNotes?: {
       type: string,
-      id: string,
+      id?: string,
       text: string,
       label?: string,
     }[],
