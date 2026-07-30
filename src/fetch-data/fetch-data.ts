@@ -16,7 +16,11 @@ const ToDoSchema = z.any();
 
 const ContentSchema = ToDoSchema;
 const AuthorSchema = ToDoSchema;
-const LicenseSchema = ToDoSchema;
+const LicenseSchema = z.object({
+  type: z.string(),
+  url: z.string().optional(),
+  content: ContentSchema.optional(),
+});
 const ReferenceSchema = ToDoSchema;
 
 const ProcessedArticleSchema = z.object({
