@@ -1,9 +1,7 @@
 import { type Author } from './author';
 
-type PublicationType = 'PublicationVolume' | 'Periodical';
-
 type Publication = {
-  type: PublicationType,
+  type: 'PublicationVolume' | 'Periodical',
   name?: string,
   volumeNumber?: number | string,
   issueNumber?: number,
