@@ -5,14 +5,14 @@ interface PublicationShape {
   type: 'PublicationVolume' | 'Periodical' | 'CreativeWork' | 'PublicationIssue';
   name?: string;
   volumeNumber?: number | string;
-  issueNumber?: number;
+  issueNumber?: number | string;
   isPartOf?: PublicationShape;
 }
 const PublicationSchema: z.ZodType<PublicationShape> = z.object({
   type: z.union([z.literal('PublicationVolume'), z.literal('Periodical'), z.literal('CreativeWork'), z.literal('PublicationIssue')]),
   name: z.string().optional(),
   volumeNumber: z.union([z.number(), z.string()]).optional(),
-  issueNumber: z.number().optional(),
+  issueNumber: z.union([z.number(), z.string()]).optional(),
   isPartOf: z.lazy(() => PublicationSchema).optional(),
 });
 
