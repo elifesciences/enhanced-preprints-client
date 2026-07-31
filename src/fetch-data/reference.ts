@@ -55,3 +55,5 @@ export const ReferenceSchema = z.object({
     publicationType: z.string().optional(),
   }).optional(),
 });
+
+export type Reference = z.infer<typeof ReferenceSchema>;

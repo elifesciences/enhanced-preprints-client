@@ -1,4 +1,4 @@
-import { type Reference } from '../../types';
+import { type Reference } from '../../fetch-data';
 
 export const references: Reference[] = [
   {
