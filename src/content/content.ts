@@ -96,7 +96,19 @@ export type ImageObjectContent = {
   },
 };
 
-const HeadingContentSchema = z.any();
+const HeadingContentSchema = z.object({
+  content: z.any(),
+  type: z.literal('Heading'),
+  id: z.string(),
+  depth: z.union([
+    z.literal(1),
+    z.literal(2),
+    z.literal(3),
+    z.literal(4),
+    z.literal(5),
+    z.literal(6),
+  ]),
+});
 const EmphasisContentSchema = z.any();
 const SuperscriptContentSchema = z.any();
 const SubscriptContentSchema = z.any();
