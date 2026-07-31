@@ -49,6 +49,7 @@ export const fetchVersion = async (id: string, preview: boolean = false): Promis
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
 
   if (!validated.success) {
+    console.error(`fetchVersion(${id}): failed to validate EnhancedArticleWithVersionsSchema`, validated.error);
     return null;
   }
 
