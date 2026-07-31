@@ -96,7 +96,27 @@ export type ImageObjectContent = {
   },
 };
 
-const ToDoSchema = z.any();
+type ContentPart =
+  string |
+  HeadingContent |
+  EmphasisContent |
+  SuperscriptContent |
+  SubscriptContent |
+  ParagraphContent |
+  StrongContent |
+  NontextualAnnotationContent |
+  DateContent |
+  LinkContent |
+  CiteContent |
+  CiteGroupContent |
+  FigureContent |
+  ImageObjectContent |
+  ListItemContent |
+  ListContent |
+  ClaimContent |
+  ThematicBreak;
+
+export type Content = ContentPart | Array<Content>;
 
 const HeadingContentSchema = z.object({
   content: z.any(),
@@ -149,29 +169,7 @@ const ContentPartSchema = z.union([
   ThematicBreakSchema,
 ]);
 
-export const ContentSchema = z.union([
+export const ContentSchema: z.ZodType<Content> = z.union([
   ContentPartSchema,
-  ToDoSchema,
+  z.array(z.lazy(() => ContentSchema)),
 ]);
-
-type ContentPart =
-  string |
-  HeadingContent |
-  EmphasisContent |
-  SuperscriptContent |
-  SubscriptContent |
-  ParagraphContent |
-  StrongContent |
-  NontextualAnnotationContent |
-  DateContent |
-  LinkContent |
-  CiteContent |
-  CiteGroupContent |
-  FigureContent |
-  ImageObjectContent |
-  ListItemContent |
-  ListContent |
-  ClaimContent |
-  ThematicBreak;
-
-export type Content = ContentPart | Array<Content>;
