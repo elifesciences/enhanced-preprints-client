@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 type DecoratedContent = {
   content: Content,
@@ -96,6 +96,8 @@ export type ImageObjectContent = {
   },
 };
 
+const ToDoSchema = z.any();
+
 const HeadingContentSchema = z.object({
   content: z.any(),
   type: z.literal('Heading'),
@@ -126,7 +128,7 @@ const ListContentSchema = z.any();
 const ClaimContentSchema = z.any();
 const ThematicBreakSchema = z.any();
 
-export const ContentPartSchema = z.union([
+const ContentPartSchema = z.union([
   z.string(),
   HeadingContentSchema,
   EmphasisContentSchema,
@@ -145,6 +147,11 @@ export const ContentPartSchema = z.union([
   ListContentSchema,
   ClaimContentSchema,
   ThematicBreakSchema,
+]);
+
+export const ContentSchema = z.union([
+  ContentPartSchema,
+  ToDoSchema,
 ]);
 
 type ContentPart =
