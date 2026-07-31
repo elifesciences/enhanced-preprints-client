@@ -31,7 +31,7 @@ dev-logs:
 prod: node_modules
 	docker compose down
 	yarn build
-	NEXT_PUBLIC_SITE_NAME=elife NEXT_PUBLIC_FILES_API_PATH=https://prod--epp.elifesciences.org/api/files API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+	NEXT_PUBLIC_SITE_NAME=elife NEXT_PUBLIC_FILES_API_PATH=https://prod--epp.elifesciences.org/api/files API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif NEXT_PUBLIC_IIIF_URL=https://prod--epp.elifesciences.org/iiif yarn start
 
 node_modules: package.json yarn.lock
 	yarn install
