@@ -2,9 +2,8 @@ import moment from 'moment';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../content';
-import { fetchVersionsNoContent } from '../../fetch-data';
+import {type Author, fetchVersionsNoContent} from '../../fetch-data';
 import {
-  type Author,
   type ElifeAssessment,
   type EnhancedArticle,
   type PeerReviewEvaluationSummaryOnly,

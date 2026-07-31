@@ -1,7 +1,7 @@
-import { type Author } from './author';
 import { type IsoDateString } from './iso-date-string';
 import { type Reference } from './reference';
 import { type Content } from '../content';
+import {type Author} from '../fetch-data';
 import { type Metrics } from '../fetch-data/metrics';
 import { type PeerReview } from '../fetch-data/peer-review';
 import { type RelatedContent } from '../fetch-data/related-content';

@@ -1,5 +1,5 @@
 import { type FulltextTabProps } from '../../components/pages/article/tabs/fulltext-tab';
-import { type Author } from '../../types';
+import {type Author} from '../../fetch-data';
 
 export const authorNotes: FulltextTabProps['metaData']['authorNotes'] = [
   {

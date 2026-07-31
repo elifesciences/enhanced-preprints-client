@@ -5,9 +5,9 @@ import { getPdfUrl } from './get-pdf-url';
 import { getXmlUrl } from './get-xml-url';
 import { config } from '../../../config';
 import { type Content } from '../../../content';
+import {type Author, type Institution} from '../../../fetch-data';
 import {
-  type EnhancedArticleWithVersions, type Author, type Reference,
-  type Institution
+  type EnhancedArticleWithVersions, type Reference,
 } from '../../../types';
 import { isVor } from '../../../utils/is-vor';
 import { type TimelineEvent } from '../construct-timeline';

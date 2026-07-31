@@ -1,4 +1,4 @@
-import { type Author } from './author';
+import {type Author} from '../fetch-data';
 
 type Publication = {
   type: 'PublicationVolume' | 'Periodical' | 'CreativeWork' | 'PublicationIssue',
