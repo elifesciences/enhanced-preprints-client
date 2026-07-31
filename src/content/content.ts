@@ -1,3 +1,5 @@
+import {z} from 'zod';
+
 type DecoratedContent = {
   content: Content,
 };
@@ -93,6 +95,45 @@ export type ImageObjectContent = {
     inline: boolean,
   },
 };
+
+const HeadingContentSchema = z.any();
+const EmphasisContentSchema = z.any();
+const SuperscriptContentSchema = z.any();
+const SubscriptContentSchema = z.any();
+const ParagraphContentSchema = z.any();
+const StrongContentSchema = z.any();
+const NontextualAnnotationContentSchema = z.any();
+const DateContentSchema = z.any();
+const LinkContentSchema = z.any();
+const CiteContentSchema = z.any();
+const CiteGroupContentSchema = z.any();
+const FigureContentSchema = z.any();
+const ImageObjectContentSchema = z.any();
+const ListItemContentSchema = z.any();
+const ListContentSchema = z.any();
+const ClaimContentSchema = z.any();
+const ThematicBreakSchema = z.any();
+
+export const ContentPartSchema = z.union([
+  z.string(),
+  HeadingContentSchema,
+  EmphasisContentSchema,
+  SuperscriptContentSchema,
+  SubscriptContentSchema,
+  ParagraphContentSchema,
+  StrongContentSchema,
+  NontextualAnnotationContentSchema,
+  DateContentSchema,
+  LinkContentSchema,
+  CiteContentSchema,
+  CiteGroupContentSchema,
+  FigureContentSchema,
+  ImageObjectContentSchema,
+  ListItemContentSchema,
+  ListContentSchema,
+  ClaimContentSchema,
+  ThematicBreakSchema,
+]);
 
 type ContentPart =
   string |

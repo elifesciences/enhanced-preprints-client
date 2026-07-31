@@ -1,10 +1,14 @@
 import { z } from 'zod';
 import { AuthorSchema } from './author';
 import { ReferenceSchema } from './reference';
+import { ContentPartSchema } from '../content/content';
 
 const ToDoSchema = z.any();
 
-const ContentSchema = ToDoSchema;
+const ContentSchema = z.union([
+  ContentPartSchema,
+  ToDoSchema,
+]);
 
 const LicenseSchema = z.object({
   type: z.string(),
