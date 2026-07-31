@@ -42,14 +42,14 @@ const LicenseSchema = z.object({
 });
 
 interface PublicationShape {
-  type: 'PublicationVolume' | 'Periodical';
+  type: 'PublicationVolume' | 'Periodical' | 'CreativeWork' | 'PublicationIssue';
   name?: string;
   volumeNumber?: number | string;
   issueNumber?: number;
   isPartOf?: PublicationShape;
 }
 const PublicationSchema: z.ZodType<PublicationShape> = z.object({
-  type: z.union([z.literal('PublicationVolume'), z.literal('Periodical')]),
+  type: z.union([z.literal('PublicationVolume'), z.literal('Periodical'), z.literal('CreativeWork'), z.literal('PublicationIssue')]),
   name: z.string().optional(),
   volumeNumber: z.union([z.number(), z.string()]).optional(),
   issueNumber: z.number().optional(),
