@@ -118,19 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const HeadingContentSchema = z.object({
-  content: z.any(),
-  type: z.literal('Heading'),
-  id: z.string(),
-  depth: z.union([
-    z.literal(1),
-    z.literal(2),
-    z.literal(3),
-    z.literal(4),
-    z.literal(5),
-    z.literal(6),
-  ]),
-});
 const EmphasisContentSchema = z.any();
 const SuperscriptContentSchema = z.any();
 const SubscriptContentSchema = z.any();
@@ -147,6 +134,23 @@ const ListItemContentSchema = z.any();
 const ListContentSchema = z.any();
 const ClaimContentSchema = z.any();
 const ThematicBreakSchema = z.any();
+
+const DecoratedContentSchema = z.object({
+  content: z.lazy(() => ContentSchema),
+});
+
+const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Heading'),
+  id: z.string(),
+  depth: z.union([
+    z.literal(1),
+    z.literal(2),
+    z.literal(3),
+    z.literal(4),
+    z.literal(5),
+    z.literal(6),
+  ]),
+}));
 
 const ContentPartSchema = z.union([
   z.string(),
