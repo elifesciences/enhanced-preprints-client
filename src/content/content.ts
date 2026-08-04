@@ -118,7 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const EmphasisContentSchema = z.any();
 const SuperscriptContentSchema = z.any();
 const SubscriptContentSchema = z.any();
 const ParagraphContentSchema = z.any();
@@ -138,6 +137,10 @@ const ThematicBreakSchema = z.any();
 const DecoratedContentSchema = z.object({
   content: z.lazy(() => ContentSchema),
 });
+
+const EmphasisContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Emphasis'),
+}));
 
 const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Heading'),
