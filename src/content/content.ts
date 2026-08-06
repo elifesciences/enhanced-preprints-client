@@ -118,7 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const FigureContentSchema = z.any();
 const ImageObjectContentSchema = z.any();
 const ListItemContentSchema = z.any();
 const ListContentSchema = z.any();
@@ -172,6 +171,13 @@ const CiteGroupContentSchema = z.object({
   type: z.literal('CiteGroup'),
   items: z.array(CiteContentSchema),
 });
+
+const FigureContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Figure'),
+  id: z.string().optional(),
+  caption: z.lazy(() => ContentSchema).optional(),
+  label: z.string().optional(),
+}));
 
 const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Heading'),
