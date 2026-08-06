@@ -118,7 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const ClaimContentSchema = z.any();
 const ThematicBreakSchema = z.any();
 
 const DecoratedContentSchema = z.object({
@@ -207,6 +206,22 @@ const ListContentSchema = z.object({
     ]),
   }).optional(),
 });
+
+const ClaimContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Claim'),
+  claimType: z.union([
+    z.literal('Statement'),
+    z.literal('Theorem'),
+    z.literal('Lemma'),
+    z.literal('Proof'),
+    z.literal('Postulate'),
+    z.literal('Hypothesis'),
+    z.literal('Proposition'),
+    z.literal('Corollary'),
+  ]).optional(),
+  label: z.lazy(() => ContentSchema).optional(),
+  title: z.lazy(() => ContentSchema).optional(),
+}));
 
 const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Heading'),
