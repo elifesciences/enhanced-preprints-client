@@ -19,6 +19,9 @@ const sharedPlugins = {
 };
 
 const sharedRules = {
+  '@stylistic/arrow-parens': ['error', 'always'],
+  '@stylistic/arrow-spacing': 'error',
+  '@stylistic/block-spacing': 'error',
   '@stylistic/eol-last': ['error', 'always'],
   '@stylistic/indent': ['error', 2],
   '@stylistic/max-len': ['error', { 'code': 260 }],
