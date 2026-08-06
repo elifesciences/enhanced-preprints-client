@@ -81,7 +81,7 @@ describe('proxyUrlToResponse', () => {
       await proxyUrlToResponse(arbitraryUrl, req, res, 'arbitrary filename', 'arbitrary canonical url');
 
       expect(res.statusCode).toBe(200);
-       
+
       expect(res._getBuffer().toString()).toBe(data);
     });
 

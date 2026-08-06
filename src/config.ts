@@ -1,5 +1,5 @@
 if (!process.env.API_SERVER && (process.env.NEXT_PHASE !== 'phase-production-build' && process.env.NODE_ENV !== 'test')) {
-   
+
   console.warn('Could not find API_SERVER environment variable');
 }
 

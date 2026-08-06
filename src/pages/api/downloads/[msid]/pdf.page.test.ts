@@ -51,7 +51,7 @@ describe('download PDF handler', () => {
         versionIdentifier,
       },
       versions: {
-         
+
         '1': {
           versionIdentifier: '1',
           preprintPosted: '2022-01-01',
@@ -114,9 +114,9 @@ describe('download PDF handler', () => {
 
         expect(res.statusCode).toBe(200);
         // verify body and headers
-         
+
         expect(res._isEndCalled()).toBe(true);
-         
+
         expect(res._getBuffer().toString()).toContain(pdfData);
 
         expect(res.getHeader('content-type')).toBe('application/pdf');

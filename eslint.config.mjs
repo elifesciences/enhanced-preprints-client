@@ -36,6 +36,7 @@ const sharedRules = {
   '@stylistic/no-mixed-operators': 'error',
   '@stylistic/no-multi-spaces': 'error',
   '@stylistic/no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 0 }],
+  '@stylistic/no-trailing-spaces': 'error',
   '@stylistic/operator-linebreak': 0,
   '@stylistic/quotes': ['error', 'single'],
   '@stylistic/semi': ['error', 'always'],

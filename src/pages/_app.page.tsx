@@ -15,7 +15,7 @@ const LayoutSelector = ({ siteName, children }: { siteName?: string, children: R
         {children}
       </BiophysicsColabLayout>
     );
-  } 
+  }
   return (
     <DefaultLayout>
       {children}
