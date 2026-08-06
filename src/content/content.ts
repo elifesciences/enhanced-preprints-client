@@ -118,8 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const ListItemContentSchema = z.any();
-const ListContentSchema = z.any();
 const ClaimContentSchema = z.any();
 const ThematicBreakSchema = z.any();
 
@@ -186,6 +184,28 @@ const ImageObjectContentSchema = z.object({
   meta: z.object({
     inline: z.boolean(),
   }),
+});
+
+const ListItemContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('ListItem'),
+}));
+
+const ListContentSchema = z.object({
+  type: z.literal('List'),
+  order: z.union([z.literal('Unordered'), z.literal('Ascending')]),
+  items: z.array(ListItemContentSchema),
+  meta: z.object({
+    listType: z.union([
+      z.literal('order'),
+      z.literal('bullet'),
+      z.literal('alpha-lower'),
+      z.literal('alpha-upper'),
+      z.literal('roman-lower'),
+      z.literal('roman-upper'),
+      z.literal('simple'),
+      z.literal('custom'),
+    ]),
+  }).optional(),
 });
 
 const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
