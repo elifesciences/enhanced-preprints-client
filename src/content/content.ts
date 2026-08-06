@@ -118,9 +118,6 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const SubscriptContentSchema = z.any();
-const ParagraphContentSchema = z.any();
-const StrongContentSchema = z.any();
 const NontextualAnnotationContentSchema = z.any();
 const DateContentSchema = z.any();
 const LinkContentSchema = z.any();
@@ -137,8 +134,20 @@ const DecoratedContentSchema = z.object({
   content: z.lazy(() => ContentSchema),
 });
 
+const SubscriptContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Subscript'),
+}));
+
 const SuperscriptContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Superscript'),
+}));
+
+const ParagraphContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Paragraph'),
+}));
+
+const StrongContentSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Strong'),
 }));
 
 const EmphasisContentSchema = z.intersection(DecoratedContentSchema, z.object({
