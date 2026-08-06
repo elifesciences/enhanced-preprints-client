@@ -83,7 +83,7 @@ const constructInstitutions = (authors: Author[]) => authors
 export const constructMetaData = (
   articleWithVersions: EnhancedArticleWithVersions,
   isPreviewUrl: boolean,
-  msid: string
+  msid: string,
 ): MetaData => {
   const previewPdfUrl = isPreviewUrl ? articleWithVersions.article.pdfUrl : undefined;
   const pdfUrl = (config.siteName === 'elife' || articleWithVersions.article.pdfUrl) ? getPdfUrl(msid, isVor(articleWithVersions), config.tenantDomain, previewPdfUrl) : null;

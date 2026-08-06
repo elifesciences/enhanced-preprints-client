@@ -104,6 +104,6 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async (co
       features: {
         showElifeTerms: !config.disableTerms,
       },
-    }
+    },
   };
 };

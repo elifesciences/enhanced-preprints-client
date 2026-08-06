@@ -8,7 +8,7 @@ export const ExternalVersionSummarySchema = z.object({
   url: z.string(),
   corrections: z.array(z.object({
     date: IsoDateStringSchema,
-    url: z.string()
+    url: z.string(),
   })).optional(),
 });
 

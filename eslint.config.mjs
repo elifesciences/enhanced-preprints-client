@@ -22,6 +22,7 @@ const sharedRules = {
   '@stylistic/arrow-parens': ['error', 'always'],
   '@stylistic/arrow-spacing': 'error',
   '@stylistic/block-spacing': 'error',
+  '@stylistic/comma-dangle': ['error', 'always-multiline'],
   '@stylistic/eol-last': ['error', 'always'],
   '@stylistic/indent': ['error', 2],
   '@stylistic/max-len': ['error', { 'code': 260 }],
@@ -66,7 +67,7 @@ const sharedRules = {
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
   recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
+  allConfig: js.configs.all,
 });
 
 export default defineConfig([{
@@ -113,6 +114,7 @@ export default defineConfig([{
     'wiremock/*.json', 'wiremock/**/*.json',
   ],
   rules: {
+    '@stylistic/comma-dangle': 'off',
     '@stylistic/quotes': 'off',
     '@stylistic/semi': 'off',
   },
@@ -131,5 +133,5 @@ export default defineConfig([{
   '**/next-env.d.ts',
   '**/playwright.config.ts',
   '**/jest.config.js',
-  '**/.yarn/'
+  '**/.yarn/',
 ])]);
