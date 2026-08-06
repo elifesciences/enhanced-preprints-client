@@ -1,4 +1,4 @@
-import { useEffect, useState , type JSX } from 'react';
+import { useEffect, useState, type JSX } from 'react';
 import '../button/button.scss';
 import './clipboard.scss';
 
