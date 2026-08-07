@@ -70,13 +70,13 @@ type ThematicBreak = {
   type: 'ThematicBreak',
 };
 
-export const listType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'] as const;
+export type ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
 export type ListContent = {
   type: 'List',
   order: 'Unordered' | 'Ascending',
   items: Array<ListItemContent>,
   meta?: {
-    listType: typeof listType[number],
+    listType: ListType[number],
   }
 };
 

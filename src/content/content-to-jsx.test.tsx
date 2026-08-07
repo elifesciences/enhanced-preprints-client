@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { listType } from './content';
+import { type ListType } from './content';
 import { contentToJsx, Heading } from './content-to-jsx';
 import { Figure } from '../components/atoms/figure/figure';
 
@@ -311,6 +311,7 @@ describe('Content to JSX', () => {
   });
 
   describe('list-type specified', () => {
+    const listType: ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
     it.each(listType.map((item) => ({ type: item })))('with $type specified the class list-$type is added to the list', ({ type }) => {
       render(contentToJsx({
         type: 'List',
