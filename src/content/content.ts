@@ -8,6 +8,10 @@ type QuoteBlock = DecoratedContent & {
   type: 'QuoteBlock',
 };
 
+type Note = DecoratedContent & {
+  type: 'Note',
+};
+
 type ParagraphContent = DecoratedContent & {
   type: 'Paragraph',
 };
@@ -103,6 +107,7 @@ export type ImageObjectContent = {
 type ContentPart =
   string |
   QuoteBlock |
+  Note |
   HeadingContent |
   EmphasisContent |
   SuperscriptContent |
@@ -131,6 +136,10 @@ const DecoratedContentSchema = z.object({
 
 const QuoteBlockSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('QuoteBlock'),
+}));
+
+const NoteSchema = z.intersection(DecoratedContentSchema, z.object({
+  type: z.literal('Note'),
 }));
 
 const SubscriptContentSchema = z.intersection(DecoratedContentSchema, z.object({
@@ -248,6 +257,7 @@ const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
 const ContentPartSchema = z.union([
   z.string(),
   QuoteBlockSchema,
+  NoteSchema,
   HeadingContentSchema,
   EmphasisContentSchema,
   SuperscriptContentSchema,
