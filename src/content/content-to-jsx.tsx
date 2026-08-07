@@ -8,7 +8,7 @@ type Heading = {
   content: Content,
   headingLevel: 1 | 2 | 3 | 4 | 5 | 6,
   maxLevel?: 1 | 2 | 3 | 4 | 5 | 6,
-  id: string,
+  id?: string,
 };
 
 export const Heading = ({

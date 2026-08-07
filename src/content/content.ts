@@ -82,7 +82,7 @@ export type ListContent = {
 
 export type HeadingContent = DecoratedContent & {
   type: 'Heading',
-  id: string,
+  id?: string,
   depth: 1 | 2 | 3 | 4 | 5 | 6,
 };
 
@@ -225,7 +225,7 @@ const ClaimContentSchema = z.intersection(DecoratedContentSchema, z.object({
 
 const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Heading'),
-  id: z.string(),
+  id: z.string().optional(),
   depth: z.union([
     z.literal(1),
     z.literal(2),

@@ -1,7 +1,7 @@
 import { type Content, type HeadingContent } from './content';
 
 export type Heading = {
-  id: string,
+  id?: string,
   text: Content,
 };
 

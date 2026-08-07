@@ -20,7 +20,7 @@ export const JumpToMenu = ({ headings }: JumpToMenuProps): JSX.Element => {
     }, 1000);
   };
 
-  const filteredHeadings = headings.filter((heading) => !!heading.id);
+  const filteredHeadings = headings.filter((heading): heading is Heading & { id: string } => !!heading.id);
 
   useEffect(() => {
     const headingElements = filteredHeadings
