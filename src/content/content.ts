@@ -19,16 +19,6 @@ export type ListContent = {
   }
 };
 
-export type ImageObjectContent = {
-  type: 'ImageObject',
-  id?: string,
-  contentUrl?: string,
-  content?: Content
-  meta: {
-    inline: boolean,
-  },
-};
-
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
 });
@@ -122,7 +112,15 @@ const FigureContentSchema: z.ZodType<DecoratedContent & { type: 'Figure'; id?: s
 
 type FigureContent = z.infer<typeof FigureContentSchema>;
 
-const ImageObjectContentSchema = z.object({
+const ImageObjectContentSchema: z.ZodType<{
+  type: 'ImageObject',
+  id?: string,
+  contentUrl?: string,
+  content?: Content,
+  meta: {
+    inline: boolean,
+  },
+}> = z.object({
   type: z.literal('ImageObject'),
   id: z.string().optional(),
   contentUrl: z.string().optional(),
@@ -131,6 +129,8 @@ const ImageObjectContentSchema = z.object({
     inline: z.boolean(),
   }),
 });
+
+export type ImageObjectContent = z.infer<typeof ImageObjectContentSchema>;
 
 const ListItemContentSchema: z.ZodType<DecoratedContent & { type: 'ListItem' }> = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('ListItem'),
