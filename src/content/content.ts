@@ -104,30 +104,6 @@ export type ImageObjectContent = {
   },
 };
 
-type ContentPart =
-  string |
-  QuoteBlock |
-  Note |
-  HeadingContent |
-  EmphasisContent |
-  SuperscriptContent |
-  SubscriptContent |
-  ParagraphContent |
-  StrongContent |
-  NontextualAnnotationContent |
-  DateContent |
-  LinkContent |
-  CiteContent |
-  CiteGroupContent |
-  FigureContent |
-  ImageObjectContent |
-  ListItemContent |
-  ListContent |
-  ClaimContent |
-  ThematicBreak;
-
-export type Content = ContentPart | Array<Content>;
-
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
 });
@@ -255,6 +231,30 @@ const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
     z.literal(6),
   ]),
 }));
+
+type ContentPart =
+  string |
+  QuoteBlock |
+  Note |
+  HeadingContent |
+  EmphasisContent |
+  SuperscriptContent |
+  SubscriptContent |
+  ParagraphContent |
+  StrongContent |
+  NontextualAnnotationContent |
+  DateContent |
+  LinkContent |
+  CiteContent |
+  CiteGroupContent |
+  FigureContent |
+  ImageObjectContent |
+  ListItemContent |
+  ListContent |
+  ClaimContent |
+  ThematicBreak;
+
+export type Content = ContentPart | Array<Content>;
 
 const ContentPartSchema = z.union([
   z.string(),
