@@ -4,11 +4,6 @@ type DecoratedContent = {
   content: Content,
 };
 
-type CiteGroupContent = {
-  type: 'CiteGroup',
-  items: CiteContent[],
-};
-
 export type ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
 export type ListContent = {
   type: 'List',
@@ -102,6 +97,8 @@ const CiteGroupContentSchema = z.object({
   type: z.literal('CiteGroup'),
   items: z.array(CiteContentSchema),
 });
+
+type CiteGroupContent = z.infer<typeof CiteGroupContentSchema>;
 
 const FigureContentSchema: z.ZodType<DecoratedContent & { type: 'Figure'; id?: string; caption?: Content; label?: string }> = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Figure'),
