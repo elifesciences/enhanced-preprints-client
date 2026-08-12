@@ -128,7 +128,9 @@ type ContentPart =
 
 export type Content = ContentPart | Array<Content>;
 
-const ThematicBreakSchema = z.any();
+const ThematicBreakSchema = z.object({
+  type: z.literal('ThematicBreak'),
+});
 
 const DecoratedContentSchema = z.object({
   content: z.lazy(() => ContentSchema),
