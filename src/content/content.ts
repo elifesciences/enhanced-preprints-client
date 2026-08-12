@@ -74,10 +74,6 @@ type ClaimContent = DecoratedContent & {
   title?: Content,
 };
 
-type ThematicBreak = {
-  type: 'ThematicBreak',
-};
-
 export type ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
 export type ListContent = {
   type: 'List',
@@ -107,6 +103,8 @@ export type ImageObjectContent = {
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
 });
+
+type ThematicBreak = z.infer<typeof ThematicBreakSchema>;
 
 const DecoratedContentSchema = z.object({
   content: z.lazy(() => ContentSchema),
