@@ -4,8 +4,6 @@ type DecoratedContent = {
   content: Content,
 };
 
-export type ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
-
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
 });
