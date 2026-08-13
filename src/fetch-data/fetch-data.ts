@@ -1,4 +1,5 @@
 import * as z from 'zod/v4';
+import {type EnhancedArticleWithVersions} from './enhanced-article-with-versions';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
@@ -8,7 +9,6 @@ import { VersionSummarySchema } from './version-summary';
 import { config } from '../config';
 import {
   type ArticleSummary,
-  type EnhancedArticleWithVersions,
   type PublishedEnhancedArticleMetaDataForJournal,
   IsoDateStringSchema,
 } from '../types';

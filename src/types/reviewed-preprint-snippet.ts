@@ -1,5 +1,6 @@
-import { type EnhancedArticle, type ProcessedArticle } from './enhanced-article';
+import { type ProcessedArticle } from './enhanced-article';
 import { type IsoDateString } from './iso-date-string';
+import {type EnhancedArticle} from '../fetch-data/enhanced-article';
 import { type PeerReview } from '../fetch-data/peer-review';
 
 type ElifeAssessmentContent = {

@@ -3,9 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../content';
 import {type Author, fetchVersionsNoContent} from '../../fetch-data';
+import {type EnhancedArticle} from '../../fetch-data/enhanced-article';
 import {
   type ElifeAssessment,
-  type EnhancedArticle,
   type PeerReviewEvaluationSummaryOnly,
   type PublishedEnhancedArticleMetaDataForJournal,
   type ReviewedPreprintSnippet,

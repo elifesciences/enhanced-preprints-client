@@ -1,5 +1,6 @@
+import {type EnhancedArticleWithVersions} from './enhanced-article-with-versions';
 import { getLatestVersionWarningUrl } from './get-latest-version-warning-url';
-import { type EnhancedArticleWithVersions, type IsoDateString } from '../types';
+import { type IsoDateString } from '../types';
 import { mock85111 } from '../utils/mocks/enhanced-article-with-versions';
 
 describe('getLatestVersion', () => {

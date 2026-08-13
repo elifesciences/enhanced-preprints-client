@@ -1,4 +1,5 @@
-import { type EnhancedArticleWithVersions, type IsoDateString } from '../../types';
+import {type EnhancedArticleWithVersions} from '../../fetch-data/enhanced-article-with-versions';
+import { type IsoDateString } from '../../types';
 
 export const mock85111: EnhancedArticleWithVersions = {
   article: {

@@ -6,7 +6,7 @@ import { getXmlUrl } from './get-xml-url';
 import { config } from '../../../config';
 import { type Content } from '../../../content';
 import { type Author, type Institution, type Reference } from '../../../fetch-data';
-import { type EnhancedArticleWithVersions } from '../../../types';
+import {type EnhancedArticleWithVersions} from '../../../fetch-data/enhanced-article-with-versions';
 import { isVor } from '../../../utils/is-vor';
 import { type TimelineEvent } from '../construct-timeline';
 import { constructTimeline, translateTimeline } from '../construct-timeline/construct-timeline';

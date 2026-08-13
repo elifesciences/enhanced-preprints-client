@@ -1,5 +1,5 @@
+import {type EnhancedArticleWithVersions} from '../fetch-data/enhanced-article-with-versions';
 import { isVORVersionSummary } from '../fetch-data/version-summary';
-import { type EnhancedArticleWithVersions } from '../types';
 
 export const isVor = (articleWithVersions: EnhancedArticleWithVersions): boolean => {
   const versions = Object.values(articleWithVersions.versions);
