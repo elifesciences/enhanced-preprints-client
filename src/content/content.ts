@@ -1,18 +1,16 @@
 import { z } from 'zod';
 
-type DecoratedContent = {
-  content: Content,
-};
-
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
 });
 
 type ThematicBreak = z.infer<typeof ThematicBreakSchema>;
 
-const DecoratedContentSchema = z.object({
+const DecoratedContentSchema: z.ZodType<{ content: Content }> = z.object({
   content: z.lazy(() => ContentSchema),
 });
+
+type DecoratedContent = z.infer<typeof DecoratedContentSchema>;
 
 const QuoteBlockSchema: z.ZodType<DecoratedContent & { type: 'QuoteBlock' }> = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('QuoteBlock'),
