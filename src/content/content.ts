@@ -5,14 +5,6 @@ type DecoratedContent = {
 };
 
 export type ListType = ['order', 'bullet', 'alpha-lower', 'alpha-upper', 'roman-lower', 'roman-upper', 'simple', 'custom'];
-export type ListContent = {
-  type: 'List',
-  order: 'Unordered' | 'Ascending',
-  items: Array<ListItemContent>,
-  meta?: {
-    listType: ListType[number],
-  }
-};
 
 const ThematicBreakSchema = z.object({
   type: z.literal('ThematicBreak'),
@@ -152,6 +144,8 @@ const ListContentSchema = z.object({
     ]),
   }).optional(),
 });
+
+export type ListContent = z.infer<typeof ListContentSchema>;
 
 const ClaimContentSchema: z.ZodType<DecoratedContent & {
   type: 'Claim';
