@@ -45,6 +45,10 @@ const EnhancedArticleWithVersionsSchema = z.object({
 
 export const fetchVersion = async (id: string, preview: boolean = false): Promise<EnhancedArticleWithVersions | null> => {
   const fetched = await jsonFetchOrNull<unknown>(`${config.apiServer}/api/preprints/${id}${preview ? '?previews=true' : ''}`);
+  if (fetched === null) {
+    console.error(`fetchVersion(${id}): jsonFetchOrNull returned null`, { id, preview });
+    return null;
+  }
 
   const validated = EnhancedArticleWithVersionsSchema.safeParse(fetched);
 
