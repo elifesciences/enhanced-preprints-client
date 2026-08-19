@@ -6,12 +6,14 @@ const ThematicBreakSchema = z.object({
 
 type ThematicBreak = z.infer<typeof ThematicBreakSchema>;
 
+const LazyContentSchema = z.lazy(() => ContentSchema);
+
 const DecoratedContentSchema: z.ZodType<{ content: Content }> = z.object({
-  content: z.lazy(() => ContentSchema),
+  content: LazyContentSchema,
 });
 
 const OptionalContentSchema: z.ZodType<{ content?: Content }> = z.object({
-  content: z.lazy(() => ContentSchema).optional(),
+  content: LazyContentSchema.optional(),
 });
 
 const QuoteBlockSchema = z.intersection(DecoratedContentSchema, z.object({
@@ -91,9 +93,8 @@ const CiteGroupContentSchema = z.object({
 type CiteGroupContent = z.infer<typeof CiteGroupContentSchema>;
 
 const FigureContentCaptionSchema: z.ZodType<{
-  caption?: Content;
 }> = z.object({
-  caption: z.lazy(() => ContentSchema).optional(),
+  caption: LazyContentSchema.optional(),
 });
 
 const FigureContentSchema = z.intersection(
@@ -148,8 +149,8 @@ const ClaimContentLabelAndTitleSchema: z.ZodType<{
   label?: Content;
   title?: Content;
 }> = z.object({
-  label: z.lazy(() => ContentSchema).optional(),
-  title: z.lazy(() => ContentSchema).optional(),
+  label: LazyContentSchema.optional(),
+  title: LazyContentSchema.optional(),
 });
 
 const ClaimContentSchema = z.intersection(
@@ -235,5 +236,5 @@ const ContentPartSchema = z.union([
 
 export const ContentSchema: z.ZodType<Content> = z.union([
   ContentPartSchema,
-  z.array(z.lazy(() => ContentSchema)),
+  z.array(LazyContentSchema),
 ]);
