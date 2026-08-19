@@ -10,7 +10,9 @@ const DecoratedContentSchema: z.ZodType<{ content: Content }> = z.object({
   content: z.lazy(() => ContentSchema),
 });
 
-type DecoratedContent = z.infer<typeof DecoratedContentSchema>;
+const OptionalContentSchema: z.ZodType<{ content?: Content }> = z.object({
+  content: z.lazy(() => ContentSchema).optional(),
+});
 
 const QuoteBlockSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('QuoteBlock'),
@@ -88,32 +90,31 @@ const CiteGroupContentSchema = z.object({
 
 type CiteGroupContent = z.infer<typeof CiteGroupContentSchema>;
 
-const FigureContentSchema: z.ZodType<DecoratedContent & { type: 'Figure'; id?: string; caption?: Content; label?: string }> = z.intersection(DecoratedContentSchema, z.object({
-  type: z.literal('Figure'),
-  id: z.string().optional(),
+const FigureContentCaptionSchema: z.ZodType<{
+  caption?: Content;
+}> = z.object({
   caption: z.lazy(() => ContentSchema).optional(),
-  label: z.string().optional(),
-}));
+});
+
+const FigureContentSchema = z.intersection(
+  z.intersection(DecoratedContentSchema, z.object({
+    type: z.literal('Figure'),
+    id: z.string().optional(),
+    label: z.string().optional(),
+  })),
+  FigureContentCaptionSchema,
+);
 
 type FigureContent = z.infer<typeof FigureContentSchema>;
 
-const ImageObjectContentSchema: z.ZodType<{
-  type: 'ImageObject',
-  id?: string,
-  contentUrl?: string,
-  content?: Content,
-  meta: {
-    inline: boolean,
-  },
-}> = z.object({
+const ImageObjectContentSchema = z.intersection(OptionalContentSchema, z.object({
   type: z.literal('ImageObject'),
   id: z.string().optional(),
   contentUrl: z.string().optional(),
-  content: z.lazy(() => ContentSchema).optional(),
   meta: z.object({
     inline: z.boolean(),
   }),
-});
+}));
 
 export type ImageObjectContent = z.infer<typeof ImageObjectContentSchema>;
 
@@ -143,26 +144,30 @@ const ListContentSchema = z.object({
 
 export type ListContent = z.infer<typeof ListContentSchema>;
 
-const ClaimContentSchema: z.ZodType<DecoratedContent & {
-  type: 'Claim';
-  claimType?: 'Statement' | 'Theorem' | 'Lemma' | 'Proof' | 'Postulate' | 'Hypothesis' | 'Proposition' | 'Corollary';
+const ClaimContentLabelAndTitleSchema: z.ZodType<{
   label?: Content;
   title?: Content;
-}> = z.intersection(DecoratedContentSchema, z.object({
-  type: z.literal('Claim'),
-  claimType: z.union([
-    z.literal('Statement'),
-    z.literal('Theorem'),
-    z.literal('Lemma'),
-    z.literal('Proof'),
-    z.literal('Postulate'),
-    z.literal('Hypothesis'),
-    z.literal('Proposition'),
-    z.literal('Corollary'),
-  ]).optional(),
+}> = z.object({
   label: z.lazy(() => ContentSchema).optional(),
   title: z.lazy(() => ContentSchema).optional(),
-}));
+});
+
+const ClaimContentSchema = z.intersection(
+  z.intersection(DecoratedContentSchema, z.object({
+    type: z.literal('Claim'),
+    claimType: z.union([
+      z.literal('Statement'),
+      z.literal('Theorem'),
+      z.literal('Lemma'),
+      z.literal('Proof'),
+      z.literal('Postulate'),
+      z.literal('Hypothesis'),
+      z.literal('Proposition'),
+      z.literal('Corollary'),
+    ]).optional(),
+  })),
+  ClaimContentLabelAndTitleSchema,
+);
 
 type ClaimContent = z.infer<typeof ClaimContentSchema>;
 
