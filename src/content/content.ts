@@ -12,61 +12,61 @@ const DecoratedContentSchema: z.ZodType<{ content: Content }> = z.object({
 
 type DecoratedContent = z.infer<typeof DecoratedContentSchema>;
 
-const QuoteBlockSchema: z.ZodType<DecoratedContent & { type: 'QuoteBlock' }> = z.intersection(DecoratedContentSchema, z.object({
+const QuoteBlockSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('QuoteBlock'),
 }));
 
 type QuoteBlock = z.infer<typeof QuoteBlockSchema>;
 
-const NoteSchema: z.ZodType<DecoratedContent & { type: 'Note' }> = z.intersection(DecoratedContentSchema, z.object({
+const NoteSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Note'),
 }));
 
 type Note = z.infer<typeof NoteSchema>;
 
-const SubscriptContentSchema: z.ZodType<DecoratedContent & { type: 'Subscript' }> = z.intersection(DecoratedContentSchema, z.object({
+const SubscriptContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Subscript'),
 }));
 
 type SubscriptContent = z.infer<typeof SubscriptContentSchema>;
 
-const SuperscriptContentSchema: z.ZodType<DecoratedContent & { type: 'Superscript' }> = z.intersection(DecoratedContentSchema, z.object({
+const SuperscriptContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Superscript'),
 }));
 
 type SuperscriptContent = z.infer<typeof SuperscriptContentSchema>;
 
-const ParagraphContentSchema: z.ZodType<DecoratedContent & { type: 'Paragraph' }> = z.intersection(DecoratedContentSchema, z.object({
+const ParagraphContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Paragraph'),
 }));
 
 type ParagraphContent = z.infer<typeof ParagraphContentSchema>;
 
-const StrongContentSchema: z.ZodType<DecoratedContent & { type: 'Strong' }> = z.intersection(DecoratedContentSchema, z.object({
+const StrongContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Strong'),
 }));
 
 type StrongContent = z.infer<typeof StrongContentSchema>;
 
-const EmphasisContentSchema: z.ZodType<DecoratedContent & { type: 'Emphasis' }> = z.intersection(DecoratedContentSchema, z.object({
+const EmphasisContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Emphasis'),
 }));
 
 type EmphasisContent = z.infer<typeof EmphasisContentSchema>;
 
-const NontextualAnnotationContentSchema: z.ZodType<DecoratedContent & { type: 'NontextualAnnotation' }> = z.intersection(DecoratedContentSchema, z.object({
+const NontextualAnnotationContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('NontextualAnnotation'),
 }));
 
 type NontextualAnnotationContent = z.infer<typeof NontextualAnnotationContentSchema>;
 
-const DateContentSchema: z.ZodType<DecoratedContent & { type: 'Date' }> = z.intersection(DecoratedContentSchema, z.object({
+const DateContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Date'),
 }));
 
 type DateContent = z.infer<typeof DateContentSchema>;
 
-const LinkContentSchema: z.ZodType<DecoratedContent & { type: 'Link'; target: string; relation?: string }> = z.intersection(DecoratedContentSchema, z.object({
+const LinkContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Link'),
   target: z.string(),
   relation: z.string().optional(),
@@ -74,7 +74,7 @@ const LinkContentSchema: z.ZodType<DecoratedContent & { type: 'Link'; target: st
 
 type LinkContent = z.infer<typeof LinkContentSchema>;
 
-const CiteContentSchema: z.ZodType<DecoratedContent & { type: 'Cite'; target: string }> = z.intersection(DecoratedContentSchema, z.object({
+const CiteContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Cite'),
   target: z.string(),
 }));
@@ -117,7 +117,7 @@ const ImageObjectContentSchema: z.ZodType<{
 
 export type ImageObjectContent = z.infer<typeof ImageObjectContentSchema>;
 
-const ListItemContentSchema: z.ZodType<DecoratedContent & { type: 'ListItem' }> = z.intersection(DecoratedContentSchema, z.object({
+const ListItemContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('ListItem'),
 }));
 
@@ -166,7 +166,7 @@ const ClaimContentSchema: z.ZodType<DecoratedContent & {
 
 type ClaimContent = z.infer<typeof ClaimContentSchema>;
 
-const HeadingContentSchema: z.ZodType<DecoratedContent & { type: 'Heading'; id?: string; depth: 1 | 2 | 3 | 4 | 5 | 6 }> = z.intersection(DecoratedContentSchema, z.object({
+const HeadingContentSchema = z.intersection(DecoratedContentSchema, z.object({
   type: z.literal('Heading'),
   id: z.string().optional(),
   depth: z.union([
