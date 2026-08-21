@@ -39,6 +39,7 @@ describe('ContentSchema parse performance', () => {
     const result = ContentSchema.parse(content);
     const durationMs = performance.now() - start;
 
+    console.log({ durationMs });
     expect(result).toBeDefined();
     expect(durationMs).toBeLessThan(MAX_PARSE_MS);
   });

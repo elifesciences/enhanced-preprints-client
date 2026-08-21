@@ -36,6 +36,8 @@ jobs:
         run: make lint
       - name: Unit Test
         run: yarn test --reporters=jest-wip-reporter
+      - name: Perf test only
+        run: yarn test src/content/content-performance.test.ts
   test-integration:
     runs-on: ubuntu-latest
     steps:
