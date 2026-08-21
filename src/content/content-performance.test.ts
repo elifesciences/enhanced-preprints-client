@@ -5,15 +5,7 @@ import wiremock15102v1 from '../../wiremock/files/preprints/15102v1.json';
 import wiremock15102v3 from '../../wiremock/files/preprints/15102v3.json';
 import wiremock85111v1 from '../../wiremock/files/preprints/85111v1.json';
 
-// Guards against reintroducing the perf regression this schema used to have:
-// building each content-node variant with z.intersection(...) rather than a real
-// z.object(), so z.union() had to fully re-validate the recursive `content` subtree
-// for every one of the ~19 mismatched candidates before failing on the type check.
-// Measured on these exact fixtures, that cost 50-772ms per parse; the
-// z.discriminatedUnion rewrite (O(1) lookup on `type`) parses the same data in 1-3ms.
-// MAX_PARSE_MS sits well below the old regression range and well above normal
-// variance, so this fails loudly if that cost ever comes back.
-const MAX_PARSE_MS = 100;
+const MAX_PARSE_MS = 10;
 
 type ArticleEnvelope = { article?: { article?: { content?: unknown }, content?: unknown } };
 
