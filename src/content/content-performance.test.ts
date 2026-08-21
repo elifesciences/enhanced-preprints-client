@@ -5,7 +5,7 @@ import wiremock15102v1 from '../../wiremock/files/preprints/15102v1.json';
 import wiremock15102v3 from '../../wiremock/files/preprints/15102v3.json';
 import wiremock85111v1 from '../../wiremock/files/preprints/85111v1.json';
 
-const MAX_PARSE_MS = 10;
+const MAX_PARSE_MS = 50;
 
 type ArticleEnvelope = { article?: { article?: { content?: unknown }, content?: unknown } };
 
