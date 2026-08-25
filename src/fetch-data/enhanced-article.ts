@@ -1,7 +1,7 @@
 import {type PeerReview} from './peer-review';
+import {type ProcessedArticle} from './processed-article';
 import {type RelatedContent} from './related-content';
 import {type IsoDateString} from '../types';
-import {type ProcessedArticle} from '../types/enhanced-article';
 
 export type EnhancedArticle = {
   id: string,
