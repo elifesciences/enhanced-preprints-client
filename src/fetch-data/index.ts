@@ -7,3 +7,5 @@ export { type EnhancedArticleWithVersions } from './enhanced-article-with-versio
 export { type Metrics } from './metrics';
 export { type PeerReview } from './peer-review';
 export { type PeerReviewEvaluationSummaryOnly } from './peer-review-evaluation-summary-only';
+export { type PublishedEnhancedArticleMetaDataForJournal } from './published-enhanced-article-meta-data-for-journal';
+export { type RelatedContent } from './related-content';
