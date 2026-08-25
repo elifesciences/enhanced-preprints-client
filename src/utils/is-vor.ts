@@ -1,4 +1,4 @@
-import {type EnhancedArticleWithVersions} from '../fetch-data/enhanced-article-with-versions';
+import {type EnhancedArticleWithVersions} from '../fetch-data';
 import { isVORVersionSummary } from '../fetch-data/version-summary';
 
 export const isVor = (articleWithVersions: EnhancedArticleWithVersions): boolean => {

@@ -1,4 +1,4 @@
-import { type PeerReview } from '../../fetch-data/peer-review';
+import { type PeerReview } from '../../fetch-data';
 import { type IsoDateString } from '../../types';
 
 export const peerReview: PeerReview = {
