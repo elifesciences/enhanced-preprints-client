@@ -32,6 +32,8 @@ jobs:
         run: yarn build
       - name: TSC
         run: make compile-typescript
+      - name: Check circular dependencies
+        run: make check-circular-dependencies
       - name: Lint
         run: make lint
       - name: Unit Test
