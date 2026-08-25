@@ -77,6 +77,6 @@ watch: node_modules
 	yarn test --watch ${TEST}
 
 .PHONY: check
-check: node_modules lint
+check: node_modules check-circular-dependencies lint
 	yarn tsc --noEmit
 	yarn test --reporters=jest-wip-reporter
