@@ -1,15 +1,15 @@
 import * as z from 'zod/v4';
-import {type EnhancedArticleWithVersions} from './enhanced-article-with-versions';
+import { type EnhancedArticleWithVersions } from './enhanced-article-with-versions';
 import { jsonFetch, jsonFetchOrNull } from './json-fetch';
 import { MetricsSchema } from './metrics';
 import { PeerReviewSchema } from './peer-review';
-import {ProcessedArticleSchema} from './processed-article';
+import { ProcessedArticleSchema } from './processed-article';
+import { type PublishedEnhancedArticleMetaDataForJournal } from './published-enhanced-article-meta-data-for-journal';
 import { RelatedContentSchema } from './related-content';
 import { VersionSummarySchema } from './version-summary';
 import { config } from '../config';
 import {
   type ArticleSummary,
-  type PublishedEnhancedArticleMetaDataForJournal,
   IsoDateStringSchema,
 } from '../types';
 

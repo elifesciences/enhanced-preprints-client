@@ -1,8 +1,6 @@
 export type {
   ReviewedPreprintSnippet,
   ElifeAssessment,
-  PublishedEnhancedArticleMetaDataForJournal,
-  PeerReviewEvaluationSummaryOnly,
 } from './reviewed-preprint-snippet';
 export type {
   ArticleSummary,

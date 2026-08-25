@@ -1,7 +1,3 @@
-import { type IsoDateString } from './iso-date-string';
-import {type EnhancedArticle} from '../fetch-data/enhanced-article';
-import { type PeerReview } from '../fetch-data/peer-review';
-import {type ProcessedArticle} from '../fetch-data/processed-article';
 
 type ElifeAssessmentContent = {
   type: 'paragraph',
@@ -37,12 +33,3 @@ export type ReviewedPreprintSnippet = {
     name: string,
   }[],
 } & ElifeAssessment;
-
-export type PeerReviewEvaluationSummaryOnly = Pick<PeerReview, 'evaluationSummary'>;
-
-export type PublishedEnhancedArticleMetaDataForJournal = Omit<EnhancedArticle, 'article' | 'peerReview'> & {
-  article: Omit<ProcessedArticle, 'content' | 'abstract'>,
-  peerReview?: PeerReviewEvaluationSummaryOnly,
-  published: IsoDateString,
-  firstPublished: IsoDateString,
-};

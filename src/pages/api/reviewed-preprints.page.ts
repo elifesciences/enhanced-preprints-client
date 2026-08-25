@@ -2,15 +2,16 @@ import moment from 'moment';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSubjects } from '../../components/molecules/article-flag-list/article-flag-list';
 import { contentToHtml } from '../../content';
-import {type Author, fetchVersionsNoContent} from '../../fetch-data';
-import {type EnhancedArticle} from '../../fetch-data/enhanced-article';
+import { type Author, fetchVersionsNoContent } from '../../fetch-data';
+import { type EnhancedArticle } from '../../fetch-data/enhanced-article';
+import { type PeerReviewEvaluationSummaryOnly } from '../../fetch-data/peer-review-evaluation-summary-only';
+import { type PublishedEnhancedArticleMetaDataForJournal } from '../../fetch-data/published-enhanced-article-meta-data-for-journal';
 import {
   type ElifeAssessment,
-  type PeerReviewEvaluationSummaryOnly,
-  type PublishedEnhancedArticleMetaDataForJournal,
   type ReviewedPreprintSnippet,
   IsoDateStringSchema,
-  type IsoDateString } from '../../types';
+  type IsoDateString,
+} from '../../types';
 import { findTerms } from '../../utils/terms';
 
 type BadRequestMessage = {
