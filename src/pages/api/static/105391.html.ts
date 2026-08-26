@@ -25,6 +25,11 @@ export const getHtml = () => `<!DOCTYPE html>
     </style>
     <link rel="stylesheet" href="/reviewed-preprints/_next/static/css/2385505a5662f142.css" />
     <link rel="stylesheet" href="/reviewed-preprints/_next/static/css/a47d6f6ffa0450e3.css" />
+
+
+    <link rel="stylesheet" href="/static/105391.css">
+
+
   </head>
   <body>
     <div id="__next"><div class="site-elife"><div class="grid-container article-page"><div class="grid-header"><div class="site-header"><div class="site-header-container"><a href="/" class="site-header__logo_link"><img alt="eLife logo" loading="lazy" width="80" height="30" decoding="async" data-nimg="1" class="site-header__logo" style="color:transparent" src="/reviewed-preprints/_next/static/media/elife-logo.2ab2ee88.svg"></a><span class="site-header__title">Enhanced Preprints</span><nav class="nav-primary"><ul class="nav-primary__list"><li class="nav-primary__item nav-primary__item--first"><a href="#mainMenu">Menu</a></li><li class="nav-primary__item"><a href="https://elifesciences.org/">Home</a></li><li class="nav-primary__item"><a href="https://elifesciences.org/browse">Browse</a></li><li class="nav-primary__item"><a href="https://elifesciences.org/magazine">Magazine</a></li><li class="nav-primary__item"><a href="https://elifesciences.org/community">Community</a></li><li class="nav-primary__item"><a href="https://elifesciences.org/about">About</a></li></ul></nav><nav class="nav-secondary"><ul class="nav-secondary__list"><li class="nav-secondary__item nav-secondary__item--search"><a href="https://elifesciences.org/search" rel="search">Search</a></li><li class="nav-secondary__item nav-secondary__item--alert"><a href="https://elifesciences.org/content-alerts">Alerts</a></li><li class="nav-secondary__item"><a href="https://elifesciences.org/submit-your-research" class="block-button block-button__variant-one">Submit your research</a></li></ul></nav></div></div></div><div class="primary-section-header"><header class="content-header"><ul class="article-flag-list"><li class="article-flag-list__item"><a class="article-flag__link" href="https://elifesciences.org/subjects/neuroscience">Neuroscience</a></li></ul><h1 class="title" data-gtm-vis-polling-id390116_293="133">Contributions of insula and superior temporal sulcus to interpersonal guilt and responsibility in social decisions</h1><div class="
