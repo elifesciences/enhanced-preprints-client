@@ -56,6 +56,10 @@ const nextConfig = {
       {
         source: '/robots.txt',
         destination: '/api/robots'
+      },
+      {
+        source: '/static/105391',
+        destination: '/api/static/105391'
       }
     ],
     fallback: [

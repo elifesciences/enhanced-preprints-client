@@ -6,6 +6,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   const disallowList = [
     'Disallow: /previews/',
     'Disallow: /preview/',
+    'Disallow: /static/',
   ];
 
   if (config.disallowRobots) {
