@@ -137,11 +137,5 @@ export default defineConfig([{
   plugins: { ...sharedPlugins },
   rules: { ...sharedRules },
 }, globalIgnores([
-  '**/.eslintrc.js',
-  '**/next.config.js',
-  '**/stylelint.config.js',
-  '**/next-env.d.ts',
-  '**/playwright.config.ts',
-  '**/jest.config.js',
   '**/.yarn/',
 ])]);
