@@ -58,12 +58,12 @@ const nextConfig = {
         destination: '/api/robots'
       },
       {
-        source: '/static/105391',
-        destination: '/api/static/105391'
-      },
-      {
         source: '/static/105391.css',
         destination: '/api/static/105391-custom.css'
+      },
+      {
+        source: '/static/105391/claims-tree',
+        destination: '/api/static/105391-claims-tree'
       }
     ],
     fallback: [
