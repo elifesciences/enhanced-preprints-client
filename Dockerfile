@@ -48,4 +48,5 @@ COPY --from=production_deps /opt/epp-client/node_modules /opt/epp-client/node_mo
 COPY --from=production_deps /opt/epp-client/package.json /opt/epp-client/package.json
 COPY --from=production_build /opt/epp-client/.next /opt/epp-client/.next
 COPY --from=production_build /opt/epp-client/next.config.js /opt/epp-client/next.config.js
+COPY --from=production_build /opt/epp-client/src/pages/api/static/105391-custom.css /opt/epp-client/src/pages/api/static/105391-custom.css
 CMD [ "./node_modules/.bin/next", "start" ]
