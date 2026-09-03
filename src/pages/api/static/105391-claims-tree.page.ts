@@ -32,7 +32,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <dd>
               <p><span class="visuallyhidden">The hypothesis: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
               <section>
-                <header>The claims for the hypothesis are:</header>
+                <header class="visuallyhidden">There are 2 claims for this hypothesis:</header>
                 <dl>
                 <dt role="listitem">Claim 1 (hypothesis 1)</dt>
                 <dd>
