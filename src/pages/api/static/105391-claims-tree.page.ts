@@ -9,6 +9,21 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>105391 Claims Tree</title>
+    <style>
+      .visuallyhidden {
+        border: 0;
+        /* stylelint-disable-next-line property-no-deprecated */
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        user-select: none;
+        width: 1px;
+      }
+    </style>
+
   </head>
   <body>
     <h1>Claims tree</h1>
