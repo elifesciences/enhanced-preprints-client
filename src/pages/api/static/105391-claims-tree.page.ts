@@ -13,11 +13,11 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <h1>Claims tree</h1>
 
     <nav aria-label="Hypotheses">
-      <ol>
+      <ul>
         <li><a href="#hypothesis-1" aria-current="true">Hypothesis 1</a></li>
         <li><a href="#hypothesis-2">Hypothesis 2</a></li>
         <li><a href="#hypothesis-3">Hypothesis 3</a></li>
-      </ol>
+      </ul>
     </nav>
 
     <dl id="hypothesis-1">
