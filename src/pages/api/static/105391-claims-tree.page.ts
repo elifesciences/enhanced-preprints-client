@@ -14,7 +14,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     <nav aria-label="Hypotheses">
       <ul role="list">
-        <li role="listitem"><a href="#hypothesis-1" aria-current="true">Hypothesis 1</a></li>
+        <li role="listitem"><a href="#hypothesis-1">Hypothesis 1</a></li>
         <li role="listitem"><a href="#hypothesis-2">Hypothesis 2</a></li>
         <li role="listitem"><a href="#hypothesis-3">Hypothesis 3</a></li>
       </ul>
