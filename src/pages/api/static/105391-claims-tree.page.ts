@@ -7,6 +7,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>105391 Claims Tree</title>
   </head>
   <body>
