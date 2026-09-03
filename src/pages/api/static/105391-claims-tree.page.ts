@@ -22,7 +22,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
     <main>
       <h2>Hypotheses</h2>
-      <dl id="hypothesis-1">
+      <ul role="list">
+        <li role="listitem">
+          <dl id="hypothesis-1">
         <dt role="listitem">Hypothesis 1 (<span class="visuallyhidden">comprises </span>2 claims)</dt>
         <dd>
           <p><span class="visuallyhidden">The hypothesis is: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
@@ -50,18 +52,22 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
           </dl>
         </dd>
       </dl>
-
-      <dl id="hypothesis-2">
+        </li>
+        <li role="listitem">
+          <dl id="hypothesis-2">
         <dt role="listitem">Hypothesis 2 • 3 claims</dt>
         <dd>
           <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
         </dd>
       </dl>
-
-      <dl id="hypothesis-3">
+        </li>
+        <li role="listitem">
+          <dl id="hypothesis-3">
         <dt role="listitem">Hypothesis 3</dt>
         <dd></dd>
       </dl>
+        </li>
+      </ul>
     </main>
   </body>
 </html>
