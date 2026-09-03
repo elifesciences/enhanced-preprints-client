@@ -20,7 +20,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       </ul>
     </nav>
 
-    <main>
+    <section>
       <h2>Hypotheses</h2>
       <ul role="list">
         <li role="listitem">
@@ -68,7 +68,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       </dl>
         </li>
       </ul>
-    </main>
+    </section>
   </body>
 </html>
 `);
