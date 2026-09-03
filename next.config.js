@@ -68,6 +68,10 @@ const nextConfig = {
       {
         source: '/static/105391/claims-tree',
         destination: '/api/static/105391-claims-tree'
+      },
+      {
+        source: '/static/105391/claims-tree-alt',
+        destination: '/api/static/105391-claims-tree-alt'
       }
     ],
     fallback: [
