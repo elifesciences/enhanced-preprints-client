@@ -31,7 +31,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <dt role="listitem">Hypothesis 1 (<span class="visuallyhidden">comprises </span>2 claims)</dt>
             <dd>
               <p><span class="visuallyhidden">The hypothesis is: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
-              <dl>
+              <section>
+                <header>The claims for the hypothesis are:</header>
+                <dl>
                 <dt role="listitem">Claim 1 (hypothesis 1)</dt>
                 <dd>
                   <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
@@ -55,6 +57,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 </dd>
 
               </dl>
+              </section>
             </dd>
           </dl>
 
