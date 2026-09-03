@@ -39,7 +39,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
           <dd>
             <p>The insula-as-guilt-substrate hypothesis predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
             <dl>
-              <dt role="listitem">Evidence (claim 1, hypothesis 1) — Figure 4</dt>
+              <dt role="listitem">Evidence (claim 2, hypothesis 1) — Figure 4</dt>
               <dd>
                 <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
               </dd>
