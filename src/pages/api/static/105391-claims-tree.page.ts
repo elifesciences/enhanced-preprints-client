@@ -34,29 +34,29 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
               <section>
                 <header class="visuallyhidden">There are 2 claims for this hypothesis:</header>
                 <dl>
-                <dt role="listitem">Claim 1 (hypothesis 1)</dt>
-                <dd>
-                  <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
-                  <dl>
-                    <dt role="listitem">Evidence (claim 1, hypothesis 1) — Figure 3</dt>
-                    <dd>
-                      <p>Happiness ratings decrease more after negative partner outcomes when the participant made the choice (Social condition) than when the partner made the choice (Partner condition), operationalizing interpersonal guilt as responsibility-contingent unhappiness about partner harm.</p>
-                    </dd>
-                  </dl>
-                </dd>
+                  <dt role="listitem">Claim 1 (hypothesis 1)</dt>
+                  <dd>
+                    <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
+                    <dl>
+                      <dt role="listitem">Evidence (claim 1, hypothesis 1) — Figure 3</dt>
+                      <dd>
+                        <p>Happiness ratings decrease more after negative partner outcomes when the participant made the choice (Social condition) than when the partner made the choice (Partner condition), operationalizing interpersonal guilt as responsibility-contingent unhappiness about partner harm.</p>
+                      </dd>
+                    </dl>
+                  </dd>
 
-                <dt role="listitem">Claim 2 (hypothesis 1)</dt>
-                <dd>
-                  <p>The insula-as-guilt-substrate hypothesis predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
-                  <dl>
-                    <dt role="listitem">Evidence (claim 2, hypothesis 1) — Figure 4</dt>
-                    <dd>
-                      <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
-                    </dd>
-                  </dl>
-                </dd>
+                  <dt role="listitem">Claim 2 (hypothesis 1)</dt>
+                  <dd>
+                    <p>The insula-as-guilt-substrate hypothesis predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
+                    <dl>
+                      <dt role="listitem">Evidence (claim 2, hypothesis 1) — Figure 4</dt>
+                      <dd>
+                        <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
+                      </dd>
+                    </dl>
+                  </dd>
 
-              </dl>
+                </dl>
               </section>
             </dd>
           </dl>
