@@ -41,30 +41,12 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             
             <article>
               <header>Claim 1 (question 1)</header>
-              <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>
-              
-              <section>
-                <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
-                <article>
-                  <header>Evidence (claim 1, question 1) — Figure 3</header>
-                  <p>Happiness ratings decrease more after negative partner outcomes when the participant made the choice (Social condition) than when the partner made the choice (Partner condition), operationalizing interpersonal guilt as responsibility-contingent unhappiness about partner harm.</p>
-                </article>
-              </section>
-            
+              <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
             </article>
             
             <article>            
               <header>Claim 2 (question 1)</header>
-              <p>The insula-as-guilt-substrate question predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
-              
-              <section>
-                <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
-                <article>
-                  <header>Evidence (claim 2, question 1) — Figure 4</header>
-                  <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
-                </article>
-               </section>
-               
+              <p>The insula-as-guilt-substrate question predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>               
             </article>
             
           </section>  
