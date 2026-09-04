@@ -27,14 +27,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   <body>
     <h1>Claims tree</h1>
 
-    <nav aria-label="Hypotheses">
-      <ul role="list">
-        <li role="listitem"><a href="#hypothesis-1">Hypothesis 1</a></li>
-        <li role="listitem"><a href="#hypothesis-2">Hypothesis 2</a></li>
-        <li role="listitem"><a href="#hypothesis-3">Hypothesis 3</a></li>
-      </ul>
-    </nav>
-
     <section>
       <h2>Hypotheses</h2>
       <div class="visuallyhidden">There are 3 hypotheses</div>
