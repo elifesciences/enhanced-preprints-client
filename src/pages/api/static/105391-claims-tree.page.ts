@@ -28,7 +28,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <h1>Claims tree</h1>
 
     <section>
-      <h2>Hypotheses</h2>
       <div class="visuallyhidden">There are 3 hypotheses</div>
       <ul role="list">
 
