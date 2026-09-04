@@ -41,67 +41,52 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       <ul role="list">
 
         <li role="listitem">
+          <header>Hypothesis 1 (<span class="visuallyhidden">comprises </span>2 claims)</header>
+          <p><span class="visuallyhidden">The hypothesis: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
 
-          <dl id="hypothesis-1">
-            <dt role="listitem">Hypothesis 1 (<span class="visuallyhidden">comprises </span>2 claims)</dt>
-            <dd>
-              <p><span class="visuallyhidden">The hypothesis: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
+          <section>
+          
+            <header class="visuallyhidden">There are 2 claims for this hypothesis:</header>
+            
+            <article>
+              <header>Claim 1 (hypothesis 1)</header>
+              <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
+              
               <section>
-                <header class="visuallyhidden">There are 2 claims for this hypothesis:</header>
-                <dl>
-                  <dt role="listitem">Claim 1 (hypothesis 1)</dt>
-                  <dd>
-                    <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
-                    <section>
-                      <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
-                      <dl>
-                        <dt role="listitem">Evidence (claim 1, hypothesis 1) — Figure 3</dt>
-                        <dd>
-                          <p>Happiness ratings decrease more after negative partner outcomes when the participant made the choice (Social condition) than when the partner made the choice (Partner condition), operationalizing interpersonal guilt as responsibility-contingent unhappiness about partner harm.</p>
-                        </dd>
-                      </dl>
-                    </section>
-                  </dd>
-
-                  <dt role="listitem">Claim 2 (hypothesis 1)</dt>
-                  <dd>
-                    <p>The insula-as-guilt-substrate hypothesis predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
-                    <section>
-                      <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
-                      <dl>
-                        <dt role="listitem">Evidence (claim 2, hypothesis 1) — Figure 4</dt>
-                        <dd>
-                          <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
-                        </dd>
-                      </dl>
-                    </section>
-                  </dd>
-
-                </dl>
+                <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
+                <article>
+                  <header>Evidence (claim 1, hypothesis 1) — Figure 3</header>
+                  <p>Happiness ratings decrease more after negative partner outcomes when the participant made the choice (Social condition) than when the partner made the choice (Partner condition), operationalizing interpersonal guilt as responsibility-contingent unhappiness about partner harm.</p>
+                </article>
               </section>
-            </dd>
-          </dl>
-
+            
+            </article>
+            
+            <article>            
+              <header>Claim 2 (hypothesis 1)</header>
+              <p>The insula-as-guilt-substrate hypothesis predicts elevated anterior insula BOLD in Social vs Partner trials specifically after negative partner outcomes — the (condition × outcome) interaction in an a priori insula ROI.</p>
+              
+              <section>
+                <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
+                <article>
+                  <header>Evidence (claim 2, hypothesis 1) — Figure 4</header>
+                  <p>Anterior insula BOLD activity is significantly elevated in the Social condition compared to the Partner condition specifically after negative partner outcomes, tracking the guilt effect (responsibility-contingent partner unhappiness).</p>
+                </article>
+               </section>
+               
+            </article>
+            
+          </section>  
+          
         </li>
 
         <li role="listitem">
-
-          <dl id="hypothesis-2">
-            <dt role="listitem">Hypothesis 2 • 3 claims</dt>
-            <dd>
-              <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
-            </dd>
-          </dl>
-
+          <header>Hypothesis 2 (<span class="visuallyhidden">comprises </span>3 claims)</header>
+          <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
         </li>
 
         <li role="listitem">
-
-          <dl id="hypothesis-3">
-            <dt role="listitem">Hypothesis 3</dt>
-            <dd></dd>
-          </dl>
-
+          <header>Hypothesis 3</header>
         </li>
 
       </ul>
