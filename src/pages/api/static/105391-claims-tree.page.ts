@@ -28,20 +28,20 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <h1>Claims tree</h1>
 
     <section>
-      <div class="visuallyhidden">There are 3 hypotheses</div>
+      <div class="visuallyhidden">There are 3 questions</div>
       <ul role="list">
 
         <li role="listitem">
-          <header>Question 1 (<span class="visuallyhidden">comprises </span>2 claims)</header>
-          <p><span class="visuallyhidden">The question: </span>Anterior insula encodes interpersonal guilt — the responsibility-contingent affect arising specifically when one's own choice has caused harm to another.</p>
+          <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
+          <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
 
           <section>
           
-            <header class="visuallyhidden">There are 2 claims for this question:</header>
+            <header class="visuallyhidden">There are 3 claims for this question:</header>
             
             <article>
               <header>Claim 1 (question 1)</header>
-              <p>The guilt hypotheses predict a behavioral interaction: happiness should drop more after negative partner outcomes when the participant — rather than the partner — made the choice.</p>
+              <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>
               
               <section>
                 <header class="visuallyhidden">There is 1 piece of evidence for this claim.</header>
