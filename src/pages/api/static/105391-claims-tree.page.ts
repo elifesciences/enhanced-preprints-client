@@ -42,6 +42,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>
               <header>Claim 1 (question 1)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Figure</li>
                 <li role="listitem">Study 2</li>
@@ -53,6 +54,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>            
               <header>Claim 2 (question 1)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Figure</li>
                 <li role="listitem">Study 2</li>
@@ -64,6 +66,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>            
               <header>Claim 3 (question 1)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Figure</li>
                 <li role="listitem">Study 2</li>
@@ -87,6 +90,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>
               <header>Claim 4 (question 2)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Data</li>
                 <li role="listitem">Study 1 & 2</li>
@@ -98,6 +102,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>            
               <header>Claim 5 (question 2)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Data</li>
                 <li role="listitem">Study 1 & 2</li>
@@ -121,6 +126,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <article>
               <header>Claim 6 (question 3)</header>
 
+              <div class="visuallyhidden">Related to the claim items: </div>
               <ul role="list">
                 <li role="listitem">Data</li>
                 <li role="listitem">Study 1 & 2</li>
