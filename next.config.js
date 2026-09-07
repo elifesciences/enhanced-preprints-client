@@ -6,6 +6,10 @@ const nextConfig = {
   rewrites: async () => ({
     beforeFiles: [
       {
+        source: '/test-custom-layout',
+        destination: '/test-custom-layout/test-custom-layout',
+      },
+      {
         source: '/articles/:path*',
         destination: '/reviewed-preprints/:path*',
       },
