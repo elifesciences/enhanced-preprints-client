@@ -19,9 +19,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       <ul role="list">
 
         <li role="listitem">
-          <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
-          <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
-
+          <a href="#">
+            <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
+            <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
+          </a>
           <section>
           
             <header class="visuallyhidden">There are 3 claims for this question:</header>
@@ -67,9 +68,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         </li>
 
         <li role="listitem">
-          <header>Question 2 (<span class="visuallyhidden">comprises </span>2 claims)</header>
-          <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
-
+          <a href="#">
+            <header>Question 2 (<span class="visuallyhidden">comprises </span>2 claims)</header>
+            <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
+          </a>
           <section>
 
             <header class="visuallyhidden">There are 2 claims for this question:</header>
@@ -103,8 +105,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         </li>
 
         <li role="listitem">
-          <header>Question 3 (<span class="visuallyhidden">comprises </span>1 claim)</header>
-          <p>Do risk preferences differ between Solo and Social conditions?</p>
+          <a href="#">
+            <header>Question 3 (<span class="visuallyhidden">comprises </span>1 claim)</header>
+            <p>Do risk preferences differ between Solo and Social conditions?</p>
+          </a>
 
           <section>
 
