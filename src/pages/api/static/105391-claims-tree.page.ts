@@ -19,7 +19,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       <ul role="list">
 
         <li role="listitem">
-          <a href="#">
+          <a href="#" draggable="false">
             <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
             <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           </a>

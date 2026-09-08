@@ -12,4 +12,10 @@
 
 a {
   display: block;
+  user-select: none;
+}
+
+a header,
+a p {
+  user-select: text;
 }
