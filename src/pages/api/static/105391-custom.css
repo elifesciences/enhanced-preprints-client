@@ -9,3 +9,7 @@
   user-select: none;
   width: 1px;
 }
+
+a {
+  display: block;
+}
