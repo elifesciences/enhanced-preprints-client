@@ -27,17 +27,19 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
           
             <header class="visuallyhidden">There are 3 claims for this question:</header>
             
-            <article>
-              <header>Claim 1 (question 1)</header>
-              <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
+            <a href="#" draggable="false">
+              <article>
+                <header>Claim 1 (question 1)</header>
+                <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
 
-              <div class="visuallyhidden">The following is related to this claim: </div>
-              <ul role="list">
-                <li role="listitem">Figure</li>
-                <li role="listitem">Study 2</li>
-              </ul>
+                <div class="visuallyhidden">The following is related to this claim: </div>
+                <ul role="list">
+                  <li role="listitem">Figure</li>
+                  <li role="listitem">Study 2</li>
+                </ul>
 
-            </article>
+              </article>
+            </a>
             
             <article>            
               <header>Claim 2 (question 1)</header>
