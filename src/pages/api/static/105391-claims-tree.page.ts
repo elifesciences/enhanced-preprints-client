@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/max-len */
 import type { NextApiRequest, NextApiResponse } from 'next';
 // ts-unused-exports:disable-next-line
 export default (req: NextApiRequest, res: NextApiResponse) => {
@@ -9,19 +8,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>105391 Claims Tree</title>
-    <style>
-      .visuallyhidden {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        user-select: none;
-        width: 1px;
-      }
-    </style>
+    <link rel="stylesheet" href="/static/105391.css">
 
   </head>
   <body>

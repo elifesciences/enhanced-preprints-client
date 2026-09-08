@@ -1,3 +1,11 @@
-h1 {
-  color: inherit;
+.visuallyhidden {
+  border: 0;
+  clip-path: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  user-select: none;
+  width: 1px;
 }
