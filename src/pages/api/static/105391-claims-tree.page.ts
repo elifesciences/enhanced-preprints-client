@@ -68,7 +68,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         </li>
 
         <li role="listitem">
-          <a href="#">
+          <a href="#" draggable="false">
             <header>Question 2 (<span class="visuallyhidden">comprises </span>2 claims)</header>
             <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
           </a>
@@ -105,7 +105,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         </li>
 
         <li role="listitem">
-          <a href="#">
+          <a href="#" draggable="false">
             <header>Question 3 (<span class="visuallyhidden">comprises </span>1 claim)</header>
             <p>Do risk preferences differ between Solo and Social conditions?</p>
           </a>
