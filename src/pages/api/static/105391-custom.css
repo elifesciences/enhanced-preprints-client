@@ -16,6 +16,7 @@
 }
 
 .card__header,
-.card p {
+.card p,
+.card span {
   user-select: text;
 }
