@@ -20,7 +20,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         <li role="listitem">
           <a href="#" draggable="false" class="card">
-            <header class="card__header">Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
+            <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
             <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           </a>
           <section>
@@ -29,7 +29,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             
             <a href="#" draggable="false" class="card">
               <article>
-                <header class="card__header">Claim 1 (question 1)</header>
+                <header>Claim 1 (question 1)</header>
                 <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
                 <div><span class="visuallyhidden">The following is related to this claim: </span><span>Figure</span><span class="visuallyhidden">, </span><span>Study 2</span></div>
 

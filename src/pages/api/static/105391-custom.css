@@ -15,8 +15,6 @@
   user-select: none;
 }
 
-.card__header,
-.card p,
-.card span {
+.card * {
   user-select: text;
 }
