@@ -32,6 +32,15 @@ a.card {
   padding: 24px 32px 28px;
 }
 
+.card header {
+  font-weight: bold;
+}
+
+.card header .supplementary {
+  font-weight: normal;
+  color: rgb(103 109 115);
+}
+
 .card * {
   user-select: text;
 }
