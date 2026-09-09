@@ -31,12 +31,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
               <article>
                 <header>Claim 1 (question 1)</header>
                 <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
-
-                <div class="visuallyhidden">The following is related to this claim: </div>
-                <ul role="list">
-                  <li role="listitem">Figure</li>
-                  <li role="listitem">Study 2</li>
-                </ul>
+                <div><span class="visuallyhidden">The following is related to this claim: </span><span>Figure</span><span class="visuallyhidden">, </span><span>Study 2</span></div>
 
               </article>
             </a>
