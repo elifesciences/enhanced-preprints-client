@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       <div class="visuallyhidden">There are 3 questions</div>
       <ul role="list">
 
-        <li role="listitem">
+        <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
             <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
             <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
@@ -55,7 +55,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
           
         </li>
 
-        <li role="listitem">
+        <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
             <header>Question 2 (<span class="visuallyhidden">comprises </span>2 claims)</header>
             <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
@@ -84,7 +84,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         </li>
 
-        <li role="listitem">
+        <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
             <header>Question 3 (<span class="visuallyhidden">comprises </span>1 claim)</header>
             <p>Do risk preferences differ between Solo and Social conditions?</p>

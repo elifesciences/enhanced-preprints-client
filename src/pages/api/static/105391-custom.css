@@ -14,6 +14,14 @@ h1 {
   font-family: Poppins, sans-serif;
 }
 
+.question {
+  list-style: none;
+}
+
+a.card {
+  text-decoration: none;
+}
+
 .card {
   display: block;
   user-select: none;
