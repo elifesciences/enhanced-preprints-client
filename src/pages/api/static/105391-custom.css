@@ -70,6 +70,19 @@ a.card {
 .card .related {
   font-weight: 600;
   font-size: 14px;
+  display: flex;
+  justify-content: end;
+}
+
+.card .related .related-item {
+  margin-inline-end: 6px;
+  padding: 1px 10px;
+  background-color: rgb(230 233 240);
+  border-radius: 4px;
+}
+
+.card .related .related-item:last-child {
+  margin-inline-end: 0;
 }
 
 .card * {
