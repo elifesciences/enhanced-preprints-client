@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 import type { NextApiRequest, NextApiResponse } from 'next';
 // ts-unused-exports:disable-next-line
 export default (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,7 +21,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
-            <header>Question 1 (<span class="visuallyhidden">comprises </span>3 claims)</header>
+            <header>Question 1<span aria-hidden="true" class="dot">&nbsp;&#x2022&nbsp;</span><span class="visuallyhidden">comprises </span>3 claims<span class="visuallyhidden">.</span></header>
             <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           </a>
           <section>
@@ -57,8 +58,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
-            <header>Question 2 (<span class="visuallyhidden">comprises </span>2 claims)</header>
-            <p>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
+            <header>Question 2<span aria-hidden="true" class="dot">&nbsp;&#x2022&nbsp;</span><span class="visuallyhidden">comprises </span>2 claims<span class="visuallyhidden">.</span></header>
+            <p><span class="visuallyhidden">The question: </span>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
           </a>
           <section>
 
@@ -86,8 +87,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
         <li role="listitem" class="question">
           <a href="#" draggable="false" class="card">
-            <header>Question 3 (<span class="visuallyhidden">comprises </span>1 claim)</header>
-            <p>Do risk preferences differ between Solo and Social conditions?</p>
+            <header>Question 3<span aria-hidden="true" class="dot">&nbsp;&#x2022&nbsp;</span><span class="visuallyhidden">comprises </span>1 claim<span class="visuallyhidden">.</span></header>
+            <p><span class="visuallyhidden">The question: </span>Do risk preferences differ between Solo and Social conditions?</p>
           </a>
 
           <section>

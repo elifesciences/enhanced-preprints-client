@@ -36,6 +36,10 @@ a.card {
   font-weight: bold;
 }
 
+.card .dot {
+  color: rgb(103 109 115);
+}
+
 .card header .supplementary {
   font-weight: normal;
   color: rgb(103 109 115);
