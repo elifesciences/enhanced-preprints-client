@@ -36,6 +36,26 @@ a.card {
   font-weight: bold;
 }
 
+.card article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "heading related"
+    "text text";
+}
+
+.card article header {
+  grid-area: heading;
+}
+
+.card article p {
+  grid-area: text;
+}
+
+.card article div {
+  grid-area: related;
+}
+
 .card .dot {
   color: rgb(103 109 115);
 }
