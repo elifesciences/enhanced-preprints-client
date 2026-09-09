@@ -22,14 +22,20 @@ h1 {
 
 a.card {
   text-decoration: none;
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+}
+
+a.card:hover,
+a.card:active,
+a.card:focus {
+  background-color: rgb(230 233 240);
 }
 
 .card {
   display: block;
   user-select: none;
   font-family: "DM Sans", sans-serif;
-  background: rgb(247 248 250);
-  color: rgb(47 47 47);
   border-radius: 8px;
   padding: 24px 32px 28px;
 }
