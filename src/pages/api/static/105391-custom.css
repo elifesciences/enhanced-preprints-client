@@ -12,6 +12,8 @@
 
 h1 {
   font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .question {
@@ -33,7 +35,7 @@ a.card {
 }
 
 .card header {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .card article {
@@ -63,6 +65,11 @@ a.card {
 .card header .supplementary {
   font-weight: normal;
   color: rgb(103 109 115);
+}
+
+.card .related {
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .card * {
