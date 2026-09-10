@@ -18,6 +18,13 @@ h1 {
 
 .question {
   list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-rows: auto auto;
+}
+
+.question .card {
+  grid-column: 1 / -1;
 }
 
 a.card {
