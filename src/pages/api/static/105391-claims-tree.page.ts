@@ -13,8 +13,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <link rel="stylesheet" href="/static/claims-tree.css">
   </head>
   <body>
-    <div class="page-wrapper">
-      <main>
+    <main class="page-wrapper">
+    <a href="#" class="close"><span class="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2"></path></svg></a>
+      <div class="claims-tree-content">
         <h1>Claims tree</h1>
         <div class="visuallyhidden">There are 3 questions</div>
         <ul role="list">
@@ -116,8 +117,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
           </li>
   
         </ul>
-      </main>
-    </div>
+      </div>
+    </main>
   </body>
 </html>
 `);
