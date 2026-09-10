@@ -21,7 +21,6 @@ h1 {
 }
 
 .claims {
-  padding-inline-start: 40px;
   padding-block: 32px;
   margin-inline-start: 40px;
   border-inline-start: 2px solid rgb(207 212 226);
@@ -47,12 +46,26 @@ a.card:focus {
   padding: 24px 32px 28px;
 }
 
-.claims .card {
+.claim-row {
+  display: flex;
+  align-items: center;
   margin-block-end: 32px;
 }
 
-.claims .card:last-child {
+.claim-row:last-child {
   margin-block-end: 0;
+}
+
+.claim-row .card {
+  flex-basis: 100%;
+}
+
+.claim-row::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: rgb(207 212 226);
+  flex-shrink: 0;
 }
 
 .card header {
