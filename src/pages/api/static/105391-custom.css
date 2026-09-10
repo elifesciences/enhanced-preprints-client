@@ -16,6 +16,17 @@ h1 {
   font-size: 18px;
 }
 
+main {
+  max-width: 830px;
+  margin: 0 auto;
+  padding-inline: 24px;
+  padding-block-end: 32px;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
 .question {
   list-style: none;
 }

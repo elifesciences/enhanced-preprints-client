@@ -13,9 +13,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     <link rel="stylesheet" href="/static/105391.css">
   </head>
   <body>
-    <h1>Claims tree</h1>
-
-    <section>
+    <main>
+      <h1>Claims tree</h1>
       <div class="visuallyhidden">There are 3 questions</div>
       <ul role="list">
 
@@ -116,7 +115,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         </li>
 
       </ul>
-    </section>
+    </main>
   </body>
 </html>
 `);
