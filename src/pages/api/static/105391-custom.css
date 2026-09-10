@@ -129,11 +129,18 @@ a.card:focus {
   font-size: 14px;
   display: flex;
   justify-content: end;
+  align-self: start;
 }
 
 .card .related .related-item {
   margin-inline-end: 6px;
-  padding: 1px 10px;
+  padding-block: 1px;
+  display: flex;
+}
+
+.card .related .related-item > span {
+  flex-shrink: 0;
+  padding-inline: 10px;
   background-color: rgb(230 233 240);
   border-radius: 4px;
 }

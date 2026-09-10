@@ -32,7 +32,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>
                   <header>Claim 1 <span class="supplementary">(question&nbsp;1)</span></header>
                   <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>            
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Figure</span><span class="visuallyhidden">, </span><span class="related-item">Study 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Figure</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 2</span></span></div>
                 </article>
               </a>
             </div>  
@@ -42,7 +42,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>            
                   <header>Claim 2 <span class="supplementary">(question&nbsp;1)</span></header>
                   <p>Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.</p>               
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Figure</span><span class="visuallyhidden">, </span><span class="related-item">Study 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Figure</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 2</span></span></div>
                 </article>
               </a>
             </div>
@@ -52,7 +52,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>            
                   <header>Claim 3 <span class="supplementary">(question&nbsp;1)</span></header>
                   <p>The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant's choices.</p>               
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Figure</span><span class="visuallyhidden">, </span><span class="related-item">Study 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Figure</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 2</span></span></div>
                 </article>
               </a>
             </div>
@@ -73,7 +73,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>
                   <header>Claim 4 <span class="supplementary">(question&nbsp;2)</span></header>
                   <p>Responsibility for a partner's bad lottery outcomes decreases participant happiness more than the same outcomes following partner choices, consistent with interpersonal guilt.</p>            
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Data</span><span class="visuallyhidden">, </span><span class="related-item">Study 1 & 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Data</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 1 & 2</span></span></div>
                 </article>
               </a>
             </div>
@@ -83,7 +83,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>            
                   <header>Claim 5 <span class="supplementary">(question&nbsp;2)</span></header>
                   <p>Computational models incorporating partner reward prediction errors differentiated by decision-maker (participant vs partner) best explain momentary happiness variations.</p>               
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Data</span><span class="visuallyhidden">, </span><span class="related-item">Study 1 & 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Data</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 1 & 2</span></span></div>
                 </article>
               </a>
             </div>
@@ -106,7 +106,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 <article>
                   <header>Claim 6 <span class="supplementary">(question&nbsp;3)</span></header>
                   <p>Participants show similar risk preferences when deciding for themselves versus for themselves and a partner, with a tendency toward higher risk aversion in the Social condition only in Study 1.</p>            
-                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item">Data</span><span class="visuallyhidden">, </span><span class="related-item">Study 1 & 2</span></div>
+                  <div class="related"><span class="visuallyhidden">The following is related to this claim: </span><span class="related-item"><span>Data</span></span><span class="visuallyhidden">, </span><span class="related-item"><span>Study 1 & 2</span></span></div>
                 </article>
               </a>
             </div>
