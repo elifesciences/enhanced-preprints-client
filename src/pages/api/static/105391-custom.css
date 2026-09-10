@@ -83,6 +83,11 @@ a.card:focus {
   font-weight: 600;
 }
 
+.card p {
+  color: rgb(47 47 47);
+  line-height: 26px;
+}
+
 .card article {
   display: grid;
   grid-template-columns: 1fr 1fr;
