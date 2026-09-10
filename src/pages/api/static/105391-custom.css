@@ -20,7 +20,7 @@ body {
   position: fixed;
   inset: 24px;
   overflow: scroll;
-  background: rgb(255 25 255);
+  background: rgb(255 255 255);
   border-radius: 12px;
 }
 
