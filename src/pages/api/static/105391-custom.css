@@ -20,6 +20,21 @@ h1 {
   list-style: none;
 }
 
+.claims {
+  padding-inline-start: 40px;
+  padding-block: 32px;
+  margin-inline-start: 40px;
+  border-inline-start: 2px solid rgb(207 212 226);
+}
+
+.claims .card {
+  margin-block-end: 32px;
+}
+
+.claims .card:last-child {
+  margin-block-end: 0;
+}
+
 a.card {
   text-decoration: none;
   background-color: rgb(247 248 250);

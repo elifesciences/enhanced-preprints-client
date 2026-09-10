@@ -24,7 +24,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <header>Question 1<span aria-hidden="true" class="dot">&nbsp;&#x2022&nbsp;</span><span class="visuallyhidden">comprises </span>3 claims<span class="visuallyhidden">.</span></header>
             <p><span class="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           </a>
-          <section>
+          <section class="claims">
           
             <header class="visuallyhidden">There are 3 claims for this question:</header>
             
@@ -61,7 +61,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <header>Question 2<span aria-hidden="true" class="dot">&nbsp;&#x2022&nbsp;</span><span class="visuallyhidden">comprises </span>2 claims<span class="visuallyhidden">.</span></header>
             <p><span class="visuallyhidden">The question: </span>Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant's own choices receive an independent, non-zero weight in the happiness computation.</p>
           </a>
-          <section>
+          <section class="claims">
 
             <header class="visuallyhidden">There are 2 claims for this question:</header>
 
@@ -91,7 +91,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             <p><span class="visuallyhidden">The question: </span>Do risk preferences differ between Solo and Social conditions?</p>
           </a>
 
-          <section>
+          <section class="claims">
 
             <header class="visuallyhidden">There is 1 claim for this question:</header>
 
