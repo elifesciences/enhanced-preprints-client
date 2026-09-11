@@ -1,7 +1,9 @@
-import { type ReactNode } from 'react';
+import { type JSX, type ReactNode } from 'react';
 import { BlankLayout } from '../../components/layouts/blank';
 
-const Page = () => <h1>Test</h1>;
+const ClaimsTreePage = (): JSX.Element => <><h1>Test</h1></>;
+
+const Page = () => <><ClaimsTreePage></ClaimsTreePage></>;
 
 Page.getLayout = function getLayout(page: ReactNode) {
   return (
