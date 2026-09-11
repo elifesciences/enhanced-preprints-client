@@ -1,7 +1,6 @@
-import { type JSX, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { BlankLayout } from '../../components/layouts/blank';
-
-const ClaimsTreePage = (): JSX.Element => <><h1>Test</h1></>;
+import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/claims-tree-page';
 
 const Page = () => <><ClaimsTreePage></ClaimsTreePage></>;
 
