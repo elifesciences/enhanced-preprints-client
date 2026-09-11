@@ -45,6 +45,7 @@ const notoSans = Noto_Sans({
 
 export default function MyApp({ Component, pageProps }: any) {
   const features = pageProps.features ?? useContext(FeaturesContext);
+  const getLayout = Component.getLayout ?? ((page: ReactNode) => <LayoutSelector siteName={pageProps.siteName}>{page}</LayoutSelector>);
 
   return (
     <>
@@ -80,9 +81,7 @@ export default function MyApp({ Component, pageProps }: any) {
       <FeaturesContext.Provider value={features}>
         <I18nextProvider i18n={i18n} defaultNS={pageProps.siteName?.replace('-', '_')}>
           <div className={`site-${pageProps.siteName}`}>
-            <LayoutSelector siteName={pageProps.siteName}>
-              <Component {...pageProps} />
-            </LayoutSelector>
+            {getLayout(<Component {...pageProps} />)}
           </div>
         </I18nextProvider>
       </FeaturesContext.Provider>
