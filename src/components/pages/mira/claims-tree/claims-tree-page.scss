@@ -46,7 +46,7 @@ a.close:focus {
 }
 
 h1 {
-  font-family: Poppins, sans-serif;
+  font-family: var(--font-poppins, sans-serif);
   font-weight: 600;
   font-size: 18px;
   text-align: center;
@@ -93,7 +93,7 @@ a.card:focus {
 .card {
   display: block;
   user-select: none;
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-dm-sans, sans-serif);
   border-radius: 8px;
   padding: 24px 32px 28px;
 }

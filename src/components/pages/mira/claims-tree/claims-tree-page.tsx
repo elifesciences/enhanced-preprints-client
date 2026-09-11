@@ -1,10 +1,25 @@
 /* eslint-disable @stylistic/max-len */
+import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
 
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['600'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
 export const ClaimsTreePage = (): JSX.Element => (
   <>
-    <main className="page-wrapper">
+    <main className={`page-wrapper ${dmSans.variable} ${poppins.variable}`}>
       <a href="#" className="close"><span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg></a>
       <div className="claims-tree-content">
         <h1>Claims tree</h1>
