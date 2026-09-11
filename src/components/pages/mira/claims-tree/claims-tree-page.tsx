@@ -1,5 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 import { type JSX } from 'react';
+import './claims-tree-page.scss';
 
 export const ClaimsTreePage = (): JSX.Element => (
   <>

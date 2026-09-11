@@ -1,0 +1,189 @@
+.visuallyhidden {
+  border: 0;
+  clip-path: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  user-select: none;
+  width: 1px;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background: rgb(47 47 47 / 50%);
+}
+
+.page-wrapper {
+  position: fixed;
+  inset: 24px;
+  overflow: scroll;
+  background: rgb(255 255 255);
+  border-radius: 12px;
+}
+
+.close {
+  position: absolute;
+  right: 56px;
+  top: 40px;
+  text-decoration: none;
+  width: 32px;
+  height: 32px;
+  color: rgb(103 109 115);
+  background-color: rgb(247 248 250);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.close:hover,
+a.close:active,
+a.close:focus {
+  background-color: rgb(230 233 240);
+}
+
+h1 {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin-block: 0;
+  padding-block: 40px 56px;
+  line-height: 32px;
+  color: rgb(47 47 47);
+}
+
+.claims-tree-content {
+  max-width: 830px;
+  margin: 0 auto;
+  padding-inline: 24px;
+  padding-block-end: 32px;
+}
+
+ul {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+}
+
+.question {
+  list-style: none;
+}
+
+.claims {
+  padding-block: 32px;
+  margin-inline-start: 40px;
+  border-inline-start: 2px solid rgb(207 212 226);
+}
+
+a.card {
+  text-decoration: none;
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+}
+
+a.card:hover,
+a.card:active,
+a.card:focus {
+  background-color: rgb(230 233 240);
+}
+
+.card {
+  display: block;
+  user-select: none;
+  font-family: "DM Sans", sans-serif;
+  border-radius: 8px;
+  padding: 24px 32px 28px;
+}
+
+.claim-row {
+  display: flex;
+  align-items: center;
+  margin-block-end: 32px;
+}
+
+.claim-row:last-child {
+  margin-block-end: 0;
+}
+
+.claim-row .card {
+  flex-basis: 100%;
+}
+
+.claim-row::before {
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: rgb(207 212 226);
+  flex-shrink: 0;
+}
+
+.card header {
+  font-weight: 600;
+}
+
+.card p {
+  color: rgb(47 47 47);
+  line-height: 26px;
+}
+
+.card article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "heading related"
+    "text text";
+  column-gap: 8px;
+}
+
+.card article header {
+  grid-area: heading;
+}
+
+.card article p {
+  grid-area: text;
+}
+
+.card article div {
+  grid-area: related;
+}
+
+.card .dot {
+  color: rgb(103 109 115);
+}
+
+.card header .supplementary {
+  font-weight: normal;
+  color: rgb(103 109 115);
+}
+
+.card .related {
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  justify-content: end;
+  align-self: start;
+}
+
+.card .related .related-item {
+  margin-inline-end: 6px;
+  padding-block: 1px;
+  display: flex;
+}
+
+.card .related .related-item > span {
+  flex-shrink: 0;
+  padding-inline: 10px;
+  background-color: rgb(230 233 240);
+  border-radius: 4px;
+}
+
+.card .related .related-item:last-child {
+  margin-inline-end: 0;
+}
+
+.card * {
+  user-select: text;
+}
