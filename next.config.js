@@ -62,14 +62,6 @@ const nextConfig = {
         destination: '/api/static/105391'
       },
       {
-        source: '/static/claims-tree.css',
-        destination: '/api/static/claims-tree.css'
-      },
-      {
-        source: '/static/105391/claims-tree',
-        destination: '/api/static/105391-claims-tree'
-      },
-      {
         source: '/test/claims-tree',
         destination: '/test/claims-tree'
       }
