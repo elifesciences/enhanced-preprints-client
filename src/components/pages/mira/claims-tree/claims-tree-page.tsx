@@ -19,6 +19,11 @@ const poppins = Poppins({
 type ClaimsTreePageProps = {
   question1: {
     text: string,
+    claim: {
+      header: string,
+      title: string,
+      related: Array<string>,
+    },
   },
 };
 
@@ -45,10 +50,11 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
               <div className="claim-row">
                 <a href="#" draggable="false" className="card">
                   <article>
-                    <header>Claim 1 <span className="supplementary">(question&nbsp;1)</span></header>
-                    <p>The guilt effect is associated with increased BOLD signal in the left anterior insula.</p>
+                    <header>Claim {props.question1.claim.header} <span className="supplementary">(question&nbsp;1)</span></header>
+                    <p>{props.question1.claim.title}</p>
                     <div className="related">
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>Figure</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>Study 2</span></span>
+                      {/* eslint-disable-next-line @stylistic/max-len */}
+                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question1.claim.related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question1.claim.related[1]}</span></span>
                     </div>
                   </article>
                 </a>
