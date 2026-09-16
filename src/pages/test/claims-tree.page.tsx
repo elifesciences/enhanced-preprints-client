@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import { BlankLayout } from '../../components/layouts/blank';
 import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/claims-tree-page';
 
-const question1HardcodedData = 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?';
+const question1HardcodedData = {text: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?'};
 
 const Page = () => (
   <>
