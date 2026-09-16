@@ -36,7 +36,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
         <div className="visuallyhidden">There are 3 questions</div>
         <ul role="list">
 
-          <li role="listitem" className="question">
+          <li role="listitem">
             <a href="#" draggable="false" className="card">
               <header>Question {props.question.questionNumber}
                 <span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span>
@@ -76,7 +76,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
           </li>
 
-          <li role="listitem" className="question">
+          <li role="listitem">
             <a href="#" draggable="false" className="card">
               <header>Question 2<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>2 claims<span className="visuallyhidden">.</span></header>
               <p>
@@ -118,7 +118,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
           </li>
 
-          <li role="listitem" className="question">
+          <li role="listitem">
             <a href="#" draggable="false" className="card">
               <header>Question 3<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>1 claim<span className="visuallyhidden">.</span></header>
               <p><span className="visuallyhidden">The question: </span>Do risk preferences differ between Solo and Social conditions?</p>
