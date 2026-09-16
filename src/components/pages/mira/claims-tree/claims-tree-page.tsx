@@ -16,15 +16,17 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+type Claim = {
+  header: string,
+  title: string,
+  related: Array<string>,
+};
+
 type ClaimsTreePageProps = {
   question: {
     questionNumber: string,
     text: string,
-    claim: {
-      header: string,
-      title: string,
-      related: Array<string>,
-    },
+    claims: Array<Claim>,
   },
 };
 
@@ -51,11 +53,11 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
               <div className="claim-row">
                 <a href="#" draggable="false" className="card">
                   <article>
-                    <header>Claim {props.question.claim.header} <span className="supplementary">(question&nbsp;{props.question.questionNumber})</span></header>
-                    <p>{props.question.claim.title}</p>
+                    <header>Claim {props.question.claims[0].header} <span className="supplementary">(question&nbsp;{props.question.questionNumber})</span></header>
+                    <p>{props.question.claims[0].title}</p>
                     <div className="related">
                       {/* eslint-disable-next-line @stylistic/max-len */}
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question.claim.related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question.claim.related[1]}</span></span>
+                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question.claims[0].related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question.claims[0].related[1]}</span></span>
                     </div>
                   </article>
                 </a>
