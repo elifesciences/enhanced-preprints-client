@@ -1,6 +1,7 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
+import {ClaimCard} from '../../../molecules/mira/claim-card/claim-card';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -51,22 +52,12 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
               <header className="visuallyhidden">There are 3 claims for this question:</header>
 
               <div className="claim-row">
-                <a href="#" draggable="false" className="card">
-                  <article>
-                    <header>Claim {props.question.claims[0].header} <span className="supplementary">(question&nbsp;{props.question.questionNumber})</span></header>
-                    <p>{props.question.claims[0].title}</p>
-                    <div className="related">
-                      <span className="visuallyhidden">The following is related to this claim: </span>
-                      <span className="related-item">
-                        <span>{props.question.claims[0].related[0]}</span>
-                      </span>
-                      <span className="visuallyhidden">, </span>
-                      <span className="related-item">
-                        <span>{props.question.claims[0].related[1]}</span>
-                      </span>
-                    </div>
-                  </article>
-                </a>
+                <ClaimCard
+                  questionNumber={props.question.questionNumber}
+                  header={props.question.claims[0].header}
+                  title={props.question.claims[0].title}
+                  related={props.question.claims[0].related}>
+                </ClaimCard>
               </div>
 
               <div className="claim-row">
