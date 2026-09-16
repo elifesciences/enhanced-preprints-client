@@ -2,6 +2,7 @@ import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
 import { ClaimCard, type ClaimCardProps } from '../../../molecules/mira/claim-card/claim-card';
+import {QuestionCard} from '../../../molecules/mira/question-card/question-card';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -37,13 +38,11 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
         <ul role="list">
 
           <li role="listitem">
-            <a href="#" draggable="false" className="card">
-              <header>Question {props.question.questionNumber}
-                <span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span>
-                <span className="visuallyhidden">comprises </span>{props.question.claims.length} claims<span className="visuallyhidden">.</span>
-              </header>
-              <p><span className="visuallyhidden">The question: </span>{props.question.text}</p>
-            </a>
+            <QuestionCard
+              questionNumber={props.question.questionNumber}
+              text={props.question.text}
+              claimCount={props.question.claims.length.toString()}
+            ></QuestionCard>
             <section className="claims">
 
               <header className="visuallyhidden">There are {props.question.claims.length} claims for this question:</header>
