@@ -17,7 +17,8 @@ const poppins = Poppins({
 });
 
 type ClaimsTreePageProps = {
-  question1: {
+  question: {
+    questionNumber: string,
     text: string,
     claim: {
       header: string,
@@ -40,8 +41,8 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
           <li role="listitem" className="question">
             <a href="#" draggable="false" className="card">
-              <header>Question 1<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>3 claims<span className="visuallyhidden">.</span></header>
-              <p><span className="visuallyhidden">The question: </span>{props.question1.text}</p>
+              <header>Question {props.question.questionNumber}<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>3 claims<span className="visuallyhidden">.</span></header>
+              <p><span className="visuallyhidden">The question: </span>{props.question.text}</p>
             </a>
             <section className="claims">
 
@@ -50,11 +51,11 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
               <div className="claim-row">
                 <a href="#" draggable="false" className="card">
                   <article>
-                    <header>Claim {props.question1.claim.header} <span className="supplementary">(question&nbsp;1)</span></header>
-                    <p>{props.question1.claim.title}</p>
+                    <header>Claim {props.question.claim.header} <span className="supplementary">(question&nbsp;{props.question.questionNumber})</span></header>
+                    <p>{props.question.claim.title}</p>
                     <div className="related">
                       {/* eslint-disable-next-line @stylistic/max-len */}
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question1.claim.related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question1.claim.related[1]}</span></span>
+                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question.claim.related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question.claim.related[1]}</span></span>
                     </div>
                   </article>
                 </a>
