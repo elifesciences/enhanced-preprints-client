@@ -1,16 +1,8 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
+import { question1HardcodedData } from './mock-claims-tree-data';
 import { BlankLayout } from '../../components/layouts/blank';
 import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/claims-tree-page';
-
-const question1HardcodedData = {
-  text: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?',
-  claim: {
-    header: '1',
-    title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
-    related: ['Figure', 'Study 2'],
-  },
-};
 
 const Page = () => (
   <>
