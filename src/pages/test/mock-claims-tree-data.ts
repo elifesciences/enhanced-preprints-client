@@ -17,7 +17,7 @@ export const question1HardcodedData = {
     {
       questionNumber: '1',
       header: '3',
-      title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant&apos;s choices.',
+      title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant\'s choices.',
       related: ['Figure', 'Study 2'],
     },
   ],
