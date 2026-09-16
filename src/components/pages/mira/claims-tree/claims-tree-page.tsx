@@ -56,8 +56,14 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
                     <header>Claim {props.question.claims[0].header} <span className="supplementary">(question&nbsp;{props.question.questionNumber})</span></header>
                     <p>{props.question.claims[0].title}</p>
                     <div className="related">
-                      {/* eslint-disable-next-line @stylistic/max-len */}
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>{props.question.claims[0].related[0]}</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>{props.question.claims[0].related[1]}</span></span>
+                      <span className="visuallyhidden">The following is related to this claim: </span>
+                      <span className="related-item">
+                        <span>{props.question.claims[0].related[0]}</span>
+                      </span>
+                      <span className="visuallyhidden">, </span>
+                      <span className="related-item">
+                        <span>{props.question.claims[0].related[1]}</span>
+                      </span>
                     </div>
                   </article>
                 </a>
