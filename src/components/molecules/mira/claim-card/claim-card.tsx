@@ -1,6 +1,6 @@
 import type {JSX} from 'react';
 
-type ClaimCardProps = {
+export type ClaimCardProps = {
   questionNumber: string,
   header: string,
   title: string,

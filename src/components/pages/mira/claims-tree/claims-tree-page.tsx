@@ -1,7 +1,7 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
-import {ClaimCard} from '../../../molecules/mira/claim-card/claim-card';
+import { ClaimCard, type ClaimCardProps } from '../../../molecules/mira/claim-card/claim-card';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -17,17 +17,11 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-type Claim = {
-  header: string,
-  title: string,
-  related: Array<string>,
-};
-
 type ClaimsTreePageProps = {
   question: {
     questionNumber: string,
     text: string,
-    claims: Array<Claim>,
+    claims: Array<ClaimCardProps>,
   },
 };
 
