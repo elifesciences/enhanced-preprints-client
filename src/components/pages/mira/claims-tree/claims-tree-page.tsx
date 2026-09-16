@@ -16,7 +16,11 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const ClaimsTreePage = (): JSX.Element => (
+type ClaimsTreePageProps = {
+  question1: string,
+};
+
+export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
   <>
     <main className={`page-wrapper ${dmSans.variable} ${poppins.variable}`}>
       <a href="#" className="close">
@@ -30,7 +34,7 @@ export const ClaimsTreePage = (): JSX.Element => (
           <li role="listitem" className="question">
             <a href="#" draggable="false" className="card">
               <header>Question 1<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>3 claims<span className="visuallyhidden">.</span></header>
-              <p><span className="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
+              <p><span className="visuallyhidden">The question: </span>{props.question1}</p>
             </a>
             <section className="claims">
 
