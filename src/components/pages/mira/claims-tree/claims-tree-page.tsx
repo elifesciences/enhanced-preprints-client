@@ -59,29 +59,21 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
                   related={props.question.claims[0].related}>
                 </ClaimCard>
               </div>
-
               <div className="claim-row">
-                <a href="#" draggable="false" className="card">
-                  <article>
-                    <header>Claim 2 <span className="supplementary">(question&nbsp;1)</span></header>
-                    <p>Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.</p>
-                    <div className="related">
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>Figure</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>Study 2</span></span>
-                    </div>
-                  </article>
-                </a>
+                <ClaimCard
+                  questionNumber={props.question.questionNumber}
+                  header={props.question.claims[1].header}
+                  title={props.question.claims[1].title}
+                  related={props.question.claims[1].related}>
+                </ClaimCard>
               </div>
-
               <div className="claim-row">
-                <a href="#" draggable="false" className="card">
-                  <article>
-                    <header>Claim 3 <span className="supplementary">(question&nbsp;1)</span></header>
-                    <p>The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant&apos;s choices.</p>
-                    <div className="related">
-                      <span className="visuallyhidden">The following is related to this claim: </span><span className="related-item"><span>Figure</span></span><span className="visuallyhidden">, </span><span className="related-item"><span>Study 2</span></span>
-                    </div>
-                  </article>
-                </a>
+                <ClaimCard
+                  questionNumber={props.question.questionNumber}
+                  header={props.question.claims[2].header}
+                  title={props.question.claims[2].title}
+                  related={props.question.claims[2].related}>
+                </ClaimCard>
               </div>
             </section>
 
