@@ -38,12 +38,15 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
           <li role="listitem" className="question">
             <a href="#" draggable="false" className="card">
-              <header>Question {props.question.questionNumber}<span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span><span className="visuallyhidden">comprises </span>3 claims<span className="visuallyhidden">.</span></header>
+              <header>Question {props.question.questionNumber}
+                <span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span>
+                <span className="visuallyhidden">comprises </span>{props.question.claims.length} claims<span className="visuallyhidden">.</span>
+              </header>
               <p><span className="visuallyhidden">The question: </span>{props.question.text}</p>
             </a>
             <section className="claims">
 
-              <header className="visuallyhidden">There are 3 claims for this question:</header>
+              <header className="visuallyhidden">There are {props.question.claims.length} claims for this question:</header>
 
               <div className="claim-row">
                 <ClaimCard
