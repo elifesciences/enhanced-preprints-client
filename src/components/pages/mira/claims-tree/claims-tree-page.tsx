@@ -47,30 +47,16 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
               <header className="visuallyhidden">There are {props.question.claims.length} claims for this question:</header>
 
-              <div className="claim-row">
-                <ClaimCard
-                  questionNumber={props.question.questionNumber}
-                  header={props.question.claims[0].header}
-                  title={props.question.claims[0].title}
-                  related={props.question.claims[0].related}>
-                </ClaimCard>
-              </div>
-              <div className="claim-row">
-                <ClaimCard
-                  questionNumber={props.question.questionNumber}
-                  header={props.question.claims[1].header}
-                  title={props.question.claims[1].title}
-                  related={props.question.claims[1].related}>
-                </ClaimCard>
-              </div>
-              <div className="claim-row">
-                <ClaimCard
-                  questionNumber={props.question.questionNumber}
-                  header={props.question.claims[2].header}
-                  title={props.question.claims[2].title}
-                  related={props.question.claims[2].related}>
-                </ClaimCard>
-              </div>
+              {props.question.claims.map((claim) => (
+                <div className="claim-row" key={claim.header}>
+                  <ClaimCard
+                    questionNumber={props.question.questionNumber}
+                    header={claim.header}
+                    title={claim.title}
+                    related={claim.related}>
+                  </ClaimCard>
+                </div>
+              ))}
             </section>
 
           </li>
