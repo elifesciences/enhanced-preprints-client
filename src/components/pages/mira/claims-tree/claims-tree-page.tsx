@@ -59,7 +59,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
                 ></QuestionCard>
                 <section className="claims">
 
-                  <header className="visuallyhidden">There are {question.claims.length} claims for this question:</header>
+                  <header className="visuallyhidden">There {question.claims.length > 1 ? 'are' : 'is'} {question.claims.length} {pluralize('claim', question.claims.length)} for this question:</header>
 
                   {question.claims.map((claim) => {
                     claimNumber += 1;
