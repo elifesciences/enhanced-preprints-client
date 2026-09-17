@@ -43,7 +43,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
       </a>
       <div className="claims-tree-content">
         <h1>Claims tree</h1>
-        <div className="visuallyhidden">There are 3 questions</div>
+        <div className="visuallyhidden">There are {props.questions.length} questions</div>
         <ul role="list">
 
           {props.questions.map((question) => (
