@@ -1,4 +1,5 @@
 import { DM_Sans, Poppins } from 'next/font/google';
+import pluralize from 'pluralize';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
 import { ClaimCard } from '../../../molecules/mira/claim-card/claim-card';
@@ -46,7 +47,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
         </a>
         <div className="claims-tree-content">
           <h1>Claims tree</h1>
-          <div className="visuallyhidden">There are {props.questions.length} questions</div>
+          <div className="visuallyhidden">There {props.questions.length > 1 ? 'are' : 'is'} {props.questions.length} {pluralize('question', props.questions.length)}</div>
           <ul role="list">
 
             {props.questions.map((question) => (
