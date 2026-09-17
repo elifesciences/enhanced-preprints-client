@@ -58,7 +58,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
                 <div className="claim-row" key={claim.id}>
                   <ClaimCard
                     questionNumber={props.question.questionNumber}
-                    header={(index+1).toString()}
+                    claimNumber={(index+1).toString()}
                     title={claim.title}
                     related={claim.related}>
                   </ClaimCard>
