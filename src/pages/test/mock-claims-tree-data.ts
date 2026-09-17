@@ -1,4 +1,4 @@
-export const question1HardcodedData = {
+export const question1HardcodedData = [{
   questionNumber: '1',
   text: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?',
   claims: [
@@ -21,4 +21,4 @@ export const question1HardcodedData = {
       related: ['Figure', 'Study 2'],
     },
   ],
-};
+}];

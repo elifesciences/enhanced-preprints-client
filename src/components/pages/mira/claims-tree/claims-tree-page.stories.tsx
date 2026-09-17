@@ -26,7 +26,7 @@ const meta: Meta<typeof ClaimsTreePage> = {
   render: () => (
     <BlankLayout>
       <ClaimsTreePage
-        question={question1HardcodedData}
+        questions={question1HardcodedData}
       >
       </ClaimsTreePage>
     </BlankLayout>

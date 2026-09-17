@@ -10,7 +10,7 @@ const Page = () => (
       <title>Claims Tree</title>
     </Head>
     <ClaimsTreePage
-      question={question1HardcodedData}
+      questions={question1HardcodedData}
     ></ClaimsTreePage>
   </>
 );

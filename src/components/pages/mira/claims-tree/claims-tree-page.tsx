@@ -25,12 +25,14 @@ type Claim = {
   related: Array<string>,
 };
 
+type Question = {
+  questionNumber: string,
+  text: string,
+  claims: Array<Claim>,
+};
+
 type ClaimsTreePageProps = {
-  question: {
-    questionNumber: string,
-    text: string,
-    claims: Array<Claim>,
-  },
+  questions: Array<Question>,
 };
 
 export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
@@ -46,18 +48,18 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
           <li role="listitem">
             <QuestionCard
-              questionNumber={props.question.questionNumber}
-              text={props.question.text}
-              claimCount={props.question.claims.length.toString()}
+              questionNumber={props.questions[0].questionNumber}
+              text={props.questions[0].text}
+              claimCount={props.questions[0].claims.length.toString()}
             ></QuestionCard>
             <section className="claims">
 
-              <header className="visuallyhidden">There are {props.question.claims.length} claims for this question:</header>
+              <header className="visuallyhidden">There are {props.questions[0].claims.length} claims for this question:</header>
 
-              {props.question.claims.map((claim, index) => (
+              {props.questions[0].claims.map((claim, index) => (
                 <div className="claim-row" key={claim.id}>
                   <ClaimCard
-                    questionNumber={props.question.questionNumber}
+                    questionNumber={props.questions[0].questionNumber}
                     claimNumber={(index+1).toString()}
                     title={claim.title}
                     related={claim.related}>
