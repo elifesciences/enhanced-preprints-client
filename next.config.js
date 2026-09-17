@@ -62,8 +62,8 @@ const nextConfig = {
         destination: '/api/static/105391'
       },
       {
-        source: '/test/claims-tree',
-        destination: '/test/claims-tree'
+        source: '/mira/claims-tree',
+        destination: '/mira/claims-tree'
       }
     ],
     fallback: [
