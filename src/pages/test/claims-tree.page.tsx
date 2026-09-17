@@ -1,16 +1,19 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
-import { question1HardcodedData } from './mock-claims-tree-data';
+import { getServerSideProps, type ServerSideProps } from './get-server-side-props';
 import { BlankLayout } from '../../components/layouts/blank';
 import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/claims-tree-page';
 
-const Page = () => (
+// ts-unused-exports:disable-next-line
+export { getServerSideProps };
+
+const Page = (props: ServerSideProps) => (
   <>
     <Head>
       <title>Claims Tree</title>
     </Head>
     <ClaimsTreePage
-      questions={question1HardcodedData}
+      questions={props.questions}
     ></ClaimsTreePage>
   </>
 );

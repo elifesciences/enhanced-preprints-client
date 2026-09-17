@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreePage } from './claims-tree-page';
-import { question1HardcodedData } from '../../../../pages/test/mock-claims-tree-data';
+import { mockClaimsTreeData } from '../../../../pages/test/mock-claims-tree-data';
 import { BlankLayout } from '../../../layouts/blank';
 
 const meta: Meta<typeof ClaimsTreePage> = {
@@ -26,7 +26,7 @@ const meta: Meta<typeof ClaimsTreePage> = {
   render: () => (
     <BlankLayout>
       <ClaimsTreePage
-        questions={question1HardcodedData}
+        questions={mockClaimsTreeData}
       >
       </ClaimsTreePage>
     </BlankLayout>
