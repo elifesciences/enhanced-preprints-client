@@ -1,7 +1,7 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './claims-tree-page.scss';
-import { ClaimCard, type ClaimCardProps } from '../../../molecules/mira/claim-card/claim-card';
+import { ClaimCard } from '../../../molecules/mira/claim-card/claim-card';
 import {QuestionCard} from '../../../molecules/mira/question-card/question-card';
 
 const dmSans = DM_Sans({
@@ -18,11 +18,18 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+type Claim = {
+  id: string,
+  questionNumber: string,
+  title: string,
+  related: Array<string>,
+};
+
 type ClaimsTreePageProps = {
   question: {
     questionNumber: string,
     text: string,
-    claims: Array<ClaimCardProps>,
+    claims: Array<Claim>,
   },
 };
 
@@ -47,11 +54,11 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
 
               <header className="visuallyhidden">There are {props.question.claims.length} claims for this question:</header>
 
-              {props.question.claims.map((claim) => (
-                <div className="claim-row" key={claim.header}>
+              {props.question.claims.map((claim, index) => (
+                <div className="claim-row" key={claim.id}>
                   <ClaimCard
                     questionNumber={props.question.questionNumber}
-                    header={claim.header}
+                    header={(index+1).toString()}
                     title={claim.title}
                     related={claim.related}>
                   </ClaimCard>
