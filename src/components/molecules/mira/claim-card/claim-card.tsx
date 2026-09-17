@@ -1,3 +1,4 @@
+import {Fragment} from 'react';
 import type {JSX} from 'react';
 
 type ClaimCardProps = {
@@ -15,13 +16,14 @@ export const ClaimCard = (props: ClaimCardProps): JSX.Element => (
         <p>{props.title}</p>
         <div className="related">
           <span className="visuallyhidden">The following is related to this claim: </span>
-          <span className="related-item">
-            <span>{props.related[0]}</span>
-          </span>
-          <span className="visuallyhidden">, </span>
-          <span className="related-item">
-            <span>{props.related[1]}</span>
-          </span>
+          {props.related.map((relatedItem, index) => (
+            <Fragment key={relatedItem}>
+              <span className="related-item">
+                <span>{relatedItem}</span>
+              </span>
+              {index < props.related.length - 1 && <span className="visuallyhidden">, </span>}
+            </Fragment>
+          ))}
         </div>
       </article>
     </a>
