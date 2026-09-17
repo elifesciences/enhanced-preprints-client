@@ -46,29 +46,30 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
         <div className="visuallyhidden">There are 3 questions</div>
         <ul role="list">
 
-          <li role="listitem">
-            <QuestionCard
-              questionNumber={props.questions[0].questionNumber}
-              text={props.questions[0].text}
-              claimCount={props.questions[0].claims.length.toString()}
-            ></QuestionCard>
-            <section className="claims">
+          {props.questions.map((question) => (
+            <li role="listitem" key={question.questionNumber}>
+              <QuestionCard
+                questionNumber={question.questionNumber}
+                text={question.text}
+                claimCount={question.claims.length.toString()}
+              ></QuestionCard>
+              <section className="claims">
 
-              <header className="visuallyhidden">There are {props.questions[0].claims.length} claims for this question:</header>
+                <header className="visuallyhidden">There are {question.claims.length} claims for this question:</header>
 
-              {props.questions[0].claims.map((claim, index) => (
-                <div className="claim-row" key={claim.id}>
-                  <ClaimCard
-                    questionNumber={props.questions[0].questionNumber}
-                    claimNumber={(index+1).toString()}
-                    title={claim.title}
-                    related={claim.related}>
-                  </ClaimCard>
-                </div>
-              ))}
-            </section>
-
-          </li>
+                {question.claims.map((claim, index) => (
+                  <div className="claim-row" key={claim.id}>
+                    <ClaimCard
+                      questionNumber={question.questionNumber}
+                      claimNumber={(index+1).toString()}
+                      title={claim.title}
+                      related={claim.related}>
+                    </ClaimCard>
+                  </div>
+                ))}
+              </section>
+            </li>
+          ))}
 
           <li role="listitem">
             <a href="#" draggable="false" className="card">
