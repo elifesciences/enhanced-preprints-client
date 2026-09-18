@@ -10,27 +10,6 @@
   width: 1px;
 }
 
-.close {
-  position: absolute;
-  right: 56px;
-  top: 40px;
-  text-decoration: none;
-  width: 32px;
-  height: 32px;
-  color: rgb(103 109 115);
-  background-color: rgb(247 248 250);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-a.close:hover,
-a.close:active,
-a.close:focus {
-  background-color: rgb(230 233 240);
-}
-
 ul {
   padding-inline-start: 0;
   margin-block-start: 0;
