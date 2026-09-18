@@ -11,3 +11,14 @@ body {
   background: rgb(255 255 255);
   border-radius: 12px;
 }
+
+h1 {
+  font-family: var(--font-poppins, sans-serif);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin-block: 0;
+  padding-block: 40px 56px;
+  line-height: 32px;
+  color: rgb(47 47 47);
+}

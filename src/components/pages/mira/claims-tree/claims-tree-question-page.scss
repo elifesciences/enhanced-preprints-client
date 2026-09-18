@@ -1,0 +1,16 @@
+.card {
+  font-family: var(--font-dm-sans, sans-serif);
+  border-radius: 8px;
+  padding: 24px 32px 28px;
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+}
+
+.card header {
+  font-weight: 600;
+}
+
+.card p {
+  color: rgb(47 47 47);
+  line-height: 26px;
+}
