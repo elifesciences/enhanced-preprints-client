@@ -27,8 +27,8 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
         <h1>Question 1</h1>
         <div className="card">
           <header>Question 1
-            <span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span>
-            <span className="visuallyhidden">comprises </span>3 claims<span className="visuallyhidden">.</span>
+            <span aria-hidden="true" className="dot supplementary">&nbsp;&#x2022;&nbsp;</span>
+            <span className="visuallyhidden">comprises </span><span className="supplementary">3 claims</span><span className="visuallyhidden">.</span>
           </header>
           <p><span className="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           <p>The paper investigates how responsibility for a partner&#39;s outcomes in risky choices evokes guilt and which brain regions are involved.</p>
