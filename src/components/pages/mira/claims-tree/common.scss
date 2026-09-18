@@ -12,6 +12,13 @@ body {
   border-radius: 12px;
 }
 
+.claims-tree-pages-content {
+  max-width: 830px;
+  margin: 0 auto;
+  padding-inline: 24px;
+  padding-block-end: 32px;
+}
+
 h1 {
   font-family: var(--font-poppins, sans-serif);
   font-weight: 600;
