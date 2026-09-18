@@ -9,6 +9,7 @@
 
 .question-text {
   font-weight: 600;
+  margin-block-start: 0;
 }
 
 .card p {
@@ -26,12 +27,15 @@
 
 .question-framing {
   background-color: rgb(255 255 255);
+  border-radius: 8px;
+  padding: 24px;
 }
 
 .card .provenance {
   font-size: 14px;
   line-height: 24px;
   color: rgb(103 109 115);
+  margin-block-end: 0;
 }
 
 .card .attribution {
