@@ -25,7 +25,7 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
       </a>
       <div className="claims-tree-pages-content">
         <h1>Question 1</h1>
-        <div className="card">
+        <article className="card">
           <header className="question-text">Question 1
             <span aria-hidden="true" className="dot supplementary">&nbsp;&#x2022;&nbsp;</span>
             <span className="visuallyhidden">comprises </span><span className="supplementary">3 claims</span><span className="visuallyhidden">.</span>
@@ -41,7 +41,14 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
           <p className="attribution">Quoted text in Abstract:</p>
 
           <blockquote>“The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.”</blockquote>
-        </div>
+        </article>
+        <section>
+          <h2>Other research exploring this question:</h2>
+          <article className="card">
+            <header>[Title, e.g. Distinct representational properties of cues and contexts shape fear and reversal learning]</header>
+            <p>[Authors, e.g. Antoine Bouyeure, Daniel Pacheco-Estefan, George Jacob, Malte Kobelt, Marie-Christin Fellner, Jonas Rose, Nikolai Axmacher]</p>
+          </article>
+        </section>
       </div>
     </main>
 
