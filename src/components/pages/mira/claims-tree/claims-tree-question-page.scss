@@ -9,8 +9,7 @@
 
 .question-text {
   font-weight: 600;
-  margin-block-start: 0;
-  margin-block-end: 32px;
+  margin-block: 0 32px;
 }
 
 .card p {
@@ -33,6 +32,9 @@
 }
 
 .card .provenance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   line-height: 24px;
   color: rgb(103 109 115);
