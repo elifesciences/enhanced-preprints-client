@@ -1,5 +1,6 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
+import './common.scss';
 import './claims-tree-page.scss';
 
 const dmSans = DM_Sans({

@@ -1,6 +1,7 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import pluralize from 'pluralize';
 import { type JSX } from 'react';
+import './common.scss';
 import './claims-tree-page.scss';
 import { ClaimCard } from '../../../molecules/mira/claim-card/claim-card';
 import {QuestionCard} from '../../../molecules/mira/question-card/question-card';

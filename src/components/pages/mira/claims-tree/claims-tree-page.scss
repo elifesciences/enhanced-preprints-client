@@ -10,20 +10,6 @@
   width: 1px;
 }
 
-body {
-  margin: 0;
-  position: relative;
-  background: rgb(47 47 47 / 50%);
-}
-
-.page-wrapper {
-  position: fixed;
-  inset: 24px;
-  overflow: scroll;
-  background: rgb(255 255 255);
-  border-radius: 12px;
-}
-
 .close {
   position: absolute;
   right: 56px;
