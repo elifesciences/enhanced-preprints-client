@@ -1,7 +1,4 @@
-.card header .supplementary {
-  font-weight: normal;
-  color: rgb(103 109 115);
-}
+@use "../../../../sass/utilities";
 
 a.card {
   text-decoration: none;
@@ -23,8 +20,17 @@ a.card:focus {
   padding: 24px 32px 28px;
 }
 
+.card * {
+  user-select: text;
+}
+
 .card header {
   font-weight: 600;
+}
+
+.card header .supplementary {
+  font-weight: normal;
+  color: rgb(103 109 115);
 }
 
 .card p {
@@ -80,8 +86,4 @@ a.card:focus {
 
 .card .related .related-item:last-child {
   margin-inline-end: 0;
-}
-
-.card * {
-  user-select: text;
 }
