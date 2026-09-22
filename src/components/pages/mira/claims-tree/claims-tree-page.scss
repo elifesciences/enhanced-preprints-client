@@ -23,7 +23,7 @@ li {
   margin-block-end: 0;
 }
 
-.claim-row .card {
+.claim-row > * {
   flex-basis: 100%;
 }
 
