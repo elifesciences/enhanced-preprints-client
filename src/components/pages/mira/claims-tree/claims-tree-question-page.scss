@@ -1,3 +1,11 @@
+@mixin secondary-text {
+  font-size: 16px;
+  line-height: 26px;
+  color: rgb(103 109 115);
+  font-family: var(--font-dm-sans, sans-serif);
+  font-weight: 400;
+}
+
 .card {
   font-family: var(--font-dm-sans, sans-serif);
   line-height: 26px;
@@ -46,8 +54,9 @@
 }
 
 .card .attribution {
-  color: rgb(103 109 115);
   margin-block-start: 32px;
+
+  @include secondary-text();
 }
 
 blockquote {
@@ -55,4 +64,8 @@ blockquote {
   padding: 16px 24px;
   border-inline-start: 4px solid rgb(206 211 224);
   margin: 0;
+}
+
+h2 {
+  @include secondary-text();
 }
