@@ -1,5 +1,6 @@
 import {Fragment} from 'react';
 import type {JSX} from 'react';
+import './claim-card.scss';
 
 type ClaimCardProps = {
   questionNumber: string,
