@@ -1,4 +1,5 @@
 import type {JSX} from 'react';
+import './question-card.scss';
 
 type QuestionCardProps = {
   questionNumber: string,
