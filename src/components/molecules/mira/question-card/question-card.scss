@@ -1,3 +1,5 @@
+@use "../../../../sass/utilities";
+
 a.card {
   text-decoration: none;
   background-color: rgb(247 248 250);
@@ -18,6 +20,10 @@ a.card:focus {
   padding: 24px 32px 28px;
 }
 
+.card * {
+  user-select: text;
+}
+
 .card header {
   font-weight: 600;
 }
@@ -27,56 +33,6 @@ a.card:focus {
   line-height: 26px;
 }
 
-.card article {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "heading related"
-    "text text";
-  column-gap: 8px;
-}
-
-.card article header {
-  grid-area: heading;
-}
-
-.card article p {
-  grid-area: text;
-}
-
-.card article div {
-  grid-area: related;
-}
-
 .card .dot {
   color: rgb(103 109 115);
-}
-
-.card .related {
-  font-weight: 600;
-  font-size: 14px;
-  display: flex;
-  justify-content: end;
-  align-self: start;
-}
-
-.card .related .related-item {
-  margin-inline-end: 6px;
-  padding-block: 1px;
-  display: flex;
-}
-
-.card .related .related-item > span {
-  flex-shrink: 0;
-  padding-inline: 10px;
-  background-color: rgb(230 233 240);
-  border-radius: 4px;
-}
-
-.card .related .related-item:last-child {
-  margin-inline-end: 0;
-}
-
-.card * {
-  user-select: text;
 }
