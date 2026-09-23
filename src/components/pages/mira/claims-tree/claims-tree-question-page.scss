@@ -9,38 +9,19 @@
 .card {
   font-family: var(--font-dm-sans, sans-serif);
   line-height: 26px;
-  border-radius: 8px;
   padding: 32px 40px 40px;
-  background-color: rgb(247 248 250);
   color: rgb(47 47 47);
 }
 
 .question-text {
   font-weight: 600;
-  margin-block: 0 32px;
+  font-size: 18px;
+  line-height: 28px;
+  margin-block: 0;
 }
 
 .card p {
   color: rgb(47 47 47);
-}
-
-.card .dot {
-  color: rgb(103 109 115);
-}
-
-.card header {
-  font-weight: 600;
-}
-
-.card header .supplementary {
-  font-weight: normal;
-  color: rgb(103 109 115);
-}
-
-.question-framing {
-  background-color: rgb(255 255 255);
-  border-radius: 8px;
-  padding: 24px;
 }
 
 .card .provenance {
@@ -60,7 +41,7 @@
 }
 
 blockquote {
-  background-color: rgb(230 233 240);
+  background-color: rgb(247 248 250);
   padding: 16px 24px;
   border-inline-start: 4px solid rgb(206 211 224);
   margin: 0;
