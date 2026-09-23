@@ -1,44 +1,44 @@
 @use "../../../../sass/utilities";
 
-a.card {
+a.claim-card {
   text-decoration: none;
   background-color: rgb(247 248 250);
   color: rgb(47 47 47);
 }
 
-a.card:hover,
-a.card:active,
-a.card:focus {
+a.claim-card:hover,
+a.claim-card:active,
+a.claim-card:focus {
   background-color: rgb(230 233 240);
 }
 
-.card {
+.claim-card {
   display: block;
   user-select: none;
   font-family: var(--font-dm-sans, sans-serif);
   border-radius: 8px;
-  padding: 24px 32px 28px;
+  padding: 20px 24px;
 }
 
-.card * {
+.claim-card * {
   user-select: text;
 }
 
-.card header {
+.claim-card header {
   font-weight: 600;
 }
 
-.card header .supplementary {
+.claim-card header .supplementary {
   font-weight: normal;
   color: rgb(103 109 115);
 }
 
-.card p {
+.claim-card p {
   color: rgb(47 47 47);
   line-height: 26px;
 }
 
-.card article {
+.claim-card article {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -47,23 +47,24 @@ a.card:focus {
   column-gap: 8px;
 }
 
-.card article header {
+.claim-card article header {
   grid-area: heading;
 }
 
-.card article p {
+.claim-card article p {
   grid-area: text;
+  margin-block: 0;
 }
 
-.card article div {
+.claim-card article div {
   grid-area: related;
 }
 
-.card .dot {
+.claim-card .dot {
   color: rgb(103 109 115);
 }
 
-.card .related {
+.claim-card .related {
   font-weight: 600;
   font-size: 14px;
   display: flex;
@@ -71,19 +72,19 @@ a.card:focus {
   align-self: start;
 }
 
-.card .related .related-item {
+.claim-card .related .related-item {
   margin-inline-end: 6px;
   padding-block: 1px;
   display: flex;
 }
 
-.card .related .related-item > span {
+.claim-card .related .related-item > span {
   flex-shrink: 0;
   padding-inline: 10px;
   background-color: rgb(230 233 240);
   border-radius: 4px;
 }
 
-.card .related .related-item:last-child {
+.claim-card .related .related-item:last-child {
   margin-inline-end: 0;
 }
