@@ -39,8 +39,6 @@ const claimsData = [
   },
 ];
 
-let claimNumber = 0;
-
 export const ClaimsTreeQuestionPage = (): JSX.Element => (
   <>
     <main className={`page-wrapper ${dmSans.variable} ${poppins.variable}`}>
@@ -67,20 +65,16 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
           <blockquote>“The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.”</blockquote>
         </article>
         <section>
-          {claimsData.map((claim) => {
-            claimNumber += 1;
-
-            return (
-              <div className="claim-row" key={claim.id}>
-                <ClaimCard
-                  questionNumber={claim.questionNumber}
-                  claimNumber={claimNumber.toString()}
-                  title={claim.title}
-                  related={claim.related}>
-                </ClaimCard>
-              </div>
-            );
-          })}
+          {claimsData.map((claim, index) => (
+            <div className="claim-row" key={claim.id}>
+              <ClaimCard
+                questionNumber={claim.questionNumber}
+                claimNumber={(index + 1).toString()}
+                title={claim.title}
+                related={claim.related}>
+              </ClaimCard>
+            </div>
+          ))}
         </section>
         <section>
           <h2>Other research exploring this question:</h2>
