@@ -64,9 +64,10 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
 
           <blockquote>“The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.”</blockquote>
         </article>
-        <section>
+        <section className="claims">
+          <h2>Related claims (3)</h2>
           {claimsData.map((claim, index) => (
-            <div className="claim-row" key={claim.id}>
+            <div className="claim" key={claim.id}>
               <ClaimCard
                 questionNumber={claim.questionNumber}
                 claimNumber={(index + 1).toString()}

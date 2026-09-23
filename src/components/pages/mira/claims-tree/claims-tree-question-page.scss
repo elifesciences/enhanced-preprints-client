@@ -66,6 +66,21 @@ blockquote {
   margin: 0;
 }
 
+.claims {
+  padding-block: 40px;
+  border-block: 1px solid rgb(206 211 224);
+}
+
 h2 {
+  margin-block-end: 24px;
+
   @include secondary-text();
+}
+
+.claim {
+  margin-block-end: 16px;
+}
+
+.claim:last-child {
+  margin-block-end: 0;
 }
