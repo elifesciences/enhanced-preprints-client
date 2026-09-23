@@ -74,9 +74,9 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
         </section>
         <section>
           <h2>Other research exploring this question:</h2>
-          <article className="card">
-            <header>[Title, e.g. Distinct representational properties of cues and contexts shape fear and reversal learning]</header>
-            <p>[Authors, e.g. Antoine Bouyeure, Daniel Pacheco-Estefan, George Jacob, Malte Kobelt, Marie-Christin Fellner, Jonas Rose, Nikolai Axmacher]</p>
+          <article className="supplementary-card">
+            <header>Distinct representational properties of cues and contexts shape fear and reversal learning</header>
+            <p>Antoine Bouyeure, Daniel Pacheco-Estefan, George Jacob, Malte Kobelt, Marie-Christin Fellner, Jonas Rose, Nikolai Axmacher</p>
           </article>
         </section>
       </div>

@@ -65,3 +65,20 @@ h2 {
 .claim:last-child {
   margin-block-end: 0;
 }
+
+.supplementary-card {
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+  border-radius: 8px;
+  font-family: var(--font-dm-sans, sans-serif);
+  line-height: 26px;
+  padding: 24px 32px 28px;
+}
+
+.supplementary-card header {
+  font-weight: 600;
+}
+
+.supplementary-card p {
+  color: rgb(47 47 47);
+}
