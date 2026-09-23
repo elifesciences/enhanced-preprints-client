@@ -2,6 +2,7 @@ import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './common.scss';
 import './claims-tree-question-page.scss';
+import {ClaimCard} from '../../../molecules/mira/claim-card/claim-card';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -16,6 +17,29 @@ const poppins = Poppins({
   display: 'swap',
   variable: '--font-poppins',
 });
+
+const claimsData = [
+  {
+    id: '1',
+    questionNumber: '1',
+    title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
+    related: ['Figure', 'Study 2'],
+  },
+  {
+    id: '2',
+    questionNumber: '1',
+    title: 'Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.',
+    related: ['Figure', 'Study 2'],
+  },
+  {
+    id: '3',
+    questionNumber: '1',
+    title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant\'s choices.',
+    related: ['Figure', 'Study 2'],
+  },
+];
+
+let claimNumber = 0;
 
 export const ClaimsTreeQuestionPage = (): JSX.Element => (
   <>
@@ -42,6 +66,22 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
 
           <blockquote>“The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.”</blockquote>
         </article>
+        <section>
+          {claimsData.map((claim) => {
+            claimNumber += 1;
+
+            return (
+              <div className="claim-row" key={claim.id}>
+                <ClaimCard
+                  questionNumber={claim.questionNumber}
+                  claimNumber={claimNumber.toString()}
+                  title={claim.title}
+                  related={claim.related}>
+                </ClaimCard>
+              </div>
+            );
+          })}
+        </section>
         <section>
           <h2>Other research exploring this question:</h2>
           <article className="card">
