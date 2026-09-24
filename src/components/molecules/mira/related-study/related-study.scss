@@ -1,0 +1,46 @@
+@use "../../../../sass/utilities";
+
+.related-study {
+  font-family: var(--font-dm-sans, sans-serif);
+  padding-block: 32px 40px;
+}
+
+.related-study .label {
+  font-size: 16px;
+  line-height: 26px;
+  color: rgb(103 109 115);
+  font-family: var(--font-dm-sans, sans-serif);
+  font-weight: 400;
+  margin-block-end: 24px;
+}
+
+.related-study .card {
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.related-study .card header {
+  font-weight: 600;
+  margin-block-end: 16px;
+}
+
+.related-study .card .summary {
+  background-color: rgb(230 233 240);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.related-study .card .summary p {
+  margin-block: 0;
+  line-height: 26px;
+}
+
+.related-study .card .summary p + p {
+  margin-block-start: 12px;
+}
+
+.related-study .card .summary p.highlight {
+  font-weight: 600;
+}
