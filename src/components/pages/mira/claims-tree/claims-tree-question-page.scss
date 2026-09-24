@@ -6,47 +6,6 @@
   font-weight: 400;
 }
 
-.item {
-  font-family: var(--font-dm-sans, sans-serif);
-  line-height: 26px;
-  padding-block: 32px 40px;
-  color: rgb(47 47 47);
-}
-
-.question-text {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
-  margin-block: 0;
-}
-
-.item p {
-  color: rgb(47 47 47);
-}
-
-.item .provenance {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  line-height: 24px;
-  color: rgb(103 109 115);
-  margin-block-end: 0;
-}
-
-.item .attribution {
-  margin-block-start: 32px;
-
-  @include secondary-text();
-}
-
-blockquote {
-  background-color: rgb(247 248 250);
-  padding: 16px 24px;
-  border-inline-start: 4px solid rgb(206 211 224);
-  margin: 0;
-}
-
 .claims {
   padding-block: 40px;
   border-block: 1px solid rgb(206 211 224);
