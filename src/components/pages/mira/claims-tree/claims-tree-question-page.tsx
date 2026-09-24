@@ -28,6 +28,7 @@ type Claim = {
 
 type ClaimsTreeQuestionPageProps = {
   heading: string,
+  title: string,
   summary: string,
   attribution: string,
   quote: string,
@@ -44,6 +45,7 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
         <h1>Question 1</h1>
         <ClaimsTreeSection
           heading={props.heading}
+          title={props.title}
           summary={props.summary}
           attribution={props.attribution}
           quote={props.quote}

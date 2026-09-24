@@ -11,6 +11,7 @@ const dmSans = DM_Sans({
 
 type ClaimsTreeSectionProps = {
   heading: string,
+  title: string,
   summary: string,
   attribution: string,
   quote: string,
@@ -20,7 +21,7 @@ export const ClaimsTreeSection = (props: ClaimsTreeSectionProps): JSX.Element =>
   <>
     <article className={`claims-tree-section ${dmSans.variable}`}>
       <h2>{props.heading}</h2>
-      <p className="question-text"><span className="visuallyhidden">The {props.heading} </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
+      <p className="question-text"><span className="visuallyhidden">The {props.heading} </span>{props.title}</p>
       <p>{props.summary}</p>
       <p className="provenance">
         {/* eslint-disable-next-line @stylistic/max-len */}

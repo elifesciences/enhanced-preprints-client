@@ -1,6 +1,8 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
 import './common.scss';
+import './claims-tree-claim-page.scss';
+import {ClaimsTreeSection} from '../../../molecules/mira/claims-tree-section/claims-tree-section';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -16,14 +18,29 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const ClaimsTreeClaimPage = (): JSX.Element => (
+type Section = {
+  heading: string,
+  title: string,
+  summary: string,
+  attribution: string,
+  quote: string,
+};
+
+type ClaimsTreeClaimPageProps = {
+  claim: Section,
+  evidence: Section,
+};
+
+export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Element => (
   <>
     <main className={`page-wrapper ${dmSans.variable} ${poppins.variable}`}>
       <a href="#" className="close">
         <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
       </a>
-      <div className="claims-tree-pages-content">
-        <h1>Claim 1</h1>
+      <div className="claims-tree-pages-content claims-tree-claim-page">
+        <h1>Claim 1 (Question 1)</h1>
+        <ClaimsTreeSection {...props.claim} />
+        <ClaimsTreeSection {...props.evidence} />
       </div>
     </main>
 
