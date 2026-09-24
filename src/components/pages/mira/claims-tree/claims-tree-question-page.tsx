@@ -50,7 +50,7 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
           <blockquote>“The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.”</blockquote>
         </article>
         <section className="claims">
-          <h2>Related claims (3)</h2>
+          <h2>Related claims ({props.claims.length})</h2>
           {props.claims.map((claim, index) => (
             <div className="claim" key={claim.id}>
               <ClaimCard
