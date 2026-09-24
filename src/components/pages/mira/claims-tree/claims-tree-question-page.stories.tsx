@@ -26,6 +26,10 @@ const meta: Meta<typeof ClaimsTreeQuestionPage> = {
   render: () => (
     <BlankLayout>
       <ClaimsTreeQuestionPage
+        heading="Question:"
+        summary="The paper investigates how responsibility for a partner's outcomes in risky choices evokes guilt and which brain regions are involved."
+        attribution="Quoted text in Abstract:"
+        quote="The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown."
         claims={mockClaimsTreeData[0].claims}
       >
       </ClaimsTreeQuestionPage>

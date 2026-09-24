@@ -27,6 +27,10 @@ type Claim = {
 };
 
 type ClaimsTreeQuestionPageProps = {
+  heading: string,
+  summary: string,
+  attribution: string,
+  quote: string,
   claims: Array<Claim>
 };
 
@@ -38,7 +42,12 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
       </a>
       <div className="claims-tree-pages-content">
         <h1>Question 1</h1>
-        <ClaimsTreeSection />
+        <ClaimsTreeSection
+          heading={props.heading}
+          summary={props.summary}
+          attribution={props.attribution}
+          quote={props.quote}
+        />
         <section className="claims">
           <h2>Related claims ({props.claims.length})</h2>
           {props.claims.map((claim, index) => (

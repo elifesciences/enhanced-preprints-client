@@ -27,4 +27,11 @@ const meta: Meta<typeof ClaimsTreeSection> = {
 export default meta;
 type Story = StoryObj<typeof ClaimsTreeSection>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    heading: 'Question:',
+    summary: 'The paper investigates how responsibility for a partner\'s outcomes in risky choices evokes guilt and which brain regions are involved.',
+    attribution: 'Quoted text in Abstract:',
+    quote: 'The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.',
+  },
+};
