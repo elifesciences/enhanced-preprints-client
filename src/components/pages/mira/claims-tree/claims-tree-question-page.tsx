@@ -18,26 +18,38 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-const claimsData = [
-  {
-    id: '1',
-    questionNumber: '1',
-    title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
-    related: ['Figure', 'Study 2'],
-  },
-  {
-    id: '2',
-    questionNumber: '1',
-    title: 'Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.',
-    related: ['Figure', 'Study 2'],
-  },
-  {
-    id: '3',
-    questionNumber: '1',
-    title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant\'s choices.',
-    related: ['Figure', 'Study 2'],
-  },
-];
+type Claim = {
+  id: string,
+  questionNumber: string,
+  title: string,
+  related: Array<string>,
+};
+
+type ClaimsTreeQuestionPageProps = {
+  claims: Array<Claim>
+};
+
+const claimsData: ClaimsTreeQuestionPageProps = {
+  claims: [
+    {
+      id: '1',
+      questionNumber: '1',
+      title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
+      related: ['Figure', 'Study 2'],
+    },
+    {
+      id: '2',
+      questionNumber: '1',
+      title: 'Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.',
+      related: ['Figure', 'Study 2'],
+    },
+    {
+      id: '3',
+      questionNumber: '1',
+      title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant\'s choices.',
+      related: ['Figure', 'Study 2'],
+    },
+  ]};
 
 export const ClaimsTreeQuestionPage = (): JSX.Element => (
   <>
@@ -61,7 +73,7 @@ export const ClaimsTreeQuestionPage = (): JSX.Element => (
         </article>
         <section className="claims">
           <h2>Related claims (3)</h2>
-          {claimsData.map((claim, index) => (
+          {claimsData.claims.map((claim, index) => (
             <div className="claim" key={claim.id}>
               <ClaimCard
                 questionNumber={claim.questionNumber}
