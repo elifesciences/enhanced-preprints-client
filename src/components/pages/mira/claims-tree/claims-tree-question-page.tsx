@@ -37,7 +37,7 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
       </a>
       <div className="claims-tree-pages-content">
         <h1>Question 1</h1>
-        <article className="card">
+        <article className="item">
           <h2>Question:</h2>
           <p className="question-text"><span className="visuallyhidden">The question: </span>What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?</p>
           <p>The paper investigates how responsibility for a partner&#39;s outcomes in risky choices evokes guilt and which brain regions are involved.</p>
