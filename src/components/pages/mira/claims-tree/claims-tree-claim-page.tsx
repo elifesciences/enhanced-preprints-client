@@ -3,6 +3,7 @@ import { type JSX } from 'react';
 import './common.scss';
 import './claims-tree-claim-page.scss';
 import {ClaimsTreeSection} from '../../../molecules/mira/claims-tree-section/claims-tree-section';
+import {RelatedFigure} from '../../../molecules/mira/related-figure/related-figure';
 import {RelatedStudy} from '../../../molecules/mira/related-study/related-study';
 
 const dmSans = DM_Sans({
@@ -43,6 +44,7 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
         <ClaimsTreeSection {...props.claim} />
         <ClaimsTreeSection {...props.evidence} />
         <RelatedStudy />
+        <RelatedFigure />
       </div>
     </main>
 

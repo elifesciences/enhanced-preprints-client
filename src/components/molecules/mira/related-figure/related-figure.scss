@@ -1,0 +1,56 @@
+@use "../../../../sass/utilities";
+
+.related-figure {
+  font-family: var(--font-dm-sans, sans-serif);
+  padding-block: 32px 40px 24px;
+}
+
+.related-figure .label {
+  font-size: 16px;
+  line-height: 26px;
+  color: rgb(103 109 115);
+  font-family: var(--font-dm-sans, sans-serif);
+  font-weight: 400;
+  margin-block: 40px 24px;
+}
+
+.related-figure .card {
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+  border-radius: 8px;
+  padding: 40px 48px;
+  margin: 0;
+}
+
+.related-figure .card header {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-block-end: 16px;
+}
+
+.related-figure .card img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  background-color: rgb(255 255 255);
+  border: 1px solid rgb(206 211 224);
+}
+
+.related-figure .card figcaption {
+  margin-block-start: 24px;
+}
+
+.related-figure .card figcaption p {
+  margin-block: 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.related-figure .card figcaption p.title {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-block-end: 8px;
+}
