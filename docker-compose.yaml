@@ -112,6 +112,8 @@ services:
         condition: service_healthy
       app:
         condition: service_healthy
+      image-server:
+        condition: service_healthy
     ports:
       - 8080:80
     volumes:
