@@ -9,9 +9,9 @@ services:
         condition: service_completed_successfully
     environment:
       - SOURCE_STATIC=S3Source
-      - S3SOURCE_ENDPOINT=http://minio:9000/
-      - S3SOURCE_ACCESS_KEY_ID=minio
-      - S3SOURCE_SECRET_KEY=miniotest
+      - S3SOURCE_ENDPOINT=http://s3mock:9090/
+      - S3SOURCE_ACCESS_KEY_ID=s3mock
+      - S3SOURCE_SECRET_KEY=s3mock
       - S3SOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX=automation/
       - S3SOURCE_BASICLOOKUPSTRATEGY_BUCKET_NAME=eppdata
     ports:
@@ -25,38 +25,35 @@ services:
       retries: 10
       start_period: 2s
 
-  ## Minio
-  minio:
-    image: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+  ## S3Mock (S3-compatible test double; minio's images are no longer publicly pullable)
+  s3mock:
+    image: adobe/s3mock:5.2.3@sha256:ab01a6946750f451ca215a47e91030695b260e4003b8a5a6201d25029b8fca92
     healthcheck:
-      test: curl http://minio:9000/minio/health/live
+      test: wget -q -O /dev/null http://s3mock:9090/favicon.ico
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 2s
     ports:
-      - "9100:9000"
-      - "9101:9001"
-    volumes:
-      - minio_storage:/data
+      - "9100:9090"
     environment:
-      MINIO_ROOT_USER: minio
-      MINIO_ROOT_PASSWORD: miniotest
-    command: server --console-address ":9001" /data
+      COM_ADOBE_TESTING_S3MOCK_STORE_INITIAL_BUCKETS: eppdata
 
-  # Create bucket and upload data
+  # Upload data to the S3Mock bucket
   createbucket:
-    image: quay.io/minio/mc:RELEASE.2025-08-13T08-35-41Z@sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727
+    image: amazon/aws-cli:2.37.1@sha256:b0dd5a4d216a1786863541a201baa7b7b4c5032bec9c6e72c38d01cafd7e8db8
     depends_on:
-      minio:
+      s3mock:
         condition: service_healthy
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc alias set myminio http://minio:9000 minio miniotest;
-      /usr/bin/mc mb myminio/eppdata || true;
-      /usr/bin/mc mirror /automation-data myminio/eppdata/automation;
+      aws --endpoint-url http://s3mock:9090 s3 cp --recursive /automation-data s3://eppdata/automation;
       exit 0;
       "
+    environment:
+      AWS_ACCESS_KEY_ID: s3mock
+      AWS_SECRET_ACCESS_KEY: s3mock
+      AWS_DEFAULT_REGION: us-east-1
     volumes:
       - ./data/automation:/automation-data
 
@@ -123,4 +120,3 @@ services:
 volumes:
   data:
   node_modules:
-  minio_storage:
