@@ -1,5 +1,7 @@
 import { DM_Sans } from 'next/font/google';
+import Image from 'next/image';
 import type {JSX} from 'react';
+import figure4 from '../../../../../public/mira/figure-4.jpg';
 import './related-figure.scss';
 
 const dmSans = DM_Sans({
@@ -14,8 +16,7 @@ export const RelatedFigure = (): JSX.Element => (
     <h2 className="label">Related figure:</h2>
     <figure className="card">
       <header>Figure 4</header>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" src="/mira/figure-4.jpg" alt="Figure 4: BOLD responses." />
+      <Image src={figure4} alt="Figure 4: BOLD responses." />
       <figcaption>
         <p className="title">BOLD responses.</p>
         <p>
