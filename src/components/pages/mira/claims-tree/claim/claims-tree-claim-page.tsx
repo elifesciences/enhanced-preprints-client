@@ -4,7 +4,7 @@ import { dmSans, poppins } from '../../../../fonts/mira';
 import { ClaimsTreeHeader } from '../../../../molecules/mira/claims-tree-header/claims-tree-header';
 import { ClaimsTreeSection } from '../../../../molecules/mira/claims-tree-section/claims-tree-section';
 import { RelatedFigure } from '../../../../molecules/mira/related-figure/related-figure';
-import { RelatedStudy } from '../../../../molecules/mira/related-study/related-study';
+import { RelatedStudy, type RelatedStudyProps } from '../../../../molecules/mira/related-study/related-study';
 import '../common.scss';
 
 type Section = {
@@ -20,6 +20,7 @@ type ClaimsTreeClaimPageProps = {
   questionNumber: string,
   claim: Section,
   evidence: Section,
+  relatedStudy: RelatedStudyProps,
 };
 
 export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Element => (
@@ -27,7 +28,7 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
     <ClaimsTreeHeader title={`Claim ${props.id} (Question ${props.questionNumber})`} />
     <ClaimsTreeSection {...props.claim} />
     <ClaimsTreeSection {...props.evidence} />
-    <RelatedStudy />
+    <RelatedStudy {...props.relatedStudy} />
     <RelatedFigure />
   </div>
 );

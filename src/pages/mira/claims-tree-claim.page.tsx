@@ -21,11 +21,16 @@ const claimData = [
       attribution: 'Quoted text in Results:',
       quote: 'We found a weak response in a small cluster within the left anterior insula (peak T = 3.95, d = 0.59, 22 voxels, peak intensity at [−28 24 −4]; Figure 4F). This correction resulted in a p value of 0.024.',
     },
+    relatedStudy: {
+      name: 'Study 2',
+      title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+      summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+    },
   },
 ];
 
 const Page = () => {
-  const { id, questionNumber, claim, evidence } = claimData[0];
+  const { id, questionNumber, claim, evidence, relatedStudy } = claimData[0];
 
   return (
     <>
@@ -37,6 +42,7 @@ const Page = () => {
         questionNumber={questionNumber}
         claim={claim}
         evidence={evidence}
+        relatedStudy={relatedStudy}
       ></ClaimsTreeClaimPage>
     </>
   );
