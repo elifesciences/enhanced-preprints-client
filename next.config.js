@@ -70,8 +70,8 @@ const nextConfig = {
         destination: '/mira/claims-tree-question'
       },
       {
-        source: '/mira/claims-tree/claim',
-        destination: '/mira/claims-tree-claim'
+        source: '/mira/claims-tree/claim/:id(\\d+)',
+        destination: '/mira/claims-tree-claim?id=:id'
       },
       {
         source: '/mira/claims-tree/study',

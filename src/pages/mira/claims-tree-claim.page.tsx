@@ -1,3 +1,4 @@
+import { type GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { type ReactNode } from 'react';
 import figure4 from '../../../public/mira/figure-4.jpg';
@@ -69,27 +70,32 @@ const claimData = [
   },
 ];
 
-const Page = () => {
-  const {
-    id, questionNumber, claim, evidence, relatedStudy, relatedFigure,
-  } = claimData[0];
+type ClaimData = (typeof claimData)[number];
 
-  return (
-    <>
-      <Head>
-        <title>{`Claim ${id}`}</title>
-      </Head>
-      <ClaimsTreeClaimPage
-        id={id}
-        questionNumber={questionNumber}
-        claim={claim}
-        evidence={evidence}
-        relatedStudy={relatedStudy}
-        relatedFigure={relatedFigure}
-      ></ClaimsTreeClaimPage>
-    </>
-  );
+// ts-unused-exports:disable-next-line
+export const getServerSideProps: GetServerSideProps<ClaimData> = async ({ query }) => {
+  const claimDataItem = claimData.find(({ id }) => id === query.id);
+
+  return claimDataItem ? { props: claimDataItem } : { notFound: true };
 };
+
+const Page = ({
+  id, questionNumber, claim, evidence, relatedStudy, relatedFigure,
+}: ClaimData) => (
+  <>
+    <Head>
+      <title>{`Claim ${id}`}</title>
+    </Head>
+    <ClaimsTreeClaimPage
+      id={id}
+      questionNumber={questionNumber}
+      claim={claim}
+      evidence={evidence}
+      relatedStudy={relatedStudy}
+      relatedFigure={relatedFigure}
+    ></ClaimsTreeClaimPage>
+  </>
+);
 
 Page.getLayout = function getLayout(page: ReactNode) {
   return (
