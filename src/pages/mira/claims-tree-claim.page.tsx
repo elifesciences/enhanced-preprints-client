@@ -24,7 +24,7 @@ type ServerSideProps = {
     title: string,
     summary: string,
   },
-  relatedFigure: {
+  relatedFigure?: {
     name: string,
     image: StaticImageData,
     title: string,

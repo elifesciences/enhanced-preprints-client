@@ -21,7 +21,7 @@ type ClaimsTreeClaimPageProps = {
   claim: Section,
   evidence: Section,
   relatedStudy: RelatedStudyProps,
-  relatedFigure: RelatedFigureProps,
+  relatedFigure?: RelatedFigureProps,
 };
 
 export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Element => (
@@ -30,6 +30,6 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
     <ClaimsTreeSection {...props.claim} />
     <ClaimsTreeSection {...props.evidence} />
     <RelatedStudy {...props.relatedStudy} />
-    <RelatedFigure {...props.relatedFigure} />
+    {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
   </div>
 );
