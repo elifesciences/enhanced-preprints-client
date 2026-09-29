@@ -16,13 +16,15 @@ type Section = {
 };
 
 type ClaimsTreeClaimPageProps = {
+  id: string,
+  questionNumber: string,
   claim: Section,
   evidence: Section,
 };
 
 export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Element => (
   <div className={`claims-tree-pages-content claims-tree-claim-page ${dmSans.variable} ${poppins.variable}`}>
-    <ClaimsTreeHeader title="Claim 1 (Question 1)" />
+    <ClaimsTreeHeader title={`Claim ${props.id} (Question ${props.questionNumber})`} />
     <ClaimsTreeSection {...props.claim} />
     <ClaimsTreeSection {...props.evidence} />
     <RelatedStudy />

@@ -24,17 +24,23 @@ const claimData = [
   },
 ];
 
-const Page = () => (
-  <>
-    <Head>
-      <title>Claim 1</title>
-    </Head>
-    <ClaimsTreeClaimPage
-      claim={claimData[0].claim}
-      evidence={claimData[0].evidence}
-    ></ClaimsTreeClaimPage>
-  </>
-);
+const Page = () => {
+  const { id, questionNumber, claim, evidence } = claimData[0];
+
+  return (
+    <>
+      <Head>
+        <title>{`Claim ${id}`}</title>
+      </Head>
+      <ClaimsTreeClaimPage
+        id={id}
+        questionNumber={questionNumber}
+        claim={claim}
+        evidence={evidence}
+      ></ClaimsTreeClaimPage>
+    </>
+  );
+};
 
 Page.getLayout = function getLayout(page: ReactNode) {
   return (

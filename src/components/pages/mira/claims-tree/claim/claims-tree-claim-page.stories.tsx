@@ -25,6 +25,8 @@ const meta: Meta<typeof ClaimsTreeClaimPage> = {
   render: () => (
     <ClaimsTreeLayout>
       <ClaimsTreeClaimPage
+        id="1"
+        questionNumber="1"
         claim={{
           heading: 'Claim:',
           title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
