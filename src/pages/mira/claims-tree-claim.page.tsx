@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
 import figure4 from '../../../public/mira/figure-4.jpg';
+import figure5 from '../../../public/mira/figure-5.jpg';
 import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeClaimPage } from '../../components/pages/mira/claims-tree/claim/claims-tree-claim-page';
 
@@ -33,6 +34,37 @@ const claimData = [
       title: 'BOLD responses.',
       // eslint-disable-next-line @stylistic/max-len
       summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
+    },
+  },
+  {
+    id: '2',
+    questionNumber: '1',
+    claim: {
+      heading: 'Claim:',
+      title: 'Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.',
+      summary: 'PPI analysis shows insula–right IFG connectivity strongest when participants make risky choices for themselves and safe choices for both.',
+      attribution: 'Quoted text in Results:',
+      quote: 'Connectivity between this region and the right inferior frontal gyrus varied depending on choice and experimental condition, suggesting that this part of prefrontal cortex is sensitive to guilt-related information during social choices.',
+    },
+    evidence: {
+      heading: 'Evidence:',
+      title: 'Right IFG connectivity with left insula is highest for risky choices in Solo and safe choices in Social (pFWE = 0.020, T = 4.34, d = 0.80, 115 voxels, MNI [46 16 22]).',
+      summary: 'PPI analysis shows condition- and choice-dependent insula–IFG connectivity.',
+      attribution: 'Quoted text in Results:',
+      // eslint-disable-next-line @stylistic/max-len
+      quote: 'The first analysis revealed a cluster in the right IFG whose connectivity to the insula (the seed region) was highest when participants made Risky choices for themselves and Safe choices for both players (pFWE = 0.020, T = 4.34, d = 0.80, Z = 4.21, 115 vox',
+    },
+    relatedStudy: {
+      name: 'Study 2',
+      title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+      summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+    },
+    relatedFigure: {
+      name: 'Figure 5',
+      image: figure5,
+      title: 'Functional connectivity changes.',
+      // eslint-disable-next-line @stylistic/max-len
+      summary: 'Connectivity between the left anterior insula (seed) and a cluster in the right inferior frontal gyrus varied based on condition and choice type, being highest during risky solo choices and safe social choices. This suggests information flow about guilt-related processing during social decision-making.',
     },
   },
 ];
