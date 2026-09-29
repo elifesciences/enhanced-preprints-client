@@ -21,7 +21,7 @@ export const ClaimsTreeSection = (props: ClaimsTreeSectionProps): JSX.Element =>
   <>
     <article className={`claims-tree-section ${dmSans.variable}`}>
       <h2>{props.heading}</h2>
-      <p className="question-text"><span className="visuallyhidden">The {props.heading} </span>{props.title}</p>
+      <p className="question-text">{props.title}</p>
       <p>{props.summary}</p>
       <p className="provenance">
         {/* eslint-disable-next-line @stylistic/max-len */}
