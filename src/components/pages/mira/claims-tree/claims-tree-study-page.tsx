@@ -17,6 +17,12 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+type Study = {
+  heading: string,
+  title: string,
+  summary: string,
+};
+
 type Protocol = {
   id: string,
   heading: string,
@@ -27,6 +33,7 @@ type Protocol = {
 };
 
 type ClaimsTreeStudyPageProps = {
+  study: Study,
   protocols: Array<Protocol>,
 };
 
@@ -38,6 +45,11 @@ export const ClaimsTreeStudyPage = (props: ClaimsTreeStudyPageProps): JSX.Elemen
       </a>
       <div className="claims-tree-pages-content">
         <h1>Study 2</h1>
+        <ClaimsTreeSection
+          heading={props.study.heading}
+          title={props.study.title}
+          summary={props.study.summary}
+        />
         {props.protocols.map((protocol) => (
           <ClaimsTreeSection
             key={protocol.id}

@@ -4,6 +4,11 @@ import { BlankLayout } from '../../components/layouts/blank';
 import { ClaimsTreeStudyPage } from '../../components/pages/mira/claims-tree/claims-tree-study-page';
 
 const studyData = {
+  study: {
+    heading: 'Study:',
+    title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+    summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+  },
   protocols: [
     {
       id: '1',
@@ -81,6 +86,7 @@ const Page = () => (
       <title>Claims Tree Study</title>
     </Head>
     <ClaimsTreeStudyPage
+      study={studyData.study}
       protocols={studyData.protocols}
     ></ClaimsTreeStudyPage>
   </>
