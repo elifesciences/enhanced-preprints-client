@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreeClaimPage } from './claims-tree-claim-page';
+import figure4 from '../../../../../../public/mira/figure-4.jpg';
 import { ClaimsTreeLayout } from '../../../../layouts/mira/claims-tree';
 
 const meta: Meta<typeof ClaimsTreeClaimPage> = {
@@ -45,6 +46,13 @@ const meta: Meta<typeof ClaimsTreeClaimPage> = {
           name: 'Study 2',
           title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
           summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+        }}
+        relatedFigure={{
+          name: 'Figure 4',
+          image: figure4,
+          title: 'BOLD responses.',
+          // eslint-disable-next-line @stylistic/max-len
+          summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
         }}
       >
       </ClaimsTreeClaimPage>
