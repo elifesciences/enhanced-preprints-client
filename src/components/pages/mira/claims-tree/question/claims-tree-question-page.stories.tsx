@@ -1,7 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreeQuestionPage } from './claims-tree-question-page';
 import { mockClaimsTreeData } from '../../../../../pages/mira/mock-claims-tree-data';
-import { BlankLayout } from '../../../../layouts/blank';
+import { ClaimsTreeLayout } from '../../../../layouts/mira/claims-tree';
 
 const meta: Meta<typeof ClaimsTreeQuestionPage> = {
   title: 'Pages/Claims Tree Question',
@@ -24,7 +24,7 @@ const meta: Meta<typeof ClaimsTreeQuestionPage> = {
     },
   },
   render: () => (
-    <BlankLayout>
+    <ClaimsTreeLayout>
       <ClaimsTreeQuestionPage
         heading="Question:"
         title="What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?"
@@ -34,7 +34,7 @@ const meta: Meta<typeof ClaimsTreeQuestionPage> = {
         claims={mockClaimsTreeData[0].claims}
       >
       </ClaimsTreeQuestionPage>
-    </BlankLayout>
+    </ClaimsTreeLayout>
   ),
 };
 

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
-import { BlankLayout } from '../../components/layouts/blank';
+import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeStudyPage } from '../../components/pages/mira/claims-tree/study/claims-tree-study-page';
 
 const studyData = {
@@ -94,7 +94,7 @@ const Page = () => (
 
 Page.getLayout = function getLayout(page: ReactNode) {
   return (
-    <BlankLayout>{page}</BlankLayout>
+    <ClaimsTreeLayout>{page}</ClaimsTreeLayout>
   );
 };
 
