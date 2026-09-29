@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { type ReactNode } from 'react';
 import { getServerSideProps, type ServerSideProps } from './get-server-side-props';
 import { BlankLayout } from '../../components/layouts/blank';
-import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/claims-tree-page';
+import { ClaimsTreePage } from '../../components/pages/mira/claims-tree/tree/claims-tree-page';
 
 // ts-unused-exports:disable-next-line
 export { getServerSideProps };

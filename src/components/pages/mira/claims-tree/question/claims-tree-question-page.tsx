@@ -1,9 +1,9 @@
 import { DM_Sans, Poppins } from 'next/font/google';
 import { type JSX } from 'react';
-import './common.scss';
+import '../common.scss';
 import './claims-tree-question-page.scss';
-import {ClaimCard} from '../../../molecules/mira/claim-card/claim-card';
-import {ClaimsTreeSection} from '../../../molecules/mira/claims-tree-section/claims-tree-section';
+import { ClaimCard } from '../../../../molecules/mira/claim-card/claim-card';
+import { ClaimsTreeSection } from '../../../../molecules/mira/claims-tree-section/claims-tree-section';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],

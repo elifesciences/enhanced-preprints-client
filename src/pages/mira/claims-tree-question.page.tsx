@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
 import { BlankLayout } from '../../components/layouts/blank';
-import { ClaimsTreeQuestionPage } from '../../components/pages/mira/claims-tree/claims-tree-question-page';
+import { ClaimsTreeQuestionPage } from '../../components/pages/mira/claims-tree/question/claims-tree-question-page';
 
 const claimsData = {
   heading: 'Question:',

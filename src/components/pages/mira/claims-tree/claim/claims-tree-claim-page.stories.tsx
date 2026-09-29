@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreeClaimPage } from './claims-tree-claim-page';
-import { BlankLayout } from '../../../layouts/blank';
+import { BlankLayout } from '../../../../layouts/blank';
 
 const meta: Meta<typeof ClaimsTreeClaimPage> = {
   title: 'Pages/Claims Tree Claim',
