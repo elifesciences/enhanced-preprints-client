@@ -1,0 +1,31 @@
+.close {
+  position: absolute;
+  right: 56px;
+  top: 40px;
+  text-decoration: none;
+  width: 32px;
+  height: 32px;
+  color: rgb(103 109 115);
+  background-color: rgb(247 248 250);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a.close:hover,
+a.close:active,
+a.close:focus {
+  background-color: rgb(230 233 240);
+}
+
+h1 {
+  font-family: var(--font-poppins, sans-serif);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin-block: 0;
+  padding-block: 40px 56px;
+  line-height: 32px;
+  color: rgb(47 47 47);
+}
