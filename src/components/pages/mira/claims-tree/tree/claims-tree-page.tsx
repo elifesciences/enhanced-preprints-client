@@ -1,24 +1,10 @@
-import { DM_Sans, Poppins } from 'next/font/google';
 import pluralize from 'pluralize';
 import { type JSX } from 'react';
 import '../common.scss';
 import './claims-tree-page.scss';
+import { dmSans, poppins } from '../../../../fonts/mira';
 import { ClaimCard } from '../../../../molecules/mira/claim-card/claim-card';
 import { QuestionCard } from '../../../../molecules/mira/question-card/question-card';
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['600'],
-  display: 'swap',
-  variable: '--font-poppins',
-});
 
 type Claim = {
   id: string,
@@ -42,47 +28,44 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
 
   return (
     <>
-      <main className={`page-wrapper ${dmSans.variable} ${poppins.variable}`}>
-        <a href="#" className="close">
-          <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
-        </a>
-        <div className="claims-tree-pages-content">
-          <h1>Claims tree</h1>
-          <div className="visuallyhidden">There {props.questions.length > 1 ? 'are' : 'is'} {props.questions.length} {pluralize('question', props.questions.length)}</div>
-          <ul role="list">
+      <a href="#" className="close">
+        <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
+      </a>
+      <div className={`claims-tree-pages-content ${dmSans.variable} ${poppins.variable}`}>
+        <h1>Claims tree</h1>
+        <div className="visuallyhidden">There {props.questions.length > 1 ? 'are' : 'is'} {props.questions.length} {pluralize('question', props.questions.length)}</div>
+        <ul role="list">
 
-            {props.questions.map((question) => (
-              <li role="listitem" key={question.questionNumber}>
-                <QuestionCard
-                  questionNumber={question.questionNumber}
-                  text={question.text}
-                  claimCount={question.claims.length.toString()}
-                ></QuestionCard>
-                <section className="claims">
+          {props.questions.map((question) => (
+            <li role="listitem" key={question.questionNumber}>
+              <QuestionCard
+                questionNumber={question.questionNumber}
+                text={question.text}
+                claimCount={question.claims.length.toString()}
+              ></QuestionCard>
+              <section className="claims">
 
-                  <header className="visuallyhidden">There {question.claims.length > 1 ? 'are' : 'is'} {question.claims.length} {pluralize('claim', question.claims.length)} for this question:</header>
+                <header className="visuallyhidden">There {question.claims.length > 1 ? 'are' : 'is'} {question.claims.length} {pluralize('claim', question.claims.length)} for this question:</header>
 
-                  {question.claims.map((claim) => {
-                    claimNumber += 1;
+                {question.claims.map((claim) => {
+                  claimNumber += 1;
 
-                    return (
-                      <div className="claim-row" key={claim.id}>
-                        <ClaimCard
-                          questionNumber={question.questionNumber}
-                          claimNumber={claimNumber.toString()}
-                          title={claim.title}
-                          related={claim.related}>
-                        </ClaimCard>
-                      </div>
-                    );
-                  })}
-                </section>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-
+                  return (
+                    <div className="claim-row" key={claim.id}>
+                      <ClaimCard
+                        questionNumber={question.questionNumber}
+                        claimNumber={claimNumber.toString()}
+                        title={claim.title}
+                        related={claim.related}>
+                      </ClaimCard>
+                    </div>
+                  );
+                })}
+              </section>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

@@ -1,14 +1,7 @@
-import { DM_Sans } from 'next/font/google';
 import {Fragment} from 'react';
 import type {JSX} from 'react';
 import './claim-card.scss';
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-});
+import { dmSans } from '../../../fonts/mira';
 
 type ClaimCardProps = {
   questionNumber: string,

@@ -1,13 +1,6 @@
-import { DM_Sans } from 'next/font/google';
 import type {JSX} from 'react';
 import './related-study.scss';
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  display: 'swap',
-  variable: '--font-dm-sans',
-});
+import { dmSans } from '../../../fonts/mira';
 
 export const RelatedStudy = (): JSX.Element => (
   <div className={`related-study ${dmSans.variable}`}>
