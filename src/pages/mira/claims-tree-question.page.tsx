@@ -1,50 +1,26 @@
 import Head from 'next/head';
 import { type ReactNode } from 'react';
+import { hardcodedQuestions } from './data/hardcoded-questions';
+import { mockClaimsTreeData } from './mock-claims-tree-data';
 import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeQuestionPage } from '../../components/pages/mira/claims-tree/question/claims-tree-question-page';
 
-const claimsData = {
-  questionNumber: '1',
-  heading: 'Question:',
-  title: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?',
-  summary: 'The paper investigates how responsibility for a partner\'s outcomes in risky choices evokes guilt and which brain regions are involved.',
-  attribution: 'Quoted text in Abstract:',
-  quote: 'The neural mechanisms underlying guilt evoked during such situations of social responsibility are still unknown.',
-  claims: [
-    {
-      id: '1',
-      questionNumber: '1',
-      title: 'The guilt effect is associated with increased BOLD signal in the left anterior insula.',
-      related: ['Figure', 'Study 2'],
-    },
-    {
-      id: '2',
-      questionNumber: '1',
-      title: 'Functional connectivity between the left anterior insula and the right inferior frontal gyrus varies with choice and condition, suggesting the right IFG is sensitive to guilt-related information during social choices.',
-      related: ['Figure', 'Study 2'],
-    },
-    {
-      id: '3',
-      questionNumber: '1',
-      title: 'The left superior temporal sulcus tracks partner reward prediction errors specifically when they result from the participant\'s choices.',
-      related: ['Figure', 'Study 2'],
-    },
-  ],
-};
+const [question] = hardcodedQuestions;
+const claims = mockClaimsTreeData.find(({ questionNumber }) => questionNumber === question.questionNumber)?.claims ?? [];
 
 const Page = () => (
   <>
     <Head>
-      <title>{`Claims Tree Question ${claimsData.questionNumber}`}</title>
+      <title>{`Claims Tree Question ${question.questionNumber}`}</title>
     </Head>
     <ClaimsTreeQuestionPage
-      questionNumber={claimsData.questionNumber}
-      heading={claimsData.heading}
-      title={claimsData.title}
-      summary={claimsData.summary}
-      attribution={claimsData.attribution}
-      quote={claimsData.quote}
-      claims={claimsData.claims}
+      questionNumber={question.questionNumber}
+      heading={question.heading}
+      title={question.title}
+      summary={question.summary}
+      attribution={question.attribution}
+      quote={question.quote}
+      claims={claims}
     ></ClaimsTreeQuestionPage>
   </>
 );
