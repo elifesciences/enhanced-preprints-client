@@ -4,6 +4,7 @@ import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeStudyPage } from '../../components/pages/mira/claims-tree/study/claims-tree-study-page';
 
 const studyData = {
+  studyNumber: '2',
   study: {
     heading: 'Study:',
     title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
@@ -83,9 +84,10 @@ const studyData = {
 const Page = () => (
   <>
     <Head>
-      <title>Claims Tree Study</title>
+      <title>{`Claims Tree Study ${studyData.studyNumber}`}</title>
     </Head>
     <ClaimsTreeStudyPage
+      studyNumber={studyData.studyNumber}
       study={studyData.study}
       protocols={studyData.protocols}
     ></ClaimsTreeStudyPage>
