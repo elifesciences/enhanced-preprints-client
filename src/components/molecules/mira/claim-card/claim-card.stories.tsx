@@ -33,6 +33,7 @@ export const SingleRelated: Story = {
     claimNumber: '3',
     title: 'Treatment with the compound resulted in a 50% reduction in inflammatory markers',
     related: ['Figure 3'],
+    claimPageHref: '#',
   },
 };
 
@@ -42,6 +43,7 @@ export const TwoRelated: Story = {
     claimNumber: '1',
     title: 'The novel compound XYZ-123 inhibits tumor growth in mouse models',
     related: ['Figure 1', 'Table 2'],
+    claimPageHref: '#',
   },
 };
 
@@ -51,6 +53,7 @@ export const MultipleRelated: Story = {
     claimNumber: '2',
     title: 'The protein expression levels were significantly elevated in the experimental group compared to controls',
     related: ['Figure 2', 'Figure 4', 'Table 1', 'Supplementary Data 1'],
+    claimPageHref: '#',
   },
 };
 
@@ -60,5 +63,6 @@ export const LongTitle: Story = {
     claimNumber: '5',
     title: 'Analysis of the multi-omics data revealed a complex interplay between genetic variants, epigenetic modifications, and environmental factors that collectively contribute to the observed phenotypic variation across different population subgroups',
     related: ['Figure 5', 'Table 3', 'Supplementary Figure 1'],
+    claimPageHref: '#',
   },
 };

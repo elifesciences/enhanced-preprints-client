@@ -8,11 +8,12 @@ type ClaimCardProps = {
   claimNumber: string,
   title: string,
   related: Array<string>,
+  claimPageHref: string,
 };
 
 export const ClaimCard = (props: ClaimCardProps): JSX.Element => (
   <>
-    <a href="#" draggable="false" className={`claim-card ${dmSans.variable}`}>
+    <a href={props.claimPageHref} draggable="false" className={`claim-card ${dmSans.variable}`}>
       <article>
         <header>Claim {props.claimNumber} <span className="supplementary">(question&nbsp;{props.questionNumber})</span></header>
         <p>{props.title}</p>

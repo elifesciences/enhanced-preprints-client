@@ -54,7 +54,8 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
                         questionNumber={question.questionNumber}
                         claimNumber={claimNumber.toString()}
                         title={claim.title}
-                        related={claim.related}>
+                        related={claim.related}
+                        claimPageHref={`/mira/claims-tree/claim/${claim.id}`}>
                       </ClaimCard>
                     </div>
                   );

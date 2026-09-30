@@ -46,7 +46,8 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
               questionNumber={claim.questionNumber}
               claimNumber={claim.id}
               title={claim.title}
-              related={claim.related}>
+              related={claim.related}
+              claimPageHref={`/mira/claims-tree/claim/${claim.id}`}>
             </ClaimCard>
           </div>
         ))}
