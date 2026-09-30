@@ -4,6 +4,7 @@ import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeQuestionPage } from '../../components/pages/mira/claims-tree/question/claims-tree-question-page';
 
 const claimsData = {
+  questionNumber: '1',
   heading: 'Question:',
   title: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?',
   summary: 'The paper investigates how responsibility for a partner\'s outcomes in risky choices evokes guilt and which brain regions are involved.',
@@ -34,9 +35,10 @@ const claimsData = {
 const Page = () => (
   <>
     <Head>
-      <title>Claims Tree Question 1</title>
+      <title>{`Claims Tree Question ${claimsData.questionNumber}`}</title>
     </Head>
     <ClaimsTreeQuestionPage
+      questionNumber={claimsData.questionNumber}
       heading={claimsData.heading}
       title={claimsData.title}
       summary={claimsData.summary}
