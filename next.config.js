@@ -66,8 +66,8 @@ const nextConfig = {
         destination: '/mira/claims-tree'
       },
       {
-        source: '/mira/claims-tree/question',
-        destination: '/mira/claims-tree-question'
+        source: '/mira/claims-tree/question/:id(\\d+)',
+        destination: '/mira/claims-tree-question?id=:id'
       },
       {
         source: '/mira/claims-tree/claim/:id(\\d+)',
