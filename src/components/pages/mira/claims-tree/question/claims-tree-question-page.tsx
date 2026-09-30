@@ -34,11 +34,11 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
     />
     <section className="claims">
       <h2>Related claims ({props.claims.length})</h2>
-      {props.claims.map((claim, index) => (
+      {props.claims.map((claim) => (
         <div className="claim" key={claim.id}>
           <ClaimCard
             questionNumber={claim.questionNumber}
-            claimNumber={(index + 1).toString()}
+            claimNumber={claim.id}
             title={claim.title}
             related={claim.related}>
           </ClaimCard>
