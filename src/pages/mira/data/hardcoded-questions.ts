@@ -15,4 +15,13 @@ export const hardcodedQuestions = [
     attribution: 'Quoted text in Abstract:',
     quote: 'we aimed to assess whether responsibility for these rewards, that is, taking into account whether the rewards occurred following choices made by the participant or the partner, would also influence variations in happiness.',
   },
+  {
+    questionNumber: '3',
+    heading: 'Question:',
+    title: 'Do risk preferences differ between Solo and Social conditions?',
+    summary: 'The paper checks whether choosing for oneself versus for oneself and a partner alters risk aversion.',
+    attribution: 'Quoted text in Abstract:',
+    // eslint-disable-next-line @stylistic/max-len
+    quote: 'we first verified that participants’ choices were reasonable... then assessed whether these choices and the risk preferences they revealed changed depending on whether participants chose just for themselves (solo) or for themselves and the interaction part',
+  },
 ];
