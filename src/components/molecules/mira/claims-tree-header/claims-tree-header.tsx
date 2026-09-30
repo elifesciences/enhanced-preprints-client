@@ -3,10 +3,16 @@ import './claims-tree-header.scss';
 
 type ClaimsTreeHeaderProps = {
   title: string,
+  backLinkLabel?: string,
 };
 
 export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
   <>
+    {props.backLinkLabel && (
+      <a href="#" className="back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12L15 19" stroke="currentColor" strokeWidth="2"></path></svg>{props.backLinkLabel}
+      </a>
+    )}
     <a href="#" className="close">
       <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
     </a>

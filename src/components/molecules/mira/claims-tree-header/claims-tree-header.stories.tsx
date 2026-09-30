@@ -40,3 +40,10 @@ export const Default: Story = {
     title: 'Claims tree',
   },
 };
+
+export const WithBackLink: Story = {
+  args: {
+    title: 'Study 1',
+    backLinkLabel: 'Back to claim',
+  },
+};

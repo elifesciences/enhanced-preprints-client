@@ -28,7 +28,7 @@ type ClaimsTreeStudyPageProps = {
 
 export const ClaimsTreeStudyPage = (props: ClaimsTreeStudyPageProps): JSX.Element => (
   <div className={`claims-tree-pages-content claims-tree-study-page ${dmSans.variable} ${poppins.variable}`}>
-    <ClaimsTreeHeader title={`Study ${props.id}`} />
+    <ClaimsTreeHeader title={`Study ${props.id}`} backLinkLabel="Back to claim" />
     <ClaimsTreeSection
       heading={props.study.heading}
       title={props.study.title}
