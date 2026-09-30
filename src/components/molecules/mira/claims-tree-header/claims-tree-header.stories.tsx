@@ -47,3 +47,13 @@ export const WithBackLink: Story = {
     backLinkLabel: 'Back to claim',
   },
 };
+
+export const WithNavigation: Story = {
+  args: {
+    title: 'Question 1',
+    backLinkLabel: 'Claims tree',
+    navigation: {
+      previousDisabled: true,
+    },
+  },
+};

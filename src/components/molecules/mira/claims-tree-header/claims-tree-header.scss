@@ -15,10 +15,15 @@
   justify-content: center;
 }
 
-.back {
+.header-actions {
   position: absolute;
   left: 56px;
   top: 40px;
+  display: flex;
+  gap: 8px;
+}
+
+.back {
   text-decoration: none;
   height: 32px;
   padding-inline: 12px 16px;
@@ -33,12 +38,31 @@
   align-items: center;
 }
 
+.navigation-link {
+  width: 32px;
+  height: 32px;
+  color: rgb(47 47 47);
+  background-color: rgb(247 248 250);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation-link[aria-disabled="true"] {
+  color: rgb(206 211 224);
+  cursor: default;
+}
+
 a.close:hover,
 a.close:active,
 a.close:focus,
 a.back:hover,
 a.back:active,
-a.back:focus {
+a.back:focus,
+a.navigation-link[href]:hover,
+a.navigation-link[href]:active,
+a.navigation-link[href]:focus {
   background-color: rgb(230 233 240);
 }
 

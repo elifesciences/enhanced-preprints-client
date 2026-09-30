@@ -25,7 +25,11 @@ type ClaimsTreeQuestionPageProps = {
 
 export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.Element => (
   <div className={`claims-tree-pages-content ${dmSans.variable} ${poppins.variable}`}>
-    <ClaimsTreeHeader title={`Question ${props.questionNumber}`} />
+    <ClaimsTreeHeader
+      title={`Question ${props.questionNumber}`}
+      backLinkLabel="Claims tree"
+      navigation={{ previousDisabled: props.questionNumber === '1' }}
+    />
     <ClaimsTreeSection
       heading={props.heading}
       title={props.title}
