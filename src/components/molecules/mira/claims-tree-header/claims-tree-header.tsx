@@ -19,7 +19,7 @@ const NavigationLink = ({ label, disabled, iconPath }: { label: string, disabled
 );
 
 export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
-  <>
+  <header className="claims-tree-header">
     {(props.backLinkLabel || props.navigation) && (
       <div className="header-actions">
         {props.backLinkLabel && (
@@ -49,5 +49,5 @@ export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
         ))}
       </div>
     )}
-  </>
+  </header>
 );

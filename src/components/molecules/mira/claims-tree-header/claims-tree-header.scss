@@ -1,5 +1,13 @@
 @use "../../../../sass/utilities";
 
+.claims-tree-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding-inline: 56px;
+  background-color: rgb(255 255 255);
+}
+
 .close {
   position: absolute;
   right: 56px;
@@ -67,11 +75,13 @@ a.navigation-link[href]:focus {
 }
 
 .header-related-items {
+  max-width: 656px;
+  margin-inline: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 6px;
-  padding-block-end: 56px;
+  padding-block-end: 24px;
 }
 
 .header-related-item {
@@ -91,8 +101,9 @@ h1 {
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  margin-block: 0;
-  padding-block: 40px 56px;
+  max-width: 656px;
+  margin: 0 auto;
+  padding-block: 40px 24px;
   line-height: 32px;
   color: rgb(47 47 47);
 }

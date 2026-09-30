@@ -25,7 +25,7 @@ type ClaimsTreeClaimPageProps = {
 };
 
 export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Element => (
-  <div className={`claims-tree-pages-content claims-tree-claim-page ${dmSans.variable} ${poppins.variable}`}>
+  <div className={`claims-tree-claim-page ${dmSans.variable} ${poppins.variable}`}>
     <ClaimsTreeHeader
       title={`Claim ${props.id}`}
       titleSupplementary={`(question ${props.questionNumber})`}
@@ -36,9 +36,11 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
         props.relatedStudy.name,
       ]}
     />
-    <ClaimsTreeSection {...props.claim} />
-    <ClaimsTreeSection {...props.evidence} />
-    <RelatedStudy {...props.relatedStudy} />
-    {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
+    <div className="claims-tree-pages-content">
+      <ClaimsTreeSection {...props.claim} />
+      <ClaimsTreeSection {...props.evidence} />
+      <RelatedStudy {...props.relatedStudy} />
+      {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
+    </div>
   </div>
 );
