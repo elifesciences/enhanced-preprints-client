@@ -1,3 +1,4 @@
+@use "../../../../sass/settings";
 @use "../../../../sass/utilities";
 
 .claims-tree-header {
@@ -10,7 +11,7 @@
 
 .close {
   position: absolute;
-  right: 56px;
+  right: calc(50% - 16px);
   top: 40px;
   text-decoration: none;
   width: 32px;
@@ -21,14 +22,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    right: 56px;
+  }
 }
 
 .header-actions {
   position: absolute;
   left: 56px;
-  top: 40px;
+  right: 56px;
+  top: 80px;
   display: flex;
   gap: 8px;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    right: auto;
+    top: 40px;
+  }
 }
 
 .back {
@@ -55,6 +66,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+a.back + .navigation-link,
+.header-actions > .navigation-link:first-child {
+  margin-inline-start: auto;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    margin-inline-start: 0;
+  }
 }
 
 .navigation-link[aria-disabled="true"] {
@@ -103,9 +123,25 @@ h1 {
   text-align: center;
   max-width: 656px;
   margin: 0 auto;
-  padding-block: 40px 24px;
+  padding-block: 88px 24px;
   line-height: 32px;
   color: rgb(47 47 47);
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    padding-block-start: 40px;
+  }
+}
+
+.header-actions ~ h1 {
+  padding-block-start: 128px;
+
+  @media only all and (min-width: settings.$breakpoint-small) {
+    padding-block-start: 88px;
+  }
+
+  @media only all and (min-width: settings.$breakpoint-extra-large) {
+    padding-block-start: 40px;
+  }
 }
 
 h1 .supplementary {
