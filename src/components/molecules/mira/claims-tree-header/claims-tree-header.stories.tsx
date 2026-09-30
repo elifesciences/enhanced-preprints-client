@@ -44,14 +44,20 @@ export const Default: Story = {
 export const WithBackLink: Story = {
   args: {
     title: 'Study 1',
-    backLinkLabel: 'Back to claim',
+    backLink: {
+      label: 'Claims tree',
+      href: '#',
+    },
   },
 };
 
 export const WithNavigation: Story = {
   args: {
     title: 'Question 1',
-    backLinkLabel: 'Claims tree',
+    backLink: {
+      label: 'Claims tree',
+      href: '#',
+    },
     navigation: {
       previousDisabled: true,
     },
@@ -62,7 +68,10 @@ export const WithRelatedItems: Story = {
   args: {
     title: 'Claim 1',
     titleSupplementary: '(question 1)',
-    backLinkLabel: 'Claims tree',
+    backLink: {
+      label: 'Question 1',
+      href: '#',
+    },
     navigation: {
       previousDisabled: true,
     },

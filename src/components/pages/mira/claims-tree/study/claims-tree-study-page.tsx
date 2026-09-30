@@ -28,7 +28,7 @@ type ClaimsTreeStudyPageProps = {
 
 export const ClaimsTreeStudyPage = (props: ClaimsTreeStudyPageProps): JSX.Element => (
   <div className={`claims-tree-study-page ${dmSans.variable} ${poppins.variable}`}>
-    <ClaimsTreeHeader title={`Study ${props.id}`} backLinkLabel="Back to claim" />
+    <ClaimsTreeHeader title={`Study ${props.id}`} backLink={{ label: 'Claims tree', href: '/mira/claims-tree' }} />
     <div className="claims-tree-pages-content">
       <ClaimsTreeSection
         heading={props.study.heading}

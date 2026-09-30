@@ -27,7 +27,7 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
   <div className={`${dmSans.variable} ${poppins.variable}`}>
     <ClaimsTreeHeader
       title={`Question ${props.questionNumber}`}
-      backLinkLabel="Claims tree"
+      backLink={{ label: 'Claims tree', href: '/mira/claims-tree' }}
       navigation={{ previousDisabled: props.questionNumber === '1' }}
     />
     <div className="claims-tree-pages-content">

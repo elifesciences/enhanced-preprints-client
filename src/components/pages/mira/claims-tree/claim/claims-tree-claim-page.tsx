@@ -30,7 +30,7 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
     <ClaimsTreeHeader
       title={`Claim ${props.id}`}
       titleSupplementary={`(question ${props.questionNumber})`}
-      backLinkLabel="Claims tree"
+      backLink={{ label: `Question ${props.questionNumber}`, href: `/mira/claims-tree/question/${props.questionNumber}` }}
       navigation={{ previousDisabled: props.id === '1' }}
       relatedItems={[
         ...(props.relatedFigure ? ['Figure'] : []),
