@@ -66,7 +66,7 @@ a.navigation-link[href]:focus {
   background-color: rgb(230 233 240);
 }
 
-.related-items {
+.header-related-items {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -74,12 +74,12 @@ a.navigation-link[href]:focus {
   padding-block-end: 56px;
 }
 
-.related-item {
+.header-related-item {
   font-family: var(--font-dm-sans, sans-serif);
   font-weight: 600;
   font-size: 14px;
   line-height: 22px;
-  padding: 1px 10px;
+  padding: 1px 8px;
   white-space: nowrap;
   color: rgb(47 47 47);
   background-color: rgb(230 233 240);

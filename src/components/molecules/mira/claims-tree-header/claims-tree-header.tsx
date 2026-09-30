@@ -42,10 +42,10 @@ export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
       {props.title}{props.titleSupplementary && <> <span className="supplementary">{props.titleSupplementary}</span></>}
     </h1>
     {props.relatedItems && (
-      <div className="related-items">
+      <div className="header-related-items">
         <span className="visuallyhidden">The following is related to this claim: </span>
         {props.relatedItems.map((relatedItem) => (
-          <span className="related-item" key={relatedItem}>{relatedItem}</span>
+          <span className="header-related-item" key={relatedItem}>{relatedItem}</span>
         ))}
       </div>
     )}
