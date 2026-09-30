@@ -52,3 +52,20 @@ export const mockClaimsTreeData = [{
     },
   ],
 }];
+
+export const mockClaimsTreeStudies = [
+  {
+    id: '1',
+    name: 'Study 1',
+    title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
+    summary: 'Participants performed three sessions outside the scanner; partner was another participant.',
+    studyPageHref: '/mira/claims-tree/study/1',
+  },
+  {
+    id: '2',
+    name: 'Study 2',
+    title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+    summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+    studyPageHref: '/mira/claims-tree/study/2',
+  },
+];

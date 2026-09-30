@@ -14,6 +14,7 @@ const Page = (props: ServerSideProps) => (
     </Head>
     <ClaimsTreePage
       questions={props.questions}
+      studies={props.studies}
     ></ClaimsTreePage>
   </>
 );

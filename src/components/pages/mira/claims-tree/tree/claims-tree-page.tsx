@@ -6,6 +6,7 @@ import { dmSans, poppins } from '../../../../fonts/mira';
 import { ClaimCard } from '../../../../molecules/mira/claim-card/claim-card';
 import { ClaimsTreeHeader } from '../../../../molecules/mira/claims-tree-header/claims-tree-header';
 import { QuestionCard } from '../../../../molecules/mira/question-card/question-card';
+import { RelatedStudy, type RelatedStudyProps } from '../../../../molecules/mira/related-study/related-study';
 
 type Claim = {
   id: string,
@@ -22,6 +23,7 @@ type Question = {
 
 type ClaimsTreePageProps = {
   questions: Array<Question>,
+  studies: Array<RelatedStudyProps & { id: string }>,
 };
 
 export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
@@ -65,6 +67,12 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
             </li>
           ))}
         </ul>
+        <section className="studies">
+          <h2 className="label">Studies</h2>
+          {props.studies.map((study) => (
+            <RelatedStudy key={study.id} {...study} />
+          ))}
+        </section>
       </div>
     </div>
   );
