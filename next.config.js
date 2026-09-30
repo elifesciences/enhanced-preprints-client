@@ -74,8 +74,8 @@ const nextConfig = {
         destination: '/mira/claims-tree-claim?id=:id'
       },
       {
-        source: '/mira/claims-tree/study',
-        destination: '/mira/claims-tree-study'
+        source: '/mira/claims-tree/study/:id(\\d+)',
+        destination: '/mira/claims-tree-study?id=:id'
       }
     ],
     fallback: [
