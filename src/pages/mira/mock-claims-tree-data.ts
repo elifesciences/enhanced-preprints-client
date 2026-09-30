@@ -24,7 +24,7 @@ export const mockClaimsTreeData = [{
 },
 {
   questionNumber: '2',
-  text: 'Happiness incorporates partner reward prediction errors with a responsibility-weighted rule — partner RPEs caused by the participant\'s own choices receive an independent, non-zero weight in the happiness computation.',
+  text: 'How does responsibility for a partner\'s outcomes influence momentary happiness and its neural correlates?',
   claims: [
     {
       id: '4',
