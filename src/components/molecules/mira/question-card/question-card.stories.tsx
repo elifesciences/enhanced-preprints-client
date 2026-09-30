@@ -32,6 +32,7 @@ export const SingleClaim: Story = {
     questionNumber: '2',
     text: 'Is the treatment safe for long-term use?',
     claimCount: '1',
+    questionPageHref: '#',
   },
 };
 
@@ -40,6 +41,7 @@ export const ManyClaims: Story = {
     questionNumber: '3',
     text: 'What are the mechanisms underlying the observed therapeutic effects?',
     claimCount: '12',
+    questionPageHref: '#',
   },
 };
 
@@ -48,5 +50,6 @@ export const LongQuestion: Story = {
     questionNumber: '4',
     text: 'How do the pharmacokinetic properties of the compound vary across different patient populations, and what implications does this have for dosing strategies in clinical practice?',
     claimCount: '5',
+    questionPageHref: '#',
   },
 };

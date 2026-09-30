@@ -40,6 +40,7 @@ export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
                 questionNumber={question.questionNumber}
                 text={question.text}
                 claimCount={question.claims.length.toString()}
+                questionPageHref={`/mira/claims-tree/question/${question.questionNumber}`}
               ></QuestionCard>
               <section className="claims">
 

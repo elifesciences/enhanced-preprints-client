@@ -5,12 +5,13 @@ import { dmSans } from '../../../fonts/mira';
 type QuestionCardProps = {
   questionNumber: string,
   text: string,
-  claimCount: string
+  claimCount: string,
+  questionPageHref: string,
 };
 
 export const QuestionCard = (props: QuestionCardProps): JSX.Element => (
   <>
-    <a href="#" draggable="false" className={`card ${dmSans.variable}`}>
+    <a href={props.questionPageHref} draggable="false" className={`card ${dmSans.variable}`}>
       <header>Question {props.questionNumber}
         <span aria-hidden="true" className="dot">&nbsp;&#x2022;&nbsp;</span>
         <span className="visuallyhidden">comprises </span>{props.claimCount} claims<span className="visuallyhidden">.</span>
