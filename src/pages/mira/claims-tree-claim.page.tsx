@@ -23,6 +23,7 @@ type ServerSideProps = {
     name: string,
     title: string,
     summary: string,
+    studyPageHref: string,
   },
   relatedFigure?: {
     name: string,
@@ -36,7 +37,19 @@ type ServerSideProps = {
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ query }) => {
   const claimDataItem = hardcodedClaims.find(({ id }) => id === query.id);
 
-  return claimDataItem ? { props: claimDataItem } : { notFound: true };
+  if (!claimDataItem) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      ...claimDataItem,
+      relatedStudy: {
+        ...claimDataItem.relatedStudy,
+        studyPageHref: '#',
+      },
+    },
+  };
 };
 
 const Page = ({
