@@ -20,11 +20,14 @@ export const hardcodedClaims = [
       attribution: 'Quoted text in Results:',
       quote: 'We found a weak response in a small cluster within the left anterior insula (peak T = 3.95, d = 0.59, 22 voxels, peak intensity at [−28 24 −4]; Figure 4F). This correction resulted in a p value of 0.024.',
     },
-    relatedStudy: {
-      name: 'Study 2',
-      title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
     relatedFigure: {
       name: 'Figure 4',
       image: figure4,
@@ -51,11 +54,14 @@ export const hardcodedClaims = [
       // eslint-disable-next-line @stylistic/max-len
       quote: 'The first analysis revealed a cluster in the right IFG whose connectivity to the insula (the seed region) was highest when participants made Risky choices for themselves and Safe choices for both players (pFWE = 0.020, T = 4.34, d = 0.80, Z = 4.21, 115 vox',
     },
-    relatedStudy: {
-      name: 'Study 2',
-      title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
     relatedFigure: {
       name: 'Figure 5',
       image: figure5,
@@ -81,11 +87,14 @@ export const hardcodedClaims = [
       attribution: 'Quoted text in Results:',
       quote: 'We found this effect in one cluster within the left STS (pFWE = 0.022, T = 4.70, d = 0.53, Z = 4.57, 100 voxels, peak at MNI [−52 –32 0]; Figure 4H).',
     },
-    relatedStudy: {
-      name: 'Study 2',
-      title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
     relatedFigure: {
       name: 'Figure 3',
       image: figure3,
@@ -111,11 +120,20 @@ export const hardcodedClaims = [
       attribution: 'Quoted text in Results:',
       quote: 'When the partner received the low lottery outcome, participant happiness was lower when they rather than the partner had chosen the lottery (Study 1: t(39) = –3.58, p < 0.001, d = 0.56, BF10 = 32).',
     },
-    relatedStudy: {
-      name: 'Study 1 & 2',
-      title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling. Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed three sessions outside the scanner; partner was another participant. Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '1',
+        name: 'Study 1',
+        title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
+        summary: 'Participants performed three sessions outside the scanner; partner was another participant.',
+      },
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
   },
   {
     id: '5',
@@ -134,11 +152,20 @@ export const hardcodedClaims = [
       attribution: 'Quoted text in Results:',
       quote: 'The Responsibility model fitted better than all the other models (Study 1: all LR ≥47.36, p < 0.0001).',
     },
-    relatedStudy: {
-      name: 'Study 1 & 2',
-      title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling. Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed three sessions outside the scanner; partner was another participant. Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '1',
+        name: 'Study 1',
+        title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
+        summary: 'Participants performed three sessions outside the scanner; partner was another participant.',
+      },
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
   },
   {
     id: '6',
@@ -157,10 +184,19 @@ export const hardcodedClaims = [
       attribution: 'Quoted text in Results:',
       quote: 'Risk premiums did not differ between Social and Solo conditions (Study 1: Figure 2B, t(39) = 1.53, p = 0.134, Cohen’s d = 0.24, BF10 = 0.49).',
     },
-    relatedStudy: {
-      name: 'Study 1 & 2',
-      title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling. Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
-      summary: 'Participants performed three sessions outside the scanner; partner was another participant. Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
-    },
+    relatedStudies: [
+      {
+        id: '1',
+        name: 'Study 1',
+        title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
+        summary: 'Participants performed three sessions outside the scanner; partner was another participant.',
+      },
+      {
+        id: '2',
+        name: 'Study 2',
+        title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+        summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+      },
+    ],
   },
 ];

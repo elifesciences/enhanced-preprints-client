@@ -19,12 +19,13 @@ type ServerSideProps = {
   questionNumber: string,
   claim: Section,
   evidence: Section,
-  relatedStudy: {
+  relatedStudies: Array<{
+    id: string,
     name: string,
     title: string,
     summary: string,
     studyPageHref: string,
-  },
+  }>,
   relatedFigure?: {
     name: string,
     image: StaticImageData,
@@ -44,16 +45,16 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
   return {
     props: {
       ...claimDataItem,
-      relatedStudy: {
-        ...claimDataItem.relatedStudy,
-        studyPageHref: '#',
-      },
+      relatedStudies: claimDataItem.relatedStudies.map((relatedStudy) => ({
+        ...relatedStudy,
+        studyPageHref: `/mira/claims-tree/study/${relatedStudy.id}`,
+      })),
     },
   };
 };
 
 const Page = ({
-  id, questionNumber, claim, evidence, relatedStudy, relatedFigure,
+  id, questionNumber, claim, evidence, relatedStudies, relatedFigure,
 }: ServerSideProps) => (
   <>
     <Head>
@@ -64,7 +65,7 @@ const Page = ({
       questionNumber={questionNumber}
       claim={claim}
       evidence={evidence}
-      relatedStudy={relatedStudy}
+      relatedStudies={relatedStudies}
       relatedFigure={relatedFigure}
     ></ClaimsTreeClaimPage>
   </>

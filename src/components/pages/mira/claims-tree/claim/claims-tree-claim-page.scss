@@ -1,8 +1,25 @@
+.claims-tree-claim-page .related-studies {
+  padding-block: 32px 40px;
+}
+
 .claims-tree-claim-page .claims-tree-section,
-.claims-tree-claim-page .related-study {
+.claims-tree-claim-page .related-studies {
   border-block-end: 1px solid rgb(206 211 224);
 }
 
-.claims-tree-claim-page .related-study:last-child {
+.claims-tree-claim-page .related-studies:last-child {
   border-block-end: none;
+}
+
+.claims-tree-claim-page .related-studies .label {
+  font-size: 16px;
+  line-height: 26px;
+  color: rgb(103 109 115);
+  font-family: var(--font-dm-sans, sans-serif);
+  font-weight: 400;
+  margin-block-end: 24px;
+}
+
+.claims-tree-claim-page .related-studies .related-study + .related-study {
+  margin-block-start: 24px;
 }

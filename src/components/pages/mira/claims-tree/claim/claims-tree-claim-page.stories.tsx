@@ -40,12 +40,13 @@ const meta: Meta<typeof ClaimsTreeClaimPage> = {
       attribution: 'Quoted text in Methods:',
       quote: 'BOLD signal was analyzed using a general linear model with responsibility as the primary contrast of interest.',
     },
-    relatedStudy: {
+    relatedStudies: [{
+      id: '2',
       name: 'Study 2',
       title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
       summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
       studyPageHref: '#',
-    },
+    }],
   },
   render: (args) => (
     <ClaimsTreeLayout>

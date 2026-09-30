@@ -13,7 +13,6 @@ export const RelatedStudy = ({
   name, title, summary, studyPageHref,
 }: RelatedStudyProps): JSX.Element => (
   <div className={`related-study ${dmSans.variable}`}>
-    <h2 className="label">Related study:</h2>
     <a href={studyPageHref} draggable="false" className="study-card">
       <article>
         <header>{name}</header>

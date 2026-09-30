@@ -1,3 +1,4 @@
+import pluralize from 'pluralize';
 import { type JSX } from 'react';
 import './claims-tree-claim-page.scss';
 import { dmSans, poppins } from '../../../../fonts/mira';
@@ -20,7 +21,7 @@ type ClaimsTreeClaimPageProps = {
   questionNumber: string,
   claim: Section,
   evidence: Section,
-  relatedStudy: RelatedStudyProps,
+  relatedStudies: Array<RelatedStudyProps & { id: string }>,
   relatedFigure?: RelatedFigureProps,
 };
 
@@ -33,13 +34,18 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
       navigation={{ previousDisabled: props.id === '1' }}
       relatedItems={[
         ...(props.relatedFigure ? ['Figure'] : []),
-        props.relatedStudy.name,
+        `Study ${props.relatedStudies.map(({ id }) => id).join(' & ')}`,
       ]}
     />
     <div className="claims-tree-pages-content">
       <ClaimsTreeSection {...props.claim} />
       <ClaimsTreeSection {...props.evidence} />
-      <RelatedStudy {...props.relatedStudy} />
+      <section className="related-studies">
+        <h2 className="label">Related {pluralize('study', props.relatedStudies.length)}:</h2>
+        {props.relatedStudies.map((relatedStudy) => (
+          <RelatedStudy key={relatedStudy.id} {...relatedStudy} />
+        ))}
+      </section>
       {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
     </div>
   </div>
