@@ -3,11 +3,13 @@ import './claims-tree-header.scss';
 
 type ClaimsTreeHeaderProps = {
   title: string,
+  titleSupplementary?: string,
   backLinkLabel?: string,
   navigation?: {
     previousDisabled?: boolean,
     nextDisabled?: boolean,
   },
+  relatedItems?: Array<string>,
 };
 
 const NavigationLink = ({ label, disabled, iconPath }: { label: string, disabled?: boolean, iconPath: string }): JSX.Element => (
@@ -36,6 +38,16 @@ export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
     <a href="#" className="close">
       <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
     </a>
-    <h1>{props.title}</h1>
+    <h1 className={props.relatedItems ? 'with-related-items' : undefined}>
+      {props.title}{props.titleSupplementary && <> <span className="supplementary">{props.titleSupplementary}</span></>}
+    </h1>
+    {props.relatedItems && (
+      <div className="related-items">
+        <span className="visuallyhidden">The following is related to this claim: </span>
+        {props.relatedItems.map((relatedItem) => (
+          <span className="related-item" key={relatedItem}>{relatedItem}</span>
+        ))}
+      </div>
+    )}
   </>
 );

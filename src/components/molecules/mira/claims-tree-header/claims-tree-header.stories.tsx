@@ -1,13 +1,13 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreeHeader } from './claims-tree-header';
-import { poppins } from '../../../fonts/mira';
+import { dmSans, poppins } from '../../../fonts/mira';
 
 const meta: Meta<typeof ClaimsTreeHeader> = {
   title: 'Molecules/Mira/ClaimsTreeHeader',
   component: ClaimsTreeHeader,
   decorators: [
     (Story) => (
-      <div className={poppins.variable}>
+      <div className={`${dmSans.variable} ${poppins.variable}`}>
         <Story />
       </div>
     ),
@@ -55,5 +55,17 @@ export const WithNavigation: Story = {
     navigation: {
       previousDisabled: true,
     },
+  },
+};
+
+export const WithRelatedItems: Story = {
+  args: {
+    title: 'Claim 1',
+    titleSupplementary: '(question 1)',
+    backLinkLabel: 'Claims tree',
+    navigation: {
+      previousDisabled: true,
+    },
+    relatedItems: ['Figure', 'Study 2'],
   },
 };

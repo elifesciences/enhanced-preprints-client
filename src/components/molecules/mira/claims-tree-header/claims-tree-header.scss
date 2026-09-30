@@ -66,6 +66,26 @@ a.navigation-link[href]:focus {
   background-color: rgb(230 233 240);
 }
 
+.related-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-block-end: 56px;
+}
+
+.related-item {
+  font-family: var(--font-dm-sans, sans-serif);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 1px 10px;
+  white-space: nowrap;
+  color: rgb(47 47 47);
+  background-color: rgb(230 233 240);
+  border-radius: 4px;
+}
+
 h1 {
   font-family: var(--font-poppins, sans-serif);
   font-weight: 600;
@@ -75,4 +95,12 @@ h1 {
   padding-block: 40px 56px;
   line-height: 32px;
   color: rgb(47 47 47);
+}
+
+h1 .supplementary {
+  font-weight: normal;
+}
+
+h1.with-related-items {
+  padding-block-end: 4px;
 }
