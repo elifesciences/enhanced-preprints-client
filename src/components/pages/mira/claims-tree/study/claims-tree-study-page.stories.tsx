@@ -25,7 +25,7 @@ const meta: Meta<typeof ClaimsTreeStudyPage> = {
   render: () => (
     <ClaimsTreeLayout>
       <ClaimsTreeStudyPage
-        studyNumber="2"
+        id="2"
         study={{
           heading: 'Study:',
           title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',

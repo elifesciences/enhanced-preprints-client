@@ -21,25 +21,25 @@ type Protocol = {
 };
 
 type ServerSideProps = {
-  studyNumber: string,
+  id: string,
   study: Study,
   protocols: Array<Protocol>,
 };
 
 // ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ query }) => {
-  const studyDataItem = hardcodedStudies.find(({ studyNumber }) => studyNumber === query.id);
+  const studyDataItem = hardcodedStudies.find(({ id }) => id === query.id);
 
   return studyDataItem ? { props: studyDataItem } : { notFound: true };
 };
 
-const Page = ({ studyNumber, study, protocols }: ServerSideProps) => (
+const Page = ({ id, study, protocols }: ServerSideProps) => (
   <>
     <Head>
-      <title>{`Claims Tree Study ${studyNumber}`}</title>
+      <title>{`Claims Tree Study ${id}`}</title>
     </Head>
     <ClaimsTreeStudyPage
-      studyNumber={studyNumber}
+      id={id}
       study={study}
       protocols={protocols}
     ></ClaimsTreeStudyPage>

@@ -1,6 +1,6 @@
 export const hardcodedStudies = [
   {
-    studyNumber: '2',
+    id: '2',
     study: {
       heading: 'Study:',
       title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
@@ -77,7 +77,7 @@ export const hardcodedStudies = [
     ],
   },
   {
-    studyNumber: '1',
+    id: '1',
     study: {
       heading: 'Study:',
       title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
