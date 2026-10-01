@@ -12,12 +12,12 @@ import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
 import { getServerSideProps as reviewedPreprintGetServerSideProps, type ServerSideProps } from '../reviewed-preprints/get-server-side-props';
 
-const MSID = '105391';
+const MSID_WITH_VERSION = '105391v2';
 
 // ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = (context) => reviewedPreprintGetServerSideProps({
   ...context,
-  params: { path: [MSID] },
+  params: { path: [MSID_WITH_VERSION] },
 });
 
 const Page = ({
