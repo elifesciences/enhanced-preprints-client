@@ -1,0 +1,99 @@
+import { type JSX, type ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../article/article-page.scss';
+import { contentToText } from '../../../../content';
+import {type ServerSideProps} from '../../../../pages/reviewed-preprints/get-server-side-props';
+import { type CitationData } from '../../../atoms/citation/citation';
+import { PreviousVersionWarning } from '../../../atoms/previous-version-warning/previous-version-warning';
+import { type RelatedContentData, RelatedContent } from '../../../atoms/related-content/related-content';
+import { RetractionNotice } from '../../../atoms/retraction-notice/retraction-notice';
+import { ContentHeader } from '../../../molecules/content-header/content-header';
+import { PrototypeArticleStatus } from '../../../molecules/mira/prototype-article-status/prototype-article-status';
+import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from '../../article/tabs';
+
+type Tab = {
+  id: string,
+  linkElement: ReactElement<any>,
+};
+
+type PrototypeArticlePageProps = {
+  metaData: ServerSideProps['metaData'],
+  citationDoi?: string,
+  msidWithVersion: string,
+  relatedContent: RelatedContentData[],
+  metrics?: NonNullable<ServerSideProps['metrics']>,
+  children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
+  activeTab: string,
+  tabs: Tab[],
+  previousVersionWarningUrl?: string,
+  retractionNoticeUrl?: string,
+  timeline: ServerSideProps['timeline'],
+};
+
+export const PrototypeArticlePage = (props: PrototypeArticlePageProps): JSX.Element => {
+  const { t } = useTranslation();
+  const { doi } = props.metaData;
+  const citationDoi = props.citationDoi ?? doi;
+
+  const citation: CitationData = {
+    authors: props.metaData.authors,
+    year: props.metaData.publishedYear,
+    volume: props.metaData.volume,
+    journal: t('publisher_short'),
+    eLocationId: props.metaData.eLocationId,
+    title: contentToText(props.metaData.title),
+    doi: citationDoi,
+  };
+
+  const banner = () => {
+    if (props.retractionNoticeUrl) {
+      return <RetractionNotice url={props.retractionNoticeUrl}/>;
+    }
+    if (props.previousVersionWarningUrl) {
+      return <PreviousVersionWarning url={props.previousVersionWarningUrl} />;
+    }
+    return null;
+  };
+
+  return (
+    <>
+      <div className="primary-section-header">
+        <ContentHeader
+          doi={doi}
+          msas={props.metaData.msas}
+          authors={props.metaData.authors}
+          title={props.metaData.title}
+          license={props.metaData.license}
+          institutions={props.metaData.institutions}
+        />
+      </div>
+      <aside className="side-section">
+        { banner() }
+        <PrototypeArticleStatus
+          doi={doi}
+          umbrellaDoi={props.metaData.umbrellaDoi}
+          pdfUrl={props.metaData.pdfUrl}
+          title={contentToText(props.metaData.title)}
+          citation={citation}
+          msid={props.metaData.msid}
+          {...(props.activeTab !== 'pdf' && { metrics: props.metrics })}
+          timeline={{ current: +props.metaData.version, timelineEvents: props.timeline }}
+        />
+        {(props.relatedContent.length > 0 && props.activeTab !== 'pdf') && <RelatedContent articles={props.relatedContent} />}
+      </aside>
+      <main className="primary-section">
+        <nav className="tabbed-navigation" aria-label="Main tabbed navigation">
+          <ul className="tabbed-navigation__tabs">
+            {props.tabs.map((tab, index) => (
+              <li key={index} className={`tabbed-navigation__tab-label${props.activeTab === tab.id ? ' tabbed-navigation__tab-label--active' : ''}`}>
+                {tab.linkElement}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a id="tab-content" />
+        {props.children}
+      </main>
+    </>
+  );
+};

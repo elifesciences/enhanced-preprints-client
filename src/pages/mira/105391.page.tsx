@@ -1,8 +1,8 @@
 import { type GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
-import { ArticlePage } from '../../components/pages/article/article-page';
 import { ArticleFullTextTab } from '../../components/pages/article/tabs';
+import { PrototypeArticlePage } from '../../components/pages/mira/prototype-article/prototype-article-page';
 import { config } from '../../config';
 import {
   contentToText, contentToJsx, contentToHeadings,
@@ -67,7 +67,7 @@ const Page = ({
         <meta name="citation_language" content="en"/>
         { metaData.authors.map((author, index) => <meta key={index} name="citation_author" content={formatAuthorName(author)} />)}
       </Head>
-      <ArticlePage
+      <PrototypeArticlePage
         previousVersionWarningUrl={makeNullableOptional(previousVersionWarningUrl)}
         citationDoi={citationDoi}
         metrics={makeNullableOptional(metrics)}
@@ -81,7 +81,7 @@ const Page = ({
       >
         {/* eslint-disable-next-line @stylistic/max-len */}
         <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`/reviewed-preprints/${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>
-      </ArticlePage>
+      </PrototypeArticlePage>
     </>
   );
 };
