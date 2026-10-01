@@ -59,6 +59,7 @@ export const WithNavigation: Story = {
       href: '#',
     },
     navigation: {
+      type: 'question',
       nextHref: '#',
     },
   },
@@ -73,6 +74,7 @@ export const WithRelatedItems: Story = {
       href: '#',
     },
     navigation: {
+      type: 'claim',
       nextHref: '#',
     },
     relatedItems: ['Figure', 'Study 2'],

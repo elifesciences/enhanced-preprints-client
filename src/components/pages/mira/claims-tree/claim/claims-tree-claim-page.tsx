@@ -34,6 +34,7 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
       titleSupplementary={`(question ${props.questionNumber})`}
       backLink={{ label: `Question ${props.questionNumber}`, href: `/mira/claims-tree/question/${props.questionNumber}` }}
       navigation={{
+        type: 'claim',
         previousHref: props.previousClaimId && `/mira/claims-tree/claim/${props.previousClaimId}`,
         nextHref: props.nextClaimId && `/mira/claims-tree/claim/${props.nextClaimId}`,
       }}

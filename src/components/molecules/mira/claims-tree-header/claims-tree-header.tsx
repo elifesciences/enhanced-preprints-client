@@ -9,6 +9,7 @@ type ClaimsTreeHeaderProps = {
     href: string,
   },
   navigation?: {
+    type: 'question' | 'claim',
     previousHref?: string,
     nextHref?: string,
   },
@@ -23,24 +24,26 @@ const NavigationLink = ({ label, href, iconPath }: { label: string, href?: strin
 
 export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
   <header className="claims-tree-header">
-    {(props.backLink || props.navigation) && (
-      <div className="header-actions">
-        {props.backLink && (
-          <a href={props.backLink.href} className="back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12L15 19" stroke="currentColor" strokeWidth="2"></path></svg>{props.backLink.label}
-          </a>
-        )}
-        {props.navigation && (
-          <>
-            <NavigationLink label="Previous" href={props.navigation.previousHref} iconPath="M12 20V5M5 11L12 4L19 11" />
-            <NavigationLink label="Next" href={props.navigation.nextHref} iconPath="M12 4V19M5 13L12 20L19 13" />
-          </>
-        )}
-      </div>
-    )}
-    <a href="#" className="close">
-      <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
-    </a>
+    <nav>
+      {(props.backLink || props.navigation) && (
+        <div className="header-actions">
+          {props.backLink && (
+            <a href={props.backLink.href} className="back">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5L8 12L15 19" stroke="currentColor" strokeWidth="2"></path></svg>{props.backLink.label}
+            </a>
+          )}
+          {props.navigation && (
+            <>
+              <NavigationLink label={`Previous ${props.navigation.type}`} href={props.navigation.previousHref} iconPath="M12 20V5M5 11L12 4L19 11" />
+              <NavigationLink label={`Next ${props.navigation.type}`} href={props.navigation.nextHref} iconPath="M12 4V19M5 13L12 20L19 13" />
+            </>
+          )}
+        </div>
+      )}
+      <a href="#" className="close">
+        <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
+      </a>
+    </nav>
     <h1 className={props.relatedItems ? 'with-related-items' : undefined}>
       {props.title}{props.titleSupplementary && <> <span className="supplementary">{props.titleSupplementary}</span></>}
     </h1>

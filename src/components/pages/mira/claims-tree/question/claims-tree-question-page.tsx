@@ -31,6 +31,7 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
       title={`Question ${props.questionNumber}`}
       backLink={{ label: 'Claims tree', href: '/mira/claims-tree' }}
       navigation={{
+        type: 'question',
         previousHref: props.previousQuestionNumber && `/mira/claims-tree/question/${props.previousQuestionNumber}`,
         nextHref: props.nextQuestionNumber && `/mira/claims-tree/question/${props.nextQuestionNumber}`,
       }}
