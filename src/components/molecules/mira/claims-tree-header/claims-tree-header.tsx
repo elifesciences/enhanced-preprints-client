@@ -1,5 +1,8 @@
-import { type JSX } from 'react';
+import { type JSX, type MouseEvent } from 'react';
 import './claims-tree-header.scss';
+import { exitClaimsTree } from './claims-tree-history';
+
+const closeFallbackHref = 'https://doi.org/10.7554/eLife.105391.3';
 
 type ClaimsTreeHeaderProps = {
   title: string,
@@ -21,6 +24,12 @@ const NavigationLink = ({ label, disabled, iconPath }: { label: string, disabled
   </a>
 );
 
+const closeClaimsTree = (event: MouseEvent<HTMLAnchorElement>): void => {
+  if (exitClaimsTree()) {
+    event.preventDefault();
+  }
+};
+
 export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
   <header className="claims-tree-header">
     {(props.backLink || props.navigation) && (
@@ -38,7 +47,7 @@ export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
         )}
       </div>
     )}
-    <a href="#" className="close">
+    <a href={closeFallbackHref} className="close" onClick={closeClaimsTree}>
       <span className="visuallyhidden">Navigate away from this page.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" strokeWidth="2"></path></svg>
     </a>
     <h1 className={props.relatedItems ? 'with-related-items' : undefined}>
