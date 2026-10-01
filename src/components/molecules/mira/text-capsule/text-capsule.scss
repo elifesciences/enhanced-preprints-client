@@ -1,0 +1,35 @@
+// Doubled class to outrank the link styles from the generated-content mixin, e.g. `.article-body a:hover`.
+a.text-capsule.text-capsule {
+  text-decoration: none;
+  border-bottom: none;
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+}
+
+a.text-capsule.text-capsule:hover,
+a.text-capsule.text-capsule:active,
+a.text-capsule.text-capsule:focus {
+  background-color: rgb(230 233 240);
+  color: rgb(47 47 47);
+}
+
+.text-capsule {
+  display: inline-flex;
+  user-select: none;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-dm-sans, sans-serif);
+  font-size: 14px;
+  line-height: 24px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 4px;
+}
+
+.text-capsule * {
+  user-select: text;
+}
+
+.text-capsule svg {
+  flex-shrink: 0;
+  color: rgb(206 211 224);
+}

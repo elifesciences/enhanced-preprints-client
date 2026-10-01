@@ -1,11 +1,12 @@
 import { type GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
-import { ArticleFullTextTab } from '../../components/pages/article/tabs';
+import { prototypeArticleContentToJsx } from '../../components/pages/mira/prototype-article/prototype-article-content';
+import { PrototypeArticleFullTextTab } from '../../components/pages/mira/prototype-article/prototype-article-fulltext-tab';
 import { PrototypeArticlePage } from '../../components/pages/mira/prototype-article/prototype-article-page';
 import { config } from '../../config';
 import {
-  contentToText, contentToJsx, contentToHeadings,
+  contentToText, contentToHeadings,
 } from '../../content';
 import { formatAuthorName } from '../../utils/formatters';
 import { makeNullableOptional } from '../../utils/make-nullable-optional';
@@ -80,7 +81,7 @@ const Page = ({
         retractionNoticeUrl={retractionNoticeUrl}
       >
         {/* eslint-disable-next-line @stylistic/max-len */}
-        <ArticleFullTextTab metrics={metrics} headings={headings} content={contentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`/reviewed-preprints/${msidWithVersion}/reviews#tab-content`}></ArticleFullTextTab>
+        <PrototypeArticleFullTextTab metrics={metrics} headings={headings} content={prototypeArticleContentToJsx(content, { hostedFileMatcher, filesApiPath: `${config.filesApiPath}` })} metaData={metaData} peerReview={peerReview ?? undefined} peerReviewUrl={`/reviewed-preprints/${msidWithVersion}/reviews#tab-content`}></PrototypeArticleFullTextTab>
       </PrototypeArticlePage>
     </>
   );

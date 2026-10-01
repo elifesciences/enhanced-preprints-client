@@ -1,6 +1,7 @@
 import { type JSX, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../article/article-page.scss';
+import { type PrototypeArticleFullTextTab } from './prototype-article-fulltext-tab';
 import { contentToText } from '../../../../content';
 import {type ServerSideProps} from '../../../../pages/reviewed-preprints/get-server-side-props';
 import { type CitationData } from '../../../atoms/citation/citation';
@@ -9,7 +10,7 @@ import { type RelatedContentData, RelatedContent } from '../../../atoms/related-
 import { RetractionNotice } from '../../../atoms/retraction-notice/retraction-notice';
 import { ContentHeader } from '../../../molecules/content-header/content-header';
 import { PrototypeArticleStatus } from '../../../molecules/mira/prototype-article-status/prototype-article-status';
-import { type ArticleFiguresTab, type ArticleFullTextTab, type ArticleReviewsTab } from '../../article/tabs';
+import { type ArticleFiguresTab, type ArticleReviewsTab } from '../../article/tabs';
 
 type Tab = {
   id: string,
@@ -22,7 +23,7 @@ type PrototypeArticlePageProps = {
   msidWithVersion: string,
   relatedContent: RelatedContentData[],
   metrics?: NonNullable<ServerSideProps['metrics']>,
-  children: ReactElement<typeof ArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
+  children: ReactElement<typeof PrototypeArticleFullTextTab | typeof ArticleFiguresTab | typeof ArticleReviewsTab>,
   activeTab: string,
   tabs: Tab[],
   previousVersionWarningUrl?: string,

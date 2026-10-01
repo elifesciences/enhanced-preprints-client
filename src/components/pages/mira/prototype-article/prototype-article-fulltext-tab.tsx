@@ -1,0 +1,63 @@
+import { type JSX } from 'react';
+import '../../article/article-page.scss';
+import { type Heading, type JSXContent } from '../../../../content';
+import { type ServerSideProps } from '../../../../pages/reviewed-preprints/get-server-side-props';
+import { ArticleContent } from '../../../atoms/article-content/article-content';
+import { Assessment } from '../../../atoms/assessment/assessment';
+import { JumpToMenu } from '../../../atoms/jump-to-menu/jump-to-menu';
+import { Metrics } from '../../../atoms/metrics/metrics';
+import { ReferenceList } from '../../../atoms/reference-list/reference-list';
+import { ArticleAndAuthorInformation } from '../../../molecules/article-and-author-information/article-and-author-information';
+import { PrototypeArticleAbstract } from '../../../molecules/mira/prototype-article-abstract/prototype-article-abstract';
+
+type FulltextTabPeerReview = {
+  evaluationSummary?: {
+    text: string,
+    doi?: string,
+  },
+};
+
+type PrototypeArticleFullTextTabProps = {
+  headings: Heading[],
+  metaData: ServerSideProps['metaData'],
+  content: JSXContent,
+  peerReview?: FulltextTabPeerReview,
+  peerReviewUrl?: string,
+  metrics: NonNullable<ServerSideProps['metrics']> | null,
+};
+
+export const PrototypeArticleFullTextTab = (props: PrototypeArticleFullTextTabProps): JSX.Element => {
+  const headings = [
+    { id: 'abstract', text: 'Abstract' },
+    ...props.headings,
+    { id: 'references', text: 'References' },
+    { id: 'article-and-author-information', text: 'Article and Author Information' },
+  ];
+
+  if (props.metrics) {
+    headings.push({ id: 'metrics', text: 'Metrics' });
+  }
+
+  return (
+    <>
+      { (props.peerReview && props.peerReview.evaluationSummary) && <Assessment content={props.peerReview.evaluationSummary.text} doi={props.peerReview.evaluationSummary.doi}/> }
+      <div className="tabbed-navigation__content">
+        <JumpToMenu headings={headings} />
+        <div className="article-body-container">
+          <PrototypeArticleAbstract content={props.metaData.abstract} />
+          <ArticleContent content={props.content} />
+          <ReferenceList references={props.metaData.references} />
+          <ArticleAndAuthorInformation
+            authors={props.metaData.authors}
+            authorNotes={props.metaData.authorNotes}
+            versions={props.metaData.versionHistory}
+            license={props.metaData.license}
+            copyrightYear={props.metaData.copyrightYear}
+            umbrellaDoi={props.metaData.umbrellaDoi}
+          />
+          { props.metrics && <Metrics metrics={props.metrics} doi={props.metaData.umbrellaDoi ? props.metaData.umbrellaDoi : props.metaData.doi} /> }
+        </div>
+      </div>
+    </>
+  );
+};
