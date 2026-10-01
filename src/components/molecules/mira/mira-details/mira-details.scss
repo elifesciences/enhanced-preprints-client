@@ -1,0 +1,47 @@
+@use "../../../../sass/utilities";
+
+a.mira-details {
+  text-decoration: none;
+  background-color: rgb(247 248 250);
+  color: rgb(47 47 47);
+}
+
+a.mira-details:hover,
+a.mira-details:active,
+a.mira-details:focus {
+  background-color: rgb(230 233 240);
+}
+
+.mira-details {
+  display: block;
+  user-select: none;
+  font-family: var(--font-dm-sans, sans-serif);
+  border-radius: 8px;
+  padding: 16px;
+  margin-block-end: 12px;
+}
+
+.mira-details * {
+  user-select: text;
+}
+
+.mira-details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mira-details li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 26px;
+}
+
+.mira-details li + li {
+  margin-block-start: 12px;
+}
+
+.mira-details svg {
+  flex-shrink: 0;
+}

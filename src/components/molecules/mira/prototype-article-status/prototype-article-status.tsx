@@ -7,6 +7,7 @@ import { Socials } from '../../../atoms/socials/socials';
 import { Modal } from '../../modal/modal';
 import '../../article-status/article-status.scss';
 import { Timeline, type TimelineProps } from '../../timeline/timeline';
+import { MiraDetails } from '../mira-details/mira-details';
 
 type PrototypeArticleStatusProps = {
   doi: string,
@@ -56,7 +57,7 @@ export const PrototypeArticleStatus = ({
           <Button text="Share" iconName="share" variant="action" rel="nofollow" onClick={() => setShowShareModal(true)} />
         </li>
       </ul>
-      <a href="/mira/claims-tree">Mira</a>
+      <MiraDetails />
       {metrics && <ContextualData {...metrics} />}
     </div>
     <Modal modalTitle={'Share this article'} open={showShareModal} onModalClose={() => setShowShareModal(false)} modalLayout="share">
