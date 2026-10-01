@@ -20,7 +20,9 @@ type ClaimsTreeQuestionPageProps = {
   summary: string,
   attribution: string,
   quote: string,
-  claims: Array<Claim>
+  claims: Array<Claim>,
+  previousQuestionNumber?: string,
+  nextQuestionNumber?: string,
 };
 
 export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.Element => (
@@ -28,7 +30,10 @@ export const ClaimsTreeQuestionPage = (props: ClaimsTreeQuestionPageProps): JSX.
     <ClaimsTreeHeader
       title={`Question ${props.questionNumber}`}
       backLink={{ label: 'Claims tree', href: '/mira/claims-tree' }}
-      navigation={{ previousDisabled: props.questionNumber === '1' }}
+      navigation={{
+        previousHref: props.previousQuestionNumber && `/mira/claims-tree/question/${props.previousQuestionNumber}`,
+        nextHref: props.nextQuestionNumber && `/mira/claims-tree/question/${props.nextQuestionNumber}`,
+      }}
     />
     <div className="claims-tree-pages-content">
       <ClaimsTreeSection

@@ -59,7 +59,7 @@ export const WithNavigation: Story = {
       href: '#',
     },
     navigation: {
-      previousDisabled: true,
+      nextHref: '#',
     },
   },
 };
@@ -73,7 +73,7 @@ export const WithRelatedItems: Story = {
       href: '#',
     },
     navigation: {
-      previousDisabled: true,
+      nextHref: '#',
     },
     relatedItems: ['Figure', 'Study 2'],
   },

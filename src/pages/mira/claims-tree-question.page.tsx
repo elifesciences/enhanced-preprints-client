@@ -21,6 +21,8 @@ type ServerSideProps = {
   attribution: string,
   quote: string,
   claims: Array<Claim>,
+  previousQuestionNumber?: string,
+  nextQuestionNumber?: string,
 };
 
 // ts-unused-exports:disable-next-line
@@ -33,11 +35,22 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
 
   const claims = mockClaimsTreeData.find(({ questionNumber }) => questionNumber === question.questionNumber)?.claims ?? [];
 
-  return { props: { ...question, claims } };
+  const index = hardcodedQuestions.indexOf(question);
+  const previousQuestion = hardcodedQuestions[index - 1];
+  const nextQuestion = hardcodedQuestions[index + 1];
+
+  return {
+    props: {
+      ...question,
+      claims,
+      ...(previousQuestion && { previousQuestionNumber: previousQuestion.questionNumber }),
+      ...(nextQuestion && { nextQuestionNumber: nextQuestion.questionNumber }),
+    },
+  };
 };
 
 const Page = ({
-  questionNumber, heading, title, summary, attribution, quote, claims,
+  questionNumber, heading, title, summary, attribution, quote, claims, previousQuestionNumber, nextQuestionNumber,
 }: ServerSideProps) => (
   <>
     <Head>
@@ -51,6 +64,8 @@ const Page = ({
       attribution={attribution}
       quote={quote}
       claims={claims}
+      previousQuestionNumber={previousQuestionNumber}
+      nextQuestionNumber={nextQuestionNumber}
     ></ClaimsTreeQuestionPage>
   </>
 );

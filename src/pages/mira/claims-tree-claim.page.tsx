@@ -32,6 +32,8 @@ type ServerSideProps = {
     title: string,
     summary: string,
   },
+  previousClaimId?: string,
+  nextClaimId?: string,
 };
 
 // ts-unused-exports:disable-next-line
@@ -42,9 +44,15 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
     return { notFound: true };
   }
 
+  const index = hardcodedClaims.indexOf(claimDataItem);
+  const previousClaim = hardcodedClaims[index - 1];
+  const nextClaim = hardcodedClaims[index + 1];
+
   return {
     props: {
       ...claimDataItem,
+      ...(previousClaim && { previousClaimId: previousClaim.id }),
+      ...(nextClaim && { nextClaimId: nextClaim.id }),
       relatedStudies: claimDataItem.relatedStudies.map((relatedStudy) => ({
         ...relatedStudy,
         studyPageHref: `/mira/claims-tree/study/${relatedStudy.id}`,
@@ -54,7 +62,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
 };
 
 const Page = ({
-  id, questionNumber, claim, evidence, relatedStudies, relatedFigure,
+  id, questionNumber, claim, evidence, relatedStudies, relatedFigure, previousClaimId, nextClaimId,
 }: ServerSideProps) => (
   <>
     <Head>
@@ -67,6 +75,8 @@ const Page = ({
       evidence={evidence}
       relatedStudies={relatedStudies}
       relatedFigure={relatedFigure}
+      previousClaimId={previousClaimId}
+      nextClaimId={nextClaimId}
     ></ClaimsTreeClaimPage>
   </>
 );

@@ -9,14 +9,14 @@ type ClaimsTreeHeaderProps = {
     href: string,
   },
   navigation?: {
-    previousDisabled?: boolean,
-    nextDisabled?: boolean,
+    previousHref?: string,
+    nextHref?: string,
   },
   relatedItems?: Array<string>,
 };
 
-const NavigationLink = ({ label, disabled, iconPath }: { label: string, disabled?: boolean, iconPath: string }): JSX.Element => (
-  <a href={disabled ? undefined : '#'} className="navigation-link" aria-disabled={disabled}>
+const NavigationLink = ({ label, href, iconPath }: { label: string, href?: string, iconPath: string }): JSX.Element => (
+  <a href={href} className="navigation-link" aria-disabled={href ? undefined : true}>
     <span className="visuallyhidden">{label}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={iconPath} stroke="currentColor" strokeWidth="2"></path></svg>
   </a>
 );
@@ -32,8 +32,8 @@ export const ClaimsTreeHeader = (props: ClaimsTreeHeaderProps): JSX.Element => (
         )}
         {props.navigation && (
           <>
-            <NavigationLink label="Previous" disabled={props.navigation.previousDisabled} iconPath="M12 20V5M5 11L12 4L19 11" />
-            <NavigationLink label="Next" disabled={props.navigation.nextDisabled} iconPath="M12 4V19M5 13L12 20L19 13" />
+            <NavigationLink label="Previous" href={props.navigation.previousHref} iconPath="M12 20V5M5 11L12 4L19 11" />
+            <NavigationLink label="Next" href={props.navigation.nextHref} iconPath="M12 4V19M5 13L12 20L19 13" />
           </>
         )}
       </div>
