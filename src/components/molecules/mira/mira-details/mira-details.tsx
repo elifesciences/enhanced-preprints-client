@@ -1,9 +1,10 @@
 import type {JSX} from 'react';
 import './mira-details.scss';
 import { dmSans } from '../../../fonts/mira';
+import { preventNavigationOnTextSelection } from '../prevent-navigation-on-text-selection';
 
 export const MiraDetails = (): JSX.Element => (
-  <a href="/mira/claims-tree" draggable="false" className={`mira-details ${dmSans.variable}`}>
+  <a href="/mira/claims-tree" draggable="false" onClick={preventNavigationOnTextSelection} className={`mira-details ${dmSans.variable}`}>
     <span className="visuallyhidden">Explore the claims tree: </span>
     <ul>
       <li>

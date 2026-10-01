@@ -2,6 +2,7 @@ import {Fragment} from 'react';
 import type {JSX} from 'react';
 import './claim-card.scss';
 import { dmSans } from '../../../fonts/mira';
+import { preventNavigationOnTextSelection } from '../prevent-navigation-on-text-selection';
 
 type ClaimCardProps = {
   questionNumber: string,
@@ -13,7 +14,7 @@ type ClaimCardProps = {
 
 export const ClaimCard = (props: ClaimCardProps): JSX.Element => (
   <>
-    <a href={props.claimPageHref} draggable="false" className={`claim-card ${dmSans.variable}`}>
+    <a href={props.claimPageHref} draggable="false" onClick={preventNavigationOnTextSelection} className={`claim-card ${dmSans.variable}`}>
       <article>
         <header>Claim {props.claimNumber} <span className="supplementary">(question&nbsp;{props.questionNumber})</span></header>
         <p>{props.title}</p>
