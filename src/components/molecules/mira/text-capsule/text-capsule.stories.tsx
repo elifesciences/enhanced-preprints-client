@@ -12,5 +12,6 @@ type Story = StoryObj<typeof TextCapsule>;
 export const Default: Story = {
   args: {
     text: 'Claim 1 generated from this text',
+    href: '/mira/claims-tree/claim/1',
   },
 };

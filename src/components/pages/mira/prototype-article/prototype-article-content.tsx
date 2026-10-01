@@ -6,11 +6,16 @@ import { TextCapsule } from '../../../molecules/mira/text-capsule/text-capsule';
 
 type Options = Parameters<typeof contentToJsx>[1];
 
+type Capsule = {
+  text: string,
+  href: string,
+};
+
 // Keyed by the id of the heading of the section the capsule belongs to.
-const capsules: Record<string, string> = {
-  s2a2: 'Claim 2 generated from this text',
-  s2b: 'Claim 1 generated from this text',
-  s2b3: 'Claim 3 generated from this text',
+const capsules: Record<string, Capsule> = {
+  s2a2: { text: 'Claim 2 generated from this text', href: '/mira/claims-tree/claim/2' },
+  s2b: { text: 'Claim 1 generated from this text', href: '/mira/claims-tree/claim/1' },
+  s2b3: { text: 'Claim 3 generated from this text', href: '/mira/claims-tree/claim/3' },
 };
 
 const isOfType = (part: Content, type: string) => typeof part === 'object' && 'type' in part && part.type === type;
@@ -18,8 +23,8 @@ const isOfType = (part: Content, type: string) => typeof part === 'object' && 't
 const isHeading = (part: Content): part is HeadingContent => isOfType(part, 'Heading');
 
 // A capsule goes after the last paragraph of its section, before any figures or subsections.
-const findCapsulePositions = (content: Content[]): Map<number, string> => {
-  const positions = new Map<number, string>();
+const findCapsulePositions = (content: Content[]): Map<number, Capsule> => {
+  const positions = new Map<number, Capsule>();
 
   content.forEach((part, index) => {
     if (!isHeading(part) || !part.id || !capsules[part.id]) {
@@ -51,7 +56,7 @@ export const prototypeArticleContentToJsx = (content: Content, options?: Options
 
       const capsule = capsulePositions.get(index);
       if (capsule) {
-        parts.push(<TextCapsule key={`capsule-${index}`} text={capsule} />);
+        parts.push(<TextCapsule key={`capsule-${index}`} text={capsule.text} href={capsule.href} />);
       }
     });
 

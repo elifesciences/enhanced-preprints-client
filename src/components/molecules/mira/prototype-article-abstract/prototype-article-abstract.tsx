@@ -7,6 +7,6 @@ export const PrototypeArticleAbstract = ({ content }: { content: Content }): JSX
   <section className="abstract">
     <h1 id="abstract">Abstract</h1>
     {contentToJsx(content)}
-    <TextCapsule text="Questions 1 and 2 generated from this text" />
+    <TextCapsule text="Questions 1 and 2 generated from this text" href="/mira/claims-tree/question/1" />
   </section>
 );
