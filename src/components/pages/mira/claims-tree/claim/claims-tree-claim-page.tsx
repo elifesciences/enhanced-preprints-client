@@ -22,7 +22,7 @@ type ClaimsTreeClaimPageProps = {
   claim: Section,
   evidence?: Array<Section & { id: string }>,
   relatedStudies?: Array<RelatedStudyProps & { id: string }>,
-  relatedFigure?: RelatedFigureProps,
+  relatedFigures?: Array<RelatedFigureProps>,
   previousClaimId?: string,
   nextClaimId?: string,
 };
@@ -39,7 +39,7 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
         nextHref: props.nextClaimId && `/mira/claims-tree/claim/${props.nextClaimId}`,
       }}
       relatedItems={[
-        ...(props.relatedFigure ? ['Figure'] : []),
+        ...(props.relatedFigures?.length ? ['Figure'] : []),
         ...(props.relatedStudies?.length ? [`Study ${props.relatedStudies.map(({ id }) => id).join(' & ')}`] : []),
       ]}
     />
@@ -56,7 +56,14 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
           ))}
         </section>
       )}
-      {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
+      {props.relatedFigures && props.relatedFigures.length > 0 && (
+        <section className="related-figures">
+          <h2 className="label">Related {pluralize('figure', props.relatedFigures.length)}:</h2>
+          {props.relatedFigures.map((relatedFigure) => (
+            <RelatedFigure key={relatedFigure.name} {...relatedFigure} />
+          ))}
+        </section>
+      )}
     </div>
   </div>
 );

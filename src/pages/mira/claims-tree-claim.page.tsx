@@ -20,12 +20,12 @@ type ServerSideProps = {
   claim: Section,
   evidence?: Array<Section & { id: string }>,
   relatedStudies?: Array<NonNullable<ClaimDataItem['relatedStudies']>[number] & { studyPageHref: string }>,
-  relatedFigure?: {
+  relatedFigures?: Array<{
     name: string,
     image: StaticImageData,
     title: string,
     summary: string,
-  },
+  }>,
   previousClaimId?: string,
   nextClaimId?: string,
 };
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
           studyPageHref: `/mira/claims-tree/study/${relatedStudy.id}`,
         })),
       }),
-      ...(claimDataItem.relatedFigure && { relatedFigure: claimDataItem.relatedFigure }),
+      ...(claimDataItem.relatedFigures && { relatedFigures: claimDataItem.relatedFigures }),
       ...(previousClaim && { previousClaimId: previousClaim.id }),
       ...(nextClaim && { nextClaimId: nextClaim.id }),
     },
@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ 
 };
 
 const Page = ({
-  id, questionNumber, claim, evidence, relatedStudies, relatedFigure, previousClaimId, nextClaimId,
+  id, questionNumber, claim, evidence, relatedStudies, relatedFigures, previousClaimId, nextClaimId,
 }: ServerSideProps) => (
   <>
     <Head>
@@ -79,7 +79,7 @@ const Page = ({
       claim={claim}
       evidence={evidence}
       relatedStudies={relatedStudies}
-      relatedFigure={relatedFigure}
+      relatedFigures={relatedFigures}
       previousClaimId={previousClaimId}
       nextClaimId={nextClaimId}
     ></ClaimsTreeClaimPage>

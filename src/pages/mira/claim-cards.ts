@@ -3,13 +3,13 @@ import { hardCodedClaimsFromExtendedMiraWithRelationships } from './data/hard-co
 export const getClaimCardsForQuestion = (questionNumber: string) => hardCodedClaimsFromExtendedMiraWithRelationships
   .filter((claimDataItem) => claimDataItem.questionNumber === questionNumber)
   .map(({
-    id, claim, relatedStudies, relatedFigure,
+    id, claim, relatedStudies, relatedFigures,
   }) => ({
     id,
     questionNumber,
     title: claim.summary ?? claim.title,
     related: [
-      ...(relatedFigure ? ['Figure'] : []),
+      ...(relatedFigures?.length ? ['Figure'] : []),
       ...(relatedStudies?.length ? [`Study ${relatedStudies.map((relatedStudy) => relatedStudy.id).join(' & ')}`] : []),
     ],
   }));

@@ -29,13 +29,15 @@ export const mockClaims = [
         summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
       },
     ],
-    relatedFigure: {
-      name: 'Figure 4',
-      image: figure4,
-      title: 'BOLD responses.',
-      // eslint-disable-next-line @stylistic/max-len
-      summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
-    },
+    relatedFigures: [
+      {
+        name: 'Figure 4',
+        image: figure4,
+        title: 'BOLD responses.',
+        // eslint-disable-next-line @stylistic/max-len
+        summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
+      },
+    ],
   },
   {
     id: '2',
@@ -63,13 +65,15 @@ export const mockClaims = [
         summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
       },
     ],
-    relatedFigure: {
-      name: 'Figure 5',
-      image: figure5,
-      title: 'Functional connectivity changes.',
-      // eslint-disable-next-line @stylistic/max-len
-      summary: 'Connectivity between the left anterior insula (seed) and a cluster in the right inferior frontal gyrus varied based on condition and choice type, being highest during risky solo choices and safe social choices. This suggests information flow about guilt-related processing during social decision-making.',
-    },
+    relatedFigures: [
+      {
+        name: 'Figure 5',
+        image: figure5,
+        title: 'Functional connectivity changes.',
+        // eslint-disable-next-line @stylistic/max-len
+        summary: 'Connectivity between the left anterior insula (seed) and a cluster in the right inferior frontal gyrus varied based on condition and choice type, being highest during risky solo choices and safe social choices. This suggests information flow about guilt-related processing during social decision-making.',
+      },
+    ],
   },
   {
     id: '3',
@@ -96,13 +100,15 @@ export const mockClaims = [
         summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
       },
     ],
-    relatedFigure: {
-      name: 'Figure 3',
-      image: figure3,
-      title: 'Participant momentary happiness in Studies 1 and 2.',
-      // eslint-disable-next-line @stylistic/max-len
-      summary: 'Happiness correlated with rewards for both participant (A, E) and partner (B, F). The Responsibility Redux computational model predicted happiness variations well (C, G). Critically, changes in momentary happiness after lottery choices in Social and Partner conditions varied with lottery outcome and decision-maker, with lower outcomes decreasing happiness more when participants chose (D, H).',
-    },
+    relatedFigures: [
+      {
+        name: 'Figure 3',
+        image: figure3,
+        title: 'Participant momentary happiness in Studies 1 and 2.',
+        // eslint-disable-next-line @stylistic/max-len
+        summary: 'Happiness correlated with rewards for both participant (A, E) and partner (B, F). The Responsibility Redux computational model predicted happiness variations well (C, G). Critically, changes in momentary happiness after lottery choices in Social and Partner conditions varied with lottery outcome and decision-maker, with lower outcomes decreasing happiness more when participants chose (D, H).',
+      },
+    ],
   },
   {
     id: '4',

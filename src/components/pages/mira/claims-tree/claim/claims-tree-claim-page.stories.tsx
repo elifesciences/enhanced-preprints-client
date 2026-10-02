@@ -61,13 +61,15 @@ type Story = StoryObj<typeof ClaimsTreeClaimPage>;
 
 export const ClaimsTreeClaim: Story = {
   args: {
-    relatedFigure: {
-      name: 'Figure 4',
-      image: figure4,
-      title: 'BOLD responses.',
-      // eslint-disable-next-line @stylistic/max-len
-      summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
-    },
+    relatedFigures: [
+      {
+        name: 'Figure 4',
+        image: figure4,
+        title: 'BOLD responses.',
+        // eslint-disable-next-line @stylistic/max-len
+        summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
+      },
+    ],
   },
 };
 

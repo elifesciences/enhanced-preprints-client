@@ -1,5 +1,9 @@
 /* eslint-disable @stylistic/max-len */
 import { type StaticImageData } from 'next/image';
+import figure2Image from '../../../../public/mira/figure-2.jpg';
+import figure3Image from '../../../../public/mira/figure-3.jpg';
+import figure4Image from '../../../../public/mira/figure-4.jpg';
+import figure5Image from '../../../../public/mira/figure-5.jpg';
 
 type Section = {
   heading: string,
@@ -23,12 +27,40 @@ export type ClaimDataItem = {
     title: string,
     summary: string,
   }>,
-  relatedFigure?: {
+  relatedFigures?: Array<{
     name: string,
     image: StaticImageData,
     title: string,
     summary: string,
-  },
+  }>,
+};
+
+const figure2 = {
+  name: 'Figure 2',
+  image: figure2Image,
+  title: 'Participant choices in Studies 1 (outside fMRI, N = 40) and 2 (inside fMRI, N = 44).',
+  summary: 'The probability of choosing the risky option in Solo and Social conditions was well explained by the expected value difference between options, with slightly more risky choices in Solo than Social in Study 1 only (A, D). Risk premiums did not differ between conditions (B, E). The risk aversion parameter ρ showed participants were slightly more risk averse in the Social condition in Study 1 only (C, F).',
+};
+
+const figure3 = {
+  name: 'Figure 3',
+  image: figure3Image,
+  title: 'Participant momentary happiness in Studies 1 and 2.',
+  summary: 'Happiness correlated with rewards for both participant (A, E) and partner (B, F). The Responsibility Redux computational model predicted happiness variations well (C, G). Critically, changes in momentary happiness after lottery choices in Social and Partner conditions varied with lottery outcome and decision-maker, with lower outcomes decreasing happiness more when participants chose (D, H).',
+};
+
+const figure4 = {
+  name: 'Figure 4',
+  image: figure4Image,
+  title: 'BOLD responses.',
+  summary: 'Regions active during risky choices (A), social decision-making (B), with TPJ and precuneus most active during participant\'s risky social choices (C). Anterior insula responded to low partner outcomes from participant choices (D–F). Ventral striatum tracked participant rewards (G), while left STS tracked partner prediction errors from participant decisions (H–I).',
+};
+
+const figure5 = {
+  name: 'Figure 5',
+  image: figure5Image,
+  title: 'Functional connectivity changes.',
+  summary: 'Connectivity between the left anterior insula (seed) and a cluster in the right inferior frontal gyrus varied based on condition and choice type, being highest during risky solo choices and safe social choices. This suggests information flow about guilt-related processing during social decision-making.',
 };
 
 export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataItem> = [
@@ -50,6 +82,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participant-happiness-lower-when-participant',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '2',
@@ -69,6 +102,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'guilt-effect-occurred-whether-participant',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '3',
@@ -88,6 +122,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'bilateral-ventral-striatum-more-active',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '4',
@@ -107,6 +142,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'manipulation-check-bilateral-ventral-striatum',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '5',
@@ -126,6 +162,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participants-probability-choosing-risky-option',
       },
     ],
+    relatedFigures: [figure2],
   },
   {
     id: '6',
@@ -145,6 +182,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'risk-premiums-not-differ-between',
       },
     ],
+    relatedFigures: [figure2],
   },
   {
     id: '7',
@@ -164,6 +202,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'insula-rois-responded-more-low',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '8',
@@ -190,6 +229,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'mass-univariate-voxel-wise-analysis-found-small',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '9',
@@ -209,6 +249,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '10',
@@ -228,6 +269,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '11',
@@ -247,6 +289,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '12',
@@ -267,6 +310,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'functional-connectivity-between-left-anterior',
       },
     ],
+    relatedFigures: [figure5],
   },
   {
     id: '13',
@@ -292,6 +336,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'functional-connectivity-between-left-anterior',
       },
     ],
+    relatedFigures: [figure5],
   },
   {
     id: '14',
@@ -323,6 +368,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participants-chose-risky-option-lottery',
       },
     ],
+    relatedFigures: [figure2, figure3, figure4],
   },
   {
     id: '15',
@@ -342,6 +388,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '16',
@@ -361,6 +408,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'functional-connectivity-between-left-anterior',
       },
     ],
+    relatedFigures: [figure5],
   },
   {
     id: '17',
@@ -380,6 +428,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participant-happiness-lower-when-participant',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '18',
@@ -400,6 +449,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '19',
@@ -419,6 +469,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedFigures: [figure4],
   },
   {
     id: '20',
@@ -456,6 +507,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participants-chose-risky-option-lottery',
       },
     ],
+    relatedFigures: [figure2],
   },
   {
     id: '21',
@@ -476,6 +528,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '22',
@@ -533,6 +586,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedFigures: [figure3],
   },
   {
     id: '24',
@@ -552,5 +606,6 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'insula-rois-responded-more-low',
       },
     ],
+    relatedFigures: [figure4],
   },
 ];
