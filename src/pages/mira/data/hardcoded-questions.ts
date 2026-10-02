@@ -1,3 +1,4 @@
+// ts-unused-exports:disable-next-line
 export const hardcodedQuestions = [
   {
     questionNumber: '1',

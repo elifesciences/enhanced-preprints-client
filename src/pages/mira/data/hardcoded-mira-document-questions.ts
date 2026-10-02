@@ -1,4 +1,3 @@
-// ts-unused-exports:disable-next-line
 export const hardcodedMiraDocumentQuestions = [
   {
     questionNumber: '1',
