@@ -1,7 +1,7 @@
 import { type GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { type ReactNode } from 'react';
-import { hardcodedStudies } from './data/hardcoded-studies';
+import { hardCodedStudiesWithProtocolsFromExtendedMira } from './data/hard-coded-studies-with-protocols-from-extended-mira';
 import { ClaimsTreeLayout } from '../../components/layouts/mira/claims-tree';
 import { ClaimsTreeStudyPage } from '../../components/pages/mira/claims-tree/study/claims-tree-study-page';
 
@@ -15,9 +15,9 @@ type Protocol = {
   id: string,
   heading: string,
   title: string,
-  summary: string,
-  attribution: string,
-  quote: string,
+  summary?: string,
+  attribution?: string,
+  quote?: string,
 };
 
 type ServerSideProps = {
@@ -28,9 +28,20 @@ type ServerSideProps = {
 
 // ts-unused-exports:disable-next-line
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async ({ query }) => {
-  const studyDataItem = hardcodedStudies.find(({ id }) => id === query.id);
+  const studyDataItem = hardCodedStudiesWithProtocolsFromExtendedMira.find(({ id }) => id === query.id);
 
-  return studyDataItem ? { props: studyDataItem } : { notFound: true };
+  if (!studyDataItem) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      id: studyDataItem.id,
+      study: studyDataItem.study,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      protocols: studyDataItem.protocols.map(({ summary, ...protocol }) => protocol),
+    },
+  };
 };
 
 const Page = ({ id, study, protocols }: ServerSideProps) => (

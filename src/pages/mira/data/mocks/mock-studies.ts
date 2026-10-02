@@ -1,4 +1,5 @@
-export const hardcodedStudies = [
+// ts-unused-exports:disable-next-line
+export const mockStudies = [
   {
     id: '2',
     study: {

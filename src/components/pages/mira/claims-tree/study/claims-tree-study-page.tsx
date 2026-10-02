@@ -15,9 +15,9 @@ type Protocol = {
   id: string,
   heading: string,
   title: string,
-  summary: string,
-  attribution: string,
-  quote: string,
+  summary?: string,
+  attribution?: string,
+  quote?: string,
 };
 
 type ClaimsTreeStudyPageProps = {

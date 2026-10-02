@@ -1,6 +1,6 @@
-import figure3 from '../../../../public/mira/figure-3.jpg';
-import figure4 from '../../../../public/mira/figure-4.jpg';
-import figure5 from '../../../../public/mira/figure-5.jpg';
+import figure3 from '../../../../../public/mira/figure-3.jpg';
+import figure4 from '../../../../../public/mira/figure-4.jpg';
+import figure5 from '../../../../../public/mira/figure-5.jpg';
 
 // ts-unused-exports:disable-next-line
 export const mockClaims = [
