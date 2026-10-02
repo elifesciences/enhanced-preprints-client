@@ -11,17 +11,17 @@ import '../common.scss';
 type Section = {
   heading: string,
   title: string,
-  summary: string,
-  attribution: string,
-  quote: string,
+  summary?: string,
+  attribution?: string,
+  quote?: string,
 };
 
 type ClaimsTreeClaimPageProps = {
   id: string,
   questionNumber: string,
   claim: Section,
-  evidence: Section,
-  relatedStudies: Array<RelatedStudyProps & { id: string }>,
+  evidence?: Array<Section & { id: string }>,
+  relatedStudies?: Array<RelatedStudyProps & { id: string }>,
   relatedFigure?: RelatedFigureProps,
   previousClaimId?: string,
   nextClaimId?: string,
@@ -40,18 +40,22 @@ export const ClaimsTreeClaimPage = (props: ClaimsTreeClaimPageProps): JSX.Elemen
       }}
       relatedItems={[
         ...(props.relatedFigure ? ['Figure'] : []),
-        `Study ${props.relatedStudies.map(({ id }) => id).join(' & ')}`,
+        ...(props.relatedStudies?.length ? [`Study ${props.relatedStudies.map(({ id }) => id).join(' & ')}`] : []),
       ]}
     />
     <div className="claims-tree-pages-content">
       <ClaimsTreeSection {...props.claim} />
-      <ClaimsTreeSection {...props.evidence} />
-      <section className="related-studies">
-        <h2 className="label">Related {pluralize('study', props.relatedStudies.length)}:</h2>
-        {props.relatedStudies.map((relatedStudy) => (
-          <RelatedStudy key={relatedStudy.id} {...relatedStudy} />
-        ))}
-      </section>
+      {props.evidence?.map((evidence) => (
+        <ClaimsTreeSection key={evidence.id} {...evidence} />
+      ))}
+      {props.relatedStudies && props.relatedStudies.length > 0 && (
+        <section className="related-studies">
+          <h2 className="label">Related {pluralize('study', props.relatedStudies.length)}:</h2>
+          {props.relatedStudies.map((relatedStudy) => (
+            <RelatedStudy key={relatedStudy.id} {...relatedStudy} />
+          ))}
+        </section>
+      )}
       {props.relatedFigure && <RelatedFigure {...props.relatedFigure} />}
     </div>
   </div>

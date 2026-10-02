@@ -1,5 +1,5 @@
 // ts-unused-exports:disable-next-line
-export const hardcodedQuestions = [
+export const mockQuestions = [
   {
     questionNumber: '1',
     heading: 'Question:',

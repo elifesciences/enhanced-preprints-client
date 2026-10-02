@@ -26,54 +26,46 @@ type ClaimsTreePageProps = {
   studies: Array<RelatedStudyProps & { id: string }>,
 };
 
-export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => {
-  let claimNumber = 0;
+export const ClaimsTreePage = (props: ClaimsTreePageProps): JSX.Element => (
+  <div className={`${dmSans.variable} ${poppins.variable}`}>
+    <ClaimsTreeHeader title="Claims tree" />
+    <div className="claims-tree-pages-content">
+      <div className="visuallyhidden">There {props.questions.length > 1 ? 'are' : 'is'} {props.questions.length} {pluralize('question', props.questions.length)}</div>
+      <ul role="list">
 
-  return (
-    <div className={`${dmSans.variable} ${poppins.variable}`}>
-      <ClaimsTreeHeader title="Claims tree" />
-      <div className="claims-tree-pages-content">
-        <div className="visuallyhidden">There {props.questions.length > 1 ? 'are' : 'is'} {props.questions.length} {pluralize('question', props.questions.length)}</div>
-        <ul role="list">
+        {props.questions.map((question) => (
+          <li role="listitem" key={question.questionNumber}>
+            <QuestionCard
+              questionNumber={question.questionNumber}
+              text={question.text}
+              claimCount={question.claims.length.toString()}
+              questionPageHref={`/mira/claims-tree/question/${question.questionNumber}`}
+            ></QuestionCard>
+            <section className="claims">
 
-          {props.questions.map((question) => (
-            <li role="listitem" key={question.questionNumber}>
-              <QuestionCard
-                questionNumber={question.questionNumber}
-                text={question.text}
-                claimCount={question.claims.length.toString()}
-                questionPageHref={`/mira/claims-tree/question/${question.questionNumber}`}
-              ></QuestionCard>
-              <section className="claims">
+              <header className="visuallyhidden">There {question.claims.length > 1 ? 'are' : 'is'} {question.claims.length} {pluralize('claim', question.claims.length)} for this question:</header>
 
-                <header className="visuallyhidden">There {question.claims.length > 1 ? 'are' : 'is'} {question.claims.length} {pluralize('claim', question.claims.length)} for this question:</header>
-
-                {question.claims.map((claim) => {
-                  claimNumber += 1;
-
-                  return (
-                    <div className="claim-row" key={claim.id}>
-                      <ClaimCard
-                        questionNumber={question.questionNumber}
-                        claimNumber={claimNumber.toString()}
-                        title={claim.title}
-                        related={claim.related}
-                        claimPageHref={`/mira/claims-tree/claim/${claim.id}`}>
-                      </ClaimCard>
-                    </div>
-                  );
-                })}
-              </section>
-            </li>
-          ))}
-        </ul>
-        <section className="studies">
-          <h2 className="label">Studies</h2>
-          {props.studies.map((study) => (
-            <RelatedStudy key={study.id} {...study} />
-          ))}
-        </section>
-      </div>
+              {question.claims.map((claim) => (
+                <div className="claim-row" key={claim.id}>
+                  <ClaimCard
+                    questionNumber={question.questionNumber}
+                    claimNumber={claim.id}
+                    title={claim.title}
+                    related={claim.related}
+                    claimPageHref={`/mira/claims-tree/claim/${claim.id}`}>
+                  </ClaimCard>
+                </div>
+              ))}
+            </section>
+          </li>
+        ))}
+      </ul>
+      <section className="studies">
+        <h2 className="label">Studies</h2>
+        {props.studies.map((study) => (
+          <RelatedStudy key={study.id} {...study} />
+        ))}
+      </section>
     </div>
-  );
-};
+  </div>
+);

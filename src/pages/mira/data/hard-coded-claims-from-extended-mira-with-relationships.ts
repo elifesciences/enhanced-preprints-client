@@ -1,6 +1,37 @@
 /* eslint-disable @stylistic/max-len */
-// ts-unused-exports:disable-next-line
-export const hardCodedClaimsFromExtendedMiraWithRelationships = [
+import { type StaticImageData } from 'next/image';
+
+type Section = {
+  heading: string,
+  title: string,
+  summary?: string,
+  attribution?: string,
+  quote?: string,
+};
+
+export type ClaimDataItem = {
+  id: string,
+  sourceId: string,
+  questionId: string,
+  questionNumber: string,
+  derivedFrom?: string,
+  claim: Section,
+  evidence?: Array<Section & { id: string }>,
+  relatedStudies?: Array<{
+    id: string,
+    name: string,
+    title: string,
+    summary: string,
+  }>,
+  relatedFigure?: {
+    name: string,
+    image: StaticImageData,
+    title: string,
+    summary: string,
+  },
+};
+
+export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataItem> = [
   {
     id: '1',
     sourceId: 'urn:uuid:85137f0a-ebf3-4512-8cb6-d6cb9eb6931e',

@@ -33,13 +33,14 @@ const meta: Meta<typeof ClaimsTreeClaimPage> = {
       attribution: 'Quoted text in Results:',
       quote: 'Responsibility for the partner\'s bad outcomes was associated with increased activity in the left anterior insula.',
     },
-    evidence: {
+    evidence: [{
+      id: 'evidence-1',
       heading: 'Evidence:',
       title: 'fMRI analysis of BOLD signal in the anterior insula during risky choices made for a partner.',
       summary: 'A general linear model contrasting responsibility and no-responsibility trials revealed increased BOLD signal in the left anterior insula.',
       attribution: 'Quoted text in Methods:',
       quote: 'BOLD signal was analyzed using a general linear model with responsibility as the primary contrast of interest.',
-    },
+    }],
     relatedStudies: [{
       id: '2',
       name: 'Study 2',

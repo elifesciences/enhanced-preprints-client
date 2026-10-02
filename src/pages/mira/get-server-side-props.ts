@@ -1,5 +1,7 @@
 import { type GetServerSideProps } from 'next';
-import { mockClaimsTreeData, mockClaimsTreeStudies } from './mock-claims-tree-data';
+import { getClaimCardsForQuestion } from './claim-cards';
+import { hardcodedMiraDocumentQuestions } from './data/hardcoded-mira-document-questions';
+import { mockClaimsTreeStudies } from './data/mocks/mock-claims-tree-data';
 
 export type ServerSideProps = {
   questions: Array<{
@@ -23,7 +25,11 @@ export type ServerSideProps = {
 
 export const getServerSideProps: GetServerSideProps<ServerSideProps> = async () => ({
   props: {
-    questions: mockClaimsTreeData,
+    questions: hardcodedMiraDocumentQuestions.map(({ questionNumber, title }) => ({
+      questionNumber,
+      text: title,
+      claims: getClaimCardsForQuestion(questionNumber),
+    })),
     studies: mockClaimsTreeStudies,
   },
 });

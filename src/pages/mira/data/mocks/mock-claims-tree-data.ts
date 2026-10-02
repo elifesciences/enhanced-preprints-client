@@ -1,3 +1,4 @@
+// ts-unused-exports:disable-next-line
 export const mockClaimsTreeData = [{
   questionNumber: '1',
   text: 'What are the neural mechanisms of interpersonal guilt and responsibility during social decisions under risk?',

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/nextjs';
 import { ClaimsTreeQuestionPage } from './claims-tree-question-page';
-import { mockClaimsTreeData } from '../../../../../pages/mira/mock-claims-tree-data';
+import { mockClaimsTreeData } from '../../../../../pages/mira/data/mocks/mock-claims-tree-data';
 import { ClaimsTreeLayout } from '../../../../layouts/mira/claims-tree';
 
 const meta: Meta<typeof ClaimsTreeQuestionPage> = {
