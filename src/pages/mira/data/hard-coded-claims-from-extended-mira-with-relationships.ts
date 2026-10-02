@@ -63,6 +63,20 @@ const figure5 = {
   summary: 'Connectivity between the left anterior insula (seed) and a cluster in the right inferior frontal gyrus varied based on condition and choice type, being highest during risky solo choices and safe social choices. This suggests information flow about guilt-related processing during social decision-making.',
 };
 
+const study1 = {
+  id: '1',
+  name: 'Study 1',
+  title: 'Study 1: Behavioral experiment (N = 40) with risky choice task, happiness ratings, and computational modeling.',
+  summary: 'Participants performed three sessions outside the scanner; partner was another participant.',
+};
+
+const study2 = {
+  id: '2',
+  name: 'Study 2',
+  title: 'Study 2: fMRI experiment (N = 44) with identical task inside scanner, plus neuroimaging acquisition and analysis.',
+  summary: 'Participants performed two sessions in the scanner; partner was an experimenter; fMRI data collected and analyzed with GLM, PPI, and LMMs.',
+};
+
 export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataItem> = [
   {
     id: '1',
@@ -142,6 +156,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'manipulation-check-bilateral-ventral-striatum',
       },
     ],
+    relatedStudies: [study2],
     relatedFigures: [figure4],
   },
   {
@@ -249,6 +264,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedStudies: [study2],
     relatedFigures: [figure4],
   },
   {
@@ -269,6 +285,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure3],
   },
   {
@@ -289,6 +306,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure3],
   },
   {
@@ -368,6 +386,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'participants-chose-risky-option-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure2, figure3, figure4],
   },
   {
@@ -388,6 +407,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure3],
   },
   {
@@ -449,6 +469,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedStudies: [study2],
     relatedFigures: [figure4],
   },
   {
@@ -469,6 +490,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'one-cluster-left-sts-responded',
       },
     ],
+    relatedStudies: [study2],
     relatedFigures: [figure4],
   },
   {
@@ -528,6 +550,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure3],
   },
   {
@@ -555,6 +578,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'partner-reward-prediction-errors-resulting',
       },
     ],
+    relatedStudies: [study1, study2],
   },
   {
     id: '23',
@@ -586,6 +610,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships: Array<ClaimDataIt
         summary: 'when-partner-received-low-lottery',
       },
     ],
+    relatedStudies: [study1, study2],
     relatedFigures: [figure3],
   },
   {
