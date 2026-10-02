@@ -5,6 +5,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '1',
     sourceId: 'urn:uuid:85137f0a-ebf3-4512-8cb6-d6cb9eb6931e',
     questionId: 'urn:uuid:85137f0a-ebf3-4512-8cb6-d6cb9eb6931e#question',
+    questionNumber: '1',
     claim: {
       heading: 'Claim:',
       title: 'alt-agency-aversion-not-guilt',
@@ -15,6 +16,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '2',
     sourceId: 'urn:uuid:f43ad09b-00ac-4442-820f-b0476e74d25a',
     questionId: 'urn:uuid:f43ad09b-00ac-4442-820f-b0476e74d25a#question',
+    questionNumber: '2',
     claim: {
       heading: 'Claim:',
       title: 'alt-guilt-effect-driven-by-own-outcome',
@@ -25,6 +27,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '3',
     sourceId: 'urn:uuid:d5ba8e97-1aab-40c4-9351-c441d83c5697',
     questionId: 'urn:uuid:d5ba8e97-1aab-40c4-9351-c441d83c5697#question',
+    questionNumber: '3',
     claim: {
       heading: 'Claim:',
       title: 'alt-imaging-contrast-invalid',
@@ -35,6 +38,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '4',
     sourceId: 'urn:uuid:f5aef1bf-5c3a-43f7-8db7-8f6cac7a0964',
     questionId: 'urn:uuid:f5aef1bf-5c3a-43f7-8db7-8f6cac7a0964#question',
+    questionNumber: '4',
     claim: {
       heading: 'Claim:',
       title: 'alt-model-based-glm-invalid',
@@ -45,6 +49,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '5',
     sourceId: 'urn:uuid:1f6b6cc4-c9cf-4fe2-a7fa-a0bbad09aeda',
     questionId: 'urn:uuid:1f6b6cc4-c9cf-4fe2-a7fa-a0bbad09aeda#question',
+    questionNumber: '5',
     claim: {
       heading: 'Claim:',
       title: 'alt-participants-insensitive-to-value',
@@ -55,6 +60,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '6',
     sourceId: 'urn:uuid:51c61d6b-8aee-4a0b-b4fa-da89f129bb8f',
     questionId: 'urn:uuid:51c61d6b-8aee-4a0b-b4fa-da89f129bb8f#question',
+    questionNumber: '6',
     claim: {
       heading: 'Claim:',
       title: 'alt-social-context-shifts-risk-attitude',
@@ -65,6 +71,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '7',
     sourceId: 'urn:uuid:04e5bc49-10f5-4beb-8c43-89b22c679b7e',
     questionId: 'urn:uuid:04e5bc49-10f5-4beb-8c43-89b22c679b7e#question',
+    questionNumber: '7',
     claim: {
       heading: 'Claim:',
       title: 'anterior-insula-neural-substrate-guilt',
@@ -75,6 +82,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '8',
     sourceId: 'urn:uuid:2eaffd4f-a6b3-49be-b8b5-4fbb48c18862',
     questionId: 'urn:uuid:04e5bc49-10f5-4beb-8c43-89b22c679b7e#question',
+    questionNumber: '7',
     derivedFrom: 'urn:uuid:04e5bc49-10f5-4beb-8c43-89b22c679b7e',
     claim: {
       heading: 'Claim:',
@@ -86,6 +94,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '9',
     sourceId: 'urn:uuid:330234b6-a3f1-49eb-9dc5-ea3eb2e472d9',
     questionId: 'urn:uuid:d4345156-99c1-4a80-a83f-2d59f0eab0fa#question',
+    questionNumber: '9',
     claim: {
       heading: 'Claim:',
       title: 'authors-suggest-left-sts-region',
@@ -96,6 +105,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '10',
     sourceId: 'urn:uuid:f5f6dea4-d923-46bc-b48c-0c9cf78edc89',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     claim: {
       heading: 'Claim:',
       title: 'behavioural-guilt-effect-larger-happiness',
@@ -106,6 +116,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '11',
     sourceId: 'urn:uuid:9a335450-a36a-4c98-8791-2fb88471625e',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     claim: {
       heading: 'Claim:',
       title: 'both-studies-participants-felt-worse',
@@ -116,6 +127,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '12',
     sourceId: 'urn:uuid:a64ed9c4-5517-4694-b9ba-b4293b6a4d07',
     questionId: 'urn:uuid:fa1da708-d303-40f0-bde6-1eeacbb2389c#question',
+    questionNumber: '8',
     derivedFrom: 'urn:uuid:fa1da708-d303-40f0-bde6-1eeacbb2389c',
     claim: {
       heading: 'Claim:',
@@ -127,6 +139,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '13',
     sourceId: 'urn:uuid:a9bd5d97-a634-413f-9d82-480d553ccf34',
     questionId: 'urn:uuid:fa1da708-d303-40f0-bde6-1eeacbb2389c#question',
+    questionNumber: '8',
     claim: {
       heading: 'Claim:',
       title: 'connectivity-between-left-anterior-insula',
@@ -137,6 +150,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '14',
     sourceId: 'urn:uuid:8ddb6db0-7f1b-404d-ae2a-352a03ba13d3',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     claim: {
       heading: 'Claim:',
       title: 'each-trial-participants-chose-between',
@@ -147,6 +161,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '15',
     sourceId: 'urn:uuid:f8cd7c54-93a3-4b1e-aae2-9367ec966ee2',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     claim: {
       heading: 'Claim:',
       title: 'findings-rest-two-samples-healthy',
@@ -157,6 +172,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '16',
     sourceId: 'urn:uuid:fa1da708-d303-40f0-bde6-1eeacbb2389c',
     questionId: 'urn:uuid:fa1da708-d303-40f0-bde6-1eeacbb2389c#question',
+    questionNumber: '8',
     claim: {
       heading: 'Claim:',
       title: 'functional-connectivity-between-guilt-responsibility-related',
@@ -167,6 +183,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '17',
     sourceId: 'urn:uuid:85ab5c7e-54dc-4443-8535-3592e00b6626',
     questionId: 'urn:uuid:85137f0a-ebf3-4512-8cb6-d6cb9eb6931e#question',
+    questionNumber: '1',
     claim: {
       heading: 'Claim:',
       title: 'lower-happiness-when-participant-decision-maker',
@@ -177,6 +194,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '18',
     sourceId: 'urn:uuid:a68091e1-3046-42a5-9318-f41d60a73c10',
     questionId: 'urn:uuid:d4345156-99c1-4a80-a83f-2d59f0eab0fa#question',
+    questionNumber: '9',
     derivedFrom: 'urn:uuid:d4345156-99c1-4a80-a83f-2d59f0eab0fa',
     claim: {
       heading: 'Claim:',
@@ -188,6 +206,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '19',
     sourceId: 'urn:uuid:d4345156-99c1-4a80-a83f-2d59f0eab0fa',
     questionId: 'urn:uuid:d4345156-99c1-4a80-a83f-2d59f0eab0fa#question',
+    questionNumber: '9',
     claim: {
       heading: 'Claim:',
       title: 'neural-substrate-tracks-participant-responsibility',
@@ -198,6 +217,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '20',
     sourceId: 'urn:uuid:c3110968-1d8c-440f-8f0a-f895f7591a9e',
     questionId: 'urn:uuid:51c61d6b-8aee-4a0b-b4fa-da89f129bb8f#question',
+    questionNumber: '6',
     claim: {
       heading: 'Claim:',
       title: 'participants-showed-very-similar-risk',
@@ -208,6 +228,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '21',
     sourceId: 'urn:uuid:6f88f48c-5191-4b6b-8bd1-4b68cf9a29e7',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     derivedFrom: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a',
     claim: {
       heading: 'Claim:',
@@ -219,6 +240,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '22',
     sourceId: 'urn:uuid:67cf29ce-6fc2-4aa4-bb26-6b990f32019a',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     derivedFrom: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a',
     claim: {
       heading: 'Claim:',
@@ -230,6 +252,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '23',
     sourceId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a',
     questionId: 'urn:uuid:04bfb7fe-175b-44d3-b5bb-f690574d4f6a#question',
+    questionNumber: '10',
     claim: {
       heading: 'Claim:',
       title: 'responsibility-social-choice-yields-low',
@@ -240,6 +263,7 @@ export const hardCodedClaimsFromExtendedMiraWithRelationships = [
     id: '24',
     sourceId: 'urn:uuid:67abbc49-5bf2-4491-bb3c-d00cd9c94a84',
     questionId: 'urn:uuid:04e5bc49-10f5-4beb-8c43-89b22c679b7e#question',
+    questionNumber: '7',
     claim: {
       heading: 'Claim:',
       title: 'study-reproduced-study-design-inside',
