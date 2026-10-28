@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import fetchMock from 'fetch-mock';
 import { type NextApiRequest, type NextApiResponse } from 'next';
 import { createMocks, type createResponse } from 'node-mocks-http';
@@ -17,9 +20,13 @@ describe('citation BibTeX handler', () => {
     query: { msid: '321' },
   });
 
+  beforeEach(() => {
+    fetchMock.mockGlobal();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   test('returns 503 if version is not available', async () => {
@@ -53,6 +60,6 @@ describe('citation BibTeX handler', () => {
     expect(res._getData()).toContain('title = {Tonight we take over the world!}');
 
     expect(res._getData()).toContain('doi = {10.7554/eLife.321.1}');
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/api/citations/10.1101/321456/bibtex');
+    expect(fetchMock.callHistory.lastCall()?.url).toStrictEqual('/undefined/api/citations/10.1101/321456/bibtex');
   });
 });
