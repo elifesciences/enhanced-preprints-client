@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import fetchMock from 'fetch-mock';
 import { generateImageInfo, generateImageUrl } from './generate-image-url';
 
@@ -10,8 +13,12 @@ jest.mock('../../config', () => ({
 }));
 
 describe('generateImageInfo', () => {
+  beforeEach(() => {
+    fetchMock.mockGlobal();
+  });
+
   afterEach(() => {
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
     mockConfig = {};
   });
 
@@ -28,7 +35,7 @@ describe('generateImageInfo', () => {
 
     await generateImageInfo('12345');
 
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/2/12345/info.json');
+    expect(fetchMock.callHistory.lastCall()?.url).toStrictEqual('/undefined/2/12345/info.json');
   });
 
   it('throws an error with the correct message when request fails', async () => {
