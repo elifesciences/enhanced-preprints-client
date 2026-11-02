@@ -1,9 +1,16 @@
+/**
+ * @jest-environment node
+ */
 import fetchMock from 'fetch-mock';
 import { contentToImgInfo } from './content-to-img-info';
 
 describe('content to image info', () => {
+  beforeEach(() => {
+    fetchMock.mockGlobal();
+  });
+
   afterEach(() => {
-    fetchMock.resetBehavior();
+    fetchMock.hardReset();
   });
 
   it('returns a valid width and height with a correct url', async () => {
@@ -19,7 +26,7 @@ describe('content to image info', () => {
 
     await contentToImgInfo({ type: 'ImageObject', meta: { inline: false }, contentUrl: '12345' });
 
-    expect(fetchMock.lastUrl()).toStrictEqual('/undefined/2/12345/info.json');
+    expect(fetchMock.callHistory.lastCall()?.url).toStrictEqual('/undefined/2/12345/info.json');
   });
 
   it('throws an error with the correct message when request fails', async () => {
