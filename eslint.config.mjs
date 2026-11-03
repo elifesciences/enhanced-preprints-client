@@ -1,6 +1,3 @@
-import { fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
 import nextPlugin from '@next/eslint-plugin-next';
 import stylistic from '@stylistic/eslint-plugin';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
@@ -74,12 +71,6 @@ const sharedRules = {
   'no-unreachable': 'error',
 };
 
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
 export default defineConfig([{
   files: [
     'src/*.tsx', 'src/**/*.tsx', 'src/*.ts', 'src/**/*.ts', 'src/*.json', 'src/**/*.json',
@@ -93,15 +84,14 @@ export default defineConfig([{
   plugins: {
     ...sharedPlugins,
     'no-only-tests': noOnlyTests,
-    'next': fixupPluginRules(nextPlugin),
   },
   extends: [
     reactPlugin.configs.flat.recommended,
     reactPlugin.configs.flat['jsx-runtime'],
     ...storybookPlugin.configs['flat/recommended'],
     jsonPlugin.configs.recommended,
-    ...compat.extends('plugin:@next/next/recommended'),
-    ...compat.extends('plugin:@next/next/core-web-vitals'),
+    nextPlugin.configs.recommended,
+    nextPlugin.configs['core-web-vitals'],
   ],
   rules: {
     ...sharedRules,
