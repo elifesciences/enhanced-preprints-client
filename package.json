@@ -71,7 +71,7 @@
     "@typescript-eslint/parser": "^8.50.0",
     "@typescript-eslint/typescript-estree": "^8.49.0",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "chromatic": "^13.0.0",
+    "chromatic": "^18.13.2",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.4.2",
     "eslint-plugin-import": "^2.32.0",
