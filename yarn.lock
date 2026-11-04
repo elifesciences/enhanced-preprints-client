@@ -7547,26 +7547,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^13.0.0":
-  version: 13.3.5
-  resolution: "chromatic@npm:13.3.5"
-  peerDependencies:
-    "@chromatic-com/cypress": ^0.*.* || ^1.0.0
-    "@chromatic-com/playwright": ^0.*.* || ^1.0.0
-  peerDependenciesMeta:
-    "@chromatic-com/cypress":
-      optional: true
-    "@chromatic-com/playwright":
-      optional: true
-  bin:
-    chroma: dist/bin.js
-    chromatic: dist/bin.js
-    chromatic-cli: dist/bin.js
-  checksum: 10c0/58b3d7984db000f8c7b605788569a24c3f3cd41bb6b2d3a94f18acc9ff11ce6c6881f795c8390a94ff721ccfcf8a2d7942e78a54a1f70294a7b3d35ccc382154
-  languageName: node
-  linkType: hard
-
-"chromatic@npm:^18.12.1":
+"chromatic@npm:^18.12.1, chromatic@npm:^18.13.2":
   version: 18.13.8
   resolution: "chromatic@npm:18.13.8"
   dependencies:
@@ -8904,7 +8885,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.50.0"
     "@typescript-eslint/typescript-estree": "npm:^8.49.0"
     babel-plugin-named-exports-order: "npm:^0.0.2"
-    chromatic: "npm:^13.0.0"
+    chromatic: "npm:^18.13.2"
     crc-32: "npm:^1.2.2"
     eslint: "npm:^9.39.2"
     eslint-config-next: "npm:16.4.2"
