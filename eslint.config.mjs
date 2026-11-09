@@ -2,7 +2,7 @@ import nextPlugin from '@next/eslint-plugin-next';
 import stylistic from '@stylistic/eslint-plugin';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import { defineConfig, globalIgnores } from 'eslint/config';
+import { defineConfig } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import jsonPlugin from 'eslint-plugin-json';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
@@ -126,6 +126,4 @@ export default defineConfig([{
   },
   plugins: { ...sharedPlugins },
   rules: { ...sharedRules },
-}, globalIgnores([
-  '**/.yarn/',
-])]);
+}]);

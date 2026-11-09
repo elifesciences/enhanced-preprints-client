@@ -9,14 +9,9 @@
 .git
 .github/**
 
-# node/yarn
+# node/pnpm
 node_modules/**
-.yarn/**
-!.yarn/releases
-!.yarn/patches
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+.pnpm-store/**
 
 # docker
 docker-compose*.yaml

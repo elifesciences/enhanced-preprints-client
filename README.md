@@ -9,9 +9,9 @@ Before getting started, you should have nvm installed on your machine to get the
 `nvm install`
 `nvm use`
 
-We depend on corepack, you can enable it via `corepack enable`.
+We use [pnpm](https://pnpm.io/). The version is pinned by `packageManager` in `package.json`. You can get it by enabling corepack (`corepack enable pnpm`) or by [installing pnpm](https://pnpm.io/installation), which then switches to the pinned version automatically.
 
-Then you can install the dependencies via running `yarn`
+Then you can install the dependencies via running `pnpm install`
 
 ## How do changes reach prod?
 
@@ -31,25 +31,25 @@ A Slack channel `epp-e2e-test-results` is also available for observation.
 
 ## Running the unit tests
 
-To run the unit tests, run `yarn test`.
+To run the unit tests, run `pnpm test`.
 
 ## Running Chromatic visual regression tests
 
-To run the chromatic tests run `yarn chromatic`, to run this script you will need to set an environment variable `CHROMATIC_PROJECT_TOKEN` to the token which is available on the chromatic project management page. 
+To run the chromatic tests run `pnpm chromatic`, to run this script you will need to set an environment variable `CHROMATIC_PROJECT_TOKEN` to the token which is available on the chromatic project management page. 
 
 ## Running the browser tests
 
 To run the browser tests, bring up the application with `docker compose up --wait`
 
-When the application is up, run `yarn test:browser`.
+When the application is up, run `pnpm test:browser`.
 
-## Linting Typescript - `yarn lint` or `yarn lint:fix`
+## Linting Typescript - `pnpm lint` or `pnpm lint:fix`
 
-To identify issues with Typescript, run `yarn lint`, to attempt to automatically fix the issues run `yarn lint:fix`
+To identify issues with Typescript, run `pnpm lint`, to attempt to automatically fix the issues run `pnpm lint:fix`
 
-## Linting sass - `yarn lint-sass` or `yarn lint-sass:fix`
+## Linting sass - `pnpm lint-sass` or `pnpm lint-sass:fix`
 
-To identify issues with sass, run `yarn lint-sass`, to attempt to automatically fix the issues run `yarn lint-sass:fix`
+To identify issues with sass, run `pnpm lint-sass`, to attempt to automatically fix the issues run `pnpm lint-sass:fix`
 
 ## Development build - `docker compose up`
 
@@ -77,17 +77,17 @@ The app is still available at [`localhost:8080`](http://localhost:8080).
 For a better developer experience run:
 
 ```bash
-yarn build
-NEXT_PUBLIC_SITE_NAME=elife NEXT_PUBLIC_FILES_API_PATH=https://prod--epp.elifesciences.org/api/files API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif yarn start
+pnpm build
+NEXT_PUBLIC_SITE_NAME=elife NEXT_PUBLIC_FILES_API_PATH=https://prod--epp.elifesciences.org/api/files API_SERVER=https://prod--epp.elifesciences.org IIIF_SERVER=https://prod--epp.elifesciences.org/iiif pnpm start
 ```
 
 Visit [`localhost:3000`](http://localhost:3000).
 
-Once you make changes to the code you will need to run `yarn build` again.
+Once you make changes to the code you will need to run `pnpm build` again.
 
 ## Storybook
 
-You can run storybook locally using `yarn storybook`. It should auto-reload as you develop stories or components
+You can run storybook locally using `pnpm storybook`. It should auto-reload as you develop stories or components
 
 ## Recreating an issue experienced on production
 
