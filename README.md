@@ -9,7 +9,9 @@ Before getting started, you should have nvm installed on your machine to get the
 `nvm install`
 `nvm use`
 
-We use [pnpm](https://pnpm.io/). The version is pinned by `packageManager` in `package.json`. You can get it by enabling corepack (`corepack enable pnpm`) or by [installing pnpm](https://pnpm.io/installation), which then switches to the pinned version automatically.
+We use [pnpm](https://pnpm.io/). The version is pinned by `packageManager` in `package.json`. Any installed pnpm from version 11 onwards switches to the pinned version automatically, so install pnpm once (for example `npm install --global pnpm@latest`, or see [installing pnpm](https://pnpm.io/installation)).
+
+pnpm 10 can't switch to the pinned version. If you have pnpm 10 (for example from working on Sciety), upgrade it with `pnpm self-update`. Sciety still works with the newer pnpm.
 
 Then you can install the dependencies via running `pnpm install`
 

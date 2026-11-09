@@ -1,11 +1,11 @@
 ARG node_version=24.13-alpine3.22
 
 FROM --platform=$BUILDPLATFORM node:${node_version} AS build
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-RUN corepack enable pnpm
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# Install the pnpm version pinned by packageManager in package.json.
+RUN npm install --global "$(node -p "require('./package.json').packageManager")"
 RUN pnpm install --frozen-lockfile --store-dir /pnpm-store
 
 FROM --platform=$BUILDPLATFORM build AS production_build
@@ -13,21 +13,19 @@ COPY . .
 RUN pnpm build
 
 FROM --platform=$TARGETPLATFORM node:${node_version} AS platform_deps
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-RUN corepack enable pnpm
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY --from=build /pnpm-store /pnpm-store
 COPY --from=build /opt/epp-client/package.json /opt/epp-client/pnpm-lock.yaml /opt/epp-client/pnpm-workspace.yaml ./
+RUN npm install --global "$(node -p "require('./package.json').packageManager")"
 RUN pnpm install --frozen-lockfile --prefer-offline --store-dir /pnpm-store
 
 FROM --platform=$TARGETPLATFORM node:${node_version} AS production_deps
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-RUN corepack enable pnpm
 RUN mkdir /opt/epp-client
 WORKDIR /opt/epp-client
 COPY --from=build /pnpm-store /pnpm-store
 COPY --from=build /opt/epp-client/package.json /opt/epp-client/pnpm-lock.yaml /opt/epp-client/pnpm-workspace.yaml ./
+RUN npm install --global "$(node -p "require('./package.json').packageManager")"
 RUN pnpm install --frozen-lockfile --prod --prefer-offline --store-dir /pnpm-store
 
 
