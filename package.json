@@ -31,7 +31,7 @@
     "build-storybook": "storybook build",
     "test:browser": "playwright test",
     "test-storybook": "test-storybook",
-    "chromatic": "chromatic --only-changed --untraced=package.json --untraced=yarn.lock --exit-zero-on-changes"
+    "chromatic": "chromatic --only-changed --untraced=package.json --untraced=pnpm-lock.yaml --exit-zero-on-changes"
   },
   "browserslist": {
     "production": [
@@ -102,9 +102,5 @@
     "wait-on": "^9.0.0",
     "webpack": "^5.74.0"
   },
-  "packageManager": "yarn@4.12.0",
-  "resolutions": {
-    "@types/react": "19.2.9",
-    "@types/react-dom": "19.2.3"
-  }
+  "packageManager": "pnpm@12.18.0"
 }

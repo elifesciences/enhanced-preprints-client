@@ -19,8 +19,7 @@
 .env.production.local
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
 
 tsconfig.tsbuildinfo
 
@@ -31,14 +30,8 @@ next-env.d.ts
 /playwright-report/
 /playwright/.cache/
 
-# Yarn2
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# pnpm
+.pnpm-store/
 
 .env
 

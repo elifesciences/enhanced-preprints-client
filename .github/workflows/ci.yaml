@@ -21,15 +21,17 @@ jobs:
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
+      - name: Install pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
       - name: Use Node.js (.nvmrc)
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-          cache: yarn
-      - name: yarn install
-        run: yarn
+          cache: pnpm
+      - name: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Production build
-        run: yarn build
+        run: pnpm build
       - name: TSC
         run: make compile-typescript
       - name: Check circular dependencies
@@ -37,7 +39,7 @@ jobs:
       - name: Lint
         run: make lint
       - name: Unit Test
-        run: yarn test --reporters=jest-wip-reporter
+        run: pnpm test --reporters=jest-wip-reporter
   test-integration:
     runs-on: ubuntu-latest
     steps:
@@ -45,17 +47,19 @@ jobs:
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
+      - name: Install pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
       - name: Use Node.js (.nvmrc)
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-          cache: yarn
-      - name: yarn install
-        run: yarn
+          cache: pnpm
+      - name: pnpm install
+        run: pnpm install --frozen-lockfile
       - name: Install operating system dependencies
         run: |
-          yarn playwright install
-          yarn playwright install-deps
+          pnpm exec playwright install
+          pnpm exec playwright install-deps
       - name: Pull browser test images
         run: |
           set -euo pipefail
@@ -76,7 +80,7 @@ jobs:
         if: failure()
         run: docker compose logs app
       - name: Browser Tests
-        run: yarn test:browser
+        run: pnpm test:browser
       - name: Take down browser test stack
         run: docker compose down
   test-chromatic:
@@ -85,7 +89,18 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           fetch-depth: 0
-      - run: yarn
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+        id: nvm
+      - name: Install pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - name: Use Node.js (.nvmrc)
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          cache: pnpm
+      - name: pnpm install
+        run: pnpm install --frozen-lockfile
       - uses: chromaui/action@6ac4c49524e1b1358b8c593c5eea877604228268 # v18.14.2
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
