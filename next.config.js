@@ -105,6 +105,13 @@ const nextConfig = {
   },
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
+    // Don't let Sass prepend a byte-order mark (or @charset) when a stylesheet
+    // contains non-ASCII characters such as "•". Storybook passes these options
+    // to its own Sass loader. With postcss newer than 8.5.10 the BOM survives
+    // into the component's injected stylesheet as part of the first selector
+    // ("\ufeff:root"), so the CSS custom properties are dropped. Next.js
+    // already strips it from production CSS.
+    charset: false,
   },
 }
 
