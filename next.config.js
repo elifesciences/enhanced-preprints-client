@@ -105,6 +105,8 @@ const nextConfig = {
   },
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
+    // No BOM/@charset: Storybook's css-loader keeps the BOM and breaks the first selector.
+    charset: false,
   },
 }
 
