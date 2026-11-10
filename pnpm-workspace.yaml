@@ -1,10 +1,8 @@
-# Use a flat node_modules layout, so packages can still resolve dependencies they
-# don't declare themselves. A stricter layout would need those fixed first.
 nodeLinker: hoisted
 
 overrides:
-  '@types/react': 19.2.9
-  '@types/react-dom': 19.2.3
+  '@types/react': 19.3.0
+  '@types/react-dom': 19.3.0
 
 # pnpm only runs dependency install scripts that are listed here.
 # true: the script is needed (checks or installs a native binary).
