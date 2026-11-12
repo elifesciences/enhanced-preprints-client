@@ -41,7 +41,7 @@ services:
 
   # Upload data to the S3Mock bucket
   createbucket:
-    image: amazon/aws-cli:2.39.7@sha256:bba262340b0bc7cbf3a8a48612531263b56f4b280c4f036a07816af1b271bda0
+    image: amazon/aws-cli:2.40.1@sha256:4ade0fe3e60e0b9e1fb0910f86c6d992baf4e12d3172c25a3c8c11f6c81cee08
     depends_on:
       s3mock:
         condition: service_healthy
