@@ -102,5 +102,5 @@
     "wait-on": "^9.0.0",
     "webpack": "^5.74.0"
   },
-  "packageManager": "pnpm@12.20.0"
+  "packageManager": "pnpm@12.21.0"
 }
