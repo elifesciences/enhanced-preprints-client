@@ -5,7 +5,9 @@
     ":preserveSemverRanges"
   ],
   "assigneesFromCodeOwners": true,
-  "dependencyDashboardTitle": "Dependency Dashboard - EPP client",
+  "dependencyDashboard": {
+    "title": "Dependency Dashboard - EPP client"
+  },
   "customManagers": [
     {
       "customType": "regex",
