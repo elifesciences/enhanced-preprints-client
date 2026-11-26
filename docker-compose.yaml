@@ -3,7 +3,7 @@ services:
 
   ## Image Server
   image-server:
-    image: ghcr.io/elifesciences/epp-image-server:master-8f908675-20261125.0232@sha256:abf1042813c47cf4f069651718da588b1a1b75e00d36ef7be5791765a9cd4c3b
+    image: ghcr.io/elifesciences/epp-image-server:master-f2ef36d5-20261126.0721@sha256:565005163ec18ba5d0e522ed020eec697d775c2793b5728f55d7c594ef0dd98b
     depends_on:
       createbucket:
         condition: service_completed_successfully
