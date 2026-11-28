@@ -1,7 +1,7 @@
 nodeLinker: hoisted
 
 overrides:
-  '@types/react': 19.3.0
+  '@types/react': 19.3.2
   '@types/react-dom': 19.3.0
 
 # pnpm only runs dependency install scripts that are listed here.
